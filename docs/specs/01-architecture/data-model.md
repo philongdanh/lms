@@ -10,475 +10,501 @@ sidebar_label: Data Model
 
 The schema is designed following a multi-tenant model with data isolation between schools. All business tables have `tenant_id` and `created_at`, `updated_at` timestamps (except system tables).
 
-```mermaid
----
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
----
-erDiagram
-    %% ========== SYSTEM TABLES ==========
-    Permission {
-        string id PK
-        string name
-        string description
-    }
+```d2
+# ========== SYSTEM TABLES ==========
+Permission: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  name: string
+  description: string
+}
 
-    Role {
-        string id PK
-        string name
-        string color
-        timestamp created_at
-        timestamp updated_at
-    }
+Role: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  name: string
+  color: string
+  created_at: timestamp
+  updated_at: timestamp
+}
 
-    RolePermission {
-        string role_id FK
-        string permission_id FK
-        timestamp created_at
-    }
+RolePermission: {
+  shape: sql_table
+  role_id: string {constraint: foreign_key}
+  permission_id: string {constraint: foreign_key}
+  created_at: timestamp
+}
 
-    %% ========== TENANT MANAGEMENT ==========
-    Tenant {
-        string id PK
-        string name
-        string code
-        string domain
-        string email
-        string phone
-        string address
-        jsonb settings
-        enum status "ACTIVE|SUSPENDED|PENDING_DEACTIVATION"
-        timestamp deactivated_at
-        timestamp deleted_at
-        timestamp created_at
-        timestamp updated_at
-    }
+# ========== TENANT MANAGEMENT ==========
+Tenant: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  name: string
+  code: string
+  domain: string
+  email: string
+  phone: string
+  address: string
+  settings: jsonb
+  status: enum
+  deactivated_at: timestamp
+  deleted_at: timestamp
+  created_at: timestamp
+  updated_at: timestamp
+}
 
-    %% ========== AUTHENTICATION ==========
-    User {
-        string id PK
-        string tenant_id FK
-        string email
-        string password
-        string first_name
-        string last_name
-        string avatar_url
-        boolean is_active
-        boolean email_verified
-        timestamp email_verified_at
-        timestamp last_login_at
-        jsonb metadata
-        timestamp deleted_at
-        timestamp created_at
-        timestamp updated_at
-    }
+# ========== AUTHENTICATION ==========
+User: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  tenant_id: string {constraint: foreign_key}
+  email: string
+  password: string
+  first_name: string
+  last_name: string
+  avatar_url: string
+  is_active: boolean
+  email_verified: boolean
+  email_verified_at: timestamp
+  last_login_at: timestamp
+  metadata: jsonb
+  deleted_at: timestamp
+  created_at: timestamp
+  updated_at: timestamp
+}
 
-    UserRole {
-        string user_id FK
-        string role_id FK
-        string tenant_id FK
-        timestamp created_at
-    }
+UserRole: {
+  shape: sql_table
+  user_id: string {constraint: foreign_key}
+  role_id: string {constraint: foreign_key}
+  tenant_id: string {constraint: foreign_key}
+  created_at: timestamp
+}
 
-    UserSession {
-        string id PK
-        string user_id FK
-        string device_id
-        string device_name
-        string refresh_token_hash
-        string user_agent
-        string ip_address
-        string location
-        boolean is_active
-        timestamp expires_at
-        timestamp last_used_at
-        timestamp revoked_at
-        timestamp created_at
-        timestamp updated_at
-    }
+UserSession: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  user_id: string {constraint: foreign_key}
+  device_id: string
+  device_name: string
+  refresh_token_hash: string
+  user_agent: string
+  ip_address: string
+  location: string
+  is_active: boolean
+  expires_at: timestamp
+  last_used_at: timestamp
+  revoked_at: timestamp
+  created_at: timestamp
+  updated_at: timestamp
+}
 
-    ParentStudentLink {
-        string id PK
-        string parent_id FK
-        string student_id FK
-        timestamp created_at
-    }
+ParentStudentLink: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  parent_id: string {constraint: foreign_key}
+  student_id: string {constraint: foreign_key}
+  created_at: timestamp
+}
 
-    %% ========== CONTENT STRUCTURE ==========
-    Subject {
-        string id PK
-        string name
-        string code
-        string icon
-        integer order
-        timestamp created_at
-        timestamp updated_at
-    }
+# ========== CONTENT STRUCTURE ==========
+Subject: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  name: string
+  code: string
+  icon: string
+  order: integer
+  created_at: timestamp
+  updated_at: timestamp
+}
 
-    Grade {
-        string id PK
-        string name
-        integer level
-        timestamp created_at
-        timestamp updated_at
-    }
+Grade: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  name: string
+  level: integer
+  created_at: timestamp
+  updated_at: timestamp
+}
 
-    Topic {
-        string id PK
-        string tenant_id FK
-        string subject_id FK
-        string grade_id FK
-        string name
-        string description
-        string icon
-        integer order
-        boolean is_active
-        timestamp deleted_at
-        timestamp created_at
-        timestamp updated_at
-    }
+Topic: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  tenant_id: string {constraint: foreign_key}
+  subject_id: string {constraint: foreign_key}
+  grade_id: string {constraint: foreign_key}
+  name: string
+  description: string
+  icon: string
+  order: integer
+  is_active: boolean
+  deleted_at: timestamp
+  created_at: timestamp
+  updated_at: timestamp
+}
 
-    Lesson {
-        string id PK
-        string topic_id FK
-        string title
-        string description
-        enum semester "SEMESTER1|SEMESTER2"
-        integer order
-        timestamp created_at
-        timestamp updated_at
-    }
+Lesson: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  topic_id: string {constraint: foreign_key}
+  title: string
+  description: string
+  semester: enum
+  order: integer
+  created_at: timestamp
+  updated_at: timestamp
+}
 
-    Content {
-        string id PK
-        string lesson_id FK
-        enum type "VIDEO|EXERCISE|TEXT|QUIZ"
-        string title
-        string content_url
-        integer duration
-        integer order
-        jsonb metadata
-        timestamp created_at
-        timestamp updated_at
-    }
+Content: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  lesson_id: string {constraint: foreign_key}
+  type: enum
+  title: string
+  content_url: string
+  duration: integer
+  order: integer
+  metadata: jsonb
+  created_at: timestamp
+  updated_at: timestamp
+}
 
-    %% ========== QUESTION BANK ==========
-    QuestionBank {
-        string id PK
-        string tenant_id FK
-        string creator_id FK
-        string name
-        string description
-        enum type "SYSTEM|TEACHER"
-        boolean is_public
-        timestamp deleted_at
-        timestamp created_at
-        timestamp updated_at
-    }
+# ========== QUESTION BANK ==========
+QuestionBank: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  tenant_id: string {constraint: foreign_key}
+  creator_id: string {constraint: foreign_key}
+  name: string
+  description: string
+  type: enum
+  is_public: boolean
+  deleted_at: timestamp
+  created_at: timestamp
+  updated_at: timestamp
+}
 
-    Question {
-        string id PK
-        string question_bank_id FK
-        string topic_id FK
-        string lesson_id FK
-        enum type "MULTIPLE_CHOICE|TRUE_FALSE|SHORT_ANSWER"
-        string content
-        jsonb options
-        string correct_answer
-        jsonb explanation
-        enum difficulty "EASY|MEDIUM|HARD"
-        integer points
-        timestamp deleted_at
-        timestamp created_at
-        timestamp updated_at
-    }
+Question: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  question_bank_id: string {constraint: foreign_key}
+  topic_id: string {constraint: foreign_key}
+  lesson_id: string {constraint: foreign_key}
+  type: enum
+  content: string
+  options: jsonb
+  correct_answer: string
+  explanation: jsonb
+  difficulty: enum
+  points: integer
+  deleted_at: timestamp
+  created_at: timestamp
+  updated_at: timestamp
+}
 
-    QuestionTag {
-        string question_id FK
-        string tag_name
-        timestamp created_at
-    }
+QuestionTag: {
+  shape: sql_table
+  question_id: string {constraint: foreign_key}
+  tag_name: string
+  created_at: timestamp
+}
 
-    %% ========== LEARNING & PROGRESS ==========
-    StudentProgress {
-        string id PK
-        string student_id FK
-        string lesson_id FK
-        integer completion_percentage
-        timestamp started_at
-        timestamp completed_at
-        timestamp last_accessed_at
-        timestamp created_at
-        timestamp updated_at
-    }
+# ========== LEARNING & PROGRESS ==========
+StudentProgress: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  student_id: string {constraint: foreign_key}
+  lesson_id: string {constraint: foreign_key}
+  completion_percentage: integer
+  started_at: timestamp
+  completed_at: timestamp
+  last_accessed_at: timestamp
+  created_at: timestamp
+  updated_at: timestamp
+}
 
-    StudentAnswer {
-        string id PK
-        string student_id FK
-        string question_id FK
-        string content_id FK
-        string exam_id FK
-        string competition_id FK
-        string answer
-        boolean is_correct
-        integer time_taken
-        timestamp answered_at
-        timestamp created_at
-    }
+StudentAnswer: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  student_id: string {constraint: foreign_key}
+  question_id: string {constraint: foreign_key}
+  content_id: string {constraint: foreign_key}
+  exam_id: string {constraint: foreign_key}
+  competition_id: string {constraint: foreign_key}
+  answer: string
+  is_correct: boolean
+  time_taken: integer
+  answered_at: timestamp
+  created_at: timestamp
+}
 
-    %% ========== TOURNAMENT SYSTEM ==========
-    Tournament {
-        string id PK
-        string tenant_id FK
-        string name
-        string description
-        enum level "SCHOOL|DISTRICT|PROVINCE|REGIONAL|NATIONAL"
-        string subject_id FK
-        string grade_id FK
-        jsonb settings
-        timestamp deleted_at
-        timestamp starts_at
-        timestamp ends_at
-        timestamp created_at
-        timestamp updated_at
-    }
+# ========== TOURNAMENT SYSTEM ==========
+Tournament: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  tenant_id: string {constraint: foreign_key}
+  name: string
+  description: string
+  level: enum
+  subject_id: string {constraint: foreign_key}
+  grade_id: string {constraint: foreign_key}
+  settings: jsonb
+  deleted_at: timestamp
+  starts_at: timestamp
+  ends_at: timestamp
+  created_at: timestamp
+  updated_at: timestamp
+}
 
-    CompetitionRound {
-        string id PK
-        string tournament_id FK
-        string name
-        string description
-        integer order
-        integer required_score
-        integer participant_limit
-        boolean requires_invite
-        jsonb rules
-        timestamp starts_at
-        timestamp ends_at
-        timestamp created_at
-        timestamp updated_at
-    }
+CompetitionRound: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  tournament_id: string {constraint: foreign_key}
+  name: string
+  description: string
+  order: integer
+  required_score: integer
+  participant_limit: integer
+  requires_invite: boolean
+  rules: jsonb
+  starts_at: timestamp
+  ends_at: timestamp
+  created_at: timestamp
+  updated_at: timestamp
+}
 
-    CompetitionParticipant {
-        string id PK
-        string round_id FK
-        string student_id FK
-        string invite_code_id FK
-        integer score
-        integer rank
-        timestamp registered_at
-        timestamp started_at
-        timestamp completed_at
-        timestamp created_at
-        timestamp updated_at
-    }
+CompetitionParticipant: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  round_id: string {constraint: foreign_key}
+  student_id: string {constraint: foreign_key}
+  invite_code_id: string {constraint: foreign_key}
+  score: integer
+  rank: integer
+  registered_at: timestamp
+  started_at: timestamp
+  completed_at: timestamp
+  created_at: timestamp
+  updated_at: timestamp
+}
 
-    InviteCode {
-        string id PK
-        string round_id FK
-        string creator_id FK
-        string code
-        integer max_uses
-        integer used_count
-        timestamp expires_at
-        timestamp created_at
-        timestamp updated_at
-    }
+InviteCode: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  round_id: string {constraint: foreign_key}
+  creator_id: string {constraint: foreign_key}
+  code: string
+  max_uses: integer
+  used_count: integer
+  expires_at: timestamp
+  created_at: timestamp
+  updated_at: timestamp
+}
 
-    %% ========== GAMIFICATION ==========
-    UserExp {
-        string id PK
-        string user_id FK
-        integer exp_points
-        integer level
-        timestamp created_at
-        timestamp updated_at
-    }
+# ========== GAMIFICATION ==========
+UserExp: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  user_id: string {constraint: foreign_key}
+  exp_points: integer
+  level: integer
+  created_at: timestamp
+  updated_at: timestamp
+}
 
-    Badge {
-        string id PK
-        string name
-        string description
-        string icon_url
-        enum category "ACHIEVEMENT|COMPETITION|LEARNING"
-        timestamp created_at
-        timestamp updated_at
-    }
+Badge: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  name: string
+  description: string
+  icon_url: string
+  category: enum
+  created_at: timestamp
+  updated_at: timestamp
+}
 
-    UserBadge {
-        string user_id FK
-        string badge_id FK
-        timestamp earned_at
-    }
+UserBadge: {
+  shape: sql_table
+  user_id: string {constraint: foreign_key}
+  badge_id: string {constraint: foreign_key}
+  earned_at: timestamp
+}
 
-    Reward {
-        string id PK
-        string tenant_id FK
-        string name
-        string description
-        string image_url
-        enum type "VIRTUAL|PHYSICAL"
-        integer cost
-        integer stock
-        boolean is_active
-        timestamp deleted_at
-        timestamp created_at
-        timestamp updated_at
-    }
+Reward: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  tenant_id: string {constraint: foreign_key}
+  name: string
+  description: string
+  image_url: string
+  type: enum
+  cost: integer
+  stock: integer
+  is_active: boolean
+  deleted_at: timestamp
+  created_at: timestamp
+  updated_at: timestamp
+}
 
-    UserReward {
-        string id PK
-        string user_id FK
-        string reward_id FK
-        integer quantity
-        string status "pending|shipped|delivered"
-        timestamp redeemed_at
-        timestamp updated_at
-    }
+UserReward: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  user_id: string {constraint: foreign_key}
+  reward_id: string {constraint: foreign_key}
+  quantity: integer
+  status: string
+  redeemed_at: timestamp
+  updated_at: timestamp
+}
 
-    %% ========== EXAM & ASSESSMENT ==========
-    Exam {
-        string id PK
-        string tenant_id FK
-        string creator_id FK
-        string title
-        string description
-        string subject_id FK
-        string grade_id FK
-        jsonb settings
-        integer duration
-        timestamp deleted_at
-        timestamp starts_at
-        timestamp ends_at
-        timestamp created_at
-        timestamp updated_at
-    }
+# ========== EXAM & ASSESSMENT ==========
+Exam: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  tenant_id: string {constraint: foreign_key}
+  creator_id: string {constraint: foreign_key}
+  title: string
+  description: string
+  subject_id: string {constraint: foreign_key}
+  grade_id: string {constraint: foreign_key}
+  settings: jsonb
+  duration: integer
+  deleted_at: timestamp
+  starts_at: timestamp
+  ends_at: timestamp
+  created_at: timestamp
+  updated_at: timestamp
+}
 
-    ExamQuestion {
-        string exam_id FK
-        string question_id FK
-        integer order
-        integer points
-        timestamp created_at
-    }
+ExamQuestion: {
+  shape: sql_table
+  exam_id: string {constraint: foreign_key}
+  question_id: string {constraint: foreign_key}
+  order: integer
+  points: integer
+  created_at: timestamp
+}
 
-    ExamAssignment {
-        string id PK
-        string exam_id FK
-        string student_id FK
-        integer score
-        timestamp started_at
-        timestamp completed_at
-        timestamp created_at
-        timestamp updated_at
-    }
+ExamAssignment: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  exam_id: string {constraint: foreign_key}
+  student_id: string {constraint: foreign_key}
+  score: integer
+  started_at: timestamp
+  completed_at: timestamp
+  created_at: timestamp
+  updated_at: timestamp
+}
 
-    %% ========== ANALYTICS ==========
-    KnowledgeMap {
-        string id PK
-        string student_id FK
-        string topic_id FK
-        float mastery_level
-        integer questions_attempted
-        integer questions_correct
-        timestamp last_practiced
-        timestamp created_at
-        timestamp updated_at
-    }
+# ========== ANALYTICS ==========
+KnowledgeMap: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  student_id: string {constraint: foreign_key}
+  topic_id: string {constraint: foreign_key}
+  mastery_level: float
+  questions_attempted: integer
+  questions_correct: integer
+  last_practiced: timestamp
+  created_at: timestamp
+  updated_at: timestamp
+}
 
-    LearningAnalytics {
-        string id PK
-        string student_id FK
-        date date
-        integer learning_time
-        integer questions_attempted
-        integer lessons_completed
-        timestamp created_at
-        timestamp updated_at
-    }
+LearningAnalytics: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  student_id: string {constraint: foreign_key}
+  date: date
+  learning_time: integer
+  questions_attempted: integer
+  lessons_completed: integer
+  created_at: timestamp
+  updated_at: timestamp
+}
 
-    %% ========== NOTIFICATIONS ==========
-    Notification {
-        string id PK
-        string user_id FK
-        string title
-        string message
-        enum type "SYSTEM|ACHIEVEMENT|COMPETITION|LEARNING"
-        boolean is_read
-        jsonb metadata
-        timestamp created_at
-    }
+# ========== NOTIFICATIONS ==========
+Notification: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  user_id: string {constraint: foreign_key}
+  title: string
+  message: string
+  type: enum
+  is_read: boolean
+  metadata: jsonb
+  created_at: timestamp
+}
 
-    %% ========== RELATIONSHIPS ==========
-    Role ||--o{ UserRole : "has"
-    Permission ||--o{ RolePermission : "assigned_to"
-    Role ||--o{ RolePermission : "has"
-    
-    Tenant ||--o{ User : "has"
-    Tenant ||--o{ Topic : "has"
-    Tenant ||--o{ QuestionBank : "has"
-    Tenant ||--o{ Tournament : "has"
-    Tenant ||--o{ Exam : "has"
-    Tenant ||--o{ Reward : "has"
-    
-    User ||--o{ UserRole : "assigned"
-    User ||--o{ UserSession : "has"
-    User ||--o{ ParentStudentLink : "as_parent"
-    User ||--o{ ParentStudentLink : "as_student"
-    User ||--o{ QuestionBank : "created"
-    User ||--o{ Exam : "created"
-    User ||--o{ InviteCode : "created"
-    User ||--o{ UserExp : "has"
-    User ||--o{ UserBadge : "earned"
-    User ||--o{ UserReward : "redeemed"
-    User ||--o{ CompetitionParticipant : "participates"
-    User ||--o{ StudentProgress : "has"
-    User ||--o{ StudentAnswer : "submits"
-    User ||--o{ ExamAssignment : "assigned"
-    User ||--o{ KnowledgeMap : "has"
-    User ||--o{ LearningAnalytics : "has"
-    User ||--o{ Notification : "receives"
-    
-    Subject ||--o{ Topic : "has"
-    Subject ||--o{ Tournament : "for"
-    Subject ||--o{ Exam : "for"
-    
-    Grade ||--o{ Topic : "has"
-    Grade ||--o{ Tournament : "for"
-    Grade ||--o{ Exam : "for"
-    
-    Topic ||--o{ Lesson : "has"
-    Topic ||--o{ Question : "tagged_with"
-    Topic ||--o{ KnowledgeMap : "in"
-    
-    Lesson ||--o{ Content : "has"
-    Lesson ||--o{ StudentProgress : "tracked_by"
-    Lesson ||--o{ Question : "tagged_with"
-    
-    QuestionBank ||--o{ Question : "contains"
-    
-    Question ||--o{ StudentAnswer : "answered_in"
-    Question ||--o{ ExamQuestion : "included_in"
-    Question ||--o{ QuestionTag : "tagged_with"
-    
-    Tournament ||--o{ CompetitionRound : "has"
-    
-    CompetitionRound ||--o{ CompetitionParticipant : "has"
-    CompetitionRound ||--o{ InviteCode : "has"
-    CompetitionRound ||--o{ StudentAnswer : "in"
-    
-    CompetitionParticipant ||--o{ StudentAnswer : "submits_in"
-    
-    Badge ||--o{ UserBadge : "awarded_to"
-    
-    Reward ||--o{ UserReward : "redeemed_by"
-    
-    Exam ||--o{ ExamQuestion : "contains"
-    Exam ||--o{ ExamAssignment : "assigned_to"
-    Exam ||--o{ StudentAnswer : "in"
-    
-    Content ||--o{ StudentAnswer : "in"
+# ========== RELATIONSHIPS ==========
+Role -> UserRole: has
+Permission -> RolePermission: assigned_to
+Role -> RolePermission: has
+
+Tenant -> User: has
+Tenant -> Topic: has
+Tenant -> QuestionBank: has
+Tenant -> Tournament: has
+Tenant -> Exam: has
+Tenant -> Reward: has
+
+User -> UserRole: assigned
+User -> UserSession: has
+User -> ParentStudentLink: as_parent
+User -> QuestionBank: created
+User -> Exam: created
+User -> InviteCode: created
+User -> UserExp: has
+User -> UserBadge: earned
+User -> UserReward: redeemed
+User -> CompetitionParticipant: participates
+User -> StudentProgress: has
+User -> StudentAnswer: submits
+User -> ExamAssignment: assigned
+User -> KnowledgeMap: has
+User -> LearningAnalytics: has
+User -> Notification: receives
+
+Subject -> Topic: has
+Subject -> Tournament: for
+Subject -> Exam: for
+
+Grade -> Topic: has
+Grade -> Tournament: for
+Grade -> Exam: for
+
+Topic -> Lesson: has
+Topic -> Question: tagged_with
+Topic -> KnowledgeMap: in
+
+Lesson -> Content: has
+Lesson -> StudentProgress: tracked_by
+Lesson -> Question: tagged_with
+
+QuestionBank -> Question: contains
+
+Question -> StudentAnswer: answered_in
+Question -> ExamQuestion: included_in
+Question -> QuestionTag: tagged_with
+
+Tournament -> CompetitionRound: has
+
+CompetitionRound -> CompetitionParticipant: has
+CompetitionRound -> InviteCode: has
+CompetitionRound -> StudentAnswer: in
+
+CompetitionParticipant -> StudentAnswer: submits_in
+
+Badge -> UserBadge: awarded_to
+
+Reward -> UserReward: redeemed_by
+
+Exam -> ExamQuestion: contains
+Exam -> ExamAssignment: assigned_to
+Exam -> StudentAnswer: in
+
+Content -> StudentAnswer: in
 ```
 
 ## Entity Descriptions

@@ -16,46 +16,47 @@ Kiến trúc nền tảng LMS - hệ thống quản lý học tập multi-tenant
 
 Hệ thống sử dụng **kiến trúc monolithic** với hỗ trợ **multi-tenant** - mỗi trường là một tenant độc lập, đảm bảo cách ly dữ liệu hoàn toàn.
 
-```mermaid
----
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
----
-flowchart TB
-  Web["Web Application"]
-  
-      Auth["Auth & RBAC Module"]
-      Tournament["Tournament Module"]
-      OtherModules["... other modules"]
-  
-      WSGateway["WebSocket Gateway"]
-      Realtime["Real-time Service"]
-      MsgQueue["Message Queue"]
-  
-  subgraph "Data Layer"
-      DB[(Database)]
-      Redis[("Redis Cache & Pub/Sub")]
-      Storage["File Storage"]
-  end
-  
-  Web --> App
-  Web -.-> WSGateway
-  
-  App --> Auth
-  App --> Tournament
-  App --> OtherModules
-  
-  Auth --> DB
-  Tournament --> DB
-  OtherModules --> DB
-  
-  Tournament --> Realtime
-  WSGateway --> Realtime
-  Realtime --> MsgQueue
-  MsgQueue --> Redis
-  
-  App --> Redis
+```d2
+direction: down
+
+Web: Web Application
+App: Application
+
+Auth: Auth & RBAC Module
+Tournament: Tournament Module
+OtherModules: ... other modules
+
+WSGateway: WebSocket Gateway
+Realtime: Real-time Service
+MsgQueue: Message Queue
+
+Data Layer: {
+  DB: Database {
+    shape: cylinder
+  }
+  Redis: Redis Cache & Pub/Sub {
+    shape: cylinder
+  }
+  Storage: File Storage
+}
+
+Web -> App
+Web -> WSGateway: {style.stroke-dash: 5}
+
+App -> Auth
+App -> Tournament
+App -> OtherModules
+
+Auth -> Data Layer.DB
+Tournament -> Data Layer.DB
+OtherModules -> Data Layer.DB
+
+Tournament -> Realtime
+WSGateway -> Realtime
+Realtime -> MsgQueue
+MsgQueue -> Data Layer.Redis
+
+App -> Data Layer.Redis
 ```
 
 ### 2.2. Key Architecture Features
@@ -179,198 +180,219 @@ flowchart TB
 
 ### 5.1. Learning Flow
 
-```mermaid
----
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
----
-sequenceDiagram
-    participant Student as Student
-    participant App as Application
-    participant Learning as Learning Module
-    participant AI as AI Service
-    participant DB as Database
-    participant Cache as Redis Cache
+```d2
+shape: sequence_diagram
 
-    Student->>App: Access personalized learning path
-    App->>Learning: GET /learning/path
-    Learning->>Cache: Check cached learning path
-    alt Cache Hit
-        Cache-->>Learning: Return cached path
-    else Cache Miss
-        Learning->>DB: Get learning history and progress
-        DB-->>Learning: Return student data
-        Learning->>AI: Send analysis data
-        AI-->>Learning: Return personalized recommendations
-        Learning->>Cache: Cache learning path
-    end
-    Learning-->>App: Personalized learning path
-    App-->>Student: Display learning interface
+Student: Student
+App: Application
+Learning: Learning Module
+AI: AI Service
+DB: Database
+Cache: Redis Cache
+
+Student -> App: Access personalized learning path
+App -> Learning: GET /learning/path
+Learning -> Cache: Check cached learning path
+Cache -> Learning: Return cached path (Cache Hit) {
+  style.stroke-dash: 5
+}
+Learning -> DB: Get learning history (Cache Miss)
+DB -> Learning: Return student data {
+  style.stroke-dash: 5
+}
+Learning -> AI: Send analysis data
+AI -> Learning: Return personalized recommendations {
+  style.stroke-dash: 5
+}
+Learning -> Cache: Cache learning path
+Learning -> App: Personalized learning path {
+  style.stroke-dash: 5
+}
+App -> Student: Display learning interface {
+  style.stroke-dash: 5
+}
 ```
 
 ### 5.2. Real-time Competition Flow
 
-```mermaid
----
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
----
-sequenceDiagram
-    participant Student as Student
-    participant WS as WebSocket Client
-    participant WSServer as WebSocket Server
-    participant Tournament as Tournament Module
-    participant Redis as Redis Cache/PubSub
-    participant DB as Database
-    participant Presence as Presence Service
+```d2
+shape: sequence_diagram
 
-    Student->>WS: Connect WebSocket with JWT
-    WS->>WSServer: Authentication and connection
-    WSServer->>Tournament: Verify token & permissions
-    Tournament->>DB: Validate session
-    DB-->>Tournament: Validation successful
-    Tournament-->>WSServer: Connection approved
-    WSServer->>Presence: Register user online
-    WSServer-->>WS: Connection established
-    
-    Student->>WS: Join competition room
-    WS->>WSServer: joinRoom command
-    WSServer->>Tournament: Validate room access
-    Tournament->>DB: Check competition status
-    DB-->>Tournament: Competition active
-    Tournament-->>WSServer: Room join approved
-    WSServer->>Presence: Add user to room
-    WSServer->>Redis: Publish user_joined event
-    
-    Student->>WS: Submit answer
-    WS->>WSServer: submitAnswer command
-    WSServer->>Tournament: Process answer
-    Tournament->>DB: Save answer & calculate score
-    DB-->>Tournament: Score calculated
-    Tournament->>Redis: Update real-time leaderboard
-    Tournament->>Redis: Publish score_update event
-    Redis->>WSServer: Broadcast to room
-    WSServer->>WS: Update scores for all clients
-    
-    Tournament->>DB: Finalize competition results
-    DB-->>Tournament: Results saved
-    Tournament->>Redis: Publish competition_end event
-    Tournament->>Presence: Clear room
-    WSServer->>WS: Show final results
+Student: Student
+WS: WebSocket Client
+WSServer: WebSocket Server
+Tournament: Tournament Module
+Redis: Redis Cache/PubSub
+DB: Database
+Presence: Presence Service
+
+Student -> WS: Connect WebSocket with JWT
+WS -> WSServer: Authentication and connection
+WSServer -> Tournament: Verify token & permissions
+Tournament -> DB: Validate session
+DB -> Tournament: Validation successful {
+  style.stroke-dash: 5
+}
+Tournament -> WSServer: Connection approved {
+  style.stroke-dash: 5
+}
+WSServer -> Presence: Register user online
+WSServer -> WS: Connection established {
+  style.stroke-dash: 5
+}
+
+Student -> WS: Join competition room
+WS -> WSServer: joinRoom command
+WSServer -> Tournament: Validate room access
+Tournament -> DB: Check competition status
+DB -> Tournament: Competition active {
+  style.stroke-dash: 5
+}
+Tournament -> WSServer: Room join approved {
+  style.stroke-dash: 5
+}
+WSServer -> Presence: Add user to room
+WSServer -> Redis: Publish user_joined event
+
+Student -> WS: Submit answer
+WS -> WSServer: submitAnswer command
+WSServer -> Tournament: Process answer
+Tournament -> DB: Save answer & calculate score
+DB -> Tournament: Score calculated {
+  style.stroke-dash: 5
+}
+Tournament -> Redis: Update real-time leaderboard
+Tournament -> Redis: Publish score_update event
+Redis -> WSServer: Broadcast to room
+WSServer -> WS: Update scores for all clients
+
+Tournament -> DB: Finalize competition results
+DB -> Tournament: Results saved {
+  style.stroke-dash: 5
+}
+Tournament -> Redis: Publish competition_end event
+Tournament -> Presence: Clear room
+WSServer -> WS: Show final results
 ```
 
 ### 5.3. Multi-device Session Management Flow
 
-```mermaid
----
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
----
-sequenceDiagram
-    participant User as User
-    participant Device1 as Device 1
-    participant Device2 as Device 2
-    participant App as Application
-    participant Auth as Auth Module
-    participant Session as Session Service
-    participant Redis as Redis Cache
-    participant DB as Database
+```d2
+shape: sequence_diagram
 
-    User->>Device1: Login on Chrome
-    Device1->>App: POST /auth/login
-    App->>Auth: Authenticate credentials
-    Auth->>DB: Create UserSession
-    Auth->>Redis: Store refresh token
-    Auth-->>App: Return tokens
-    App-->>Device1: Login successful
-    
-    User->>Device2: Login on iPhone
-    Device2->>App: POST /auth/login
-    App->>Auth: Authenticate credentials
-    Auth->>Session: Check device limit
-    Session->>DB: Count active sessions
-    
-    alt Under device limit
-        Auth->>DB: Create new UserSession
-        Auth->>Redis: Store new token
-        Auth-->>App: Return tokens
-        App-->>Device2: Login successful
-    else Over device limit
-        Session->>DB: Find oldest session
-        DB-->>Session: Oldest session
-        Session->>DB: Revoke oldest session
-        Session->>Redis: Blacklist old token
-        Auth->>DB: Create new UserSession
-        Auth-->>App: Return tokens
-        App-->>Device2: Login successful
-    end
-    
-    User->>Device1: View active sessions
-    Device1->>App: GET /auth/sessions
-    App->>Session: Get all active sessions
-    Session->>DB: Query UserSession
-    DB-->>Session: List of sessions
-    Session-->>App: Session details
-    App-->>Device1: Display sessions
-    
-    User->>Device1: Logout iPhone remotely
-    Device1->>App: DELETE /auth/sessions/{id}
-    App->>Session: Revoke specific session
-    Session->>DB: Update session
-    Session->>Redis: Add to blacklist
-    Session->>WSServer: Send force_logout
-    WSServer-->>Device2: Force logout
-    Device2-->>User: Automatically logged out
+User: User
+Device1: Device 1
+Device2: Device 2
+App: Application
+Auth: Auth Module
+Session: Session Service
+Redis: Redis Cache
+DB: Database
+
+User -> Device1: Login on Chrome
+Device1 -> App: POST /auth/login
+App -> Auth: Authenticate credentials
+Auth -> DB: Create UserSession
+Auth -> Redis: Store refresh token
+Auth -> App: Return tokens {
+  style.stroke-dash: 5
+}
+App -> Device1: Login successful {
+  style.stroke-dash: 5
+}
+
+User -> Device2: Login on iPhone
+Device2 -> App: POST /auth/login
+App -> Auth: Authenticate credentials
+Auth -> Session: Check device limit
+Session -> DB: Count active sessions
+
+Session -> DB: Find oldest session (Over limit)
+DB -> Session: Oldest session {
+  style.stroke-dash: 5
+}
+Session -> DB: Revoke oldest session
+Session -> Redis: Blacklist old token
+Auth -> DB: Create new UserSession
+Auth -> App: Return tokens {
+  style.stroke-dash: 5
+}
+App -> Device2: Login successful {
+  style.stroke-dash: 5
+}
+
+User -> Device1: View active sessions
+Device1 -> App: GET /auth/sessions
+App -> Session: Get all active sessions
+Session -> DB: Query UserSession
+DB -> Session: List of sessions {
+  style.stroke-dash: 5
+}
+Session -> App: Session details {
+  style.stroke-dash: 5
+}
+App -> Device1: Display sessions {
+  style.stroke-dash: 5
+}
+
+User -> Device1: Logout iPhone remotely
+Device1 -> App: DELETE /auth/sessions/{id}
+App -> Session: Revoke specific session
+Session -> DB: Update session
+Session -> Redis: Add to blacklist
+Session -> WSServer: Send force_logout
+WSServer -> Device2: Force logout {
+  style.stroke-dash: 5
+}
+Device2 -> User: Automatically logged out {
+  style.stroke-dash: 5
+}
 ```
 
 ### 5.4. Parent-Student Link and Monitoring Flow
 
-```mermaid
----
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
----
-sequenceDiagram
-    participant Parent as Parent
-    participant Student as Student
-    participant App as Application
-    participant Auth as Auth Module
-    participant parentLink as ParentLink Service
-    participant DB as Database
-    participant Analytics as Analytics Module
+```d2
+shape: sequence_diagram
 
-    Parent->>App: Request to link with student
-    App->>Auth: Verify parent role
-    Auth->>parentLink: Initiate linking
-    parentLink->>DB: Check student and tenant
-    DB-->>parentLink: Student verified
-    
-    alt Email verification
-        parentLink->>Parent: Send OTP email
-        Parent->>App: Enter OTP
-        App->>parentLink: Verify OTP
-        parentLink->>DB: Create ParentStudentLink
-    else Student approval
-        parentLink->>Student: Send link request
-        Student->>App: Approve request
-        App->>parentLink: Process approval
-        parentLink->>DB: Create link
-    end
-    
-    DB-->>parentLink: Link created
-    parentLink->>Auth: Update permissions
-    
-    Parent->>App: View student dashboard
-    App->>Analytics: GET /analytics/student
-    Analytics->>DB: Get student data
-    DB-->>Analytics: Progress and scores
-    Analytics->>Analytics: Generate report
-    Analytics-->>App: Complete analytics
-    App-->>Parent: Display dashboard
+Parent: Parent
+Student: Student
+App: Application
+Auth: Auth Module
+parentLink: ParentLink Service
+DB: Database
+Analytics: Analytics Module
+
+Parent -> App: Request to link with student
+App -> Auth: Verify parent role
+Auth -> parentLink: Initiate linking
+parentLink -> DB: Check student and tenant
+DB -> parentLink: Student verified {
+  style.stroke-dash: 5
+}
+
+parentLink -> Parent: Send OTP email (Email verification)
+Parent -> App: Enter OTP
+App -> parentLink: Verify OTP
+parentLink -> DB: Create ParentStudentLink
+
+DB -> parentLink: Link created {
+  style.stroke-dash: 5
+}
+parentLink -> Auth: Update permissions
+
+Parent -> App: View student dashboard
+App -> Analytics: GET /analytics/student
+Analytics -> DB: Get student data
+DB -> Analytics: Progress and scores {
+  style.stroke-dash: 5
+}
+Analytics -> Analytics: Generate report
+Analytics -> App: Complete analytics {
+  style.stroke-dash: 5
+}
+App -> Parent: Display dashboard {
+  style.stroke-dash: 5
+}
 ```
 
 ## Design Principles

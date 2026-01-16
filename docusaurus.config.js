@@ -1,55 +1,62 @@
-/** @type {import('@docusaurus/types').Config} */
-const config = {
-  title: "LMS Documentation",
-  favicon: "img/favicon.svg",
+async function createConfig() {
+  const remarkD2 = (await import("remark-d2")).default;
 
-  url: "http://localhost",
-  baseUrl: "/",
-  organizationName: "idlongggg",
-  projectName: "lms-docs",
-  trailingSlash: false,
+  /** @type {import('@docusaurus/types').Config} */
+  const config = {
+    title: "LMS Documentation",
+    favicon: "img/favicon.svg",
 
-  onBrokenLinks: "warn",
+    url: "http://localhost",
+    baseUrl: "/",
+    organizationName: "idlongggg",
+    projectName: "lms-docs",
+    trailingSlash: false,
 
-  markdown: {
-    mermaid: true,
-  },
+    onBrokenLinks: "warn",
 
-  themes: ["@docusaurus/theme-mermaid"],
-
-  presets: [
-    [
-      "classic",
-      /** @type {import('@docusaurus/preset-classic').Options} */ ({
-        docs: {
-          path: 'docs',
-          routeBasePath: '/',
-          sidebarPath: './sidebars.js',
-          lastVersion: '1.0',
-          versions: {
-            current: {
-              label: 'Next',
-              path: 'next',
+    presets: [
+      [
+        "classic",
+        /** @type {import('@docusaurus/preset-classic').Options} */ ({
+          docs: {
+            path: 'docs',
+            routeBasePath: '/',
+            sidebarPath: './sidebars.js',
+            lastVersion: '1.0',
+            versions: {
+              current: {
+                label: 'Next',
+                path: 'next',
+              },
+              '1.0': {
+                label: '1.0',
+                path: '',
+              },
             },
-            '1.0': {
-              label: '1.0',
-              path: '',
-            },
+            remarkPlugins: [
+              [remarkD2, {
+                compilePath: "static/d2",
+                linkPath: "/d2",
+                ext: "svg",
+                defaultD2Opts: [
+                  "--sketch",
+                  "-t", "100",
+                  "--dark-theme", "200",
+                  "--font-regular", "./static/fonts/excalifont.otf",
+                ],
+              }],
+            ],
           },
-        },
-        blog: false,
-        theme: {
-          customCss: "./src/css/custom.css",
-        },
-      }),
+          blog: false,
+          theme: {
+            customCss: "./src/css/custom.css",
+          },
+        }),
+      ],
     ],
-  ],
 
-  themeConfig: {
-    mermaid: {
-      theme: { light: "neutral", dark: "dark" },
-    },
-    navbar: {
+    themeConfig: {
+      navbar: {
       title: "LMS",
       items: [
         {
@@ -153,4 +160,7 @@ const config = {
   },
 };
 
-module.exports = config;
+  return config;
+}
+
+module.exports = createConfig;

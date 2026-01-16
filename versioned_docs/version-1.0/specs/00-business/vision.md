@@ -55,23 +55,28 @@ Cung cấp nền tảng học tập số toàn diện, kết hợp AI và gamifi
 
 ### Stakeholder Map
 
-```mermaid
----
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
----
-graph TD
-    RootAdmin[Root Admin] -->|Quản trị hệ thống| System((LMS Platform))
-    System -->|Cung cấp bài học/thi đấu| Student[Student]
-    System -->|Công cụ quản lý| Teacher[Teacher]
-    System -->|Báo cáo tiến độ| Parent[Parent]
-    System -->|Quản lý tổng thể| SchoolAdmin[School Admin]
-    
-    Teacher -->|Giao bài/Hỗ trợ| Student
-    Parent -->|Giám sát| Student
-    SchoolAdmin -->|Tổ chức| Teacher
-    RootAdmin -->|Quản lý| SchoolAdmin
+```d2
+direction: down
+
+RootAdmin: Root Admin
+System: LMS Platform {
+  shape: circle
+}
+Student: Student
+Teacher: Teacher
+Parent: Parent
+SchoolAdmin: School Admin
+
+RootAdmin -> System: Quản trị hệ thống
+System -> Student: Cung cấp bài học/thi đấu
+System -> Teacher: Công cụ quản lý
+System -> Parent: Báo cáo tiến độ
+System -> SchoolAdmin: Quản lý tổng thể
+
+Teacher -> Student: Giao bài/Hỗ trợ
+Parent -> Student: Giám sát
+SchoolAdmin -> Teacher: Tổ chức
+RootAdmin -> SchoolAdmin: Quản lý
 ```
 
 ---
