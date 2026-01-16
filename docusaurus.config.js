@@ -45,7 +45,6 @@ async function createConfig() {
                 linkPath: "/d2",
                 ext: "svg",
                 defaultD2Opts: [
-                  "--sketch",
                   "--layout=elk",
                   "--font-regular=./static/fonts/google-sans-code/GoogleSansCode-Regular.ttf",
                   "--font-bold=./static/fonts/google-sans-code/GoogleSansCode-Bold.ttf",
