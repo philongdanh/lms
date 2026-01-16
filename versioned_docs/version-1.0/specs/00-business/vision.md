@@ -67,16 +67,16 @@ Teacher: Teacher
 Parent: Parent
 SchoolAdmin: School Admin
 
-RootAdmin -> System: Quản trị hệ thống
-System -> Student: Cung cấp bài học/thi đấu
-System -> Teacher: Công cụ quản lý
-System -> Parent: Báo cáo tiến độ
-System -> SchoolAdmin: Quản lý tổng thể
+RootAdmin -> System: System Administration
+System -> Student: Lessons & Competitions
+System -> Teacher: Management Tools
+System -> Parent: Progress Reports
+System -> SchoolAdmin: Overall Management
 
-Teacher -> Student: Giao bài/Hỗ trợ
-Parent -> Student: Giám sát
-SchoolAdmin -> Teacher: Tổ chức
-RootAdmin -> SchoolAdmin: Quản lý
+Teacher -> Student: Assign/Support
+Parent -> Student: Monitor
+SchoolAdmin -> Teacher: Organize
+RootAdmin -> SchoolAdmin: Manage
 ```
 
 ---

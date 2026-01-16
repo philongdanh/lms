@@ -14,6 +14,12 @@ async function createConfig() {
 
     onBrokenLinks: "warn",
 
+    markdown: {
+      mermaid: true,
+    },
+
+    themes: ["@docusaurus/theme-mermaid"],
+
     presets: [
       [
         "classic",
@@ -40,8 +46,6 @@ async function createConfig() {
                 ext: "svg",
                 defaultD2Opts: [
                   "--sketch",
-                  "-t=100",
-                  "--dark-theme=200",
                 ],
               }],
             ],
