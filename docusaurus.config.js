@@ -40,9 +40,8 @@ async function createConfig() {
                 ext: "svg",
                 defaultD2Opts: [
                   "--sketch",
-                  "-t", "100",
-                  "--dark-theme", "200",
-                  "--font-regular", "./static/fonts/excalifont.otf",
+                  "-t=100",
+                  "--dark-theme=200",
                 ],
               }],
             ],
