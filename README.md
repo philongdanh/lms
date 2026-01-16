@@ -1,6 +1,6 @@
 # LMS Documentation
 
-📚 Documentation site for LMS (Learning Management System) - Contains specifications, guides, API docs, and design system documentation.
+Documentation site for LMS (Learning Management System) - Contains specifications, guides, API docs, and design system documentation.
 
 This repository uses Docusaurus to provide a beautiful documentation experience.
 
