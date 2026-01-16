@@ -1,7 +1,7 @@
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "LMS Documentation",
-  favicon: "img/favicon.ico",
+  favicon: "img/favicon.svg",
 
   url: "http://localhost",
   baseUrl: "/",
