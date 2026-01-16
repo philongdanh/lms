@@ -1,6 +1,8 @@
-# LMS Docs Site
+# LMS Documentation
 
-This repository now includes a Docusaurus site to browse the Vietnamese documentation under `docs/vi`.
+📚 Documentation site for LMS (Learning Management System) - Contains specifications, guides, API docs, and design system documentation.
+
+This repository uses Docusaurus to provide a beautiful documentation experience.
 
 ## Prerequisites
 - Node.js 18 or newer
