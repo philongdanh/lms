@@ -6,7 +6,7 @@ const config = {
   url: "http://localhost",
   baseUrl: "/",
   organizationName: "idlongggg",
-  projectName: "lms",
+  projectName: "lms-docs",
   trailingSlash: false,
 
   onBrokenLinks: "warn",
@@ -99,7 +99,7 @@ const config = {
           position: 'right',
         },
         {
-          href: "https://github.com/idlongggg/lms",
+          href: "https://github.com/idlongggg/lms-docs",
           label: "GitHub",
           position: "right",
         },
@@ -143,7 +143,7 @@ const config = {
           items: [
             {
               label: "GitHub Repository",
-              href: "https://github.com/idlongggg/lms",
+              href: "https://github.com/idlongggg/lms-docs",
             },
           ],
         },
