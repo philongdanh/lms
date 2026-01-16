@@ -46,6 +46,11 @@ async function createConfig() {
                 ext: "svg",
                 defaultD2Opts: [
                   "--sketch",
+                  "--layout=elk",
+                  "--font-regular=./static/fonts/google-sans-code/GoogleSansCode-Regular.ttf",
+                  "--font-bold=./static/fonts/google-sans-code/GoogleSansCode-Bold.ttf",
+                  "--font-italic=./static/fonts/google-sans-code/GoogleSansCode-Italic.ttf",
+                  "--font-semibold=./static/fonts/google-sans-code/GoogleSansCode-SemiBold.ttf",
                 ],
               }],
             ],
