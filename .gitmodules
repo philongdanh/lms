@@ -1,0 +1,4 @@
+[submodule "templates"]
+	path = templates
+	url = git@github.com:idlongggg/spec-driven-docs-templates.git
+	branch = main
