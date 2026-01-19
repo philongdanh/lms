@@ -24,8 +24,6 @@ Mô tả quy trình triển khai LMS Platform lên production. Hệ thống tri�
 
 ### Infrastructure Diagram
 
-> D2 Diagram: [architecture.d2](../specs/d2/architecture.d2)
-
 ```d2
 # Infrastructure Architecture
 Client: Clients

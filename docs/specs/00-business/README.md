@@ -21,7 +21,7 @@ Business context and requirements for the LMS platform.
 | [Metrics](./metrics.md) | Success metrics and KPIs |
 | [Constraints](./constraints.md) | Business and technical constraints |
 | [Glossary](./glossary.md) | Terms and definitions |
-| [Research](./research/) | Market and user research |
+| [Research](./research/README.md) | Market and user research |
 
 
 ## References

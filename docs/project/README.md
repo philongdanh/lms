@@ -76,7 +76,7 @@ Sprint 1 → Sprint 2 → M1 → Sprint 3-4 → M2 → Sprint 5 → M3 → Sprin
 
 - [Epic List](./01-epics.md#epic-list)
 - [Sprint Allocation](./02-sprint-plan.md#sprint-allocation)
-- [Backlog](./03-backlog.md#backlog)
+- [Backlog](./03-backlog.md#backlog-summary)
 
 ---
 
