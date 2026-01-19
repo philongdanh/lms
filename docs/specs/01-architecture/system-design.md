@@ -528,6 +528,6 @@ App -> Parent: Display dashboard {
 
 ## References
 
-- [Product Vision](../00-business/vision.md)
+- [Business Overview](../00-business/overview.md)
 - [Data Model](./data-model.md)
-- [Cross-Cutting](../03-cross-cutting/README.md)
+- [Cross-Cutting](./cross-cutting/README.md)

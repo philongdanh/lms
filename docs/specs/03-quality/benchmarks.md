@@ -195,10 +195,9 @@ export default function () {
 | Weekly Summary | Weekly | Team lead |
 | Trend Analysis | Monthly | Management |
 
----
 
 ## References
 
 - [Test Strategy](./test-strategy.md)
-- [Performance](../03-cross-cutting/performance.md)
-- [Monitoring](../03-cross-cutting/monitoring.md)
+- [Performance](../01-architecture/cross-cutting/performance.md)
+- [Monitoring](../01-architecture/cross-cutting/monitoring.md)

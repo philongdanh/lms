@@ -23,8 +23,8 @@ This section defines the project roadmap, from epics to tickets, with sprint all
 | [Epics](./01-epics.md) | Epic breakdown with feature grouping |
 | [Sprint Plan](./02-sprint-plan.md) | Sprint planning with deliverables |
 | [Backlog](./03-backlog.md) | Complete backlog |
-| [Team](./team/README.md) | Team structure and roles |
-| [Processes](./processes/README.md) | DoD, release, ceremonies |
+| [Team](./team/roles.md) | Team structure and roles |
+| [Processes](./processes/dod.md) | DoD, release, ceremonies |
 
 ---
 

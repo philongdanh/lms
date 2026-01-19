@@ -148,4 +148,4 @@ Yêu cầu performance và chiến lược tối ưu.
 ## References
 
 - [Monitoring](./monitoring.md)
-- [System Design](../01-architecture/system-design.md)
+- [System Design](../system-design.md)
