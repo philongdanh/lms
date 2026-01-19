@@ -10,7 +10,7 @@ sidebar_label: Tests
 Các test case cho module Admin.
 
 ## Test Coverage Matrix
-| Đặc tả | Test Cases | Độ phủ | Trạng thái |
+| Specification | Test Cases | Coverage | Status |
 |---------------|------------|---------|--------|
 | Business Logic | 4 | 100% | Planned |
 | API Endpoints | 4 | 100% | Planned |
@@ -20,19 +20,19 @@ Các test case cho module Admin.
 
 ### 1. Functional Tests
 #### Business Logic
-| Test ID | Mô tả | Rules | Kết quả mong đợi | Độ ưu tiên |
+| Test ID | Description | Rules | Expected Result | Priority |
 |---------|-------------|-------|-----------------|----------|
 | TC-ADM-FUN-001 | Tạo Tenant | BR-ADMIN-001 | Thành công nếu mã là duy nhất | P0 |
 | TC-ADM-FUN-002 | Mã Tenant trùng lặp | BR-ADMIN-001 | Lỗi "Code Exists" | P1 |
 | TC-ADM-FUN-003 | Giới hạn Import Users | BR-ADMIN-004 | Lỗi nếu > 500 dòng | P1 |
 
 ### 2. Integration Tests
-| Test ID | Mô tả | Components | Kết quả |
+| Test ID | Description | Components | Result |
 |---------|-------------|------------|--------|
 | TC-ADM-INT-001 | Tạo Tenant gửi email | Admin, Email | Email nhận được |
 
 ### 4. Security Tests
-| Test ID | Khía cạnh | Phương pháp | Kết quả |
+| Test ID | Khía cạnh | Phương pháp | Result |
 |---------|--------|--------|--------|
 | TC-ADM-SEC-001 | Tenant Admin không thể tạo Tenant | POST /tenants | 403 Forbidden |
 
@@ -59,7 +59,7 @@ Các thông số hiệu năng cho module Admin.
 | List Tenants | 50ms | 100ms | 300ms | 1s | DB Query |
 
 ### Throughput Requirements
-| Kịch bản | Requests/giây | Người dùng đồng thời | Khối lượng dữ liệu |
+| Scenario | Requests/sec | Concurrent Users | Data Volume |
 |----------|--------------|------------------|-------------|
 | Admin Operations | 50 | 20 (Root Admins) | Thấp |
 
@@ -68,7 +68,7 @@ Các thông số hiệu năng cho module Admin.
 - **Admin Service**: Scale dựa trên tải, thường có lưu lượng thấp.
 
 ## Resource Utilization Limits
-| Tài nguyên | Ngưỡng cảnh báo | Ngưỡng nghiêm trọng | Hành động cần thiết |
+| Resource | Warning Threshold | Critical Threshold | Required Action |
 |----------|-------------------|--------------------|-----------------|
 | CSV Parser Memory | 500MB | 1GB | Từ chối file lớn |
 

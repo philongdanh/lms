@@ -16,7 +16,7 @@ sidebar_label: Logic
 Module này cung cấp hạ tầng WebSocket để hỗ trợ các tính năng tương tác thời gian thực như: Thông báo, Chat, Trạng thái Online (Presence), và Cập nhật Tournament trực tiếp.
 
 ## Use Cases
-| Use Case ID | Use Case Name | Mô tả | Độ ưu tiên | Trạng thái |
+| Use Case ID | Use Case Name | Description | Priority | Status |
 |------------|--------------|-------|----------|--------|
 | UC-RT-001 | Establish Connection | Kết nối WebSocket và xác thực | P0 | Planned |
 | UC-RT-002 | Join Room | Tham gia kênh/phòng chat | P0 | Planned |
@@ -34,7 +34,7 @@ Module này cung cấp hạ tầng WebSocket để hỗ trợ các tính năng t
 4. Client nhận sự kiện `connect_success`.
 
 ## Business Rules
-| Rule ID | Rule Name | Mô tả | Điều kiện | Hành động | Ngoại lệ |
+| Rule ID | Rule Name | Description | Condition | Action | Exception |
 |---------|----------|-------|------------|---------|------------|
 | BR-RT-001 | Auth Required | Tất cả kết nối phải có Token | Handshake không có token hợp lệ | Ngắt kết nối (401) | - |
 | BR-RT-002 | Sticky Session | Hỗ trợ HTTP polling fallback | Client kết nối lại | Định tuyến đến cùng node (Load Balancer level) | - |
@@ -64,7 +64,7 @@ Module này cung cấp hạ tầng WebSocket để hỗ trợ các tính năng t
 ---
 
 ## Review & Approval
-| Vai trò | Tên | Ngày | Trạng thái |
+| Role | Name | Date | Status |
 |------|------|------|--------|
 | **Product Owner** | | | |
 | **Tech Lead** | | | |
@@ -79,7 +79,7 @@ Module này cung cấp hạ tầng WebSocket để hỗ trợ các tính năng t
 Các luồng xử lý cho kết nối và truyền tin nhắn.
 
 ## Workflow Summary
-| Workflow ID | Workflow Name | Trigger | Actors | Trạng thái |
+| Workflow ID | Workflow Name | Trigger | Actors | Status |
 |-------------|--------------|---------|--------|--------|
 | WF-RT-001 | WebSocket Handshake | Client kết nối | Client, Server | Active |
 | WF-RT-002 | Broadcast Event | Internal API Call | System, Redis | Active |
@@ -145,13 +145,13 @@ flowchart TD
 
 ## Events
 ### System Events
-| Event Name | Mô tả | Payload | Emitted By |
+| Event Name | Description | Payload | Emitted By |
 |------------|-------------|---------|------------|
 | `socket.connect` | Người dùng mới online | `{user_id, socket_id}` | WS Server |
 | `socket.disconnect` | Người dùng offline | `{user_id, reason}` | WS Server |
 
 ## Error Handling
-| Kịch bản lỗi | Phát hiện | Hành động khắc phục | Escalation |
+| Error Scenario | Detection | Recovery Action | Escalation |
 |----------------|-----------|-----------------|------------|
 | Redis Pub/Sub Down | Mất kết nối | Server Local Broadcast Only (Degraded) | Alert |
 | Token Expired | Auth thất bại | Gửi sự kiện `token_expired` -> Client Refresh | - |

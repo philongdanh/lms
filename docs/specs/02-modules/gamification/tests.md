@@ -10,7 +10,7 @@ sidebar_label: Tests
 Các test case cho module Gamification.
 
 ## Test Coverage Matrix
-| Đặc tả | Test Cases | Đã bao phủ | Trạng thái |
+| Specification | Test Cases | Covered | Status |
 |---------------|------------|---------|--------|
 | Business Logic | 5 | 100% | Planned |
 | API Endpoints | 5 | 100% | Planned |
@@ -20,19 +20,19 @@ Các test case cho module Gamification.
 
 ### 1. Functional Tests
 #### Business Logic
-| Test ID | Mô tả | Rules | Kết quả mong đợi | Độ ưu tiên |
+| Test ID | Description | Rules | Expected Result | Priority |
 |---------|-------------|-------|-----------------|----------|
 | TC-GAME-FUN-001 | Tính toán Level Up | BR-GAME-001 | Level tăng khi EXP > ngưỡng | P0 |
 | TC-GAME-FUN-002 | Trừ Coin | BR-GAME-002 | Coins giảm, Order được tạo | P0 |
 | TC-GAME-FUN-003 | Không đủ Coins | BR-GAME-002 | Trả về lỗi, không trừ tiền | P1 |
 
 ### 2. Integration Tests
-| Test ID | Mô tả | Components | Kết quả |
+| Test ID | Description | Components | Result |
 |---------|-------------|------------|--------|
 | TC-GAME-INT-001 | Hoàn thành học kích hoạt EXP | Learning, Game | Người dùng nhận EXP |
 
 ### 3. Performance Tests
-| Test ID | Kịch bản | Load | Kết quả |
+| Test ID | Scenario | Load | Result |
 |---------|----------|------|--------|
 | TC-GAME-PERF-001 | Đọc Leaderboard | 1000 RPS | < 50ms |
 
@@ -59,7 +59,7 @@ Các đặc tả hiệu năng cho module Gamification.
 | Redeem Reward | 100ms | 300ms | 500ms | 2s | DB Transaction |
 
 ### Throughput Requirements
-| Kịch bản | Requests/sec | Concurrent Users | Khối lượng dữ liệu |
+| Scenario | Requests/sec | Concurrent Users | Data Volume |
 |----------|--------------|------------------|-------------|
 | Event Processing | 1000 | N/A (Async) | 50MB/giờ |
 
@@ -69,7 +69,7 @@ Các đặc tả hiệu năng cho module Gamification.
 - **Worker**: Các worker xử lý event scale dựa trên độ sâu hàng đợi.
 
 ## Resource Utilization Limits
-| Tài nguyên | Ngưỡng cảnh báo | Ngưỡng nghiêm trọng | Hành động cần thiết |
+| Resource | Warning Threshold | Critical Threshold | Required Action |
 |----------|-------------------|--------------------|-----------------|
 | Redis Memory | 70% | 90% | Xóa key cũ / Scale up |
 

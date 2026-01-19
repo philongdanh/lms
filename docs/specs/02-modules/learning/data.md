@@ -12,12 +12,12 @@ Data model cho module Learning, lưu trữ tiến độ học tập của studen
 ## Entities
 
 ### Entity: StudentProgress
-**Mô tả**: Lưu trữ trạng thái và tiến độ của student cho một bài học cụ thể.
+**Description**: Lưu trữ trạng thái và tiến độ của student cho một bài học cụ thể.
 **Storage**: Database (PostgreSQL)
 **Retention**: Vĩnh viễn
 
 #### Fields
-| Field Name | Type | Required | Default | Validation | Mô tả |
+| Field Name | Type | Required | Default | Validation | Description |
 |------------|------|----------|---------|------------|-------------|
 | id | UUID | ✅ | auto-gen | unique | Khóa chính |
 | student_id | UUID | ✅ | - | valid user | FK đến User |
@@ -35,12 +35,12 @@ Data model cho module Learning, lưu trữ tiến độ học tập của studen
 | idx_progress_student_lesson | [student_id, lesson_id] | B-tree | Tra cứu tiến độ bài học cụ thể |
 
 ### Entity: StudentAnswer
-**Mô tả**: Lưu trữ lịch sử trả lời chi tiết cho mỗi câu hỏi trong bài tập/quiz.
+**Description**: Lưu trữ lịch sử trả lời chi tiết cho mỗi câu hỏi trong bài tập/quiz.
 **Storage**: Database (PostgreSQL) -> Có thể chuyển sang TimeSeries DB hoặc Partitioning nếu dữ liệu lớn.
 **Retention**: Vĩnh viễn (hoặc archive sau 2 năm)
 
 #### Fields
-| Field Name | Type | Required | Default | Validation | Mô tả |
+| Field Name | Type | Required | Default | Validation | Description |
 |------------|------|----------|---------|------------|-------------|
 | id | UUID | ✅ | auto-gen | unique | Khóa chính |
 | question_id | UUID | ✅ | - | valid question | FK đến Question |

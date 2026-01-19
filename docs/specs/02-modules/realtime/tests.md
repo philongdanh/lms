@@ -10,7 +10,7 @@ sidebar_label: Tests
 Các test case cho module Real-time.
 
 ## Test Coverage Matrix
-| Đặc tả | Test Cases | Độ phủ | Trạng thái |
+| Specification | Test Cases | Coverage | Status |
 |---------------|------------|---------|--------|
 | Business Logic | 4 | 100% | Planned |
 | API Endpoints | 4 | 100% | Planned |
@@ -20,19 +20,19 @@ Các test case cho module Real-time.
 
 ### 1. Functional Tests
 #### Business Logic
-| Test ID | Mô tả | Rules | Kết quả mong đợi | Độ ưu tiên |
+| Test ID | Description | Rules | Expected Result | Priority |
 |---------|-------------|-------|-----------------|----------|
 | TC-RT-FUN-001 | Kết nối với Token | BR-RT-001 | Thành công | P0 |
 | TC-RT-FUN-002 | Kết nối không Token | BR-RT-001 | Thất bại 401 | P0 |
 | TC-RT-FUN-003 | Giới hạn tham gia phòng | BR-RT-003 | Từ chối nếu đầy | P1 |
 
 ### 2. Integration Tests
-| Test ID | Mô tả | Components | Kết quả |
+| Test ID | Description | Components | Result |
 |---------|-------------|------------|--------|
 | TC-RT-INT-001 | Gửi broadcast | API, Redis, WS | Client nhận được msg |
 
 ### 3. Performance Tests
-| Test ID | Kịch bản | Load | Kết quả |
+| Test ID | Scenario | Load | Result |
 |---------|----------|------|--------|
 | TC-RT-PERF-001 | 10k kết nối | Ramp up 1m | Không lỗi |
 
@@ -59,7 +59,7 @@ Các đặc tả hiệu năng cho module Real-time.
 | Presence Query | 5ms | 10ms | 20ms | 50ms | Redis Read |
 
 ### Throughput Requirements
-| Kịch bản | Requests/sec | Người dùng đồng thời | Data Volume |
+| Scenario | Requests/sec | Concurrent Users | Data Volume |
 |----------|--------------|------------------|-------------|
 | Broadcast (Competition) | 10,000 msgs/sec | 50,000 | 1MB/sec |
 
@@ -69,7 +69,7 @@ Các đặc tả hiệu năng cho module Real-time.
 - **Redis**: Cluster mode cho thông lượng Pub/Sub.
 
 ## Resource Utilization Limits
-| Tài nguyên | Ngưỡng cảnh báo | Ngưỡng nghiêm trọng | Hành động cần thiết |
+| Resource | Warning Threshold | Critical Threshold | Required Action |
 |----------|-------------------|--------------------|-----------------|
 | Open Files (FD) | 100,000 | 500,000 | Tăng ulimit |
 

@@ -15,7 +15,7 @@ API cho quản trị hệ thống và quản lý Tenant.
 - **Authentication**: Bearer Token (Role: root-admin, tenant-admin)
 
 ## Endpoints Summary
-| Method | Endpoint | Mô tả | Auth Required | Rate Limit |
+| Method | Endpoint | Description | Auth Required | Rate Limit |
 |--------|----------|-------------|---------------|------------|
 | GET | `/tenants` | Lấy danh sách Tenant | ✅ (Root) | 20/min |
 | POST | `/tenants` | Tạo mới Tenant | ✅ (Root) | 10/min |
@@ -103,7 +103,7 @@ Authorization: Bearer {token}
 ```
 
 ## Error Responses
-| Code | Error | Mô tả |
+| Code | Error | Description |
 |------|-------|-------------|
 | 409 | `ADMIN_TENANT_EXIST` | Mã Tenant đã tồn tại |
 | 400 | `ADMIN_IMPORT_LIMIT` | File CSV quá lớn (>500 dòng) |

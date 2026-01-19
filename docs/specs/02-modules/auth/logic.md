@@ -16,7 +16,7 @@ sidebar_label: Logic
 Module cốt lõi: **Xác thực (Auth), Phân quyền (RBAC), Quản lý Session, Liên kết Phụ huynh, Vòng đời Tenant**.
 
 ## Use Cases
-| Use Case ID | Tên | Mô Tả | Độ ưu tiên | Trạng thái |
+| Use Case ID | Name | Description | Priority | Status |
 |-------------|-----|-------|------------|------------|
 | UC-AUTH-001 | Register | Đăng ký tài khoản trường (Tenant), người dùng | P0 | Done |
 | UC-AUTH-002 | Login | Xác thực credentials, 2FA, cấp JWT | P0 | Done |
@@ -26,7 +26,7 @@ Module cốt lõi: **Xác thực (Auth), Phân quyền (RBAC), Quản lý Sessio
 | UC-AUTH-006 | Tenant Management | Vòng đời tenant (active, suspend) | P1 | Done |
 
 ## Business Rules
-| Rule ID | Tên | Mô Tả | Điều kiện | Hành động | Ngoại lệ |
+| Rule ID | Name | Description | Condition | Action | Exception |
 |---------|-----|-------|-----------|-----------|----------|
 | BR-AUTH-001 | Tenant Scope | Email unique theo tenant_id | Register/Update | Validate unique | Return Error |
 | BR-AUTH-002 | Lifecycle | User/Tenant chỉ soft delete | Delete | Mark deleted_at | N/A |
@@ -75,7 +75,7 @@ Module cốt lõi: **Xác thực (Auth), Phân quyền (RBAC), Quản lý Sessio
 Workflows và business processes cho module Auth.
 
 ## Workflow Summary
-| Workflow ID | Tên | Trigger | Actors | Trạng thái |
+| Workflow ID | Name | Trigger | Actors | Status |
 |-------------|-----|---------|--------|------------|
 | WF-AUTH-001 | School Registration | Admin Access | Sch-Admin | Active |
 | WF-AUTH-002 | User Registration | User Access | User | Active |
@@ -87,13 +87,13 @@ Workflows và business processes cho module Auth.
 ## Workflow Details
 
 ### WF-AUTH-001: School Registration
-**Mô tả**: Quy trình đăng ký tenant mới cho trường học.
+**Description**: Quy trình đăng ký tenant mới cho trường học.
 
 #### Flow Diagram
 
 
 #### Steps
-| Step | Mô tả | Actor | System Action | Exit Condition |
+| Step | Description | Actor | System Action | Exit Condition |
 |------|-------|-------|---------------|----------------|
 | 1 | Submit Info | Admin | Validate Data | Valid Data |
 | 2 | Create Tenant | System | Insert DB (PENDING) | Success |
@@ -101,45 +101,45 @@ Workflows và business processes cho module Auth.
 | 4 | Activate | System | Update Status ACTIVE | Active |
 
 ### WF-AUTH-002: User Registration
-**Mô tả**: Đăng ký người dùng mới (Student/Parent).
+**Description**: Đăng ký người dùng mới (Student/Parent).
 
 #### Flow Diagram
 
 
 ### WF-AUTH-003: Multi-Device Login
-**Mô tả**: Đăng nhập và kiểm soát thiết bị.
+**Description**: Đăng nhập và kiểm soát thiết bị.
 
 #### Flow Diagram
 
 
 ### WF-AUTH-004: Parent-Student Link
-**Mô tả**: Liên kết tài khoản phụ huynh và học sinh.
+**Description**: Liên kết tài khoản phụ huynh và học sinh.
 
 #### Flow Diagram
 
 
 ### WF-AUTH-005: Token Refresh
-**Mô tả**: Cấp lại access token.
+**Description**: Cấp lại access token.
 
 #### Flow Diagram
 
 
 ### WF-AUTH-006: Logout & Revoke
-**Mô tả**: Đăng xuất và thu hồi session.
+**Description**: Đăng xuất và thu hồi session.
 
 #### Flow Diagram
 
 
 ## Events
 ### System Events
-| Event Name | Mô tả | Payload | Emitted By |
+| Event Name | Description | Payload | Emitted By |
 |------------|-------|---------|------------|
 | `auth.user.registered` | Người dùng mới đăng ký | `{user_id, email, tenant_id}` | AuthService |
 | `auth.login.success` | Đăng nhập thành công | `{user_id, device_id}` | AuthService |
 | `auth.session.revoked` | Session bị thu hồi | `{session_id, reason}` | SessionService |
 
 ## Error Handling
-| Kịch bản lỗi | Phát hiện | Hành động khắc phục | Escalation |
+| Error Scenario | Detection | Recovery Action | Escalation |
 |--------------|-----------|---------------------|------------|
 | Redis Down | Connection Fail | Fallback to DB (slow) | Alert Ops |
 | Email Service Fail | Timeout | Retry 3x, then Queue | Alert Ops |

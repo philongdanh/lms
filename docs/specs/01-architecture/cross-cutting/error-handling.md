@@ -12,7 +12,7 @@ Các patterns và best practices xử lý lỗi.
 
 ## Error Categories
 
-| Category | HTTP Range | Mô tả | Hành động |
+| Category | HTTP Range | Description | Action |
 |----------|------------|-------|-----------|
 | Client Error | 4xx | Lỗi từ client | Sửa request |
 | Server Error | 5xx | Lỗi server | Retry sau |

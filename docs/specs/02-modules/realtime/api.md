@@ -15,7 +15,7 @@ HTTP API hỗ trợ chức năng realtime (tương tác với Notification và P
 - **Authentication**: Bearer Token
 
 ## Endpoints Summary
-| Method | Endpoint | Mô tả | Auth Required | Rate Limit |
+| Method | Endpoint | Description | Auth Required | Rate Limit |
 |--------|----------|-------------|---------------|------------|
 | POST | `/broadcast` | Gửi tin nhắn broadcast (Internal/Admin) | ✅ (Admin) | 100/min |
 | GET | `/notifications` | Lấy danh sách thông báo | ✅ | 60/min |
@@ -77,7 +77,7 @@ Authorization: Bearer {service-token}
 ```
 
 ## Error Responses
-| Code | Error | Mô tả |
+| Code | Error | Description |
 |------|-------|-------------|
 | 401 | `RT_UNAUTHORIZED` | Token không hợp lệ |
 | 400 | `RT_INVALID_CHANNEL` | Channel không tồn tại |

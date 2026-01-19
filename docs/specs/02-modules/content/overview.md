@@ -16,7 +16,7 @@ sidebar_label: Overview
 Module cốt lõi quản lý Cấu trúc Chương trình học (Subject, Grade, Topic, Lesson), Tài nguyên Giáo dục (Video, Document), và Ngân hàng Câu hỏi. Cung cấp dữ liệu cho các module Learning và Exam.
 
 ## Use Cases
-| Use Case ID | Use Case Name | Mô tả | Độ ưu tiên | Trạng thái |
+| Use Case ID | Use Case Name | Description | Priority | Status |
 |------------|--------------|-------|----------|--------|
 | UC-CONT-001 | Manage Subjects & Grades | Quản lý danh mục môn học và khối lớp (Admin) | P1 | Planned |
 | UC-CONT-002 | Create Topic Structure | Tạo và tổ chức cây Topic | P0 | Planned |

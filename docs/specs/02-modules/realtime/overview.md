@@ -16,7 +16,7 @@ sidebar_label: Overview
 Module này cung cấp hạ tầng WebSocket để hỗ trợ các tính năng tương tác thời gian thực như: Thông báo, Chat, Trạng thái Online (Presence), và Cập nhật Tournament trực tiếp.
 
 ## Use Cases
-| Use Case ID | Use Case Name | Mô tả | Độ ưu tiên | Trạng thái |
+| Use Case ID | Use Case Name | Description | Priority | Status |
 |------------|--------------|-------|----------|--------|
 | UC-RT-001 | Establish Connection | Kết nối WebSocket và xác thực | P0 | Planned |
 | UC-RT-002 | Join Room | Tham gia kênh/phòng chat | P0 | Planned |
@@ -34,7 +34,7 @@ Module này cung cấp hạ tầng WebSocket để hỗ trợ các tính năng t
 4. Client nhận sự kiện `connect_success`.
 
 ## Business Rules
-| Rule ID | Rule Name | Mô tả | Điều kiện | Hành động | Ngoại lệ |
+| Rule ID | Rule Name | Description | Condition | Action | Exception |
 |---------|----------|-------|------------|---------|------------|
 | BR-RT-001 | Auth Required | Tất cả kết nối phải có Token | Handshake không có token hợp lệ | Ngắt kết nối (401) | - |
 | BR-RT-002 | Sticky Session | Hỗ trợ HTTP polling fallback | Client kết nối lại | Định tuyến đến cùng node (Load Balancer level) | - |

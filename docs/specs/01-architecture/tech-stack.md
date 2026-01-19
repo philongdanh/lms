@@ -12,7 +12,7 @@ Các lựa chọn công nghệ và lý do quyết định cho nền tảng LMS.
 
 ## Overview
 
-| Layer | Technology | Version | Mục Đích |
+| Layer | Technology | Version | Purpose |
 |-------|------------|---------|----------|
 | Backend | NestJS | Latest | API Server, WebSocket Gateway |
 | Frontend | Next.js + React | Latest | Web UI với SSR/SSG |
@@ -26,7 +26,7 @@ Các lựa chọn công nghệ và lý do quyết định cho nền tảng LMS.
 
 ### Runtime & Framework
 
-| Component | Technology | Lý Do Lựa Chọn |
+| Component | Technology | Rationale |
 |-----------|------------|----------------|
 | Runtime | Node.js 20+ | Hiệu năng cao, TypeScript support tốt, ecosystem lớn |
 | Framework | NestJS | Kiến trúc module, dependency injection, enterprise-ready |
@@ -34,7 +34,7 @@ Các lựa chọn công nghệ và lý do quyết định cho nền tảng LMS.
 
 ### Key Libraries
 
-| Library | Mục Đích | Version |
+| Library | Purpose | Version |
 |---------|----------|---------|
 | Socket.IO | WebSocket real-time | Latest |
 | Passport | Authentication strategies | Latest |
@@ -47,7 +47,7 @@ Các lựa chọn công nghệ và lý do quyết định cho nền tảng LMS.
 
 ### Framework & Build
 
-| Component | Technology | Lý Do Lựa Chọn |
+| Component | Technology | Rationale |
 |-----------|------------|----------------|
 | Framework | Next.js + React | SSR/SSG, SEO tốt, performance cao |
 | Build Tool | Turbopack (via Next.js) | Build nhanh, HMR hiệu quả |
@@ -55,7 +55,7 @@ Các lựa chọn công nghệ và lý do quyết định cho nền tảng LMS.
 
 ### UI Libraries
 
-| Library | Mục Đích | Version |
+| Library | Purpose | Version |
 |---------|----------|---------|
 | HeroUI | Component library | Latest |
 | TailwindCSS | Utility-first styling | 3.x |
@@ -67,7 +67,7 @@ Các lựa chọn công nghệ và lý do quyết định cho nền tảng LMS.
 
 ### Containerization
 
-| Component | Technology | Mục Đích |
+| Component | Technology | Purpose |
 |-----------|------------|----------|
 | Container | Docker | Đóng gói ứng dụng nhất quán |
 | Orchestration | Docker Compose | Quản lý multi-container cho development |
@@ -75,7 +75,7 @@ Các lựa chọn công nghệ và lý do quyết định cho nền tảng LMS.
 
 ### CI/CD
 
-| Stage | Tool | Mục Đích |
+| Stage | Tool | Purpose |
 |-------|------|----------|
 | Build | GitHub Actions | Tự động build và test |
 | Test | Jest + Supertest | Unit và integration testing |
@@ -85,7 +85,7 @@ Các lựa chọn công nghệ và lý do quyết định cho nền tảng LMS.
 
 ## Monitoring & Observability
 
-| Component | Technology | Mục Đích |
+| Component | Technology | Purpose |
 |-----------|------------|----------|
 | Logging | Structured JSON logs | Centralized logging |
 | Metrics | Custom metrics | Giám sát hiệu năng |
@@ -95,7 +95,7 @@ Các lựa chọn công nghệ và lý do quyết định cho nền tảng LMS.
 
 ## Security
 
-| Component | Technology | Mục Đích |
+| Component | Technology | Purpose |
 |-----------|------------|----------|
 | Auth | JWT + Refresh Token | Xác thực stateless |
 | 2FA | TOTP | Multi-factor cho admin accounts |

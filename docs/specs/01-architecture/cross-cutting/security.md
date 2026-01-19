@@ -51,7 +51,7 @@ flowchart TB
 
 ### 2.2. Main Components
 
-| Component | Mô tả | Storage Location |
+| Component | Description | Storage Location |
 |-----------|-------|------------------|
 | **User** | Tài khoản người dùng, không lưu trực tiếp loại user | PostgreSQL |
 | **Role** | Vai trò với name, color, description | PostgreSQL (Seed data) |
@@ -229,7 +229,7 @@ sequenceDiagram
 
 ### 5.1. Token Security
 
-| Policy | Value | Mô tả |
+| Policy | Value | Description |
 |--------|-------|-------|
 | **Access Token Expiry** | 15-30 phút | Giảm window of attack |
 | **Refresh Token Expiry** | 7 ngày | Cân bằng giữa UX và security |
@@ -239,7 +239,7 @@ sequenceDiagram
 
 ### 5.2. Session Security
 
-| Policy | Value | Mô tả |
+| Policy | Value | Description |
 |--------|-------|-------|
 | **Max Devices** | 3 (cấu hình được) | Giới hạn thiết bị concurrent |
 | **Session Tracking** | Device ID, IP, User Agent | Audit trail |
@@ -248,7 +248,7 @@ sequenceDiagram
 
 ### 5.3. Password Security
 
-| Policy | Value | Mô tả |
+| Policy | Value | Description |
 |--------|-------|-------|
 | **Hash Algorithm** | bcrypt | Industry standard |
 | **Salt Rounds** | 12 | Cân bằng performance/security |
@@ -257,7 +257,7 @@ sequenceDiagram
 
 ### 5.4. 2FA (Two-Factor Authentication)
 
-| Áp dụng cho | Method | Bắt buộc |
+| Áp dụng cho | Method | Required |
 |-------------|--------|----------|
 | `root-admin` | TOTP (Google Authenticator) | Có |
 | `tenant-admin` | TOTP (Google Authenticator) | Có |
@@ -443,7 +443,7 @@ flowchart TD
 
 ### 10.6. Error Codes
 
-| Code | Status | Mô tả |
+| Code | Status | Description |
 |------|--------|-------|
 | `AUTH_HEADER_MISSING` | 401 | Yêu cầu token |
 | `TOKEN_EXPIRED` | 401 | Cần refresh |

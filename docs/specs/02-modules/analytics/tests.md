@@ -10,7 +10,7 @@ sidebar_label: Tests
 Các test case cho module Analytics.
 
 ## Test Coverage Matrix
-| Đặc tả | Test Cases | Độ phủ | Trạng thái |
+| Specification | Test Cases | Coverage | Status |
 |---------------|------------|---------|--------|
 | Business Logic | 5 | 100% | Đã lên kế hoạch |
 | API Endpoints | 4 | 100% | Đã lên kế hoạch |
@@ -20,18 +20,18 @@ Các test case cho module Analytics.
 
 ### 1. Functional Tests
 #### Business Logic
-| Test ID | Mô tả | Rules | Kết quả mong đợi | Độ ưu tiên |
+| Test ID | Description | Rules | Expected Result | Priority |
 |---------|-------------|-------|-----------------|----------|
 | TC-ANA-FUN-001 | Tính toán Mastery | BR-ANALYTICS-001 | Công thức chính xác | P0 |
 | TC-ANA-FUN-002 | Tổng hợp hàng ngày | BR-ANALYTICS-002 | Tổng khớp với logs | P0 |
 
 ### 2. Integration Tests
-| Test ID | Mô tả | Components | Kết quả |
+| Test ID | Description | Components | Result |
 |---------|-------------|------------|--------|
 | TC-ANA-INT-001 | Event đến Report | Learning, Analytics | Bài học hoàn thành hiển thị trong báo cáo |
 
 ### 3. Performance Tests
-| Test ID | Kịch bản | Load | Kết quả |
+| Test ID | Scenario | Load | Result |
 |---------|----------|------|--------|
 | TC-ANA-PERF-001 | Báo cáo nặng | Khoảng 1 năm | < 2s |
 
@@ -58,7 +58,7 @@ Các thông số hiệu suất cho module Analytics.
 | Admin Overview (Trường) | 1s | 3s | 5s | 10s | Heavy Query |
 
 ### Throughput Requirements
-| Kịch bản | Requests/sec | Người dùng đồng thời | Khối lượng dữ liệu |
+| Scenario | Requests/sec | Concurrent Users | Data Volume |
 |----------|--------------|------------------|-------------|
 | Event Ingestion | 5000 | N/A | 1GB/giờ |
 
@@ -76,7 +76,7 @@ Các thông số hiệu suất cho module Analytics.
 
 ## Load Testing Scenarios
 ### Scenario 1: End of Month Reporting
-**Mô tả**: Phụ huynh xem báo cáo cùng lúc.
+**Description**: Phụ huynh xem báo cáo cùng lúc.
 **Tiêu chí thành công**:
 - [ ] P95 < 1s cho Report Detail API
 

@@ -13,7 +13,7 @@ Các concern cấp nền tảng ảnh hưởng đến nhiều module.
 
 ## Documents
 
-| Document | Mô tả |
+| Document | Description |
 |----------|-------|
 | [Security](./security.md) | Xác thực, phân quyền, mã hóa |
 | [API Gateway](./api-gateway.md) | API routing, rate limiting |

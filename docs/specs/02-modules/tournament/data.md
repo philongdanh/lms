@@ -16,7 +16,7 @@ Mô hình dữ liệu để quản lý cuộc thi và người tham gia.
 **Storage**: Database (PostgreSQL)
 
 #### Fields
-| Field Name | Type | Required | Default | Validation | Mô tả |
+| Field Name | Type | Required | Default | Validation | Description |
 |------------|------|----------|---------|------------|-------------|
 | id | UUID | ✅ | auto-gen | unique | Khóa chính |
 | name | String | ✅ | - | len > 5 | Tên cuộc thi |
@@ -30,7 +30,7 @@ Mô hình dữ liệu để quản lý cuộc thi và người tham gia.
 **Storage**: Database (PostgreSQL)
 
 #### Fields
-| Field Name | Type | Required | Default | Validation | Mô tả |
+| Field Name | Type | Required | Default | Validation | Description |
 |------------|------|----------|---------|------------|-------------|
 | id | UUID | ✅ | auto-gen | unique | Khóa chính |
 | tournament_id | UUID | ✅ | - | - | FK Tournament |
@@ -43,7 +43,7 @@ Mô hình dữ liệu để quản lý cuộc thi và người tham gia.
 **Storage**: Database (PostgreSQL)
 
 #### Fields
-| Field Name | Type | Required | Default | Validation | Mô tả |
+| Field Name | Type | Required | Default | Validation | Description |
 |------------|------|----------|---------|------------|-------------|
 | id | UUID | ✅ | auto-gen | unique | Khóa chính |
 | round_id | UUID | ✅ | - | - | FK Round |

@@ -13,7 +13,7 @@ sidebar_position: 1
 
 ## Modules
 
-| Module | Mô Tả | Trạng Thái |
+| Module | Description | Status |
 |--------|-------|------------|
 | [Auth](./auth/overview.md) | Xác thực, Phân quyền, Quản lý Session | Active |
 | [Content](./content/overview.md) | Quản lý nội dung (câu hỏi, chủ đề) | Active |

@@ -69,7 +69,7 @@ module.exports = {
 
 ### Best Practices
 
-| Practice | Mô tả |
+| Practice | Description |
 |----------|-------|
 | AAA Pattern | Arrange, Act, Assert |
 | One assertion | Một concept mỗi test |

@@ -12,12 +12,12 @@ Mô hình dữ liệu để lưu trữ thống kê và bản đồ kiến thức
 ## Entities
 
 ### Entity: KnowledgeMap
-**Mô tả**: Lưu trữ mức độ thành thạo kiến thức của học sinh theo chủ đề.
+**Description**: Lưu trữ mức độ thành thạo kiến thức của học sinh theo chủ đề.
 **Storage**: Database (PostgreSQL)
 **Retention**: Vĩnh viễn
 
 #### Fields
-| Field Name | Type | Bắt buộc | Mặc định | Validation | Mô tả |
+| Field Name | Type | Required | Default | Validation | Description |
 |------------|------|----------|---------|------------|-------------|
 | id | UUID | ✅ | auto-gen | unique | Khóa chính |
 | student_id | UUID | ✅ | - | valid user | FK Học sinh |
@@ -28,11 +28,11 @@ Mô hình dữ liệu để lưu trữ thống kê và bản đồ kiến thức
 | last_practiced_at | Timestamp | ❌ | null | - | Thời gian luyện tập cuối |
 
 ### Entity: DailyLearningStats
-**Mô tả**: Bảng tổng hợp hoạt động học tập hàng ngày.
+**Description**: Bảng tổng hợp hoạt động học tập hàng ngày.
 **Storage**: Database (PostgreSQL)
 
 #### Fields
-| Field Name | Type | Bắt buộc | Mặc định | Validation | Mô tả |
+| Field Name | Type | Required | Default | Validation | Description |
 |------------|------|----------|---------|------------|-------------|
 | id | UUID | ✅ | auto-gen | unique | Khóa chính |
 | student_id | UUID | ✅ | - | - | FK Học sinh |

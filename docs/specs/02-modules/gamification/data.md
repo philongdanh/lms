@@ -16,7 +16,7 @@ Mô hình dữ liệu để lưu trữ thông tin thành tích, điểm số và
 **Storage**: Database (PostgreSQL) + Redis (Cache Level/EXP)
 
 #### Fields
-| Field Name | Type | Required | Default | Validation | Mô tả |
+| Field Name | Type | Required | Default | Validation | Description |
 |------------|------|----------|---------|------------|-------------|
 | id | UUID | ✅ | auto-gen | unique | Khóa chính |
 | user_id | UUID | ✅ | - | unique | FK User |
@@ -30,21 +30,21 @@ Mô hình dữ liệu để lưu trữ thông tin thành tích, điểm số và
 **Storage**: Database (PostgreSQL)
 
 #### Fields
-| Field Name | Type | Required | Default | Validation | Mô tả |
+| Field Name | Type | Required | Default | Validation | Description |
 |------------|------|----------|---------|------------|-------------|
 | id | UUID | ✅ | auto-gen | unique | Khóa chính |
 | name | String | ✅ | - | - | Tên badge |
 | description | String | ❌ | - | - | Mô tả cách nhận |
 | icon_url | String | ✅ | - | url | Hình ảnh badge |
 | condition | JSONB | ❌ | {} | - | Điều kiện tự động cấp |
-| is_active | Boolean | ✅ | true | - | Trạng thái |
+| is_active | Boolean | ✅ | true | - | Status |
 
 ### Entity: Reward
 **Description**: Các phần thưởng trong cửa hàng.
 **Storage**: Database (PostgreSQL)
 
 #### Fields
-| Field Name | Type | Required | Default | Validation | Mô tả |
+| Field Name | Type | Required | Default | Validation | Description |
 |------------|------|----------|---------|------------|-------------|
 | id | UUID | ✅ | auto-gen | unique | Khóa chính |
 | name | String | ✅ | - | - | Tên phần thưởng |

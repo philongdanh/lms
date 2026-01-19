@@ -16,7 +16,7 @@ Mô hình dữ liệu để lưu trữ thông tin Tenant và cấu hình hệ th
 **Storage**: Database (PostgreSQL)
 
 #### Fields
-| Field Name | Type | Required | Default | Validation | Mô tả |
+| Field Name | Type | Required | Default | Validation | Description |
 |------------|------|----------|---------|------------|-------------|
 | id | UUID | ✅ | auto-gen | unique | Khóa chính |
 | name | String | ✅ | - | len > 3 | Tên trường |
@@ -31,7 +31,7 @@ Mô hình dữ liệu để lưu trữ thông tin Tenant và cấu hình hệ th
 **Storage**: Database (PostgreSQL)
 
 #### Fields
-| Field Name | Type | Required | Default | Validation | Mô tả |
+| Field Name | Type | Required | Default | Validation | Description |
 |------------|------|----------|---------|------------|-------------|
 | id | UUID | ✅ | auto-gen | unique | Khóa chính |
 | scope | String | ✅ | SYSTEM | enum | SYSTEM, TENANT |

@@ -15,7 +15,7 @@ API quản lý nội dung: Subjects, Grades, Topics, Lessons, Content, Question 
 - **Authentication**: Bearer Token (Teacher/Admin cho Write, Student cho Read)
 
 ## Endpoints Summary
-| Method | Endpoint | Mô tả | Auth Required | Rate Limit |
+| Method | Endpoint | Description | Auth Required | Rate Limit |
 |--------|----------|-------------|---------------|-----------|
 | GET | `/structure` | Lấy cây cấu trúc chương trình học | ✅ | 100/min |
 | POST | `/topics` | Tạo Topic mới | ✅ | 20/min |
@@ -114,7 +114,7 @@ Authorization: Bearer {token}
 ```
 
 ## Error Responses
-| Code | Error | Mô tả |
+| Code | Error | Description |
 |------|-------|-------------|
 | 404 | `CONTENT_TOPIC_NOT_FOUND` | Topic/Lesson cha không tồn tại |
 | 400 | `CONTENT_INVALID_FILE` | File import sai định dạng hoặc quá lớn |

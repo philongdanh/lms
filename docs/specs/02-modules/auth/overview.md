@@ -16,7 +16,7 @@ sidebar_label: Overview
 Module cốt lõi: **Xác thực (Auth), Phân quyền (RBAC), Quản lý Session, Liên kết Phụ huynh, Vòng đời Tenant**.
 
 ## Use Cases
-| Use Case ID | Tên | Mô Tả | Độ ưu tiên | Trạng thái |
+| Use Case ID | Name | Description | Priority | Status |
 |-------------|-----|-------|------------|------------|
 | UC-AUTH-001 | Register | Đăng ký tài khoản trường (Tenant), người dùng | P0 | Done |
 | UC-AUTH-002 | Login | Xác thực credentials, 2FA, cấp JWT | P0 | Done |
@@ -26,7 +26,7 @@ Module cốt lõi: **Xác thực (Auth), Phân quyền (RBAC), Quản lý Sessio
 | UC-AUTH-006 | Tenant Management | Vòng đời tenant (active, suspend) | P1 | Done |
 
 ## Business Rules
-| Rule ID | Tên | Mô Tả | Điều kiện | Hành động | Ngoại lệ |
+| Rule ID | Name | Description | Condition | Action | Exception |
 |---------|-----|-------|-----------|-----------|----------|
 | BR-AUTH-001 | Tenant Scope | Email unique theo tenant_id | Register/Update | Validate unique | Return Error |
 | BR-AUTH-002 | Lifecycle | User/Tenant chỉ soft delete | Delete | Mark deleted_at | N/A |

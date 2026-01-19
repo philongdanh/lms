@@ -10,7 +10,7 @@ sidebar_label: Tests
 Các test case cho module Tournament.
 
 ## Test Coverage Matrix
-| Đặc tả | Test Cases | Độ phủ | Trạng thái |
+| Specification | Test Cases | Coverage | Status |
 |---------------|------------|---------|--------|
 | Business Logic | 5 | 100% | Planned |
 | API Endpoints | 4 | 100% | Planned |
@@ -20,19 +20,19 @@ Các test case cho module Tournament.
 
 ### 1. Functional Tests
 #### Business Logic
-| Test ID | Mô tả | Rules | Kết quả mong đợi | Độ ưu tiên |
+| Test ID | Description | Rules | Expected Result | Priority |
 |---------|-------------|-------|-----------------|----------|
 | TC-TOUR-FUN-001 | Join trước khi bắt đầu | BR-TOUR-001 | Cho phép (Waiting) | P0 |
 | TC-TOUR-FUN-002 | Join muộn | BR-TOUR-001 | Bị chặn | P1 |
 | TC-TOUR-FUN-003 | Điểm chính xác | BR-TOUR-003 | Điểm khớp công thức | P0 |
 
 ### 2. Integration Tests
-| Test ID | Mô tả | Components | Kết quả |
+| Test ID | Description | Components | Result |
 |---------|-------------|------------|--------|
 | TC-TOUR-INT-001 | User thắng nhận Badge | Tour, Game | Badge được gán |
 
 ### 3. Performance Tests
-| Test ID | Kịch bản | Tải | Kết quả |
+| Test ID | Scenario | Load | Result |
 |---------|----------|------|--------|
 | TC-TOUR-PERF-001 | 100k Concurrent | Start Event | Latency < 200ms |
 
@@ -59,7 +59,7 @@ Các test case cho module Tournament.
 | Leaderboard Refresh | 100ms | 200ms | 500ms | 1s | Broadcast |
 
 ### Throughput Requirements
-| Kịch bản | Requests/sec | Concurrent Users |
+| Scenario | Requests/sec | Concurrent Users |
 |----------|--------------|------------------|
 | Sự kiện lớn | 50,000 Answers/sec | 100,000 |
 
@@ -69,7 +69,7 @@ Các test case cho module Tournament.
 - **Room Sharding**: Phân phối room trên các node.
 
 ## Resource Utilization Limits
-| Tài nguyên | Ngưỡng cảnh báo | Ngưỡng nghiêm trọng |
+| Resource | Warning Threshold | Critical Threshold |
 |----------|-------------------|--------------------|
 | Redis CPU | 60% | 85% |
 

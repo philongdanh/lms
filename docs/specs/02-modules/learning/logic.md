@@ -9,14 +9,14 @@ sidebar_label: Logic
 ## Business Context
 - **Module**: Learning & Personalization
 - **Version**: 1.0
-- **Trạng thái**: Approved
+- **Status**: Approved
 - **Cập nhật lần cuối**: 2026-01-14
 
 ## Overview
 Module cốt lõi cho Students, chịu trách nhiệm về Adaptive Learning Path, Progress Tracking và Knowledge Map. Cung cấp tính năng học tập thích ứng dựa trên AI để cá nhân hóa trải nghiệm học tập.
 
 ## Use Cases
-| Use Case ID | Use Case Name | Mô tả | Độ ưu tiên | Trạng thái |
+| Use Case ID | Use Case Name | Description | Priority | Status |
 |------------|--------------|-------|----------|--------|
 | UC-LEARN-001 | Get Personalized Path | Lấy lộ trình học tập cá nhân hóa dựa trên phân tích AI | P0 | Planned |
 | UC-LEARN-002 | View Knowledge Map | Xem bản đồ kiến thức và các lỗ hổng kiến thức | P1 | Planned |
@@ -27,7 +27,7 @@ Module cốt lõi cho Students, chịu trách nhiệm về Adaptive Learning Pat
 
 ### UC-LEARN-001: Get Personalized Path
 **Actor**: Student
-**Điều kiện tiên quyết**: Student đã đăng nhập và có dữ liệu lịch sử học tập (hoặc mặc định).
+**Preconditions**: Student đã đăng nhập và có dữ liệu lịch sử học tập (hoặc mặc định).
 **Luồng chính**:
 1. Student truy cập Dashboard.
 2. System gọi Path Service.
@@ -40,7 +40,7 @@ Module cốt lõi cho Students, chịu trách nhiệm về Adaptive Learning Pat
 
 ### UC-LEARN-006: Submit Answer
 **Actor**: Student
-**Điều kiện tiên quyết**: Đang trong phiên làm bài tập.
+**Preconditions**: Đang trong phiên làm bài tập.
 **Luồng chính**:
 1. Student chọn câu trả lời và nhấn Submit.
 2. System xác thực session.
@@ -51,7 +51,7 @@ Module cốt lõi cho Students, chịu trách nhiệm về Adaptive Learning Pat
 **Hậu điều kiện**: Kết quả được lưu, điểm được cập nhật.
 
 ## Business Rules
-| Rule ID | Rule Name | Mô tả | Điều kiện | Hành động | Ngoại lệ |
+| Rule ID | Rule Name | Description | Condition | Action | Exception |
 |---------|----------|-------|------------|---------|------------|
 | BR-LEARN-001 | Video Completion | Điều kiện hoàn thành video | Thời gian xem > 80% tổng thời lượng | Đánh dấu Video Completed | Lỗi mạng -> Retry logic |
 | BR-LEARN-002 | Lesson Completion | Điều kiện hoàn thành bài học | Video Completed VÀ Quiz Score > 70% | Đánh dấu Lesson Completed, Trigger Reward | - |
@@ -84,7 +84,7 @@ Module cốt lõi cho Students, chịu trách nhiệm về Adaptive Learning Pat
 ---
 
 ## Review & Approval
-| Vai trò | Tên | Ngày | Trạng thái |
+| Role | Name | Date | Status |
 |------|------|------|--------|
 | **Product Owner** | | | |
 | **Tech Lead** | | | |
@@ -99,7 +99,7 @@ Module cốt lõi cho Students, chịu trách nhiệm về Adaptive Learning Pat
 Các workflows và quy trình nghiệp vụ của module Learning, bao gồm quy trình học tập và làm bài tập.
 
 ## Workflow Summary
-| Workflow ID | Workflow Name | Trigger | Actors | Trạng thái |
+| Workflow ID | Workflow Name | Trigger | Actors | Status |
 |-------------|--------------|---------|--------|--------|
 | WF-LEARN-001 | Submit Exercise | Student nộp câu trả lời | Student, System | Active |
 | WF-LEARN-002 | Generate Learning Path | Student truy cập dashboard | Student, AI Service | Active |
@@ -108,7 +108,7 @@ Các workflows và quy trình nghiệp vụ của module Learning, bao gồm quy
 ## Workflow Details
 
 ### WF-LEARN-001: Submit Exercise
-**Mô tả**: Quy trình xử lý khi student nộp câu trả lời cho bài tập luyện tập.
+**Description**: Quy trình xử lý khi student nộp câu trả lời cho bài tập luyện tập.
 
 #### Flow Diagram
 ```mermaid
@@ -139,7 +139,7 @@ flowchart TD
 ```
 
 #### Steps
-| Bước | Mô tả | Actor | System Action | Điều kiện thoát |
+| Step | Description | Actor | System Action | Exit Condition |
 |------|-------------|-------|---------------|----------------|
 | 1 | Student gửi câu trả lời | Student | Nhận request | - |
 | 2 | Xác thực Session | System | Kiểm tra session ID & expiry | Session Valid |
@@ -153,7 +153,7 @@ flowchart TD
 - **BR-LEARN-005**: Chỉ trigger rewards nếu đây là lần hoàn thành *đầu tiên*.
 
 ### WF-LEARN-002: Adaptive Learning Path Generation
-**Mô tả**: Tạo lộ trình học tập thích ứng dựa trên lịch sử.
+**Description**: Tạo lộ trình học tập thích ứng dựa trên lịch sử.
 
 #### Flow Diagram
 ```mermaid
@@ -186,7 +186,7 @@ sequenceDiagram
 ```
 
 ### WF-LEARN-003: Lesson Progress State
-**Mô tả**: Trạng thái của một bài học đối với student.
+**Description**: Trạng thái của một bài học đối với student.
 
 #### Flow Diagram
 ```mermaid
@@ -205,13 +205,13 @@ stateDiagram-v2
 
 ## Events
 ### System Events
-| Event Name | Mô tả | Payload | Emitted By |
+| Event Name | Description | Payload | Emitted By |
 |------------|-------------|---------|------------|
 | `lesson.completed` | Bài học hoàn thành | `{student_id, lesson_id, timestamp}` | Learning Svc |
 | `path.generated` | Lộ trình học tập mới được tạo | `{student_id, path_id}` | Learning Svc |
 
 ## Error Handling
-| Error Scenario | Phát hiện | Hành động khắc phục | Escalation |
+| Error Scenario | Detection | Recovery Action | Escalation |
 |----------------|-----------|-----------------|------------|
 | AI Model Timeout | Timeout > 2s | Trả về Default Path (theo Curriculum) | Log warning |
 | DB Write Fail | Exception | Trả lỗi cho client, retry client-side | - |
