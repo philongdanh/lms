@@ -6,84 +6,84 @@ sidebar_label: Getting Started
 
 # Getting Started
 
-Quick guide to start using the LMS Platform system.
+Hướng dẫn nhanh để bắt đầu sử dụng hệ thống LMS Platform.
 
 
 ## Overview
 
-LMS Platform is an intelligent learning management system, combining **AI Learning Paths** and **Gamification** to optimize personalized learning experiences for students from grades 1-12.
+LMS Platform là hệ thống quản lý học tập thông minh, kết hợp **AI Learning Paths** và **Gamification** để tối ưu hóa trải nghiệm học tập cá nhân hóa cho học sinh từ lớp 1-12.
 
 
 ## Prerequisites
 
-Before using, make sure you have:
+Trước khi sử dụng, hãy đảm bảo bạn có:
 
-- [x] Account provided by school or newly registered
-- [x] Modern web browser (Chrome, Firefox, Safari, Edge)
-- [x] Stable internet connection
+- [x] Tài khoản được cấp bởi trường học hoặc đăng ký mới
+- [x] Trình duyệt web hiện đại (Chrome, Firefox, Safari, Edge)
+- [x] Kết nối internet ổn định
 
 
 ## Quick Start
 
-### Step 1: Log in to the system
+### Step 1: Đăng nhập hệ thống
 
-1. Access your school's LMS address
-2. Enter provided email and password
-3. Click **Login**
+1. Truy cập địa chỉ LMS của trường bạn
+2. Nhập email và mật khẩu được cấp
+3. Nhấn **Đăng nhập**
 
-### Step 2: Complete your profile
+### Step 2: Hoàn thiện hồ sơ
 
-1. Update personal information (name, grade, school)
-2. Select subjects of interest
-3. Set learning goals
+1. Cập nhật thông tin cá nhân (họ tên, lớp, trường)
+2. Chọn các môn học quan tâm
+3. Đặt mục tiêu học tập
 
-### Step 3: Start learning
+### Step 3: Bắt đầu học
 
-1. View AI-recommended learning path
-2. Select lesson or exercise
-3. Complete and earn reward points
+1. Xem lộ trình học tập được AI gợi ý
+2. Chọn bài học hoặc bài tập
+3. Hoàn thành và nhận điểm thưởng
 
 
 ## Key Features
 
 | Feature | Description |
 |---------|-------------|
-| **AI Learning Path** | Personalized learning path based on abilities |
-| **Tournament** | Intellectual competitions with friends and other students |
-| **Gamification** | Points, badges, leaderboard system |
-| **Real-time Progress** | Real-time learning progress tracking
+| **AI Learning Path** | Lộ trình học tập cá nhân hóa dựa trên năng lực |
+| **Tournament** | Thi đấu trí tuệ với bạn bè và học sinh khác |
+| **Gamification** | Hệ thống điểm, huy hiệu, bảng xếp hạng |
+| **Real-time Progress** | Theo dõi tiến độ học tập theo thời gian thực
 
 
 ## Common Tasks
 
-### Join Tournament
+### Tham gia Tournament
 
-1. Go to **Tournament** menu
-2. Select open competition
-3. Click **Join** and complete the exam
+1. Vào menu **Tournament**
+2. Chọn cuộc thi đang mở đăng ký
+3. Nhấn **Tham gia** và hoàn thành bài thi
 
-### View learning reports
+### Xem báo cáo học tập
 
-1. Go to **Reports** menu
-2. Select time period to view
-3. Analyze strengths/weaknesses through charts
+1. Vào menu **Báo cáo**
+2. Chọn khoảng thời gian cần xem
+3. Phân tích điểm mạnh/yếu qua biểu đồ
 
 
 ## Tips for Success
 
-- Set daily learning goals to maintain streak
-- Participate in Tournaments to boost motivation
-- Check notifications regularly to not miss events
+- Đặt mục tiêu học tập hàng ngày để duy trì streak
+- Tham gia Tournament để tăng động lực
+- Kiểm tra thông báo thường xuyên để không bỏ lỡ sự kiện
 
 
 ## Next Steps
 
-- [FAQ - Frequently Asked Questions](./faq.md)
-- [Specifications](/specs/) - Learn more about the system
+- [FAQ - Các câu hỏi thường gặp](./faq.md)
+- [Specifications](/specs/) - Tìm hiểu thêm về hệ thống
 
 
 ## Need Help?
 
-- **Documentation**: See more at [Developer Guide](/developer-guide/setup)
-- **Support**: Contact your school administrator
-- **Report Bug**: Create issue at [GitHub Repository](https://github.com/idlongggg/lms/issues)
+- **Tài liệu**: Xem thêm tại [Developer Guide](/developer-guide/setup)
+- **Hỗ trợ**: Liên hệ quản trị viên trường học
+- **Báo lỗi**: Tạo issue tại [GitHub Repository](https://github.com/idlongggg/lms/issues)
