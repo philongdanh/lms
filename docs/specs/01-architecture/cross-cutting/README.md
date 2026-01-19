@@ -21,9 +21,8 @@ Các concern cấp nền tảng ảnh hưởng đến nhiều module.
 | [Error Handling](./error-handling.md) | Error codes, recovery strategies |
 | [Performance](./performance.md) | Caching, optimization |
 
----
 
 ## Related
 
-- [Architecture](../01-architecture/system-design.md)
-- [Quality](../04-quality/test-strategy.md)
+- [Architecture](../system-design.md)
+- [Quality](../../03-quality/test-strategy.md)

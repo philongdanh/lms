@@ -907,6 +907,6 @@ flowchart TD
 
 ## References
 
-- [Product Vision](../00-business/vision.md)
+- [Business Overview](../00-business/overview.md)
 - [System Design](./system-design.md)
-- [Cross-Cutting](../03-cross-cutting/README.md)
+- [Cross-Cutting](./cross-cutting/README.md)

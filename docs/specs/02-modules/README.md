@@ -39,9 +39,8 @@ Mỗi module chứa:
 └── tests.md      # Test cases + performance
 ```
 
----
 
 ## Related
 
 - [Architecture](../01-architecture/system-design.md)
-- [Cross-Cutting](../03-cross-cutting/security.md)
+- [Cross-Cutting](../01-architecture/cross-cutting/security.md)

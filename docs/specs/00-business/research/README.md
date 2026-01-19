@@ -14,9 +14,9 @@ Tài liệu nghiên cứu người dùng.
 |----------|-------|
 | [Personas](./personas.md) | User personas |
 | [Journeys](./journeys.md) | User journey maps |
-| [Usability](./usability.md) | Hướng dẫn khả dụng |
+| [Usability](./usability.md) | Usability guidelines |
 
 ## References
 
-- [Design System](../../design/README.md)
-- [Vision](/specs/business/vision)
+- [Design System](../../../design/README.md)
+- [Business Overview](../overview.md)

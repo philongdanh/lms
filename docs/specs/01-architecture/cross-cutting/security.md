@@ -369,12 +369,11 @@ flowchart TD
 
 ## References
 
-- [Product Vision](../00-business/vision.md)
-- [System Design](../01-architecture/system-design.md)
-- [Data Model](../01-architecture/data-model.md)
-- [Auth Module](../02-modules/auth/logic.md)
+- [Business Overview](../../00-business/overview.md)
+- [System Design](../system-design.md)
+- [Data Model](../data-model.md)
+- [Auth Module](../../02-modules/auth/logic.md)
 
----
 
 ## JWT Token Specification
 
@@ -449,11 +448,11 @@ flowchart TD
 | `AUTH_HEADER_MISSING` | 401 | Yêu cầu token |
 | `TOKEN_EXPIRED` | 401 | Cần refresh |
 | `TOKEN_INVALID` | 401 | Bad signature |
-| `SESSION_REVOKED` | 401 | Session đã bị kill |
+| `SESSION_REVOKED` | 401 | Session revoked |
 
 ### 10.7. References
 
 - [RFC 7519](https://tools.ietf.org/html/rfc7519)
-- [Auth Business Logic](../02-modules/auth/logic.md)
-- [Auth Workflows](../02-modules/auth/logic.md)
-- [Auth Data Model](../02-modules/auth/data.md)
+- [Auth Business Logic](../../02-modules/auth/logic.md)
+- [Auth Workflows](../../02-modules/auth/logic.md)
+- [Auth Data Model](../../02-modules/auth/data.md)

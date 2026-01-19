@@ -35,4 +35,4 @@ Tài liệu OpenAPI/Swagger specifications.
 ## References
 
 - [API Gateway](/specs/cross-cutting/api-gateway)
-- [Contracts](../contracts/README.md)
+- [Contracts](../contracts.md)
