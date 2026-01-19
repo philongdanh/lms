@@ -26,7 +26,7 @@ Giám sát hệ thống, logging và alerting.
 
 ### System Metrics
 
-| Metric | Mô tả | Alert Threshold |
+| Metric | Description | Alert Threshold |
 |--------|-------|-----------------|
 | CPU Usage | CPU utilization | > 80% |
 | Memory Usage | Memory utilization | > 85% |
@@ -35,7 +35,7 @@ Giám sát hệ thống, logging và alerting.
 
 ### Application Metrics
 
-| Metric | Mô tả | Target | Alert |
+| Metric | Description | Target | Alert |
 |--------|-------|--------|-------|
 | Request Rate | Requests/second | - | Anomaly |
 | Error Rate | Errors/total requests | < 1% | > 5% |
@@ -45,7 +45,7 @@ Giám sát hệ thống, logging và alerting.
 
 ### Business Metrics
 
-| Metric | Mô tả | Measurement |
+| Metric | Description | Measurement |
 |--------|-------|-------------|
 | Active Users | Concurrent users | Real-time |
 | Transactions | Business transactions | Per minute |

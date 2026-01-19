@@ -15,7 +15,7 @@ API để truy xuất báo cáo và thông tin Analytics.
 - **Authentication**: Bearer Token
 
 ## Endpoints Summary
-| Method | Endpoint | Mô tả | Auth Required | Rate Limit |
+| Method | Endpoint | Description | Auth Required | Rate Limit |
 |--------|----------|-------------|---------------|------------|
 | GET | `/knowledge-map/{student_id}` | Lấy bản đồ kiến thức | ✅ | 60/min |
 | GET | `/reports/learning` | Lấy báo cáo cá nhân | ✅ | 30/min |
@@ -25,7 +25,7 @@ API để truy xuất báo cáo và thông tin Analytics.
 ## Endpoint Details
 
 ### Endpoint: GET `/knowledge-map/{student_id}`
-**Mô tả**: Lấy dữ liệu thành thạo của học sinh theo chủ đề.
+**Description**: Lấy dữ liệu thành thạo của học sinh theo chủ đề.
 
 #### Request
 ```http
@@ -53,7 +53,7 @@ Authorization: Bearer {token}
 ```
 
 ### Endpoint: GET `/reports/learning`
-**Mô tả**: Lấy báo cáo hoạt động học tập theo khoảng thời gian.
+**Description**: Lấy báo cáo hoạt động học tập theo khoảng thời gian.
 
 #### Request
 ```http
@@ -76,7 +76,7 @@ Authorization: Bearer {token}
 ```
 
 ## Error Responses
-| Code | Error | Mô tả |
+| Code | Error | Description |
 |------|-------|-------------|
 | 403 | `ANALYTICS_ACCESS_DENIED` | Không có quyền xem báo cáo của người dùng này |
 | 400 | `ANALYTICS_INVALID_RANGE` | Khoảng thời gian quá lớn (> 90 ngày) |

@@ -50,7 +50,7 @@ Yêu cầu performance và chiến lược tối ưu.
 
 ### Cache Patterns
 
-| Pattern | Mô tả | Use Case |
+| Pattern | Description | Use Case |
 |---------|-------|----------|
 | Cache-Aside | App quản lý cache | General use |
 | Write-Through | Ghi vào cache + DB | Cần consistency |
@@ -58,7 +58,7 @@ Yêu cầu performance và chiến lược tối ưu.
 
 ### Cache Invalidation
 
-| Strategy | Mô tả |
+| Strategy | Description |
 |----------|-------|
 | TTL | Hết hạn theo thời gian |
 | Event-based | Invalidate khi update |
@@ -70,7 +70,7 @@ Yêu cầu performance và chiến lược tối ưu.
 
 ### Query Guidelines
 
-| Guideline | Mô tả |
+| Guideline | Description |
 |-----------|-------|
 | Use indexes | Index các columns hay query |
 | Avoid N+1 | Sử dụng eager loading |
@@ -92,7 +92,7 @@ Yêu cầu performance và chiến lược tối ưu.
 
 ### Response Optimization
 
-| Technique | Mô tả |
+| Technique | Description |
 |-----------|-------|
 | Pagination | Giới hạn response size |
 | Field selection | Chỉ trả fields cần thiết |

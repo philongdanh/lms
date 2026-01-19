@@ -16,7 +16,7 @@ sidebar_label: Logic
 Module quản trị hệ thống cung cấp các tính năng quản lý Tenant (Trường học), quản lý User (Giáo viên, Học sinh), và cấu hình hệ thống. Phân quyền nghiêm ngặt giữa Root Admin và Tenant Admin.
 
 ## Use Cases
-| Use Case ID | Use Case Name | Mô tả | Độ ưu tiên | Trạng thái |
+| Use Case ID | Use Case Name | Description | Priority | Status |
 |------------|--------------|-------|----------|--------|
 | UC-ADMIN-001 | Create Tenant | Tạo mới một Tenant (Trường học) | P0 | Planned |
 | UC-ADMIN-002 | Suspend Tenant | Tạm ngưng hoạt động của Tenant | P1 | Planned |
@@ -35,7 +35,7 @@ Module quản trị hệ thống cung cấp các tính năng quản lý Tenant (
 5. Hệ thống trả về kết quả import.
 
 ## Business Rules
-| Rule ID | Rule Name | Mô tả | Điều kiện | Hành động | Ngoại lệ |
+| Rule ID | Rule Name | Description | Condition | Action | Exception |
 |---------|----------|-------|------------|---------|------------|
 | BR-ADMIN-001 | Unique Tenant Code | Mã Tenant phải là duy nhất | Mã đã tồn tại trong DB | Từ chối tạo mới | - |
 | BR-ADMIN-002 | Tenant Soft Delete | Xóa Tenant chỉ đánh dấu là đã xóa | Yêu cầu xóa | Đặt `deleted_at`, Lên lịch xóa vĩnh viễn sau 30 ngày | - |
@@ -65,7 +65,7 @@ Module quản trị hệ thống cung cấp các tính năng quản lý Tenant (
 ---
 
 ## Review & Approval
-| Vai trò | Tên | Ngày | Trạng thái |
+| Role | Name | Date | Status |
 |------|------|------|--------|
 | **Product Owner** | | | |
 | **Tech Lead** | | | |
@@ -80,7 +80,7 @@ Module quản trị hệ thống cung cấp các tính năng quản lý Tenant (
 Các workflow để quản lý vòng đời Tenant và Import User.
 
 ## Workflow Summary
-| Workflow ID | Workflow Name | Trigger | Actors | Trạng thái |
+| Workflow ID | Workflow Name | Trigger | Actors | Status |
 |-------------|--------------|---------|--------|--------|
 | WF-ADMIN-001 | Create Tenant | Admin gửi form | Root Admin, System | Active |
 | WF-ADMIN-002 | Import Users | Admin tải lên CSV | Tenant Admin, System | Active |
@@ -140,7 +140,7 @@ flowchart TB
 ```
 
 #### Steps
-| Bước | Mô tả | Actor | Hành động hệ thống | Điều kiện thoát |
+| Step | Description | Actor | System Action | Exit Condition |
 |------|-------------|-------|---------------|----------------|
 | 1 | Tải lên CSV | Admin | Xác thực định dạng | CSV hợp lệ |
 | 2 | Xác thực dữ liệu | System | Kiểm tra Email, Trường bắt buộc | - |
@@ -149,13 +149,13 @@ flowchart TB
 
 ## Events
 ### System Events
-| Event Name | Mô tả | Payload | Emitted By |
+| Event Name | Description | Payload | Emitted By |
 |------------|-------------|---------|------------|
 | `tenant.created` | Tenant mới được tạo | `{tenant_id, name}` | Admin Svc |
 | `tenant.suspended` | Tenant bị tạm ngưng | `{tenant_id, reason}` | Admin Svc |
 
 ## Error Handling
-| Tình huống lỗi | Phát hiện | Hành động khắc phục | Escalation |
+| Error Scenario | Detection | Recovery Action | Escalation |
 |----------------|-----------|-----------------|------------|
 | Email trùng lặp trong Import | DB Constraint | Bỏ qua dòng, ghi log lỗi | - |
 | Email Service không hoạt động | Timeout | Thử lại sau (Job) | - |

@@ -10,7 +10,7 @@ sidebar_label: Tests
 Test cases được derive từ specifications của module Auth
 
 ## Test Coverage Matrix
-| Specification | Test Cases | Covered | Trạng thái |
+| Specification | Test Cases | Covered | Status |
 |---------------|------------|---------|------------|
 | Business Logic | [Number] | [%] | [Status] |
 | API Endpoints | [Number] | [%] | [Status] |
@@ -20,7 +20,7 @@ Test cases được derive từ specifications của module Auth
 
 ### 1. Functional Tests
 #### Business Logic Tests
-| Test ID | Mô tả | Preconditions | Test Steps | Expected Result | Độ ưu tiên |
+| Test ID | Description | Preconditions | Test Steps | Expected Result | Priority |
 |---------|-------|---------------|------------|-----------------|------------|
 | TC-AUTH-FUN-001 | [Mô tả test] | [Điều kiện] | 1. [Step 1] | [Kết quả mong đợi] | P0/P1/P2 |
 
@@ -30,7 +30,7 @@ Test cases được derive từ specifications của module Auth
 | TC-AUTH-API-001 | `/[resource]` | GET | [Data] | [Response] | 200 |
 
 ### 2. Integration Tests
-| Test ID | Mô tả | Components | Test Scenario | Expected Result |
+| Test ID | Description | Components | Test Scenario | Expected Result |
 |---------|-------|------------|---------------|-----------------|
 | TC-AUTH-INT-001 | [Mô tả] | [Component A, B] | [Scenario] | [Result] |
 
@@ -125,7 +125,7 @@ Performance specifications cho module Auth
 - **Auto-scaling**: [rules]
 
 ## Resource Utilization Limits
-| Resource | Warning Threshold | Critical Threshold | Hành động cần thiết |
+| Resource | Warning Threshold | Critical Threshold | Required Action |
 |----------|-------------------|--------------------|---------------------|
 | CPU Usage | 70% | 90% | Scale up |
 | Memory Usage | 75% | 90% | Add memory |
@@ -133,7 +133,7 @@ Performance specifications cho module Auth
 
 ## Load Testing Scenarios
 ### Scenario 1: [Tên scenario]
-**Mô tả**: [Mô tả]
+**Description**: [Mô tả]
 **Test Parameters**:
 - Duration: [minutes]
 - Ramp-up: [users/minute]

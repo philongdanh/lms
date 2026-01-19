@@ -17,7 +17,7 @@ Data model cho Realtime tập trung vào lưu trữ tạm thời (Redis) và log
 **Retention**: TTL (Heartbeat interval + buffer)
 
 #### Fields
-| Field Name | Type | Key | Mô tả |
+| Field Name | Type | Key | Description |
 |------------|------|-----|-------------|
 | status | String | `user:presence:{id}` | ONLINE / BUSY |
 | server_id | String | (Hash field) | ID Node đang kết nối |
@@ -29,7 +29,7 @@ Data model cho Realtime tập trung vào lưu trữ tạm thời (Redis) và log
 **Storage**: Database (MongDB/PostgreSQL)
 
 #### Fields
-| Field Name | Type | Required | Default | Validation | Mô tả |
+| Field Name | Type | Required | Default | Validation | Description |
 |------------|------|----------|---------|------------|-------------|
 | id | UUID | ✅ | auto-gen | unique | Khóa chính |
 | user_id | UUID | ✅ | - | - | Người nhận |

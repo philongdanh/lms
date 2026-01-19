@@ -16,7 +16,7 @@ API endpoints cho module Auth: Login, Register, quản lý Session.
 - **Authentication**: Bearer Token (JWT)
 
 ## Endpoints Summary
-| Method | Endpoint | Mô tả | Yêu cầu Auth | Rate Limit |
+| Method | Endpoint | Description | Auth Required | Rate Limit |
 |--------|----------|-------|--------------|------------|
 | POST | `/login` | Đăng nhập | ❌ | 10/min |
 | POST | `/register` | Đăng ký | ❌ | 5/min |
@@ -29,7 +29,7 @@ API endpoints cho module Auth: Login, Register, quản lý Session.
 ## Endpoint Details
 
 ### Endpoint: POST `/login`
-**Mô tả**: Xác thực credentials người dùng
+**Description**: Xác thực credentials người dùng
 
 #### Request
 ```http
@@ -38,7 +38,7 @@ Content-Type: application/json
 ```
 
 **Body**:
-| Parameter | Type | Required | Mô tả |
+| Parameter | Type | Required | Description |
 |-----------|------|----------|-------|
 | email | string | ✅ | Email người dùng |
 | password | string | ✅ | Mật khẩu raw |
@@ -57,13 +57,13 @@ Content-Type: application/json
 ```
 
 **Error Responses**:
-| Code | Error | Mô tả |
+| Code | Error | Description |
 |------|-------|-------|
 | 401 | INVALID_CREDENTIALS | Sai mật khẩu |
 | 429 | RATE_LIMITED | Quá nhiều lần thử |
 
 ### Endpoint: POST `/refresh`
-**Mô tả**: Lấy access token mới
+**Description**: Lấy access token mới
 
 #### Request
 ```http
@@ -72,7 +72,7 @@ Content-Type: application/json
 ```
 
 **Body**:
-| Parameter | Type | Required | Mô tả |
+| Parameter | Type | Required | Description |
 |-----------|------|----------|-------|
 | refresh_token | string | ✅ | Refresh token hợp lệ |
 
@@ -89,7 +89,7 @@ Content-Type: application/json
 ```
 
 ## Test Cases
-| Test Case | Mô tả | Request | Expected Response |
+| Test Case | Description | Request | Expected Response |
 |-----------|-------|---------|-------------------|
 | TC-API-AUTH-001 | Login Valid | Valid creds | 200 + tokens |
 | TC-API-AUTH-002 | Login Invalid | Wrong pass | 401 |

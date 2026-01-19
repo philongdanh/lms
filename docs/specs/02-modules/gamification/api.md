@@ -15,7 +15,7 @@ API để truy cập thông tin Gamification: Hồ sơ Thành tích, Bảng xế
 - **Authentication**: Bearer Token
 
 ## Endpoints Summary
-| Method | Endpoint | Mô tả | Auth Required | Rate Limit |
+| Method | Endpoint | Description | Auth Required | Rate Limit |
 |--------|----------|-------------|---------------|------------|
 | GET | `/profile` | Lấy thông tin EXP, Level, Ví | ✅ | 60/min |
 | GET | `/leaderboard` | Lấy bảng xếp hạng | ✅ | 60/min |
@@ -106,7 +106,7 @@ Authorization: Bearer {token}
 ```
 
 ## Error Responses
-| Code | Error | Mô tả |
+| Code | Error | Description |
 |------|-------|-------------|
 | 400 | `GAME_INSUFFICIENT_COINS` | Số dư xu không đủ |
 | 400 | `GAME_OUT_OF_STOCK` | Phần thưởng đã hết hàng |

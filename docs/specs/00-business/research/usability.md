@@ -14,7 +14,7 @@ Các nguyên tắc và heuristics về khả dụng.
 
 Dựa trên 10 Usability Heuristics của Nielsen:
 
-| Heuristic | Mô tả | Áp dụng |
+| Heuristic | Description | Áp dụng |
 |-----------|-------|--------|
 | Visibility of system status | Giữ người dùng được thông báo | Loading states, progress bars |
 | Match system and real world | Sử dụng ngôn ngữ quen thuộc | Thuật ngữ domain |

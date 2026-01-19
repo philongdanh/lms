@@ -10,7 +10,7 @@ Tài liệu OpenAPI/Swagger specifications.
 
 ## Contents
 
-| File | Mô tả |
+| File | Description |
 |------|-------|
 | [main.yaml](./main.yaml) | Tài liệu API chính |
 

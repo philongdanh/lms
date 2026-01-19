@@ -16,7 +16,7 @@ sidebar_label: Overview
 Module quản trị hệ thống cung cấp các tính năng quản lý Tenant (Trường học), quản lý User (Giáo viên, Học sinh), và cấu hình hệ thống. Phân quyền nghiêm ngặt giữa Root Admin và Tenant Admin.
 
 ## Use Cases
-| Use Case ID | Use Case Name | Mô tả | Độ ưu tiên | Trạng thái |
+| Use Case ID | Use Case Name | Description | Priority | Status |
 |------------|--------------|-------|----------|--------|
 | UC-ADMIN-001 | Create Tenant | Tạo mới một Tenant (Trường học) | P0 | Planned |
 | UC-ADMIN-002 | Suspend Tenant | Tạm ngưng hoạt động của Tenant | P1 | Planned |
@@ -35,7 +35,7 @@ Module quản trị hệ thống cung cấp các tính năng quản lý Tenant (
 5. Hệ thống trả về kết quả import.
 
 ## Business Rules
-| Rule ID | Rule Name | Mô tả | Điều kiện | Hành động | Ngoại lệ |
+| Rule ID | Rule Name | Description | Condition | Action | Exception |
 |---------|----------|-------|------------|---------|------------|
 | BR-ADMIN-001 | Unique Tenant Code | Mã Tenant phải là duy nhất | Mã đã tồn tại trong DB | Từ chối tạo mới | - |
 | BR-ADMIN-002 | Tenant Soft Delete | Xóa Tenant chỉ đánh dấu là đã xóa | Yêu cầu xóa | Đặt `deleted_at`, Lên lịch xóa vĩnh viễn sau 30 ngày | - |

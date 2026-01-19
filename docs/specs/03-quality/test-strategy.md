@@ -94,7 +94,7 @@ flowchart TB
 
 ### Functional Tests
 
-| Category | Mô tả | Coverage |
+| Category | Description | Coverage |
 |----------|-------|----------|
 | Business Logic | Core business rules | 100% |
 | API | Tất cả endpoints | 100% |
@@ -102,7 +102,7 @@ flowchart TB
 
 ### Non-Functional Tests
 
-| Category | Mô tả | Tần suất |
+| Category | Description | Tần suất |
 |----------|-------|----------|
 | Performance | Load và stress | Weekly |
 | Security | Vulnerability scanning | Weekly |

@@ -16,7 +16,7 @@ sidebar_label: Logic
 Module quản lý hệ thống phần thưởng, bao gồm Điểm Kinh nghiệm (EXP), Cấp độ, Badge, và Cửa hàng Phần thưởng để tăng cường sự gắn kết của người dùng.
 
 ## Use Cases
-| Use Case ID | Use Case Name | Mô tả | Độ ưu tiên | Trạng thái |
+| Use Case ID | Use Case Name | Description | Priority | Status |
 |------------|--------------|-------|----------|--------|
 | UC-GAME-001 | Earn EXP & Coins | Nhận điểm/xu khi hoàn thành nhiệm vụ | P0 | Planned |
 | UC-GAME-002 | Level Up | Tăng cấp độ khi tích lũy đủ EXP | P0 | Planned |
@@ -36,7 +36,7 @@ Module quản lý hệ thống phần thưởng, bao gồm Điểm Kinh nghiệm
 5. Hệ thống gửi thông báo thành công.
 
 ## Business Rules
-| Rule ID | Rule Name | Mô tả | Điều kiện | Hành động | Ngoại lệ |
+| Rule ID | Rule Name | Description | Condition | Action | Exception |
 |---------|----------|-------|------------|---------|------------|
 | BR-GAME-001 | Level Formula | Công thức tính Level | EXP tích lũy | Level = $100 \times N^{1.5}$ | - |
 | BR-GAME-002 | Coin Balance | Số dư ví không được âm | Kết quả giao dịch < 0 | Chặn giao dịch, Trả về `INSUFFICIENT_COINS` | - |
@@ -66,7 +66,7 @@ Module quản lý hệ thống phần thưởng, bao gồm Điểm Kinh nghiệm
 ---
 
 ## Review & Approval
-| Vai trò | Tên | Ngày | Trạng thái |
+| Role | Name | Date | Status |
 |------|------|------|--------|
 | **Product Owner** | | | |
 | **Tech Lead** | | | |
@@ -81,7 +81,7 @@ Module quản lý hệ thống phần thưởng, bao gồm Điểm Kinh nghiệm
 Các quy trình xử lý sự kiện tích điểm và đổi thưởng.
 
 ## Workflow Summary
-| Workflow ID | Workflow Name | Trigger | Actors | Trạng thái |
+| Workflow ID | Workflow Name | Trigger | Actors | Status |
 |-------------|--------------|---------|--------|--------|
 | WF-GAME-001 | Process EXP Event | Hoàn thành học/thi | System (Async) | Active |
 | WF-GAME-002 | Reward Redemption | Kết nối tới Store | Student, Admin | Active |
@@ -115,7 +115,7 @@ flowchart LR
 ```
 
 #### Steps
-| Bước | Mô tả | Actor | Hành động hệ thống | Điều kiện thoát |
+| Step | Description | Actor | System Action | Exit Condition |
 |------|-------------|-------|---------------|----------------|
 | 1 | Nhận Event | System | Xác thực loại event | Event hợp lệ |
 | 2 | Tính EXP | System | Áp dụng công thức & quy tắc | - |
@@ -166,13 +166,13 @@ sequenceDiagram
 
 ## Events
 ### System Events
-| Event Name | Mô tả | Payload | Emitted By |
+| Event Name | Description | Payload | Emitted By |
 |------------|-------------|---------|------------|
 | `level.up` | Người dùng lên cấp | `{user_id, new_level, reward}` | Game Svc |
 | `badge.earned` | Người dùng nhận badge | `{user_id, badge_id}` | Game Svc |
 
 ## Error Handling
-| Kịch bản lỗi | Phát hiện | Hành động khắc phục | Leo thang |
+| Error Scenario | Detection | Recovery Action | Escalation |
 |----------------|-----------|-----------------|------------|
 | Redis Down | Connection Err | Fallback sang truy vấn DB (chậm hơn) | Alert Ops |
 | DB Transaction Fail | Rollback | Thử lại (Optimistic Lock) hoặc báo lỗi | - |

@@ -17,7 +17,7 @@ Data model quản lý cấu trúc nội dung học tập và ngân hàng câu h�
 **Retention**: Vĩnh viễn
 
 #### Fields
-| Field Name | Type | Required | Default | Validation | Mô tả |
+| Field Name | Type | Required | Default | Validation | Description |
 |------------|------|----------|---------|------------|-------------|
 | id | UUID | ✅ | auto-gen | unique | Khóa chính |
 | subject_id | UUID | ✅ | - | valid subject | FK Subject |
@@ -33,7 +33,7 @@ Data model quản lý cấu trúc nội dung học tập và ngân hàng câu h�
 **Retention**: Vĩnh viễn
 
 #### Fields
-| Field Name | Type | Required | Default | Validation | Mô tả |
+| Field Name | Type | Required | Default | Validation | Description |
 |------------|------|----------|---------|------------|-------------|
 | id | UUID | ✅ | auto-gen | unique | Khóa chính |
 | topic_id | UUID | ✅ | - | valid topic | FK Topic |
@@ -46,7 +46,7 @@ Data model quản lý cấu trúc nội dung học tập và ngân hàng câu h�
 **Storage**: Database (PostgreSQL) - JSONB cho nội dung linh hoạt.
 
 #### Fields
-| Field Name | Type | Required | Default | Validation | Mô tả |
+| Field Name | Type | Required | Default | Validation | Description |
 |------------|------|----------|---------|------------|-------------|
 | id | UUID | ✅ | auto-gen | unique | Khóa chính |
 | bank_id | UUID | ✅ | - | valid bank | FK QuestionBank |

@@ -12,7 +12,7 @@ Ghi chép các quyết định kỹ thuật quan trọng trong nền tảng LMS.
 
 ## Decision Index
 
-| ID | Tiêu Đề | Trạng Thái | Ngày |
+| ID | Title | Status | Date |
 |----|---------|------------|------|
 | **ADR-001** | Modular Monolith | ✅ Accepted | 2024-05-20 |
 | **ADR-002** | PostgreSQL as Primary DB | ✅ Accepted | 2024-05-21 |

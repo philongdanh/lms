@@ -10,7 +10,7 @@ Tài liệu nghiên cứu người dùng.
 
 ## Contents
 
-| Tài liệu | Mô tả |
+| Tài liệu | Description |
 |----------|-------|
 | [Personas](./personas.md) | User personas |
 | [Journeys](./journeys.md) | User journey maps |

@@ -692,7 +692,7 @@ The system will pre-seed the following RBAC data:
 
 ### 4.6. Indexing Strategy
 
-| Bảng | Index Chính | Mục Đích |
+| Bảng | Index Chính | Purpose |
 |------|------------|----------|
 | User | (tenant_id, email, deleted_at) | Login và truy vấn theo tenant |
 | Topic | (tenant_id, subject_id, grade_id, deleted_at) | Filter nội dung |

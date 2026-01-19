@@ -16,7 +16,7 @@ sidebar_label: Logic
 Module quản lý thi đấu trực tuyến, hỗ trợ: Tournament, Round, Room, và Real-time Leaderboard.
 
 ## Use Cases
-| Use Case ID | Tên | Mô tả | Độ ưu tiên | Trạng thái |
+| Use Case ID | Name | Description | Priority | Status |
 |------------|--------------|-------|----------|--------|
 | UC-TOUR-001 | Create Tournament | Tạo cuộc thi mới (Admin) | P1 | Planned |
 | UC-TOUR-002 | Join Round | Đăng ký tham gia vòng thi | P0 | Planned |
@@ -35,7 +35,7 @@ Module quản lý thi đấu trực tuyến, hỗ trợ: Tournament, Round, Room
 5. Server gửi câu hỏi tiếp theo (nếu có).
 
 ## Business Rules
-| Rule ID | Tên | Mô tả | Điều kiện | Hành động | Ngoại lệ |
+| Rule ID | Name | Description | Condition | Action | Exception |
 |---------|----------|-------|------------|---------|------------|
 | BR-TOUR-001 | Time Window | Chỉ tham gia được trong time window | Now < start OR Now > end | Block Join | - |
 | BR-TOUR-002 | Room Capacity | Giới hạn số user mỗi room | Users >= Max | Create New Round or Reject | - |
@@ -65,7 +65,7 @@ Module quản lý thi đấu trực tuyến, hỗ trợ: Tournament, Round, Room
 ---
 
 ## Review & Approval
-| Vai trò | Tên | Ngày | Trạng thái |
+| Role | Name | Date | Status |
 |------|------|------|--------|
 | **Product Owner** | | | |
 | **Tech Lead** | | | |
@@ -80,7 +80,7 @@ Module quản lý thi đấu trực tuyến, hỗ trợ: Tournament, Round, Room
 Các workflow cho quy trình thi đấu.
 
 ## Workflow Summary
-| Workflow ID | Tên Workflow | Trigger | Actors | Trạng thái |
+| Workflow ID | Tên Workflow | Trigger | Actors | Status |
 |-------------|--------------|---------|--------|--------|
 | WF-TOUR-001 | Join Competition | User nhấn Join | User, System | Active |
 | WF-TOUR-002 | Realtime Scoring | User trả lời | User, System | Active |
@@ -144,13 +144,13 @@ sequenceDiagram
 
 ## Events
 ### System Events
-| Event Name | Mô tả | Payload | Emitted By |
+| Event Name | Description | Payload | Emitted By |
 |------------|-------------|---------|------------|
 | `round.started` | Round bắt đầu | `{round_id}` | Scheduler |
 | `round.ended` | Round kết thúc | `{round_id}` | Scheduler |
 
 ## Error Handling
-| Kịch bản lỗi | Phát hiện | Hành động khắc phục | Báo cáo |
+| Error Scenario | Detection | Recovery Action | Báo cáo |
 |----------------|-----------|-----------------|------------|
 | WS Disconnect | Socket Close | Client Auto Reconnect (có giới hạn retry) | - |
 

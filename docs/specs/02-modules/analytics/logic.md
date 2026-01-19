@@ -9,14 +9,14 @@ sidebar_label: Logic
 ## Business Context
 - **Module**: Analytics & Reporting
 - **Version**: 1.0
-- **Trạng thái**: Đã phê duyệt
+- **Status**: Đã phê duyệt
 - **Cập nhật lần cuối**: 2026-01-14
 
 ## Overview
 Module chịu trách nhiệm thu thập, xử lý và trực quan hóa dữ liệu hoạt động học tập. Cung cấp báo cáo đa cấp cho Học sinh, Phụ huynh, Giáo viên và Quản trị viên.
 
 ## Use Cases
-| Use Case ID | Use Case Name | Mô tả | Độ ưu tiên | Trạng thái |
+| Use Case ID | Use Case Name | Description | Priority | Status |
 |------------|--------------|-------|----------|--------|
 | UC-ANALYTICS-001 | View Knowledge Map | Xem bản đồ kiến thức cá nhân | P0 | Đã lên kế hoạch |
 | UC-ANALYTICS-002 | View Learning Report | Xem báo cáo học tập cá nhân (hàng ngày/hàng tuần) | P1 | Đã lên kế hoạch |
@@ -26,7 +26,7 @@ Module chịu trách nhiệm thu thập, xử lý và trực quan hóa dữ li�
 
 ### UC-ANALYTICS-001: View Knowledge Map
 **Actor**: Học sinh, Giáo viên
-**Điều kiện tiên quyết**: Dữ liệu học tập tồn tại.
+**Preconditions**: Dữ liệu học tập tồn tại.
 **Luồng chính**:
 1. Người dùng truy cập Dashboard.
 2. Hệ thống tải dữ liệu Knowledge Map từ DB/Cache.
@@ -34,7 +34,7 @@ Module chịu trách nhiệm thu thập, xử lý và trực quan hóa dữ li�
 4. Hệ thống hiển thị biểu đồ cây/lưới kiến thức.
 
 ## Business Rules
-| Rule ID | Rule Name | Mô tả | Điều kiện | Hành động | Ngoại lệ |
+| Rule ID | Rule Name | Description | Condition | Action | Exception |
 |---------|----------|-------|------------|---------|------------|
 | BR-ANALYTICS-001 | Mastery Calculation | Công thức tính mức độ thành thạo | Dựa trên điểm Quiz và thời gian gần đây | Score * DecayFactor | - |
 | BR-ANALYTICS-002 | Data Aggregation | Lịch trình tổng hợp dữ liệu | Cron job hàng đêm | Nén raw logs thành thống kê hàng ngày | Thử lại khi thất bại |
@@ -64,7 +64,7 @@ Module chịu trách nhiệm thu thập, xử lý và trực quan hóa dữ li�
 ---
 
 ## Review & Approval
-| Vai trò | Tên | Ngày | Trạng thái |
+| Role | Name | Date | Status |
 |------|------|------|--------|
 | **Product Owner** | | | |
 | **Tech Lead** | | | |
@@ -79,7 +79,7 @@ Module chịu trách nhiệm thu thập, xử lý và trực quan hóa dữ li�
 Các quy trình xử lý dữ liệu (ETL) và truy xuất báo cáo.
 
 ## Workflow Summary
-| Workflow ID | Workflow Name | Trigger | Actors | Trạng thái |
+| Workflow ID | Workflow Name | Trigger | Actors | Status |
 |-------------|--------------|---------|--------|--------|
 | WF-ANA-001 | ETL Pipeline | User Action Event | System | Đang hoạt động |
 | WF-ANA-002 | Generate Report | UI Request | User, System | Đang hoạt động |
@@ -87,7 +87,7 @@ Các quy trình xử lý dữ liệu (ETL) và truy xuất báo cáo.
 ## Workflow Details
 
 ### WF-ANA-001: ETL Pipeline
-**Mô tả**: Quy trình thu thập và tổng hợp dữ liệu từ các sự kiện gốc.
+**Description**: Quy trình thu thập và tổng hợp dữ liệu từ các sự kiện gốc.
 
 #### Flow Diagram
 ```mermaid
@@ -114,14 +114,14 @@ flowchart LR
 ```
 
 #### Steps
-| Bước | Mô tả | Actor | Hành động hệ thống | Điều kiện thoát |
+| Step | Description | Actor | System Action | Exit Condition |
 |------|-------------|-------|---------------|----------------|
 | 1 | Nhận Event | System | Tiêu thụ dữ liệu | Event đã phân tích |
 | 2 | Xử lý Event | System | Cập nhật bộ đếm thời gian thực | - |
 | 3 | Tổng hợp | System (Job) | Tóm tắt Logs -> Thống kê hàng ngày | Job hoàn thành |
 
 ### WF-ANA-002: Generate Learning Report
-**Mô tả**: Tạo báo cáo học tập cho người dùng.
+**Description**: Tạo báo cáo học tập cho người dùng.
 
 #### Flow Diagram
 ```mermaid
@@ -152,12 +152,12 @@ sequenceDiagram
 
 ## Events
 ### System Events
-| Event Name | Mô tả | Payload | Emitted By |
+| Event Name | Description | Payload | Emitted By |
 |------------|-------------|---------|------------|
 | `analytics.report.generated` | Báo cáo lớn hoàn thành (async) | `{report_id, url}` | Analytics Svc |
 
 ## Error Handling
-| Tình huống lỗi | Phát hiện | Hành động khắc phục | Báo cáo lên |
+| Error Scenario | Detection | Recovery Action | Escalation |
 |----------------|-----------|-----------------|------------|
 | Aggregation Job thất bại | Job Status = Failed | Thử lại x3 | Thông báo Dev |
 

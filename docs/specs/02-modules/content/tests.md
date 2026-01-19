@@ -10,7 +10,7 @@ sidebar_label: Tests
 Các test cases cho module Content.
 
 ## Test Coverage Matrix
-| Specification | Test Cases | Độ phủ | Trạng thái |
+| Specification | Test Cases | Coverage | Status |
 |---------------|------------|---------|--------|
 | Business Logic | 7 | 100% | Planned |
 | API Endpoints | 6 | 100% | Planned |
@@ -20,18 +20,18 @@ Các test cases cho module Content.
 
 ### 1. Functional Tests
 #### Business Logic
-| Test ID | Mô tả | Rules | Kết quả mong đợi | Độ ưu tiên |
+| Test ID | Description | Rules | Expected Result | Priority |
 |---------|-------------|-------|-----------------|----------|
 | TC-CONT-FUN-001 | Validate Hierarchy | BR-CONT-001 | Ngăn tạo Lesson không có Topic | P0 |
 | TC-CONT-FUN-002 | Import Format Check | BR-CONT-005 | Từ chối file .exe | P1 |
 
 ### 2. Integration Tests
-| Test ID | Mô tả | Components | Kết quả |
+| Test ID | Description | Components | Result |
 |---------|-------------|------------|--------|
 | TC-CONT-INT-001 | Sự kiện Publish kích hoạt thông báo | Content, Notification | Thông báo được gửi |
 
 ### 4. Security Tests
-| Test ID | Khía cạnh | Phương pháp | Kết quả |
+| Test ID | Khía cạnh | Phương pháp | Result |
 |---------|--------|--------|--------|
 | TC-CONT-SEC-001 | Chỉnh sửa nội dung của người khác | PUT /questions/`{id}` | 403 Forbidden |
 
@@ -58,7 +58,7 @@ Performance specifications cho module Content.
 | Import Process (100 rows) | 2s | 5s | 10s | 30s | Thời gian task |
 
 ### Throughput Requirements
-| Scenario | Requests/sec | Concurrent Users | Khối lượng dữ liệu |
+| Scenario | Requests/sec | Concurrent Users | Data Volume |
 |----------|--------------|------------------|-------------|
 | Normal Browsing | 2000 | 10000 | 100MB/giờ |
 

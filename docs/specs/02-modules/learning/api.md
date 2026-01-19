@@ -16,7 +16,7 @@ Các API endpoints cho module Learning, cung cấp truy cập vào lộ trình h
 - **Authentication**: Bearer Token
 
 ## Endpoints Summary
-| Method | Endpoint | Mô tả | Auth Required | Rate Limit |
+| Method | Endpoint | Description | Auth Required | Rate Limit |
 |--------|----------|-------------|---------------|------------|
 | GET | `/path` | Lấy lộ trình học tập cá nhân hóa | ✅ | 60/min |
 | GET | `/knowledge-map` | Lấy bản đồ kiến thức | ✅ | 60/min |
@@ -28,7 +28,7 @@ Các API endpoints cho module Learning, cung cấp truy cập vào lộ trình h
 ## Endpoint Details
 
 ### Endpoint: GET `/path`
-**Mô tả**: Lấy danh sách bài học được đề xuất dựa trên AI và lịch sử học tập.
+**Description**: Lấy danh sách bài học được đề xuất dựa trên AI và lịch sử học tập.
 
 #### Request
 ```http
@@ -37,7 +37,7 @@ Authorization: Bearer {token}
 ```
 
 **Query Parameters**:
-| Parameter | Type | Required | Mô tả | Example |
+| Parameter | Type | Required | Description | Example |
 |-----------|------|----------|-------------|---------||
 | subject_id | UUID | ❌ | Lọc theo môn học | `123e4567-e89b...` |
 
@@ -71,7 +71,7 @@ Authorization: Bearer {token}
 ```
 
 ### Endpoint: GET `/lessons/{id}`
-**Mô tả**: Lấy thông tin chi tiết bài học, bao gồm danh sách video/quiz và trạng thái hoàn thành của user.
+**Description**: Lấy thông tin chi tiết bài học, bao gồm danh sách video/quiz và trạng thái hoàn thành của user.
 
 #### Request
 ```http
@@ -106,7 +106,7 @@ Authorization: Bearer {token}
 ```
 
 ### Endpoint: POST `/progress`
-**Mô tả**: Cập nhật tiến độ học tập cho một content item (video hoặc kiểm tra bài học).
+**Description**: Cập nhật tiến độ học tập cho một content item (video hoặc kiểm tra bài học).
 
 #### Request
 ```http
@@ -138,7 +138,7 @@ Authorization: Bearer {token}
 ```
 
 ### Endpoint: POST `/practice/submit`
-**Mô tả**: Nộp câu trả lời cho một câu hỏi trong phiên luyện tập.
+**Description**: Nộp câu trả lời cho một câu hỏi trong phiên luyện tập.
 
 #### Request
 ```http
@@ -168,7 +168,7 @@ Authorization: Bearer {token}
 ```
 
 ## Error Responses
-| Code | Error | Mô tả |
+| Code | Error | Description |
 |------|-------|-------------|
 | 404 | `LEARN_LESSON_NOT_FOUND` | Bài học không tồn tại |
 | 403 | `LEARN_CONTENT_LOCKED` | Nội dung bị khóa (điều kiện tiên quyết chưa đạt) |

@@ -15,7 +15,7 @@ Tài liệu HTTP API và WebSocket events cho Competition.
 - **Authentication**: Bearer Token
 
 ## Endpoints Summary
-| Method | Endpoint | Mô tả | Auth Required | Rate Limit |
+| Method | Endpoint | Description | Auth Required | Rate Limit |
 |--------|----------|-------------|---------------|-----------|
 | GET | `/` | Danh sách cuộc thi | ✅ | 60/min |
 | GET | `/{id}` | Chi tiết cuộc thi | ✅ | 60/min |
@@ -53,20 +53,20 @@ Authorization: Bearer {token}
 ## WebSocket Protocol
 
 ### Client -> Server Events
-| Event | Payload | Mô tả |
+| Event | Payload | Description |
 |-------|---------|-------------|
 | `room:join` | `{room_id}` | Tham gia room thi đấu |
 | `answer:submit` | `{question_id, answer_index, time_ms}` | Gửi câu trả lời |
 
 ### Server -> Client Events
-| Event | Payload | Mô tả |
+| Event | Payload | Description |
 |-------|---------|-------------|
 | `question:next` | `{id, content, time_limit}` | Câu hỏi mới |
 | `leaderboard:update` | `[{user, score, rank}]` | Cập nhật leaderboard |
 | `round:end` | `{my_rank, total_score}` | Round kết thúc |
 
 ## Error Responses
-| Code | HTTP | Mô tả |
+| Code | HTTP | Description |
 |------|------|-------------|
 | `TOUR_FULL` | 400 | Room thi đấu đã đầy |
 | `TOUR_CLOSED` | 403 | Ngoài khung thời gian thi đấu |

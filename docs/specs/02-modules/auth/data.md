@@ -12,18 +12,18 @@ Data model cho module Auth: User, Role, Permission, Session, Tenant.
 ## Entities
 
 ### Entity: User
-**Mô tả**: Người dùng hệ thống (Admin, Teacher, Student, Parent)
+**Description**: Người dùng hệ thống (Admin, Teacher, Student, Parent)
 **Storage**: Database (PostgreSQL)
 **Retention**: Vĩnh viễn (Soft delete)
 
 #### Fields
-| Field Name | Type | Required | Default | Validation | Mô tả |
+| Field Name | Type | Required | Default | Validation | Description |
 |------------|------|----------|---------|------------|-------|
 | id | UUID | ✅ | auto-gen | unique | Primary key |
 | tenant_id | UUID | ✅ | - | valid tenant | Tham chiếu Tenant |
 | email | String | ✅ | - | email format | Unique theo tenant |
 | password_hash | String | ✅ | - | bcrypt | Mã hóa |
-| is_active | Boolean | ❌ | true | - | Trạng thái |
+| is_active | Boolean | ❌ | true | - | Status |
 | deleted_at | Timestamp | ❌ | null | - | Soft delete |
 
 #### Relationships
@@ -40,12 +40,12 @@ erDiagram
 ```
 
 ### Entity: UserSession
-**Mô tả**: Session đăng nhập của người dùng
+**Description**: Session đăng nhập của người dùng
 **Storage**: Database + Redis
 **Retention**: 7 ngày (TTL)
 
 #### Fields
-| Field Name | Type | Required | Default | Validation | Mô tả |
+| Field Name | Type | Required | Default | Validation | Description |
 |------------|------|----------|---------|------------|-------|
 | id | UUID | ✅ | auto-gen | unique | Primary key |
 | user_id | UUID | ✅ | - | valid user | Tham chiếu User |
@@ -54,12 +54,12 @@ erDiagram
 | revoked_at | Timestamp | ❌ | null | - | Trạng thái thu hồi |
 
 ### Entity: Role
-**Mô tả**: Vai trò người dùng (RBAC)
+**Description**: Vai trò người dùng (RBAC)
 **Storage**: Database
 **Retention**: Vĩnh viễn
 
 #### Fields
-| Field Name | Type | Required | Default | Validation | Mô tả |
+| Field Name | Type | Required | Default | Validation | Description |
 |------------|------|----------|---------|------------|-------|
 | id | UUID | ✅ | auto-gen | unique | Primary key |
 | name | String | ✅ | - | enum | root-admin, teacher... |

@@ -16,7 +16,7 @@ sidebar_label: Logic
 Module cốt lõi quản lý Cấu trúc Chương trình học (Subject, Grade, Topic, Lesson), Tài nguyên Giáo dục (Video, Document), và Ngân hàng Câu hỏi. Cung cấp dữ liệu cho các module Learning và Exam.
 
 ## Use Cases
-| Use Case ID | Use Case Name | Mô tả | Độ ưu tiên | Trạng thái |
+| Use Case ID | Use Case Name | Description | Priority | Status |
 |------------|--------------|-------|----------|--------|
 | UC-CONT-001 | Manage Subjects & Grades | Quản lý danh mục môn học và khối lớp (Admin) | P1 | Planned |
 | UC-CONT-002 | Create Topic Structure | Tạo và tổ chức cây Topic | P0 | Planned |
@@ -41,7 +41,7 @@ Module cốt lõi quản lý Cấu trúc Chương trình học (Subject, Grade, 
 **Exceptions**: Lỗi định dạng file -> Báo cáo chi tiết lỗi theo từng dòng.
 
 ## Business Rules
-| Rule ID | Rule Name | Mô tả | Điều kiện | Hành động | Ngoại lệ |
+| Rule ID | Rule Name | Description | Condition | Action | Exception |
 |---------|----------|-------|------------|---------|------------|
 | BR-CONT-001 | Content Hierarchy | Cấu trúc phân cấp bắt buộc | Subject -> Grade -> Topic -> Lesson -> Content | Áp dụng ràng buộc FK | - |
 | BR-CONT-002 | Access Control | Quyền truy cập nội dung | Học sinh chỉ xem được `is_active=true` | Lọc theo `is_active` trong Query | - |
@@ -73,7 +73,7 @@ Module cốt lõi quản lý Cấu trúc Chương trình học (Subject, Grade, 
 ---
 
 ## Review & Approval
-| Vai trò | Tên | Ngày | Trạng thái |
+| Role | Name | Date | Status |
 |------|------|------|--------|
 | **Product Owner** | | | |
 | **Tech Lead** | | | |
@@ -88,7 +88,7 @@ Module cốt lõi quản lý Cấu trúc Chương trình học (Subject, Grade, 
 Các workflow quản lý vòng đời nội dung và quy trình nhập dữ liệu ngân hàng câu hỏi.
 
 ## Workflow Summary
-| Workflow ID | Workflow Name | Trigger | Actors | Trạng thái |
+| Workflow ID | Workflow Name | Trigger | Actors | Status |
 |-------------|--------------|---------|--------|--------|
 | WF-CONT-001 | Create Content Hierarchy | Admin/Teacher setup | Teacher, Admin | Active |
 | WF-CONT-002 | Bulk Import Questions | Upload action | Teacher, Import Svc | Active |
@@ -133,7 +133,7 @@ sequenceDiagram
 ```
 
 #### Steps
-| Bước | Mô tả | Actor | Hành động hệ thống | Điều kiện kết thúc |
+| Step | Description | Actor | System Action | Exit Condition |
 |------|-------------|-------|---------------|----------------|
 | 1 | Upload File | User | Nhận & Lưu Temp | File đã lưu |
 | 2 | Parse & Validate | System | Đọc các dòng, kiểm tra định dạng | Parsing hoàn tất |
@@ -164,13 +164,13 @@ flowchart TD
 
 ## Events
 ### System Events
-| Event Name | Mô tả | Payload | Emitted By |
+| Event Name | Description | Payload | Emitted By |
 |------------|-------------|---------|------------|
 | `content.published` | Lesson/Topic được publish | `{id, type}` | Content Svc |
 | `question.imported` | Import hoàn tất | `{batch_id, count}` | Import Svc |
 
 ## Error Handling
-| Tình huống lỗi | Phát hiện | Hành động khắc phục | Escalation |
+| Error Scenario | Detection | Recovery Action | Escalation |
 |----------------|-----------|-----------------|------------|
 | Import File Corrupt | Parse Error | Trả về "Invalid File Format" | - |
 | Partial Import Failure | Row Error | Bỏ qua dòng, ghi log vào report, tiếp tục | - |

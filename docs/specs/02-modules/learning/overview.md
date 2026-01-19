@@ -9,14 +9,14 @@ sidebar_label: Overview
 ## Business Context
 - **Module**: Learning & Personalization
 - **Version**: 1.0
-- **Trạng thái**: Approved
+- **Status**: Approved
 - **Cập nhật lần cuối**: 2026-01-14
 
 ## Overview
 Module cốt lõi cho Students, chịu trách nhiệm về Adaptive Learning Path, Progress Tracking và Knowledge Map. Cung cấp tính năng học tập thích ứng dựa trên AI để cá nhân hóa trải nghiệm học tập.
 
 ## Use Cases
-| Use Case ID | Use Case Name | Mô tả | Độ ưu tiên | Trạng thái |
+| Use Case ID | Use Case Name | Description | Priority | Status |
 |------------|--------------|-------|----------|--------|
 | UC-LEARN-001 | Get Personalized Path | Lấy lộ trình học tập cá nhân hóa dựa trên phân tích AI | P0 | Planned |
 | UC-LEARN-002 | View Knowledge Map | Xem bản đồ kiến thức và các lỗ hổng kiến thức | P1 | Planned |
@@ -27,7 +27,7 @@ Module cốt lõi cho Students, chịu trách nhiệm về Adaptive Learning Pat
 
 ### UC-LEARN-001: Get Personalized Path
 **Actor**: Student
-**Điều kiện tiên quyết**: Student đã đăng nhập và có dữ liệu lịch sử học tập (hoặc mặc định).
+**Preconditions**: Student đã đăng nhập và có dữ liệu lịch sử học tập (hoặc mặc định).
 **Luồng chính**:
 1. Student truy cập Dashboard.
 2. System gọi Path Service.

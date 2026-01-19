@@ -16,7 +16,7 @@ sidebar_label: Overview
 Module quản lý hệ thống phần thưởng, bao gồm Điểm Kinh nghiệm (EXP), Cấp độ, Badge, và Cửa hàng Phần thưởng để tăng cường sự gắn kết của người dùng.
 
 ## Use Cases
-| Use Case ID | Use Case Name | Mô tả | Độ ưu tiên | Trạng thái |
+| Use Case ID | Use Case Name | Description | Priority | Status |
 |------------|--------------|-------|----------|--------|
 | UC-GAME-001 | Earn EXP & Coins | Nhận điểm/xu khi hoàn thành nhiệm vụ | P0 | Planned |
 | UC-GAME-002 | Level Up | Tăng cấp độ khi tích lũy đủ EXP | P0 | Planned |
@@ -36,6 +36,6 @@ Module quản lý hệ thống phần thưởng, bao gồm Điểm Kinh nghiệm
 5. Hệ thống gửi thông báo thành công.
 
 ## Business Rules
-| Rule ID | Rule Name | Mô tả | Điều kiện | Hành động | Ngoại lệ |
+| Rule ID | Rule Name | Description | Condition | Action | Exception |
 |---------|----------|-------|------------|---------|------------|
 | BR-GAME-001 | Level Formula | Công thức tính Level | EXP tích lũy | Level = $100 \times N^{1.5}$ | - |
