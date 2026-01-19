@@ -43,7 +43,7 @@ Test cases được derive từ specifications của module Learning.
 | TC-LEARN-PERF-001 | Submit Answer High Load | 2000 RPS | P95 < 200ms |
 
 ### 4. Security Tests
-| Test ID | Khía cạnh bảo mật | Phương pháp test | Expected Result |
+| Test ID | Security Aspect | Test Method | Expected Result |
 |---------|-----------------|----------------|------------------|
 | TC-LEARN-SEC-001 | IDOR on Progress | Get path của user khác | 403 Forbidden |
 

@@ -52,7 +52,7 @@ Các test case cho module Tournament.
 ## Performance Targets
 
 ### Response Times
-| Thao tác | P50 | P95 | P99 | Max | Đo lường |
+| Operation | P50 | P95 | P99 | Max | Đo lường |
 |-----------|-----|-----|-----|-----|-------------|
 | Join Round | 200ms | 500ms | 1s | 3s | DB Write + Logic |
 | Submit Answer (WS) | 50ms | 100ms | 200ms | 500ms | Server Ack |

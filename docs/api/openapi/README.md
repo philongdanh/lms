@@ -18,14 +18,14 @@ Tài liệu OpenAPI/Swagger specifications.
 
 ### File Organization
 
-| Phương pháp | Trường hợp sử dụng |
+| Method | Use Case |
 |------------|---------------------|
 | Single file | API nhỏ |
 | Multi-file | API lớn sử dụng $ref |
 
 ### Naming Conventions
 
-| Element | Convention | Ví dụ |
+| Element | Convention | Example |
 |---------|------------|-------|
 | Paths | kebab-case | `/user-profiles` |
 | Operations | HTTP verb | `get`, `post` |

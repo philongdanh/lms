@@ -42,7 +42,7 @@ flowchart TB
 
 **Mục đích**: Test các functions/methods riêng lẻ trong isolation
 
-| Khía cạnh | Guideline |
+| Aspect | Guideline |
 |-----------|-----------|
 | Scope | Single function/class |
 | Dependencies | Mocked |
@@ -59,7 +59,7 @@ flowchart TB
 
 **Mục đích**: Test tương tác giữa các components
 
-| Khía cạnh | Guideline |
+| Aspect | Guideline |
 |-----------|-----------|
 | Scope | Multiple components |
 | Dependencies | Real (test containers) |
@@ -76,7 +76,7 @@ flowchart TB
 
 **Mục đích**: Test các luồng người dùng hoàn chỉnh
 
-| Khía cạnh | Guideline |
+| Aspect | Guideline |
 |-----------|-----------|
 | Scope | Full application |
 | Dependencies | Real environment |
@@ -102,7 +102,7 @@ flowchart TB
 
 ### Non-Functional Tests
 
-| Category | Description | Tần suất |
+| Category | Description | Frequency |
 |----------|-------|----------|
 | Performance | Load và stress | Weekly |
 | Security | Vulnerability scanning | Weekly |

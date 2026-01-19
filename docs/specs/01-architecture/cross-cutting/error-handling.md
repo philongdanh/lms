@@ -46,7 +46,7 @@ Các patterns và best practices xử lý lỗi.
 
 ### Authentication Errors (401)
 
-| Code | Message | Nguyên nhân |
+| Code | Message | Cause |
 |------|---------|-------------|
 | AUTH_REQUIRED | Authentication required | Thiếu token |
 | TOKEN_EXPIRED | Token has expired | Access token hết hạn |
@@ -54,14 +54,14 @@ Các patterns và best practices xử lý lỗi.
 
 ### Authorization Errors (403)
 
-| Code | Message | Nguyên nhân |
+| Code | Message | Cause |
 |------|---------|-------------|
 | FORBIDDEN | Access denied | Không đủ quyền |
 | RESOURCE_FORBIDDEN | Cannot access resource | Không phải owner |
 
 ### Validation Errors (400)
 
-| Code | Message | Nguyên nhân |
+| Code | Message | Cause |
 |------|---------|-------------|
 | VALIDATION_ERROR | Validation failed | Input không hợp lệ |
 | MISSING_FIELD | Required field missing | Thiếu field bắt buộc |
@@ -69,14 +69,14 @@ Các patterns và best practices xử lý lỗi.
 
 ### Not Found Errors (404)
 
-| Code | Message | Nguyên nhân |
+| Code | Message | Cause |
 |------|---------|-------------|
 | NOT_FOUND | Resource not found | ID không hợp lệ |
 | ENDPOINT_NOT_FOUND | Endpoint not found | URL sai |
 
 ### Business Errors (422)
 
-| Code | Message | Nguyên nhân |
+| Code | Message | Cause |
 |------|---------|-------------|
 | BUSINESS_RULE_VIOLATION | Business rule violated | Kiểm tra rule thất bại |
 | INSUFFICIENT_BALANCE | Insufficient balance | Không đủ credits |
@@ -84,7 +84,7 @@ Các patterns và best practices xử lý lỗi.
 
 ### Server Errors (500)
 
-| Code | Message | Nguyên nhân |
+| Code | Message | Cause |
 |------|---------|-------------|
 | INTERNAL_ERROR | Internal server error | Lỗi không mong đợi |
 | SERVICE_UNAVAILABLE | Service unavailable | Dependency down |

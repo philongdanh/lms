@@ -31,7 +31,7 @@ Các test cases cho module Content.
 | TC-CONT-INT-001 | Sự kiện Publish kích hoạt thông báo | Content, Notification | Thông báo được gửi |
 
 ### 4. Security Tests
-| Test ID | Khía cạnh | Phương pháp | Result |
+| Test ID | Aspect | Method | Result |
 |---------|--------|--------|--------|
 | TC-CONT-SEC-001 | Chỉnh sửa nội dung của người khác | PUT /questions/`{id}` | 403 Forbidden |
 
@@ -51,7 +51,7 @@ Performance specifications cho module Content.
 ## Performance Targets
 
 ### Response Times
-| Operation | P50 | P95 | P99 | Max | Phương pháp đo |
+| Operation | P50 | P95 | P99 | Max | Measurement |
 |-----------|-----|-----|-----|-----|-------------|
 | Get Topic Tree | 50ms | 100ms | 300ms | 1s | Tải full tree |
 | Search Questions | 100ms | 300ms | 800ms | 2s | Tìm kiếm fulltext |

@@ -45,7 +45,7 @@ Module cốt lõi: **Xác thực (Auth), Phân quyền (RBAC), Quản lý Sessio
 - ✅ PostgreSQL - Lưu trữ bền vững
 
 ## KPIs & Metrics
-| Metric | Target | Phương pháp đo | Tần suất |
+| Metric | Target | Measurement | Frequency |
 |--------|--------|----------------|----------|
 | Login Latency | < 200ms | APM | Realtime |
 | Token Refresh | < 100ms | APM | Realtime |

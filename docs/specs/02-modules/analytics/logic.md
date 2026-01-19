@@ -51,7 +51,7 @@ Module chịu trách nhiệm thu thập, xử lý và trực quan hóa dữ li�
 - ✅ Redis - Caching báo cáo.
 
 ## KPIs & Metrics
-| Metric | Mục tiêu | Phương pháp đo lường | Tần suất |
+| Metric | Target | Measurement | Frequency |
 |--------|--------|-------------------|-----------|
 | Report Load Time | < 500ms | APM | Thời gian thực |
 | Data Freshness | < 1 giờ (cho thống kê hàng ngày) | ETL Job Monitor | Hàng ngày |

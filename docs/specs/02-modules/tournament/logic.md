@@ -52,7 +52,7 @@ Module quản lý thi đấu trực tuyến, hỗ trợ: Tournament, Round, Room
 - ✅ Redis - Leaderboard (ZSET).
 
 ## KPIs & Metrics
-| Chỉ số | Mục tiêu | Phương pháp đo | Tần suất |
+| Metric | Target | Measurement | Frequency |
 |--------|--------|-------------------|-----------|
 | Concurrent Users | 50,000 | Load Test | Theo sự kiện |
 | Score Update Latency | < 100ms | Đo end-to-end | Real-time |

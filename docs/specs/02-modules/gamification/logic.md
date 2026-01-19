@@ -53,7 +53,7 @@ Module quản lý hệ thống phần thưởng, bao gồm Điểm Kinh nghiệm
 - ✅ Redis - Cache bảng xếp hạng (Sorted Sets).
 
 ## KPIs & Metrics
-| Chỉ số | Mục tiêu | Phương pháp đo | Tần suất |
+| Metric | Target | Measurement | Frequency |
 |--------|--------|-------------------|-----------|
 | User Engagement | +20% WoW | Người dùng hoạt động hàng ngày kích hoạt sự kiện gamification | Hàng tuần |
 | Redemption Rate | > 5% users | Truy vấn DB trên bảng Order | Hàng tháng |
