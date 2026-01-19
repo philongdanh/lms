@@ -1,14 +1,14 @@
 ---
-id: roadmap
+id: product-roadmap
 title: Product Roadmap
-sidebar_label: Roadmap
+sidebar_label: Product Roadmap
 ---
 
 # Product Roadmap
 
-Lộ trình phát triển sản phẩm và các mốc giao hàng.
+Long-term product vision, phases, and strategic milestones.
 
----
+> **Scope**: This document covers product-level roadmap (quarters, phases, major releases). For sprint-level planning, see [Sprint Plan](../../project/02-sprint-plan.md).
 
 ## Overview
 
@@ -23,7 +23,7 @@ Lộ trình phát triển sản phẩm và các mốc giao hàng.
 ## Phase 1: [Phase Name]
 
 **Timeline**: [Start Date] - [End Date]
-**Goal**: [Mục tiêu phase]
+**Goal**: [Phase goal]
 
 ### Milestones
 
@@ -44,7 +44,7 @@ Lộ trình phát triển sản phẩm và các mốc giao hàng.
 ## Phase 2: [Phase Name]
 
 **Timeline**: [Start Date] - [End Date]
-**Goal**: [Mục tiêu phase]
+**Goal**: [Phase goal]
 
 ### Milestones
 
@@ -72,7 +72,7 @@ Lộ trình phát triển sản phẩm và các mốc giao hàng.
 
 | Feature | Depends On | Impact if Delayed |
 |---------|------------|-------------------|
-| [Feature A] | [Feature B] | [Ảnh hưởng nếu trễ] |
+| [Feature A] | [Feature B] | [Impact if delayed] |
 
 ---
 
@@ -80,7 +80,7 @@ Lộ trình phát triển sản phẩm và các mốc giao hàng.
 
 | Risk | Probability | Impact | Mitigation |
 |------|-------------|--------|------------|
-| [Risk 1] | High/Medium/Low | High/Medium/Low | [Kế hoạch giảm thiểu] |
+| [Risk 1] | High/Medium/Low | High/Medium/Low | [Mitigation plan] |
 
 ---
 
@@ -96,6 +96,6 @@ Lộ trình phát triển sản phẩm và các mốc giao hàng.
 
 ## References
 
-- [Vision](./vision.md)
+- [Overview](./overview.md)
 - [Metrics](./metrics.md)
 - [Constraints](./constraints.md)

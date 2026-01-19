@@ -1,31 +1,36 @@
 ---
 id: mocks
-title: Mock Server
+title: Mock Data
 sidebar_label: Mocks
 ---
 
-# Mock Server
+# Mock Data
 
-API mock server cho development và testing.
+API mock server for development and testing.
+
+---
 
 ## Overview
 
-Mock servers cung cấp fake API responses cho:
-- Frontend development không cần backend
+Mock servers provide fake API responses for:
+- Frontend development without backend
 - Integration testing
 - Demo environments
+
+---
 
 ## Structure
 
 ```
 mocks/
-├── README.md       # File này
 ├── server.js       # Mock server entry
 ├── data/           # Mock data fixtures
 │   └── users.json
 └── handlers/       # Request handlers
     └── users.js
 ```
+
+---
 
 ## Setup Options
 
@@ -74,23 +79,29 @@ npx json-server --watch db.json --port 3001
 npx @stoplight/prism-cli mock openapi/main.yaml --port 3001
 ```
 
+---
+
 ## Mock Data Guidelines
 
-| Hướng dẫn | Mô tả |
-|-----------|-------|
-| Dữ liệu thực tế | Sử dụng tên, email thực tế |
-| Edge cases | Bao gồm empty states, errors |
-| ID nhất quán | Sử dụng ID dự đoán được cho testing |
-| Timestamps | Sử dụng ngày tương đối |
+| Guideline | Description |
+|-----------|-------------|
+| Realistic data | Use realistic names, emails |
+| Edge cases | Include empty states, errors |
+| Consistent IDs | Use predictable IDs for testing |
+| Timestamps | Use relative dates |
+
+---
 
 ## Mock Scenarios
 
-| Scenario | Cách kích hoạt |
+| Scenario | How to trigger |
 |----------|----------------|
-| Success | Response mặc định |
+| Success | Default response |
 | Empty list | `?scenario=empty` |
 | Error | `?scenario=error` |
 | Slow response | `?scenario=slow` |
+
+---
 
 ## Integration
 
@@ -99,21 +110,18 @@ npx @stoplight/prism-cli mock openapi/main.yaml --port 3001
 ```bash
 # Start mock server
 npm run mock:start
-
-# Start frontend with mock
-VITE_API_URL=http://localhost:3001 npm run dev
 ```
 
 ### Testing
 
-```javascript
-// Setup MSW for tests
-beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
+```bash
+# Run tests with mocks
+npm run test:integration
 ```
+
+---
 
 ## References
 
-- [OpenAPI](../openapi/README.md)
-- [Contracts](../contracts/README.md)
+- [Contracts](./contracts.md)
+- [OpenAPI](./openapi.md)

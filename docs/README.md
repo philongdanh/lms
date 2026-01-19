@@ -1,55 +1,51 @@
 ---
 id: docs
-title: Tài liệu dự án
+title: Project Documentation
 sidebar_label: Docs
 slug: /overview
 ---
 
-# Tài liệu LMS Platform
+# LMS Platform Documentation
 
-## Giới thiệu
+## Introduction
 
-Tài liệu hướng dẫn sử dụng và phát triển LMS Platform.
+User and developer documentation for LMS Platform.
 
----
 
-## Cấu trúc tài liệu
+## Documentation Structure
 
-### Hướng dẫn người dùng (`user-guide/`)
+### User Guide (`user-guide/`)
 
-Dành cho **người dùng cuối** (học sinh, giáo viên, phụ huynh, admin):
+For **end users** (students, teachers, parents, admins):
 
-- [Bắt đầu](./user-guide/getting-started.md) - Hướng dẫn sử dụng cơ bản
-- [FAQ](./user-guide/faq.md) - Câu hỏi thường gặp
+- [Getting Started](./user-guide/getting-started.md) - Basic usage guide
+- [FAQ](./user-guide/faq.md) - Frequently asked questions
 
-### Hướng dẫn phát triển (`developer-guide/`)
+### Developer Guide (`developer-guide/`)
 
-Dành cho **đội phát triển**:
+For the **development team**:
 
-- [Setup](./developer-guide/setup.md) - Thiết lập môi trường
-- [Development](./developer-guide/development.md) - Quy trình phát triển
-- [Deployment](./developer-guide/deployment.md) - Quy trình triển khai
-- [Contributing](./developer-guide/contributing.md) - Quy tắc đóng góp
+- [Setup](./developer-guide/setup.md) - Environment setup
+- [Development](./developer-guide/development.md) - Development workflow
+- [Deployment](./developer-guide/deployment.md) - Deployment process
+- [Contributing](./developer-guide/contributing.md) - Contributing guidelines
 
----
 
-## Tài liệu liên quan
+## Related Documentation
 
-| Tài liệu | Mô tả | Đối tượng |
-|----------|-------|-----------|
-| [Specifications](/specs/) | Đặc tả kỹ thuật chi tiết | Developers |
+| Document | Description | Audience |
+|----------|-------------|----------|
+| [Specifications](/specs/) | Technical specifications | Developers |
 
----
 
-## Bắt đầu nhanh
+## Quick Start
 
-1. **Người dùng mới**: Đọc [Bắt đầu](./user-guide/getting-started.md)
-2. **Developer mới**: Đọc [Setup Guide](./developer-guide/setup.md)
-3. **Tìm hiểu hệ thống**: Xem [System Design](/specs/architecture/system-design)
+1. **New users**: Read [Getting Started](./user-guide/getting-started.md)
+2. **New developers**: Read [Setup Guide](./developer-guide/setup.md)
+3. **System overview**: See [System Design](/specs/architecture/system-design)
 
----
 
-## Phiên bản
+## Versions
 
-- **Tài liệu**: v2.0 (Refactored)
-- **Cập nhật**: 2026-01-16
+- **Documentation**: v2.0 (Refactored)
+- **Updated**: 2026-01-16

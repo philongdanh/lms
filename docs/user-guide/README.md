@@ -6,18 +6,20 @@ sidebar_label: User Guide
 
 # User Guide
 
-Tài liệu dành cho người dùng cuối của hệ thống LMS.
+Documentation for end users of the LMS system.
+
 
 ## Contents
 
 | Document | Description |
 |----------|-------------|
-| [Getting Started](./getting-started.md) | Hướng dẫn nhanh để bắt đầu sử dụng |
-| [FAQ](./faq.md) | Câu hỏi thường gặp |
+| [Getting Started](./getting-started.md) | Quick guide to get started |
+| [FAQ](./faq.md) | Frequently asked questions |
+
 
 ## Additional Topics
 
-Các hướng dẫn sẽ được bổ sung:
-- Hướng dẫn tính năng chi tiết
-- Tutorials theo từng chủ đề
-- Xử lý sự cố thường gặp
+Guides to be added:
+- Detailed feature guides
+- Topic-specific tutorials
+- Common troubleshooting

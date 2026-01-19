@@ -1,12 +1,12 @@
 ---
-id: component-guidelines
+id: components
 title: Component Guidelines
-sidebar_label: Guidelines
+sidebar_label: Components
 ---
 
 # Component Guidelines
 
-Hướng dẫn thiết kế và sử dụng components.
+UI component design guidelines and patterns.
 
 ---
 
@@ -16,23 +16,23 @@ Hướng dẫn thiết kế và sử dụng components.
 
 ```
 ┌─────────────────────────────┐
-│  [Icon]  Label              │  ← Nội dung
+│  [Icon]  Label              │  ← Content
 │                             │
-│  Description or helper text │  ← Text hỗ trợ
+│  Description or helper text │  ← Helper text
 └─────────────────────────────┘
 ```
 
 ### States
 
-| Trạng thái | Xử lý trực quan |
-|------------|-----------------|
-| Default | Styles cơ bản |
-| Hover | Highlight nhẹ |
+| State | Visual Treatment |
+|-------|------------------|
+| Default | Base styles |
+| Hover | Subtle highlight |
 | Focus | Focus ring |
-| Active | Hiệu ứng nhấn |
-| Disabled | Giảm opacity |
+| Active | Pressed effect |
+| Disabled | Reduced opacity |
 | Loading | Spinner/skeleton |
-| Error | Border/text lỗi |
+| Error | Error border/text |
 
 ---
 
@@ -40,9 +40,9 @@ Hướng dẫn thiết kế và sử dụng components.
 
 ### Variants
 
-| Variant | Sử dụng | Ví dụ |
-|---------|---------|-------|
-| Primary | Hành động chính | Submit, Save |
+| Variant | Usage | Example |
+|---------|-------|---------|
+| Primary | Main actions | Submit, Save |
 | Secondary | Alternative actions | Cancel |
 | Outline | Tertiary actions | Edit |
 | Ghost | Subtle actions | Close |
@@ -65,9 +65,19 @@ Hướng dẫn thiết kế và sử dụng components.
 
 ---
 
-## Form Inputs
+## Forms
 
-### Text Input
+### Input Fields
+
+| Guideline | Description |
+|-----------|-------------|
+| Labels | Always visible, above input |
+| Placeholders | Example text, not labels |
+| Validation | Inline errors below field |
+| Required | Asterisk (*) indicator |
+| Help text | Below input, muted color |
+
+### Input States
 
 | State | Border | Background | Label |
 |-------|--------|------------|-------|
@@ -76,12 +86,13 @@ Hướng dẫn thiết kế và sử dụng components.
 | Error | Error | White | Error |
 | Disabled | Gray-100 | Gray-50 | Gray-400 |
 
-### Guidelines
+### Input Sizes
 
-- Always include labels
-- Show validation inline
-- Use placeholder text sparingly
-- Group related fields
+| Size | Height | Usage |
+|------|--------|-------|
+| Small | 32px | Compact forms |
+| Medium | 40px | Default |
+| Large | 48px | Touch-friendly |
 
 ---
 
@@ -101,13 +112,23 @@ Hướng dẫn thiết kế và sử dụng components.
 └─────────────────────────────┘
 ```
 
-### Variants
+### Card Variants
 
 | Variant | Usage |
 |---------|-------|
-| Default | General content |
-| Interactive | Clickable cards |
-| Selected | Multi-select |
+| Default | Standard content card |
+| Elevated | Prominent content |
+| Outlined | Subtle separation |
+| Interactive | Clickable cards (hover state) |
+
+### Card Properties
+
+| Property | Value |
+|----------|-------|
+| Padding | `--space-4` to `--space-6` |
+| Border Radius | `--radius-lg` |
+| Shadow | `--shadow-md` |
+| Border | Optional `--border` |
 
 ---
 
@@ -146,14 +167,12 @@ Hướng dẫn thiết kế và sử dụng components.
 
 ## Tables
 
-### Structure
-
-| Element | Guidelines |
-|---------|------------|
-| Header | Fixed, sortable columns |
-| Row | Zebra striping (optional) |
-| Cell | Consistent alignment |
-| Actions | End of row |
+| Element | Style |
+|---------|-------|
+| Header | Bold, background muted |
+| Row | Alternating backgrounds (optional) |
+| Cell Padding | `--space-3` x `--space-4` |
+| Border | Bottom border only |
 
 ### Features
 
@@ -185,6 +204,12 @@ Hướng dẫn thiết kế và sử dụng components.
 | Nested items | Sub-sections |
 | Footer | Settings, help |
 
+| Property | Value |
+|----------|-------|
+| Width | 240px (expanded), 64px (collapsed) |
+| Position | Fixed left |
+| Background | `--background` |
+
 ---
 
 ## Feedback Components
@@ -200,37 +225,39 @@ Hướng dẫn thiết kế và sử dụng components.
 
 ### Toasts
 
-| Guideline | Value |
-|-----------|-------|
-| Position | Top-right |
-| Duration | 5 seconds |
-| Max visible | 3 |
-| Dismissible | Yes |
+| Property | Value |
+|----------|-------|
+| Position | Top-right or bottom-right |
+| Duration | 3-5 seconds |
+| Max Width | 400px |
 
 ---
 
-## Icons
+## Responsive Breakpoints
 
-### Sizing
+| Name | Width | Target |
+|------|-------|--------|
+| `sm` | 640px | Mobile landscape |
+| `md` | 768px | Tablet |
+| `lg` | 1024px | Desktop |
+| `xl` | 1280px | Large desktop |
+| `2xl` | 1536px | Wide screens |
 
-| Size | Pixels | Usage |
-|------|--------|-------|
-| XS | 12px | Inline |
-| SM | 16px | Buttons |
-| MD | 20px | Default |
-| LG | 24px | Headers |
-| XL | 32px | Features |
+---
 
-### Guidelines
+## Accessibility
 
-- Use consistent icon set
-- Include accessible labels
-- Match stroke width
-- Align to pixel grid
+| Requirement | Implementation |
+|-------------|----------------|
+| Color contrast | 4.5:1 minimum |
+| Focus indicators | Visible ring on focus |
+| Alt text | All images |
+| Keyboard navigation | Full support |
+| Screen readers | Semantic HTML, ARIA |
 
 ---
 
 ## References
 
 - [Tokens](./tokens.md)
-- [Usability](../research/usability.md)
+- [Typography](./typography.md)

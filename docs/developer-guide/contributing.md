@@ -1,155 +1,138 @@
 ---
 id: contributing
-title: Hướng dẫn đóng góp
+title: Contributing Guide
 sidebar_label: Contributing
 ---
 
-# Hướng dẫn đóng góp
+# Contributing Guide
 
-Quy tắc và quy trình làm việc cho đội phát triển LMS Platform.
+Rules and workflow for the LMS Platform development team.
 
----
+## Roles and Responsibilities
 
-## Vai trò và trách nhiệm
+### Key Roles
 
-### Các vai trò chính
+| Role | Main Responsibility |
+|------|---------------------|
+| **Product Owner** | Product direction, feature prioritization, approve business logic |
+| **Tech Lead** | Architecture decisions, spec review, code quality assurance |
+| **Developer** | Implement from specifications, write tests, participate in code review |
+| **QA Engineer** | Create test plans, execute testing, report bugs |
 
-| Vai trò | Trách nhiệm chính |
-|---------|-------------------|
-| **Product Owner** | Định hướng sản phẩm, ưu tiên features, approve business logic |
-| **Tech Lead** | Quyết định kiến trúc, review specs, đảm bảo chất lượng code |
-| **Developer** | Implement từ specifications, viết tests, tham gia code review |
-| **QA Engineer** | Tạo test plans, thực hiện testing, báo cáo lỗi |
+### Coordination Matrix
 
-### Ma trận phối hợp
-
-| Hoạt động | PO | Lead | Dev | QA |
+| Activity | PO | Lead | Dev | QA |
 |-----------|----|------|-----|----| 
-| Spec | Dẫn dắt | Approve | Soạn thảo | Review |
-| Code | - | Review | Tạo | - |
-| Test | UAT | - | Unit | Dẫn dắt |
+| Spec | Lead | Approve | Draft | Review |
+| Code | - | Review | Create | - |
+| Test | UAT | - | Unit | Lead |
 
----
 
-## Quy trình làm việc (Trunk Based Development)
+## Workflow (Trunk Based Development)
 
 ### Branching Model
 
-| Branch | Mục đích | Bảo vệ | Thời gian tồn tại |
-|--------|----------|--------|-------------------|
-| `main` | Source of truth, luôn deployable | Protected | Vĩnh viễn |
-| `feature/*` | Feature branches ngắn hạn | Không | < 1 ngày |
+| Branch | Purpose | Protection | Lifespan |
+|--------|---------|------------|----------|
+| `main` | Source of truth, always deployable | Protected | Permanent |
+| `feature/*` | Short-lived feature branches | None | < 1 day |
 
-> **Quan trọng**: 
-> - Tất cả developers commit vào `main` thường xuyên
-> - Feature branches phải ngắn hạn (< 1 ngày, tối đa 2-3 ngày)
-> - Không có long-lived branches (`develop`, `release/*`, `hotfix/*`)
+> **Important**: 
+> - All developers commit to `main` frequently
+> - Feature branches must be short-lived (< 1 day, max 2-3 days)
+> - No long-lived branches (`develop`, `release/*`, `hotfix/*`)
 
-### Nguyên tắc TBD
+### TBD Principles
 
-1. **Commit nhỏ, thường xuyên** - Nhiều lần trong ngày
-2. **Feature flags** - Ẩn features chưa hoàn thành trên production
-3. **CI toàn diện** - Tất cả commits phải pass tests trước khi merge
-4. **Không code freeze** - Luôn sẵn sàng deploy
+1. **Small, frequent commits** - Multiple times per day
+2. **Feature flags** - Hide unfinished features in production
+3. **Comprehensive CI** - All commits must pass tests before merge
+4. **No code freeze** - Always ready to deploy
 
-### Quy trình Code Review
+### Code Review Process
 
-```mermaid
-flowchart LR
-    A["Branch từ main"] --> B["Code"]
-    B --> C["Pull Request"]
-    C --> D["CI Checks"]
-    D --> E["Review"]
-    E --> F["Merge vào main"]
+```
+Branch from main --> Code --> Pull Request --> CI Checks --> Review --> Merge to main
 ```
 
 ### Commit Convention
 
 Format: `<type>(<scope>): <subject>`
 
-| Type | Mô tả |
-|------|-------|
-| `feat` | Feature mới |
-| `fix` | Sửa lỗi |
-| `docs` | Cập nhật documentation |
+| Type | Description |
+|------|-------------|
+| `feat` | New feature |
+| `fix` | Bug fix |
+| `docs` | Documentation update |
 | `style` | Formatting |
-| `refactor` | Tái cấu trúc |
-| `test` | Thêm tests |
-| `chore` | Bảo trì |
+| `refactor` | Refactoring |
+| `test` | Add tests |
+| `chore` | Maintenance |
 
----
 
 ## Sprint Process
 
-### Thông tin Sprint
+### Sprint Information
 
-- **Thời lượng**: 2 tuần
-- **Planning**: Thứ 2, 9:00 AM
-- **Review**: Thứ 6, 2:00 PM (tuần 2)
-- **Retrospective**: Thứ 6, 3:00 PM (tuần 2)
+- **Duration**: 2 weeks
+- **Planning**: Monday, 9:00 AM
+- **Review**: Friday, 2:00 PM (week 2)
+- **Retrospective**: Friday, 3:00 PM (week 2)
 
 ### Sprint Ceremonies
 
-| Ceremony | Thời gian | Thời lượng | Mục đích |
-|----------|-----------|------------|----------|
-| **Planning** | Tuần 1, Thứ 2 | 2 giờ | Chọn stories, chia tasks |
-| **Daily Standup** | Hàng ngày | 15 phút | Sync tiến độ |
-| **Sprint Review** | Tuần 2, Thứ 6 | 1 giờ | Demo và nhận feedback |
-| **Retrospective** | Tuần 2, Thứ 6 | 45 phút | Cải tiến quy trình |
+| Ceremony | Timing | Duration | Purpose |
+|----------|--------|----------|---------|
+| **Planning** | Week 1, Monday | 2 hours | Select stories, break down tasks |
+| **Daily Standup** | Daily | 15 minutes | Progress sync |
+| **Sprint Review** | Week 2, Friday | 1 hour | Demo and gather feedback |
+| **Retrospective** | Week 2, Friday | 45 minutes | Process improvement |
 
----
 
 ## Task Workflow
 
-### Trạng thái Task
+### Task Status
 
-```mermaid
-flowchart LR
-    Backlog -->|"Groomed"| Ready
-    Ready -->|"Started"| InProgress
-    InProgress -->|"PR Opened"| CodeReview
-    CodeReview -->|"Approved"| Testing
-    Testing -->|"Passed"| Done
+```
+Backlog --[Groomed]--> Ready --[Started]--> InProgress --[PR Opened]--> CodeReview --[Approved]--> Testing --[Passed]--> Done
 ```
 
 ### Definition of Ready
 
-- [ ] Requirements rõ ràng
-- [ ] Spec đã được approve
-- [ ] Effort đã estimate
+- [ ] Clear requirements
+- [ ] Spec approved
+- [ ] Effort estimated
 
 ### Definition of Done
 
-- [ ] Implementation hoàn thành
+- [ ] Implementation complete
 - [ ] Tests passed
 - [ ] Code reviewed
-- [ ] Docs cập nhật
+- [ ] Docs updated
 
----
 
 ## Quality Gates
 
-### Trước Implementation
+### Before Implementation
 
-- [ ] Specifications approved bởi stakeholders
-- [ ] Test cases định nghĩa trong specs
-- [ ] Technical feasibility xác nhận
+- [ ] Specifications approved by stakeholders
+- [ ] Test cases defined in specs
+- [ ] Technical feasibility confirmed
 
-### Trong Implementation
+### During Implementation
 
-- [ ] Code reviews đối chiếu specs
-- [ ] Test coverage đạt yêu cầu
+- [ ] Code reviews against specs
+- [ ] Test coverage meets requirements
 - [ ] Performance benchmarks validated
 
-### Trước Release
+### Before Release
 
-- [ ] Tất cả spec requirements implemented
-- [ ] Tất cả tests passing
-- [ ] Documentation cập nhật
+- [ ] All spec requirements implemented
+- [ ] All tests passing
+- [ ] Documentation updated
 
----
 
-## Tài liệu liên quan
+## Related Documentation
 
 - [Setup Guide](./setup.md)
 - [Development Guide](./development.md)

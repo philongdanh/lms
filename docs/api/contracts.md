@@ -6,20 +6,25 @@ sidebar_label: Contracts
 
 # API Contracts
 
-Consumer-driven contracts để kiểm thử API.
+Consumer-driven contracts for API testing.
+
+---
 
 ## Overview
 
-API contracts định nghĩa hành vi mong đợi giữa các services (consumers và providers) sử dụng công cụ như Pact.
+API contracts define expected behavior between services (consumers and providers) using tools like Pact.
+
+---
 
 ## Structure
 
 ```
 contracts/
-├── README.md           # File này
 ├── consumer-*.json     # Consumer contracts
-└── provider-*.json     # Kết quả provider verification
+└── provider-*.json     # Provider verification results
 ```
+
+---
 
 ## Contract Template
 
@@ -68,39 +73,47 @@ contracts/
 }
 ```
 
+---
+
 ## Workflow
 
 ### Consumer Side
 
-1. Viết consumer tests để tạo contracts
-2. Publish contracts lên Pact Broker
-3. Chạy trên mỗi consumer PR
+1. Write consumer tests to generate contracts
+2. Publish contracts to Pact Broker
+3. Run on every consumer PR
 
 ### Provider Side
 
-1. Pull contracts từ Pact Broker
-2. Verify provider với contracts
-3. Chạy trên mỗi provider PR
+1. Pull contracts from Pact Broker
+2. Verify provider against contracts
+3. Run on every provider PR
+
+---
 
 ## Guidelines
 
-| Hướng dẫn | Mô tả |
-|-----------|-------|
-| Giữ contracts tối thiểu | Chỉ bao gồm các trường bắt buộc |
-| Sử dụng provider states | Thiết lập test data |
-| Quản lý phiên bản | Theo dõi breaking changes |
-| Tự động hóa verification | Tích hợp CI/CD |
+| Guideline | Description |
+|-----------|-------------|
+| Keep contracts minimal | Include only required fields |
+| Use provider states | Set up test data |
+| Version management | Track breaking changes |
+| Automate verification | Integrate with CI/CD |
+
+---
 
 ## Tools
 
-| Tool | Mục đích |
-|------|----------|
+| Tool | Purpose |
+|------|---------|
 | Pact | Contract testing framework |
-| Pact Broker | Lưu trữ contracts |
-| can-i-deploy | Kiểm tra deployment an toàn |
+| Pact Broker | Contract storage |
+| can-i-deploy | Safe deployment verification |
+
+---
 
 ## References
 
-- [OpenAPI](../openapi/README.md)
-- [Mocks](../mocks/README.md)
-- [API Gateway](/specs/cross-cutting/api-gateway)
+- [OpenAPI](./openapi.md)
+- [Mocks](./mocks.md)
+- [API Gateway](../specs/01-architecture/cross-cutting/api-gateway.md)

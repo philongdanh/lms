@@ -24,40 +24,40 @@ Mô tả quy trình triển khai LMS Platform lên production. Hệ thống tri�
 
 ### Infrastructure Diagram
 
-```mermaid
----
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
----
-flowchart TB
-    subgraph "Load Balancer"
-        Nginx["Nginx (SSL + LB)"]
-    end
-    
-    subgraph "Application Tier"
-        App1["App Instance 1"]
-        App2["App Instance 2"]
-        AppN["App Instance N"]
-    end
-    
-    subgraph "Data Tier"
-        Redis[("Redis Cluster")]
-        PG[("PostgreSQL")]
-        Storage["File Storage"]
-    end
-    
-    Client["Clients"] --> Nginx
-    Nginx --> App1
-    Nginx --> App2
-    Nginx --> AppN
-    
-    App1 --> Redis
-    App1 --> PG
-    App1 --> Storage
-    App2 --> Redis
-    App2 --> PG
-    AppN --> Redis
+> D2 Diagram: [architecture.d2](../specs/d2/architecture.d2)
+
+```d2
+# Infrastructure Architecture
+Client: Clients
+
+LB: Load Balancer {
+  Nginx: Nginx (SSL + LB)
+}
+
+App: Application Tier {
+  App1: App Instance 1
+  App2: App Instance 2
+  AppN: App Instance N
+}
+
+Data: Data Tier {
+  Redis: Redis Cluster { shape: cylinder }
+  PG: PostgreSQL { shape: cylinder }
+  Storage: File Storage { shape: cylinder }
+}
+
+Client -> LB.Nginx
+LB.Nginx -> App.App1
+LB.Nginx -> App.App2
+LB.Nginx -> App.AppN
+
+App.App1 -> Data.Redis
+App.App1 -> Data.PG
+App.App1 -> Data.Storage
+App.App2 -> Data.Redis
+App.App2 -> Data.PG
+App.AppN -> Data.Redis
+```
     AppN --> PG
 ```
 
@@ -166,30 +166,33 @@ server {
 
 Cho môi trường production với yêu cầu cao về availability:
 
-```mermaid
----
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
----
-sequenceDiagram
-    participant LB as Load Balancer
-    participant Blue as Blue Environment
-    participant Green as Green Environment
-    participant DB as Database
-    
-    Note over LB,Blue: Current: Blue is active
-    
-    Green->>DB: Run migrations
-    Green->>Green: Deploy new version
-    Green->>Green: Health check passed
-    
-    LB->>Green: Switch traffic to Green
-    
-    Note over LB,Green: Now: Green is active
-    
-    Blue->>Blue: Keep for rollback (30 min)
-    Blue->>Blue: Shutdown
+```d2
+# Blue-Green Deployment Sequence
+direction: right
+
+LB: Load Balancer
+Blue: Blue Environment
+Green: Green Environment
+DB: Database { shape: cylinder }
+
+# Current state
+LB -> Blue: "1. Current active"
+
+# Deployment steps
+Green -> DB: "2. Run migrations"
+Green: "3. Deploy new version" {
+  style.stroke: green
+}
+
+# Switch traffic
+LB -> Green: "4. Switch traffic" {
+  style.stroke-dash: 3
+}
+
+# Cleanup
+Blue: "5. Keep for rollback (30 min), then shutdown" {
+  style.opacity: 0.5
+}
 ```
 
 ---

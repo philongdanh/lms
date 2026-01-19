@@ -78,19 +78,18 @@ Test cases được derive từ specifications của module Auth
 }
 ```
 
-### Metrics cần theo dõi
+### Metrics to Monitor
 - Test pass rate
 - Defect density
 - Test execution time
 - Test coverage
 
----
 
 ## Validation Checklist
-- [ ] Test coverage matrix đầy đủ
-- [ ] Tất cả specs có test cases
-- [ ] Test data requirements đã định nghĩa
-- [ ] Automation strategy đã chỉ định
+- [ ] Test coverage matrix complete
+- [ ] All specs have test cases
+- [ ] Test data requirements defined
+- [ ] Automation strategy specified
 
 
 ---
@@ -146,7 +145,8 @@ Performance specifications cho module Auth
 - [ ] Throughput > [req/sec]
 
 ## Monitoring & Alerting
-### Metrics cần giám sát
+
+### Metrics to Monitor
 - [ ] Response time percentiles
 - [ ] Error rates
 - [ ] Throughput

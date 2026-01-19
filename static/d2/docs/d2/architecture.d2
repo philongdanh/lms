@@ -1,0 +1,80 @@
+# System Architecture Diagram
+# D2 Documentation: https://d2lang.com
+
+direction: right
+
+# External Layer
+client: Client Layer {
+  web: Web Browser
+  mobile: Mobile App
+}
+
+# Gateway Layer
+gateway: API Gateway {
+  nginx: Nginx
+  rate-limit: Rate Limiter
+  auth: Auth Middleware
+}
+
+# Application Layer
+app: Application Layer {
+  graphql: GraphQL Server {
+    apollo: Apollo Server
+  }
+  rest: REST API {
+    upload: File Upload
+    webhook: Webhooks
+  }
+}
+
+# Service Layer
+services: Services {
+  auth: Auth Service
+  learning: Learning Service
+  tournament: Tournament Service
+  notification: Notification Service
+  gamification: Gamification Service
+}
+
+# Data Layer
+data: Data Layer {
+  postgres: PostgreSQL {
+    shape: cylinder
+  }
+  redis: Redis Cache {
+    shape: cylinder
+  }
+  s3: Object Storage {
+    shape: cylinder
+  }
+}
+
+# External Services
+external: External Services {
+  sms: SMS Provider
+  email: Email Provider
+  oauth: OAuth Providers
+}
+
+# Connections
+client.web -> gateway.nginx: HTTPS
+client.mobile -> gateway.nginx: HTTPS
+
+gateway.nginx -> gateway.rate-limit
+gateway.rate-limit -> gateway.auth
+gateway.auth -> app.graphql
+gateway.auth -> app.rest
+
+app.graphql -> services
+app.rest -> services
+
+services.auth -> data.postgres
+services.auth -> data.redis
+services.learning -> data.postgres
+services.tournament -> data.postgres
+services.tournament -> data.redis
+services.notification -> external.sms
+services.notification -> external.email
+services.auth -> external.oauth
+
+app.rest.upload -> data.s3

@@ -6,34 +6,49 @@ sidebar_label: Design
 
 # Design System
 
-Thiết kế UI/UX và hệ thống design.
+UI/UX design references and documentation.
 
-## Structure
+---
 
-```
-design/
-├── research/           # User research
-│   ├── personas.md     # User personas
-│   ├── journeys.md     # User journeys
-│   └── usability.md    # Hướng dẫn khả dụng
-│
-├── wireframes/         # Thiết kế low-fidelity
-│   └── README.md       # Hướng dẫn wireframe
-│
-└── design-system/      # Hệ thống thiết kế
-    ├── tokens.md       # Design tokens
-    └── guidelines.md   # Hướng dẫn component
-```
+## Contents
 
-## Quick Links
+| Document | Purpose |
+|----------|---------|
+| [Tokens](./tokens.md) | Design tokens (colors, spacing, radius) |
+| [Typography](./typography.md) | Font families, scales, text styles |
+| [Components](./components.md) | UI component guidelines |
+| [Wireframes](./wireframes.md) | Wireframe templates and patterns |
+| [Research](./research/README.md) | User research (personas, journeys) |
 
-| Section | Mô tả |
-|---------|--------|
-| [Research](./research/README.md) | Nghiên cứu người dùng & personas |
-| [Wireframes](./wireframes/README.md) | Thiết kế low-fidelity |
-| [Design System](./design-system/README.md) | Tokens & hướng dẫn |
+---
+
+## External References
+
+| Tool | Purpose | Link |
+|------|---------|------|
+| Figma | UI/UX Design | `[Figma Project URL]` |
+| Figma | Design System | `[Design System URL]` |
+| Figma | Wireframes | `[Wireframes URL]` |
+| Figma | Prototypes | `[Prototype URL]` |
+| Storybook | Component Library | `[Storybook URL]` |
+
+---
+
+## Design Principles
+
+| Principle | Description |
+|-----------|-------------|
+| Clarity | Clear, understandable interfaces |
+| Consistency | Uniform patterns across all screens |
+| Feedback | Immediate response to user actions |
+| Accessibility | WCAG 2.1 AA compliance |
+
+---
 
 ## References
 
-- [Specs](/specs/)
-- [Docs](/)
+- [Tokens](./tokens.md)
+- [Typography](./typography.md)
+- [Components](./components.md)
+- [Wireframes](./wireframes.md)
+- [Research](./research/README.md)

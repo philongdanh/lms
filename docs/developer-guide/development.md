@@ -116,21 +116,9 @@ modules/[module-name]/
 
 ### Feature Development Flow
 
-```mermaid
----
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
----
-flowchart LR
-    A[Analyze Requirements] --> B[Database Design]
-    B --> C[Run Migration]
-    C --> D[Implement Backend]
-    D --> E[Write Unit Tests]
-    E --> F[Implement Frontend]
-    F --> G[Integration Test]
-    G --> H[Code Review]
-    H --> I[Merge]
+```
+Analyze Requirements --> Database Design --> Run Migration --> Implement Backend
+      --> Write Unit Tests --> Implement Frontend --> Integration Test --> Code Review --> Merge
 ```
 
 ### Development Steps

@@ -1,6 +1,12 @@
+---
+id: changelog
+title: Changelog
+sidebar_label: What's New
+---
+
 # What's New
 
-Trang này tổng hợp các thay đổi quan trọng giữa các phiên bản của LMS Documentation.
+This page summarizes important changes between LMS Documentation versions.
 
 ## Release History
 
@@ -13,20 +19,19 @@ Trang này tổng hợp các thay đổi quan trọng giữa các phiên bản c
 
 ## Versioning Policy
 
-Chúng tôi sử dụng **Semantic Versioning** với format `MAJOR.MINOR`:
+We use **Semantic Versioning** with format `MAJOR.MINOR`:
 
-- **MAJOR** (1.0 → 2.0): Breaking changes, restructure lớn
-- **MINOR** (1.0 → 1.1): Features mới, improvements
+- **MAJOR** (1.0 → 2.0): Breaking changes, major restructure
+- **MINOR** (1.0 → 1.1): New features, improvements
 
-### Quy trình Release
+### Release Process
 
-1. Development hoàn tất trên branch `main`
-2. Tạo version snapshot: `npm run version:all --ver=X.Y`
-3. Viết release notes tại `docs/changelog/vX.Y.md`
-4. Build và deploy
+1. Development completed on `main` branch
+2. Create version snapshot: `npm run version:all --ver=X.Y`
+3. Write release notes at `docs/changelog/vX.Y.md`
+4. Build and deploy
 
----
 
-## Báo cáo Issues
+## Report Issues
 
-Nếu phát hiện lỗi hoặc có đề xuất, vui lòng tạo issue tại [GitHub Repository](https://github.com/idlongggg/lms/issues).
+If you find bugs or have suggestions, please create an issue at [GitHub Repository](https://github.com/idlongggg/lms/issues).

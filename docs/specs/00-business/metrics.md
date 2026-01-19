@@ -90,5 +90,5 @@ Các chỉ số đo lường thành công của dự án.
 
 ## References
 
-- [Product Vision](./vision.md)
+- [Business Overview](./overview.md)
 - [Constraints](./constraints.md)

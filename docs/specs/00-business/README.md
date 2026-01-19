@@ -7,23 +7,24 @@ sidebar_position: 1
 
 # Business Specifications
 
-Bối cảnh nghiệp vụ và yêu cầu cho nền tảng LMS.
+Business context and requirements for the LMS platform.
 
----
 
 ## Documents
 
 | Document | Description |
 |----------|-------------|
-| [Vision](./vision.md) | Tầm nhìn và mục tiêu sản phẩm |
-| [Roadmap](./roadmap.md) | Lộ trình phát triển tính năng |
-| [Metrics](./metrics.md) | Chỉ số thành công và KPIs |
-| [Constraints](./constraints.md) | Ràng buộc nghiệp vụ và kỹ thuật |
-| [Glossary](./glossary.md) | Thuật ngữ và định nghĩa |
+| [Overview](./overview.md) | Project vision, scope, and strategic context |
+| [Requirements](./requirements.md) | Functional and non-functional requirements |
+| [Use Cases](./use-cases.md) | User stories and use case catalog |
+| [Product Roadmap](./product-roadmap.md) | Product phases and milestones |
+| [Metrics](./metrics.md) | Success metrics and KPIs |
+| [Constraints](./constraints.md) | Business and technical constraints |
+| [Glossary](./glossary.md) | Terms and definitions |
+| [Research](./research/) | Market and user research |
 
----
 
-## Related
+## References
 
 - [Architecture](../01-architecture/system-design.md)
 - [Modules](../02-modules/auth/overview.md)
