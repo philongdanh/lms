@@ -57,7 +57,7 @@ Giám sát hệ thống, logging và alerting.
 
 ### Log Levels
 
-| Level | Sử dụng | Ví dụ |
+| Level | Usage | Example |
 |-------|---------|-------|
 | ERROR | Lỗi cần chú ý | Exception, operation thất bại |
 | WARN | Vấn đề tiềm ẩn | Deprecated usage, retry |

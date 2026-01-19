@@ -52,7 +52,7 @@ Các đặc tả hiệu năng cho module Gamification.
 ## Performance Targets
 
 ### Response Times
-| Thao tác | P50 | P95 | P99 | Max | Phương pháp đo |
+| Operation | P50 | P95 | P99 | Max | Measurement |
 |-----------|-----|-----|-----|-----|-------------|
 | Get Profile | 30ms | 100ms | 300ms | 1s | DB Read |
 | Get Leaderboard | 20ms | 50ms | 100ms | 500ms | Redis Read |

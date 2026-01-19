@@ -32,7 +32,7 @@ Các test case cho module Admin.
 | TC-ADM-INT-001 | Tạo Tenant gửi email | Admin, Email | Email nhận được |
 
 ### 4. Security Tests
-| Test ID | Khía cạnh | Phương pháp | Result |
+| Test ID | Aspect | Method | Result |
 |---------|--------|--------|--------|
 | TC-ADM-SEC-001 | Tenant Admin không thể tạo Tenant | POST /tenants | 403 Forbidden |
 
@@ -52,7 +52,7 @@ Các thông số hiệu năng cho module Admin.
 ## Performance Targets
 
 ### Response Times
-| Thao tác | P50 | P95 | P99 | Max | Phương pháp đo |
+| Operation | P50 | P95 | P99 | Max | Measurement |
 |-----------|-----|-----|-----|-----|-------------|
 | Create Tenant | 500ms | 1s | 2s | 5s | API End-to-end |
 | Import Users (500) | 2s | 5s | 8s | 15s | Job Duration |

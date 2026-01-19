@@ -52,7 +52,7 @@ Các đặc tả hiệu năng cho module Real-time.
 ## Performance Targets
 
 ### Response Times
-| Thao tác | P50 | P95 | P99 | Max | Cách đo |
+| Operation | P50 | P95 | P99 | Max | Cách đo |
 |-----------|-----|-----|-----|-----|-------------|
 | Connect Handshake | 50ms | 100ms | 300ms | 1s | Xử lý Server |
 | Message Delivery | 20ms | 50ms | 100ms | 500ms | End-to-end |

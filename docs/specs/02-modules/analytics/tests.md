@@ -51,7 +51,7 @@ Các thông số hiệu suất cho module Analytics.
 ## Performance Targets
 
 ### Response Times
-| Thao tác | P50 | P95 | P99 | Max | Phương pháp đo |
+| Operation | P50 | P95 | P99 | Max | Measurement |
 |-----------|-----|-----|-----|-----|-------------|
 | Knowledge Map Load | 50ms | 100ms | 300ms | 1s | DB/Cache Read |
 | Report Generation (30 ngày) | 200ms | 500ms | 1s | 3s | Agg Query |

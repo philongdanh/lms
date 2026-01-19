@@ -50,7 +50,7 @@ Module này cung cấp hạ tầng WebSocket để hỗ trợ các tính năng t
 - ❌ Không có - Self-hosted Socket.IO cluster.
 
 ## KPIs & Metrics
-| Chỉ số | Mục tiêu | Phương pháp đo | Tần suất |
+| Metric | Target | Measurement | Frequency |
 |--------|--------|-------------------|-----------|
 | Connection Latency | < 100ms | Thời gian Handshake | Real-time |
 | Concurrent Connections | > 10k | Load Test | Hàng tuần |

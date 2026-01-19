@@ -51,7 +51,7 @@ Module quản trị hệ thống cung cấp các tính năng quản lý Tenant (
 - ✅ Email Service (SendGrid) - Gửi email kích hoạt.
 
 ## KPIs & Metrics
-| Chỉ số | Mục tiêu | Phương pháp đo | Tần suất |
+| Metric | Target | Measurement | Frequency |
 |--------|--------|-------------------|-----------|
 | Tenant Creation Time | < 2s | API Latency | Real-time |
 | Import Speed | < 10s / 500 users | Job Duration | Real-time |

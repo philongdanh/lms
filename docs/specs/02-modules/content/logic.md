@@ -58,7 +58,7 @@ Module cốt lõi quản lý Cấu trúc Chương trình học (Subject, Grade, 
 - ✅ Search Engine (Elasticsearch) - Tìm kiếm câu hỏi và bài học.
 
 ## KPIs & Metrics
-| Metric | Mục tiêu | Phương pháp đo lường | Tần suất |
+| Metric | Target | Measurement | Frequency |
 |--------|--------|-------------------|-----------|
 | Content Upload Success Rate | > 99% | Giám sát Log | Hàng ngày |
 | Question Import Speed | < 5s cho 100 câu hỏi | Thời gian thực hiện Job | Real-time |

@@ -69,7 +69,7 @@ Module cốt lõi cho Students, chịu trách nhiệm về Adaptive Learning Pat
 - ✅ AI Service (Python) - Mô hình đề xuất lộ trình học tập.
 
 ## KPIs & Metrics
-| Metric | Mục tiêu | Phương pháp đo lường | Tần suất |
+| Metric | Target | Measurement | Frequency |
 |--------|--------|-------------------|-----------|
 | Adaptive Path Accuracy | > 85% | User feedback & click-through rate | Hàng tuần |
 | Lesson Completion Rate | > 60% | DB query (completed / started) | Hàng ngày |
