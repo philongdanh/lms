@@ -160,7 +160,7 @@ enum ErrorCode {
 }
 ```
 
-> For complete error codes and response format, see [API Contracts](../../api/contracts.md#error-codes).
+> For complete error codes and response format, see [API Contracts](../../api/contracts.md).
 
 ---
 

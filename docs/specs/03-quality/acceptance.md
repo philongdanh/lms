@@ -112,7 +112,7 @@ This document defines clear, testable acceptance criteria for LMS features.
 - JWT token is issued
 - Refresh token is stored in httpOnly cookie
 - Redirect to role-appropriate dashboard
-- Display "Welcome {name}"
+- Display "Welcome \{name\}"
 
 ---
 
