@@ -6,7 +6,7 @@ sidebar_label: System Design
 
 # System Design
 
-Kiến trúc nền tảng LMS - hệ thống quản lý học tập multi-tenant có khả năng mở rộng cao.
+LMS Platform architecture - a highly scalable multi-tenant learning management system.
 
 ---
 
@@ -14,7 +14,7 @@ Kiến trúc nền tảng LMS - hệ thống quản lý học tập multi-tenant
 
 ### Architecture Diagram
 
-Hệ thống sử dụng **kiến trúc monolithic** với hỗ trợ **multi-tenant** - mỗi trường là một tenant độc lập, đảm bảo cách ly dữ liệu hoàn toàn.
+The system uses a **monolithic architecture** with **multi-tenant** support - each school is an independent tenant, ensuring complete data isolation.
 
 ```d2
 direction: down
@@ -130,7 +130,7 @@ App -> Data Layer.Redis
 
 ### 4.2. Application Layer
 
-#### 4.2.1. Các Module Nghiệp Vụ (Business Modules)
+#### 4.2.1. Business Modules
 
 | Module | Main Functions | Corresponding FR | Technology Stack |
 |--------|-----------------|------------------|------------------|

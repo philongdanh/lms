@@ -1,36 +1,49 @@
 ---
 id: api
-title: API Reference
+title: API Documentation
 sidebar_label: API
 ---
 
-# API Reference
+# API Documentation
 
-Tài liệu API specifications và contracts.
+API design and documentation.
 
-## Structure
+---
 
-```
-api/
-├── openapi/        # OpenAPI specifications
-│   └── main.yaml   # Tài liệu API chính
-│
-├── contracts/      # API contracts (Pact)
-│   └── README.md   # Hướng dẫn Contract
-│
-└── mocks/          # Mock server setup
-    └── README.md   # Hướng dẫn Mock
-```
+## Contents
 
-## Quick Links
+| Document | Purpose |
+|----------|---------|
+| [Contracts](./contracts.md) | API contract definitions |
+| [Mocks](./mocks.md) | Mock data patterns |
+| [OpenAPI](./openapi.md) | OpenAPI specification |
 
-| Section | Mô tả |
-|---------|--------|
-| [OpenAPI](./openapi/README.md) | Tài liệu API specifications |
-| [Contracts](./contracts/README.md) | Consumer contracts |
-| [Mocks](./mocks/README.md) | Mock server |
+---
+
+## External References
+
+| Tool | Purpose | Link |
+|------|---------|------|
+| OpenAPI | API Specification | [main.yaml](./openapi/main.yaml) |
+| Postman | API Testing | `[Postman Collection URL]` |
+
+---
+
+## API Design Principles
+
+| Principle | Description |
+|-----------|-------------|
+| RESTful | Follow REST conventions for resources |
+| Versioning | Use URL versioning (`/api/v1/`) |
+| Consistency | Uniform naming and response structure |
+| Documentation | OpenAPI/Swagger for all endpoints |
+| Error Handling | Standardized error response format |
+
+---
 
 ## References
 
-- [Specs](/specs/)
-- [API Gateway](/specs/cross-cutting/api-gateway)
+- [Contracts](./contracts.md)
+- [Mocks](./mocks.md)
+- [OpenAPI](./openapi.md)
+- [API Gateway](../specs/01-architecture/cross-cutting/api-gateway.md)

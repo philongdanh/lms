@@ -1,53 +1,66 @@
+---
+id: specs
+title: Specifications
+sidebar_label: Specs
+---
+
 # Specifications
 
-Tài liệu đặc tả theo phương pháp Spec-Driven Development.
+Spec-Driven Development documentation.
+
 
 ## Structure
 
 ```
 specs/
-├── 00-business/        # What & Why
-│   ├── vision.md       # Tầm nhìn sản phẩm
-│   ├── roadmap.md      # Lộ trình phát triển
-│   ├── metrics.md      # Chỉ số thành công
-│   ├── constraints.md  # Ràng buộc kỹ thuật & nghiệp vụ
-│   └── glossary.md     # Thuật ngữ
+├── 00-business/            # What & Why
+│   ├── overview.md         # Project vision and scope
+│   ├── requirements.md     # Functional & non-functional requirements
+│   ├── use-cases.md        # User stories and use cases
+│   ├── product-roadmap.md  # Product phases and milestones
+│   ├── metrics.md          # Success metrics
+│   ├── constraints.md      # Technical & business constraints
+│   ├── glossary.md         # Terms and definitions
+│   └── research/           # Market and user research
 │
-├── 01-architecture/    # How (high-level)
-│   ├── system-design.md# Kiến trúc tổng thể
-│   ├── data-model.md   # Thiết kế database
-│   ├── tech-stack.md   # Công nghệ sử dụng
-│   └── decisions.md    # Các quyết định kiến trúc (ADR)
+├── 01-architecture/        # How (high-level)
+│   ├── system-design.md    # Overall system architecture
+│   ├── tech-stack.md       # Technology stack
+│   ├── decisions.md        # Architecture decision records (ADR)
+│   ├── frontend.md         # Frontend architecture
+│   ├── backend.md          # Backend architecture
+│   └── cross-cutting/      # System-wide concerns
+│       ├── security.md     # Security policies
+│       ├── api-gateway.md  # API gateway configuration
+│       ├── monitoring.md   # System monitoring
+│       └── error-handling.md # Error handling
 │
-├── 02-modules/         # How (detailed)
-│   └── {module}/       # Đặc tả chi tiết từng module
-│       ├── overview.md # Tổng quan module
-│       ├── logic.md    # Business logic & workflows
-│       ├── data.md     # Data model
-│       ├── api.md      # API contracts
-│       └── tests.md    # Test scenarios
+├── 02-modules/             # How (detailed)
+│   └── {module}/           # Detailed module specifications
+│       ├── overview.md     # Module overview
+│       ├── logic.md        # Business logic & workflows
+│       ├── data.md         # Data model
+│       ├── api.md          # API contracts
+│       └── tests.md        # Test scenarios
 │
-├── 03-cross-cutting/   # System-wide concerns
-│   ├── security.md     # Chính sách bảo mật
-│   ├── api-gateway.md  # Cấu hình API gateway
-│   ├── monitoring.md   # Giám sát hệ thống
-│   └── error-handling.md# Xử lý lỗi
-│
-└── 04-quality/         # Quality assurance
-    ├── test-strategy.md# Chiến lược kiểm thử
-    ├── automation.md   # Tự động hóa kiểm thử
-    └── benchmarks.md   # Benchmark hiệu năng
+└── 03-quality/             # Quality assurance
+    ├── test-strategy.md    # Testing strategy
+    ├── automation.md       # Test automation
+    ├── benchmarks.md       # Performance benchmarks
+    ├── acceptance.md       # Acceptance criteria
+    └── test-cases.md       # Integration & E2E tests
 ```
+
 
 ## Quick Links
 
 | Section | Purpose |
 |---------|---------|
-| [Business](./00-business/README.md) | Tầm nhìn, lộ trình, chỉ số, ràng buộc |
-| [Architecture](./01-architecture/README.md) | Kiến trúc hệ thống, data model, tech stack |
-| [Modules](./02-modules/README.md) | Đặc tả chi tiết các module |
-| [Cross-Cutting](./03-cross-cutting/README.md) | Bảo mật, API gateway, giám sát |
-| [Quality](./04-quality/README.md) | Chiến lược kiểm thử, automation, benchmarks |
+| [Business](./00-business/README.md) | Vision, roadmap, metrics, constraints |
+| [Architecture](./01-architecture/README.md) | System architecture, data model, tech stack |
+| [Modules](./02-modules/README.md) | Detailed module specifications |
+| [Quality](./03-quality/README.md) | Testing strategy, automation, benchmarks |
+
 
 ## References
 

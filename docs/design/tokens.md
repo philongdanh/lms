@@ -1,82 +1,74 @@
 ---
-id: design-tokens
+id: tokens
 title: Design Tokens
 sidebar_label: Tokens
 ---
 
 # Design Tokens
 
-Design tokens cho styling nhất quán.
+Design tokens for consistent styling.
 
 ---
 
-## Colors
+## Color Palette
 
 ### Brand Colors
 
-| Token | Value | Sử dụng |
-|-------|-------|--------|
-| `--color-primary` | #[hex] | Hành động chính |
-| `--color-primary-dark` | #[hex] | Trạng thái hover |
-| `--color-primary-light` | #[hex] | Backgrounds |
-| `--color-secondary` | #[hex] | Hành động phụ |
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--color-primary` | #3B82F6 | Primary actions |
+| `--color-primary-dark` | #2563EB | Hover states |
+| `--color-primary-light` | #DBEAFE | Backgrounds |
+| `--color-secondary` | #6366F1 | Secondary actions |
 
 ### Semantic Colors
 
-| Token | Value | Sử dụng |
-|-------|-------|--------|
-| `--color-success` | #22C55E | Trạng thái thành công |
-| `--color-warning` | #F59E0B | Trạng thái cảnh báo |
-| `--color-error` | #EF4444 | Trạng thái lỗi |
-| `--color-info` | #3B82F6 | Trạng thái thông tin |
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--color-success` | #22C55E | Success states |
+| `--color-warning` | #F59E0B | Warning states |
+| `--color-error` | #EF4444 | Error states |
+| `--color-info` | #3B82F6 | Info states |
 
 ### Neutral Colors
 
-| Token | Value | Sử dụng |
-|-------|-------|--------|
+| Token | Value | Usage |
+|-------|-------|-------|
 | `--color-gray-50` | #F9FAFB | Backgrounds |
 | `--color-gray-100` | #F3F4F6 | Hover |
 | `--color-gray-200` | #E5E7EB | Borders |
-| `--color-gray-500` | #6B7280 | Text mờ |
+| `--color-gray-500` | #6B7280 | Muted text |
 | `--color-gray-900` | #111827 | Text |
 
----
+### Priority Colors
 
-## Typography
+| Priority | Hex | Usage |
+|----------|-----|-------|
+| P0 - Critical | `#DC2626` | Must have for MVP |
+| P1 - High | `#F97316` | Should have for MVP |
+| P2 - Medium | `#EAB308` | Nice to have |
+| P3 - Low | `#22C55E` | Future consideration |
 
-### Font Family
+### Type Colors
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--font-sans` | Inter, system-ui | Body text |
-| `--font-mono` | JetBrains Mono | Code |
+| Type | Hex | Usage |
+|------|-----|-------|
+| Frontend FE | `#3B82F6` | UI/UX implementation |
+| Backend BE | `#8B5CF6` | API/Database work |
+| Full-stack FS | `#6366F1` | Both FE and BE |
+| DevOps DO | `#14B8A6` | Infrastructure |
 
-### Font Sizes
+### Difficulty Colors
 
-| Token | Value | Line Height | Usage |
-|-------|-------|-------------|-------|
-| `--text-xs` | 12px | 16px | Labels |
-| `--text-sm` | 14px | 20px | Body small |
-| `--text-base` | 16px | 24px | Body |
-| `--text-lg` | 18px | 28px | Body large |
-| `--text-xl` | 20px | 28px | Heading |
-| `--text-2xl` | 24px | 32px | Heading |
-| `--text-3xl` | 30px | 36px | Heading |
-
-### Font Weights
-
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--font-normal` | 400 | Body |
-| `--font-medium` | 500 | Emphasis |
-| `--font-semibold` | 600 | Headings |
-| `--font-bold` | 700 | Strong |
+| Difficulty | Hex | Points |
+|------------|-----|--------|
+| Easy | `#22C55E` | 1-2 pts |
+| Medium | `#F59E0B` | 3-5 pts |
+| Hard | `#EF4444` | 8-13 pts |
 
 ---
 
 ## Spacing
-
-### Scale
 
 | Token | Value | Usage |
 |-------|-------|-------|
@@ -162,5 +154,5 @@ Design tokens cho styling nhất quán.
 
 ## References
 
-- [Guidelines](./guidelines.md)
-- [Usability](../research/usability.md)
+- [Typography](./typography.md)
+- [Components](./components.md)

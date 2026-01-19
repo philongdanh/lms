@@ -6,112 +6,107 @@ sidebar_label: FAQ
 
 # Frequently Asked Questions
 
-Tổng hợp các câu hỏi và giải đáp phổ biến về LMS Platform.
+Collection of common questions and answers about LMS Platform.
 
----
 
 ## General
 
-### LMS Platform là gì?
+### What is LMS Platform?
 
-LMS Platform là hệ thống quản lý học tập thông minh, kết hợp **AI Learning Paths** và **Gamification** để cá nhân hóa trải nghiệm học tập cho học sinh từ lớp 1-12.
+LMS Platform is an intelligent learning management system, combining **AI Learning Paths** and **Gamification** to personalize learning experiences for students from grades 1-12.
 
-### LMS dành cho ai?
+### Who is LMS for?
 
 | Audience | Description |
 |----------|-------------|
-| **Học sinh** | Lớp 1-12, học tập cá nhân hóa và thi đấu |
-| **Phụ huynh** | Theo dõi tiến độ và báo cáo học tập con em |
-| **Giáo viên** | Quản lý lớp, tạo đề thi, theo dõi học sinh |
-| **Trường học** | Quản trị hệ thống, tổ chức tournament |
+| **Students** | Grades 1-12, personalized learning and competitions |
+| **Parents** | Track progress and learning reports |
+| **Teachers** | Manage classes, create exams, monitor students |
+| **Schools** | System administration, organize tournaments |
 
-### Chi phí sử dụng như thế nào?
+### What are the costs?
 
-LMS được cung cấp qua trường học. Vui lòng liên hệ quản trị viên trường để biết chi tiết.
+LMS is provided through schools. Please contact your school administrator for details.
 
----
 
 ## Account
 
-### Làm sao để tạo tài khoản?
+### How to create an account?
 
-1. Liên hệ quản trị viên trường học để được cấp tài khoản
-2. Hoặc đăng ký tại trang chủ LMS (nếu cho phép)
-3. Xác nhận email và đăng nhập lần đầu
+1. Contact your school administrator for account provisioning
+2. Or register at LMS homepage (if allowed)
+3. Confirm email and log in for the first time
 
-### Làm sao để đặt lại mật khẩu?
+### How to reset password?
 
-1. Nhấn **Quên mật khẩu** tại trang đăng nhập
-2. Nhập email đã đăng ký
-3. Kiểm tra email và làm theo hướng dẫn
+1. Click **Forgot Password** on the login page
+2. Enter your registered email
+3. Check email and follow instructions
 
-### Làm sao để xóa tài khoản?
+### How to delete account?
 
-Liên hệ quản trị viên trường học hoặc gửi yêu cầu qua email hỗ trợ.
+Contact your school administrator or submit a request via support email.
 
----
 
 ## Features
 
-### Làm sao để tham gia Tournament?
+### How to join a Tournament?
 
-1. Vào menu **Tournament** trên thanh điều hướng
-2. Chọn cuộc thi đang **Mở đăng ký**
-3. Nhấn **Tham gia** và chờ đến giờ thi
-4. Hoàn thành bài thi trong thời gian quy định
+1. Go to **Tournament** menu in navigation
+2. Select competition with **Open Registration** status
+3. Click **Join** and wait for competition time
+4. Complete the exam within the time limit
 
-### Làm sao để xem lộ trình học tập (Learning Path)?
+### How to view Learning Path?
 
-1. Đăng nhập vào hệ thống
-2. Vào **Dashboard** hoặc **Learning Path**
-3. Hệ thống AI sẽ gợi ý lộ trình dựa trên năng lực của bạn
+1. Log in to the system
+2. Go to **Dashboard** or **Learning Path**
+3. AI system will suggest a path based on your abilities
 
-### Điểm và huy hiệu (Gamification) hoạt động như thế nào?
+### How do points and badges (Gamification) work?
 
-- **Điểm kinh nghiệm (XP)**: Nhận khi hoàn thành bài học, bài tập
-- **Huy hiệu (Badge)**: Đạt được khi hoàn thành mục tiêu đặc biệt
-- **Streak**: Duy trì học tập liên tục để tăng streak
-- **Bảng xếp hạng**: So sánh với bạn bè và học sinh khác
+- **Experience Points (XP)**: Earned when completing lessons, exercises
+- **Badges**: Achieved when completing special goals
+- **Streak**: Maintain continuous learning to increase streak
+- **Leaderboard**: Compare with friends and other students
 
----
 
 ## Troubleshooting
 
-### Tại sao tôi không đăng nhập được?
+### Why can't I log in?
 
-**Nguyên nhân có thể**:
-- Sai email hoặc mật khẩu
-- Tài khoản chưa được kích hoạt
-- Tài khoản bị khóa
+**Possible causes**:
+- Wrong email or password
+- Account not activated
+- Account locked
 
-**Giải pháp**:
-1. Kiểm tra lại thông tin đăng nhập
-2. Thử đặt lại mật khẩu
-3. Liên hệ quản trị viên nếu vẫn không được
+**Solutions**:
+1. Verify login information
+2. Try resetting password
+3. Contact administrator if still not working
 
-### Tại sao bài thi của tôi không nộp được?
+### Why can't I submit my exam?
 
-**Nguyên nhân có thể**:
-- Mất kết nối internet
-- Hết thời gian làm bài
-- Lỗi trình duyệt
+**Possible causes**:
+- Lost internet connection
+- Time expired
+- Browser error
 
-**Giải pháp**:
-1. Kiểm tra kết nối internet
-2. Refresh trang và thử lại
-3. Báo cáo lỗi cho quản trị viên để xem xét
+**Solutions**:
+1. Check internet connection
+2. Refresh page and try again
+3. Report error to administrator for review
 
-### Làm sao để báo cáo lỗi?
+### How to report a bug?
 
-1. Vào [GitHub Issues](https://github.com/idlongggg/lms/issues)
-2. Nhấn **New Issue**
-3. Mô tả chi tiết lỗi gặp phải (bước thực hiện, ảnh chụp màn hình)
+1. Go to [GitHub Issues](https://github.com/idlongggg/lms/issues)
+2. Click **New Issue**
+3. Describe error in detail (steps, screenshots)
 
----
 
 ## Technical
 
-### Trình duyệt nào được hỗ trợ?
+### Which browsers are supported?
 
 | Browser | Minimum Version |
 |---------|-----------------|
@@ -120,14 +115,14 @@ Liên hệ quản trị viên trường học hoặc gửi yêu cầu qua email 
 | Safari | 14+ |
 | Edge | 90+ |
 
-### Yêu cầu hệ thống là gì?
+### What are the system requirements?
 
 | Requirement | Specification |
 |-------------|---------------|
-| Kết nối internet | Tối thiểu 1 Mbps |
-| Màn hình | Tối thiểu 1024x768 |
-| JavaScript | Bật |
-| Cookies | Bật |
+| Internet connection | Minimum 1 Mbps |
+| Screen | Minimum 1024x768 |
+| JavaScript | Enabled |
+| Cookies | Enabled |
 
 ---
 

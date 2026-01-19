@@ -6,25 +6,24 @@ sidebar_label: Personas
 
 # User Personas
 
-User personas cho thiết kế sản phẩm.
+User personas for product design.
 
----
 
 ## Persona Template
 
-### [Tên Persona]
+### [Persona Name]
 
-**Nhân khẩu học**:
-| Thuộc tính | Giá trị |
-|-----------|--------|
-| Tuổi | [Độ tuổi] |
-| Vai trò | [Role] |
-| Kinh nghiệm | [Mức độ] |
-| Vị trí | [Địa điểm] |
+**Demographics**:
+| Attribute | Value |
+|-----------|-------|
+| Age | [Age range] |
+| Role | [Role] |
+| Experience | [Level] |
+| Location | [Location] |
 
-**Mục tiêu**:
-- [Mục tiêu chính]
-- [Mục tiêu phụ]
+**Goals**:
+- [Primary goal]
+- [Secondary goal]
 
 **Pain Points**:
 - [Pain point 1]

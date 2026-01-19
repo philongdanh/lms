@@ -25,5 +25,5 @@ sidebar_label: Glossary
 
 ## References
 
-- [Product Vision](./vision.md)
+- [Business Overview](./overview.md)
 - [System Design](../01-architecture/system-design.md)

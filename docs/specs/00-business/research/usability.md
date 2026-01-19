@@ -128,4 +128,4 @@ Dựa trên 10 Usability Heuristics của Nielsen:
 
 - [Personas](./personas.md)
 - [Journeys](./journeys.md)
-- [Design System](../design-system/guidelines.md)
+- [Design System](../../design/components.md)

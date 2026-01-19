@@ -76,6 +76,6 @@ Các ràng buộc kỹ thuật và nghiệp vụ định hình thiết kế hệ
 
 ## References
 
-- [Product Vision](./vision.md)
+- [Business Overview](./overview.md)
 - [Success Metrics](./metrics.md)
 - [System Design](../01-architecture/system-design.md)

@@ -6,27 +6,26 @@ sidebar_label: Journeys
 
 # User Journeys
 
-User journey maps cho các luồng chính.
+User journey maps for main flows.
 
----
 
 ## Journey Map Template
 
-### [Tên Journey]
+### [Journey Name]
 
-**Persona**: [Tên Persona]
-**Mục tiêu**: [Người dùng muốn đạt được gì]
-**Scenario**: [Ngữ cảnh của journey]
+**Persona**: [Persona Name]
+**Goal**: [What the user wants to achieve]
+**Scenario**: [Journey context]
 
-#### Các giai đoạn Journey
+#### Journey Phases
 
-| Giai đoạn | Hành động | Suy nghĩ | Cảm xúc | Cơ hội |
-|-----------|----------|---------|---------|--------|
-| Awareness | [Hành động] | [Suy nghĩ] | 😐 | [Cơ hội] |
-| Consideration | [Hành động] | [Suy nghĩ] | 🤔 | [Cơ hội] |
-| Decision | [Hành động] | [Suy nghĩ] | 😊 | [Cơ hội] |
-| Action | [Hành động] | [Suy nghĩ] | 😄 | [Cơ hội] |
-| Retention | [Hành động] | [Suy nghĩ] | 😊 | [Cơ hội] |
+| Phase | Action | Thought | Emotion | Opportunity |
+|-------|--------|---------|---------|-------------|
+| Awareness | [Action] | [Thought] | 😐 | [Opportunity] |
+| Consideration | [Action] | [Thought] | 🤔 | [Opportunity] |
+| Decision | [Action] | [Thought] | 😊 | [Opportunity] |
+| Action | [Action] | [Thought] | 😄 | [Opportunity] |
+| Retention | [Action] | [Thought] | 😊 | [Opportunity] |
 
 #### Journey Flow
 
