@@ -125,15 +125,15 @@ async function createConfig() {
           items: [
             {
               label: "Specifications",
-              to: "/specs/",
+              to: "/specs",
             },
             {
               label: "Design System",
-              to: "/design/",
+              to: "/design",
             },
             {
               label: "API Reference",
-              to: "/api/",
+              to: "/api",
             },
           ],
         },
