@@ -2,10 +2,10 @@ const sidebars = {
   specs: [
     {
       type: 'category',
-      label: 'Specifications',
+      label: 'Specs',
       link: {
         type: 'generated-index',
-        title: 'Specifications',
+        title: 'Specs',
         description:
           'Tài liệu đặc tả yêu cầu, kiến trúc và chức năng của hệ thống.',
         slug: '/specs',
@@ -21,10 +21,10 @@ const sidebars = {
   design: [
     {
       type: 'category',
-      label: 'Design System',
+      label: 'Design',
       link: {
         type: 'generated-index',
-        title: 'Design System',
+        title: 'Design',
         description: 'Quy định về UI, UX và Design Tokens.',
         slug: '/design',
       },
@@ -39,7 +39,7 @@ const sidebars = {
   api: [
     {
       type: 'category',
-      label: 'API Reference',
+      label: 'API',
       link: {
         type: 'generated-index',
         title: 'API Reference',
@@ -94,10 +94,10 @@ const sidebars = {
   project: [
     {
       type: 'category',
-      label: 'Project Information',
+      label: 'Project',
       link: {
         type: 'generated-index',
-        title: 'Project Information',
+        title: 'Project',
         description:
           'Thông tin về quản lý dự án, quy trình và đội ngũ phát triển.',
         slug: '/project',
@@ -113,10 +113,10 @@ const sidebars = {
   changelog: [
     {
       type: 'category',
-      label: 'Changelog',
+      label: "What's New",
       link: {
         type: 'generated-index',
-        title: 'Changelog',
+        title: "What's New",
         description: 'Lịch sử thay đổi và cập nhật của dự án.',
         slug: '/changelog',
       },
