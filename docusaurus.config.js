@@ -57,20 +57,14 @@ async function createConfig() {
       items: [
         {
           type: "docSidebar",
-          sidebarId: "userGuide",
-          label: "User Guide",
-          position: "left",
-        },
-        {
-          type: "docSidebar",
           sidebarId: "specs",
           label: "Specs",
           position: "left",
         },
         {
           type: "docSidebar",
-          sidebarId: "devGuide",
-          label: "Developer Guide",
+          sidebarId: "design",
+          label: "Design",
           position: "left",
         },
         {
@@ -81,8 +75,14 @@ async function createConfig() {
         },
         {
           type: "docSidebar",
-          sidebarId: "design",
-          label: "Design",
+          sidebarId: "devGuide",
+          label: "Developer Guide",
+          position: "left",
+        },
+        {
+          type: "docSidebar",
+          sidebarId: "userGuide",
+          label: "User Guide",
           position: "left",
         },
         {

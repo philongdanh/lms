@@ -1,8 +1,7 @@
 {
   "label": "Developer Guide",
-  "position": 4,
   "link": {
     "type": "generated-index",
-    "description": "T\u00e0i li\u1ec7u k\u1ef9 thu\u1eadt, setup m\u00f4i tr\u01b0\u1eddng v\u00e0 workflow cho dev."
+    "description": "Tài liệu kỹ thuật, setup môi trường và workflow cho dev."
   }
 }

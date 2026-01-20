@@ -1,6 +1,7 @@
 ---
 id: epics
 title: Epics
+slug: /project/epics
 sidebar_label: Epics
 sidebar_position: 1
 ---
