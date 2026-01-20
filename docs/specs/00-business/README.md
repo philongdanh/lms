@@ -10,10 +10,14 @@ sidebar_position: 0
 Project vision, scope, and strategic context.
 
 
+---
+
 ## Vision
 
 Hệ thống LMS thông minh hướng đến cá nhân hóa giáo dục cho học sinh từ lớp 1-12. Điểm khác biệt cốt lõi là sự kết hợp **AI Learning Paths** và **Cơ chế thi đấu (Gamification)** để tăng động lực học tập.
 
+
+---
 
 ## Problem Statement
 
@@ -25,6 +29,8 @@ Hệ thống LMS thông minh hướng đến cá nhân hóa giáo dục cho họ
 | Opportunity | Kết hợp AI và gamification để tối ưu trải nghiệm |
 
 
+---
+
 ## Solution
 
 | Aspect | Description |
@@ -33,6 +39,8 @@ Hệ thống LMS thông minh hướng đến cá nhân hóa giáo dục cho họ
 | Key Features | AI Learning Paths, Tournament, Gamification, Multi-tenant |
 | Differentiators | Cá nhân hóa AI + Cơ chế thi đấu |
 
+
+---
 
 ## Scope
 
@@ -52,6 +60,8 @@ Hệ thống LMS thông minh hướng đến cá nhân hóa giáo dục cho họ
 | Offline Mode | Phase 2 |
 
 
+---
+
 ## Stakeholders
 
 | Role | Name | Responsibility |
@@ -61,6 +71,8 @@ Hệ thống LMS thông minh hướng đến cá nhân hóa giáo dục cho họ
 | Designer | [TBD] | UX/UI design |
 | Sponsor | [TBD] | Budget and resources |
 
+
+---
 
 ## Target Users
 
@@ -72,6 +84,8 @@ Hệ thống LMS thông minh hướng đến cá nhân hóa giáo dục cho họ
 | **School** | Quản trị viên trường | Tổng quan học sinh, tổ chức thi đấu |
 
 
+---
+
 ## Value Proposition
 
 - **Cho học sinh**: Lộ trình học AI cá nhân hóa, thi đấu hấp dẫn, hệ thống phần thưởng
@@ -79,6 +93,8 @@ Hệ thống LMS thông minh hướng đến cá nhân hóa giáo dục cho họ
 - **Cho giáo viên**: Bộ công cụ quản lý toàn diện, ngân hàng câu hỏi
 - **Cho trường học**: Cách ly multi-tenant, tổ chức tournament
 
+
+---
 
 ## Success Criteria
 
@@ -89,6 +105,8 @@ Hệ thống LMS thông minh hướng đến cá nhân hóa giáo dục cho họ
 | Tournament Participation | 50% eligible users | Tournament metrics |
 
 
+---
+
 ## Timeline
 
 | Phase | Duration | Focus |
@@ -97,6 +115,8 @@ Hệ thống LMS thông minh hướng đến cá nhân hóa giáo dục cho họ
 | Phase 2 | Q3-Q4 | Advanced features, Mobile |
 | Phase 3 | Year 2 | Scale & Enterprise |
 
+
+---
 
 ## References
 
