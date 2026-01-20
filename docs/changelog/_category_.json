@@ -2,6 +2,8 @@
   "label": "Changelog",
   "link": {
     "type": "generated-index",
-    "description": "Lịch sử Changelog và Release Versions."
+    "title": "Changelog",
+    "description": "Lịch sử thay đổi và cập nhật của dự án.",
+    "slug": "/changelog"
   }
 }

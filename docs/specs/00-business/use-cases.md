@@ -13,18 +13,19 @@ User stories, use case catalog, and flow diagrams.
 
 ## Overview
 
-This document defines user stories following the standard format and use cases with clear acceptance criteria.
+This document defines user stories following the standard format and use cases
+with clear acceptance criteria.
 
 ---
 
 ## User Story Format
 
-| Component | Description |
-|-----------|-------------|
-| Role | As a [role] |
-| Action | I want to [action] |
-| Benefit | So that [benefit] |
-| Criteria | Acceptance criteria list |
+| Component | Description              |
+| --------- | ------------------------ |
+| Role      | As a [role]              |
+| Action    | I want to [action]       |
+| Benefit   | So that [benefit]        |
+| Criteria  | Acceptance criteria list |
 
 ---
 
@@ -39,6 +40,7 @@ This document defines user stories following the standard format and use cases w
 **So that** I can learn according to my personal needs
 
 **Acceptance Criteria**:
+
 - [ ] AI analyzes strengths/weaknesses
 - [ ] Suggests appropriate lessons
 - [ ] Updates based on progress
@@ -50,6 +52,7 @@ This document defines user stories following the standard format and use cases w
 **So that** I can find relevant learning materials
 
 **Acceptance Criteria**:
+
 - [ ] Navigation works correctly
 - [ ] Filter by semester applied
 - [ ] Content displays properly
@@ -63,6 +66,7 @@ This document defines user stories following the standard format and use cases w
 **So that** I have motivation to learn
 
 **Acceptance Criteria**:
+
 - [ ] Countdown in competition rounds
 - [ ] Scores update instantly
 - [ ] Real-time leaderboard
@@ -74,6 +78,7 @@ This document defines user stories following the standard format and use cases w
 **So that** I can participate in competitions
 
 **Acceptance Criteria**:
+
 - [ ] Registration successful
 - [ ] View and Join buttons work
 - [ ] Invitation codes validated
@@ -87,6 +92,7 @@ This document defines user stories following the standard format and use cases w
 **So that** I can support their education
 
 **Acceptance Criteria**:
+
 - [ ] View detailed reports
 - [ ] Real-time notifications
 - [ ] 4-level reporting access
@@ -97,47 +103,47 @@ This document defines user stories following the standard format and use cases w
 
 ### UC-AUTH-001: User Registration
 
-| Field | Value |
-|-------|-------|
-| Actor | Guest User |
-| Precondition | User not logged in |
-| Trigger | User clicks "Register" |
-| Main Flow | 1. Enter email/phone, password, name 2. Submit form 3. Receive OTP 4. Verify OTP 5. Account activated |
-| Postcondition | User account created and active |
-| Exceptions | E1: Email exists, E2: Invalid OTP |
+| Field         | Value                                                                                                 |
+| ------------- | ----------------------------------------------------------------------------------------------------- |
+| Actor         | Guest User                                                                                            |
+| Precondition  | User not logged in                                                                                    |
+| Trigger       | User clicks "Register"                                                                                |
+| Main Flow     | 1. Enter email/phone, password, name 2. Submit form 3. Receive OTP 4. Verify OTP 5. Account activated |
+| Postcondition | User account created and active                                                                       |
+| Exceptions    | E1: Email exists, E2: Invalid OTP                                                                     |
 
 ### UC-AUTH-002: User Login
 
-| Field | Value |
-|-------|-------|
-| Actor | Registered User |
-| Precondition | Account exists and verified |
-| Trigger | User clicks "Login" |
-| Main Flow | 1. Enter credentials 2. Validate 3. Issue tokens 4. Redirect to dashboard |
-| Postcondition | User authenticated |
-| Exceptions | E1: Invalid credentials, E2: Account locked |
+| Field         | Value                                                                     |
+| ------------- | ------------------------------------------------------------------------- |
+| Actor         | Registered User                                                           |
+| Precondition  | Account exists and verified                                               |
+| Trigger       | User clicks "Login"                                                       |
+| Main Flow     | 1. Enter credentials 2. Validate 3. Issue tokens 4. Redirect to dashboard |
+| Postcondition | User authenticated                                                        |
+| Exceptions    | E1: Invalid credentials, E2: Account locked                               |
 
 ### UC-LEARN-001: View AI Learning Path
 
-| Field | Value |
-|-------|-------|
-| Actor | Student |
-| Precondition | User logged in as Student |
-| Trigger | User opens Learning dashboard |
-| Main Flow | 1. Load user profile 2. AI analyzes learning history 3. Generate personalized path 4. Display recommendations |
-| Postcondition | AI learning path displayed |
-| Exceptions | E1: No learning history, E2: AI service unavailable |
+| Field         | Value                                                                                                         |
+| ------------- | ------------------------------------------------------------------------------------------------------------- |
+| Actor         | Student                                                                                                       |
+| Precondition  | User logged in as Student                                                                                     |
+| Trigger       | User opens Learning dashboard                                                                                 |
+| Main Flow     | 1. Load user profile 2. AI analyzes learning history 3. Generate personalized path 4. Display recommendations |
+| Postcondition | AI learning path displayed                                                                                    |
+| Exceptions    | E1: No learning history, E2: AI service unavailable                                                           |
 
 ### UC-COMP-001: Join Tournament
 
-| Field | Value |
-|-------|-------|
-| Actor | Student |
-| Precondition | User logged in, Tournament available |
-| Trigger | User clicks "Join Tournament" |
-| Main Flow | 1. Select tournament 2. Verify eligibility 3. Confirm registration 4. Enter waiting room |
-| Postcondition | User registered for tournament |
-| Exceptions | E1: Not eligible, E2: Tournament full |
+| Field         | Value                                                                                    |
+| ------------- | ---------------------------------------------------------------------------------------- |
+| Actor         | Student                                                                                  |
+| Precondition  | User logged in, Tournament available                                                     |
+| Trigger       | User clicks "Join Tournament"                                                            |
+| Main Flow     | 1. Select tournament 2. Verify eligibility 3. Confirm registration 4. Enter waiting room |
+| Postcondition | User registered for tournament                                                           |
+| Exceptions    | E1: Not eligible, E2: Tournament full                                                    |
 
 ---
 
@@ -176,6 +182,6 @@ Complete -> Dashboard: Progress Updated
 
 ## References
 
-- [Overview](./README.md)
+- [Overview](/specs)
 - [Requirements](./requirements.md)
 - [Glossary](./glossary.md)

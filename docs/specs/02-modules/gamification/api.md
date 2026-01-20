@@ -10,11 +10,14 @@ sidebar_position: 2
 ---
 
 ## Overview
-API để truy cập thông tin Gamification: Hồ sơ Thành tích, Bảng xếp hạng, và Cửa hàng Phần thưởng.
+
+API để truy cập thông tin Gamification: Hồ sơ Thành tích, Bảng xếp hạng, và Cửa
+hàng Phần thưởng.
 
 ---
 
 ## Base Information
+
 - **Base URL**: `/api/v1/gamification`
 - **Version**: 1.0
 - **Authentication**: Bearer Token
@@ -22,29 +25,34 @@ API để truy cập thông tin Gamification: Hồ sơ Thành tích, Bảng xế
 ---
 
 ## Endpoints Summary
-| Method | Endpoint | Description | Auth Required | Rate Limit |
-|--------|----------|-------------|---------------|------------|
-| GET | `/profile` | Lấy thông tin EXP, Level, Ví | ✅ | 60/min |
-| GET | `/leaderboard` | Lấy bảng xếp hạng | ✅ | 60/min |
-| GET | `/badges` | Lấy danh sách badge của tôi | ✅ | 60/min |
-| GET | `/rewards` | Lấy danh sách phần thưởng trong cửa hàng | ✅ | 60/min |
-| POST | `/rewards/redeem` | Đổi phần thưởng | ✅ | 10/min |
+
+| Method | Endpoint          | Description                              | Auth Required | Rate Limit |
+| ------ | ----------------- | ---------------------------------------- | ------------- | ---------- |
+| GET    | `/profile`        | Lấy thông tin EXP, Level, Ví             | ✅            | 60/min     |
+| GET    | `/leaderboard`    | Lấy bảng xếp hạng                        | ✅            | 60/min     |
+| GET    | `/badges`         | Lấy danh sách badge của tôi              | ✅            | 60/min     |
+| GET    | `/rewards`        | Lấy danh sách phần thưởng trong cửa hàng | ✅            | 60/min     |
+| POST   | `/rewards/redeem` | Đổi phần thưởng                          | ✅            | 10/min     |
 
 ---
 
 ## Endpoint Details
 
 ### Endpoint: GET `/profile`
+
 **Description**: Lấy hồ sơ gamification của người dùng hiện tại.
 
 #### Request
+
 ```http
 GET /api/v1/gamification/profile
 Authorization: Bearer {token}
 ```
 
 #### Response
+
 **Success (200 OK)**:
+
 ```json
 {
   "data": {
@@ -58,16 +66,20 @@ Authorization: Bearer {token}
 ```
 
 ### Endpoint: GET `/leaderboard`
+
 **Description**: Lấy bảng xếp hạng người dùng theo tuần/tháng/toàn thời gian.
 
 #### Request
+
 ```http
 GET /api/v1/gamification/leaderboard?period=weekly&limit=10
 Authorization: Bearer {token}
 ```
 
 #### Response
+
 **Success (200 OK)**:
+
 ```json
 {
   "data": [
@@ -87,9 +99,11 @@ Authorization: Bearer {token}
 ```
 
 ### Endpoint: POST `/rewards/redeem`
+
 **Description**: Thực hiện đổi phần thưởng.
 
 #### Request
+
 ```http
 POST /api/v1/gamification/rewards/redeem
 Authorization: Bearer {token}
@@ -101,7 +115,9 @@ Authorization: Bearer {token}
 ```
 
 #### Response
+
 **Success (200 OK)**:
+
 ```json
 {
   "status": "success",
@@ -117,27 +133,31 @@ Authorization: Bearer {token}
 ---
 
 ## Error Responses
-| Code | Error | Description |
-|------|-------|-------------|
-| 400 | `GAME_INSUFFICIENT_COINS` | Số dư xu không đủ |
-| 400 | `GAME_OUT_OF_STOCK` | Phần thưởng đã hết hàng |
-| 409 | `GAME_CONCURRENT_TRANSACTION` | Lỗi xử lý giao dịch đồng thời |
+
+| Code | Error                         | Description                   |
+| ---- | ----------------------------- | ----------------------------- |
+| 400  | `GAME_INSUFFICIENT_COINS`     | Số dư xu không đủ             |
+| 400  | `GAME_OUT_OF_STOCK`           | Phần thưởng đã hết hàng       |
+| 409  | `GAME_CONCURRENT_TRANSACTION` | Lỗi xử lý giao dịch đồng thời |
 
 ---
 
 ## Performance Requirements
+
 - **Leaderboard**: Phản hồi < 50ms (từ Redis).
 - **Redeem**: Giao dịch < 500ms.
 
 ---
 
 ## Security Requirements
+
 - [ ] Xác thực tồn kho và số dư một cách atomic.
 - [ ] Chống gian lận: Giới hạn tốc độ đổi thưởng (ví dụ: tối đa 5 món/ngày).
 
 ---
 
 ## Validation Checklist
+
 - [ ] Đã xác minh đồng bộ Redis cho Bảng xếp hạng.
 - [ ] Đã kiểm tra tính toàn vẹn giao dịch dưới tải.
 
@@ -145,4 +165,4 @@ Authorization: Bearer {token}
 
 ## References
 
-- [Overview](./README.md)
+- [Overview](/specs)

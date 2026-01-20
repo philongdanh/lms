@@ -13,13 +13,13 @@ Test automation framework và setup.
 
 ## Framework Stack
 
-| Test Type | Framework | Runner |
-|-----------|-----------|--------|
-| Unit | [Jest/Vitest/Pytest] | [Framework] |
+| Test Type   | Framework            | Runner      |
+| ----------- | -------------------- | ----------- |
+| Unit        | [Jest/Vitest/Pytest] | [Framework] |
 | Integration | [Supertest/Requests] | [Framework] |
-| E2E | [Cypress/Playwright] | [Framework] |
-| API | [Postman/Insomnia] | Newman |
-| Performance | [k6/Artillery] | CLI |
+| E2E         | [Cypress/Playwright] | [Framework] |
+| API         | [Postman/Insomnia]   | Newman      |
+| Performance | [k6/Artillery]       | CLI         |
 
 ---
 
@@ -62,20 +62,20 @@ module.exports = {
       branches: 80,
       functions: 80,
       lines: 80,
-      statements: 80
-    }
-  }
+      statements: 80,
+    },
+  },
 };
 ```
 
 ### Best Practices
 
-| Practice | Description |
-|----------|-------|
-| AAA Pattern | Arrange, Act, Assert |
-| One assertion | Một concept mỗi test |
+| Practice          | Description                            |
+| ----------------- | -------------------------------------- |
+| AAA Pattern       | Arrange, Act, Assert                   |
+| One assertion     | Một concept mỗi test                   |
 | Descriptive names | `should_returnError_when_invalidInput` |
-| Mock externals | Database, HTTP, filesystem |
+| Mock externals    | Database, HTTP, filesystem             |
 
 ### Example
 
@@ -85,10 +85,10 @@ describe('UserService', () => {
     it('should create user with valid data', async () => {
       // Arrange
       const userData = { email: 'test@example.com' };
-      
+
       // Act
       const result = await userService.createUser(userData);
-      
+
       // Assert
       expect(result.email).toBe(userData.email);
     });
@@ -102,11 +102,11 @@ describe('UserService', () => {
 
 ### Database Testing
 
-| Approach | Use Case |
-|----------|----------|
-| Test containers | Isolated database |
-| Transaction rollback | Fast cleanup |
-| Seed data | Consistent state |
+| Approach             | Use Case          |
+| -------------------- | ----------------- |
+| Test containers      | Isolated database |
+| Transaction rollback | Fast cleanup      |
+| Seed data            | Consistent state  |
 
 ### API Testing
 
@@ -117,7 +117,7 @@ describe('POST /api/users', () => {
       .post('/api/users')
       .send({ email: 'test@example.com' })
       .expect(201);
-    
+
     expect(response.body.data.email).toBe('test@example.com');
   });
 });
@@ -138,8 +138,8 @@ export default {
   use: {
     baseURL: 'http://localhost:3000',
     screenshot: 'only-on-failure',
-    video: 'retain-on-failure'
-  }
+    video: 'retain-on-failure',
+  },
 };
 ```
 
@@ -149,7 +149,7 @@ export default {
 // pages/LoginPage.ts
 class LoginPage {
   constructor(private page: Page) {}
-  
+
   async login(email: string, password: string) {
     await this.page.fill('[name="email"]', email);
     await this.page.fill('[name="password"]', password);
@@ -175,20 +175,20 @@ stages:
 
 ### Triggers
 
-| Trigger | Tests Run |
-|---------|-----------|
-| PR | Unit + Integration |
-| Merge to main | All tests |
-| Nightly | Full suite + Performance |
-| Release | Full suite + E2E |
+| Trigger       | Tests Run                |
+| ------------- | ------------------------ |
+| PR            | Unit + Integration       |
+| Merge to main | All tests                |
+| Nightly       | Full suite + Performance |
+| Release       | Full suite + E2E         |
 
 ### Parallelization
 
-| Strategy | Use Case |
-|----------|----------|
-| Test splitting | Large test suites |
-| Sharding | E2E tests |
-| Parallel jobs | Independent modules |
+| Strategy       | Use Case            |
+| -------------- | ------------------- |
+| Test splitting | Large test suites   |
+| Sharding       | E2E tests           |
+| Parallel jobs  | Independent modules |
 
 ---
 
@@ -196,19 +196,19 @@ stages:
 
 ### Test Reports
 
-| Report | Tool | Output |
-|--------|------|--------|
-| Coverage | Istanbul | HTML/JSON |
-| Unit Results | Jest | JUnit XML |
-| E2E Results | Playwright | HTML |
+| Report       | Tool       | Output    |
+| ------------ | ---------- | --------- |
+| Coverage     | Istanbul   | HTML/JSON |
+| Unit Results | Jest       | JUnit XML |
+| E2E Results  | Playwright | HTML      |
 
 ### Notifications
 
-| Event | Channel |
-|-------|---------|
-| Test failure | Slack |
-| Coverage drop | Slack + Email |
-| Nightly report | Email |
+| Event          | Channel       |
+| -------------- | ------------- |
+| Test failure   | Slack         |
+| Coverage drop  | Slack + Email |
+| Nightly report | Email         |
 
 ---
 
@@ -216,18 +216,18 @@ stages:
 
 ### Test Health Metrics
 
-| Metric | Target | Alert |
-|--------|--------|-------|
-| Flaky test rate | < 1% | > 5% |
-| Test duration | < 10 min | > 15 min |
-| Coverage trend | Stable/up | Decreasing |
+| Metric          | Target    | Alert      |
+| --------------- | --------- | ---------- |
+| Flaky test rate | < 1%      | > 5%       |
+| Test duration   | < 10 min  | > 15 min   |
+| Coverage trend  | Stable/up | Decreasing |
 
 ### Cleanup Tasks
 
-| Task | Frequency |
-|------|-----------|
-| Review flaky tests | Weekly |
-| Update test data | Monthly |
+| Task                | Frequency  |
+| ------------------- | ---------- |
+| Review flaky tests  | Weekly     |
+| Update test data    | Monthly    |
 | Audit test coverage | Per sprint |
 
 ---

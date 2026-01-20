@@ -13,11 +13,11 @@ Quy trình release và deployment.
 
 ## Release Types
 
-| Type | Frequency | Scope |
-|------|-----------|-------|
-| Major | Quarterly | New features, breaking changes |
-| Minor | Bi-weekly (Sprint) | New features, enhancements |
-| Patch | As needed | Bug fixes, hotfixes |
+| Type  | Frequency          | Scope                          |
+| ----- | ------------------ | ------------------------------ |
+| Major | Quarterly          | New features, breaking changes |
+| Minor | Bi-weekly (Sprint) | New features, enhancements     |
+| Patch | As needed          | Bug fixes, hotfixes            |
 
 ---
 
@@ -179,12 +179,12 @@ kubectl rollout undo deployment/lms-backend
 ## Release Checklist Template
 
 ```markdown
-
 ---
 
 ## Release v1.x.x Checklist
 
 ### Pre-Release
+
 - [ ] All stories Done
 - [ ] Code freeze
 - [ ] Version bumped
@@ -192,12 +192,14 @@ kubectl rollout undo deployment/lms-backend
 - [ ] Release notes written
 
 ### QA
+
 - [ ] Staging deployed
 - [ ] Regression tests pass
 - [ ] Performance OK
 - [ ] Security scan OK
 
 ### Release
+
 - [ ] PO approval
 - [ ] Merge to main
 - [ ] Tag created
@@ -205,6 +207,7 @@ kubectl rollout undo deployment/lms-backend
 - [ ] Smoke test OK
 
 ### Post-Release
+
 - [ ] Monitoring OK
 - [ ] No critical issues
 - [ ] Team notified

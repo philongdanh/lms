@@ -66,23 +66,23 @@ bun run dev
 
 ### Meetings
 
-| Meeting | With | Duration |
-|---------|------|----------|
-| Project Overview | PO | 1 hour |
-| Architecture | Tech Lead | 1 hour |
-| Codebase Tour | Senior Dev | 2 hours |
-| Design System | Designer | 1 hour |
-| Process | Scrum Master | 30 min |
+| Meeting          | With         | Duration |
+| ---------------- | ------------ | -------- |
+| Project Overview | PO           | 1 hour   |
+| Architecture     | Tech Lead    | 1 hour   |
+| Codebase Tour    | Senior Dev   | 2 hours  |
+| Design System    | Designer     | 1 hour   |
+| Process          | Scrum Master | 30 min   |
 
 ### Reading
 
-| Document | Priority |
-|----------|----------|
-| [Product Overview](../../specs/00-business/README.md) | Must |
-| [Tech Stack](../../specs/01-architecture/tech-stack.md) | Must |
-| [Frontend Architecture](../../specs/01-architecture/frontend.md) | Must |
-| [Backend Architecture](../../specs/01-architecture/backend.md) | Should |
-| [DoD](../processes/dod.md) | Must |
+| Document                                                         | Priority |
+| ---------------------------------------------------------------- | -------- |
+| [Product Overview](/specs)                                       | Must     |
+| [Tech Stack](../../specs/01-architecture/tech-stack.md)          | Must     |
+| [Frontend Architecture](../../specs/01-architecture/frontend.md) | Must     |
+| [Backend Architecture](../../specs/01-architecture/backend.md)   | Should   |
+| [DoD](../processes/dod.md)                                       | Must     |
 
 ---
 
@@ -99,12 +99,12 @@ Suitable tasks for newcomers:
 
 ### Expectations
 
-| Week | Expectation |
-|------|-------------|
+| Week   | Expectation                |
+| ------ | -------------------------- |
 | Week 1 | Complete 1-2 starter tasks |
 | Week 2 | Contribute to sprint items |
-| Week 3 | Pick up regular stories |
-| Week 4 | Independent contributor |
+| Week 3 | Pick up regular stories    |
+| Week 4 | Independent contributor    |
 
 ---
 
@@ -112,21 +112,21 @@ Suitable tasks for newcomers:
 
 ### Key Contacts
 
-| Role | Person | Slack |
-|------|--------|-------|
-| Tech Lead | TBD | @tech-lead |
-| Senior Dev | TBD | @senior-dev |
-| PM/PO | TBD | @product |
-| SM | TBD | @scrum-master |
+| Role       | Person | Slack         |
+| ---------- | ------ | ------------- |
+| Tech Lead  | TBD    | @tech-lead    |
+| Senior Dev | TBD    | @senior-dev   |
+| PM/PO      | TBD    | @product      |
+| SM         | TBD    | @scrum-master |
 
 ### Learning Resources
 
-| Topic | Resource |
-|-------|----------|
-| React | [React Docs](https://react.dev) |
+| Topic      | Resource                                            |
+| ---------- | --------------------------------------------------- |
+| React      | [React Docs](https://react.dev)                     |
 | TypeScript | [TS Handbook](https://www.typescriptlang.org/docs/) |
-| GraphQL | [Apollo Docs](https://www.apollographql.com/docs/) |
-| Tailwind | [Tailwind Docs](https://tailwindcss.com/docs) |
+| GraphQL    | [Apollo Docs](https://www.apollographql.com/docs/)  |
+| Tailwind   | [Tailwind Docs](https://tailwindcss.com/docs)       |
 
 ---
 

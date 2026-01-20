@@ -7,7 +7,8 @@ sidebar_position: 1
 
 # Setup Guide
 
-Hướng dẫn cài đặt môi trường phát triển cho LMS Platform. Kết quả: môi trường development hoàn chỉnh với tất cả dependencies cần thiết.
+Hướng dẫn cài đặt môi trường phát triển cho LMS Platform. Kết quả: môi trường
+development hoàn chỉnh với tất cả dependencies cần thiết.
 
 ---
 
@@ -15,23 +16,23 @@ Hướng dẫn cài đặt môi trường phát triển cho LMS Platform. Kết 
 
 ### Required Software
 
-| Software | Version | Purpose | Download |
-|----------|---------|---------|----------|
-| **Node.js** | 18.x+ | JavaScript runtime | [nodejs.org](https://nodejs.org) |
-| **Docker** | 20.10+ | Containerization | [docker.com](https://docker.com) |
-| **Docker Compose** | v2.0+ | Multi-container orchestration | Included with Docker Desktop |
-| **Git** | 2.30+ | Version control | [git-scm.com](https://git-scm.com) |
-| **VS Code** | Latest | IDE (recommended) | [code.visualstudio.com](https://code.visualstudio.com) |
+| Software           | Version | Purpose                       | Download                                               |
+| ------------------ | ------- | ----------------------------- | ------------------------------------------------------ |
+| **Node.js**        | 18.x+   | JavaScript runtime            | [nodejs.org](https://nodejs.org)                       |
+| **Docker**         | 20.10+  | Containerization              | [docker.com](https://docker.com)                       |
+| **Docker Compose** | v2.0+   | Multi-container orchestration | Included with Docker Desktop                           |
+| **Git**            | 2.30+   | Version control               | [git-scm.com](https://git-scm.com)                     |
+| **VS Code**        | Latest  | IDE (recommended)             | [code.visualstudio.com](https://code.visualstudio.com) |
 
 ### Recommended Extensions
 
-| Extension | Purpose |
-|-----------|---------|
-| ESLint | Linting integration |
-| Prettier | Code formatting |
-| Prisma | Prisma schema highlighting |
-| GitLens | Git integration |
-| Thunder Client | API testing |
+| Extension      | Purpose                    |
+| -------------- | -------------------------- |
+| ESLint         | Linting integration        |
+| Prettier       | Code formatting            |
+| Prisma         | Prisma schema highlighting |
+| GitLens        | Git integration            |
+| Thunder Client | API testing                |
 
 ---
 
@@ -63,14 +64,14 @@ cp .env.example .env
 
 **Variables to configure**:
 
-| Variable | Description | Development Value |
-|----------|-------------|-------------------|
-| `DATABASE_URL` | PostgreSQL connection | `postgresql://postgres:postgres@localhost:5432/lms_dev` |
-| `REDIS_URL` | Redis connection | `redis://localhost:6379` |
-| `JWT_SECRET` | JWT signing key | `dev-secret-key-change-in-production` |
-| `JWT_EXPIRY` | Access token TTL | `15m` |
-| `REFRESH_TOKEN_EXPIRY` | Refresh token TTL | `7d` |
-| `MAX_DEVICES_PER_USER` | Device limit | `3` |
+| Variable               | Description           | Development Value                                       |
+| ---------------------- | --------------------- | ------------------------------------------------------- |
+| `DATABASE_URL`         | PostgreSQL connection | `postgresql://postgres:postgres@localhost:5432/lms_dev` |
+| `REDIS_URL`            | Redis connection      | `redis://localhost:6379`                                |
+| `JWT_SECRET`           | JWT signing key       | `dev-secret-key-change-in-production`                   |
+| `JWT_EXPIRY`           | Access token TTL      | `15m`                                                   |
+| `REFRESH_TOKEN_EXPIRY` | Refresh token TTL     | `7d`                                                    |
+| `MAX_DEVICES_PER_USER` | Device limit          | `3`                                                     |
 
 ### Start Infrastructure
 
@@ -90,6 +91,7 @@ docker-compose ps
 ```
 
 **Expected output**:
+
 ```
 NAME                SERVICE    STATUS    PORTS
 lms-postgres        postgres   running   0.0.0.0:5432->5432/tcp
@@ -129,6 +131,7 @@ npx prisma db seed
 ```
 
 **Seed Data includes**:
+
 - 5 Roles: `root-admin`, `tenant-admin`, `teacher`, `parent`, `student`
 - Permission groups: `user:*`, `content:*`, `exam:*`, `tournament:*`, etc.
 - Subjects: Toán, Tiếng Việt, Toán Tiếng Anh
@@ -151,11 +154,11 @@ npm run start:dev
 
 **Endpoints**:
 
-| URL | Description |
-|-----|-------------|
-| `http://localhost:3000` | API Server |
+| URL                              | Description               |
+| -------------------------------- | ------------------------- |
+| `http://localhost:3000`          | API Server                |
 | `http://localhost:3000/api/docs` | Swagger API Documentation |
-| `http://localhost:3000/health` | Health Check |
+| `http://localhost:3000/health`   | Health Check              |
 
 ### Frontend Development Mode
 
@@ -180,6 +183,7 @@ curl http://localhost:3000/health
 ```
 
 **Expected response**:
+
 ```json
 {
   "status": "ok",
@@ -197,6 +201,7 @@ curl http://localhost:3000/health
 **Symptom**: `Can't reach database server`
 
 **Solution**:
+
 ```bash
 
 ---
@@ -220,6 +225,7 @@ docker-compose logs postgres
 **Symptom**: `Unknown field` hoặc `Property does not exist`
 
 **Solution**:
+
 ```bash
 
 ---
@@ -238,6 +244,7 @@ npm run start:dev
 **Symptom**: `EADDRINUSE: address already in use`
 
 **Solution**:
+
 ```bash
 
 ---
@@ -256,6 +263,7 @@ kill -9 <PID>
 **Symptom**: `ECONNREFUSED 127.0.0.1:6379`
 
 **Solution**:
+
 ```bash
 
 ---
@@ -273,15 +281,15 @@ docker-compose restart redis
 
 ## Common Commands
 
-| Command | Purpose |
-|---------|---------|
-| `docker-compose up -d` | Start all services |
-| `docker-compose down` | Stop all services |
-| `docker-compose logs -f` | View logs (follow) |
-| `docker-compose ps` | List running containers |
-| `docker-compose restart <service>` | Restart specific service |
-| `docker-compose exec postgres psql -U postgres` | Access PostgreSQL shell |
-| `docker-compose exec redis redis-cli` | Access Redis CLI |
+| Command                                         | Purpose                  |
+| ----------------------------------------------- | ------------------------ |
+| `docker-compose up -d`                          | Start all services       |
+| `docker-compose down`                           | Stop all services        |
+| `docker-compose logs -f`                        | View logs (follow)       |
+| `docker-compose ps`                             | List running containers  |
+| `docker-compose restart <service>`              | Restart specific service |
+| `docker-compose exec postgres psql -U postgres` | Access PostgreSQL shell  |
+| `docker-compose exec redis redis-cli`           | Access Redis CLI         |
 
 ---
 

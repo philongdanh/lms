@@ -10,11 +10,13 @@ sidebar_position: 2
 ---
 
 ## Overview
+
 API endpoints cho module Auth: Login, Register, quản lý Session.
 
 ---
 
 ## Base Information
+
 - **Base URL**: `/api/v1/auth`
 - **Version**: 1.0
 - **Format**: JSON
@@ -23,37 +25,40 @@ API endpoints cho module Auth: Login, Register, quản lý Session.
 ---
 
 ## Endpoints Summary
-| Method | Endpoint | Description | Auth Required | Rate Limit |
-|--------|----------|-------|--------------|------------|
-| POST | `/login` | Đăng nhập | ❌ | 10/min |
-| POST | `/register` | Đăng ký | ❌ | 5/min |
-| POST | `/refresh` | Refresh Token | ✅ (Refresh) | 20/min |
-| POST | `/logout` | Đăng xuất | ✅ | 50/min |
-| GET | `/sessions` | Danh sách sessions | ✅ | 100/min |
-| DELETE | `/sessions/:id` | Thu hồi session | ✅ | 50/min |
-| POST | `/parents/link` | Liên kết phụ huynh | ✅ | 10/min |
+
+| Method | Endpoint        | Description        | Auth Required | Rate Limit |
+| ------ | --------------- | ------------------ | ------------- | ---------- |
+| POST   | `/login`        | Đăng nhập          | ❌            | 10/min     |
+| POST   | `/register`     | Đăng ký            | ❌            | 5/min      |
+| POST   | `/refresh`      | Refresh Token      | ✅ (Refresh)  | 20/min     |
+| POST   | `/logout`       | Đăng xuất          | ✅            | 50/min     |
+| GET    | `/sessions`     | Danh sách sessions | ✅            | 100/min    |
+| DELETE | `/sessions/:id` | Thu hồi session    | ✅            | 50/min     |
+| POST   | `/parents/link` | Liên kết phụ huynh | ✅            | 10/min     |
 
 ---
 
 ## Endpoint Details
 
 ### Endpoint: POST `/login`
+
 **Description**: Xác thực credentials người dùng
 
 #### Request
+
 ```http
 POST /api/v1/auth/login
 Content-Type: application/json
 ```
 
-**Body**:
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------|
-| email | string | ✅ | Email người dùng |
-| password | string | ✅ | Mật khẩu raw |
+**Body**: | Parameter | Type | Required | Description |
+|-----------|------|----------|-------| | email | string | ✅ | Email người dùng
+| | password | string | ✅ | Mật khẩu raw |
 
 #### Response
+
 **Success (200 OK)**:
+
 ```json
 {
   "status": "success",
@@ -65,28 +70,29 @@ Content-Type: application/json
 }
 ```
 
-**Error Responses**:
-| Code | Error | Description |
-|------|-------|-------|
-| 401 | INVALID_CREDENTIALS | Sai mật khẩu |
-| 429 | RATE_LIMITED | Quá nhiều lần thử |
+**Error Responses**: | Code | Error | Description | |------|-------|-------| |
+401 | INVALID_CREDENTIALS | Sai mật khẩu | | 429 | RATE_LIMITED | Quá nhiều lần
+thử |
 
 ### Endpoint: POST `/refresh`
+
 **Description**: Lấy access token mới
 
 #### Request
+
 ```http
 POST /api/v1/auth/refresh
 Content-Type: application/json
 ```
 
-**Body**:
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------|
-| refresh_token | string | ✅ | Refresh token hợp lệ |
+**Body**: | Parameter | Type | Required | Description |
+|-----------|------|----------|-------| | refresh_token | string | ✅ | Refresh
+token hợp lệ |
 
 #### Response
+
 **Success (200 OK)**:
+
 ```json
 {
   "status": "success",
@@ -100,15 +106,17 @@ Content-Type: application/json
 ---
 
 ## Test Cases
-| Test Case | Description | Request | Expected Response |
-|-----------|-------|---------|-------------------|
-| TC-API-AUTH-001 | Login Valid | Valid creds | 200 + tokens |
-| TC-API-AUTH-002 | Login Invalid | Wrong pass | 401 |
-| TC-API-AUTH-003 | Refresh Valid | Valid token | 200 + new tokens |
+
+| Test Case       | Description   | Request     | Expected Response |
+| --------------- | ------------- | ----------- | ----------------- |
+| TC-API-AUTH-001 | Login Valid   | Valid creds | 200 + tokens      |
+| TC-API-AUTH-002 | Login Invalid | Wrong pass  | 401               |
+| TC-API-AUTH-003 | Refresh Valid | Valid token | 200 + new tokens  |
 
 ---
 
 ## Performance Requirements
+
 - **Response Time**: P95 < 200ms
 - **Availability**: 99.9%
 - **Timeout**: 5 seconds
@@ -116,6 +124,7 @@ Content-Type: application/json
 ---
 
 ## Security Requirements
+
 - [x] Yêu cầu authentication
 - [x] Input validation (Email format)
 - [x] Rate limiting theo IP
@@ -124,6 +133,7 @@ Content-Type: application/json
 ---
 
 ## Validation Checklist
+
 - [x] Tất cả endpoints đã document
 - [x] Có request/response examples
 - [x] Error codes đã định nghĩa
@@ -133,4 +143,4 @@ Content-Type: application/json
 
 ## References
 
-- [Overview](./README.md)
+- [Overview](/specs)

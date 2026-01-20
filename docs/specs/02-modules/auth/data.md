@@ -10,6 +10,7 @@ sidebar_position: 3
 ---
 
 ## Overview
+
 Data model cho module Auth: User, Role, Permission, Session, Tenant.
 
 ---
@@ -17,21 +18,23 @@ Data model cho module Auth: User, Role, Permission, Session, Tenant.
 ## Entities
 
 ### Entity: User
+
 **Description**: Người dùng hệ thống (Admin, Teacher, Student, Parent)
-**Storage**: Database (PostgreSQL)
-**Retention**: Vĩnh viễn (Soft delete)
+**Storage**: Database (PostgreSQL) **Retention**: Vĩnh viễn (Soft delete)
 
 #### Fields
-| Field Name | Type | Required | Default | Validation | Description |
-|------------|------|----------|---------|------------|-------|
-| id | UUID | ✅ | auto-gen | unique | Primary key |
-| tenant_id | UUID | ✅ | - | valid tenant | Tham chiếu Tenant |
-| email | String | ✅ | - | email format | Unique theo tenant |
-| password_hash | String | ✅ | - | bcrypt | Mã hóa |
-| is_active | Boolean | ❌ | true | - | Status |
-| deleted_at | Timestamp | ❌ | null | - | Soft delete |
+
+| Field Name    | Type      | Required | Default  | Validation   | Description        |
+| ------------- | --------- | -------- | -------- | ------------ | ------------------ |
+| id            | UUID      | ✅       | auto-gen | unique       | Primary key        |
+| tenant_id     | UUID      | ✅       | -        | valid tenant | Tham chiếu Tenant  |
+| email         | String    | ✅       | -        | email format | Unique theo tenant |
+| password_hash | String    | ✅       | -        | bcrypt       | Mã hóa             |
+| is_active     | Boolean   | ❌       | true     | -            | Status             |
+| deleted_at    | Timestamp | ❌       | null     | -            | Soft delete        |
 
 #### Relationships
+
 ```mermaid
 ---
 config:
@@ -45,35 +48,39 @@ erDiagram
 ```
 
 ### Entity: UserSession
-**Description**: Session đăng nhập của người dùng
-**Storage**: Database + Redis
+
+**Description**: Session đăng nhập của người dùng **Storage**: Database + Redis
 **Retention**: 7 ngày (TTL)
 
 #### Fields
-| Field Name | Type | Required | Default | Validation | Description |
-|------------|------|----------|---------|------------|-------|
-| id | UUID | ✅ | auto-gen | unique | Primary key |
-| user_id | UUID | ✅ | - | valid user | Tham chiếu User |
-| device_id | String | ✅ | - | - | Device fingerprint |
-| refresh_token_hash | String | ✅ | - | sha256 | Token an toàn |
-| revoked_at | Timestamp | ❌ | null | - | Trạng thái thu hồi |
+
+| Field Name         | Type      | Required | Default  | Validation | Description        |
+| ------------------ | --------- | -------- | -------- | ---------- | ------------------ |
+| id                 | UUID      | ✅       | auto-gen | unique     | Primary key        |
+| user_id            | UUID      | ✅       | -        | valid user | Tham chiếu User    |
+| device_id          | String    | ✅       | -        | -          | Device fingerprint |
+| refresh_token_hash | String    | ✅       | -        | sha256     | Token an toàn      |
+| revoked_at         | Timestamp | ❌       | null     | -          | Trạng thái thu hồi |
 
 ### Entity: Role
-**Description**: Vai trò người dùng (RBAC)
-**Storage**: Database
-**Retention**: Vĩnh viễn
+
+**Description**: Vai trò người dùng (RBAC) **Storage**: Database **Retention**:
+Vĩnh viễn
 
 #### Fields
-| Field Name | Type | Required | Default | Validation | Description |
-|------------|------|----------|---------|------------|-------|
-| id | UUID | ✅ | auto-gen | unique | Primary key |
-| name | String | ✅ | - | enum | root-admin, teacher... |
-| color | String | ❌ | - | hex | Hiển thị UI |
+
+| Field Name | Type   | Required | Default  | Validation | Description            |
+| ---------- | ------ | -------- | -------- | ---------- | ---------------------- |
+| id         | UUID   | ✅       | auto-gen | unique     | Primary key            |
+| name       | String | ✅       | -        | enum       | root-admin, teacher... |
+| color      | String | ❌       | -        | hex        | Hiển thị UI            |
 
 ---
 
 ## Lifecycle States
+
 ### Tenant State Machine
+
 ```mermaid
 ---
 config:
@@ -92,13 +99,16 @@ stateDiagram-v2
 ---
 
 ## Storage Specifications
+
 ### Database
+
 - **Table Name**: `users`, `roles`, `user_sessions`
 - **Engine**: PostgreSQL
 - **Charset**: utf8mb4
 - **Partitioning**: Không
 
 ### Caching Strategy
+
 - **Cache Type**: Redis
 - **TTL**: 15 phút (User Profile), 7 ngày (Refresh Token)
 - **Invalidation**: Event-based (Update Profile -> Clear Cache)
@@ -106,6 +116,7 @@ stateDiagram-v2
 ---
 
 ## Performance Requirements
+
 - **Query Performance**: < 50ms cho Login by Email
 - **Write Throughput**: 1000 register/sec
 - **Storage Growth**: 1GB/tháng
@@ -113,6 +124,7 @@ stateDiagram-v2
 ---
 
 ## Data Security
+
 - **Encryption**: At-rest (DB Volume), In-transit (TLS 1.3)
 - **Masking**: Password hash, Token hash
 - **Access Control**: Row Level Security (RLS) theo Tenant
@@ -120,6 +132,7 @@ stateDiagram-v2
 ---
 
 ## Validation Checklist
+
 - [x] Tất cả entities định nghĩa đầy đủ fields
 - [x] Relationships được document rõ ràng
 - [x] Indexes tối ưu cho query patterns
@@ -129,4 +142,4 @@ stateDiagram-v2
 
 ## References
 
-- [Overview](./README.md)
+- [Overview](/specs)

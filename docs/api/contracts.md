@@ -13,7 +13,8 @@ Consumer-driven contracts for API testing.
 
 ## Overview
 
-API contracts define expected behavior between services (consumers and providers) using tools like Pact.
+API contracts define expected behavior between services (consumers and
+providers) using tools like Pact.
 
 ---
 
@@ -94,21 +95,21 @@ contracts/
 
 ## Guidelines
 
-| Guideline | Description |
-|-----------|-------------|
+| Guideline              | Description                  |
+| ---------------------- | ---------------------------- |
 | Keep contracts minimal | Include only required fields |
-| Use provider states | Set up test data |
-| Version management | Track breaking changes |
-| Automate verification | Integrate with CI/CD |
+| Use provider states    | Set up test data             |
+| Version management     | Track breaking changes       |
+| Automate verification  | Integrate with CI/CD         |
 
 ---
 
 ## Tools
 
-| Tool | Purpose |
-|------|---------|
-| Pact | Contract testing framework |
-| Pact Broker | Contract storage |
+| Tool         | Purpose                      |
+| ------------ | ---------------------------- |
+| Pact         | Contract testing framework   |
+| Pact Broker  | Contract storage             |
 | can-i-deploy | Safe deployment verification |
 
 ---

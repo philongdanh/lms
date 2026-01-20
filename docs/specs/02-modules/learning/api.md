@@ -10,11 +10,14 @@ sidebar_position: 2
 ---
 
 ## Overview
-Các API endpoints cho module Learning, cung cấp truy cập vào lộ trình học tập cá nhân hóa, theo dõi tiến độ và tính năng luyện tập.
+
+Các API endpoints cho module Learning, cung cấp truy cập vào lộ trình học tập cá
+nhân hóa, theo dõi tiến độ và tính năng luyện tập.
 
 ---
 
 ## Base Information
+
 - **Base URL**: `/api/v1/learning`
 - **Version**: 1.0
 - **Format**: JSON
@@ -23,35 +26,40 @@ Các API endpoints cho module Learning, cung cấp truy cập vào lộ trình h
 ---
 
 ## Endpoints Summary
-| Method | Endpoint | Description | Auth Required | Rate Limit |
-|--------|----------|-------------|---------------|------------|
-| GET | `/path` | Lấy lộ trình học tập cá nhân hóa | ✅ | 60/min |
-| GET | `/knowledge-map` | Lấy bản đồ kiến thức | ✅ | 60/min |
-| GET | `/lessons/{id}` | Lấy chi tiết bài học và tiến độ | ✅ | 100/min |
-| POST | `/progress` | Cập nhật tiến độ học tập (video, content) | ✅ | 100/min |
-| POST | `/practice/start` | Bắt đầu phiên bài tập/quiz | ✅ | 20/min |
-| POST | `/practice/submit` | Nộp câu trả lời bài tập | ✅ | 100/min |
+
+| Method | Endpoint           | Description                               | Auth Required | Rate Limit |
+| ------ | ------------------ | ----------------------------------------- | ------------- | ---------- |
+| GET    | `/path`            | Lấy lộ trình học tập cá nhân hóa          | ✅            | 60/min     |
+| GET    | `/knowledge-map`   | Lấy bản đồ kiến thức                      | ✅            | 60/min     |
+| GET    | `/lessons/{id}`    | Lấy chi tiết bài học và tiến độ           | ✅            | 100/min    |
+| POST   | `/progress`        | Cập nhật tiến độ học tập (video, content) | ✅            | 100/min    |
+| POST   | `/practice/start`  | Bắt đầu phiên bài tập/quiz                | ✅            | 20/min     |
+| POST   | `/practice/submit` | Nộp câu trả lời bài tập                   | ✅            | 100/min    |
 
 ---
 
 ## Endpoint Details
 
 ### Endpoint: GET `/path`
-**Description**: Lấy danh sách bài học được đề xuất dựa trên AI và lịch sử học tập.
+
+**Description**: Lấy danh sách bài học được đề xuất dựa trên AI và lịch sử học
+tập.
 
 #### Request
+
 ```http
 GET /api/v1/learning/path?subject_id={uuid}
 Authorization: Bearer {token}
 ```
 
-**Query Parameters**:
-| Parameter | Type | Required | Description | Example |
-|-----------|------|----------|-------------|---------||
-| subject_id | UUID | ❌ | Lọc theo môn học | `123e4567-e89b...` |
+**Query Parameters**: | Parameter | Type | Required | Description | Example |
+|-----------|------|----------|-------------|---------|| | subject_id | UUID |
+❌ | Lọc theo môn học | `123e4567-e89b...` |
 
 #### Response
+
 **Success (200 OK)**:
+
 ```json
 {
   "status": "success",
@@ -80,16 +88,21 @@ Authorization: Bearer {token}
 ```
 
 ### Endpoint: GET `/lessons/{id}`
-**Description**: Lấy thông tin chi tiết bài học, bao gồm danh sách video/quiz và trạng thái hoàn thành của user.
+
+**Description**: Lấy thông tin chi tiết bài học, bao gồm danh sách video/quiz và
+trạng thái hoàn thành của user.
 
 #### Request
+
 ```http
 GET /api/v1/learning/lessons/{id}
 Authorization: Bearer {token}
 ```
 
 #### Response
+
 **Success (200 OK)**:
+
 ```json
 {
   "status": "success",
@@ -97,9 +110,9 @@ Authorization: Bearer {token}
     "id": "uuid",
     "title": "Addition within 10",
     "my_progress": {
-        "completion_percent": 60,
-        "status": "IN_PROGRESS",
-        "last_accessed_at": "2024-01-15T10:30:00Z"
+      "completion_percent": 60,
+      "status": "IN_PROGRESS",
+      "last_accessed_at": "2024-01-15T10:30:00Z"
     },
     "contents": [
       {
@@ -115,9 +128,12 @@ Authorization: Bearer {token}
 ```
 
 ### Endpoint: POST `/progress`
-**Description**: Cập nhật tiến độ học tập cho một content item (video hoặc kiểm tra bài học).
+
+**Description**: Cập nhật tiến độ học tập cho một content item (video hoặc kiểm
+tra bài học).
 
 #### Request
+
 ```http
 POST /api/v1/learning/progress
 Authorization: Bearer {token}
@@ -132,7 +148,9 @@ Authorization: Bearer {token}
 ```
 
 #### Response
+
 **Success (200 OK)**:
+
 ```json
 {
   "status": "success",
@@ -140,16 +158,18 @@ Authorization: Bearer {token}
     "updated": true,
     "lesson_completed": true,
     "rewards_earned": {
-        "exp": 50
+      "exp": 50
     }
   }
 }
 ```
 
 ### Endpoint: POST `/practice/submit`
+
 **Description**: Nộp câu trả lời cho một câu hỏi trong phiên luyện tập.
 
 #### Request
+
 ```http
 POST /api/v1/learning/practice/submit
 Authorization: Bearer {token}
@@ -163,7 +183,9 @@ Authorization: Bearer {token}
 ```
 
 #### Response
+
 **Success (200 OK)**:
+
 ```json
 {
   "status": "success",
@@ -179,23 +201,27 @@ Authorization: Bearer {token}
 ---
 
 ## Error Responses
-| Code | Error | Description |
-|------|-------|-------------|
-| 404 | `LEARN_LESSON_NOT_FOUND` | Bài học không tồn tại |
-| 403 | `LEARN_CONTENT_LOCKED` | Nội dung bị khóa (điều kiện tiên quyết chưa đạt) |
-| 400 | `LEARN_PREREQUISITE_MISSING` | Bài học tiên quyết chưa hoàn thành |
-| 400 | `LEARN_SESSION_EXPIRED` | Phiên làm bài đã hết hạn |
-| 429 | `RATE_LIMITED` | Gửi requests quá nhanh (anti-spam) |
+
+| Code | Error                        | Description                                      |
+| ---- | ---------------------------- | ------------------------------------------------ |
+| 404  | `LEARN_LESSON_NOT_FOUND`     | Bài học không tồn tại                            |
+| 403  | `LEARN_CONTENT_LOCKED`       | Nội dung bị khóa (điều kiện tiên quyết chưa đạt) |
+| 400  | `LEARN_PREREQUISITE_MISSING` | Bài học tiên quyết chưa hoàn thành               |
+| 400  | `LEARN_SESSION_EXPIRED`      | Phiên làm bài đã hết hạn                         |
+| 429  | `RATE_LIMITED`               | Gửi requests quá nhanh (anti-spam)               |
 
 ---
 
 ## Performance Requirements
-- **Thời gian phản hồi**: API `/practice/submit` phải < 200ms P95 để đảm bảo trải nghiệm real-time.
+
+- **Thời gian phản hồi**: API `/practice/submit` phải < 200ms P95 để đảm bảo
+  trải nghiệm real-time.
 - **Availability**: 99.9%
 
 ---
 
 ## Security Requirements
+
 - [ ] Yêu cầu Authentication (Bearer Token)
 - [ ] Input validation (progress range 0-100, valid UUIDs)
 - [ ] Rate limiting trên submit answer endpoint
@@ -203,6 +229,7 @@ Authorization: Bearer {token}
 ---
 
 ## Validation Checklist
+
 - [ ] Tất cả endpoints được document
 - [ ] Các ví dụ request/response được cung cấp
 - [ ] Các error codes được định nghĩa
@@ -211,4 +238,4 @@ Authorization: Bearer {token}
 
 ## References
 
-- [Overview](./README.md)
+- [Overview](/specs)

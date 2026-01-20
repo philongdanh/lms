@@ -22,18 +22,18 @@ flowchart TB
         Integration["Integration Tests<br/>15%"]
         Unit["Unit Tests<br/>80%"]
     end
-    
+
     E2E --> Integration
     Integration --> Unit
 ```
 
 ### Coverage Goals
 
-| Test Type | Coverage Target | Hiện tại |
-|-----------|-----------------|----------|
-| Unit Tests | 80% | [%] |
-| Integration Tests | 70% critical paths | [%] |
-| E2E Tests | 100% happy paths | [%] |
+| Test Type         | Coverage Target    | Hiện tại |
+| ----------------- | ------------------ | -------- |
+| Unit Tests        | 80%                | [%]      |
+| Integration Tests | 70% critical paths | [%]      |
+| E2E Tests         | 100% happy paths   | [%]      |
 
 ---
 
@@ -43,14 +43,15 @@ flowchart TB
 
 **Mục đích**: Test các functions/methods riêng lẻ trong isolation
 
-| Aspect | Guideline |
-|-----------|-----------|
-| Scope | Single function/class |
-| Dependencies | Mocked |
-| Speed | < 100ms mỗi test |
-| Coverage | 80% minimum |
+| Aspect       | Guideline             |
+| ------------ | --------------------- |
+| Scope        | Single function/class |
+| Dependencies | Mocked                |
+| Speed        | < 100ms mỗi test      |
+| Coverage     | 80% minimum           |
 
 **Cần test**:
+
 - Business logic
 - Data transformations
 - Validation rules
@@ -60,14 +61,15 @@ flowchart TB
 
 **Mục đích**: Test tương tác giữa các components
 
-| Aspect | Guideline |
-|-----------|-----------|
-| Scope | Multiple components |
+| Aspect       | Guideline              |
+| ------------ | ---------------------- |
+| Scope        | Multiple components    |
 | Dependencies | Real (test containers) |
-| Speed | < 5s mỗi test |
-| Coverage | Critical paths |
+| Speed        | < 5s mỗi test          |
+| Coverage     | Critical paths         |
 
 **Cần test**:
+
 - API endpoints
 - Database operations
 - Service interactions
@@ -77,14 +79,15 @@ flowchart TB
 
 **Mục đích**: Test các luồng người dùng hoàn chỉnh
 
-| Aspect | Guideline |
-|-----------|-----------|
-| Scope | Full application |
+| Aspect       | Guideline        |
+| ------------ | ---------------- |
+| Scope        | Full application |
 | Dependencies | Real environment |
-| Speed | < 30s mỗi test |
-| Coverage | Happy paths |
+| Speed        | < 30s mỗi test   |
+| Coverage     | Happy paths      |
 
 **Cần test**:
+
 - User journeys
 - Critical business flows
 - Cross-browser compatibility
@@ -95,30 +98,30 @@ flowchart TB
 
 ### Functional Tests
 
-| Category | Description | Coverage |
-|----------|-------|----------|
-| Business Logic | Core business rules | 100% |
-| API | Tất cả endpoints | 100% |
-| UI | User interactions | Critical paths |
+| Category       | Description         | Coverage       |
+| -------------- | ------------------- | -------------- |
+| Business Logic | Core business rules | 100%           |
+| API            | Tất cả endpoints    | 100%           |
+| UI             | User interactions   | Critical paths |
 
 ### Non-Functional Tests
 
-| Category | Description | Frequency |
-|----------|-------|----------|
-| Performance | Load và stress | Weekly |
-| Security | Vulnerability scanning | Weekly |
-| Accessibility | WCAG compliance | Per release |
+| Category      | Description            | Frequency   |
+| ------------- | ---------------------- | ----------- |
+| Performance   | Load và stress         | Weekly      |
+| Security      | Vulnerability scanning | Weekly      |
+| Accessibility | WCAG compliance        | Per release |
 
 ---
 
 ## Test Environments
 
-| Environment | Mục đích | Data |
-|-------------|----------|------|
-| Local | Development testing | Mock/seed |
-| CI | Automated testing | Seed data |
-| Staging | Pre-production | Anonymized prod |
-| Production | Smoke tests | Production |
+| Environment | Mục đích            | Data            |
+| ----------- | ------------------- | --------------- |
+| Local       | Development testing | Mock/seed       |
+| CI          | Automated testing   | Seed data       |
+| Staging     | Pre-production      | Anonymized prod |
+| Production  | Smoke tests         | Production      |
 
 ---
 
@@ -126,20 +129,20 @@ flowchart TB
 
 ### Data Categories
 
-| Category | Source | Refresh |
-|----------|--------|---------|
-| Seed Data | Scripts | Mỗi test run |
-| Fixtures | JSON files | Version controlled |
-| Generated | Faker | Dynamic |
-| Anonymized | Production copy | Weekly |
+| Category   | Source          | Refresh            |
+| ---------- | --------------- | ------------------ |
+| Seed Data  | Scripts         | Mỗi test run       |
+| Fixtures   | JSON files      | Version controlled |
+| Generated  | Faker           | Dynamic            |
+| Anonymized | Production copy | Weekly             |
 
 ### Data Isolation
 
-| Strategy | Use Case |
-|----------|----------|
-| Transaction rollback | Unit tests |
-| Test database | Integration tests |
-| Data cleanup | E2E tests |
+| Strategy             | Use Case          |
+| -------------------- | ----------------- |
+| Transaction rollback | Unit tests        |
+| Test database        | Integration tests |
+| Data cleanup         | E2E tests         |
 
 ---
 
@@ -147,21 +150,21 @@ flowchart TB
 
 ### PR Checks
 
-| Check | Requirement | Blocking |
-|-------|-------------|----------|
-| Unit Tests | 100% pass | Yes |
-| Coverage | > 80% | Yes |
-| Lint | No errors | Yes |
-| Build | Success | Yes |
+| Check      | Requirement | Blocking |
+| ---------- | ----------- | -------- |
+| Unit Tests | 100% pass   | Yes      |
+| Coverage   | > 80%       | Yes      |
+| Lint       | No errors   | Yes      |
+| Build      | Success     | Yes      |
 
 ### Release Checks
 
-| Check | Requirement | Blocking |
-|-------|-------------|----------|
-| All Tests | 100% pass | Yes |
-| E2E Tests | 100% pass | Yes |
-| Performance | Within targets | Yes |
-| Security Scan | No critical | Yes |
+| Check         | Requirement    | Blocking |
+| ------------- | -------------- | -------- |
+| All Tests     | 100% pass      | Yes      |
+| E2E Tests     | 100% pass      | Yes      |
+| Performance   | Within targets | Yes      |
+| Security Scan | No critical    | Yes      |
 
 ---
 
@@ -169,12 +172,12 @@ flowchart TB
 
 ### Severity Levels
 
-| Severity | Description | Response |
-|----------|-------------|----------|
-| Critical | System down | Immediate |
-| High | Major feature broken | 24 hours |
-| Medium | Feature degraded | Sprint |
-| Low | Minor issue | Backlog |
+| Severity | Description          | Response  |
+| -------- | -------------------- | --------- |
+| Critical | System down          | Immediate |
+| High     | Major feature broken | 24 hours  |
+| Medium   | Feature degraded     | Sprint    |
+| Low      | Minor issue          | Backlog   |
 
 ### Bug Lifecycle
 

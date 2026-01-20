@@ -2,6 +2,8 @@
   "label": "Design System",
   "link": {
     "type": "generated-index",
-    "description": "Quy định Design System, UI Components và Style Guide."
+    "title": "Design System",
+    "description": "Quy định về UI, UX và Design Tokens.",
+    "slug": "/design"
   }
 }

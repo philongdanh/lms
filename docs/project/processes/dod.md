@@ -105,9 +105,9 @@ Một Release được coi là **Done** khi:
 
 ## Task Types
 
-| Type | DoD Level |
-|------|-----------|
-| Feature | Full Story DoD |
-| Bug Fix | Bug Fix DoD |
-| Spike | Document findings + demo |
-| Chore | Verify completion + review |
+| Type    | DoD Level                  |
+| ------- | -------------------------- |
+| Feature | Full Story DoD             |
+| Bug Fix | Bug Fix DoD                |
+| Spike   | Document findings + demo   |
+| Chore   | Verify completion + review |

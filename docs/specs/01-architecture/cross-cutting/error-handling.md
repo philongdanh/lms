@@ -13,11 +13,11 @@ Các patterns và best practices xử lý lỗi.
 
 ## Error Categories
 
-| Category | HTTP Range | Description | Action |
-|----------|------------|-------|-----------|
-| Client Error | 4xx | Lỗi từ client | Sửa request |
-| Server Error | 5xx | Lỗi server | Retry sau |
-| Business Error | 422 | Vi phạm business rule | Tuân theo rules |
+| Category       | HTTP Range | Description           | Action          |
+| -------------- | ---------- | --------------------- | --------------- |
+| Client Error   | 4xx        | Lỗi từ client         | Sửa request     |
+| Server Error   | 5xx        | Lỗi server            | Retry sau       |
+| Business Error | 422        | Vi phạm business rule | Tuân theo rules |
 
 ---
 
@@ -47,49 +47,49 @@ Các patterns và best practices xử lý lỗi.
 
 ### Authentication Errors (401)
 
-| Code | Message | Cause |
-|------|---------|-------------|
-| AUTH_REQUIRED | Authentication required | Thiếu token |
-| TOKEN_EXPIRED | Token has expired | Access token hết hạn |
-| TOKEN_INVALID | Invalid token | Token sai format |
+| Code          | Message                 | Cause                |
+| ------------- | ----------------------- | -------------------- |
+| AUTH_REQUIRED | Authentication required | Thiếu token          |
+| TOKEN_EXPIRED | Token has expired       | Access token hết hạn |
+| TOKEN_INVALID | Invalid token           | Token sai format     |
 
 ### Authorization Errors (403)
 
-| Code | Message | Cause |
-|------|---------|-------------|
-| FORBIDDEN | Access denied | Không đủ quyền |
+| Code               | Message                | Cause            |
+| ------------------ | ---------------------- | ---------------- |
+| FORBIDDEN          | Access denied          | Không đủ quyền   |
 | RESOURCE_FORBIDDEN | Cannot access resource | Không phải owner |
 
 ### Validation Errors (400)
 
-| Code | Message | Cause |
-|------|---------|-------------|
-| VALIDATION_ERROR | Validation failed | Input không hợp lệ |
-| MISSING_FIELD | Required field missing | Thiếu field bắt buộc |
-| INVALID_FORMAT | Invalid format | Sai data format |
+| Code             | Message                | Cause                |
+| ---------------- | ---------------------- | -------------------- |
+| VALIDATION_ERROR | Validation failed      | Input không hợp lệ   |
+| MISSING_FIELD    | Required field missing | Thiếu field bắt buộc |
+| INVALID_FORMAT   | Invalid format         | Sai data format      |
 
 ### Not Found Errors (404)
 
-| Code | Message | Cause |
-|------|---------|-------------|
-| NOT_FOUND | Resource not found | ID không hợp lệ |
-| ENDPOINT_NOT_FOUND | Endpoint not found | URL sai |
+| Code               | Message            | Cause           |
+| ------------------ | ------------------ | --------------- |
+| NOT_FOUND          | Resource not found | ID không hợp lệ |
+| ENDPOINT_NOT_FOUND | Endpoint not found | URL sai         |
 
 ### Business Errors (422)
 
-| Code | Message | Cause |
-|------|---------|-------------|
+| Code                    | Message                | Cause                  |
+| ----------------------- | ---------------------- | ---------------------- |
 | BUSINESS_RULE_VIOLATION | Business rule violated | Kiểm tra rule thất bại |
-| INSUFFICIENT_BALANCE | Insufficient balance | Không đủ credits |
-| LIMIT_EXCEEDED | Limit exceeded | Đạt quota |
+| INSUFFICIENT_BALANCE    | Insufficient balance   | Không đủ credits       |
+| LIMIT_EXCEEDED          | Limit exceeded         | Đạt quota              |
 
 ### Server Errors (500)
 
-| Code | Message | Cause |
-|------|---------|-------------|
-| INTERNAL_ERROR | Internal server error | Lỗi không mong đợi |
-| SERVICE_UNAVAILABLE | Service unavailable | Dependency down |
-| DATABASE_ERROR | Database error | Lỗi kết nối DB |
+| Code                | Message               | Cause              |
+| ------------------- | --------------------- | ------------------ |
+| INTERNAL_ERROR      | Internal server error | Lỗi không mong đợi |
+| SERVICE_UNAVAILABLE | Service unavailable   | Dependency down    |
+| DATABASE_ERROR      | Database error        | Lỗi kết nối DB     |
 
 ---
 
@@ -97,22 +97,23 @@ Các patterns và best practices xử lý lỗi.
 
 ### Retry Strategy
 
-| Error Type | Retry | Backoff | Max Attempts |
-|------------|-------|---------|--------------|
-| Network Timeout | Yes | Exponential | 3 |
-| 429 Rate Limited | Yes | Respect Retry-After | 3 |
-| 5xx Server Error | Yes | Exponential | 3 |
-| 4xx Client Error | No | - | - |
+| Error Type       | Retry | Backoff             | Max Attempts |
+| ---------------- | ----- | ------------------- | ------------ |
+| Network Timeout  | Yes   | Exponential         | 3            |
+| 429 Rate Limited | Yes   | Respect Retry-After | 3            |
+| 5xx Server Error | Yes   | Exponential         | 3            |
+| 4xx Client Error | No    | -                   | -            |
 
 ### Circuit Breaker
 
-| State | Description | Action |
-|-------|-------------|--------|
-| Closed | Normal operation | Forward requests |
-| Open | Too many failures | Fail fast |
-| Half-Open | Testing recovery | Limited requests |
+| State     | Description       | Action           |
+| --------- | ----------------- | ---------------- |
+| Closed    | Normal operation  | Forward requests |
+| Open      | Too many failures | Fail fast        |
+| Half-Open | Testing recovery  | Limited requests |
 
 **Configuration**:
+
 - Failure threshold: 5 failures in 60 seconds
 - Recovery timeout: 30 seconds
 - Success threshold: 3 successes to close
@@ -123,15 +124,15 @@ Các patterns và best practices xử lý lỗi.
 
 ### Required Fields
 
-| Field | Description |
-|-------|-------------|
-| timestamp | When error occurred |
-| requestId | Request correlation ID |
-| userId | User who experienced error |
-| errorCode | Error code |
-| message | Error message |
-| stack | Stack trace (non-prod) |
-| context | Relevant context |
+| Field     | Description                |
+| --------- | -------------------------- |
+| timestamp | When error occurred        |
+| requestId | Request correlation ID     |
+| userId    | User who experienced error |
+| errorCode | Error code                 |
+| message   | Error message              |
+| stack     | Stack trace (non-prod)     |
+| context   | Relevant context           |
 
 ### Example
 
@@ -163,10 +164,10 @@ Các patterns và best practices xử lý lỗi.
 
 ### Examples
 
-| Code | Technical | User-Friendly |
-|------|-----------|---------------|
-| DB_CONNECTION_FAILED | Database connection pool exhausted | Service temporarily unavailable. Please try again. |
-| VALIDATION_ERROR | Field 'email' failed regex validation | Please enter a valid email address. |
+| Code                 | Technical                             | User-Friendly                                      |
+| -------------------- | ------------------------------------- | -------------------------------------------------- |
+| DB_CONNECTION_FAILED | Database connection pool exhausted    | Service temporarily unavailable. Please try again. |
+| VALIDATION_ERROR     | Field 'email' failed regex validation | Please enter a valid email address.                |
 
 ---
 

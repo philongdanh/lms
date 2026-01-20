@@ -13,25 +13,25 @@ Quy trình và kênh giao tiếp trong team.
 
 ## Communication Channels
 
-| Channel | Purpose | Response Time |
-|---------|---------|---------------|
-| Slack #lms-general | Announcements, general | < 4 hours |
-| Slack #lms-dev | Technical discussions | < 2 hours |
-| Slack #lms-urgent | Critical issues | < 30 mins |
-| Email | External, formal | < 24 hours |
-| Google Meet | Meetings, pairing | Scheduled |
+| Channel            | Purpose                | Response Time |
+| ------------------ | ---------------------- | ------------- |
+| Slack #lms-general | Announcements, general | < 4 hours     |
+| Slack #lms-dev     | Technical discussions  | < 2 hours     |
+| Slack #lms-urgent  | Critical issues        | < 30 mins     |
+| Email              | External, formal       | < 24 hours    |
+| Google Meet        | Meetings, pairing      | Scheduled     |
 
 ---
 
 ## Meeting Schedule
 
-| Meeting | When | Duration | Attendees |
-|---------|------|----------|-----------|
-| Daily Standup | 9:00 AM daily | 15 min | All team |
-| Sprint Planning | Mon (start) | 2 hours | All team |
-| Backlog Refinement | Wed | 1 hour | PO, SM, Devs |
-| Sprint Review | Fri (end) | 1 hour | All + Stakeholders |
-| Retrospective | Fri (end) | 1 hour | Team only |
+| Meeting            | When          | Duration | Attendees          |
+| ------------------ | ------------- | -------- | ------------------ |
+| Daily Standup      | 9:00 AM daily | 15 min   | All team           |
+| Sprint Planning    | Mon (start)   | 2 hours  | All team           |
+| Backlog Refinement | Wed           | 1 hour   | PO, SM, Devs       |
+| Sprint Review      | Fri (end)     | 1 hour   | All + Stakeholders |
+| Retrospective      | Fri (end)     | 1 hour   | Team only          |
 
 ---
 
@@ -44,6 +44,7 @@ Mỗi người trả lời 3 câu hỏi:
 3. **Blockers** nào cần giải quyết?
 
 **Rules:**
+
 - Bắt đầu đúng giờ
 - Max 2 phút/người
 - Chi tiết → sau standup
@@ -78,12 +79,12 @@ Mỗi người trả lời 3 câu hỏi:
 
 ## Documentation Guidelines
 
-| Type | Location | Owner |
-|------|----------|-------|
-| Specs | `/docs/specs/` | PO + Team |
-| API Docs | `/docs/api/` | Backend |
-| Meeting Notes | Confluence | SM |
-| Decisions | ADR in repo | Lead Dev |
+| Type          | Location       | Owner     |
+| ------------- | -------------- | --------- |
+| Specs         | `/docs/specs/` | PO + Team |
+| API Docs      | `/docs/api/`   | Backend   |
+| Meeting Notes | Confluence     | SM        |
+| Decisions     | ADR in repo    | Lead Dev  |
 
 ---
 
