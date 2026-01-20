@@ -2,7 +2,8 @@
   "label": "Business Requirements",
   "link": {
     "type": "generated-index",
-    "description": "Index for Business Requirements"
+    "description": "Index for Business Requirements",
+    "slug": "/category/business-requirements"
   },
   "position": 1
 }
