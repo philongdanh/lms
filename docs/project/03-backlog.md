@@ -7,14 +7,13 @@ sidebar_position: 3
 
 # Backlog
 
-Complete backlog with priority, difficulty, and sprint allocation.
+Backlog hoàn chỉnh với mức độ ưu tiên, độ khó và phân bổ sprint.
 
 ---
 
 ## Overview
 
-This document contains all tickets (user stories, tasks, bugs) organized by
-priority and sprint.
+Tài liệu này chứa tất cả các ticket (user stories, tasks, bugs) được tổ chức theo mức độ ưu tiên và sprint.
 
 ---
 
@@ -24,10 +23,10 @@ priority and sprint.
 
 | Priority | Color     | Description          |
 | -------- | --------- | -------------------- |
-| P0       | `#DC2626` | Critical - Blocker   |
-| P1       | `#F97316` | High - Must have     |
-| P2       | `#EAB308` | Medium - Should have |
-| P3       | `#22C55E` | Low - Nice to have   |
+| P0       | `#DC2626` | Critical - Blocker (Nghiêm trọng - Chặn) |
+| P1       | `#F97316` | High - Must have (Cao - Phải có)         |
+| P2       | `#EAB308` | Medium - Should have (Trung bình - Nên có) |
+| P3       | `#22C55E` | Low - Nice to have (Thấp - Nên có)       |
 
 ### Difficulty
 
@@ -41,16 +40,16 @@ priority and sprint.
 
 | Type       | Color        | Description          |
 | ---------- | ------------ | -------------------- |
-| Frontend   | `#3B82F6` FE | UI/UX implementation |
-| Backend    | `#8B5CF6` BE | API/Database work    |
-| Full-stack | `#6366F1` FS | Both FE and BE       |
-| DevOps     | `#14B8A6` DO | Infrastructure       |
+| Frontend   | `#3B82F6` FE | Triển khai UI/UX     |
+| Backend    | `#8B5CF6` BE | Công việc API/Database |
+| Full-stack | `#6366F1` FS | Cả FE và BE          |
+| DevOps     | `#14B8A6` DO | Cơ sở hạ tầng        |
 
 ---
 
 ## Backlog Summary
 
-| Priority        | Count | Points | % of Total |
+| Priority        | Số lượng | Điểm   | % Tổng số  |
 | --------------- | ----- | ------ | ---------- |
 | `#DC2626` P0    | 24    | 120    | 48%        |
 | `#F97316` P1    | 18    | 85     | 34%        |
@@ -66,38 +65,38 @@ priority and sprint.
 
 | ID      | Title               | Type | Points | Sprint |
 | ------- | ------------------- | ---- | ------ | ------ |
-| LMS-001 | Register with email | FS   | 5      | S2     |
-| LMS-002 | Register with phone | FS   | 5      | S2     |
-| LMS-003 | OTP verification    | FS   | 5      | S2     |
+| LMS-001 | Đăng ký với email   | FS   | 5      | S2     |
+| LMS-002 | Đăng ký với SĐT     | FS   | 5      | S2     |
+| LMS-003 | Xác thực OTP        | FS   | 5      | S2     |
 | LMS-004 | Login flow          | FS   | 5      | S4     |
-| LMS-005 | Password reset      | FS   | 3      | S5     |
-| LMS-006 | Logout              | FE   | 2      | S4     |
-| LMS-007 | Session management  | BE   | 8      | S4     |
+| LMS-005 | Khôi phục mật khẩu  | FS   | 3      | S5     |
+| LMS-006 | Đăng xuất           | FE   | 2      | S4     |
+| LMS-007 | Quản lý phiên       | BE   | 8      | S4     |
 | LMS-008 | Protected routes    | FE   | 5      | S4     |
 
 ### Learning
 
 | ID      | Title                 | Type | Points | Sprint |
 | ------- | --------------------- | ---- | ------ | ------ |
-| LMS-010 | Subject listing       | FE   | 3      | S2     |
-| LMS-011 | Learning path view    | FS   | 5      | S4     |
-| LMS-012 | Lesson content viewer | FE   | 5      | S4     |
-| LMS-013 | Quiz exercises        | FS   | 8      | S4     |
-| LMS-014 | Progress tracking     | FS   | 5      | S4     |
-| LMS-015 | Points system         | BE   | 5      | S5     |
-| LMS-016 | Level up              | FS   | 5      | S5     |
+| LMS-010 | Danh sách môn học     | FE   | 3      | S2     |
+| LMS-011 | Xem lộ trình học      | FS   | 5      | S4     |
+| LMS-012 | Xem nội dung bài học  | FE   | 5      | S4     |
+| LMS-013 | Bài tập trắc nghiệm   | FS   | 8      | S4     |
+| LMS-014 | Theo dõi tiến độ      | FS   | 5      | S4     |
+| LMS-015 | Hệ thống điểm         | BE   | 5      | S5     |
+| LMS-016 | Lên cấp (Level up)    | FS   | 5      | S5     |
 
 ### Tournament
 
 | ID      | Title                 | Type | Points | Sprint |
 | ------- | --------------------- | ---- | ------ | ------ |
-| LMS-020 | Tournament listing    | FE   | 5      | S5     |
-| LMS-021 | Tournament details    | FE   | 5      | S5     |
-| LMS-022 | Registration flow     | FS   | 3      | S5     |
+| LMS-020 | Danh sách giải đấu    | FE   | 5      | S5     |
+| LMS-021 | Chi tiết giải đấu     | FE   | 5      | S5     |
+| LMS-022 | Quy trình đăng ký     | FS   | 3      | S5     |
 | LMS-023 | Match gameplay        | FS   | 13     | S6     |
-| LMS-024 | Real-time leaderboard | FS   | 8      | S6     |
-| LMS-025 | Results & scoring     | BE   | 5      | S6     |
-| LMS-026 | Prize distribution    | BE   | 5      | S6     |
+| LMS-024 | Leaderboard thời gian thực | FS   | 8      | S6     |
+| LMS-025 | Kết quả & tính điểm   | BE   | 5      | S6     |
+| LMS-026 | Phân phối giải thưởng | BE   | 5      | S6     |
 
 ---
 
@@ -166,14 +165,14 @@ priority and sprint.
 | Field      | Required | Description                  |
 | ---------- | -------- | ---------------------------- |
 | ID         | ✅       | Unique identifier (LMS-XXX)  |
-| Title      | ✅       | Clear, action-oriented title |
+| Title      | ✅       | Tiêu đề rõ ràng, hướng hành động |
 | Type       | ✅       | FE/BE/FS/DO                  |
 | Priority   | ✅       | P0/P1/P2/P3                  |
 | Difficulty | ✅       | Easy/Medium/Hard             |
 | Points     | ✅       | Story points (1,2,3,5,8,13)  |
 | Epic       | ✅       | Parent epic ID               |
 | Sprint     | ✅       | Target sprint                |
-| Assignee   | ❌       | Assigned developer           |
+| Assignee   | ❌       | Developer được phân công     |
 
 ---
 

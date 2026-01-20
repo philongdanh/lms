@@ -7,18 +7,16 @@ sidebar_position: 2
 
 # Sprint Plan
 
-Sprint-level planning with deliverables and capacity allocation.
+Kế hoạch cấp sprint với các sản phẩm bàn giao và phân bổ năng lực.
 
-> **Scope**: This document covers sprint planning and execution. For
-> product-level roadmap, see
+> **Phạm vi**: Tài liệu này bao gồm việc lập kế hoạch và thực hiện sprint. Đối với lộ trình cấp sản phẩm, xem
 > [Product Roadmap](../specs/00-business/product-roadmap.md).
 
 ---
 
 ## Overview
 
-This roadmap defines all sprints from project start to completion, with clear
-deliverables and milestone mappings.
+Lộ trình này xác định tất cả các sprint từ khi bắt đầu đến khi hoàn thành dự án, với các sản phẩm bàn giao và cột mốc rõ ràng.
 
 ---
 
@@ -28,8 +26,8 @@ deliverables and milestone mappings.
 | --------------- | ------------ |
 | Project Start   | [YYYY-MM-DD] |
 | Project End     | [YYYY-MM-DD] |
-| Total Duration  | 14 weeks     |
-| Sprint Duration | 2 weeks      |
+| Total Duration  | 14 tuần      |
+| Sprint Duration | 2 tuần       |
 | Total Sprints   | 6 (MVP)      |
 
 ---
@@ -68,16 +66,16 @@ Sprint 1 → Sprint 2 → Sprint 3 → M2 (Auth)
 | Attribute | Value                            |
 | --------- | -------------------------------- |
 | Date      | [Week 1-2]                       |
-| Goal      | Project setup and infrastructure |
+| Goal      | Thiết lập dự án và cơ sở hạ tầng |
 | Capacity  | 30 story points                  |
-| Focus     | Infrastructure                   |
+| Focus     | Infrastructure (Cơ sở hạ tầng)   |
 
 | Epic      | Features          | Points |
 | --------- | ----------------- | ------ |
 | E01       | F01.1-F01.6 (All) | 30     |
 | **Total** |                   | 30     |
 
-**Deliverables:**
+**Sản phẩm bàn giao:**
 
 - Monorepo structure
 - CI/CD pipeline
@@ -100,7 +98,7 @@ Sprint 1 → Sprint 2 → Sprint 3 → M2 (Auth)
 | E03       | F03.1       | 3      |
 | **Total** |             | 18     |
 
-**Deliverables:**
+**Sản phẩm bàn giao:**
 
 - Registration with email
 - Registration with phone
@@ -123,7 +121,7 @@ Sprint 1 → Sprint 2 → Sprint 3 → M2 (Auth)
 | E03       | F03.2-F03.3 | 10     |
 | **Total** |             | 33     |
 
-**Deliverables:**
+**Sản phẩm bàn giao:**
 
 - Login flow
 - Password reset
@@ -147,7 +145,7 @@ Sprint 1 → Sprint 2 → Sprint 3 → M2 (Auth)
 | E04       | F04.1       | 5      |
 | **Total** |             | 33     |
 
-**Deliverables:**
+**Sản phẩm bàn giao:**
 
 - Quiz exercises
 - Progress tracking
@@ -170,7 +168,7 @@ Sprint 1 → Sprint 2 → Sprint 3 → M2 (Auth)
 | E05       | F05.1-F05.3 | 18             |
 | **Total** |             | 60 (2 sprints) |
 
-**Deliverables:**
+**Sản phẩm bàn giao:**
 
 - Tournament listing & details
 - Registration flow
@@ -195,12 +193,12 @@ Sprint 1 → Sprint 2 → Sprint 3 → M2 (Auth)
 | -         | Documentation            | 5      |
 | **Total** |                          | 28     |
 
-**Deliverables:**
+**Sản phẩm bàn giao:**
 
-- All P0 bugs fixed
-- Performance targets met
-- User documentation complete
-- Beta release deployed
+- Tất cả bug P0 đã được sửa
+- Đạt các chỉ số hiệu năng
+- Tài liệu người dùng hoàn chỉnh
+- Beta release được deploy
 
 ---
 
@@ -213,7 +211,7 @@ Sprint 1 → Sprint 2 → Sprint 3 → M2 (Auth)
 | Dev C  | Backend  | 12                    |
 | Dev D  | QA       | -                     |
 
-**Total Team Capacity:** 42 points/sprint
+**Tổng năng lực team:** 42 points/sprint
 
 ---
 
