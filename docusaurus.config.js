@@ -28,17 +28,6 @@ async function createConfig() {
             path: 'docs',
             routeBasePath: '/',
             sidebarPath: './sidebars.js',
-            lastVersion: '1.0',
-            versions: {
-              current: {
-                label: 'Next',
-                path: 'next',
-              },
-              '1.0': {
-                label: '1.0',
-                path: '',
-              },
-            },
             remarkPlugins: [
               [remarkD2, {
                 compilePath: "static/d2",
@@ -67,26 +56,27 @@ async function createConfig() {
       title: "LMS",
       items: [
         {
-          type: "dropdown",
-          label: "Guides",
+          type: "docSidebar",
+          sidebarId: "userGuide",
+          label: "User Guide",
           position: "left",
-          items: [
-            {
-              type: "docSidebar",
-              sidebarId: "userGuide",
-              label: "User Guide",
-            },
-            {
-              type: "docSidebar",
-              sidebarId: "devGuide",
-              label: "Developer Guide",
-            },
-          ],
         },
         {
           type: "docSidebar",
           sidebarId: "specs",
           label: "Specs",
+          position: "left",
+        },
+        {
+          type: "docSidebar",
+          sidebarId: "devGuide",
+          label: "Developer Guide",
+          position: "left",
+        },
+        {
+          type: "docSidebar",
+          sidebarId: "api",
+          label: "API",
           position: "left",
         },
         {
@@ -97,20 +87,15 @@ async function createConfig() {
         },
         {
           type: "docSidebar",
-          sidebarId: "api",
-          label: "API",
+          sidebarId: "project",
+          label: "Project",
           position: "left",
-        },
-        {
-          type: 'docsVersionDropdown',
-          position: 'right',
-          dropdownActiveClassDisabled: true,
         },
         {
           type: "docSidebar",
           sidebarId: "changelog",
           label: "What's New",
-          position: 'right',
+          position: "right",
         },
         {
           href: "https://github.com/idlongggg/lms-docs",

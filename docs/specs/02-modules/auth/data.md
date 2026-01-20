@@ -2,12 +2,17 @@
 id: auth-data
 title: Auth Data Model
 sidebar_label: Data
+sidebar_position: 3
 ---
 
 # Auth - Data Model
 
+---
+
 ## Overview
 Data model cho module Auth: User, Role, Permission, Session, Tenant.
+
+---
 
 ## Entities
 
@@ -65,6 +70,8 @@ erDiagram
 | name | String | ✅ | - | enum | root-admin, teacher... |
 | color | String | ❌ | - | hex | Hiển thị UI |
 
+---
+
 ## Lifecycle States
 ### Tenant State Machine
 ```mermaid
@@ -82,6 +89,8 @@ stateDiagram-v2
     PENDING_DEACTIVATION --> [*] : hard_delete_30d
 ```
 
+---
+
 ## Storage Specifications
 ### Database
 - **Table Name**: `users`, `roles`, `user_sessions`
@@ -94,16 +103,21 @@ stateDiagram-v2
 - **TTL**: 15 phút (User Profile), 7 ngày (Refresh Token)
 - **Invalidation**: Event-based (Update Profile -> Clear Cache)
 
+---
+
 ## Performance Requirements
 - **Query Performance**: < 50ms cho Login by Email
 - **Write Throughput**: 1000 register/sec
 - **Storage Growth**: 1GB/tháng
+
+---
 
 ## Data Security
 - **Encryption**: At-rest (DB Volume), In-transit (TLS 1.3)
 - **Masking**: Password hash, Token hash
 - **Access Control**: Row Level Security (RLS) theo Tenant
 
+---
 
 ## Validation Checklist
 - [x] Tất cả entities định nghĩa đầy đủ fields
@@ -111,6 +125,8 @@ stateDiagram-v2
 - [x] Indexes tối ưu cho query patterns
 - [x] Performance requirements khả thi
 
+---
+
 ## References
 
-- [Overview](./overview.md)
+- [Overview](./README.md)

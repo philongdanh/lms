@@ -2,9 +2,12 @@
 id: realtime-logic
 title: Realtime Business Logic
 sidebar_label: Logic
+sidebar_position: 4
 ---
 
 # Real-time Communication - Business Logic
+
+---
 
 ## Business Context
 - **Module**: Real-time Communication
@@ -12,8 +15,12 @@ sidebar_label: Logic
 - **Status**: Approved
 - **Last Updated**: 2026-01-14
 
+---
+
 ## Overview
 Module này cung cấp hạ tầng WebSocket để hỗ trợ các tính năng tương tác thời gian thực như: Thông báo, Chat, Trạng thái Online (Presence), và Cập nhật Tournament trực tiếp.
+
+---
 
 ## Use Cases
 | Use Case ID | Use Case Name | Description | Priority | Status |
@@ -33,6 +40,8 @@ Module này cung cấp hạ tầng WebSocket để hỗ trợ các tính năng t
 3. Nếu hợp lệ, Server chấp nhận kết nối và lưu session.
 4. Client nhận sự kiện `connect_success`.
 
+---
+
 ## Business Rules
 | Rule ID | Rule Name | Description | Condition | Action | Exception |
 |---------|----------|-------|------------|---------|------------|
@@ -40,6 +49,8 @@ Module này cung cấp hạ tầng WebSocket để hỗ trợ các tính năng t
 | BR-RT-002 | Sticky Session | Hỗ trợ HTTP polling fallback | Client kết nối lại | Định tuyến đến cùng node (Load Balancer level) | - |
 | BR-RT-003 | Room Limits | Giới hạn người dùng trong phòng | Users > MaxRoomSize | Từ chối tham gia | - |
 | BR-RT-004 | Rate Limiting | Ngăn chặn spam tin nhắn | Msgs > 10/sec | Hủy msg, có thể chặn | - |
+
+---
 
 ## Dependencies
 ### Internal Dependencies
@@ -49,6 +60,8 @@ Module này cung cấp hạ tầng WebSocket để hỗ trợ các tính năng t
 ### External Dependencies
 - ❌ Không có - Self-hosted Socket.IO cluster.
 
+---
+
 ## KPIs & Metrics
 | Metric | Target | Measurement | Frequency |
 |--------|--------|-------------------|-----------|
@@ -56,11 +69,14 @@ Module này cung cấp hạ tầng WebSocket để hỗ trợ các tính năng t
 | Concurrent Connections | > 10k | Load Test | Hàng tuần |
 | Event Delivery Rate | > 99.9% | Theo dõi Msg Ack | Hàng ngày |
 
+---
+
 ## Validation Criteria
 - [ ] Kết nối thành công với JWT hợp lệ.
 - [ ] Tính năng Broadcast hoạt động trên nhiều server nodes (Redis Adapter).
 - [ ] Xử lý 10k kết nối đồng thời.
 
+---
 
 ## Review & Approval
 | Role | Name | Date | Status |
@@ -69,19 +85,24 @@ Module này cung cấp hạ tầng WebSocket để hỗ trợ các tính năng t
 | **Tech Lead** | | | |
 | **QA Lead** | | | |
 
-
 ---
 
 # Workflows
 
+---
+
 ## Overview
 Các luồng xử lý cho kết nối và truyền tin nhắn.
+
+---
 
 ## Workflow Summary
 | Workflow ID | Workflow Name | Trigger | Actors | Status |
 |-------------|--------------|---------|--------|--------|
 | WF-RT-001 | WebSocket Handshake | Client kết nối | Client, Server | Active |
 | WF-RT-002 | Broadcast Event | Internal API Call | System, Redis | Active |
+
+---
 
 ## Workflow Details
 
@@ -142,6 +163,8 @@ flowchart TD
     Node3 --> ClientC["Client C (Connected to Node 3)"]
 ```
 
+---
+
 ## Events
 ### System Events
 | Event Name | Description | Payload | Emitted By |
@@ -149,23 +172,32 @@ flowchart TD
 | `socket.connect` | Người dùng mới online | `{user_id, socket_id}` | WS Server |
 | `socket.disconnect` | Người dùng offline | `{user_id, reason}` | WS Server |
 
+---
+
 ## Error Handling
 | Error Scenario | Detection | Recovery Action | Escalation |
 |----------------|-----------|-----------------|------------|
 | Redis Pub/Sub Down | Mất kết nối | Server Local Broadcast Only (Degraded) | Alert |
 | Token Expired | Auth thất bại | Gửi sự kiện `token_expired` -> Client Refresh | - |
 
+---
+
 ## Performance Requirements
 - **Handshake Time**: < 100ms.
+
+---
 
 ## Security Requirements
 - [ ] Bắt buộc sử dụng WSS.
 - [ ] Xác thực Token trên mỗi kết nối.
 
+---
 
 ## Validation Checklist
 - [ ] Kiểm tra Redis Failover
 
+---
+
 ## References
 
-- [Overview](./overview.md)
+- [Overview](./README.md)

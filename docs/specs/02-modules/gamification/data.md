@@ -2,12 +2,17 @@
 id: gamification-data
 title: Gamification Data Model
 sidebar_label: Data
+sidebar_position: 3
 ---
 
 # Gamification & Rewards - Data Model
 
+---
+
 ## Overview
 Mô hình dữ liệu để lưu trữ thông tin thành tích, điểm số và phần thưởng của người dùng.
+
+---
 
 ## Entities
 
@@ -68,6 +73,8 @@ erDiagram
     Reward ||--o{ UserReward : "redeemed_by"
 ```
 
+---
+
 ## Lifecycle States
 ### Order Lifecycle (UserReward)
 ```mermaid
@@ -83,23 +90,32 @@ stateDiagram-v2
     SHIPPED --> DELIVERED : User Confirm
 ```
 
+---
+
 ## Storage Specifications
 ### Database
 - **Table Name Prefix**: `game_`
 - **Concurrency**: Sử dụng Row Locking hoặc Optimistic Locking (cột `version`) cho `UserExp` để tránh race conditions khi cộng điểm.
 
+---
+
 ## Performance Requirements
 - **Write**: Việc cộng điểm/xu được xử lý bất đồng bộ qua Queue để đảm bảo thời gian phản hồi thấp cho luồng Learning.
 - **Read**: Đọc bảng xếp hạng từ Redis (ZSET).
 
+---
+
 ## Data Security
 - **Integrity**: Không cho phép sửa đổi trực tiếp `exp_points` từ API client (chỉ thông qua server-side events).
 
+---
 
 ## Validation Checklist
 - [ ] Xử lý cập nhật đồng thời (Chiến lược Locking)
 - [ ] Logic đồng bộ Redis được định nghĩa
 
+---
+
 ## References
 
-- [Overview](./overview.md)
+- [Overview](./README.md)

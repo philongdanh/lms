@@ -2,17 +2,20 @@
 id: test-cases
 title: Test Cases
 sidebar_label: Test Cases
+sidebar_position: 2
 ---
 
 # Test Cases
 
 Test case templates for integration and E2E testing.
 
+---
 
 ## Overview
 
 This document provides test cases covering API integration tests and end-to-end user flows.
 
+---
 
 ## Test Naming Convention
 
@@ -27,6 +30,7 @@ This document provides test cases covering API integration tests and end-to-end 
 | E2E | End-to-end tests |
 | PERF | Performance tests |
 
+---
 
 ## Test Priority
 
@@ -37,6 +41,7 @@ This document provides test cases covering API integration tests and end-to-end 
 | P2 | Medium | Daily |
 | P3 | Low | Weekly |
 
+---
 
 ## Tools
 
@@ -48,6 +53,7 @@ This document provides test cases covering API integration tests and end-to-end 
 | API | Supertest |
 | Performance | k6 |
 
+---
 
 ## Integration Tests
 
@@ -184,6 +190,7 @@ query {
 - `subjects` is array with items
 - Each item has `id`, `name`, `icon`
 
+---
 
 ## E2E Tests
 
@@ -315,6 +322,7 @@ test('User can join and participate in tournament', async ({ page }) => {
 });
 ```
 
+---
 
 ## References
 

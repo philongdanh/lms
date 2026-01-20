@@ -2,17 +2,24 @@
 id: tournament-api
 title: Tournament API Endpoints
 sidebar_label: API
+sidebar_position: 2
 ---
 
 # Tournament API Endpoints
 
+---
+
 ## Overview
 Tài liệu HTTP API và WebSocket events cho Competition.
+
+---
 
 ## Base Information
 - **Base URL**: `/api/v1/tournaments`
 - **Version**: 1.0
 - **Authentication**: Bearer Token
+
+---
 
 ## Endpoints Summary
 | Method | Endpoint | Description | Auth Required | Rate Limit |
@@ -21,6 +28,8 @@ Tài liệu HTTP API và WebSocket events cho Competition.
 | GET | `/{id}` | Chi tiết cuộc thi | ✅ | 60/min |
 | POST | `/rounds/{id}/join` | Đăng ký tham gia round | ✅ | 10/min |
 | GET | `/rounds/{id}/leaderboard` | Lấy leaderboard (Snapshot) | ✅ | 120/min |
+
+---
 
 ## Endpoint Details
 
@@ -50,6 +59,8 @@ Authorization: Bearer {token}
 }
 ```
 
+---
+
 ## WebSocket Protocol
 
 ### Client -> Server Events
@@ -65,24 +76,33 @@ Authorization: Bearer {token}
 | `leaderboard:update` | `[{user, score, rank}]` | Cập nhật leaderboard |
 | `round:end` | `{my_rank, total_score}` | Round kết thúc |
 
+---
+
 ## Error Responses
 | Code | HTTP | Description |
 |------|------|-------------|
 | `TOUR_FULL` | 400 | Room thi đấu đã đầy |
 | `TOUR_CLOSED` | 403 | Ngoài khung thời gian thi đấu |
 
+---
+
 ## Performance Requirements
 - **Join API**: < 200ms (Validation + Phân phối Room).
 - **WS Latency**: < 50ms (Mạng nội bộ).
+
+---
 
 ## Security Requirements
 - [ ] Xác thực invite code nghiêm ngặt.
 - [ ] Bắt buộc một kết nối cho mỗi user ID.
 
+---
 
 ## Validation Checklist
 - [ ] Độ ổn định kết nối WS dưới tải cao
 
+---
+
 ## References
 
-- [Overview](./overview.md)
+- [Overview](./README.md)

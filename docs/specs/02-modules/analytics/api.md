@@ -2,17 +2,24 @@
 id: analytics-api
 title: Analytics API Endpoints
 sidebar_label: API
+sidebar_position: 2
 ---
 
 # Analytics & Reporting - API Endpoints
 
+---
+
 ## Overview
 API để truy xuất báo cáo và thông tin Analytics.
+
+---
 
 ## Base Information
 - **Base URL**: `/api/v1/analytics`
 - **Version**: 1.0
 - **Authentication**: Bearer Token
+
+---
 
 ## Endpoints Summary
 | Method | Endpoint | Description | Auth Required | Rate Limit |
@@ -21,6 +28,8 @@ API để truy xuất báo cáo và thông tin Analytics.
 | GET | `/reports/learning` | Lấy báo cáo cá nhân | ✅ | 30/min |
 | GET | `/reports/class/{class_id}` | Lấy báo cáo lớp (Giáo viên) | ✅ | 20/min |
 | GET | `/admin/overview` | Lấy tổng quan hệ thống (Admin) | ✅ | 10/min |
+
+---
 
 ## Endpoint Details
 
@@ -75,23 +84,32 @@ Authorization: Bearer {token}
 }
 ```
 
+---
+
 ## Error Responses
 | Code | Error | Description |
 |------|-------|-------------|
 | 403 | `ANALYTICS_ACCESS_DENIED` | Không có quyền xem báo cáo của người dùng này |
 | 400 | `ANALYTICS_INVALID_RANGE` | Khoảng thời gian quá lớn (> 90 ngày) |
 
+---
+
 ## Performance Requirements
 - **Report Generation**: < 500ms cho báo cáo cá nhân, < 2s cho báo cáo lớp.
 - **Cache Hit Rate**: > 80% cho các yêu cầu trùng lặp.
 
+---
+
 ## Security Requirements
 - [ ] Kiểm tra quyền sở hữu tài nguyên (Phụ huynh xem con, Học sinh xem bản thân).
 
+---
 
 ## Validation Checklist
 - [ ] Độ phủ kiểm thử kiểm soát truy cập
 
+---
+
 ## References
 
-- [Overview](./overview.md)
+- [Overview](./README.md)

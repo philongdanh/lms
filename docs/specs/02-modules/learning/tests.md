@@ -2,12 +2,17 @@
 id: learning-tests
 title: Learning Test Cases
 sidebar_label: Tests
+sidebar_position: 5
 ---
 
 # Learning & Personalization - Test Cases
 
+---
+
 ## Overview
 Test cases được derive từ specifications của module Learning.
+
+---
 
 ## Test Coverage Matrix
 | Specification | Test Cases | Covered | Status |
@@ -15,6 +20,8 @@ Test cases được derive từ specifications của module Learning.
 | Business Logic | 6 | 100% | Planned |
 | API Endpoints | 15 | 100% | Planned |
 | Workflows | 5 | 80% | Planned |
+
+---
 
 ## Test Categories
 
@@ -47,31 +54,41 @@ Test cases được derive từ specifications của module Learning.
 |---------|-----------------|----------------|------------------|
 | TC-LEARN-SEC-001 | IDOR on Progress | Get path của user khác | 403 Forbidden |
 
+---
+
 ## Test Data Requirements
 ### Data Sets
 - **User History**: ~1M rows lịch sử cho test AI model.
 - **Lesson Content**: Chương trình toán hoàn chỉnh (Lớp 1-12).
+
+---
 
 ## Test Automation
 ### Framework
 - **API Tests**: Jest / Supertest
 - **Performance Tests**: k6
 
+---
+
 ## Reporting Requirements
 JUnit XML chuẩn + HTML Report.
 
+---
 
 ## Validation Checklist
 - [ ] Test coverage matrix hoàn chỉnh
 - [ ] Security tests được bao gồm
 
-
 ---
 
 # Performance Requirements
 
+---
+
 ## Overview
 Performance specifications cho module Learning & Personalization.
+
+---
 
 ## Performance Targets
 
@@ -88,6 +105,8 @@ Performance specifications cho module Learning & Personalization.
 | Normal Load | 500 | 2000 | 500MB/giờ |
 | Peak Load (Giờ thi) | 5000 | 20000 | 5GB/giờ |
 
+---
+
 ## Scalability Requirements
 ### Vertical Scaling
 - **CPU**: Tối ưu cho single-core logic (Node.js) nhưng tính toán nặng trên AI Service.
@@ -97,11 +116,15 @@ Performance specifications cho module Learning & Personalization.
 - **Learning Service**: Stateless, scale auto (min 2, max 20).
 - **AI Service**: Scale consumer workers dựa trên queue lag.
 
+---
+
 ## Resource Utilization Limits
 | Resource | Warning Threshold | Critical Threshold | Required Action |
 |----------|-------------------|--------------------|------------------|
 | CPU Usage | 70% | 90% | Scale up pods |
 | Memory Usage | 75% | 90% | Restart pod / Phân tích leak |
+
+---
 
 ## Load Testing Scenarios
 ### Scenario 1: Mass Examination
@@ -116,6 +139,8 @@ Performance specifications cho module Learning & Personalization.
 - [ ] Error rate < 0.1%
 - [ ] Không mất dữ liệu (progress saves)
 
+---
+
 ## Monitoring & Alerting
 ### Metrics to Monitor
 - [ ] Latency của `submit_answer`
@@ -128,11 +153,14 @@ Performance specifications cho module Learning & Personalization.
 | AI Service Latency | > 1s | > 3s | Dev Team |
 | Error Rate | > 1% | > 5% | PagerDuty |
 
+---
 
 ## Validation Checklist
 - [ ] Tất cả performance targets được định lượng
 - [ ] Các load testing scenarios được tạo cho Peak Load
 
+---
+
 ## References
 
-- [Overview](./overview.md)
+- [Overview](./README.md)

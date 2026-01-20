@@ -2,18 +2,25 @@
 id: api-gateway
 title: API Gateway
 sidebar_label: API Gateway
+sidebar_position: 1
 ---
 
 # API Gateway
 
+---
+
 ## Overview
 Tiêu chuẩn thiết kế API cho toàn hệ thống
+
+---
 
 ## Design Principles
 1. **RESTful Design**: Resources, HTTP methods
 2. **Consistency**: Uniform patterns
 3. **Simplicity**: Dễ hiểu và sử dụng
 4. **Extensibility**: Versioning, backward compatibility
+
+---
 
 ## Technical Standards
 
@@ -69,6 +76,8 @@ X-Request-ID: {uuid}
 }
 ```
 
+---
+
 ## Security Standards
 
 ### Authentication
@@ -83,6 +92,8 @@ X-Request-ID: {uuid}
 ### Validation
 - **Input**: Schema validation
 - **Output**: Data masking
+
+---
 
 ## Performance Standards
 
@@ -99,10 +110,14 @@ X-Request-ID: {uuid}
 | Tier 1 | 100 | 200 |
 | Tier 2 | 1000 | 2000 |
 
+---
+
 ## Versioning Strategy
 - **URL Versioning**: `/api/v1/`
 - **Deprecation**: 6 months notice
 - **Sunset**: 12 months after deprecation
+
+---
 
 ## Monitoring & Logging
 ### Metrics to Track
@@ -116,6 +131,7 @@ X-Request-ID: {uuid}
 - Error logging
 - Audit trails
 
+---
 
 ## Compliance Checklist
 - [ ] Follows RESTful principles

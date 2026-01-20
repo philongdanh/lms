@@ -2,17 +2,24 @@
 id: content-api
 title: Content API Endpoints
 sidebar_label: API
+sidebar_position: 2
 ---
 
 # Content & Question Bank - API Endpoints
 
+---
+
 ## Overview
 API quản lý nội dung: Subjects, Grades, Topics, Lessons, Content, Question Banks.
+
+---
 
 ## Base Information
 - **Base URL**: `/api/v1/content`
 - **Version**: 1.0
 - **Authentication**: Bearer Token (Teacher/Admin cho Write, Student cho Read)
+
+---
 
 ## Endpoints Summary
 | Method | Endpoint | Description | Auth Required | Rate Limit |
@@ -23,6 +30,8 @@ API quản lý nội dung: Subjects, Grades, Topics, Lessons, Content, Question 
 | POST | `/lessons/{id}/contents` | Upload/Thêm nội dung vào bài học | ✅ | 20/min |
 | POST | `/questions` | Tạo câu hỏi (đơn lẻ) | ✅ | 50/min |
 | POST | `/import` | Import hàng loạt câu hỏi từ file | ✅ | 5/min |
+
+---
 
 ## Endpoint Details
 
@@ -113,6 +122,8 @@ Authorization: Bearer {token}
 }
 ```
 
+---
+
 ## Error Responses
 | Code | Error | Description |
 |------|-------|-------------|
@@ -120,20 +131,27 @@ Authorization: Bearer {token}
 | 400 | `CONTENT_INVALID_FILE` | File import sai định dạng hoặc quá lớn |
 | 400 | `CONTENT_PARSE_ERROR` | Lỗi cú pháp khi parse nội dung câu hỏi |
 
+---
+
 ## Performance Requirements
 - **Import Speed**: Xử lý file import 100 câu hỏi < 5s.
 - **Tree Load**: API `/structure` response < 100ms (cached).
+
+---
 
 ## Security Requirements
 - [ ] Teacher chỉ có thể chỉnh sửa nội dung mình tạo (hoặc Shared Bank).
 - [ ] Admin có thể chỉnh sửa mọi thứ.
 - [ ] Student chỉ có thể đọc nội dung Active.
 
+---
 
 ## Validation Checklist
 - [ ] RBAC (Role Based Access Control) đã được xác minh
 - [ ] Logic validation import đã được test với các edge cases (bad formatting)
 
+---
+
 ## References
 
-- [Overview](./overview.md)
+- [Overview](./README.md)

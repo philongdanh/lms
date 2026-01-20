@@ -2,18 +2,25 @@
 id: learning-api
 title: Learning API Endpoints
 sidebar_label: API
+sidebar_position: 2
 ---
 
 # Learning & Personalization - API Endpoints
 
+---
+
 ## Overview
 Các API endpoints cho module Learning, cung cấp truy cập vào lộ trình học tập cá nhân hóa, theo dõi tiến độ và tính năng luyện tập.
+
+---
 
 ## Base Information
 - **Base URL**: `/api/v1/learning`
 - **Version**: 1.0
 - **Format**: JSON
 - **Authentication**: Bearer Token
+
+---
 
 ## Endpoints Summary
 | Method | Endpoint | Description | Auth Required | Rate Limit |
@@ -24,6 +31,8 @@ Các API endpoints cho module Learning, cung cấp truy cập vào lộ trình h
 | POST | `/progress` | Cập nhật tiến độ học tập (video, content) | ✅ | 100/min |
 | POST | `/practice/start` | Bắt đầu phiên bài tập/quiz | ✅ | 20/min |
 | POST | `/practice/submit` | Nộp câu trả lời bài tập | ✅ | 100/min |
+
+---
 
 ## Endpoint Details
 
@@ -167,6 +176,8 @@ Authorization: Bearer {token}
 }
 ```
 
+---
+
 ## Error Responses
 | Code | Error | Description |
 |------|-------|-------------|
@@ -176,21 +187,28 @@ Authorization: Bearer {token}
 | 400 | `LEARN_SESSION_EXPIRED` | Phiên làm bài đã hết hạn |
 | 429 | `RATE_LIMITED` | Gửi requests quá nhanh (anti-spam) |
 
+---
+
 ## Performance Requirements
 - **Thời gian phản hồi**: API `/practice/submit` phải < 200ms P95 để đảm bảo trải nghiệm real-time.
 - **Availability**: 99.9%
+
+---
 
 ## Security Requirements
 - [ ] Yêu cầu Authentication (Bearer Token)
 - [ ] Input validation (progress range 0-100, valid UUIDs)
 - [ ] Rate limiting trên submit answer endpoint
 
+---
 
 ## Validation Checklist
 - [ ] Tất cả endpoints được document
 - [ ] Các ví dụ request/response được cung cấp
 - [ ] Các error codes được định nghĩa
 
+---
+
 ## References
 
-- [Overview](./overview.md)
+- [Overview](./README.md)

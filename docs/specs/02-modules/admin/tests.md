@@ -2,12 +2,17 @@
 id: admin-tests
 title: Admin Test Cases
 sidebar_label: Tests
+sidebar_position: 5
 ---
 
 # Admin & Tenant Management - Test Cases
 
+---
+
 ## Overview
 Các test case cho module Admin.
+
+---
 
 ## Test Coverage Matrix
 | Specification | Test Cases | Coverage | Status |
@@ -15,6 +20,8 @@ Các test case cho module Admin.
 | Business Logic | 4 | 100% | Planned |
 | API Endpoints | 4 | 100% | Planned |
 | Workflows | 2 | 100% | Planned |
+
+---
 
 ## Test Categories
 
@@ -36,17 +43,21 @@ Các test case cho module Admin.
 |---------|--------|--------|--------|
 | TC-ADM-SEC-001 | Tenant Admin không thể tạo Tenant | POST /tenants | 403 Forbidden |
 
+---
 
 ## Validation Checklist
 - [ ] Kiểm tra quyền hạn cho tất cả endpoints
-
 
 ---
 
 # Performance Requirements
 
+---
+
 ## Overview
 Các thông số hiệu năng cho module Admin.
+
+---
 
 ## Performance Targets
 
@@ -62,14 +73,20 @@ Các thông số hiệu năng cho module Admin.
 |----------|--------------|------------------|-------------|
 | Admin Operations | 50 | 20 (Root Admins) | Thấp |
 
+---
+
 ## Scalability Requirements
 ### Horizontal Scaling
 - **Admin Service**: Scale dựa trên tải, thường có lưu lượng thấp.
+
+---
 
 ## Resource Utilization Limits
 | Resource | Warning Threshold | Critical Threshold | Required Action |
 |----------|-------------------|--------------------|-----------------|
 | CSV Parser Memory | 500MB | 1GB | Từ chối file lớn |
+
+---
 
 ## Load Testing Scenarios
 ### Scenario 1: Bulk Import
@@ -78,10 +95,13 @@ Các thông số hiệu năng cho module Admin.
 - [ ] Không có DB Deadlocks
 - [ ] Email queue xử lý ổn định
 
+---
 
 ## Validation Checklist
 - [ ] Xác minh việc thực thi giới hạn kích thước file tối đa
 
+---
+
 ## References
 
-- [Overview](./overview.md)
+- [Overview](./README.md)

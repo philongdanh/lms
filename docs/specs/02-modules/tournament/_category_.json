@@ -1,0 +1,8 @@
+{
+  "label": "Tournament",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "Tournament module"
+  }
+}

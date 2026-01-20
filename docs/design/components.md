@@ -2,12 +2,14 @@
 id: components
 title: Component Guidelines
 sidebar_label: Components
+sidebar_position: 3
 ---
 
 # Component Guidelines
 
 UI component design guidelines and patterns.
 
+---
 
 ## Component Anatomy
 
@@ -33,6 +35,7 @@ UI component design guidelines and patterns.
 | Loading | Spinner/skeleton |
 | Error | Error border/text |
 
+---
 
 ## Buttons
 
@@ -61,6 +64,7 @@ UI component design guidelines and patterns.
 - Include loading state for async actions
 - Disable during form submission
 
+---
 
 ## Forms
 
@@ -91,6 +95,7 @@ UI component design guidelines and patterns.
 | Medium | 40px | Default |
 | Large | 48px | Touch-friendly |
 
+---
 
 ## Cards
 
@@ -126,6 +131,7 @@ UI component design guidelines and patterns.
 | Shadow | `--shadow-md` |
 | Border | Optional `--border` |
 
+---
 
 ## Modals
 
@@ -158,6 +164,7 @@ UI component design guidelines and patterns.
 - Close on backdrop click (optional)
 - Use sparingly
 
+---
 
 ## Tables
 
@@ -176,6 +183,7 @@ UI component design guidelines and patterns.
 - [ ] Selection
 - [ ] Resizable columns
 
+---
 
 ## Navigation
 
@@ -203,6 +211,7 @@ UI component design guidelines and patterns.
 | Position | Fixed left |
 | Background | `--background` |
 
+---
 
 ## Feedback Components
 
@@ -211,9 +220,9 @@ UI component design guidelines and patterns.
 | Type | Color | Icon | Usage |
 |------|-------|------|-------|
 | Info | Blue | ℹ️ | Information |
-| Success | Green | ✓ | Confirmation |
-| Warning | Yellow | ⚠️ | Caution |
-| Error | Red | ✕ | Errors |
+| Success | Green |  | Confirmation |
+| Warning | Yellow | ️ | Caution |
+| Error | Red |  | Errors |
 
 ### Toasts
 
@@ -223,6 +232,7 @@ UI component design guidelines and patterns.
 | Duration | 3-5 seconds |
 | Max Width | 400px |
 
+---
 
 ## Responsive Breakpoints
 
@@ -234,6 +244,7 @@ UI component design guidelines and patterns.
 | `xl` | 1280px | Large desktop |
 | `2xl` | 1536px | Wide screens |
 
+---
 
 ## Accessibility
 
@@ -245,6 +256,7 @@ UI component design guidelines and patterns.
 | Keyboard navigation | Full support |
 | Screen readers | Semantic HTML, ARIA |
 
+---
 
 ## References
 

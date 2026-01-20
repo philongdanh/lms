@@ -2,12 +2,14 @@
 id: journeys
 title: User Journeys
 sidebar_label: Journeys
+sidebar_position: 2
 ---
 
 # User Journeys
 
 Bản đồ hành trình người dùng cho các luồng chính.
 
+---
 
 ## Core Journeys
 
@@ -21,11 +23,11 @@ Bản đồ hành trình người dùng cho các luồng chính.
 
 | Phase | Action | Thought | Emotion | Opportunity |
 |-------|--------|---------|---------|-------------|
-| Login | Mở app, thấy streak 5 ngày | "Mình đang giữ streak tốt!" | 😊 | Gamification ngay từ màn hình đầu |
-| Explore | Xem bài học được gợi ý | "Hôm nay học Toán nhé" | 😐 | AI gợi ý dựa trên gap knowledge |
-| Learn | Xem video 5 phút | "Video ngắn, dễ hiểu" | 😄 | Bite-size content, progress bar |
-| Practice | Làm quiz 10 câu | "Sao mình sai câu này?" | 🤔 | Giải thích ngay khi sai |
-| Reward | Nhận 50 XP + 1 sao | "Yeah! Gần đủ mở badge mới!" | 🎉 | Animation celebrate, progress |
+| Login | Mở app, thấy streak 5 ngày | "Mình đang giữ streak tốt!" |  | Gamification ngay từ màn hình đầu |
+| Explore | Xem bài học được gợi ý | "Hôm nay học Toán nhé" |  | AI gợi ý dựa trên gap knowledge |
+| Learn | Xem video 5 phút | "Video ngắn, dễ hiểu" |  | Bite-size content, progress bar |
+| Practice | Làm quiz 10 câu | "Sao mình sai câu này?" |  | Giải thích ngay khi sai |
+| Reward | Nhận 50 XP + 1 sao | "Yeah! Gần đủ mở badge mới!" |  | Animation celebrate, progress |
 
 #### Journey Flow
 
@@ -121,6 +123,7 @@ flowchart LR
 - Questions from bank: 80%
 - Custom questions: 20%
 
+---
 
 ## Journey Insights
 
@@ -143,6 +146,7 @@ flowchart LR
 | Template đề thi theo topic | Medium | Low | P1 |
 | Gamification cho Parent engagement | Medium | Medium | P2 |
 
+---
 
 ## References
 

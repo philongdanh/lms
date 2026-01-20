@@ -2,13 +2,18 @@
 id: security
 title: Security Policy
 sidebar_label: Security
+sidebar_position: 2
 ---
 
 # Security Policy
 
+---
+
 ## Overview
 
 Mô tả hệ thống kiểm soát truy cập và chính sách bảo mật của nền tảng LMS. Áp dụng mô hình RBAC với 5 roles, kết hợp với JWT authentication và multi-tenant isolation.
+
+---
 
 ## RBAC Model
 
@@ -61,6 +66,8 @@ flowchart TB
 | **JWT Access Token** | Token ngắn hạn (15-30 phút) | Client-side |
 | **Refresh Token** | Token dài hạn, chỉ lưu hash | PostgreSQL (hashed) |
 | **Token Blacklist** | Danh sách token đã thu hồi | Redis |
+
+---
 
 ## Authentication Flow
 
@@ -136,6 +143,8 @@ sequenceDiagram
         AuthService-->>Client: {newAccessToken, newRefreshToken}
     end
 ```
+
+---
 
 ## Authorization Flow
 
@@ -225,6 +234,8 @@ sequenceDiagram
     end
 ```
 
+---
+
 ## Security Policies
 
 ### 5.1. Token Security
@@ -263,6 +274,8 @@ sequenceDiagram
 | `tenant-admin` | TOTP (Google Authenticator) | Có |
 | Các roles khác | Optional | Không |
 
+---
+
 ## Multi-Tenant Security
 
 ### 6.1. Data Isolation Rules
@@ -281,6 +294,8 @@ sequenceDiagram
 | `teacher` | ✅ Limited | ❌ Blocked | ❌ Không access |
 | `parent` | ✅ Limited | ❌ Blocked | ❌ Không access |
 | `student` | ✅ Dữ liệu riêng | ❌ Blocked | ❌ Không access |
+
+---
 
 ## Permission Change Process
 
@@ -317,6 +332,8 @@ flowchart TD
     style P fill:#10b981,color:#fff
 ```
 
+---
+
 ## Rate Limiting & Protection
 
 ### 8.1. Rate Limit Configuration
@@ -337,6 +354,8 @@ flowchart TD
 | **Helmet** | Security headers | XSS, clickjacking protection |
 | **Input Validation** | Class-validator | SQL injection, XSS prevention |
 | **Request Size Limit** | 10MB | DoS prevention |
+
+---
 
 ## Audit Logging
 
@@ -367,13 +386,16 @@ flowchart TD
 }
 ```
 
+---
+
 ## References
 
-- [Business Overview](../../00-business/overview.md)
+- [Business Overview](../../00-business/README.md)
 - [System Design](../system-design.md)
 - [Data Model](../data-model.md)
 - [Auth Module](../../02-modules/auth/logic.md)
 
+---
 
 ## JWT Token Specification
 

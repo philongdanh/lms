@@ -2,12 +2,14 @@
 id: system-design
 title: System Design
 sidebar_label: System Design
+sidebar_position: 1
 ---
 
 # System Design
 
 LMS Platform architecture - a highly scalable multi-tenant learning management system.
 
+---
 
 ## High-Level Architecture
 
@@ -76,6 +78,8 @@ App -> Data Layer.Redis
 
 8. **Scalable WebSocket Architecture**: Kiến trúc WebSocket có khả năng mở rộng với Redis adapter cho hỗ trợ cluster.
 
+---
+
 ## Technology Stack
 
 ### 3.1. Client Layer
@@ -112,6 +116,8 @@ App -> Data Layer.Redis
 - **File Storage**: Local storage for on-premise
 - **Logging Stack**: Centralized logging with query and analysis
 - **Background Jobs**: Bull queue with Redis for delayed tasks
+
+---
 
 ## Core Components
 
@@ -174,6 +180,8 @@ App -> Data Layer.Redis
   - Real-time presence tracking and room management
   - Rate limiting storage
 - **Redis Cluster**: For high availability and scalability
+
+---
 
 ## Data Flow
 
@@ -394,6 +402,8 @@ App -> Parent: Display dashboard {
 }
 ```
 
+---
+
 ## Design Principles
 
 ### 6.1. Development Principles
@@ -434,6 +444,8 @@ App -> Parent: Display dashboard {
 4. **WebSocket Scaling**: Redis adapter for WebSocket cluster scaling
 5. **Cache Strategy**: Multi-level caching with Redis cluster
 
+---
+
 ## Requirements Mapping
 
 ### 7.1. Business Requirements Mapping
@@ -464,6 +476,8 @@ App -> Parent: Display dashboard {
 | **Authentication** | FR-AUTH-01 to FR-AUTH-09 | Auth Module, User Management | JWT, Redis Token Blacklist, Multi-tenant |
 | **Real-time** | FR-RT-01 to FR-RT-06 | Real-time Module, WebSocket Gateway | Socket.IO, Redis Adapter, Presence Tracking |
 
+---
+
 ## Integration & Extension
 
 ### 8.1. API First Design
@@ -478,6 +492,8 @@ App -> Parent: Display dashboard {
 3. **CDN Services**: High-performance video and document distribution
 4. **Third-party Analytics**: User behavior tracking
 5. **Push Notification Services**: Firebase Cloud Messaging, OneSignal
+
+---
 
 ## Deployment & Operations
 
@@ -525,8 +541,10 @@ App -> Parent: Display dashboard {
 3. **Tenant Isolation**: Failure of one tenant does not affect other tenants
 4. **Graceful Degradation**: System continues operating with basic functions when auxiliary services encounter issues
 
+---
+
 ## References
 
-- [Business Overview](../00-business/overview.md)
+- [Business Overview](../00-business/README.md)
 - [Data Model](./data-model.md)
 - [Cross-Cutting](./cross-cutting/README.md)

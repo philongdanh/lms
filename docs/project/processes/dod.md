@@ -2,12 +2,14 @@
 id: dod
 title: Definition of Done
 sidebar_label: Definition of Done
+sidebar_position: 1
 ---
 
 # Definition of Done
 
 Tiêu chí để xác định một story/task "Done".
 
+---
 
 ## Story Definition of Done
 
@@ -59,6 +61,7 @@ Một User Story được coi là **Done** khi:
 - [ ] PO reviewed và accepted
 - [ ] Acceptance criteria met
 
+---
 
 ## Sprint Definition of Done
 
@@ -71,6 +74,7 @@ Một Sprint được coi là **Done** khi:
 - [ ] Documentation updated
 - [ ] No critical bugs
 
+---
 
 ## Release Definition of Done
 
@@ -86,6 +90,7 @@ Một Release được coi là **Done** khi:
 - [ ] Deployed to production
 - [ ] Monitoring confirmed
 
+---
 
 ## Bug Fix Definition of Done
 
@@ -96,6 +101,7 @@ Một Release được coi là **Done** khi:
 - [ ] Related bugs checked
 - [ ] PR reviewed và merged
 
+---
 
 ## Task Types
 

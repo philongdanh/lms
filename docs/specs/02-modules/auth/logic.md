@@ -2,9 +2,12 @@
 id: auth-logic
 title: Auth Business Logic
 sidebar_label: Logic
+sidebar_position: 4
 ---
 
 # Auth - Business Logic
+
+---
 
 ## Business Context
 - **Module**: Auth
@@ -12,8 +15,12 @@ sidebar_label: Logic
 - **Status**: Approved
 - **Last Updated**: 2026-01-14
 
+---
+
 ## Overview
 Module cốt lõi: **Xác thực (Auth), Phân quyền (RBAC), Quản lý Session, Liên kết Phụ huynh, Vòng đời Tenant**.
+
+---
 
 ## Use Cases
 | Use Case ID | Name | Description | Priority | Status |
@@ -25,6 +32,8 @@ Module cốt lõi: **Xác thực (Auth), Phân quyền (RBAC), Quản lý Sessio
 | UC-AUTH-005 | Parent Linking | Liên kết tài khoản phụ huynh với học sinh | P1 | Done |
 | UC-AUTH-006 | Tenant Management | Vòng đời tenant (active, suspend) | P1 | Done |
 
+---
+
 ## Business Rules
 | Rule ID | Name | Description | Condition | Action | Exception |
 |---------|-----|-------|-----------|-----------|----------|
@@ -35,6 +44,8 @@ Module cốt lõi: **Xác thực (Auth), Phân quyền (RBAC), Quản lý Sessio
 | BR-AUTH-005 | Session TTL | Auto-expire sau 7 ngày idle | Cron/Check | Revoke | N/A |
 | BR-AUTH-006 | Tenant Status | Chỉ tenant ACTIVE được login | Login | Check status | Block login |
 
+---
+
 ## Dependencies
 ### Internal Dependencies
 - ✅ Tenant Service - Quản lý thông tin tenant
@@ -44,6 +55,8 @@ Module cốt lõi: **Xác thực (Auth), Phân quyền (RBAC), Quản lý Sessio
 - ✅ Redis - Caching session/tokens
 - ✅ PostgreSQL - Lưu trữ bền vững
 
+---
+
 ## KPIs & Metrics
 | Metric | Target | Measurement | Frequency |
 |--------|--------|----------------|----------|
@@ -51,12 +64,15 @@ Module cốt lõi: **Xác thực (Auth), Phân quyền (RBAC), Quản lý Sessio
 | Token Refresh | < 100ms | APM | Realtime |
 | Concurrent Sessions | Limit enforced | DB Count | Per login |
 
+---
+
 ## Validation Criteria
 - [ ] Tất cả use cases đã định nghĩa
 - [ ] Business rules đầy đủ và chính xác
 - [ ] Dependencies đã xác định
 - [ ] KPIs có thể đo lường
 
+---
 
 ## Review & Approval
 | Role | Name | Date | Status |
@@ -65,13 +81,16 @@ Module cốt lõi: **Xác thực (Auth), Phân quyền (RBAC), Quản lý Sessio
 | **Tech Lead** | | | |
 | **QA Lead** | | | |
 
-
 ---
 
 # Workflows
 
+---
+
 ## Overview
 Workflows và business processes cho module Auth.
+
+---
 
 ## Workflow Summary
 | Workflow ID | Name | Trigger | Actors | Status |
@@ -82,6 +101,8 @@ Workflows và business processes cho module Auth.
 | WF-AUTH-004 | Parent-Student Link | User Request | Parent, Student | Active |
 | WF-AUTH-005 | Token Refresh | Token Expire | System | Active |
 | WF-AUTH-006 | Logout & Revoke | User Action | User | Active |
+
+---
 
 ## Workflow Details
 
@@ -128,6 +149,7 @@ Workflows và business processes cho module Auth.
 
 #### Flow Diagram
 
+---
 
 ## Events
 ### System Events
@@ -137,21 +159,29 @@ Workflows và business processes cho module Auth.
 | `auth.login.success` | Đăng nhập thành công | `{user_id, device_id}` | AuthService |
 | `auth.session.revoked` | Session bị thu hồi | `{session_id, reason}` | SessionService |
 
+---
+
 ## Error Handling
 | Error Scenario | Detection | Recovery Action | Escalation |
 |--------------|-----------|---------------------|------------|
 | Redis Down | Connection Fail | Fallback to DB (slow) | Alert Ops |
 | Email Service Fail | Timeout | Retry 3x, then Queue | Alert Ops |
 
+---
+
 ## Performance Requirements
 - **Thời gian xử lý**: < 500ms cho complex auth flows
 - **Concurrent Users**: Hỗ trợ 5000 concurrent logins
+
+---
 
 ## Security Requirements
 - [x] Audit logging cho tất cả sự kiện registration/login
 - [x] Input sanitization
 - [x] Rate limiting
 
+---
+
 ## References
 
-- [Overview](./overview.md)
+- [Overview](./README.md)

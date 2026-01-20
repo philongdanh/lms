@@ -2,17 +2,24 @@
 id: gamification-api
 title: Gamification API Endpoints
 sidebar_label: API
+sidebar_position: 2
 ---
 
 # Gamification & Rewards - API Endpoints
 
+---
+
 ## Overview
 API để truy cập thông tin Gamification: Hồ sơ Thành tích, Bảng xếp hạng, và Cửa hàng Phần thưởng.
+
+---
 
 ## Base Information
 - **Base URL**: `/api/v1/gamification`
 - **Version**: 1.0
 - **Authentication**: Bearer Token
+
+---
 
 ## Endpoints Summary
 | Method | Endpoint | Description | Auth Required | Rate Limit |
@@ -22,6 +29,8 @@ API để truy cập thông tin Gamification: Hồ sơ Thành tích, Bảng xế
 | GET | `/badges` | Lấy danh sách badge của tôi | ✅ | 60/min |
 | GET | `/rewards` | Lấy danh sách phần thưởng trong cửa hàng | ✅ | 60/min |
 | POST | `/rewards/redeem` | Đổi phần thưởng | ✅ | 10/min |
+
+---
 
 ## Endpoint Details
 
@@ -105,6 +114,8 @@ Authorization: Bearer {token}
 }
 ```
 
+---
+
 ## Error Responses
 | Code | Error | Description |
 |------|-------|-------------|
@@ -112,19 +123,26 @@ Authorization: Bearer {token}
 | 400 | `GAME_OUT_OF_STOCK` | Phần thưởng đã hết hàng |
 | 409 | `GAME_CONCURRENT_TRANSACTION` | Lỗi xử lý giao dịch đồng thời |
 
+---
+
 ## Performance Requirements
 - **Leaderboard**: Phản hồi < 50ms (từ Redis).
 - **Redeem**: Giao dịch < 500ms.
+
+---
 
 ## Security Requirements
 - [ ] Xác thực tồn kho và số dư một cách atomic.
 - [ ] Chống gian lận: Giới hạn tốc độ đổi thưởng (ví dụ: tối đa 5 món/ngày).
 
+---
 
 ## Validation Checklist
 - [ ] Đã xác minh đồng bộ Redis cho Bảng xếp hạng.
 - [ ] Đã kiểm tra tính toàn vẹn giao dịch dưới tải.
 
+---
+
 ## References
 
-- [Overview](./overview.md)
+- [Overview](./README.md)

@@ -2,12 +2,17 @@
 id: admin-data
 title: Admin Data Model
 sidebar_label: Data
+sidebar_position: 3
 ---
 
 # Admin & Tenant Management - Data Model
 
+---
+
 ## Overview
 Mô hình dữ liệu để lưu trữ thông tin Tenant và cấu hình hệ thống.
+
+---
 
 ## Entities
 
@@ -51,6 +56,8 @@ erDiagram
     Tenant ||--o{ SystemConfig : "has_settings"
 ```
 
+---
+
 ## Lifecycle States
 ### Tenant Lifecycle
 ```mermaid
@@ -67,23 +74,32 @@ stateDiagram-v2
     PENDING_DEACTIVATION --> [*] : Hard Delete (30days)
 ```
 
+---
+
 ## Storage Specifications
 ### Database
 - **Schema**: `public` (Shared Tables).
 - **Tenant Isolation**: Row-level security (RLS) dựa trên `tenant_id`.
 
+---
+
 ## Performance Requirements
 - **Tenant Resolution**: Phân giải tenant từ subdomain < 10ms (cached).
+
+---
 
 ## Data Security
 - **Isolation**: Đảm bảo các truy vấn luôn bao gồm `WHERE tenant_id = ?`.
 - **Encryption**: Mã hóa các cấu hình nhạy cảm (API Keys) trong `SystemConfig`.
 
+---
 
 ## Validation Checklist
 - [ ] Các policy RLS được áp dụng cho tất cả truy vấn
 - [ ] Kiểm tra xung đột Tenant Code
 
+---
+
 ## References
 
-- [Overview](./overview.md)
+- [Overview](./README.md)

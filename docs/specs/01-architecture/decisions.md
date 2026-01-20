@@ -2,12 +2,14 @@
 id: decisions
 title: Architecture Decisions
 sidebar_label: Decisions
+sidebar_position: 6
 ---
 
 # Architecture Decision Records
 
 Ghi chép các quyết định kỹ thuật quan trọng trong nền tảng LMS.
 
+---
 
 ## Decision Index
 
@@ -23,6 +25,7 @@ Ghi chép các quyết định kỹ thuật quan trọng trong nền tảng LMS.
 | **ADR-008** | RBAC with 5 Seed Roles | ✅ Accepted | 2024-05-27 |
 | **ADR-009** | Cascade Delete Strategy | ✅ Accepted | 2024-05-28 |
 
+---
 
 ## Decision Details
 
@@ -109,6 +112,7 @@ Ghi chép các quyết định kỹ thuật quan trọng trong nền tảng LMS.
 
 **Rationale**: Data recovery trong grace period, referential integrity, audit trail.
 
+---
 
 ## ADR Template
 
@@ -137,6 +141,7 @@ Ghi chép các quyết định kỹ thuật quan trọng trong nền tảng LMS.
 **Nhược điểm**:
 - [Nhược điểm 1]
 
+---
 
 ## References
 

@@ -2,12 +2,17 @@
 id: realtime-data
 title: Realtime Data Model
 sidebar_label: Data
+sidebar_position: 3
 ---
 
 # Real-time Communication - Data Model
 
+---
+
 ## Overview
 Data model cho Realtime tập trung vào lưu trữ tạm thời (Redis) và logs.
+
+---
 
 ## Entities
 
@@ -51,6 +56,8 @@ erDiagram
     User ||--o{ Notification : "receives"
 ```
 
+---
+
 ## Storage Specifications
 ### Redis
 - **Clustering**: Master-Replica.
@@ -59,18 +66,25 @@ erDiagram
 ### Database
 - **Optimization**: Phân vùng `Notification` theo tháng.
 
+---
+
 ## Performance Requirements
 - **Presence Check**: < 5ms.
 - **Notification Write**: Async write < 50ms.
 
+---
+
 ## Data Security
 - **Encryption**: WSS (TLS) cho tất cả kết nối.
 
+---
 
 ## Validation Checklist
 - [ ] Redis keys hết hạn hoạt động đúng
 - [ ] Truy vấn lịch sử thông báo được tối ưu
 
+---
+
 ## References
 
-- [Overview](./overview.md)
+- [Overview](./README.md)

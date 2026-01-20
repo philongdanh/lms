@@ -2,6 +2,7 @@
 id: sprint-plan
 title: Sprint Plan
 sidebar_label: Sprint Plan
+sidebar_position: 2
 ---
 
 # Sprint Plan
@@ -10,34 +11,38 @@ Sprint-level planning with deliverables and capacity allocation.
 
 > **Scope**: This document covers sprint planning and execution. For product-level roadmap, see [Product Roadmap](../specs/00-business/product-roadmap.md).
 
+---
 
 ## Overview
 
 This roadmap defines all sprints from project start to completion, with clear deliverables and milestone mappings.
 
+---
 
 ## Project Timeline
 
 | Attribute | Value |
 |-----------|-------|
-| Project Start | 2024-01-01 |
-| Project End | 2024-04-08 |
+| Project Start | [YYYY-MM-DD] |
+| Project End | [YYYY-MM-DD] |
 | Total Duration | 14 weeks |
 | Sprint Duration | 2 weeks |
 | Total Sprints | 6 (MVP) |
 
+---
 
 ## Milestone Summary
 
-| Milestone | Target Date | Sprints | Status |
-|-----------|-------------|---------|--------|
-| M1 - Foundation | 2024-01-15 | S1 | ✅ Completed |
-| M2 - Auth MVP | 2024-01-29 | S2-S3 | 🔄 In Progress |
-| M3 - Learning MVP | 2024-02-12 | S4 | 📋 Not Started |
-| M4 - Tournament MVP | 2024-02-26 | S5 | 📋 Not Started |
-| M5 - Beta Release | 2024-03-11 | S6 | 📋 Not Started |
-| M6 - Production | 2024-04-08 | Post-MVP | 📋 Not Started |
+| Milestone | Target Date | Sprints |
+|-----------|-------------|----------|
+| M1 - Foundation | [TBD] | S1 |
+| M2 - Auth MVP | [TBD] | S2-S3 |
+| M3 - Learning MVP | [TBD] | S4 |
+| M4 - Tournament MVP | [TBD] | S5 |
+| M5 - Beta Release | [TBD] | S6 |
+| M6 - Production | [TBD] | Post-MVP |
 
+---
 
 ## Timeline Diagram
 
@@ -51,29 +56,18 @@ Sprint 1 → Sprint 2 → Sprint 3 → M2 (Auth)
                               Sprint 6 → M5 (Beta/MVP)
 ```
 
-
-## Velocity Tracking
-
-| Sprint | Committed | Completed | Velocity |
-|--------|-----------|-----------|----------|
-| Sprint 1 | 30 | 25 | 25 |
-| Sprint 2 | 28 | 28 | 28 |
-| Sprint 3 | 35 | 30 | 30 |
-| Sprint 4 | 39 | - | (in progress) |
-
-**Average Velocity:** 28 points/sprint
-
+---
 
 ## Sprint Allocation
 
-### Sprint 1: Foundation ✅
+### Sprint 1: Foundation
 
 | Attribute | Value |
 |-----------|-------|
-| Date | 2024-01-01 — 2024-01-14 |
+| Date | [Week 1-2] |
 | Goal | Project setup and infrastructure |
 | Capacity | 30 story points |
-| Status | ✅ Completed |
+| Focus | Infrastructure |
 
 | Epic | Features | Points |
 |------|----------|--------|
@@ -81,21 +75,21 @@ Sprint 1 → Sprint 2 → Sprint 3 → M2 (Auth)
 | **Total** | | 30 |
 
 **Deliverables:**
-- ✅ Monorepo structure
-- ✅ CI/CD pipeline
-- ✅ Design system foundation
-- ✅ Database schema v1
-- ✅ GraphQL server setup
+- Monorepo structure
+- CI/CD pipeline
+- Design system foundation
+- Database schema v1
+- GraphQL server setup
 
 
 ### Sprint 2: Auth Core
 
 | Attribute | Value |
 |-----------|-------|
-| Date | 2024-01-15 — 2024-01-26 |
+| Date | [Week 3-4] |
 | Goal | Registration and verification flows |
 | Capacity | 28 story points |
-| Status | ✅ Completed |
+| Focus | Authentication |
 
 | Epic | Features | Points |
 |------|----------|--------|
@@ -104,20 +98,20 @@ Sprint 1 → Sprint 2 → Sprint 3 → M2 (Auth)
 | **Total** | | 18 |
 
 **Deliverables:**
-- ✅ Registration with email
-- ✅ Registration with phone
-- ✅ OTP verification
-- ✅ Subject listing
+- Registration with email
+- Registration with phone
+- OTP verification
+- Subject listing
 
 
 ### Sprint 3-4: Auth Complete & Learning Start
 
 | Attribute | Value |
 |-----------|-------|
-| Date | 2024-01-27 — 2024-02-09 |
+| Date | [Week 5-8] |
 | Goal | Complete auth, start learning |
 | Capacity | 35 story points |
-| Status | 🔄 In Progress |
+| Focus | Authentication, Learning |
 | Milestone | M2 - Auth MVP |
 
 | Epic | Features | Points |
@@ -127,19 +121,19 @@ Sprint 1 → Sprint 2 → Sprint 3 → M2 (Auth)
 | **Total** | | 33 |
 
 **Deliverables:**
-- 🔄 Login flow
-- ⬜ Password reset
-- ⬜ Session management
-- ⬜ Protected routes
-- ⬜ Learning path view
-- ⬜ Lesson content viewer
+- Login flow
+- Password reset
+- Session management
+- Protected routes
+- Learning path view
+- Lesson content viewer
 
 
 ### Sprint 4-5: Learning Core
 
 | Attribute | Value |
 |-----------|-------|
-| Date | 2024-02-10 — 2024-02-23 |
+| Date | [Week 9-10] |
 | Goal | Complete learning module |
 | Capacity | 35 story points |
 | Milestone | M3 - Learning MVP |
@@ -162,7 +156,7 @@ Sprint 1 → Sprint 2 → Sprint 3 → M2 (Auth)
 
 | Attribute | Value |
 |-----------|-------|
-| Date | 2024-02-24 — 2024-03-08 |
+| Date | [Week 11-12] |
 | Goal | Tournament and competition |
 | Capacity | 35 story points |
 | Milestone | M4 - Tournament MVP |
@@ -186,7 +180,7 @@ Sprint 1 → Sprint 2 → Sprint 3 → M2 (Auth)
 
 | Attribute | Value |
 |-----------|-------|
-| Date | 2024-03-09 — 2024-03-22 |
+| Date | [Week 13-14] |
 | Goal | MVP completion and polish |
 | Capacity | 30 story points |
 | Milestone | M5 - Beta Release |
@@ -204,6 +198,7 @@ Sprint 1 → Sprint 2 → Sprint 3 → M2 (Auth)
 - User documentation complete
 - Beta release deployed
 
+---
 
 ## Team Capacity
 
@@ -216,6 +211,7 @@ Sprint 1 → Sprint 2 → Sprint 3 → M2 (Auth)
 
 **Total Team Capacity:** 42 points/sprint
 
+---
 
 ## References
 

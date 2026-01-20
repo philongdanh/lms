@@ -2,12 +2,14 @@
 id: usability
 title: Usability Guidelines
 sidebar_label: Usability
+sidebar_position: 3
 ---
 
 # Usability Guidelines
 
 Các nguyên tắc và heuristics về khả dụng.
 
+---
 
 ## Usability Heuristics
 
@@ -26,6 +28,7 @@ Dựa trên 10 Usability Heuristics của Nielsen:
 | Help users with errors | Thông báo lỗi rõ ràng | Gợi ý khắc phục |
 | Help and documentation | Cung cấp hỗ trợ | Trợ giúp theo ngữ cảnh |
 
+---
 
 ## Accessibility (WCAG 2.1)
 
@@ -55,6 +58,7 @@ Dựa trên 10 Usability Heuristics của Nielsen:
 | Extended audio | Descriptions | Audio descriptions |
 | Contrast enhanced | 7:1 ratio | High contrast mode |
 
+---
 
 ## Responsive Design
 
@@ -75,6 +79,7 @@ Dựa trên 10 Usability Heuristics của Nielsen:
 | Link | 44px height | 8px |
 | Icon | 24x24px | 16px |
 
+---
 
 ## Performance UX
 
@@ -97,6 +102,7 @@ Dựa trên 10 Usability Heuristics của Nielsen:
 | Progress bar | For known duration |
 | Message | For long operations |
 
+---
 
 ## Testing Methods
 
@@ -117,6 +123,7 @@ Dựa trên 10 Usability Heuristics của Nielsen:
 | Error Rate | Mistakes made | < 5% |
 | SUS Score | System Usability Scale | > 68 |
 
+---
 
 ## References
 

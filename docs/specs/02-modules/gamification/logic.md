@@ -2,9 +2,12 @@
 id: gamification-logic
 title: Gamification Business Logic
 sidebar_label: Logic
+sidebar_position: 4
 ---
 
 # Gamification & Rewards - Business Logic
+
+---
 
 ## Business Context
 - **Module**: Gamification & Rewards
@@ -12,8 +15,12 @@ sidebar_label: Logic
 - **Status**: Approved
 - **Last Updated**: 2026-01-14
 
+---
+
 ## Overview
 Module quản lý hệ thống phần thưởng, bao gồm Điểm Kinh nghiệm (EXP), Cấp độ, Badge, và Cửa hàng Phần thưởng để tăng cường sự gắn kết của người dùng.
+
+---
 
 ## Use Cases
 | Use Case ID | Use Case Name | Description | Priority | Status |
@@ -35,6 +42,8 @@ Module quản lý hệ thống phần thưởng, bao gồm Điểm Kinh nghiệm
 4. Hệ thống tạo yêu cầu đổi thưởng (nếu là vật lý) hoặc cấp phần thưởng ngay (nếu là ảo).
 5. Hệ thống gửi thông báo thành công.
 
+---
+
 ## Business Rules
 | Rule ID | Rule Name | Description | Condition | Action | Exception |
 |---------|----------|-------|------------|---------|------------|
@@ -44,6 +53,8 @@ Module quản lý hệ thống phần thưởng, bao gồm Điểm Kinh nghiệm
 | BR-GAME-004 | Daily Cap | Giới hạn EXP hàng ngày | Tổng EXP trong ngày > 1000 | Dừng cấp EXP | - |
 | BR-GAME-005 | Unique Badge | Badge chỉ được nhận một lần | Người dùng đã có badge | Không làm gì | - |
 
+---
+
 ## Dependencies
 ### Internal Dependencies
 - ✅ Learning Module - Kích hoạt sự kiện khi hoàn thành bài học.
@@ -52,17 +63,22 @@ Module quản lý hệ thống phần thưởng, bao gồm Điểm Kinh nghiệm
 ### External Dependencies
 - ✅ Redis - Cache bảng xếp hạng (Sorted Sets).
 
+---
+
 ## KPIs & Metrics
 | Metric | Target | Measurement | Frequency |
 |--------|--------|-------------------|-----------|
 | User Engagement | +20% WoW | Người dùng hoạt động hàng ngày kích hoạt sự kiện gamification | Hàng tuần |
 | Redemption Rate | > 5% users | Truy vấn DB trên bảng Order | Hàng tháng |
 
+---
+
 ## Validation Criteria
 - [ ] Công thức tính Level hoạt động chính xác.
 - [ ] Giao dịch đổi xu đảm bảo Atomicity (không trừ tiền mà không có phần thưởng).
 - [ ] Bảng xếp hạng cập nhật realtime.
 
+---
 
 ## Review & Approval
 | Role | Name | Date | Status |
@@ -71,19 +87,24 @@ Module quản lý hệ thống phần thưởng, bao gồm Điểm Kinh nghiệm
 | **Tech Lead** | | | |
 | **QA Lead** | | | |
 
-
 ---
 
 # Workflows
 
+---
+
 ## Overview
 Các quy trình xử lý sự kiện tích điểm và đổi thưởng.
+
+---
 
 ## Workflow Summary
 | Workflow ID | Workflow Name | Trigger | Actors | Status |
 |-------------|--------------|---------|--------|--------|
 | WF-GAME-001 | Process EXP Event | Hoàn thành học/thi | System (Async) | Active |
 | WF-GAME-002 | Reward Redemption | Kết nối tới Store | Student, Admin | Active |
+
+---
 
 ## Workflow Details
 
@@ -163,6 +184,8 @@ sequenceDiagram
     end
 ```
 
+---
+
 ## Events
 ### System Events
 | Event Name | Description | Payload | Emitted By |
@@ -170,22 +193,31 @@ sequenceDiagram
 | `level.up` | Người dùng lên cấp | `{user_id, new_level, reward}` | Game Svc |
 | `badge.earned` | Người dùng nhận badge | `{user_id, badge_id}` | Game Svc |
 
+---
+
 ## Error Handling
 | Error Scenario | Detection | Recovery Action | Escalation |
 |----------------|-----------|-----------------|------------|
 | Redis Down | Connection Err | Fallback sang truy vấn DB (chậm hơn) | Alert Ops |
 | DB Transaction Fail | Rollback | Thử lại (Optimistic Lock) hoặc báo lỗi | - |
 
+---
+
 ## Performance Requirements
 - **Async Processing**: Độ trễ hàng đợi event < 1s.
+
+---
 
 ## Security Requirements
 - [ ] Xác thực phía server cho tất cả phần thưởng (không tin tưởng client)
 
+---
 
 ## Validation Checklist
 - [ ] Việc trừ phần thưởng có tính transactional
 
+---
+
 ## References
 
-- [Overview](./overview.md)
+- [Overview](./README.md)

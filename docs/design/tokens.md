@@ -2,12 +2,14 @@
 id: tokens
 title: Design Tokens
 sidebar_label: Tokens
+sidebar_position: 1
 ---
 
 # Design Tokens
 
 Design tokens for consistent styling.
 
+---
 
 ## Color Palette
 
@@ -65,6 +67,7 @@ Design tokens for consistent styling.
 | Medium | `#F59E0B` | 3-5 pts |
 | Hard | `#EF4444` | 8-13 pts |
 
+---
 
 ## Spacing
 
@@ -79,6 +82,7 @@ Design tokens for consistent styling.
 | `--space-12` | 48px | Page sections |
 | `--space-16` | 64px | Page padding |
 
+---
 
 ## Border Radius
 
@@ -91,6 +95,7 @@ Design tokens for consistent styling.
 | `--radius-xl` | 16px | Modals |
 | `--radius-full` | 9999px | Pills, avatars |
 
+---
 
 ## Shadows
 
@@ -101,6 +106,7 @@ Design tokens for consistent styling.
 | `--shadow-lg` | 0 10px 15px rgba(0,0,0,0.1) | Dropdowns |
 | `--shadow-xl` | 0 20px 25px rgba(0,0,0,0.1) | Modals |
 
+---
 
 ## Z-Index
 
@@ -113,6 +119,7 @@ Design tokens for consistent styling.
 | `--z-tooltip` | 1400 | Tooltips |
 | `--z-toast` | 1500 | Toast notifications |
 
+---
 
 ## Breakpoints
 
@@ -124,6 +131,7 @@ Design tokens for consistent styling.
 | `--screen-xl` | 1280px | Large desktop |
 | `--screen-2xl` | 1536px | Extra large |
 
+---
 
 ## Animation
 
@@ -143,6 +151,7 @@ Design tokens for consistent styling.
 | `--ease-out` | cubic-bezier(0, 0, 0.2, 1) | Enter |
 | `--ease-in-out` | cubic-bezier(0.4, 0, 0.2, 1) | Default |
 
+---
 
 ## References
 

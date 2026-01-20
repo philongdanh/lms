@@ -2,17 +2,20 @@
 id: acceptance
 title: Acceptance Criteria
 sidebar_label: Acceptance
+sidebar_position: 4
 ---
 
 # Acceptance Criteria
 
 Acceptance criteria following Given-When-Then format.
 
+---
 
 ## Overview
 
 This document defines clear, testable acceptance criteria for LMS features.
 
+---
 
 ## Acceptance Criteria Format
 
@@ -26,16 +29,18 @@ This document defines clear, testable acceptance criteria for LMS features.
 | When | Action - user action or trigger |
 | Then | Expected result - observable outcome |
 
+---
 
 ## Status Legend
 
 | Status | Description |
 |--------|-------------|
-| 📋 Draft | Being defined |
+|  Draft | Being defined |
 | ✅ Approved | Reviewed and accepted |
-| 🧪 Testing | Under test |
-| ✔️ Passed | Verified |
+|  Testing | Under test |
+| ️ Passed | Verified |
 
+---
 
 ## Authentication
 
@@ -153,6 +158,7 @@ This document defines clear, testable acceptance criteria for LMS features.
 - Redirect to home page
 - Display "Successfully logged out"
 
+---
 
 ## Learning
 
@@ -169,7 +175,7 @@ This document defines clear, testable acceptance criteria for LMS features.
 - Display list of topics for that subject
 - Topics are sorted by learning path order
 - Display progress for each topic
-- Completed topics are marked with ✓
+- Completed topics are marked with 
 
 
 ### AC-LEARN-002: View Lesson
@@ -239,6 +245,7 @@ This document defines clear, testable acceptance criteria for LMS features.
 - Award points based on results
 - Allow retry (maximum 3 times)
 
+---
 
 ## Tournament
 
@@ -344,6 +351,7 @@ This document defines clear, testable acceptance criteria for LMS features.
 - Show temporary ranking
 - Share results button
 
+---
 
 ## References
 

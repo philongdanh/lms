@@ -2,18 +2,25 @@
 id: auth-api
 title: Auth API Endpoints
 sidebar_label: API
+sidebar_position: 2
 ---
 
 # Auth - API Endpoints
 
+---
+
 ## Overview
 API endpoints cho module Auth: Login, Register, quản lý Session.
+
+---
 
 ## Base Information
 - **Base URL**: `/api/v1/auth`
 - **Version**: 1.0
 - **Format**: JSON
 - **Authentication**: Bearer Token (JWT)
+
+---
 
 ## Endpoints Summary
 | Method | Endpoint | Description | Auth Required | Rate Limit |
@@ -25,6 +32,8 @@ API endpoints cho module Auth: Login, Register, quản lý Session.
 | GET | `/sessions` | Danh sách sessions | ✅ | 100/min |
 | DELETE | `/sessions/:id` | Thu hồi session | ✅ | 50/min |
 | POST | `/parents/link` | Liên kết phụ huynh | ✅ | 10/min |
+
+---
 
 ## Endpoint Details
 
@@ -88,6 +97,8 @@ Content-Type: application/json
 }
 ```
 
+---
+
 ## Test Cases
 | Test Case | Description | Request | Expected Response |
 |-----------|-------|---------|-------------------|
@@ -95,10 +106,14 @@ Content-Type: application/json
 | TC-API-AUTH-002 | Login Invalid | Wrong pass | 401 |
 | TC-API-AUTH-003 | Refresh Valid | Valid token | 200 + new tokens |
 
+---
+
 ## Performance Requirements
 - **Response Time**: P95 < 200ms
 - **Availability**: 99.9%
 - **Timeout**: 5 seconds
+
+---
 
 ## Security Requirements
 - [x] Yêu cầu authentication
@@ -106,6 +121,7 @@ Content-Type: application/json
 - [x] Rate limiting theo IP
 - [x] Secure Headers
 
+---
 
 ## Validation Checklist
 - [x] Tất cả endpoints đã document
@@ -113,6 +129,8 @@ Content-Type: application/json
 - [x] Error codes đã định nghĩa
 - [x] Performance requirements đã chỉ định
 
+---
+
 ## References
 
-- [Overview](./overview.md)
+- [Overview](./README.md)

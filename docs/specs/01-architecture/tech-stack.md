@@ -2,12 +2,14 @@
 id: tech-stack
 title: Technology Stack
 sidebar_label: Tech Stack
+sidebar_position: 2
 ---
 
 # Technology Stack
 
 Các lựa chọn công nghệ và lý do quyết định cho nền tảng LMS.
 
+---
 
 ## Overview
 
@@ -19,6 +21,7 @@ Các lựa chọn công nghệ và lý do quyết định cho nền tảng LMS.
 | Cache | Redis | 7+ | Session, caching, Pub/Sub |
 | Queue | Bull + Redis | Latest | Xử lý bất đồng bộ |
 
+---
 
 ## Backend
 
@@ -39,6 +42,7 @@ Các lựa chọn công nghệ và lý do quyết định cho nền tảng LMS.
 | Bull | Job queue processing | Latest |
 | class-validator | Request validation | Latest |
 
+---
 
 ## Frontend
 
@@ -58,6 +62,7 @@ Các lựa chọn công nghệ và lý do quyết định cho nền tảng LMS.
 | TailwindCSS | Utility-first styling | 3.x |
 | Socket.IO Client | WebSocket client | Latest |
 
+---
 
 ## Infrastructure
 
@@ -77,6 +82,7 @@ Các lựa chọn công nghệ và lý do quyết định cho nền tảng LMS.
 | Test | Jest + Supertest | Unit và integration testing |
 | Deploy | Docker + Scripts | Blue-green deployment với rollback |
 
+---
 
 ## Monitoring & Observability
 
@@ -86,6 +92,7 @@ Các lựa chọn công nghệ và lý do quyết định cho nền tảng LMS.
 | Metrics | Custom metrics | Giám sát hiệu năng |
 | Health Check | NestJS Terminus | Kiểm tra health của services |
 
+---
 
 ## Security
 
@@ -96,6 +103,7 @@ Các lựa chọn công nghệ và lý do quyết định cho nền tảng LMS.
 | Token Storage | Redis + Hash | Bảo mật refresh token |
 | Rate Limiting | Redis-based | Chống abuse |
 
+---
 
 ## Decision Matrix
 
@@ -107,6 +115,7 @@ Các lựa chọn công nghệ và lý do quyết định cho nền tảng LMS.
 | Real-time | Socket.IO, ws, Pusher | Socket.IO | Fallback tự động, room support, Redis adapter |
 | Database | PostgreSQL, MySQL, MongoDB | PostgreSQL | ACID compliance, JSONB support, mature |
 
+---
 
 ## References
 

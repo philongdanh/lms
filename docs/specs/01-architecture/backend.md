@@ -2,17 +2,20 @@
 id: backend
 title: Backend Architecture
 sidebar_label: Backend
+sidebar_position: 3
 ---
 
 # Backend Architecture
 
 API design, database schema, and external tool references.
 
+---
 
 ## Overview
 
 This document consolidates backend architecture including API design patterns, database schema, and references to external API documentation tools.
 
+---
 
 ## External References
 
@@ -23,6 +26,7 @@ This document consolidates backend architecture including API design patterns, d
 | Apidog | API Documentation | `[Apidog URL]` |
 | GraphQL Playground | GraphQL Explorer | `/graphql` |
 
+---
 
 ## Tech Stack
 
@@ -37,6 +41,7 @@ This document consolidates backend architecture including API design patterns, d
 | Search | Elasticsearch | latest |
 | ORM | Prisma | latest |
 
+---
 
 ## API Design
 
@@ -59,6 +64,7 @@ This document consolidates backend architecture including API design patterns, d
 | `/api/webhooks/*` | POST | External webhooks | API Key |
 | `/health` | GET | Health check | No |
 
+---
 
 ## GraphQL Schema Conventions
 
@@ -76,9 +82,14 @@ This document consolidates backend architecture including API design patterns, d
 
 ```graphql
 type Query {
+
+---
+
   # Single entity
   user(id: ID!): User
   
+---
+
   # List with pagination
   users(
     first: Int
@@ -86,6 +97,8 @@ type Query {
     filter: UserFilter
   ): UserConnection!
   
+---
+
   # Current user
   me: User
 }
@@ -106,6 +119,7 @@ type CreateUserPayload {
 }
 ```
 
+---
 
 ## Pagination
 
@@ -131,6 +145,7 @@ type PageInfo {
 }
 ```
 
+---
 
 ## Error Handling
 
@@ -155,6 +170,7 @@ enum ErrorCode {
 
 > For complete error codes and response format, see [API Contracts](../../api/contracts.md).
 
+---
 
 ## Database Design
 
@@ -217,6 +233,7 @@ erDiagram
     TOURNAMENTS ||--o{ MATCHES : contains
 ```
 
+---
 
 ## References
 
