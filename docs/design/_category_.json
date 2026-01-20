@@ -1,9 +1,0 @@
-{
-  "label": "Design System",
-  "link": {
-    "type": "generated-index",
-    "title": "Design System",
-    "description": "Quy định về UI, UX và Design Tokens.",
-    "slug": "/design"
-  }
-}

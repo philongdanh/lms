@@ -1,9 +1,0 @@
-{
-  "label": "API Reference",
-  "link": {
-    "type": "generated-index",
-    "title": "API Reference",
-    "description": "Tài liệu đặc tả API Contracts và OpenAPI Specification.",
-    "slug": "/api"
-  }
-}
