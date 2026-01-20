@@ -1,9 +1,0 @@
-{
-  "label": "User Guide",
-  "link": {
-    "type": "generated-index",
-    "title": "User Guide",
-    "description": "Hướng dẫn sử dụng các tính năng của hệ thống cho từng đối tượng người dùng.",
-    "slug": "/user-guide"
-  }
-}
