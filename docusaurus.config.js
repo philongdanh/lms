@@ -1,51 +1,55 @@
 async function createConfig() {
-  const remarkD2 = (await import("remark-d2")).default;
+  const remarkD2 = (await import('remark-d2')).default;
 
   /** @type {import('@docusaurus/types').Config} */
   const config = {
-    title: "LMS Documentation",
-    favicon: "img/favicon.svg",
+    title: 'LMS Documentation',
+    favicon: 'img/favicon.svg',
 
-    url: "http://localhost",
-    baseUrl: "/",
-    organizationName: "idlongggg",
-    projectName: "lms-docs",
+    url: 'http://localhost',
+    baseUrl: '/',
+    organizationName: 'idlongggg',
+    projectName: 'lms-docs',
     trailingSlash: false,
 
-    onBrokenLinks: "warn",
+    onBrokenLinks: 'warn',
 
     markdown: {
       mermaid: true,
     },
 
-    themes: ["@docusaurus/theme-mermaid"],
+    themes: ['@docusaurus/theme-mermaid'],
 
     presets: [
       [
-        "classic",
+        'classic',
         /** @type {import('@docusaurus/preset-classic').Options} */ ({
           docs: {
             path: 'docs',
             routeBasePath: '/',
             sidebarPath: './sidebars.js',
+            exclude: ['**/templates/**', '**/node_modules/**'],
             remarkPlugins: [
-              [remarkD2, {
-                compilePath: "static/d2",
-                linkPath: "/d2",
-                ext: "svg",
-                defaultD2Opts: [
-                  "--layout=elk",
-                  "--font-regular=./static/fonts/google-sans-code/GoogleSansCode-Regular.ttf",
-                  "--font-bold=./static/fonts/google-sans-code/GoogleSansCode-Bold.ttf",
-                  "--font-italic=./static/fonts/google-sans-code/GoogleSansCode-Italic.ttf",
-                  "--font-semibold=./static/fonts/google-sans-code/GoogleSansCode-SemiBold.ttf",
-                ],
-              }],
+              [
+                remarkD2,
+                {
+                  compilePath: 'static/d2',
+                  linkPath: '/d2',
+                  ext: 'svg',
+                  defaultD2Opts: [
+                    '--layout=elk',
+                    '--font-regular=./static/fonts/google-sans-code/GoogleSansCode-Regular.ttf',
+                    '--font-bold=./static/fonts/google-sans-code/GoogleSansCode-Bold.ttf',
+                    '--font-italic=./static/fonts/google-sans-code/GoogleSansCode-Italic.ttf',
+                    '--font-semibold=./static/fonts/google-sans-code/GoogleSansCode-SemiBold.ttf',
+                  ],
+                },
+              ],
             ],
           },
           blog: false,
           theme: {
-            customCss: "./src/css/custom.css",
+            customCss: './src/css/custom.css',
           },
         }),
       ],
@@ -53,104 +57,104 @@ async function createConfig() {
 
     themeConfig: {
       navbar: {
-      title: "LMS",
-      items: [
-        {
-          type: "docSidebar",
-          sidebarId: "specs",
-          label: "Specs",
-          position: "left",
-        },
-        {
-          type: "docSidebar",
-          sidebarId: "design",
-          label: "Design",
-          position: "left",
-        },
-        {
-          type: "docSidebar",
-          sidebarId: "api",
-          label: "API",
-          position: "left",
-        },
-        {
-          type: "docSidebar",
-          sidebarId: "devGuide",
-          label: "Developer Guide",
-          position: "left",
-        },
-        {
-          type: "docSidebar",
-          sidebarId: "userGuide",
-          label: "User Guide",
-          position: "left",
-        },
-        {
-          type: "docSidebar",
-          sidebarId: "project",
-          label: "Project",
-          position: "left",
-        },
-        {
-          type: "docSidebar",
-          sidebarId: "changelog",
-          label: "What's New",
-          position: "right",
-        },
-        {
-          href: "https://github.com/idlongggg/lms-docs",
-          label: "GitHub",
-          position: "right",
-        },
-      ],
+        title: 'LMS',
+        items: [
+          {
+            type: 'docSidebar',
+            sidebarId: 'specs',
+            label: 'Specs',
+            position: 'left',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'design',
+            label: 'Design',
+            position: 'left',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'api',
+            label: 'API',
+            position: 'left',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'devGuide',
+            label: 'Developer Guide',
+            position: 'left',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'userGuide',
+            label: 'User Guide',
+            position: 'left',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'project',
+            label: 'Project',
+            position: 'left',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'changelog',
+            label: "What's New",
+            position: 'right',
+          },
+          {
+            href: 'https://github.com/idlongggg/lms-docs',
+            label: 'GitHub',
+            position: 'right',
+          },
+        ],
+      },
+      footer: {
+        style: 'dark',
+        links: [
+          {
+            title: 'Documentation',
+            items: [
+              {
+                label: 'User Guide',
+                to: '/user-guide/getting-started',
+              },
+              {
+                label: 'Developer Guide',
+                to: '/developer-guide/setup',
+              },
+            ],
+          },
+          {
+            title: 'Technical',
+            items: [
+              {
+                label: 'Specifications',
+                to: '/specs',
+              },
+              {
+                label: 'Design System',
+                to: '/design',
+              },
+              {
+                label: 'API Reference',
+                to: '/api',
+              },
+            ],
+          },
+          {
+            title: 'Links',
+            items: [
+              {
+                label: 'GitHub Repository',
+                href: 'https://github.com/idlongggg/lms-docs',
+              },
+            ],
+          },
+        ],
+        copyright: `© ${new Date().getFullYear()} LMS - Danh Phi Long`,
+      },
     },
-    footer: {
-      style: "dark",
-      links: [
-        {
-          title: "Documentation",
-          items: [
-            {
-              label: "User Guide",
-              to: "/user-guide/getting-started",
-            },
-            {
-              label: "Developer Guide",
-              to: "/developer-guide/setup",
-            },
-          ],
-        },
-        {
-          title: "Technical",
-          items: [
-            {
-              label: "Specifications",
-              to: "/specs",
-            },
-            {
-              label: "Design System",
-              to: "/design",
-            },
-            {
-              label: "API Reference",
-              to: "/api",
-            },
-          ],
-        },
-        {
-          title: "Links",
-          items: [
-            {
-              label: "GitHub Repository",
-              href: "https://github.com/idlongggg/lms-docs",
-            },
-          ],
-        },
-      ],
-      copyright: `© ${new Date().getFullYear()} LMS - Danh Phi Long`,
-    },
-  },
-};
+  };
 
   return config;
 }

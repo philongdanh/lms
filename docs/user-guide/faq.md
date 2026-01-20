@@ -15,20 +15,23 @@ Tổng hợp các câu hỏi thường gặp và giải đáp về LMS Platform.
 
 ### What is LMS Platform?
 
-LMS Platform là hệ thống quản lý học tập thông minh, kết hợp **AI Learning Paths** và **Gamification** để cá nhân hóa trải nghiệm học tập cho học sinh từ lớp 1-12.
+LMS Platform là hệ thống quản lý học tập thông minh, kết hợp **AI Learning
+Paths** và **Gamification** để cá nhân hóa trải nghiệm học tập cho học sinh từ
+lớp 1-12.
 
 ### Who is LMS for?
 
-| Audience | Description |
-|----------|-------------|
-| **Học sinh** | Lớp 1-12, học tập cá nhân hóa và thi đấu |
-| **Phụ huynh** | Theo dõi tiến độ và báo cáo học tập |
-| **Giáo viên** | Quản lý lớp học, tạo đề thi, giám sát học sinh |
-| **Trường học** | Quản trị hệ thống, tổ chức tournament |
+| Audience       | Description                                    |
+| -------------- | ---------------------------------------------- |
+| **Học sinh**   | Lớp 1-12, học tập cá nhân hóa và thi đấu       |
+| **Phụ huynh**  | Theo dõi tiến độ và báo cáo học tập            |
+| **Giáo viên**  | Quản lý lớp học, tạo đề thi, giám sát học sinh |
+| **Trường học** | Quản trị hệ thống, tổ chức tournament          |
 
 ### What is the pricing?
 
-LMS được cung cấp thông qua trường học. Vui lòng liên hệ quản trị viên trường để biết chi tiết.
+LMS được cung cấp thông qua trường học. Vui lòng liên hệ quản trị viên trường để
+biết chi tiết.
 
 ---
 
@@ -81,11 +84,13 @@ Liên hệ quản trị viên trường học hoặc gửi yêu cầu qua email 
 ### Why can't I login?
 
 **Possible causes**:
+
 - Sai email hoặc mật khẩu
 - Tài khoản chưa được kích hoạt
 - Tài khoản bị khóa
 
 **Solution**:
+
 1. Kiểm tra lại thông tin đăng nhập
 2. Thử đặt lại mật khẩu
 3. Liên hệ quản trị viên nếu vẫn không được
@@ -93,11 +98,13 @@ Liên hệ quản trị viên trường học hoặc gửi yêu cầu qua email 
 ### Why can't I submit the test?
 
 **Possible causes**:
+
 - Mất kết nối internet
 - Hết thời gian làm bài
 - Lỗi trình duyệt
 
 **Solution**:
+
 1. Kiểm tra kết nối internet
 2. Refresh trang và thử lại
 3. Báo lỗi cho quản trị viên để được xem xét
@@ -115,25 +122,25 @@ Liên hệ quản trị viên trường học hoặc gửi yêu cầu qua email 
 ### Which browsers are supported?
 
 | Browser | Minimum Version |
-|---------|-----------------|
-| Chrome | 90+ |
-| Firefox | 88+ |
-| Safari | 14+ |
-| Edge | 90+ |
+| ------- | --------------- |
+| Chrome  | 90+             |
+| Firefox | 88+             |
+| Safari  | 14+             |
+| Edge    | 90+             |
 
 ### What are the system requirements?
 
-| Requirement | Specification |
-|-------------|---------------|
-| Kết nối internet | Tối thiểu 1 Mbps |
-| Màn hình | Tối thiểu 1024x768 |
-| JavaScript | Bật |
-| Cookies | Bật |
+| Requirement      | Specification      |
+| ---------------- | ------------------ |
+| Kết nối internet | Tối thiểu 1 Mbps   |
+| Màn hình         | Tối thiểu 1024x768 |
+| JavaScript       | Bật                |
+| Cookies          | Bật                |
 
 ---
 
 ## Still Have Questions?
 
 - **Email hỗ trợ**: Liên hệ quản trị viên trường học
-- **Tài liệu kỹ thuật**: [Developer Guide](../developer-guide/README.md)
+- **Tài liệu kỹ thuật**: [Developer Guide](/developer-guide)
 - **GitHub**: [LMS Repository](https://github.com/idlongggg/lms)

@@ -1,7 +1,9 @@
 {
-  "label": "API",
+  "label": "API Reference",
   "link": {
     "type": "generated-index",
-    "description": "Tài liệu tích hợp và contracts cho hệ thống LMS."
+    "title": "API Reference",
+    "description": "Tài liệu đặc tả API Contracts và OpenAPI Specification.",
+    "slug": "/api"
   }
 }

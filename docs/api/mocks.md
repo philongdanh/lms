@@ -14,6 +14,7 @@ API mock server for development and testing.
 ## Overview
 
 Mock servers provide fake API responses for:
+
 - Frontend development without backend
 - Integration testing
 - Demo environments
@@ -48,12 +49,10 @@ export const handlers = [
       ctx.json({
         status: 'success',
         data: {
-          items: [
-            { id: '1', name: 'John', email: 'john@example.com' }
-          ],
-          pagination: { page: 1, limit: 20, total: 1 }
-        }
-      })
+          items: [{ id: '1', name: 'John', email: 'john@example.com' }],
+          pagination: { page: 1, limit: 20, total: 1 },
+        },
+      }),
     );
   }),
 ];
@@ -64,9 +63,7 @@ export const handlers = [
 ```json
 // db.json
 {
-  "users": [
-    { "id": "1", "name": "John", "email": "john@example.com" }
-  ]
+  "users": [{ "id": "1", "name": "John", "email": "john@example.com" }]
 }
 ```
 
@@ -84,23 +81,23 @@ npx @stoplight/prism-cli mock openapi/main.yaml --port 3001
 
 ## Mock Data Guidelines
 
-| Guideline | Description |
-|-----------|-------------|
-| Realistic data | Use realistic names, emails |
-| Edge cases | Include empty states, errors |
+| Guideline      | Description                     |
+| -------------- | ------------------------------- |
+| Realistic data | Use realistic names, emails     |
+| Edge cases     | Include empty states, errors    |
 | Consistent IDs | Use predictable IDs for testing |
-| Timestamps | Use relative dates |
+| Timestamps     | Use relative dates              |
 
 ---
 
 ## Mock Scenarios
 
-| Scenario | How to trigger |
-|----------|----------------|
-| Success | Default response |
-| Empty list | `?scenario=empty` |
-| Error | `?scenario=error` |
-| Slow response | `?scenario=slow` |
+| Scenario      | How to trigger    |
+| ------------- | ----------------- |
+| Success       | Default response  |
+| Empty list    | `?scenario=empty` |
+| Error         | `?scenario=error` |
+| Slow response | `?scenario=slow`  |
 
 ---
 

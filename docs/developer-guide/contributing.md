@@ -15,20 +15,20 @@ Rules and workflow for the LMS Platform development team.
 
 ### Key Roles
 
-| Role | Main Responsibility |
-|------|---------------------|
-| **Product Owner** | Product direction, feature prioritization, approve business logic |
-| **Tech Lead** | Architecture decisions, spec review, code quality assurance |
-| **Developer** | Implement from specifications, write tests, participate in code review |
-| **QA Engineer** | Create test plans, execute testing, report bugs |
+| Role              | Main Responsibility                                                    |
+| ----------------- | ---------------------------------------------------------------------- |
+| **Product Owner** | Product direction, feature prioritization, approve business logic      |
+| **Tech Lead**     | Architecture decisions, spec review, code quality assurance            |
+| **Developer**     | Implement from specifications, write tests, participate in code review |
+| **QA Engineer**   | Create test plans, execute testing, report bugs                        |
 
 ### Coordination Matrix
 
-| Activity | PO | Lead | Dev | QA |
-|-----------|----|------|-----|----| 
-| Spec | Lead | Approve | Draft | Review |
-| Code | - | Review | Create | - |
-| Test | UAT | - | Unit | Lead |
+| Activity | PO   | Lead    | Dev    | QA     |
+| -------- | ---- | ------- | ------ | ------ |
+| Spec     | Lead | Approve | Draft  | Review |
+| Code     | -    | Review  | Create | -      |
+| Test     | UAT  | -       | Unit   | Lead   |
 
 ---
 
@@ -36,12 +36,13 @@ Rules and workflow for the LMS Platform development team.
 
 ### Branching Model
 
-| Branch | Purpose | Protection | Lifespan |
-|--------|---------|------------|----------|
-| `main` | Source of truth, always deployable | Protected | Permanent |
-| `feature/*` | Short-lived feature branches | None | < 1 day |
+| Branch      | Purpose                            | Protection | Lifespan  |
+| ----------- | ---------------------------------- | ---------- | --------- |
+| `main`      | Source of truth, always deployable | Protected  | Permanent |
+| `feature/*` | Short-lived feature branches       | None       | < 1 day   |
 
-> **Important**: 
+> **Important**:
+>
 > - All developers commit to `main` frequently
 > - Feature branches must be short-lived (< 1 day, max 2-3 days)
 > - No long-lived branches (`develop`, `release/*`, `hotfix/*`)
@@ -63,15 +64,15 @@ Branch from main --> Code --> Pull Request --> CI Checks --> Review --> Merge to
 
 Format: `<type>(<scope>): <subject>`
 
-| Type | Description |
-|------|-------------|
-| `feat` | New feature |
-| `fix` | Bug fix |
-| `docs` | Documentation update |
-| `style` | Formatting |
-| `refactor` | Refactoring |
-| `test` | Add tests |
-| `chore` | Maintenance |
+| Type       | Description          |
+| ---------- | -------------------- |
+| `feat`     | New feature          |
+| `fix`      | Bug fix              |
+| `docs`     | Documentation update |
+| `style`    | Formatting           |
+| `refactor` | Refactoring          |
+| `test`     | Add tests            |
+| `chore`    | Maintenance          |
 
 ---
 
@@ -86,12 +87,12 @@ Format: `<type>(<scope>): <subject>`
 
 ### Sprint Ceremonies
 
-| Ceremony | Timing | Duration | Purpose |
-|----------|--------|----------|---------|
-| **Planning** | Week 1, Monday | 2 hours | Select stories, break down tasks |
-| **Daily Standup** | Daily | 15 minutes | Progress sync |
-| **Sprint Review** | Week 2, Friday | 1 hour | Demo and gather feedback |
-| **Retrospective** | Week 2, Friday | 45 minutes | Process improvement |
+| Ceremony          | Timing         | Duration   | Purpose                          |
+| ----------------- | -------------- | ---------- | -------------------------------- |
+| **Planning**      | Week 1, Monday | 2 hours    | Select stories, break down tasks |
+| **Daily Standup** | Daily          | 15 minutes | Progress sync                    |
+| **Sprint Review** | Week 2, Friday | 1 hour     | Demo and gather feedback         |
+| **Retrospective** | Week 2, Friday | 45 minutes | Process improvement              |
 
 ---
 

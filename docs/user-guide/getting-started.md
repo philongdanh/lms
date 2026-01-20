@@ -13,7 +13,9 @@ Hướng dẫn nhanh để bắt đầu sử dụng hệ thống LMS Platform.
 
 ## Overview
 
-LMS Platform là hệ thống quản lý học tập thông minh, kết hợp **AI Learning Paths** và **Gamification** để tối ưu hóa trải nghiệm học tập cá nhân hóa cho học sinh từ lớp 1-12.
+LMS Platform là hệ thống quản lý học tập thông minh, kết hợp **AI Learning
+Paths** và **Gamification** để tối ưu hóa trải nghiệm học tập cá nhân hóa cho
+học sinh từ lớp 1-12.
 
 ---
 
@@ -51,12 +53,12 @@ Trước khi sử dụng, hãy đảm bảo bạn có:
 
 ## Key Features
 
-| Feature | Description |
-|---------|-------------|
-| **AI Learning Path** | Lộ trình học tập cá nhân hóa dựa trên năng lực |
-| **Tournament** | Thi đấu trí tuệ với bạn bè và học sinh khác |
-| **Gamification** | Hệ thống điểm, huy hiệu, bảng xếp hạng |
-| **Real-time Progress** | Theo dõi tiến độ học tập theo thời gian thực
+| Feature                | Description                                    |
+| ---------------------- | ---------------------------------------------- |
+| **AI Learning Path**   | Lộ trình học tập cá nhân hóa dựa trên năng lực |
+| **Tournament**         | Thi đấu trí tuệ với bạn bè và học sinh khác    |
+| **Gamification**       | Hệ thống điểm, huy hiệu, bảng xếp hạng         |
+| **Real-time Progress** | Theo dõi tiến độ học tập theo thời gian thực   |
 
 ---
 
@@ -87,12 +89,8 @@ Trước khi sử dụng, hãy đảm bảo bạn có:
 ## Next Steps
 
 - [FAQ - Các câu hỏi thường gặp](./faq.md)
-- [Specifications](../specs/README.md) - Tìm hiểu thêm về hệ thống
-
----
-
-## Need Help?
-
-- **Tài liệu**: Xem thêm tại [Developer Guide](../developer-guide/README.md)
+- [Specifications](/specs) - Tìm hiểu thêm về hệ thống
+- [Developer Guide](/developer-guide) - Xem thêm tại Developer Guide
 - **Hỗ trợ**: Liên hệ quản trị viên trường học
-- **Báo lỗi**: Tạo issue tại [GitHub Repository](https://github.com/idlongggg/lms/issues)
+- **Báo lỗi**: Tạo issue tại
+  [GitHub Repository](https://github.com/idlongggg/lms/issues)

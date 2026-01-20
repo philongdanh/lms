@@ -10,11 +10,13 @@ sidebar_position: 1
 ---
 
 ## Overview
+
 Tiêu chuẩn thiết kế API cho toàn hệ thống
 
 ---
 
 ## Design Principles
+
 1. **RESTful Design**: Resources, HTTP methods
 2. **Consistency**: Uniform patterns
 3. **Simplicity**: Dễ hiểu và sử dụng
@@ -25,21 +27,25 @@ Tiêu chuẩn thiết kế API cho toàn hệ thống
 ## Technical Standards
 
 ### URL Structure
+
 ```
 https://api.example.com/api/{version}/{module}/{resource}/{id}
 ```
 
 ### HTTP Methods
-| Method | Mục đích | Idempotent | Safe |
-|--------|----------|------------|------|
-| GET | Lấy resource | ✅ | ✅ |
-| POST | Tạo resource | ❌ | ❌ |
-| PUT | Cập nhật/thay thế | ✅ | ❌ |
-| PATCH | Cập nhật một phần | ❌ | ❌ |
-| DELETE | Xóa resource | ✅ | ❌ |
+
+| Method | Mục đích          | Idempotent | Safe |
+| ------ | ----------------- | ---------- | ---- |
+| GET    | Lấy resource      | ✅         | ✅   |
+| POST   | Tạo resource      | ❌         | ❌   |
+| PUT    | Cập nhật/thay thế | ✅         | ❌   |
+| PATCH  | Cập nhật một phần | ❌         | ❌   |
+| DELETE | Xóa resource      | ✅         | ❌   |
 
 ### Headers
+
 **Required Headers**:
+
 ```http
 Authorization: Bearer {token}
 Content-Type: application/json
@@ -48,7 +54,9 @@ X-Request-ID: {uuid}
 ```
 
 ### Response Format
+
 **Success**:
+
 ```json
 {
   "status": "success",
@@ -61,6 +69,7 @@ X-Request-ID: {uuid}
 ```
 
 **Error**:
+
 ```json
 {
   "status": "error",
@@ -81,15 +90,18 @@ X-Request-ID: {uuid}
 ## Security Standards
 
 ### Authentication
+
 - **Method**: JWT Bearer tokens
 - **Token Format**: [Format]
 - **Refresh**: [Policy]
 
 ### Authorization
+
 - **Method**: Role-based access control
 - **Permissions**: [Structure]
 
 ### Validation
+
 - **Input**: Schema validation
 - **Output**: Data masking
 
@@ -98,21 +110,24 @@ X-Request-ID: {uuid}
 ## Performance Standards
 
 ### Response Times
+
 | Percentile | Max Response Time |
-|------------|-------------------|
-| P50 | 100ms |
-| P95 | 500ms |
-| P99 | 1000ms |
+| ---------- | ----------------- |
+| P50        | 100ms             |
+| P95        | 500ms             |
+| P99        | 1000ms            |
 
 ### Rate Limiting
-| Tier | Requests/phút | Burst |
-|------|---------------|-------|
-| Tier 1 | 100 | 200 |
-| Tier 2 | 1000 | 2000 |
+
+| Tier   | Requests/phút | Burst |
+| ------ | ------------- | ----- |
+| Tier 1 | 100           | 200   |
+| Tier 2 | 1000          | 2000  |
 
 ---
 
 ## Versioning Strategy
+
 - **URL Versioning**: `/api/v1/`
 - **Deprecation**: 6 months notice
 - **Sunset**: 12 months after deprecation
@@ -120,13 +135,16 @@ X-Request-ID: {uuid}
 ---
 
 ## Monitoring & Logging
+
 ### Metrics to Track
+
 - Response times
 - Error rates
 - Throughput
 - Latency
 
 ### Logging Requirements
+
 - Request/response logging
 - Error logging
 - Audit trails
@@ -134,6 +152,7 @@ X-Request-ID: {uuid}
 ---
 
 ## Compliance Checklist
+
 - [ ] Follows RESTful principles
 - [ ] Consistent response format
 - [ ] Proper error handling

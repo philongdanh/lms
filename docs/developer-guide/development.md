@@ -7,7 +7,8 @@ sidebar_position: 2
 
 # Development Guide
 
-Mô tả các tiêu chuẩn và quy trình phát triển cho LMS Platform. Mục tiêu: đảm bảo tính nhất quán trong codebase, dễ bảo trì và tối ưu hiệu suất làm việc nhóm.
+Mô tả các tiêu chuẩn và quy trình phát triển cho LMS Platform. Mục tiêu: đảm bảo
+tính nhất quán trong codebase, dễ bảo trì và tối ưu hiệu suất làm việc nhóm.
 
 ---
 
@@ -15,40 +16,42 @@ Mô tả các tiêu chuẩn và quy trình phát triển cho LMS Platform. Mục
 
 ### Technology Stack
 
-| Layer | Technology | Purpose |
-|-------|------------|---------|
-| **Backend** | NestJS + TypeScript | Business logic, API |
-| **Frontend** | Next.js + TypeScript | UI, SSR/SSG |
-| **Database** | PostgreSQL + Prisma 7 | Data persistence, ORM |
-| **Cache** | Redis | Session, caching, Pub/Sub |
-| **Real-time** | Socket.IO | WebSocket connections |
+| Layer         | Technology            | Purpose                   |
+| ------------- | --------------------- | ------------------------- |
+| **Backend**   | NestJS + TypeScript   | Business logic, API       |
+| **Frontend**  | Next.js + TypeScript  | UI, SSR/SSG               |
+| **Database**  | PostgreSQL + Prisma 7 | Data persistence, ORM     |
+| **Cache**     | Redis                 | Session, caching, Pub/Sub |
+| **Real-time** | Socket.IO             | WebSocket connections     |
 
 ### Code Quality Tools
 
 Dự án sử dụng các công cụ sau để đảm bảo chất lượng code:
 
-| Tool | Purpose | Config File |
-|------|---------|-------------|
-| **ESLint** | Static code analysis | `.eslintrc.js` |
-| **Prettier** | Code formatting | `.prettierrc` |
-| **Husky** | Git hooks | `.husky/` |
-| **lint-staged** | Pre-commit linting | `package.json` |
+| Tool            | Purpose              | Config File    |
+| --------------- | -------------------- | -------------- |
+| **ESLint**      | Static code analysis | `.eslintrc.js` |
+| **Prettier**    | Code formatting      | `.prettierrc`  |
+| **Husky**       | Git hooks            | `.husky/`      |
+| **lint-staged** | Pre-commit linting   | `package.json` |
 
 **Important rules**:
-- **KHÔNG** disable ESLint rules mà không có lý do cụ thể và được approve trong code review
+
+- **KHÔNG** disable ESLint rules mà không có lý do cụ thể và được approve trong
+  code review
 - Mọi commit phải pass lint check (enforced by pre-commit hook)
 - Code coverage tối thiểu: 80% cho critical modules
 
 ### Naming Conventions
 
-| Type | Convention | Example |
-|------|------------|---------|
-| Variables, Functions | camelCase | `getUserById`, `isActive` |
-| Classes, Interfaces | PascalCase | `UserService`, `IUserRepository` |
-| DB Tables, Columns | snake_case | `user_session`, `created_at` |
-| Constants | UPPER_CASE | `MAX_DEVICES`, `JWT_EXPIRY` |
-| Files (Backend) | kebab-case | `user-session.service.ts` |
-| Files (Frontend) | PascalCase | `UserProfile.tsx` |
+| Type                 | Convention | Example                          |
+| -------------------- | ---------- | -------------------------------- |
+| Variables, Functions | camelCase  | `getUserById`, `isActive`        |
+| Classes, Interfaces  | PascalCase | `UserService`, `IUserRepository` |
+| DB Tables, Columns   | snake_case | `user_session`, `created_at`     |
+| Constants            | UPPER_CASE | `MAX_DEVICES`, `JWT_EXPIRY`      |
+| Files (Backend)      | kebab-case | `user-session.service.ts`        |
+| Files (Frontend)     | PascalCase | `UserProfile.tsx`                |
 
 ---
 
@@ -124,16 +127,20 @@ Analyze Requirements --> Database Design --> Run Migration --> Implement Backend
 
 ### Development Steps
 
-1. **Analyze**: Đọc và hiểu requirements từ specs. Clarify với Product Owner nếu cần.
+1. **Analyze**: Đọc và hiểu requirements từ specs. Clarify với Product Owner nếu
+   cần.
 
-2. **Database Design**: Cập nhật `schema.prisma` với các models mới. Tuân thủ naming conventions và data rules trong schema.md.
+2. **Database Design**: Cập nhật `schema.prisma` với các models mới. Tuân thủ
+   naming conventions và data rules trong schema.md.
 
 3. **Migration**: Tạo và apply migration:
+
    ```bash
    npx prisma migrate dev --name <feature-name>
    ```
 
-4. **Implement**: Viết code theo pattern Controller → Service → Repository. Đảm bảo separation of concerns.
+4. **Implement**: Viết code theo pattern Controller → Service → Repository. Đảm
+   bảo separation of concerns.
 
 5. **Test**: Unit tests bắt buộc cho services. Coverage target: 80%+.
    ```bash
@@ -156,19 +163,20 @@ Analyze Requirements --> Database Design --> Run Migration --> Implement Backend
 
 ### Types
 
-| Type | Purpose | Example |
-|------|---------|---------|
-| `feat` | New feature | `feat(auth): add multi-device logout` |
-| `fix` | Bug fix | `fix(tournament): correct score calculation` |
-| `docs` | Documentation | `docs(api): update auth endpoints` |
-| `refactor` | Code restructuring | `refactor(user): extract validation logic` |
-| `test` | Add/update tests | `test(auth): add session service tests` |
-| `chore` | Config/build changes | `chore(deps): update prisma to v7` |
-| `perf` | Performance improvement | `perf(query): add index for user lookup` |
+| Type       | Purpose                 | Example                                      |
+| ---------- | ----------------------- | -------------------------------------------- |
+| `feat`     | New feature             | `feat(auth): add multi-device logout`        |
+| `fix`      | Bug fix                 | `fix(tournament): correct score calculation` |
+| `docs`     | Documentation           | `docs(api): update auth endpoints`           |
+| `refactor` | Code restructuring      | `refactor(user): extract validation logic`   |
+| `test`     | Add/update tests        | `test(auth): add session service tests`      |
+| `chore`    | Config/build changes    | `chore(deps): update prisma to v7`           |
+| `perf`     | Performance improvement | `perf(query): add index for user lookup`     |
 
 ### Scope
 
-Scope là tên module hoặc component: `auth`, `tournament`, `learning`, `api`, `db`, `ui`, etc.
+Scope là tên module hoặc component: `auth`, `tournament`, `learning`, `api`,
+`db`, `ui`, etc.
 
 ---
 
@@ -197,13 +205,13 @@ Scope là tên module hoặc component: `auth`, `tournament`, `learning`, `api`,
 
 ### Required Variables
 
-| Variable | Description | Example |
-|----------|-------------|---------|
-| `DATABASE_URL` | PostgreSQL connection string | `postgresql://user:pass@localhost:5432/lms` |
-| `REDIS_URL` | Redis connection string | `redis://localhost:6379` |
-| `JWT_SECRET` | JWT signing secret | `<secure-random-string>` |
-| `JWT_EXPIRY` | Access token expiry | `15m` |
-| `REFRESH_TOKEN_EXPIRY` | Refresh token expiry | `7d` |
+| Variable               | Description                  | Example                                     |
+| ---------------------- | ---------------------------- | ------------------------------------------- |
+| `DATABASE_URL`         | PostgreSQL connection string | `postgresql://user:pass@localhost:5432/lms` |
+| `REDIS_URL`            | Redis connection string      | `redis://localhost:6379`                    |
+| `JWT_SECRET`           | JWT signing secret           | `<secure-random-string>`                    |
+| `JWT_EXPIRY`           | Access token expiry          | `15m`                                       |
+| `REFRESH_TOKEN_EXPIRY` | Refresh token expiry         | `7d`                                        |
 
 ### Security Notes
 

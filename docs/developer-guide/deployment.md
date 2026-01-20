@@ -7,7 +7,9 @@ sidebar_position: 3
 
 # Deployment Guide
 
-Mô tả quy trình triển khai LMS Platform lên production. Hệ thống triển khai dưới dạng container với Docker, hỗ trợ on-premise và cloud. Kiến trúc stateless cho phép horizontal scaling và zero-downtime deployment.
+Mô tả quy trình triển khai LMS Platform lên production. Hệ thống triển khai dưới
+dạng container với Docker, hỗ trợ on-premise và cloud. Kiến trúc stateless cho
+phép horizontal scaling và zero-downtime deployment.
 
 ---
 
@@ -15,13 +17,13 @@ Mô tả quy trình triển khai LMS Platform lên production. Hệ thống tri�
 
 ### Key Components
 
-| Component | Technology | Description |
-|-----------|------------|-------------|
-| **Application** | NestJS (Node 18+) | Stateless container, có thể scale horizontally |
-| **Database** | PostgreSQL 14+ | Primary data store với multi-tenant support |
-| **Cache** | Redis 6+ | Session storage, token blacklisting, Pub/Sub |
-| **Load Balancer** | Nginx | Reverse proxy, SSL termination, WebSocket support |
-| **File Storage** | Local/S3 | Lưu trữ tệp tin (video, hình ảnh, tài liệu) |
+| Component         | Technology        | Description                                       |
+| ----------------- | ----------------- | ------------------------------------------------- |
+| **Application**   | NestJS (Node 18+) | Stateless container, có thể scale horizontally    |
+| **Database**      | PostgreSQL 14+    | Primary data store với multi-tenant support       |
+| **Cache**         | Redis 6+          | Session storage, token blacklisting, Pub/Sub      |
+| **Load Balancer** | Nginx             | Reverse proxy, SSL termination, WebSocket support |
+| **File Storage**  | Local/S3          | Lưu trữ tệp tin (video, hình ảnh, tài liệu)       |
 
 ### Infrastructure Diagram
 
@@ -60,8 +62,10 @@ App.App2 -> Data.Redis
 App.App2 -> Data.PG
 App.AppN -> Data.Redis
 ```
+
     AppN --> PG
-```
+
+````
 
 ---
 
@@ -102,20 +106,20 @@ upstream app_servers {
 server {
     listen 80;
     listen 443 ssl http2;
-    
+
 ---
 
     # SSL Configuration
     ssl_certificate /etc/nginx/ssl/cert.pem;
     ssl_certificate_key /etc/nginx/ssl/key.pem;
-    
+
 ---
 
     # HTTP to HTTPS redirect
     if ($scheme = http) {
         return 301 https://$host$request_uri;
     }
-    
+
 ---
 
     # REST API và Static files
@@ -126,7 +130,7 @@ server {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
     }
-    
+
 ---
 
     # WebSocket connections
@@ -137,7 +141,7 @@ server {
         proxy_set_header Connection "upgrade";
         proxy_set_header Host $host;
         proxy_cache_bypass $http_upgrade;
-        
+
 ---
 
         # WebSocket timeout
@@ -145,7 +149,7 @@ server {
         proxy_send_timeout 86400;
     }
 }
-```
+````
 
 ---
 
@@ -156,16 +160,19 @@ server {
 Để đạt được zero-downtime deployment, thực hiện theo các bước sau:
 
 1. **Pull Latest Code**:
+
    ```bash
    git pull origin main
    ```
 
 2. **Build New Images**:
+
    ```bash
    docker-compose build --no-cache app
    ```
 
 3. **Run Database Migrations**:
+
    ```bash
    docker-compose exec app npx prisma migrate deploy
    ```
@@ -173,12 +180,15 @@ server {
 4. **Rolling Update**:
    ```bash
    docker-compose up -d --no-deps --scale app=2 app
+   ```
 
 ---
 
-   # Đợi new instance healthy
-   docker-compose up -d --no-deps --scale app=1 app
-   ```
+# Đợi new instance healthy
+
+docker-compose up -d --no-deps --scale app=1 app
+
+````
 
 ### Blue-Green Deployment (Production)
 
@@ -206,23 +216,23 @@ LB -> Blue: "1. Current active"
 # Deployment steps
 Green -> DB: "2. Run migrations"
 Green: "3. Deploy new version" {
-  style.stroke: green
+style.stroke: green
 }
 
 ---
 
 # Switch traffic
 LB -> Green: "4. Switch traffic" {
-  style.stroke-dash: 3
+style.stroke-dash: 3
 }
 
 ---
 
 # Cleanup
 Blue: "5. Keep for rollback (30 min), then shutdown" {
-  style.opacity: 0.5
+style.opacity: 0.5
 }
-```
+````
 
 ---
 
@@ -231,6 +241,7 @@ Blue: "5. Keep for rollback (30 min), then shutdown" {
 ### Database Backup
 
 **Automated Daily Backup**:
+
 ```bash
 
 ---
@@ -250,6 +261,7 @@ find ${BACKUP_DIR} -name "lms_db_*.sql.gz" -mtime +30 -delete
 ```
 
 **Manual Backup**:
+
 ```bash
 docker-compose exec postgres pg_dump -U postgres lms_db > backup_$(date +%F).sql
 ```
@@ -277,6 +289,7 @@ docker-compose start app
 ### Redis Persistence
 
 Redis được cấu hình với AOF persistence để đảm bảo data durability:
+
 - **AOF**: Append Only File với fsync every second
 - **RDB**: Snapshot mỗi 1 giờ hoặc 1000 changes
 
@@ -288,16 +301,17 @@ Redis được cấu hình với AOF persistence để đảm bảo data durabil
 
 Hệ thống expose các health check endpoints:
 
-| Endpoint | Purpose | Expected Response |
-|----------|---------|-------------------|
-| `/health` | Liveness check | `200 OK` |
-| `/health/ready` | Readiness check | `200 OK` with details |
-| `/health/db` | Database connectivity | `200 OK` |
-| `/health/redis` | Redis connectivity | `200 OK` |
+| Endpoint        | Purpose               | Expected Response     |
+| --------------- | --------------------- | --------------------- |
+| `/health`       | Liveness check        | `200 OK`              |
+| `/health/ready` | Readiness check       | `200 OK` with details |
+| `/health/db`    | Database connectivity | `200 OK`              |
+| `/health/redis` | Redis connectivity    | `200 OK`              |
 
 ### Centralized Logging
 
 Application logs được structured và gửi đến centralized logging stack:
+
 - **Format**: JSON structured logs
 - **Fields**: timestamp, level, message, request_id, tenant_id, user_id
 - **Retention**: 30 ngày cho production logs
@@ -308,19 +322,19 @@ Application logs được structured và gửi đến centralized logging stack:
 
 ### Horizontal Scaling
 
-| Tier | Strategy | Trigger |
-|------|----------|---------|
+| Tier            | Strategy        | Trigger                     |
+| --------------- | --------------- | --------------------------- |
 | **Application** | Scale instances | CPU > 70% hoặc memory > 80% |
-| **Redis** | Cluster mode | > 10k connections |
-| **Database** | Read replicas | Query latency > 100ms |
+| **Redis**       | Cluster mode    | > 10k connections           |
+| **Database**    | Read replicas   | Query latency > 100ms       |
 
 ### Vertical Scaling
 
-| Component | Min Spec | Recommended | High Load |
-|-----------|----------|-------------|-----------|
+| Component     | Min Spec           | Recommended    | High Load      |
+| ------------- | ------------------ | -------------- | -------------- |
 | App Container | 512MB RAM, 0.5 CPU | 1GB RAM, 1 CPU | 2GB RAM, 2 CPU |
-| PostgreSQL | 2GB RAM | 4GB RAM | 8GB+ RAM |
-| Redis | 512MB RAM | 1GB RAM | 2GB RAM |
+| PostgreSQL    | 2GB RAM            | 4GB RAM        | 8GB+ RAM       |
+| Redis         | 512MB RAM          | 1GB RAM        | 2GB RAM        |
 
 ---
 

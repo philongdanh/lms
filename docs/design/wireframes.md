@@ -13,7 +13,8 @@ Wireframe templates and layout patterns.
 
 ## Overview
 
-This document provides wireframe templates for common page layouts and UI patterns.
+This document provides wireframe templates for common page layouts and UI
+patterns.
 
 ---
 
@@ -137,31 +138,31 @@ wireframes/
 
 ## Wireframe Standards
 
-| Aspect | Guideline |
-|--------|-----------|
-| Fidelity | Low to medium |
-| Color | Grayscale only |
-| Content | Lorem ipsum or real content |
-| Annotations | Required for interactions |
+| Aspect      | Guideline                   |
+| ----------- | --------------------------- |
+| Fidelity    | Low to medium               |
+| Color       | Grayscale only              |
+| Content     | Lorem ipsum or real content |
+| Annotations | Required for interactions   |
 
 ---
 
 ## File Naming
 
-| Pattern | Example |
-|---------|---------|
+| Pattern                       | Example                     |
+| ----------------------------- | --------------------------- |
 | `[platform]-[screen]-[state]` | `web-dashboard-loading.png` |
-| `[flow]-[step]` | `onboarding-01-signup.png` |
+| `[flow]-[step]`               | `onboarding-01-signup.png`  |
 
 ---
 
 ## Tools
 
-| Tool | Use Case |
-|------|----------|
-| Figma | Collaborative design |
-| Excalidraw | Quick sketching |
-| Balsamiq | Low-fi wireframes |
+| Tool       | Use Case             |
+| ---------- | -------------------- |
+| Figma      | Collaborative design |
+| Excalidraw | Quick sketching      |
+| Balsamiq   | Low-fi wireframes    |
 
 ---
 
@@ -179,4 +180,4 @@ wireframes/
 
 - [Tokens](./tokens.md)
 - [Components](./components.md)
-- [Research](./research/README.md)
+- [Research](/design)

@@ -2,6 +2,8 @@
   "label": "Developer Guide",
   "link": {
     "type": "generated-index",
-    "description": "Tài liệu kỹ thuật, setup môi trường và workflow cho dev."
+    "title": "Developer Guide",
+    "description": "Hướng dẫn cài đặt, phát triển và đóng góp cho dự án.",
+    "slug": "/developer-guide"
   }
 }
