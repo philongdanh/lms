@@ -2,17 +2,20 @@
 id: requirements
 title: Requirements
 sidebar_label: Requirements
+sidebar_position: 2
 ---
 
 # Requirements
 
 Product requirements specification (FR & NFR).
 
+---
 
 ## Overview
 
 This document defines both functional requirements (FR) and non-functional requirements (NFR) for the system.
 
+---
 
 ## Functional Requirements
 
@@ -55,6 +58,7 @@ FR-{MODULE}-{NUMBER}
 | FR-AUTH-05 | Quản lý thiết bị | P1 | |
 | FR-AUTH-06 | Đăng xuất từ xa | P1 | |
 
+---
 
 ## Non-Functional Requirements
 
@@ -93,6 +97,7 @@ NFR-{CATEGORY}-{NUMBER}
 | NFR-REL-02 | Backup | Daily with point-in-time recovery |
 | NFR-REL-03 | Disaster Recovery | RTO < 4 hours |
 
+---
 
 ## Traceability Matrix
 
@@ -103,9 +108,10 @@ NFR-{CATEGORY}-{NUMBER}
 | FR-HS-01 | UC-LEARN-001 | Learning | TC-LEARN-001 |
 | FR-COMP-01 | UC-COMP-001 | Tournament | TC-COMP-001 |
 
+---
 
 ## References
 
-- [Overview](./overview.md)
+- [Overview](./README.md)
 - [Use Cases](./use-cases.md)
 - [System Design](../01-architecture/system-design.md)

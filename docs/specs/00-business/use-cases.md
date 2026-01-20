@@ -2,17 +2,20 @@
 id: use-cases
 title: Use Cases
 sidebar_label: Use Cases
+sidebar_position: 3
 ---
 
 # Use Cases
 
 User stories, use case catalog, and flow diagrams.
 
+---
 
 ## Overview
 
 This document defines user stories following the standard format and use cases with clear acceptance criteria.
 
+---
 
 ## User Story Format
 
@@ -23,6 +26,7 @@ This document defines user stories following the standard format and use cases w
 | Benefit | So that [benefit] |
 | Criteria | Acceptance criteria list |
 
+---
 
 ## User Stories
 
@@ -87,6 +91,7 @@ This document defines user stories following the standard format and use cases w
 - [ ] Real-time notifications
 - [ ] 4-level reporting access
 
+---
 
 ## Use Case Catalog
 
@@ -134,6 +139,7 @@ This document defines user stories following the standard format and use cases w
 | Postcondition | User registered for tournament |
 | Exceptions | E1: Not eligible, E2: Tournament full |
 
+---
 
 ## User Flow Diagrams
 
@@ -166,9 +172,10 @@ Lesson -> Complete: Finish
 Complete -> Dashboard: Progress Updated
 ```
 
+---
 
 ## References
 
-- [Overview](./overview.md)
+- [Overview](./README.md)
 - [Requirements](./requirements.md)
 - [Glossary](./glossary.md)

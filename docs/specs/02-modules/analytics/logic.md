@@ -2,9 +2,12 @@
 id: analytics-logic
 title: Analytics Business Logic
 sidebar_label: Logic
+sidebar_position: 4
 ---
 
 # Analytics & Reporting - Business Logic
+
+---
 
 ## Business Context
 - **Module**: Analytics & Reporting
@@ -12,8 +15,12 @@ sidebar_label: Logic
 - **Status**: Đã phê duyệt
 - **Cập nhật lần cuối**: 2026-01-14
 
+---
+
 ## Overview
 Module chịu trách nhiệm thu thập, xử lý và trực quan hóa dữ liệu hoạt động học tập. Cung cấp báo cáo đa cấp cho Học sinh, Phụ huynh, Giáo viên và Quản trị viên.
+
+---
 
 ## Use Cases
 | Use Case ID | Use Case Name | Description | Priority | Status |
@@ -33,6 +40,8 @@ Module chịu trách nhiệm thu thập, xử lý và trực quan hóa dữ li�
 3. Hệ thống tính toán mức độ thành thạo cho từng Topic.
 4. Hệ thống hiển thị biểu đồ cây/lưới kiến thức.
 
+---
+
 ## Business Rules
 | Rule ID | Rule Name | Description | Condition | Action | Exception |
 |---------|----------|-------|------------|---------|------------|
@@ -40,6 +49,8 @@ Module chịu trách nhiệm thu thập, xử lý và trực quan hóa dữ li�
 | BR-ANALYTICS-002 | Data Aggregation | Lịch trình tổng hợp dữ liệu | Cron job hàng đêm | Nén raw logs thành thống kê hàng ngày | Thử lại khi thất bại |
 | BR-ANALYTICS-003 | Report Retention | Thời gian lưu trữ báo cáo | Raw logs: 3 tháng, Aggregated: Vĩnh viễn | Xóa raw logs cũ | - |
 | BR-ANALYTICS-004 | Access Control | Quyền xem báo cáo | Giáo viên chỉ xem lớp được phân công | Lọc truy vấn theo phân công | - |
+
+---
 
 ## Dependencies
 ### Internal Dependencies
@@ -50,17 +61,22 @@ Module chịu trách nhiệm thu thập, xử lý và trực quan hóa dữ li�
 - ✅ PostgreSQL - Lưu trữ time-series (thông qua partitioning).
 - ✅ Redis - Caching báo cáo.
 
+---
+
 ## KPIs & Metrics
 | Metric | Target | Measurement | Frequency |
 |--------|--------|-------------------|-----------|
 | Report Load Time | < 500ms | APM | Thời gian thực |
 | Data Freshness | < 1 giờ (cho thống kê hàng ngày) | ETL Job Monitor | Hàng ngày |
 
+---
+
 ## Validation Criteria
 - [ ] Dữ liệu báo cáo khớp với dữ liệu gốc (Tính chính xác dữ liệu).
 - [ ] Tính năng phân quyền hoạt động đúng (Giáo viên lớp A không thể xem lớp B).
 - [ ] Hiệu suất ổn định với dữ liệu lớn.
 
+---
 
 ## Review & Approval
 | Role | Name | Date | Status |
@@ -69,19 +85,24 @@ Module chịu trách nhiệm thu thập, xử lý và trực quan hóa dữ li�
 | **Tech Lead** | | | |
 | **QA Lead** | | | |
 
-
 ---
 
 # Workflows
 
+---
+
 ## Overview
 Các quy trình xử lý dữ liệu (ETL) và truy xuất báo cáo.
+
+---
 
 ## Workflow Summary
 | Workflow ID | Workflow Name | Trigger | Actors | Status |
 |-------------|--------------|---------|--------|--------|
 | WF-ANA-001 | ETL Pipeline | User Action Event | System | Đang hoạt động |
 | WF-ANA-002 | Generate Report | UI Request | User, System | Đang hoạt động |
+
+---
 
 ## Workflow Details
 
@@ -149,24 +170,33 @@ sequenceDiagram
     API-->>User: Visualized Report
 ```
 
+---
+
 ## Events
 ### System Events
 | Event Name | Description | Payload | Emitted By |
 |------------|-------------|---------|------------|
 | `analytics.report.generated` | Báo cáo lớn hoàn thành (async) | `{report_id, url}` | Analytics Svc |
 
+---
+
 ## Error Handling
 | Error Scenario | Detection | Recovery Action | Escalation |
 |----------------|-----------|-----------------|------------|
 | Aggregation Job thất bại | Job Status = Failed | Thử lại x3 | Thông báo Dev |
 
+---
+
 ## Performance Requirements
 - **ETL Latency**: Cập nhật thời gian thực (Knowledge Map) < 5s độ trễ từ event.
 
+---
 
 ## Validation Checklist
 - [ ] Đã kiểm tra độ tin cậy ETL (không mất dữ liệu)
 
+---
+
 ## References
 
-- [Overview](./overview.md)
+- [Overview](./README.md)

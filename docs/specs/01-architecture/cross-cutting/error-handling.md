@@ -2,12 +2,14 @@
 id: error-handling
 title: Error Handling
 sidebar_label: Error Handling
+sidebar_position: 3
 ---
 
 # Error Handling
 
 Các patterns và best practices xử lý lỗi.
 
+---
 
 ## Error Categories
 
@@ -17,6 +19,7 @@ Các patterns và best practices xử lý lỗi.
 | Server Error | 5xx | Lỗi server | Retry sau |
 | Business Error | 422 | Vi phạm business rule | Tuân theo rules |
 
+---
 
 ## Error Response Format
 
@@ -38,6 +41,7 @@ Các patterns và best practices xử lý lỗi.
 }
 ```
 
+---
 
 ## Error Codes
 
@@ -87,6 +91,7 @@ Các patterns và best practices xử lý lỗi.
 | SERVICE_UNAVAILABLE | Service unavailable | Dependency down |
 | DATABASE_ERROR | Database error | Lỗi kết nối DB |
 
+---
 
 ## Error Handling Patterns
 
@@ -112,6 +117,7 @@ Các patterns và best practices xử lý lỗi.
 - Recovery timeout: 30 seconds
 - Success threshold: 3 successes to close
 
+---
 
 ## Logging Errors
 
@@ -144,6 +150,7 @@ Các patterns và best practices xử lý lỗi.
 }
 ```
 
+---
 
 ## User-Facing Messages
 
@@ -161,6 +168,7 @@ Các patterns và best practices xử lý lỗi.
 | DB_CONNECTION_FAILED | Database connection pool exhausted | Service temporarily unavailable. Please try again. |
 | VALIDATION_ERROR | Field 'email' failed regex validation | Please enter a valid email address. |
 
+---
 
 ## References
 

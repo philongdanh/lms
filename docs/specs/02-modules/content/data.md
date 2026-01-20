@@ -2,12 +2,17 @@
 id: content-data
 title: Content Data Model
 sidebar_label: Data
+sidebar_position: 3
 ---
 
 # Content & Question Bank - Data Model
 
+---
+
 ## Overview
 Data model quản lý cấu trúc nội dung học tập và ngân hàng câu hỏi.
+
+---
 
 ## Entities
 
@@ -52,9 +57,9 @@ Data model quản lý cấu trúc nội dung học tập và ngân hàng câu h�
 | bank_id | UUID | ✅ | - | valid bank | FK QuestionBank |
 | type | String | ✅ | MCQ | enum | Loại câu hỏi |
 | content | Text | ✅ | - | HTML/LaTeX | Nội dung câu hỏi |
-| options | JSONB | ❍ | [] | schema valid | Các đáp án (nếu trắc nghiệm) |
-| correct_answer | String | ❍ | - | - | Đáp án đúng (Đơn giản) |
-| explanation | JSONB | ❍ | {} | - | Giải thích chi tiết |
+| options | JSONB |  | [] | schema valid | Các đáp án (nếu trắc nghiệm) |
+| correct_answer | String |  | - | - | Đáp án đúng (Đơn giản) |
+| explanation | JSONB |  | {} | - | Giải thích chi tiết |
 | difficulty | String | ✅ | MEDIUM | enum | Mức độ khó (EASY, MEDIUM, HARD) |
 
 #### Relationships
@@ -74,6 +79,8 @@ erDiagram
     Topic ||--o{ Question : "tagged_with"
 ```
 
+---
+
 ## Lifecycle States
 ### Content Lifecycle
 ```mermaid
@@ -90,6 +97,8 @@ stateDiagram-v2
     ARCHIVED --> DELETED : Remove
 ```
 
+---
+
 ## Storage Specifications
 ### Database
 - **Engine**: PostgreSQL
@@ -100,19 +109,26 @@ stateDiagram-v2
 - **Path Structure**: `/{subject}/{grade}/{topic_id}/{content_id}/{filename}`
 - **Formats**: MP4 (HLS), PDF, JPEG/PNG.
 
+---
+
 ## Performance Requirements
 - **Status**: Approved
 - **Read**: Tải Catalog (Tree view) < 100ms.
 - **Search**: Tìm kiếm câu hỏi < 100ms.
 
+---
+
 ## Data Security
 - **Access**: Public (Nội dung Active), Private (Nội dung Draft - chỉ Teacher).
 
+---
 
 ## Validation Checklist
 - [ ] Ràng buộc phân cấp được đảm bảo qua FK
 - [ ] Index JSONB cho Question options
 
+---
+
 ## References
 
-- [Overview](./overview.md)
+- [Overview](./README.md)

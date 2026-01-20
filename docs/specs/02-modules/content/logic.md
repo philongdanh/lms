@@ -2,9 +2,12 @@
 id: content-logic
 title: Content Business Logic
 sidebar_label: Logic
+sidebar_position: 4
 ---
 
 # Content & Question Bank - Business Logic
+
+---
 
 ## Business Context
 - **Module**: Content & Question Bank
@@ -12,8 +15,12 @@ sidebar_label: Logic
 - **Status**: Approved
 - **Last Updated**: 2026-01-14
 
+---
+
 ## Overview
 Module cốt lõi quản lý Cấu trúc Chương trình học (Subject, Grade, Topic, Lesson), Tài nguyên Giáo dục (Video, Document), và Ngân hàng Câu hỏi. Cung cấp dữ liệu cho các module Learning và Exam.
+
+---
 
 ## Use Cases
 | Use Case ID | Use Case Name | Description | Priority | Status |
@@ -40,6 +47,8 @@ Module cốt lõi quản lý Cấu trúc Chương trình học (Subject, Grade, 
 **Postconditions**: Các câu hỏi được tạo trong ngân hàng.
 **Exceptions**: Lỗi định dạng file -> Báo cáo chi tiết lỗi theo từng dòng.
 
+---
+
 ## Business Rules
 | Rule ID | Rule Name | Description | Condition | Action | Exception |
 |---------|----------|-------|------------|---------|------------|
@@ -49,6 +58,8 @@ Module cốt lõi quản lý Cấu trúc Chương trình học (Subject, Grade, 
 | BR-CONT-004 | Question Points | Tính điểm câu hỏi | Tổng điểm Quiz phải được tính động hoặc cố định | Validate tổng điểm | - |
 | BR-CONT-005 | Import Validation | Validation dữ liệu import | Kích thước file < 10MB, đúng MIME type | Từ chối file không hợp lệ, Parse content rules | - |
 
+---
+
 ## Dependencies
 ### Internal Dependencies
 - ❌ Không có - Content là module nền tảng (Core).
@@ -57,6 +68,8 @@ Module cốt lõi quản lý Cấu trúc Chương trình học (Subject, Grade, 
 - ✅ File Storage (S3/MinIO) - Lưu trữ Videos, Images, Documents.
 - ✅ Search Engine (Elasticsearch) - Tìm kiếm câu hỏi và bài học.
 
+---
+
 ## KPIs & Metrics
 | Metric | Target | Measurement | Frequency |
 |--------|--------|-------------------|-----------|
@@ -64,12 +77,15 @@ Module cốt lõi quản lý Cấu trúc Chương trình học (Subject, Grade, 
 | Question Import Speed | < 5s cho 100 câu hỏi | Thời gian thực hiện Job | Real-time |
 | Search Latency | < 100ms | APM | Real-time |
 
+---
+
 ## Validation Criteria
 - [ ] Cây cấu trúc nội dung hiển thị đúng phân cấp.
 - [ ] Quy trình import chạy đúng với file template và file lỗi.
 - [ ] Media upload phát được trên tất cả thiết bị.
 - [ ] Quyền Teacher (tạo draft) và Admin (publish) hoạt động đúng.
 
+---
 
 ## Review & Approval
 | Role | Name | Date | Status |
@@ -78,13 +94,16 @@ Module cốt lõi quản lý Cấu trúc Chương trình học (Subject, Grade, 
 | **Tech Lead** | | | |
 | **QA Lead** | | | |
 
-
 ---
 
 # Workflows
 
+---
+
 ## Overview
 Các workflow quản lý vòng đời nội dung và quy trình nhập dữ liệu ngân hàng câu hỏi.
+
+---
 
 ## Workflow Summary
 | Workflow ID | Workflow Name | Trigger | Actors | Status |
@@ -92,6 +111,8 @@ Các workflow quản lý vòng đời nội dung và quy trình nhập dữ li�
 | WF-CONT-001 | Create Content Hierarchy | Admin/Teacher setup | Teacher, Admin | Active |
 | WF-CONT-002 | Bulk Import Questions | Upload action | Teacher, Import Svc | Active |
 | WF-CONT-003 | Content Publishing | Publish action | Teacher | Active |
+
+---
 
 ## Workflow Details
 
@@ -161,6 +182,8 @@ flowchart TD
     G --> H[Video/Slide/Doc]
 ```
 
+---
+
 ## Events
 ### System Events
 | Event Name | Description | Payload | Emitted By |
@@ -168,23 +191,32 @@ flowchart TD
 | `content.published` | Lesson/Topic được publish | `{id, type}` | Content Svc |
 | `question.imported` | Import hoàn tất | `{batch_id, count}` | Import Svc |
 
+---
+
 ## Error Handling
 | Error Scenario | Detection | Recovery Action | Escalation |
 |----------------|-----------|-----------------|------------|
 | Import File Corrupt | Parse Error | Trả về "Invalid File Format" | - |
 | Partial Import Failure | Row Error | Bỏ qua dòng, ghi log vào report, tiếp tục | - |
 
+---
+
 ## Performance Requirements
 - **Import Throughput**: 100 câu hỏi / 5s.
+
+---
 
 ## Security Requirements
 - [ ] Quét file upload để phát hiện malware (tích hợp VirusTotal hoặc ClamAV)
 
+---
 
 ## Validation Checklist
 - [ ] Diagram khớp với logic code cho vòng lặp import
 - [ ] Cơ chế báo cáo lỗi hoạt động cho các lỗi một phần
 
+---
+
 ## References
 
-- [Overview](./overview.md)
+- [Overview](./README.md)

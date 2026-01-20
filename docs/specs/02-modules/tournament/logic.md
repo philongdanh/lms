@@ -2,9 +2,12 @@
 id: tournament-logic
 title: Tournament Business Logic
 sidebar_label: Logic
+sidebar_position: 4
 ---
 
 # Tournament & Competition - Business Logic
+
+---
 
 ## Business Context
 - **Module**: Tournament & Competition
@@ -12,8 +15,12 @@ sidebar_label: Logic
 - **Status**: Approved
 - **Last Updated**: 2026-01-14
 
+---
+
 ## Overview
 Module quản lý thi đấu trực tuyến, hỗ trợ: Tournament, Round, Room, và Real-time Leaderboard.
+
+---
 
 ## Use Cases
 | Use Case ID | Name | Description | Priority | Status |
@@ -34,6 +41,8 @@ Module quản lý thi đấu trực tuyến, hỗ trợ: Tournament, Round, Room
 4. Server cập nhật Real-time leaderboard.
 5. Server gửi câu hỏi tiếp theo (nếu có).
 
+---
+
 ## Business Rules
 | Rule ID | Name | Description | Condition | Action | Exception |
 |---------|----------|-------|------------|---------|------------|
@@ -41,6 +50,8 @@ Module quản lý thi đấu trực tuyến, hỗ trợ: Tournament, Round, Room
 | BR-TOUR-002 | Room Capacity | Giới hạn số user mỗi room | Users >= Max | Create New Round or Reject | - |
 | BR-TOUR-003 | Scoring Formula | Công thức tính điểm | Correct Answer | Score = Base + (TimeRemaining * Multiplier) | - |
 | BR-TOUR-004 | Anti-Cheat | Chống gian lận | 1 IP/Account check | Đánh dấu hoạt động đáng ngờ | - |
+
+---
 
 ## Dependencies
 ### Internal Dependencies
@@ -51,17 +62,22 @@ Module quản lý thi đấu trực tuyến, hỗ trợ: Tournament, Round, Room
 ### External Dependencies
 - ✅ Redis - Leaderboard (ZSET).
 
+---
+
 ## KPIs & Metrics
 | Metric | Target | Measurement | Frequency |
 |--------|--------|-------------------|-----------|
 | Concurrent Users | 50,000 | Load Test | Theo sự kiện |
 | Score Update Latency | < 100ms | Đo end-to-end | Real-time |
 
+---
+
 ## Validation Criteria
 - [ ] Tính điểm chính xác theo thời gian.
 - [ ] Leaderboard cập nhật đúng thứ tự.
 - [ ] Load balancing giữa các room thi đấu hoạt động tốt.
 
+---
 
 ## Review & Approval
 | Role | Name | Date | Status |
@@ -70,19 +86,24 @@ Module quản lý thi đấu trực tuyến, hỗ trợ: Tournament, Round, Room
 | **Tech Lead** | | | |
 | **QA Lead** | | | |
 
-
 ---
 
 # Workflows
 
+---
+
 ## Overview
 Các workflow cho quy trình thi đấu.
+
+---
 
 ## Workflow Summary
 | Workflow ID | Tên Workflow | Trigger | Actors | Status |
 |-------------|--------------|---------|--------|--------|
 | WF-TOUR-001 | Join Competition | User nhấn Join | User, System | Active |
 | WF-TOUR-002 | Realtime Scoring | User trả lời | User, System | Active |
+
+---
 
 ## Workflow Details
 
@@ -141,6 +162,8 @@ sequenceDiagram
     end
 ```
 
+---
+
 ## Events
 ### System Events
 | Event Name | Description | Payload | Emitted By |
@@ -148,18 +171,25 @@ sequenceDiagram
 | `round.started` | Round bắt đầu | `{round_id}` | Scheduler |
 | `round.ended` | Round kết thúc | `{round_id}` | Scheduler |
 
+---
+
 ## Error Handling
 | Error Scenario | Detection | Recovery Action | Báo cáo |
 |----------------|-----------|-----------------|------------|
 | WS Disconnect | Socket Close | Client Auto Reconnect (có giới hạn retry) | - |
 
+---
+
 ## Performance Requirements
 - **Broadcast**: < 500ms latency đến 10k users.
 
+---
 
 ## Validation Checklist
 - [ ] Logic reconnect giữ được điểm
 
+---
+
 ## References
 
-- [Overview](./overview.md)
+- [Overview](./README.md)

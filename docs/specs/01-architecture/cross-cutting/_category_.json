@@ -1,0 +1,8 @@
+{
+  "label": "Cross-Cutting",
+  "position": 7,
+  "link": {
+    "type": "generated-index",
+    "description": "Cross-cutting concerns documentation"
+  }
+}

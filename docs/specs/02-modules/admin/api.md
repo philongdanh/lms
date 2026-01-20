@@ -2,17 +2,24 @@
 id: admin-api
 title: Admin API Endpoints
 sidebar_label: API
+sidebar_position: 2
 ---
 
 # Admin API Endpoints
 
+---
+
 ## Overview
 API cho quản trị hệ thống và quản lý Tenant.
+
+---
 
 ## Base Information
 - **Base URL**: `/api/v1/admin`
 - **Version**: 1.0
 - **Authentication**: Bearer Token (Role: root-admin, tenant-admin)
+
+---
 
 ## Endpoints Summary
 | Method | Endpoint | Description | Auth Required | Rate Limit |
@@ -22,6 +29,8 @@ API cho quản trị hệ thống và quản lý Tenant.
 | POST | `/tenants/{id}/suspend` | Tạm ngưng Tenant | ✅ (Root) | 10/min |
 | POST | `/tenants/{id}/impersonate` | Đăng nhập với tư cách School Admin | ✅ (Root) | 5/min |
 | POST | `/users/import` | Import user từ file | ✅ (Tenant) | 5/min |
+
+---
 
 ## Endpoint Details
 
@@ -102,6 +111,8 @@ Authorization: Bearer {token}
 }
 ```
 
+---
+
 ## Error Responses
 | Code | Error | Description |
 |------|-------|-------------|
@@ -109,19 +120,26 @@ Authorization: Bearer {token}
 | 400 | `ADMIN_IMPORT_LIMIT` | File CSV quá lớn (>500 dòng) |
 | 403 | `ADMIN_UNAUTHORIZED` | Không đủ quyền hạn |
 
+---
+
 ## Performance Requirements
 - **Tenant Creation**: < 2s (bao gồm tạo user, email async).
 - **Import**: < 10s cho file 500 dòng.
+
+---
 
 ## Security Requirements
 - [ ] Xác thực Root Admin được thực thi nghiêm ngặt
 - [ ] Audit log cho Impersonation
 
+---
 
 ## Validation Checklist
 - [ ] Xác minh cô lập Tenant
 - [ ] Xác minh logic Soft delete
 
+---
+
 ## References
 
-- [Overview](./overview.md)
+- [Overview](./README.md)

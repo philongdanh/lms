@@ -2,12 +2,17 @@
 id: auth-tests
 title: Auth Test Cases
 sidebar_label: Tests
+sidebar_position: 5
 ---
 
 # Auth - Test Cases
 
+---
+
 ## Overview
 Test cases được derive từ specifications của module Auth
+
+---
 
 ## Test Coverage Matrix
 | Specification | Test Cases | Covered | Status |
@@ -15,6 +20,8 @@ Test cases được derive từ specifications của module Auth
 | Business Logic | 15 | 80% | In Progress |
 | API Endpoints | 12 | 90% | Done |
 | Workflows | 8 | 70% | In Progress |
+
+---
 
 ## Test Categories
 
@@ -65,6 +72,8 @@ Test cases được derive từ specifications của module Auth
 | TC-AUTH-SEC-004 | XSS in username | Script tag trong name | HTML được escape |
 | TC-AUTH-SEC-005 | CSRF protection | Request không có CSRF token | Request bị reject |
 
+---
+
 ## Test Data Requirements
 ### Data Sets
 | Data Set | Purpose | Size | Refresh Frequency |
@@ -82,6 +91,8 @@ Test cases được derive từ specifications của module Auth
 | Admin | admin@test.lms.vn | Test@123 | school:*, users:* |
 | Root | root@test.lms.vn | Test@123 | *:* |
 
+---
+
 ## Test Automation
 ### Framework
 - **UI Tests**: Playwright
@@ -92,6 +103,8 @@ Test cases được derive từ specifications của module Auth
 - [x] Tests chạy khi PR
 - [x] Tests chạy khi merge to main
 - [ ] Tests chạy hàng đêm (performance)
+
+---
 
 ## Reporting Requirements
 ### Test Results Format
@@ -111,6 +124,7 @@ Test cases được derive từ specifications của module Auth
 - Test execution time
 - Test coverage
 
+---
 
 ## Validation Checklist
 - [x] Test coverage matrix complete
@@ -118,13 +132,16 @@ Test cases được derive từ specifications của module Auth
 - [x] Test data requirements defined
 - [x] Automation strategy specified
 
-
 ---
 
 # Performance Requirements
 
+---
+
 ## Overview
 Performance specifications cho module Auth
+
+---
 
 ## Performance Targets
 
@@ -143,6 +160,8 @@ Performance specifications cho module Auth
 | Peak Load | 2000 | 10000 | 500MB/hour |
 | Spike (Tournament start) | 5000 | 25000 | 1GB/hour |
 
+---
+
 ## Scalability Requirements
 ### Vertical Scaling
 - **CPU**: Max 8 cores
@@ -154,6 +173,8 @@ Performance specifications cho module Auth
 - **Max Instances**: 10
 - **Auto-scaling**: CPU > 70% for 2 min → scale up
 
+---
+
 ## Resource Utilization Limits
 | Resource | Warning Threshold | Critical Threshold | Required Action |
 |----------|-------------------|--------------------|---------------------|
@@ -161,6 +182,8 @@ Performance specifications cho module Auth
 | Memory Usage | 75% | 90% | Add memory |
 | Redis Connections | 80% | 95% | Scale Redis |
 | DB Connections | 70% | 85% | Connection pool resize |
+
+---
 
 ## Load Testing Scenarios
 ### Scenario 1: Peak Login (Tournament Start)
@@ -186,6 +209,8 @@ Performance specifications cho module Auth
 - [x] Error rate < 0.1%
 - [x] Memory leak: 0
 
+---
+
 ## Monitoring & Alerting
 
 ### Metrics to Monitor
@@ -202,6 +227,8 @@ Performance specifications cho module Auth
 | Error Rate | > 0.5% | > 2% | PagerDuty |
 | Rate Limit Triggers | > 100/min | > 500/min | Slack #security |
 
+---
+
 ## Infrastructure Requirements
 ### Production
 - **Database**: PostgreSQL 15, 4 vCPU, 16GB RAM
@@ -212,6 +239,7 @@ Performance specifications cho module Auth
 - PostgreSQL 15, 2 vCPU, 4GB RAM
 - Redis 7, 1 vCPU, 2GB RAM
 
+---
 
 ## Validation Checklist
 - [x] All performance targets quantified
@@ -219,6 +247,8 @@ Performance specifications cho module Auth
 - [x] Monitoring metrics defined
 - [x] Load testing scenarios created
 
+---
+
 ## References
 
-- [Overview](./overview.md)
+- [Overview](./README.md)

@@ -2,12 +2,14 @@
 id: roles
 title: Team Roles
 sidebar_label: Roles
+sidebar_position: 1
 ---
 
 # Team Roles
 
 Định nghĩa vai trò và responsibilities.
 
+---
 
 ## Team Structure
 
@@ -28,6 +30,7 @@ sidebar_label: Roles
 └────────┘   └──────────┘ └─────┘   └────────────┘
 ```
 
+---
 
 ## Roles & Responsibilities
 
@@ -95,6 +98,7 @@ sidebar_label: Roles
 | | - Accessibility |
 | Tool | Figma |
 
+---
 
 ## RACI Matrix
 

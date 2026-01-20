@@ -2,12 +2,14 @@
 id: typography
 title: Typography
 sidebar_label: Typography
+sidebar_position: 2
 ---
 
 # Typography
 
 Typography system and text styles.
 
+---
 
 ## Font Families
 
@@ -17,6 +19,7 @@ Typography system and text styles.
 | `--font-display` | Nunito, sans-serif | Headings |
 | `--font-mono` | JetBrains Mono | Code |
 
+---
 
 ## Font Sizes
 
@@ -31,6 +34,7 @@ Typography system and text styles.
 | `--text-3xl` | 30px | 36px | Page titles |
 | `--text-4xl` | 36px | 40px | Hero text |
 
+---
 
 ## Font Weights
 
@@ -41,6 +45,7 @@ Typography system and text styles.
 | `--font-semibold` | 600 | Subheadings |
 | `--font-bold` | 700 | Headings |
 
+---
 
 ## Text Styles
 
@@ -72,6 +77,7 @@ Typography system and text styles.
 | Code | `font-mono; background: muted` | Inline code |
 | Quote | `italic; border-left: 4px` | Block quotes |
 
+---
 
 ## Responsive Typography
 
@@ -82,6 +88,7 @@ Typography system and text styles.
 | Desktop | 16px | 1.25 |
 | Large | 16px | 1.333 |
 
+---
 
 ## Guidelines
 
@@ -99,6 +106,7 @@ Typography system and text styles.
 - Use light fonts on light backgrounds
 - Justify text (use left-align)
 
+---
 
 ## References
 

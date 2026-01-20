@@ -2,12 +2,14 @@
 id: mocks
 title: Mock Data
 sidebar_label: Mocks
+sidebar_position: 3
 ---
 
 # Mock Data
 
 API mock server for development and testing.
 
+---
 
 ## Overview
 
@@ -16,6 +18,7 @@ Mock servers provide fake API responses for:
 - Integration testing
 - Demo environments
 
+---
 
 ## Structure
 
@@ -28,6 +31,7 @@ mocks/
     └── users.js
 ```
 
+---
 
 ## Setup Options
 
@@ -76,6 +80,7 @@ npx json-server --watch db.json --port 3001
 npx @stoplight/prism-cli mock openapi/main.yaml --port 3001
 ```
 
+---
 
 ## Mock Data Guidelines
 
@@ -86,6 +91,7 @@ npx @stoplight/prism-cli mock openapi/main.yaml --port 3001
 | Consistent IDs | Use predictable IDs for testing |
 | Timestamps | Use relative dates |
 
+---
 
 ## Mock Scenarios
 
@@ -96,12 +102,16 @@ npx @stoplight/prism-cli mock openapi/main.yaml --port 3001
 | Error | `?scenario=error` |
 | Slow response | `?scenario=slow` |
 
+---
 
 ## Integration
 
 ### Development
 
 ```bash
+
+---
+
 # Start mock server
 npm run mock:start
 ```
@@ -109,10 +119,14 @@ npm run mock:start
 ### Testing
 
 ```bash
+
+---
+
 # Run tests with mocks
 npm run test:integration
 ```
 
+---
 
 ## References
 

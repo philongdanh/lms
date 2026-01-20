@@ -2,17 +2,20 @@
 id: frontend
 title: Frontend Architecture
 sidebar_label: Frontend
+sidebar_position: 4
 ---
 
 # Frontend Architecture
 
 Component hierarchy, state management, routing, and external tool references.
 
+---
 
 ## Overview
 
 This document consolidates frontend architecture decisions including component structure, state management patterns, and route definitions.
 
+---
 
 ## External References
 
@@ -22,6 +25,7 @@ This document consolidates frontend architecture decisions including component s
 | Storybook | Component Library | `[Storybook URL]` |
 | Chromatic | Visual Testing | `[Chromatic URL]` |
 
+---
 
 ## Tech Stack
 
@@ -38,6 +42,7 @@ This document consolidates frontend architecture decisions including component s
 | Validation | Zod | 3.x |
 | Routing | React Router | 6.x |
 
+---
 
 ## Component Architecture
 
@@ -106,6 +111,7 @@ src/components/
 | Tournament | `TournamentList`, `MatchCard`, `Leaderboard`, `BattleArena` |
 | Gamification | `PointsDisplay`, `BadgeGrid`, `LevelProgress`, `RewardModal` |
 
+---
 
 ## State Management
 
@@ -150,6 +156,7 @@ export function useAuth() {
 }
 ```
 
+---
 
 ## Routing
 
@@ -185,6 +192,7 @@ export function useAuth() {
 | Suspense | Show skeleton while loading |
 | Prefetch | Preload on hover/focus |
 
+---
 
 ## Folder Structure
 
@@ -202,6 +210,7 @@ export function useAuth() {
 | `src/types/` | TypeScript types |
 | `src/assets/` | Static assets |
 
+---
 
 ## Component Guidelines
 
@@ -223,6 +232,7 @@ export function useAuth() {
 - Don't skip error handling
 - Don't create oversized components (> 200 lines)
 
+---
 
 ## References
 

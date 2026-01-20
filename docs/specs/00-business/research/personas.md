@@ -2,12 +2,14 @@
 id: personas
 title: User Personas
 sidebar_label: Personas
+sidebar_position: 1
 ---
 
 # User Personas
 
 Chân dung người dùng cho thiết kế sản phẩm.
 
+---
 
 ## Primary Personas
 
@@ -112,6 +114,7 @@ Chân dung người dùng cho thiết kế sản phẩm.
 2. Nhận thông báo khi con không học 3 ngày liên tiếp
 3. Đặt mục tiêu học tập cho con theo tuần
 
+---
 
 ## Secondary Personas
 
@@ -154,6 +157,7 @@ Chân dung người dùng cho thiết kế sản phẩm.
 - Báo cáo thủ công cho Ban giám hiệu
 - Khó đánh giá hiệu quả sử dụng hệ thống
 
+---
 
 ## Persona Usage
 
@@ -165,13 +169,16 @@ Chân dung người dùng cho thiết kế sản phẩm.
 | Bulk import | Cô Mai (Admin) | CSV upload, template download |
 | Quiz builder | Thầy Hùng (Teacher) | Drag-drop, ngân hàng câu hỏi có sẵn |
 
+---
 
 ## References
 
 - [User Journeys](./journeys.md)
 - [Usability Guidelines](./usability.md)
 
+---
+
 ## References
 
 - [Journeys](./journeys.md)
-- [Vision](/specs/business/vision)
+- [Vision](/specs/business/overview)

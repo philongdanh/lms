@@ -2,15 +2,21 @@
 id: data-model
 title: Data Model
 sidebar_label: Data Model
+sidebar_position: 5
 ---
 
 # Data Model
+
+---
 
 ## ER Diagram
 
 The schema is designed following a multi-tenant model with data isolation between schools. All business tables have `tenant_id` and `created_at`, `updated_at` timestamps (except system tables).
 
 ```d2
+
+---
+
 # ========== SYSTEM TABLES ==========
 Permission: {
   shape: sql_table
@@ -35,6 +41,8 @@ RolePermission: {
   created_at: timestamp
 }
 
+---
+
 # ========== TENANT MANAGEMENT ==========
 Tenant: {
   shape: sql_table
@@ -52,6 +60,8 @@ Tenant: {
   created_at: timestamp
   updated_at: timestamp
 }
+
+---
 
 # ========== AUTHENTICATION ==========
 User: {
@@ -106,6 +116,8 @@ ParentStudentLink: {
   student_id: string {constraint: foreign_key}
   created_at: timestamp
 }
+
+---
 
 # ========== CONTENT STRUCTURE ==========
 Subject: {
@@ -170,6 +182,8 @@ Content: {
   updated_at: timestamp
 }
 
+---
+
 # ========== QUESTION BANK ==========
 QuestionBank: {
   shape: sql_table
@@ -210,6 +224,8 @@ QuestionTag: {
   created_at: timestamp
 }
 
+---
+
 # ========== LEARNING & PROGRESS ==========
 StudentProgress: {
   shape: sql_table
@@ -238,6 +254,8 @@ StudentAnswer: {
   answered_at: timestamp
   created_at: timestamp
 }
+
+---
 
 # ========== TOURNAMENT SYSTEM ==========
 Tournament: {
@@ -302,6 +320,8 @@ InviteCode: {
   updated_at: timestamp
 }
 
+---
+
 # ========== GAMIFICATION ==========
 UserExp: {
   shape: sql_table
@@ -358,6 +378,8 @@ UserReward: {
   updated_at: timestamp
 }
 
+---
+
 # ========== EXAM & ASSESSMENT ==========
 Exam: {
   shape: sql_table
@@ -398,6 +420,8 @@ ExamAssignment: {
   updated_at: timestamp
 }
 
+---
+
 # ========== ANALYTICS ==========
 KnowledgeMap: {
   shape: sql_table
@@ -424,6 +448,8 @@ LearningAnalytics: {
   updated_at: timestamp
 }
 
+---
+
 # ========== NOTIFICATIONS ==========
 Notification: {
   shape: sql_table
@@ -436,6 +462,8 @@ Notification: {
   metadata: jsonb
   created_at: timestamp
 }
+
+---
 
 # ========== RELATIONSHIPS ==========
 Role -> UserRole: has
@@ -506,6 +534,8 @@ Exam -> StudentAnswer: in
 
 Content -> StudentAnswer: in
 ```
+
+---
 
 ## Entity Descriptions
 
@@ -597,6 +627,8 @@ Content -> StudentAnswer: in
 |------|-------|
 | **Notification** | Notifications with type: SYSTEM, ACHIEVEMENT, COMPETITION, LEARNING |
 
+---
+
 ## Key Relationships
 
 ### 3.1. Multi-tenant Relationships
@@ -624,6 +656,8 @@ Content -> StudentAnswer: in
 - **Badge** is awarded to **User** via **UserBadge**
 - **KnowledgeMap** is built from **StudentAnswer** and **Topic**
 - **LearningAnalytics** aggregates daily from learning activities
+
+---
 
 ## Database Specifications
 
@@ -746,10 +780,10 @@ Applied to tables with `deleted_at`:
    - Set `topic_id = NULL` for Question (soft unlink)
 
 **Color Legend:**
-- 🔴 **Dark Red**: Root entity initiating cascade delete
-- 🟡 **Yellow**: Soft delete tables (only mark `deleted_at`)
-- 🟢 **Green**: Hard delete level 1 tables (direct hard delete)
-- 🔵 **Blue**: Hard delete level 2+ tables (indirect hard delete via cascade)
+-  **Dark Red**: Root entity initiating cascade delete
+-  **Yellow**: Soft delete tables (only mark `deleted_at`)
+-  **Green**: Hard delete level 1 tables (direct hard delete)
+-  **Blue**: Hard delete level 2+ tables (indirect hard delete via cascade)
 
 **Cascade Delete Flow Summary:**
 
@@ -905,8 +939,10 @@ flowchart TD
 | Authentication | User, UserRole, UserSession, ParentStudentLink | FR-AUTH-01 to FR-AUTH-09 |
 | Real-time | Tournament, CompetitionRound, StudentAnswer, Presence | FR-RT-01 to FR-RT-06 |
 
+---
+
 ## References
 
-- [Business Overview](../00-business/overview.md)
+- [Business Overview](../00-business/README.md)
 - [System Design](./system-design.md)
 - [Cross-Cutting](./cross-cutting/README.md)

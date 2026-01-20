@@ -2,12 +2,14 @@
 id: release
 title: Release Process
 sidebar_label: Release
+sidebar_position: 2
 ---
 
 # Release Process
 
 Quy trình release và deployment.
 
+---
 
 ## Release Types
 
@@ -17,6 +19,7 @@ Quy trình release và deployment.
 | Minor | Bi-weekly (Sprint) | New features, enhancements |
 | Patch | As needed | Bug fixes, hotfixes |
 
+---
 
 ## Versioning
 
@@ -30,6 +33,7 @@ v1.2.3
 └────── Major: Breaking changes
 ```
 
+---
 
 ## Release Process
 
@@ -42,8 +46,13 @@ v1.2.3
 - [ ] Version bumped
 
 ```bash
+
+---
+
 # Bump version
 npm version minor
+
+---
 
 # Create release branch
 git checkout -b release/v1.2.0
@@ -81,30 +90,44 @@ git push origin main --tags
 - [ ] Close sprint/milestone
 - [ ] Merge `main` back to `develop`
 
+---
 
 ## Hotfix Process
 
 Cho critical bugs trong production:
 
 ```bash
+
+---
+
 # 1. Create hotfix branch từ main
 git checkout main
 git checkout -b hotfix/v1.2.1
 
+---
+
 # 2. Fix và test
+
+---
+
 # ... fix code ...
 npm version patch
+
+---
 
 # 3. Merge to main và deploy
 git checkout main
 git merge hotfix/v1.2.1
 git tag v1.2.1
 
+---
+
 # 4. Merge to develop
 git checkout develop
 git merge hotfix/v1.2.1
 ```
 
+---
 
 ## Rollback Procedure
 
@@ -113,6 +136,9 @@ Nếu release có issues:
 ### Option 1: Quick Rollback
 
 ```bash
+
+---
+
 # Revert to previous version
 kubectl rollout undo deployment/lms-frontend
 kubectl rollout undo deployment/lms-backend
@@ -121,6 +147,9 @@ kubectl rollout undo deployment/lms-backend
 ### Option 2: Deploy Previous Tag
 
 ```bash
+
+---
+
 # Deploy specific version
 ./deploy.sh v1.1.0
 ```
@@ -131,6 +160,7 @@ kubectl rollout undo deployment/lms-backend
 - Data corruption risk
 - Security vulnerability
 
+---
 
 ## Environment Pipeline
 
@@ -144,10 +174,14 @@ kubectl rollout undo deployment/lms-backend
   Auto CI      Auto CD        Manual          Manual + Approval
 ```
 
+---
 
 ## Release Checklist Template
 
 ```markdown
+
+---
+
 ## Release v1.x.x Checklist
 
 ### Pre-Release

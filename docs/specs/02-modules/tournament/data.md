@@ -2,12 +2,17 @@
 id: tournament-data
 title: Tournament Data Model
 sidebar_label: Data
+sidebar_position: 3
 ---
 
 # Tournament & Competition - Data Model
 
+---
+
 ## Overview
 Mô hình dữ liệu để quản lý cuộc thi và người tham gia.
+
+---
 
 ## Entities
 
@@ -65,23 +70,32 @@ erDiagram
     User ||--o{ CompetitionParticipant : "joins"
 ```
 
+---
+
 ## Storage Specifications
 ### Redis
 - **Leaderboard**: ZSET `round:{id}:scores` (Member: `user_id`, Score: `points`).
 - **Room State**: Hash `room:{id}` (Trạng thái, QuestionIndex).
 
+---
+
 ## Performance Requirements
 - **Leaderboard Write**: < 1ms (Redis).
 - **Participant Insert**: Batch insert cho việc join đồng thời cao.
 
+---
+
 ## Data Security
 - **Invite Code**: Hash trước khi so sánh hoặc rate limit kiểm tra code.
 
+---
 
 ## Validation Checklist
 - [ ] Đã xác minh các thao tác Redis ZSET
 - [ ] Xử lý join đồng thời
 
+---
+
 ## References
 
-- [Overview](./overview.md)
+- [Overview](./README.md)

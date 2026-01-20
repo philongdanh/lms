@@ -2,9 +2,12 @@
 id: learning-logic
 title: Learning Business Logic
 sidebar_label: Logic
+sidebar_position: 4
 ---
 
 # Learning & Personalization - Business Logic
+
+---
 
 ## Business Context
 - **Module**: Learning & Personalization
@@ -12,8 +15,12 @@ sidebar_label: Logic
 - **Status**: Approved
 - **Cập nhật lần cuối**: 2026-01-14
 
+---
+
 ## Overview
 Module cốt lõi cho Students, chịu trách nhiệm về Adaptive Learning Path, Progress Tracking và Knowledge Map. Cung cấp tính năng học tập thích ứng dựa trên AI để cá nhân hóa trải nghiệm học tập.
+
+---
 
 ## Use Cases
 | Use Case ID | Use Case Name | Description | Priority | Status |
@@ -50,6 +57,8 @@ Module cốt lõi cho Students, chịu trách nhiệm về Adaptive Learning Pat
 
 **Hậu điều kiện**: Kết quả được lưu, điểm được cập nhật.
 
+---
+
 ## Business Rules
 | Rule ID | Rule Name | Description | Condition | Action | Exception |
 |---------|----------|-------|------------|---------|------------|
@@ -58,6 +67,8 @@ Module cốt lõi cho Students, chịu trách nhiệm về Adaptive Learning Pat
 | BR-LEARN-003 | Prerequisite Check | Kiểm tra điều kiện tiên quyết | Bài học trước chưa hoàn thành | Trạng thái Locked, Trả về `CONTENT_LOCKED` | - |
 | BR-LEARN-004 | Anti-Cheat | Ngăn chặn gian lận trong bài tập | Client request đáp án trước khi submit | Chặn request, Ghi log vi phạm | - |
 | BR-LEARN-005 | Reward Trigger | Trao thưởng khi hoàn thành | Lesson Completed thay đổi từ False -> True | Gọi Gamification Service thêm EXP | Service down -> Queue event |
+
+---
 
 ## Dependencies
 ### Internal Dependencies
@@ -68,6 +79,8 @@ Module cốt lõi cho Students, chịu trách nhiệm về Adaptive Learning Pat
 ### External Dependencies
 - ✅ AI Service (Python) - Mô hình đề xuất lộ trình học tập.
 
+---
+
 ## KPIs & Metrics
 | Metric | Target | Measurement | Frequency |
 |--------|--------|-------------------|-----------|
@@ -75,12 +88,15 @@ Module cốt lõi cho Students, chịu trách nhiệm về Adaptive Learning Pat
 | Lesson Completion Rate | > 60% | DB query (completed / started) | Hàng ngày |
 | P95 Latency (Submit) | < 200ms | APM Monitoring | Real-time |
 
+---
+
 ## Validation Criteria
 - [ ] Tất cả use cases đã được định nghĩa và review.
 - [ ] Logic hoàn thành bài học (BR-LEARN-001, BR-LEARN-002) được test kỹ lưỡng.
 - [ ] Luồng tương tác với AI Service được định nghĩa rõ ràng (fallback khi lỗi).
 - [ ] Cơ chế anti-cheat được thiết kế.
 
+---
 
 ## Review & Approval
 | Role | Name | Date | Status |
@@ -89,13 +105,16 @@ Module cốt lõi cho Students, chịu trách nhiệm về Adaptive Learning Pat
 | **Tech Lead** | | | |
 | **QA Lead** | | | |
 
-
 ---
 
 # Workflows
 
+---
+
 ## Overview
 Các workflows và quy trình nghiệp vụ của module Learning, bao gồm quy trình học tập và làm bài tập.
+
+---
 
 ## Workflow Summary
 | Workflow ID | Workflow Name | Trigger | Actors | Status |
@@ -103,6 +122,8 @@ Các workflows và quy trình nghiệp vụ của module Learning, bao gồm quy
 | WF-LEARN-001 | Submit Exercise | Student nộp câu trả lời | Student, System | Active |
 | WF-LEARN-002 | Generate Learning Path | Student truy cập dashboard | Student, AI Service | Active |
 | WF-LEARN-003 | Lesson Progress Tracking | Student xem video/vượt qua quiz | Student, System | Active |
+
+---
 
 ## Workflow Details
 
@@ -202,6 +223,8 @@ stateDiagram-v2
     COMPLETED --> REVIEW: Re-learning
 ```
 
+---
+
 ## Events
 ### System Events
 | Event Name | Description | Payload | Emitted By |
@@ -209,25 +232,34 @@ stateDiagram-v2
 | `lesson.completed` | Bài học hoàn thành | `{student_id, lesson_id, timestamp}` | Learning Svc |
 | `path.generated` | Lộ trình học tập mới được tạo | `{student_id, path_id}` | Learning Svc |
 
+---
+
 ## Error Handling
 | Error Scenario | Detection | Recovery Action | Escalation |
 |----------------|-----------|-----------------|------------|
 | AI Model Timeout | Timeout > 2s | Trả về Default Path (theo Curriculum) | Log warning |
 | DB Write Fail | Exception | Trả lỗi cho client, retry client-side | - |
 
+---
+
 ## Performance Requirements
 - **Thời gian xử lý**: Submit answer < 200ms
 - **Throughput**: 5000 requests/sec (Submit)
+
+---
 
 ## Security Requirements
 - [ ] Rate limiting theo user
 - [ ] Xác thực quyền sở hữu session
 
+---
 
 ## Validation Checklist
 - [ ] Tất cả workflows đã được vẽ sơ đồ
 - [ ] Xử lý lỗi được chỉ định cho AI failure
 
+---
+
 ## References
 
-- [Overview](./overview.md)
+- [Overview](./README.md)

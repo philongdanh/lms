@@ -2,6 +2,7 @@
 id: glossary
 title: Glossary
 sidebar_label: Glossary
+sidebar_position: 4
 ---
 
 # Glossary
@@ -23,7 +24,9 @@ sidebar_label: Glossary
 | **Session** | Phiên đăng nhập của người dùng trên một thiết bị |
 | **WebSocket** | Giao thức kết nối hai chiều real-time giữa client và server |
 
+---
+
 ## References
 
-- [Business Overview](./overview.md)
+- [Business Overview](./README.md)
 - [System Design](../01-architecture/system-design.md)

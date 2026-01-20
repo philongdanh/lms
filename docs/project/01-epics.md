@@ -2,17 +2,20 @@
 id: epics
 title: Epics
 sidebar_label: Epics
+sidebar_position: 1
 ---
 
 # Epics
 
 Epic breakdown with feature grouping and sprint allocation.
 
+---
 
 ## Overview
 
 Epics are large bodies of work that can be broken down into features and user stories. Each epic represents a significant product capability.
 
+---
 
 ## Priority Legend
 
@@ -23,6 +26,7 @@ Epics are large bodies of work that can be broken down into features and user st
 | P2 - Medium | `#EAB308` | Nice to have |
 | P3 - Low | `#22C55E` | Future consideration |
 
+---
 
 ## Epic List
 
@@ -35,6 +39,7 @@ Epics are large bodies of work that can be broken down into features and user st
 | E05 | Gamification | `#F97316` P1 | S5-S6 | 25 |
 | E06 | Parent Dashboard | `#EAB308` P2 | S7-S8 | 25 |
 
+---
 
 ## MVP Scope
 
@@ -44,6 +49,7 @@ MVP focuses on 3 main modules:
 2. **Learning** - Lessons, quizzes, progress tracking
 3. **Tournament** - Competition participation
 
+---
 
 ## E01: Foundation & Infrastructure
 
@@ -52,19 +58,28 @@ MVP focuses on 3 main modules:
 | Priority | `#DC2626` P0 Critical |
 | Sprints | Sprint 1 |
 | Total Points | 30 |
-| Status | ✅ Completed |
+| Owner | [Assign] |
 
 ### Features
 
-| ID | Feature | Points | Status |
+| ID | Feature | Points | Sprint |
 |----|---------|--------|--------|
-| F01.1 | Project setup (monorepo) | 5 | ✅ Done |
-| F01.2 | CI/CD pipeline | 8 | ✅ Done |
-| F01.3 | Design system foundation | 5 | ✅ Done |
-| F01.4 | Database schema v1 | 5 | ✅ Done |
-| F01.5 | GraphQL server setup | 5 | ✅ Done |
-| F01.6 | Frontend scaffolding | 2 | ✅ Done |
+| F01.1 | Project setup (monorepo) | 5 | S1 |
+| F01.2 | CI/CD pipeline | 8 | S1 |
+| F01.3 | Design system foundation | 5 | S1 |
+| F01.4 | Database schema v1 | 5 | S1 |
+| F01.5 | GraphQL server setup | 5 | S1 |
+| F01.6 | Frontend scaffolding | 2 | S1 |
 
+### Acceptance Criteria
+
+- [ ] Monorepo structure hoàn chỉnh với NestJS + Next.js
+- [ ] CI/CD pipeline với GitHub Actions
+- [ ] Design system foundation với Tailwind CSS
+- [ ] Database schema và migrations
+- [ ] GraphQL server với Apollo
+
+---
 
 ## E02: Authentication
 
@@ -73,24 +88,31 @@ MVP focuses on 3 main modules:
 | Priority | `#DC2626` P0 Critical |
 | Sprints | Sprint 2 - Sprint 4 |
 | Total Points | 45 |
-| Status | 🔄 In Progress |
+| Owner | [Assign] |
 
 ### Features
 
-| ID | Feature | Points | Status |
+| ID | Feature | Points | Sprint |
 |----|---------|--------|--------|
-| F02.1 | Registration (email) | 5 | ✅ Done |
-| F02.2 | Registration (phone) | 5 | ✅ Done |
-| F02.3 | OTP verification | 5 | ✅ Done |
-| F02.4 | Login flow | 5 | 🔄 In Progress |
-| F02.5 | Password reset | 3 | ⬜ Not Started |
-| F02.6 | Session management | 8 | ⬜ Not Started |
-| F02.7 | Protected routes | 5 | ⬜ Not Started |
-| F02.8 | Logout | 2 | ⬜ Not Started |
-| F02.9 | Social login (Google) | 5 | ⬜ P2 |
+| F02.1 | Registration (email) | 5 | S2 |
+| F02.2 | Registration (phone) | 5 | S2 |
+| F02.3 | OTP verification | 5 | S2 |
+| F02.4 | Login flow | 5 | S3 |
+| F02.5 | Password reset | 3 | S3 |
+| F02.6 | Session management | 8 | S3 |
+| F02.7 | Protected routes | 5 | S4 |
+| F02.8 | Logout | 2 | S4 |
+| F02.9 | Social login (Google) | 5 | P2 |
 
-**Progress:** 43% (15/35 core points)
+### Acceptance Criteria
 
+- [ ] Đăng ký với email và phone
+- [ ] Xác thực OTP
+- [ ] Login flow với JWT
+- [ ] Session management đa thiết bị
+- [ ] Protected routes với guards
+
+---
 
 ## E03: Learning Core
 
@@ -99,24 +121,31 @@ MVP focuses on 3 main modules:
 | Priority | `#DC2626` P0 Critical |
 | Sprints | Sprint 4 - Sprint 5 |
 | Total Points | 50 |
-| Status | 📋 Not Started |
+| Owner | [Assign] |
 
 ### Features
 
-| ID | Feature | Points | Status |
+| ID | Feature | Points | Sprint |
 |----|---------|--------|--------|
-| F03.1 | Subject listing | 3 | ✅ Done |
-| F03.2 | Learning path view | 5 | ⬜ S4 |
-| F03.3 | Lesson content viewer | 5 | ⬜ S4 |
-| F03.4 | Quiz exercises | 8 | ⬜ S4 |
-| F03.5 | Progress tracking | 5 | ⬜ S4 |
-| F03.6 | Points system | 5 | ⬜ S5 |
-| F03.7 | Level up | 5 | ⬜ S5 |
-| F03.8 | Learning streak | 5 | ⬜ S5 |
-| F03.9 | Recommendations | 8 | ⬜ P2 |
+| F03.1 | Subject listing | 3 | S4 |
+| F03.2 | Learning path view | 5 | S4 |
+| F03.3 | Lesson content viewer | 5 | S4 |
+| F03.4 | Quiz exercises | 8 | S4 |
+| F03.5 | Progress tracking | 5 | S4 |
+| F03.6 | Points system | 5 | S5 |
+| F03.7 | Level up | 5 | S5 |
+| F03.8 | Learning streak | 5 | S5 |
+| F03.9 | Recommendations | 8 | P2 |
 
-**Progress:** 12% (3/50 points)
+### Acceptance Criteria
 
+- [ ] Hiển thị danh sách môn học
+- [ ] Learning path view với progress
+- [ ] Lesson content viewer với media
+- [ ] Quiz exercises với scoring
+- [ ] Progress tracking real-time
+
+---
 
 ## E04: Tournament
 
@@ -125,24 +154,31 @@ MVP focuses on 3 main modules:
 | Priority | `#F97316` P1 High |
 | Sprints | Sprint 5 - Sprint 6 |
 | Total Points | 55 |
-| Status | 📋 Not Started |
+| Owner | [Assign] |
 
 ### Features
 
-| ID | Feature | Points | Status |
+| ID | Feature | Points | Sprint |
 |----|---------|--------|--------|
-| F04.1 | Tournament listing | 5 | ⬜ S5 |
-| F04.2 | Tournament details | 5 | ⬜ S5 |
-| F04.3 | Registration flow | 3 | ⬜ S5 |
-| F04.4 | Countdown | 3 | ⬜ S5 |
-| F04.5 | Match gameplay | 13 | ⬜ S6 |
-| F04.6 | Real-time leaderboard | 8 | ⬜ S6 |
-| F04.7 | Results & scoring | 5 | ⬜ S6 |
-| F04.8 | Prize distribution | 5 | ⬜ S6 |
-| F04.9 | Share results | 3 | ⬜ P2 |
+| F04.1 | Tournament listing | 5 | S5 |
+| F04.2 | Tournament details | 5 | S5 |
+| F04.3 | Registration flow | 3 | S5 |
+| F04.4 | Countdown | 3 | S5 |
+| F04.5 | Match gameplay | 13 | S6 |
+| F04.6 | Real-time leaderboard | 8 | S6 |
+| F04.7 | Results & scoring | 5 | S6 |
+| F04.8 | Prize distribution | 5 | S6 |
+| F04.9 | Share results | 3 | P2 |
 
-**Progress:** 0%
+### Acceptance Criteria
 
+- [ ] Danh sách tournament với filter
+- [ ] Chi tiết tournament và đăng ký
+- [ ] Match gameplay real-time
+- [ ] Leaderboard live update
+- [ ] Results và scoring system
+
+---
 
 ## E05: Gamification
 
@@ -151,17 +187,25 @@ MVP focuses on 3 main modules:
 | Priority | `#F97316` P1 High |
 | Sprints | Sprint 5 - Sprint 6 |
 | Total Points | 25 |
-| Status | 📋 Not Started |
+| Owner | [Assign] |
 
 ### Features
 
-| ID | Feature | Points | Status |
+| ID | Feature | Points | Sprint |
 |----|---------|--------|--------|
-| F05.1 | Badges & achievements | 8 | ⬜ S6 |
-| F05.2 | User profile | 5 | ⬜ S6 |
-| F05.3 | Leaderboard (overall) | 5 | ⬜ S6 |
-| F05.4 | Rewards shop | 8 | ⬜ P2 |
+| F05.1 | Badges & achievements | 8 | S6 |
+| F05.2 | User profile | 5 | S6 |
+| F05.3 | Leaderboard (overall) | 5 | S6 |
+| F05.4 | Rewards shop | 8 | P2 |
 
+### Acceptance Criteria
+
+- [ ] Badges và achievements system
+- [ ] User profile với stats
+- [ ] Leaderboard theo nhiều tiêu chí
+- [ ] Rewards shop với virtual currency
+
+---
 
 ## Epic Summary by Module
 
@@ -174,6 +218,7 @@ MVP focuses on 3 main modules:
 | Gamification | E05 | 25 |
 | **Total** | 5 | 205 |
 
+---
 
 ## References
 

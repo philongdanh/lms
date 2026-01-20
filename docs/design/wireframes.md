@@ -2,17 +2,20 @@
 id: wireframes
 title: Wireframes
 sidebar_label: Wireframes
+sidebar_position: 4
 ---
 
 # Wireframes
 
 Wireframe templates and layout patterns.
 
+---
 
 ## Overview
 
 This document provides wireframe templates for common page layouts and UI patterns.
 
+---
 
 ## Structure
 
@@ -24,6 +27,7 @@ wireframes/
     └── [screen].png
 ```
 
+---
 
 ## Page Layouts
 
@@ -97,6 +101,7 @@ wireframes/
 └──────────────────────┴──────────────────────────────────┘
 ```
 
+---
 
 ## Component Patterns
 
@@ -128,6 +133,7 @@ wireframes/
 └───────────────────────────────────────────────────────┘
 ```
 
+---
 
 ## Wireframe Standards
 
@@ -138,6 +144,7 @@ wireframes/
 | Content | Lorem ipsum or real content |
 | Annotations | Required for interactions |
 
+---
 
 ## File Naming
 
@@ -146,6 +153,7 @@ wireframes/
 | `[platform]-[screen]-[state]` | `web-dashboard-loading.png` |
 | `[flow]-[step]` | `onboarding-01-signup.png` |
 
+---
 
 ## Tools
 
@@ -155,6 +163,7 @@ wireframes/
 | Excalidraw | Quick sketching |
 | Balsamiq | Low-fi wireframes |
 
+---
 
 ## Checklist
 
@@ -164,6 +173,7 @@ wireframes/
 - [ ] Annotations added
 - [ ] Stakeholder review completed
 
+---
 
 ## References
 

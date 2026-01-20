@@ -2,12 +2,14 @@
 id: onboarding
 title: Team Onboarding
 sidebar_label: Onboarding
+sidebar_position: 2
 ---
 
 # Team Onboarding
 
 Hướng dẫn onboarding cho team member mới.
 
+---
 
 ## Day 1: Setup
 
@@ -22,18 +24,30 @@ Hướng dẫn onboarding cho team member mới.
 ### Development Environment
 
 ```bash
+
+---
+
 # 1. Clone repos
 git clone git@github.com:org/lms-frontend.git
 git clone git@github.com:org/lms-backend.git
 git clone git@github.com:org/lms-docs.git
 
+---
+
 # 2. Install dependencies
 cd lms-frontend && bun install
 cd ../lms-backend && npm install
 
+---
+
 # 3. Setup environment
 cp .env.example .env
+
+---
+
 # Fill in required values
+
+---
 
 # 4. Start development
 bun run dev
@@ -46,6 +60,7 @@ bun run dev
 - [ ] GraphQL Playground works
 - [ ] Can login with test account
 
+---
 
 ## Day 2-3: Orientation
 
@@ -63,12 +78,13 @@ bun run dev
 
 | Document | Priority |
 |----------|----------|
-| [Product Overview](../../specs/00-business/overview.md) | Must |
+| [Product Overview](../../specs/00-business/README.md) | Must |
 | [Tech Stack](../../specs/01-architecture/tech-stack.md) | Must |
 | [Frontend Architecture](../../specs/01-architecture/frontend.md) | Must |
 | [Backend Architecture](../../specs/01-architecture/backend.md) | Should |
 | [DoD](../processes/dod.md) | Must |
 
+---
 
 ## Week 1: First Tasks
 
@@ -90,6 +106,7 @@ Suitable tasks for newcomers:
 | Week 3 | Pick up regular stories |
 | Week 4 | Independent contributor |
 
+---
 
 ## Resources
 
@@ -111,6 +128,7 @@ Suitable tasks for newcomers:
 | GraphQL | [Apollo Docs](https://www.apollographql.com/docs/) |
 | Tailwind | [Tailwind Docs](https://tailwindcss.com/docs) |
 
+---
 
 ## Checklist
 

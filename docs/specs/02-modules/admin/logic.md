@@ -2,9 +2,12 @@
 id: admin-logic
 title: Admin Business Logic
 sidebar_label: Logic
+sidebar_position: 4
 ---
 
 # Admin & Tenant Management - Business Logic
+
+---
 
 ## Business Context
 - **Module**: Admin & Tenant Management
@@ -12,8 +15,12 @@ sidebar_label: Logic
 - **Status**: Approved
 - **Last Updated**: 2026-01-14
 
+---
+
 ## Overview
 Module quản trị hệ thống cung cấp các tính năng quản lý Tenant (Trường học), quản lý User (Giáo viên, Học sinh), và cấu hình hệ thống. Phân quyền nghiêm ngặt giữa Root Admin và Tenant Admin.
+
+---
 
 ## Use Cases
 | Use Case ID | Use Case Name | Description | Priority | Status |
@@ -34,6 +41,8 @@ Module quản trị hệ thống cung cấp các tính năng quản lý Tenant (
 4. Hệ thống gửi email kích hoạt (tùy chọn).
 5. Hệ thống trả về kết quả import.
 
+---
+
 ## Business Rules
 | Rule ID | Rule Name | Description | Condition | Action | Exception |
 |---------|----------|-------|------------|---------|------------|
@@ -41,6 +50,8 @@ Module quản trị hệ thống cung cấp các tính năng quản lý Tenant (
 | BR-ADMIN-002 | Tenant Soft Delete | Xóa Tenant chỉ đánh dấu là đã xóa | Yêu cầu xóa | Đặt `deleted_at`, Lên lịch xóa vĩnh viễn sau 30 ngày | - |
 | BR-ADMIN-003 | User Protection | Không thể tự xóa chính mình | User ID trùng với người yêu cầu | Chặn xóa | - |
 | BR-ADMIN-004 | Import Limit | Giới hạn số lượng import | Số dòng > 500 | Từ chối yêu cầu | - |
+
+---
 
 ## Dependencies
 ### Internal Dependencies
@@ -50,11 +61,15 @@ Module quản trị hệ thống cung cấp các tính năng quản lý Tenant (
 ### External Dependencies
 - ✅ Email Service (SendGrid) - Gửi email kích hoạt.
 
+---
+
 ## KPIs & Metrics
 | Metric | Target | Measurement | Frequency |
 |--------|--------|-------------------|-----------|
 | Tenant Creation Time | < 2s | API Latency | Real-time |
 | Import Speed | < 10s / 500 users | Job Duration | Real-time |
+
+---
 
 ## Validation Criteria
 - [ ] Kiểm tra tính duy nhất của Tenant Code hoạt động chính xác.
@@ -62,6 +77,7 @@ Module quản trị hệ thống cung cấp các tính năng quản lý Tenant (
 - [ ] Import CSV báo cáo chính xác các dòng lỗi.
 - [ ] Audit log cho Impersonation đầy đủ.
 
+---
 
 ## Review & Approval
 | Role | Name | Date | Status |
@@ -70,19 +86,24 @@ Module quản trị hệ thống cung cấp các tính năng quản lý Tenant (
 | **Tech Lead** | | | |
 | **QA Lead** | | | |
 
-
 ---
 
 # Workflows
 
+---
+
 ## Overview
 Các workflow để quản lý vòng đời Tenant và Import User.
+
+---
 
 ## Workflow Summary
 | Workflow ID | Workflow Name | Trigger | Actors | Status |
 |-------------|--------------|---------|--------|--------|
 | WF-ADMIN-001 | Create Tenant | Admin gửi form | Root Admin, System | Active |
 | WF-ADMIN-002 | Import Users | Admin tải lên CSV | Tenant Admin, System | Active |
+
+---
 
 ## Workflow Details
 
@@ -146,6 +167,8 @@ flowchart TB
 | 3 | Batch Insert | System | DB Transaction Insert | Users đã tạo |
 | 4 | Thông báo | System | Async Email Queue | - |
 
+---
+
 ## Events
 ### System Events
 | Event Name | Description | Payload | Emitted By |
@@ -153,23 +176,32 @@ flowchart TB
 | `tenant.created` | Tenant mới được tạo | `{tenant_id, name}` | Admin Svc |
 | `tenant.suspended` | Tenant bị tạm ngưng | `{tenant_id, reason}` | Admin Svc |
 
+---
+
 ## Error Handling
 | Error Scenario | Detection | Recovery Action | Escalation |
 |----------------|-----------|-----------------|------------|
 | Email trùng lặp trong Import | DB Constraint | Bỏ qua dòng, ghi log lỗi | - |
 | Email Service không hoạt động | Timeout | Thử lại sau (Job) | - |
 
+---
+
 ## Performance Requirements
 - **Tenant Creation**: < 2s.
+
+---
 
 ## Security Requirements
 - [ ] Chỉ Root Admin mới có thể kích hoạt các workflow Tenant.
 - [ ] Tenant Admin chỉ có thể import user vào tenant của mình.
 
+---
 
 ## Validation Checklist
 - [ ] CSV Parsing xử lý UTF-8 chính xác
 
+---
+
 ## References
 
-- [Overview](./overview.md)
+- [Overview](./README.md)
