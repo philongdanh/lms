@@ -7,7 +7,7 @@ sidebar_position: 0
 
 # Business Overview
 
-Project vision, scope, and strategic context.
+Tầm nhìn, phạm vi và bối cảnh chiến lược của dự án.
 
 ---
 
@@ -42,15 +42,15 @@ Hệ thống LMS thông minh hướng đến cá nhân hóa giáo dục cho họ
 
 ## Scope
 
-### In Scope
+### In Scope (Trong phạm vi)
 
 | Category  | Items                                              |
 | --------- | -------------------------------------------------- |
-| Features  | Learning, Tournament, Gamification, Reporting      |
-| Users     | Student, Parent, Teacher, School Admin, Root Admin |
+| Features  | Học tập, Thi đấu, Gamification, Báo cáo            |
+| Users     | Học sinh, Phụ huynh, Giáo viên, Quản trị viên trường, Root Admin |
 | Platforms | Web (responsive)                                   |
 
-### Out of Scope
+### Out of Scope (Ngoài phạm vi)
 
 | Item              | Reason  |
 | ----------------- | ------- |
@@ -63,10 +63,10 @@ Hệ thống LMS thông minh hướng đến cá nhân hóa giáo dục cho họ
 
 | Role          | Name  | Responsibility        |
 | ------------- | ----- | --------------------- |
-| Product Owner | [TBD] | Vision and priorities |
-| Tech Lead     | [TBD] | Technical decisions   |
-| Designer      | [TBD] | UX/UI design          |
-| Sponsor       | [TBD] | Budget and resources  |
+| Product Owner | [TBD] | Tầm nhìn và ưu tiên   |
+| Tech Lead     | [TBD] | Quyết định kỹ thuật   |
+| Designer      | [TBD] | Thiết kế UX/UI        |
+| Sponsor       | [TBD] | Ngân sách và nguồn lực|
 
 ---
 
@@ -96,8 +96,8 @@ Hệ thống LMS thông minh hướng đến cá nhân hóa giáo dục cho họ
 | Criterion                | Target                | Measurement        |
 | ------------------------ | --------------------- | ------------------ |
 | User Engagement          | 70% DAU/MAU           | Analytics tracking |
-| Learning Completion      | 80% course completion | Progress tracking  |
-| Tournament Participation | 50% eligible users    | Tournament metrics |
+| Hoàn thành bài học       | 80% course completion | Progress tracking  |
+| Tham gia thi đấu         | 50% eligible users    | Tournament metrics |
 
 ---
 
@@ -105,9 +105,9 @@ Hệ thống LMS thông minh hướng đến cá nhân hóa giáo dục cho họ
 
 | Phase   | Duration | Focus                            |
 | ------- | -------- | -------------------------------- |
-| Phase 1 | Q1-Q2    | MVP - Core Learning & Tournament |
-| Phase 2 | Q3-Q4    | Advanced features, Mobile        |
-| Phase 3 | Year 2   | Scale & Enterprise               |
+| Phase 1 | Q1-Q2    | MVP - Học tập cốt lõi & Thi đấu  |
+| Phase 2 | Q3-Q4    | Tính năng nâng cao, Mobile       |
+| Phase 3 | Year 2   | Mở rộng & Doanh nghiệp           |
 
 ---
 

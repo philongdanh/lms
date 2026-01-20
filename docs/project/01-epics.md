@@ -8,14 +8,13 @@ sidebar_position: 1
 
 # Epics
 
-Epic breakdown with feature grouping and sprint allocation.
+Phân chia Epic với nhóm tính năng và phân bổ sprint.
 
 ---
 
 ## Overview
 
-Epics are large bodies of work that can be broken down into features and user
-stories. Each epic represents a significant product capability.
+Epics là các khối lượng công việc lớn có thể được chia nhỏ thành các tính năng và user story. Mỗi epic đại diện cho một khả năng sản phẩm quan trọng.
 
 ---
 
@@ -23,10 +22,10 @@ stories. Each epic represents a significant product capability.
 
 | Priority      | Color     | Description          |
 | ------------- | --------- | -------------------- |
-| P0 - Critical | `#DC2626` | Must have for MVP    |
-| P1 - High     | `#F97316` | Should have for MVP  |
-| P2 - Medium   | `#EAB308` | Nice to have         |
-| P3 - Low      | `#22C55E` | Future consideration |
+| P0 - Critical | `#DC2626` | Bắt buộc cho MVP   |
+| P1 - High     | `#F97316` | Nên có cho MVP     |
+| P2 - Medium   | `#EAB308` | Nên có (không bắt buộc) |
+| P3 - Low      | `#22C55E` | Cân nhắc trong tương lai |
 
 ---
 
@@ -45,11 +44,11 @@ stories. Each epic represents a significant product capability.
 
 ## MVP Scope
 
-MVP focuses on 3 main modules:
+MVP tập trung vào 3 module chính:
 
-1. **Authentication** - Registration, login, session management
-2. **Learning** - Lessons, quizzes, progress tracking
-3. **Tournament** - Competition participation
+1. **Authentication** - Đăng ký, đăng nhập, quản lý phiên
+2. **Learning** - Bài học, bài kiểm tra, theo dõi tiến độ
+3. **Tournament** - Tham gia thi đấu
 
 ---
 

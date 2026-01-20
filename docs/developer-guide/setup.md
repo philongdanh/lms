@@ -18,21 +18,21 @@ development hoàn chỉnh với tất cả dependencies cần thiết.
 
 | Software           | Version | Purpose                       | Download                                               |
 | ------------------ | ------- | ----------------------------- | ------------------------------------------------------ |
-| **Node.js**        | 18.x+   | JavaScript runtime            | [nodejs.org](https://nodejs.org)                       |
-| **Docker**         | 20.10+  | Containerization              | [docker.com](https://docker.com)                       |
-| **Docker Compose** | v2.0+   | Multi-container orchestration | Included with Docker Desktop                           |
-| **Git**            | 2.30+   | Version control               | [git-scm.com](https://git-scm.com)                     |
-| **VS Code**        | Latest  | IDE (recommended)             | [code.visualstudio.com](https://code.visualstudio.com) |
+| **Node.js**        | 18.x+   | Môi trường chạy JavaScript (Runtime) | [nodejs.org](https://nodejs.org)                       |
+| **Docker**         | 20.10+  | Container hóa                        | [docker.com](https://docker.com)                       |
+| **Docker Compose** | v2.0+   | Điều phối đa container               | Có sẵn trong Docker Desktop                            |
+| **Git**            | 2.30+   | Quản lý phiên bản                    | [git-scm.com](https://git-scm.com)                     |
+| **VS Code**        | Latest  | IDE (Khuyên dùng)                    | [code.visualstudio.com](https://code.visualstudio.com) |
 
 ### Recommended Extensions
 
 | Extension      | Purpose                    |
 | -------------- | -------------------------- |
-| ESLint         | Linting integration        |
-| Prettier       | Code formatting            |
-| Prisma         | Prisma schema highlighting |
-| GitLens        | Git integration            |
-| Thunder Client | API testing                |
+| ESLint         | Tích hợp Linting           |
+| Prettier       | Định dạng code (Formatter) |
+| Prisma         | Highlight Prisma schema    |
+| GitLens        | Tích hợp Git               |
+| Thunder Client | Testing API                |
 
 ---
 
@@ -66,12 +66,12 @@ cp .env.example .env
 
 | Variable               | Description           | Development Value                                       |
 | ---------------------- | --------------------- | ------------------------------------------------------- |
-| `DATABASE_URL`         | PostgreSQL connection | `postgresql://postgres:postgres@localhost:5432/lms_dev` |
-| `REDIS_URL`            | Redis connection      | `redis://localhost:6379`                                |
-| `JWT_SECRET`           | JWT signing key       | `dev-secret-key-change-in-production`                   |
-| `JWT_EXPIRY`           | Access token TTL      | `15m`                                                   |
-| `REFRESH_TOKEN_EXPIRY` | Refresh token TTL     | `7d`                                                    |
-| `MAX_DEVICES_PER_USER` | Device limit          | `3`                                                     |
+| `DATABASE_URL`         | Kết nối PostgreSQL    | `postgresql://postgres:postgres@localhost:5432/lms_dev` |
+| `REDIS_URL`            | Kết nối Redis         | `redis://localhost:6379`                                |
+| `JWT_SECRET`           | Khóa ký JWT           | `dev-secret-key-change-in-production`                   |
+| `JWT_EXPIRY`           | Thời hạn Access token | `15m`                                                   |
+| `REFRESH_TOKEN_EXPIRY` | Thời hạn Refresh token| `7d`                                                    |
+| `MAX_DEVICES_PER_USER` | Giới hạn thiết bị     | `3`                                                     |
 
 ### Start Infrastructure
 
@@ -198,9 +198,9 @@ curl http://localhost:3000/health
 
 ### Database Connection Issues
 
-**Symptom**: `Can't reach database server`
+**Triệu chứng**: `Can't reach database server`
 
-**Solution**:
+**Giải pháp**:
 
 ```bash
 
@@ -222,9 +222,9 @@ docker-compose logs postgres
 
 ### Prisma Client Out of Sync
 
-**Symptom**: `Unknown field` hoặc `Property does not exist`
+**Triệu chứng**: `Unknown field` hoặc `Property does not exist`
 
-**Solution**:
+**Giải pháp**:
 
 ```bash
 
@@ -241,9 +241,9 @@ npm run start:dev
 
 ### Port Already in Use
 
-**Symptom**: `EADDRINUSE: address already in use`
+**Triệu chứng**: `EADDRINUSE: address already in use`
 
-**Solution**:
+**Giải pháp**:
 
 ```bash
 
@@ -260,9 +260,9 @@ kill -9 <PID>
 
 ### Redis Connection Failed
 
-**Symptom**: `ECONNREFUSED 127.0.0.1:6379`
+**Triệu chứng**: `ECONNREFUSED 127.0.0.1:6379`
 
-**Solution**:
+**Giải pháp**:
 
 ```bash
 
@@ -283,13 +283,13 @@ docker-compose restart redis
 
 | Command                                         | Purpose                  |
 | ----------------------------------------------- | ------------------------ |
-| `docker-compose up -d`                          | Start all services       |
-| `docker-compose down`                           | Stop all services        |
-| `docker-compose logs -f`                        | View logs (follow)       |
-| `docker-compose ps`                             | List running containers  |
-| `docker-compose restart <service>`              | Restart specific service |
-| `docker-compose exec postgres psql -U postgres` | Access PostgreSQL shell  |
-| `docker-compose exec redis redis-cli`           | Access Redis CLI         |
+| `docker-compose up -d`                          | Khởi động tất cả services|
+| `docker-compose down`                           | Dừng tất cả services     |
+| `docker-compose logs -f`                        | Xem logs (theo dõi)      |
+| `docker-compose ps`                             | Liệt kê container đang chạy |
+| `docker-compose restart <service>`              | Khởi động lại service cụ thể |
+| `docker-compose exec postgres psql -U postgres` | Truy cập PostgreSQL shell|
+| `docker-compose exec redis redis-cli`           | Truy cập Redis CLI       |
 
 ---
 
