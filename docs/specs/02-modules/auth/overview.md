@@ -39,3 +39,10 @@ Module cốt lõi: **Xác thực (Auth), Phân quyền (RBAC), Quản lý Sessio
 ### Internal Dependencies
 - ✅ Tenant Service - Quản lý thông tin tenant
 - ❌ Notification Service - Gửi OTP/Welcome email
+
+## References
+
+- [Logic](./logic.md)
+- [Data Model](./data.md)
+- [API](./api.md)
+- [Tests](./tests.md)

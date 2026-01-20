@@ -104,10 +104,13 @@ stateDiagram-v2
 - **Masking**: Password hash, Token hash
 - **Access Control**: Row Level Security (RLS) theo Tenant
 
----
 
 ## Validation Checklist
 - [x] Tất cả entities định nghĩa đầy đủ fields
 - [x] Relationships được document rõ ràng
 - [x] Indexes tối ưu cho query patterns
 - [x] Performance requirements khả thi
+
+## References
+
+- [Overview](./overview.md)

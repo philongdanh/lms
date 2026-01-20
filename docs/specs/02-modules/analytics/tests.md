@@ -35,7 +35,6 @@ Các test case cho module Analytics.
 |---------|----------|------|--------|
 | TC-ANA-PERF-001 | Báo cáo nặng | Khoảng 1 năm | < 2s |
 
----
 
 ## Validation Checklist
 - [ ] Xác minh tính nhất quán dữ liệu (Raw vs Agg)
@@ -80,7 +79,10 @@ Các thông số hiệu suất cho module Analytics.
 **Tiêu chí thành công**:
 - [ ] P95 < 1s cho Report Detail API
 
----
 
 ## Validation Checklist
 - [ ] Đã bật nén PostgreSQL
+
+## References
+
+- [Overview](./overview.md)

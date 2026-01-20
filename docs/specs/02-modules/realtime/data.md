@@ -66,8 +66,11 @@ erDiagram
 ## Data Security
 - **Encryption**: WSS (TLS) cho tất cả kết nối.
 
----
 
 ## Validation Checklist
 - [ ] Redis keys hết hạn hoạt động đúng
 - [ ] Truy vấn lịch sử thông báo được tối ưu
+
+## References
+
+- [Overview](./overview.md)

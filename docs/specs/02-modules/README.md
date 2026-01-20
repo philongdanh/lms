@@ -9,7 +9,6 @@ sidebar_position: 1
 
 Đặc tả chi tiết cho từng module trong nền tảng LMS.
 
----
 
 ## Modules
 
@@ -24,7 +23,6 @@ sidebar_position: 1
 | [Analytics](./analytics/overview.md) | Báo cáo, dashboard | Active |
 | [Admin](./admin/overview.md) | Admin panel, quản lý tenant | Active |
 
----
 
 ## Module Structure
 

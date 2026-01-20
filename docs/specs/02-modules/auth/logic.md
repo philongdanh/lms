@@ -57,7 +57,6 @@ Module cốt lõi: **Xác thực (Auth), Phân quyền (RBAC), Quản lý Sessio
 - [ ] Dependencies đã xác định
 - [ ] KPIs có thể đo lường
 
----
 
 ## Review & Approval
 | Role | Name | Date | Status |
@@ -152,3 +151,7 @@ Workflows và business processes cho module Auth.
 - [x] Audit logging cho tất cả sự kiện registration/login
 - [x] Input sanitization
 - [x] Rate limiting
+
+## References
+
+- [Overview](./overview.md)

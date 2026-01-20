@@ -8,13 +8,11 @@ sidebar_label: Backlog
 
 Complete backlog with priority, difficulty, and sprint allocation.
 
----
 
 ## Overview
 
 This document contains all tickets (user stories, tasks, bugs) organized by priority and sprint.
 
----
 
 ## Legend
 
@@ -44,7 +42,6 @@ This document contains all tickets (user stories, tasks, bugs) organized by prio
 | Full-stack | `#6366F1` FS | Both FE and BE |
 | DevOps | `#14B8A6` DO | Infrastructure |
 
----
 
 ## Backlog Summary
 
@@ -56,9 +53,8 @@ This document contains all tickets (user stories, tasks, bugs) organized by prio
 | `#22C55E` P3 | 8 | 40 | - |
 | **Total (MVP)** | 54 | 250 | 100% |
 
----
 
-## Must Have (MVP) 🔴
+## Must Have (MVP)
 
 ### Authentication
 
@@ -97,9 +93,8 @@ This document contains all tickets (user stories, tasks, bugs) organized by prio
 | LMS-025 | Results & scoring | BE | 5 | S6 | ⬜ |
 | LMS-026 | Prize distribution | BE | 5 | S6 | ⬜ |
 
----
 
-## Should Have 🟡
+## Should Have
 
 ### Learning Enhancements
 
@@ -128,9 +123,8 @@ This document contains all tickets (user stories, tasks, bugs) organized by prio
 | LMS-051 | View child progress | FE | 5 | S8 | ⬜ |
 | LMS-052 | Learning reports | FS | 8 | S9 | ⬜ |
 
----
 
-## Could Have 🟢
+## Could Have
 
 | ID | Title | Type | Points | Sprint | Status |
 |----|-------|------|--------|--------|--------|
@@ -141,25 +135,24 @@ This document contains all tickets (user stories, tasks, bugs) organized by prio
 | LMS-064 | Social login (Facebook) | FS | 5 | TBD | ⬜ |
 | LMS-065 | Rewards shop | FS | 8 | TBD | ⬜ |
 
----
 
 ## Current Sprint (Sprint 4)
 
 ### Sprint Goals
 
-- [ ] 🎯 User can register and login
-- [ ] 🎯 User can select subject and view lessons
-- [ ] 🎯 User can complete exercises after lessons
-- [ ] 🎯 Progress and points tracking
+- [ ] User can register and login
+- [ ] User can select subject and view lessons
+- [ ] User can complete exercises after lessons
+- [ ] Progress and points tracking
 
-### In Progress 🔄
+### In Progress
 
 | ID | Title | Assignee | Points | Progress |
 |----|-------|----------|--------|----------|
 | LMS-004 | Login flow | Dev A | 5 | 60% |
 | LMS-011 | Learning path UI | Dev B | 5 | 40% |
 
-### To Do 📋
+### To Do
 
 | ID | Title | Assignee | Points |
 |----|-------|----------|--------|
@@ -176,7 +169,6 @@ This document contains all tickets (user stories, tasks, bugs) organized by prio
 | LMS-003 | OTP verification | 5 |
 | LMS-010 | Subject listing | 3 |
 
----
 
 ## Ticket Template
 
@@ -192,7 +184,6 @@ This document contains all tickets (user stories, tasks, bugs) organized by prio
 | Sprint | ✅ | Target sprint |
 | Assignee | ❌ | Assigned developer |
 
----
 
 ## References
 

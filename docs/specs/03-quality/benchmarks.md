@@ -8,7 +8,6 @@ sidebar_label: Benchmarks
 
 Performance targets và đo lường.
 
----
 
 ## Response Time Benchmarks
 
@@ -38,7 +37,6 @@ Performance targets và đo lường.
 | Write | < 10ms | 50ms |
 | Miss + DB | < 100ms | 500ms |
 
----
 
 ## Throughput Benchmarks
 
@@ -64,7 +62,6 @@ Performance targets và đo lường.
 | Requests/hour | 3.6M | 1.8M |
 | Data transfer/hour | 10GB | 5GB |
 
----
 
 ## Resource Benchmarks
 
@@ -93,7 +90,6 @@ Performance targets và đo lường.
 | Hit rate | > 90% | < 80% | < 60% |
 | Connections | < 50% | 80% | 95% |
 
----
 
 ## Load Testing Scenarios
 
@@ -142,7 +138,6 @@ Performance targets và đo lường.
 | Ramp-up | 5 min |
 | Purpose | Memory leaks, degradation |
 
----
 
 ## Benchmark Script
 
@@ -173,7 +168,6 @@ export default function () {
 }
 ```
 
----
 
 ## Reporting
 

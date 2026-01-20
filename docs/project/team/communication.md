@@ -8,7 +8,6 @@ sidebar_label: Communication
 
 Quy trình và kênh giao tiếp trong team.
 
----
 
 ## Communication Channels
 
@@ -20,7 +19,6 @@ Quy trình và kênh giao tiếp trong team.
 | Email | External, formal | < 24 hours |
 | Google Meet | Meetings, pairing | Scheduled |
 
----
 
 ## Meeting Schedule
 
@@ -32,7 +30,6 @@ Quy trình và kênh giao tiếp trong team.
 | Sprint Review | Fri (end) | 1 hour | All + Stakeholders |
 | Retrospective | Fri (end) | 1 hour | Team only |
 
----
 
 ## Standup Format
 
@@ -47,7 +44,6 @@ Mỗi người trả lời 3 câu hỏi:
 - Max 2 phút/người
 - Chi tiết → sau standup
 
----
 
 ## Escalation Path
 
@@ -73,7 +69,6 @@ Mỗi người trả lời 3 câu hỏi:
 └─────────────────────────────────────────────┘
 ```
 
----
 
 ## Documentation Guidelines
 
@@ -84,7 +79,6 @@ Mỗi người trả lời 3 câu hỏi:
 | Meeting Notes | Confluence | SM |
 | Decisions | ADR in repo | Lead Dev |
 
----
 
 ## Status Updates
 

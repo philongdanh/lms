@@ -8,13 +8,11 @@ sidebar_label: Project
 
 Project planning for Spec-Driven Development.
 
----
 
 ## Overview
 
 This section defines the project roadmap, from epics to tickets, with sprint allocation.
 
----
 
 ## Contents
 
@@ -26,7 +24,6 @@ This section defines the project roadmap, from epics to tickets, with sprint all
 | [Team](./team/README.md) | Team structure and roles |
 | [Processes](./processes/README.md) | DoD, release, ceremonies |
 
----
 
 ## Project Summary
 
@@ -38,7 +35,6 @@ This section defines the project roadmap, from epics to tickets, with sprint all
 | Start Date | 2024-01-01 |
 | Target MVP Date | 2024-03-22 |
 
----
 
 ## Sprint Overview
 
@@ -46,7 +42,6 @@ This section defines the project roadmap, from epics to tickets, with sprint all
 Sprint 1 → Sprint 2 → M1 → Sprint 3-4 → M2 → Sprint 5 → M3 → Sprint 6 → MVP
 ```
 
----
 
 ## Scrum Overview
 
@@ -58,7 +53,6 @@ Sprint 1 → Sprint 2 → M1 → Sprint 3-4 → M2 → Sprint 5 → M3 → Sprin
 | Sprint Review | Friday of sprint end |
 | Retrospective | After Sprint Review |
 
----
 
 ## Tools
 
@@ -70,7 +64,6 @@ Sprint 1 → Sprint 2 → M1 → Sprint 3-4 → M2 → Sprint 5 → M3 → Sprin
 | Design | Figma |
 | Code | GitHub |
 
----
 
 ## Quick Navigation
 
@@ -78,7 +71,6 @@ Sprint 1 → Sprint 2 → M1 → Sprint 3-4 → M2 → Sprint 5 → M3 → Sprin
 - [Sprint Allocation](./02-sprint-plan.md#sprint-allocation)
 - [Backlog](./03-backlog.md#backlog-summary)
 
----
 
 ## References
 

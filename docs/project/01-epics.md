@@ -8,13 +8,11 @@ sidebar_label: Epics
 
 Epic breakdown with feature grouping and sprint allocation.
 
----
 
 ## Overview
 
 Epics are large bodies of work that can be broken down into features and user stories. Each epic represents a significant product capability.
 
----
 
 ## Priority Legend
 
@@ -25,7 +23,6 @@ Epics are large bodies of work that can be broken down into features and user st
 | P2 - Medium | `#EAB308` | Nice to have |
 | P3 - Low | `#22C55E` | Future consideration |
 
----
 
 ## Epic List
 
@@ -38,7 +35,6 @@ Epics are large bodies of work that can be broken down into features and user st
 | E05 | Gamification | `#F97316` P1 | S5-S6 | 25 |
 | E06 | Parent Dashboard | `#EAB308` P2 | S7-S8 | 25 |
 
----
 
 ## MVP Scope
 
@@ -48,7 +44,6 @@ MVP focuses on 3 main modules:
 2. **Learning** - Lessons, quizzes, progress tracking
 3. **Tournament** - Competition participation
 
----
 
 ## E01: Foundation & Infrastructure
 
@@ -70,7 +65,6 @@ MVP focuses on 3 main modules:
 | F01.5 | GraphQL server setup | 5 | ✅ Done |
 | F01.6 | Frontend scaffolding | 2 | ✅ Done |
 
----
 
 ## E02: Authentication
 
@@ -97,7 +91,6 @@ MVP focuses on 3 main modules:
 
 **Progress:** 43% (15/35 core points)
 
----
 
 ## E03: Learning Core
 
@@ -124,7 +117,6 @@ MVP focuses on 3 main modules:
 
 **Progress:** 12% (3/50 points)
 
----
 
 ## E04: Tournament
 
@@ -151,7 +143,6 @@ MVP focuses on 3 main modules:
 
 **Progress:** 0%
 
----
 
 ## E05: Gamification
 
@@ -171,7 +162,6 @@ MVP focuses on 3 main modules:
 | F05.3 | Leaderboard (overall) | 5 | ⬜ S6 |
 | F05.4 | Rewards shop | 8 | ⬜ P2 |
 
----
 
 ## Epic Summary by Module
 
@@ -184,7 +174,6 @@ MVP focuses on 3 main modules:
 | Gamification | E05 | 25 |
 | **Total** | 5 | 205 |
 
----
 
 ## References
 

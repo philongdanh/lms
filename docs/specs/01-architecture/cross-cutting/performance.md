@@ -8,7 +8,6 @@ sidebar_label: Performance
 
 Yêu cầu performance và chiến lược tối ưu.
 
----
 
 ## Performance Targets
 
@@ -36,7 +35,6 @@ Yêu cầu performance và chiến lược tối ưu.
 | MTTR | < 30 phút |
 | MTBF | > 30 ngày |
 
----
 
 ## Caching Strategy
 
@@ -64,7 +62,6 @@ Yêu cầu performance và chiến lược tối ưu.
 | Event-based | Invalidate khi update |
 | Version-based | Cache key bao gồm version |
 
----
 
 ## Database Optimization
 
@@ -86,7 +83,6 @@ Yêu cầu performance và chiến lược tối ưu.
 | Idle timeout | 10 phút | Release idle |
 | Max lifetime | 30 phút | Refresh connections |
 
----
 
 ## API Optimization
 
@@ -107,7 +103,6 @@ Yêu cầu performance và chiến lược tối ưu.
 | GraphQL | Query exactly what needed |
 | Async operations | Return immediately, process async |
 
----
 
 ## Load Testing
 
@@ -129,7 +124,6 @@ Yêu cầu performance và chiến lược tối ưu.
 | P95 Latency | < 500ms | > 1000ms |
 | Throughput | > 100 req/s | < 50 req/s |
 
----
 
 ## Monitoring
 
@@ -143,7 +137,6 @@ Yêu cầu performance và chiến lược tối ưu.
 | Memory Usage | > 85% for 10 min |
 | Connection Pool | > 90% utilized |
 
----
 
 ## References
 

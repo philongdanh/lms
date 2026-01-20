@@ -79,7 +79,10 @@ Authorization: Bearer {token}
 - [ ] Xác thực invite code nghiêm ngặt.
 - [ ] Bắt buộc một kết nối cho mỗi user ID.
 
----
 
 ## Validation Checklist
 - [ ] Độ ổn định kết nối WS dưới tải cao
+
+## References
+
+- [Overview](./overview.md)

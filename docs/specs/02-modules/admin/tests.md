@@ -36,7 +36,6 @@ Các test case cho module Admin.
 |---------|--------|--------|--------|
 | TC-ADM-SEC-001 | Tenant Admin không thể tạo Tenant | POST /tenants | 403 Forbidden |
 
----
 
 ## Validation Checklist
 - [ ] Kiểm tra quyền hạn cho tất cả endpoints
@@ -79,7 +78,10 @@ Các thông số hiệu năng cho module Admin.
 - [ ] Không có DB Deadlocks
 - [ ] Email queue xử lý ổn định
 
----
 
 ## Validation Checklist
 - [ ] Xác minh việc thực thi giới hạn kích thước file tối đa
+
+## References
+
+- [Overview](./overview.md)

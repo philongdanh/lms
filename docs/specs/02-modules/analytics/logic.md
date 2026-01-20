@@ -61,7 +61,6 @@ Module chịu trách nhiệm thu thập, xử lý và trực quan hóa dữ li�
 - [ ] Tính năng phân quyền hoạt động đúng (Giáo viên lớp A không thể xem lớp B).
 - [ ] Hiệu suất ổn định với dữ liệu lớn.
 
----
 
 ## Review & Approval
 | Role | Name | Date | Status |
@@ -164,7 +163,10 @@ sequenceDiagram
 ## Performance Requirements
 - **ETL Latency**: Cập nhật thời gian thực (Knowledge Map) < 5s độ trễ từ event.
 
----
 
 ## Validation Checklist
 - [ ] Đã kiểm tra độ tin cậy ETL (không mất dữ liệu)
+
+## References
+
+- [Overview](./overview.md)

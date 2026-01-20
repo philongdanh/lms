@@ -124,7 +124,6 @@ Liên hệ quản trị viên trường học hoặc gửi yêu cầu qua email 
 | JavaScript | Bật |
 | Cookies | Bật |
 
----
 
 ## Still Have Questions?
 

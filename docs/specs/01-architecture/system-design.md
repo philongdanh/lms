@@ -8,7 +8,6 @@ sidebar_label: System Design
 
 LMS Platform architecture - a highly scalable multi-tenant learning management system.
 
----
 
 ## High-Level Architecture
 

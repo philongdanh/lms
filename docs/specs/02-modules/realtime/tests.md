@@ -36,7 +36,6 @@ Các test case cho module Real-time.
 |---------|----------|------|--------|
 | TC-RT-PERF-001 | 10k kết nối | Ramp up 1m | Không lỗi |
 
----
 
 ## Validation Checklist
 - [ ] Tuân thủ WebSocket Protocol (v4)
@@ -80,7 +79,10 @@ Các đặc tả hiệu năng cho module Real-time.
 - [ ] Độ trễ gửi < 200ms cho 99% người dùng
 - [ ] Không có kết nối bị ngắt
 
----
 
 ## Validation Checklist
 - [ ] Tinh chỉnh Kernel cho đồng thời cao (sysctl)
+
+## References
+
+- [Overview](./overview.md)

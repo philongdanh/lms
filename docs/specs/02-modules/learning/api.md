@@ -185,9 +185,12 @@ Authorization: Bearer {token}
 - [ ] Input validation (progress range 0-100, valid UUIDs)
 - [ ] Rate limiting trên submit answer endpoint
 
----
 
 ## Validation Checklist
 - [ ] Tất cả endpoints được document
 - [ ] Các ví dụ request/response được cung cấp
 - [ ] Các error codes được định nghĩa
+
+## References
+
+- [Overview](./overview.md)

@@ -39,3 +39,10 @@ Module cốt lõi quản lý Cấu trúc Chương trình học (Subject, Grade, 
 
 **Postconditions**: Các câu hỏi được tạo trong ngân hàng.
 **Exceptions**: Lỗi định dạng file -> Báo cáo chi tiết lỗi theo từng dòng.
+
+## References
+
+- [Logic](./logic.md)
+- [Data Model](./data.md)
+- [API](./api.md)
+- [Tests](./tests.md)

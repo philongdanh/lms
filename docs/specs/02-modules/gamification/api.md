@@ -120,8 +120,11 @@ Authorization: Bearer {token}
 - [ ] Xác thực tồn kho và số dư một cách atomic.
 - [ ] Chống gian lận: Giới hạn tốc độ đổi thưởng (ví dụ: tối đa 5 món/ngày).
 
----
 
 ## Validation Checklist
 - [ ] Đã xác minh đồng bộ Redis cho Bảng xếp hạng.
 - [ ] Đã kiểm tra tính toàn vẹn giao dịch dưới tải.
+
+## References
+
+- [Overview](./overview.md)

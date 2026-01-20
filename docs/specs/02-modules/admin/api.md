@@ -117,8 +117,11 @@ Authorization: Bearer {token}
 - [ ] Xác thực Root Admin được thực thi nghiêm ngặt
 - [ ] Audit log cho Impersonation
 
----
 
 ## Validation Checklist
 - [ ] Xác minh cô lập Tenant
 - [ ] Xác minh logic Soft delete
+
+## References
+
+- [Overview](./overview.md)

@@ -106,10 +106,13 @@ Content-Type: application/json
 - [x] Rate limiting theo IP
 - [x] Secure Headers
 
----
 
 ## Validation Checklist
 - [x] Tất cả endpoints đã document
 - [x] Có request/response examples
 - [x] Error codes đã định nghĩa
 - [x] Performance requirements đã chỉ định
+
+## References
+
+- [Overview](./overview.md)
