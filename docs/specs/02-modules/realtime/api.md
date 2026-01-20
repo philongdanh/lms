@@ -89,7 +89,10 @@ Authorization: Bearer {service-token}
 ## Security Requirements
 - [ ] Broadcast API được bảo vệ bởi Internal API Key hoặc chỉ Admin Role.
 
----
 
 ## Validation Checklist
 - [ ] Đã xác minh bảo mật Internal API
+
+## References
+
+- [Overview](./overview.md)

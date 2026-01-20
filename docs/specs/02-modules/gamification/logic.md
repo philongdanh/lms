@@ -63,7 +63,6 @@ Module quản lý hệ thống phần thưởng, bao gồm Điểm Kinh nghiệm
 - [ ] Giao dịch đổi xu đảm bảo Atomicity (không trừ tiền mà không có phần thưởng).
 - [ ] Bảng xếp hạng cập nhật realtime.
 
----
 
 ## Review & Approval
 | Role | Name | Date | Status |
@@ -183,7 +182,10 @@ sequenceDiagram
 ## Security Requirements
 - [ ] Xác thực phía server cho tất cả phần thưởng (không tin tưởng client)
 
----
 
 ## Validation Checklist
 - [ ] Việc trừ phần thưởng có tính transactional
+
+## References
+
+- [Overview](./overview.md)

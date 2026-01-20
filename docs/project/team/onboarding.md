@@ -8,7 +8,6 @@ sidebar_label: Onboarding
 
 Hướng dẫn onboarding cho team member mới.
 
----
 
 ## Day 1: Setup
 
@@ -47,7 +46,6 @@ bun run dev
 - [ ] GraphQL Playground works
 - [ ] Can login with test account
 
----
 
 ## Day 2-3: Orientation
 
@@ -92,7 +90,6 @@ Suitable tasks for newcomers:
 | Week 3 | Pick up regular stories |
 | Week 4 | Independent contributor |
 
----
 
 ## Resources
 
@@ -114,7 +111,6 @@ Suitable tasks for newcomers:
 | GraphQL | [Apollo Docs](https://www.apollographql.com/docs/) |
 | Tailwind | [Tailwind Docs](https://tailwindcss.com/docs) |
 
----
 
 ## Checklist
 

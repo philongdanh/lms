@@ -212,10 +212,13 @@ Performance specifications cho module Auth
 - PostgreSQL 15, 2 vCPU, 4GB RAM
 - Redis 7, 1 vCPU, 2GB RAM
 
----
 
 ## Validation Checklist
 - [x] All performance targets quantified
 - [x] Scalability requirements specified
 - [x] Monitoring metrics defined
 - [x] Load testing scenarios created
+
+## References
+
+- [Overview](./overview.md)

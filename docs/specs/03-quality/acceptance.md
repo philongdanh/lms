@@ -8,13 +8,11 @@ sidebar_label: Acceptance
 
 Acceptance criteria following Given-When-Then format.
 
----
 
 ## Overview
 
 This document defines clear, testable acceptance criteria for LMS features.
 
----
 
 ## Acceptance Criteria Format
 
@@ -28,7 +26,6 @@ This document defines clear, testable acceptance criteria for LMS features.
 | When | Action - user action or trigger |
 | Then | Expected result - observable outcome |
 
----
 
 ## Status Legend
 
@@ -39,7 +36,6 @@ This document defines clear, testable acceptance criteria for LMS features.
 | 🧪 Testing | Under test |
 | ✔️ Passed | Verified |
 
----
 
 ## Authentication
 
@@ -62,7 +58,6 @@ This document defines clear, testable acceptance criteria for LMS features.
 - Display message "Please check your email"
 - Redirect to email verification page
 
----
 
 ### AC-AUTH-002: Register with phone number
 
@@ -81,7 +76,6 @@ This document defines clear, testable acceptance criteria for LMS features.
 - OTP input form is displayed
 - OTP expires after 5 minutes
 
----
 
 ### AC-AUTH-003: OTP Verification
 
@@ -97,7 +91,6 @@ This document defines clear, testable acceptance criteria for LMS features.
 - Automatic login
 - Redirect to onboarding page
 
----
 
 ### AC-AUTH-004: Login Success
 
@@ -114,7 +107,6 @@ This document defines clear, testable acceptance criteria for LMS features.
 - Redirect to role-appropriate dashboard
 - Display "Welcome \{name\}"
 
----
 
 ### AC-AUTH-005: Login Failure Lockout
 
@@ -130,7 +122,6 @@ This document defines clear, testable acceptance criteria for LMS features.
 - Display "Account temporarily locked. Please try again in 15 minutes"
 - Notification email is sent
 
----
 
 ### AC-AUTH-006: Password Reset
 
@@ -146,7 +137,6 @@ This document defines clear, testable acceptance criteria for LMS features.
 - Link expires after 1 hour
 - Display "Password reset link has been sent"
 
----
 
 ### AC-AUTH-007: Logout
 
@@ -163,7 +153,6 @@ This document defines clear, testable acceptance criteria for LMS features.
 - Redirect to home page
 - Display "Successfully logged out"
 
----
 
 ## Learning
 
@@ -182,7 +171,6 @@ This document defines clear, testable acceptance criteria for LMS features.
 - Display progress for each topic
 - Completed topics are marked with ✓
 
----
 
 ### AC-LEARN-002: View Lesson
 
@@ -199,7 +187,6 @@ This document defines clear, testable acceptance criteria for LMS features.
 - Estimated duration is shown
 - "Next" button is enabled after completion
 
----
 
 ### AC-LEARN-003: Complete Lesson
 
@@ -219,7 +206,6 @@ This document defines clear, testable acceptance criteria for LMS features.
 - Next lesson is unlocked
 - Exercises become available (if any)
 
----
 
 ### AC-LEARN-004: Quiz Exercise
 
@@ -236,7 +222,6 @@ This document defines clear, testable acceptance criteria for LMS features.
 - Can review answers before submit
 - Auto-submit when time expires
 
----
 
 ### AC-LEARN-005: View Exercise Results
 
@@ -254,7 +239,6 @@ This document defines clear, testable acceptance criteria for LMS features.
 - Award points based on results
 - Allow retry (maximum 3 times)
 
----
 
 ## Tournament
 
@@ -277,7 +261,6 @@ This document defines clear, testable acceptance criteria for LMS features.
   - Prizes
 - Filter by subject and grade
 
----
 
 ### AC-TOUR-002: Join Tournament
 
@@ -294,7 +277,6 @@ This document defines clear, testable acceptance criteria for LMS features.
 - Add tournament to "My Tournaments"
 - Send reminder notification 30 minutes before
 
----
 
 ### AC-TOUR-003: Enter Tournament
 
@@ -311,7 +293,6 @@ This document defines clear, testable acceptance criteria for LMS features.
 - Start timer
 - Disable non-competition interactions
 
----
 
 ### AC-TOUR-004: Answer Questions
 
@@ -329,7 +310,6 @@ This document defines clear, testable acceptance criteria for LMS features.
 - Move to next question after 2 seconds
 - Auto-advance if question time expires
 
----
 
 ### AC-TOUR-005: Real-time Leaderboard
 
@@ -346,7 +326,6 @@ This document defines clear, testable acceptance criteria for LMS features.
 - Highlight user's position
 - Show: Rank, Avatar + Name, Score, Completion time
 
----
 
 ### AC-TOUR-006: Competition End
 
@@ -365,7 +344,6 @@ This document defines clear, testable acceptance criteria for LMS features.
 - Show temporary ranking
 - Share results button
 
----
 
 ## References
 

@@ -36,7 +36,6 @@ Các test case cho module Gamification.
 |---------|----------|------|--------|
 | TC-GAME-PERF-001 | Đọc Leaderboard | 1000 RPS | < 50ms |
 
----
 
 ## Validation Checklist
 - [ ] Mô phỏng race condition (đổi thưởng đồng thời)
@@ -80,7 +79,10 @@ Các đặc tả hiệu năng cho module Gamification.
 - [ ] Bảng xếp hạng vẫn phản hồi nhanh (< 100ms)
 - [ ] Events được xử lý với độ trễ < 5s
 
----
 
 ## Validation Checklist
 - [ ] Cụm Redis được cấu hình để có tính sẵn sàng cao
+
+## References
+
+- [Overview](./overview.md)

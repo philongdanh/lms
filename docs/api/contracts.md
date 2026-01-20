@@ -8,13 +8,11 @@ sidebar_label: Contracts
 
 Consumer-driven contracts for API testing.
 
----
 
 ## Overview
 
 API contracts define expected behavior between services (consumers and providers) using tools like Pact.
 
----
 
 ## Structure
 
@@ -24,7 +22,6 @@ contracts/
 └── provider-*.json     # Provider verification results
 ```
 
----
 
 ## Contract Template
 
@@ -73,7 +70,6 @@ contracts/
 }
 ```
 
----
 
 ## Workflow
 
@@ -89,7 +85,6 @@ contracts/
 2. Verify provider against contracts
 3. Run on every provider PR
 
----
 
 ## Guidelines
 
@@ -100,7 +95,6 @@ contracts/
 | Version management | Track breaking changes |
 | Automate verification | Integrate with CI/CD |
 
----
 
 ## Tools
 
@@ -110,7 +104,6 @@ contracts/
 | Pact Broker | Contract storage |
 | can-i-deploy | Safe deployment verification |
 
----
 
 ## References
 

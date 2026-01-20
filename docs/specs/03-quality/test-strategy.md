@@ -8,7 +8,6 @@ sidebar_label: Test Strategy
 
 Chiến lược test tổng thể và coverage goals.
 
----
 
 ## Overview
 
@@ -34,7 +33,6 @@ flowchart TB
 | Integration Tests | 70% critical paths | [%] |
 | E2E Tests | 100% happy paths | [%] |
 
----
 
 ## Test Types
 
@@ -88,7 +86,6 @@ flowchart TB
 - Critical business flows
 - Cross-browser compatibility
 
----
 
 ## Test Categories
 
@@ -108,7 +105,6 @@ flowchart TB
 | Security | Vulnerability scanning | Weekly |
 | Accessibility | WCAG compliance | Per release |
 
----
 
 ## Test Environments
 
@@ -119,7 +115,6 @@ flowchart TB
 | Staging | Pre-production | Anonymized prod |
 | Production | Smoke tests | Production |
 
----
 
 ## Test Data Management
 
@@ -140,7 +135,6 @@ flowchart TB
 | Test database | Integration tests |
 | Data cleanup | E2E tests |
 
----
 
 ## Quality Gates
 
@@ -162,7 +156,6 @@ flowchart TB
 | Performance | Within targets | Yes |
 | Security Scan | No critical | Yes |
 
----
 
 ## Defect Management
 
@@ -186,7 +179,6 @@ flowchart LR
     Verified --> Closed
 ```
 
----
 
 ## References
 

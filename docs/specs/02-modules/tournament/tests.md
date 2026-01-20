@@ -36,7 +36,6 @@ Các test case cho module Tournament.
 |---------|----------|------|--------|
 | TC-TOUR-PERF-001 | 100k Concurrent | Start Event | Latency < 200ms |
 
----
 
 ## Validation Checklist
 - [ ] Xử lý gửi bài đồng thời
@@ -80,7 +79,10 @@ Các test case cho module Tournament.
 - [ ] Không có DB Deadlock
 - [ ] Tỷ lệ kết nối thành công > 99.9%
 
----
 
 ## Validation Checklist
 - [ ] Đã xác minh Redis Cluster failover
+
+## References
+
+- [Overview](./overview.md)

@@ -104,10 +104,13 @@ stateDiagram-v2
 - **Access Control**: Students chỉ có thể xem tiến độ của chính mình. Teachers/Admins có thể xem tiến độ của students được phân công.
 - **Masking**: Không áp dụng.
 
----
 
 ## Validation Checklist
 - [ ] Tất cả entities được định nghĩa với đầy đủ fields
 - [ ] Indexes được tối ưu cho tra cứu theo student_id
 - [ ] Chiến lược partitioning cho bảng lớn được định nghĩa
 - [ ] Caching cho personalized path được thiết kế
+
+## References
+
+- [Overview](./overview.md)

@@ -88,7 +88,10 @@ Authorization: Bearer {token}
 ## Security Requirements
 - [ ] Kiểm tra quyền sở hữu tài nguyên (Phụ huynh xem con, Học sinh xem bản thân).
 
----
 
 ## Validation Checklist
 - [ ] Độ phủ kiểm thử kiểm soát truy cập
+
+## References
+
+- [Overview](./overview.md)

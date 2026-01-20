@@ -8,7 +8,6 @@ sidebar_label: Automation
 
 Test automation framework và setup.
 
----
 
 ## Framework Stack
 
@@ -20,7 +19,6 @@ Test automation framework và setup.
 | API | [Postman/Insomnia] | Newman |
 | Performance | [k6/Artillery] | CLI |
 
----
 
 ## Project Structure
 
@@ -45,7 +43,6 @@ tests/
     └── k6.config.js
 ```
 
----
 
 ## Unit Testing
 
@@ -95,7 +92,6 @@ describe('UserService', () => {
 });
 ```
 
----
 
 ## Integration Testing
 
@@ -122,7 +118,6 @@ describe('POST /api/users', () => {
 });
 ```
 
----
 
 ## E2E Testing
 
@@ -157,7 +152,6 @@ class LoginPage {
 }
 ```
 
----
 
 ## CI/CD Integration
 
@@ -189,7 +183,6 @@ stages:
 | Sharding | E2E tests |
 | Parallel jobs | Independent modules |
 
----
 
 ## Reporting
 
@@ -209,7 +202,6 @@ stages:
 | Coverage drop | Slack + Email |
 | Nightly report | Email |
 
----
 
 ## Maintenance
 
@@ -229,7 +221,6 @@ stages:
 | Update test data | Monthly |
 | Audit test coverage | Per sprint |
 
----
 
 ## References
 

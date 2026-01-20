@@ -8,7 +8,6 @@ sidebar_label: Quality
 
 Test strategy, automation, and benchmarks.
 
----
 
 ## Contents
 
@@ -20,7 +19,6 @@ Test strategy, automation, and benchmarks.
 | [Acceptance](./acceptance.md) | Acceptance criteria templates |
 | [Test Cases](./test-cases.md) | Test case templates |
 
----
 
 ## Usage
 
@@ -30,7 +28,6 @@ Test strategy, automation, and benchmarks.
 4. Document **Acceptance** criteria
 5. Create **Test Cases** per module
 
----
 
 ## References
 

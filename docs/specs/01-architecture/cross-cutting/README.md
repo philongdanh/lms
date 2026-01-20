@@ -9,7 +9,6 @@ sidebar_position: 1
 
 Các concern cấp nền tảng ảnh hưởng đến nhiều module.
 
----
 
 ## Documents
 

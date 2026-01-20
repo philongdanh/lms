@@ -116,7 +116,6 @@ X-Request-ID: {uuid}
 - Error logging
 - Audit trails
 
----
 
 ## Compliance Checklist
 - [ ] Follows RESTful principles

@@ -8,13 +8,11 @@ sidebar_label: Test Cases
 
 Test case templates for integration and E2E testing.
 
----
 
 ## Overview
 
 This document provides test cases covering API integration tests and end-to-end user flows.
 
----
 
 ## Test Naming Convention
 
@@ -29,7 +27,6 @@ This document provides test cases covering API integration tests and end-to-end 
 | E2E | End-to-end tests |
 | PERF | Performance tests |
 
----
 
 ## Test Priority
 
@@ -40,7 +37,6 @@ This document provides test cases covering API integration tests and end-to-end 
 | P2 | Medium | Daily |
 | P3 | Low | Weekly |
 
----
 
 ## Tools
 
@@ -52,7 +48,6 @@ This document provides test cases covering API integration tests and end-to-end 
 | API | Supertest |
 | Performance | k6 |
 
----
 
 ## Integration Tests
 
@@ -90,7 +85,6 @@ mutation {
 - `errors` is empty
 - Email verification is sent
 
----
 
 ### TC-INT-AUTH-002: Register with duplicate email
 
@@ -109,7 +103,6 @@ mutation {
 - `errors[0].code` = "CONFLICT"
 - `errors[0].message` contains "already exists"
 
----
 
 ### TC-INT-AUTH-003: Login success
 
@@ -142,7 +135,6 @@ mutation {
 - `user.role` = "STUDENT"
 - Cookie `refreshToken` is set
 
----
 
 ### TC-INT-AUTH-004: Login wrong password
 
@@ -153,7 +145,6 @@ mutation {
 - `accessToken` is null
 - `errors[0].code` = "UNAUTHORIZED"
 
----
 
 ### TC-INT-AUTH-005: Rate limiting
 
@@ -169,7 +160,6 @@ mutation {
 - Attempts 1-5: Normal response
 - Attempt 6: Status 429 Too Many Requests
 
----
 
 ### TC-INT-LEARN-001: Get subjects list
 
@@ -194,7 +184,6 @@ query {
 - `subjects` is array with items
 - Each item has `id`, `name`, `icon`
 
----
 
 ## E2E Tests
 
@@ -232,7 +221,6 @@ test('User can register and login', async ({ page }) => {
 });
 ```
 
----
 
 ### TC-E2E-LEARN-001: Complete a lesson
 
@@ -271,7 +259,6 @@ test('User can complete a lesson', async ({ page }) => {
 });
 ```
 
----
 
 ### TC-E2E-LEARN-002: Complete quiz
 
@@ -298,7 +285,6 @@ test('User can complete a quiz', async ({ page }) => {
 });
 ```
 
----
 
 ### TC-E2E-TOUR-001: Join tournament
 
@@ -329,7 +315,6 @@ test('User can join and participate in tournament', async ({ page }) => {
 });
 ```
 
----
 
 ## References
 

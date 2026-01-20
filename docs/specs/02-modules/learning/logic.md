@@ -81,7 +81,6 @@ Module cốt lõi cho Students, chịu trách nhiệm về Adaptive Learning Pat
 - [ ] Luồng tương tác với AI Service được định nghĩa rõ ràng (fallback khi lỗi).
 - [ ] Cơ chế anti-cheat được thiết kế.
 
----
 
 ## Review & Approval
 | Role | Name | Date | Status |
@@ -224,8 +223,11 @@ stateDiagram-v2
 - [ ] Rate limiting theo user
 - [ ] Xác thực quyền sở hữu session
 
----
 
 ## Validation Checklist
 - [ ] Tất cả workflows đã được vẽ sơ đồ
 - [ ] Xử lý lỗi được chỉ định cho AI failure
+
+## References
+
+- [Overview](./overview.md)

@@ -39,3 +39,10 @@ Module cốt lõi cho Students, chịu trách nhiệm về Adaptive Learning Pat
 **Ngoại lệ**: Lỗi AI Service -> Fallback về lộ trình mặc định.
 
 ### UC-LEARN-006: Submit Answer
+
+## References
+
+- [Logic](./logic.md)
+- [Data Model](./data.md)
+- [API](./api.md)
+- [Tests](./tests.md)

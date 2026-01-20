@@ -60,7 +60,6 @@ Test cases được derive từ specifications của module Learning.
 ## Reporting Requirements
 JUnit XML chuẩn + HTML Report.
 
----
 
 ## Validation Checklist
 - [ ] Test coverage matrix hoàn chỉnh
@@ -129,8 +128,11 @@ Performance specifications cho module Learning & Personalization.
 | AI Service Latency | > 1s | > 3s | Dev Team |
 | Error Rate | > 1% | > 5% | PagerDuty |
 
----
 
 ## Validation Checklist
 - [ ] Tất cả performance targets được định lượng
 - [ ] Các load testing scenarios được tạo cho Peak Load
+
+## References
+
+- [Overview](./overview.md)

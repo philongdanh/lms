@@ -39,3 +39,10 @@ Module này cung cấp hạ tầng WebSocket để hỗ trợ các tính năng t
 | BR-RT-001 | Auth Required | Tất cả kết nối phải có Token | Handshake không có token hợp lệ | Ngắt kết nối (401) | - |
 | BR-RT-002 | Sticky Session | Hỗ trợ HTTP polling fallback | Client kết nối lại | Định tuyến đến cùng node (Load Balancer level) | - |
 | BR-RT-003 | Room Limits | Giới hạn người dùng trong phòng | Users > MaxRoomSize | Từ chối tham gia | - |
+
+## References
+
+- [Logic](./logic.md)
+- [Data Model](./data.md)
+- [API](./api.md)
+- [Tests](./tests.md)

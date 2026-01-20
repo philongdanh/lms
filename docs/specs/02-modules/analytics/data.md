@@ -66,8 +66,11 @@ erDiagram
 ## Data Security
 - **PII**: Dữ liệu Analytics có thể chứa thông tin nhạy cảm về hiệu suất học tập -> Yêu cầu bảo vệ nghiêm ngặt.
 
----
 
 ## Validation Checklist
 - [ ] Đã cấu hình PostgreSQL partitioning
 - [ ] Đã triển khai chính sách lưu trữ dữ liệu
+
+## References
+
+- [Overview](./overview.md)

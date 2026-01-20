@@ -10,13 +10,11 @@ Sprint-level planning with deliverables and capacity allocation.
 
 > **Scope**: This document covers sprint planning and execution. For product-level roadmap, see [Product Roadmap](../specs/00-business/product-roadmap.md).
 
----
 
 ## Overview
 
 This roadmap defines all sprints from project start to completion, with clear deliverables and milestone mappings.
 
----
 
 ## Project Timeline
 
@@ -28,7 +26,6 @@ This roadmap defines all sprints from project start to completion, with clear de
 | Sprint Duration | 2 weeks |
 | Total Sprints | 6 (MVP) |
 
----
 
 ## Milestone Summary
 
@@ -41,7 +38,6 @@ This roadmap defines all sprints from project start to completion, with clear de
 | M5 - Beta Release | 2024-03-11 | S6 | 📋 Not Started |
 | M6 - Production | 2024-04-08 | Post-MVP | 📋 Not Started |
 
----
 
 ## Timeline Diagram
 
@@ -55,7 +51,6 @@ Sprint 1 → Sprint 2 → Sprint 3 → M2 (Auth)
                               Sprint 6 → M5 (Beta/MVP)
 ```
 
----
 
 ## Velocity Tracking
 
@@ -68,7 +63,6 @@ Sprint 1 → Sprint 2 → Sprint 3 → M2 (Auth)
 
 **Average Velocity:** 28 points/sprint
 
----
 
 ## Sprint Allocation
 
@@ -93,7 +87,6 @@ Sprint 1 → Sprint 2 → Sprint 3 → M2 (Auth)
 - ✅ Database schema v1
 - ✅ GraphQL server setup
 
----
 
 ### Sprint 2: Auth Core
 
@@ -116,7 +109,6 @@ Sprint 1 → Sprint 2 → Sprint 3 → M2 (Auth)
 - ✅ OTP verification
 - ✅ Subject listing
 
----
 
 ### Sprint 3-4: Auth Complete & Learning Start
 
@@ -142,7 +134,6 @@ Sprint 1 → Sprint 2 → Sprint 3 → M2 (Auth)
 - ⬜ Learning path view
 - ⬜ Lesson content viewer
 
----
 
 ### Sprint 4-5: Learning Core
 
@@ -166,7 +157,6 @@ Sprint 1 → Sprint 2 → Sprint 3 → M2 (Auth)
 - Level up
 - Learning streak
 
----
 
 ### Sprint 5-6: Tournament MVP
 
@@ -191,7 +181,6 @@ Sprint 1 → Sprint 2 → Sprint 3 → M2 (Auth)
 - Results & prizes
 - Badges & achievements
 
----
 
 ### Sprint 6: Beta Polish
 
@@ -215,7 +204,6 @@ Sprint 1 → Sprint 2 → Sprint 3 → M2 (Auth)
 - User documentation complete
 - Beta release deployed
 
----
 
 ## Team Capacity
 
@@ -228,7 +216,6 @@ Sprint 1 → Sprint 2 → Sprint 3 → M2 (Auth)
 
 **Total Team Capacity:** 42 points/sprint
 
----
 
 ## References
 

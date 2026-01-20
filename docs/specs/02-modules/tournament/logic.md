@@ -62,7 +62,6 @@ Module quản lý thi đấu trực tuyến, hỗ trợ: Tournament, Round, Room
 - [ ] Leaderboard cập nhật đúng thứ tự.
 - [ ] Load balancing giữa các room thi đấu hoạt động tốt.
 
----
 
 ## Review & Approval
 | Role | Name | Date | Status |
@@ -157,7 +156,10 @@ sequenceDiagram
 ## Performance Requirements
 - **Broadcast**: < 500ms latency đến 10k users.
 
----
 
 ## Validation Checklist
 - [ ] Logic reconnect giữ được điểm
+
+## References
+
+- [Overview](./overview.md)

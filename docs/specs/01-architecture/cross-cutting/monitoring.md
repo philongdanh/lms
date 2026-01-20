@@ -8,7 +8,6 @@ sidebar_label: Monitoring
 
 Giám sát hệ thống, logging và alerting.
 
----
 
 ## Overview
 
@@ -20,7 +19,6 @@ Giám sát hệ thống, logging và alerting.
 | Logging | [ELK/Loki] | Log aggregation |
 | Tracing | [Jaeger/Zipkin] | Distributed tracing |
 
----
 
 ## Metrics
 
@@ -51,7 +49,6 @@ Giám sát hệ thống, logging và alerting.
 | Transactions | Business transactions | Per minute |
 | Conversion Rate | [Business KPI] | Hourly |
 
----
 
 ## Logging
 
@@ -96,7 +93,6 @@ Giám sát hệ thống, logging và alerting.
 - Thông tin sức khỏe cá nhân
 - Raw PII (mask hoặc hash)
 
----
 
 ## Tracing
 
@@ -117,7 +113,6 @@ Giám sát hệ thống, logging và alerting.
 | Cache Operation | Redis/cache access |
 | External Service | Third-party calls |
 
----
 
 ## Alerting
 
@@ -139,7 +134,6 @@ Giám sát hệ thống, logging và alerting.
 | High CPU | CPU > 90% for 15min | P2 | Scale up |
 | Service Down | Health check fails 3x | P1 | Page on-call |
 
----
 
 ## Dashboards
 
@@ -157,7 +151,6 @@ Giám sát hệ thống, logging và alerting.
 - Error breakdown
 - Top endpoints
 
----
 
 ## References
 

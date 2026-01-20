@@ -8,7 +8,6 @@ sidebar_label: Personas
 
 Chân dung người dùng cho thiết kế sản phẩm.
 
----
 
 ## Primary Personas
 
@@ -45,7 +44,6 @@ Chân dung người dùng cho thiết kế sản phẩm.
 2. Thi đấu Tournament cuối tuần với bạn cùng lớp
 3. Xem lại video bài giảng khi không hiểu
 
----
 
 ### Persona 2: Lan - Học sinh THCS
 
@@ -80,7 +78,6 @@ Chân dung người dùng cho thiết kế sản phẩm.
 2. Học bù các chủ đề khó vào cuối tuần
 3. Theo dõi tiến độ so với kế hoạch
 
----
 
 ### Persona 3: Hoa - Phụ huynh
 
@@ -115,7 +112,6 @@ Chân dung người dùng cho thiết kế sản phẩm.
 2. Nhận thông báo khi con không học 3 ngày liên tiếp
 3. Đặt mục tiêu học tập cho con theo tuần
 
----
 
 ## Secondary Personas
 
@@ -138,7 +134,6 @@ Chân dung người dùng cho thiết kế sản phẩm.
 - Khó phát hiện học sinh yếu kém
 - Không có thời gian phản hồi từng em
 
----
 
 ### Persona 5: Cô Mai - Admin Trường học
 
@@ -159,7 +154,6 @@ Chân dung người dùng cho thiết kế sản phẩm.
 - Báo cáo thủ công cho Ban giám hiệu
 - Khó đánh giá hiệu quả sử dụng hệ thống
 
----
 
 ## Persona Usage
 
@@ -171,7 +165,6 @@ Chân dung người dùng cho thiết kế sản phẩm.
 | Bulk import | Cô Mai (Admin) | CSV upload, template download |
 | Quiz builder | Thầy Hùng (Teacher) | Drag-drop, ngân hàng câu hỏi có sẵn |
 
----
 
 ## References
 

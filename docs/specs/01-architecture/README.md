@@ -8,7 +8,6 @@ sidebar_label: Architecture
 
 System design, technology decisions, and cross-cutting concerns.
 
----
 
 ## Contents
 
@@ -21,7 +20,6 @@ System design, technology decisions, and cross-cutting concerns.
 | [Backend](./backend.md) | Backend architecture + API refs |
 | [Cross-Cutting](./cross-cutting/README.md) | Security, monitoring, performance |
 
----
 
 ## Usage
 
@@ -31,7 +29,6 @@ System design, technology decisions, and cross-cutting concerns.
 4. Detail **Frontend** and **Backend** architecture
 5. Address **Cross-Cutting** concerns
 
----
 
 ## References
 

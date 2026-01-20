@@ -15,7 +15,6 @@ This page summarizes important changes between LMS Documentation versions.
 | [1.0](./v1.0.md) | January 16, 2026 | Current |
 | Next | TBD | In Development |
 
----
 
 ## Versioning Policy
 

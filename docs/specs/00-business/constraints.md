@@ -36,7 +36,6 @@ Các ràng buộc kỹ thuật và nghiệp vụ định hình thiết kế hệ
 - AI service (Python microservice) cho advanced analytics
 - CDN services tùy chọn cho video streaming
 
----
 
 ## Business Constraints
 
@@ -61,7 +60,6 @@ Các ràng buộc kỹ thuật và nghiệp vụ định hình thiết kế hệ
 - Team nhỏ (< 10 developers)
 - Cần đơn giản trong vận hành
 
----
 
 ## Assumptions
 
@@ -72,7 +70,6 @@ Các ràng buộc kỹ thuật và nghiệp vụ định hình thiết kế hệ
 | **AS-003** | Email hợp lệ để đăng ký | Chặn đăng ký | Tùy chọn auth thay thế |
 | **AS-004** | Môi trường Docker có sẵn | Không thể deploy | Tài liệu deploy chi tiết |
 
----
 
 ## References
 

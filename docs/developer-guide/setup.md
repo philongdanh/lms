@@ -8,7 +8,6 @@ sidebar_label: Setup
 
 Hướng dẫn cài đặt môi trường phát triển cho LMS Platform. Kết quả: môi trường development hoàn chỉnh với tất cả dependencies cần thiết.
 
----
 
 ## System Requirements
 
@@ -32,7 +31,6 @@ Hướng dẫn cài đặt môi trường phát triển cho LMS Platform. Kết 
 | GitLens | Git integration |
 | Thunder Client | API testing |
 
----
 
 ## Environment Setup
 
@@ -114,7 +112,6 @@ npx prisma db seed
 - Grades: 1-12
 - Sample badges
 
----
 
 ## Running the Application
 
@@ -161,7 +158,6 @@ curl http://localhost:3000/health
 }
 ```
 
----
 
 ## Troubleshooting
 
@@ -220,7 +216,6 @@ docker-compose ps redis
 docker-compose restart redis
 ```
 
----
 
 ## Common Commands
 
@@ -234,7 +229,6 @@ docker-compose restart redis
 | `docker-compose exec postgres psql -U postgres` | Access PostgreSQL shell |
 | `docker-compose exec redis redis-cli` | Access Redis CLI |
 
----
 
 ## References
 

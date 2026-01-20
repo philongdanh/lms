@@ -8,7 +8,6 @@ sidebar_label: Roles
 
 Định nghĩa vai trò và responsibilities.
 
----
 
 ## Team Structure
 
@@ -29,7 +28,6 @@ sidebar_label: Roles
 └────────┘   └──────────┘ └─────┘   └────────────┘
 ```
 
----
 
 ## Roles & Responsibilities
 
@@ -97,7 +95,6 @@ sidebar_label: Roles
 | | - Accessibility |
 | Tool | Figma |
 
----
 
 ## RACI Matrix
 

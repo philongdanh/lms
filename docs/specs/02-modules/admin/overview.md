@@ -39,3 +39,10 @@ Module quản trị hệ thống cung cấp các tính năng quản lý Tenant (
 |---------|----------|-------|------------|---------|------------|
 | BR-ADMIN-001 | Unique Tenant Code | Mã Tenant phải là duy nhất | Mã đã tồn tại trong DB | Từ chối tạo mới | - |
 | BR-ADMIN-002 | Tenant Soft Delete | Xóa Tenant chỉ đánh dấu là đã xóa | Yêu cầu xóa | Đặt `deleted_at`, Lên lịch xóa vĩnh viễn sau 30 ngày | - |
+
+## References
+
+- [Logic](./logic.md)
+- [Data Model](./data.md)
+- [API](./api.md)
+- [Tests](./tests.md)

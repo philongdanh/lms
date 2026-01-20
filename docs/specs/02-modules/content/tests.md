@@ -35,7 +35,6 @@ Các test cases cho module Content.
 |---------|--------|--------|--------|
 | TC-CONT-SEC-001 | Chỉnh sửa nội dung của người khác | PUT /questions/`{id}` | 403 Forbidden |
 
----
 
 ## Validation Checklist
 - [ ] Các edge cases của Import Parsing (dòng trống, ký tự lỗi)
@@ -78,8 +77,11 @@ Performance specifications cho module Content.
 - [ ] Không có timeout khi upload
 - [ ] Import hoàn tất trong vòng 30s cho file tiêu chuẩn
 
----
 
 ## Validation Checklist
 - [ ] Autoscaling worker pool đã được cấu hình
 - [ ] Đã bật S3 upload acceleration (nếu cần)
+
+## References
+
+- [Overview](./overview.md)

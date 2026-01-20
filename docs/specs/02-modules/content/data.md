@@ -108,8 +108,11 @@ stateDiagram-v2
 ## Data Security
 - **Access**: Public (Nội dung Active), Private (Nội dung Draft - chỉ Teacher).
 
----
 
 ## Validation Checklist
 - [ ] Ràng buộc phân cấp được đảm bảo qua FK
 - [ ] Index JSONB cho Question options
+
+## References
+
+- [Overview](./overview.md)

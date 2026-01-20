@@ -8,7 +8,6 @@ sidebar_label: API
 
 API design and documentation.
 
----
 
 ## Contents
 
@@ -18,7 +17,6 @@ API design and documentation.
 | [Mocks](./mocks.md) | Mock data patterns |
 | [OpenAPI](./openapi.md) | OpenAPI specification |
 
----
 
 ## External References
 
@@ -27,7 +25,6 @@ API design and documentation.
 | OpenAPI | API Specification | [main.yaml](./openapi/main.yaml) |
 | Postman | API Testing | `[Postman Collection URL]` |
 
----
 
 ## API Design Principles
 
@@ -39,7 +36,6 @@ API design and documentation.
 | Documentation | OpenAPI/Swagger for all endpoints |
 | Error Handling | Standardized error response format |
 
----
 
 ## References
 

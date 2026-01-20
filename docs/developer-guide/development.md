@@ -8,7 +8,6 @@ sidebar_label: Development
 
 Mô tả các tiêu chuẩn và quy trình phát triển cho LMS Platform. Mục tiêu: đảm bảo tính nhất quán trong codebase, dễ bảo trì và tối ưu hiệu suất làm việc nhóm.
 
----
 
 ## Code Standards
 
@@ -49,7 +48,6 @@ Dự án sử dụng các công cụ sau để đảm bảo chất lượng code
 | Files (Backend) | kebab-case | `user-session.service.ts` |
 | Files (Frontend) | PascalCase | `UserProfile.tsx` |
 
----
 
 ## Project Structure
 
@@ -110,7 +108,6 @@ modules/[module-name]/
 └── [name].module.ts        # Module definition
 ```
 
----
 
 ## Development Workflow
 
@@ -139,7 +136,6 @@ Analyze Requirements --> Database Design --> Run Migration --> Implement Backend
    npm run test:cov
    ```
 
----
 
 ## Commit Convention
 
@@ -169,7 +165,6 @@ Analyze Requirements --> Database Design --> Run Migration --> Implement Backend
 
 Scope là tên module hoặc component: `auth`, `tournament`, `learning`, `api`, `db`, `ui`, etc.
 
----
 
 ## Code Review Guidelines
 
@@ -190,7 +185,6 @@ Scope là tên module hoặc component: `auth`, `tournament`, `learning`, `api`,
 - Không có unresolved comments
 - Branch up-to-date với develop
 
----
 
 ## Environment Variables
 
@@ -210,7 +204,6 @@ Scope là tên module hoặc component: `auth`, `tournament`, `learning`, `api`,
 - Sử dụng `.env.example` làm template
 - Production secrets phải được quản lý qua secret manager
 
----
 
 ## References
 

@@ -79,8 +79,11 @@ stateDiagram-v2
 - **Isolation**: Đảm bảo các truy vấn luôn bao gồm `WHERE tenant_id = ?`.
 - **Encryption**: Mã hóa các cấu hình nhạy cảm (API Keys) trong `SystemConfig`.
 
----
 
 ## Validation Checklist
 - [ ] Các policy RLS được áp dụng cho tất cả truy vấn
 - [ ] Kiểm tra xung đột Tenant Code
+
+## References
+
+- [Overview](./overview.md)

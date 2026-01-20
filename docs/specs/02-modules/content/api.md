@@ -129,8 +129,11 @@ Authorization: Bearer {token}
 - [ ] Admin có thể chỉnh sửa mọi thứ.
 - [ ] Student chỉ có thể đọc nội dung Active.
 
----
 
 ## Validation Checklist
 - [ ] RBAC (Role Based Access Control) đã được xác minh
 - [ ] Logic validation import đã được test với các edge cases (bad formatting)
+
+## References
+
+- [Overview](./overview.md)

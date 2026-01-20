@@ -95,8 +95,11 @@ stateDiagram-v2
 ## Data Security
 - **Integrity**: Không cho phép sửa đổi trực tiếp `exp_points` từ API client (chỉ thông qua server-side events).
 
----
 
 ## Validation Checklist
 - [ ] Xử lý cập nhật đồng thời (Chiến lược Locking)
 - [ ] Logic đồng bộ Redis được định nghĩa
+
+## References
+
+- [Overview](./overview.md)

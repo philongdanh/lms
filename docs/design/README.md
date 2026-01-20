@@ -8,7 +8,6 @@ sidebar_label: Design
 
 UI/UX design references and documentation.
 
----
 
 ## Contents
 
@@ -20,7 +19,6 @@ UI/UX design references and documentation.
 | [Wireframes](./wireframes.md) | Wireframe templates and patterns |
 | [Research](./research/README.md) | User research (personas, journeys) |
 
----
 
 ## External References
 
@@ -32,7 +30,6 @@ UI/UX design references and documentation.
 | Figma | Prototypes | `[Prototype URL]` |
 | Storybook | Component Library | `[Storybook URL]` |
 
----
 
 ## Design Principles
 
@@ -43,7 +40,6 @@ UI/UX design references and documentation.
 | Feedback | Immediate response to user actions |
 | Accessibility | WCAG 2.1 AA compliance |
 
----
 
 ## References
 

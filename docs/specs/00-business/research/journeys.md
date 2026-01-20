@@ -8,7 +8,6 @@ sidebar_label: Journeys
 
 Bản đồ hành trình người dùng cho các luồng chính.
 
----
 
 ## Core Journeys
 
@@ -48,7 +47,6 @@ flowchart LR
 - Time per session: 25-35 phút
 - Drop-off points: Quiz fail → xem lại video
 
----
 
 ### Journey 2: Parent Monitoring
 
@@ -69,7 +67,6 @@ flowchart LR
 - Avg time on report: 3 phút
 - Goal setting rate: 40%
 
----
 
 ### Journey 3: Tournament Battle
 
@@ -104,7 +101,6 @@ flowchart LR
 - Completion rate: 90% (ít bỏ giữa chừng)
 - Replay rate: 65% tham gia tournament tiếp theo
 
----
 
 ### Journey 4: Teacher Assessment Creation
 
@@ -125,7 +121,6 @@ flowchart LR
 - Questions from bank: 80%
 - Custom questions: 20%
 
----
 
 ## Journey Insights
 
@@ -148,7 +143,6 @@ flowchart LR
 | Template đề thi theo topic | Medium | Low | P1 |
 | Gamification cho Parent engagement | Medium | Medium | P2 |
 
----
 
 ## References
 

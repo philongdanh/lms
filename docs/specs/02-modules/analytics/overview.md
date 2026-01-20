@@ -39,3 +39,10 @@ Module chịu trách nhiệm thu thập, xử lý và trực quan hóa dữ li�
 | BR-ANALYTICS-001 | Mastery Calculation | Công thức tính mức độ thành thạo | Dựa trên điểm Quiz và thời gian gần đây | Score * DecayFactor | - |
 | BR-ANALYTICS-002 | Data Aggregation | Lịch trình tổng hợp dữ liệu | Cron job hàng đêm | Nén raw logs thành thống kê hàng ngày | Thử lại khi thất bại |
 | BR-ANALYTICS-003 | Report Retention | Thời gian lưu trữ báo cáo | Raw logs: 3 tháng, Aggregated: Vĩnh viễn | Xóa raw logs cũ | - |
+
+## References
+
+- [Logic](./logic.md)
+- [Data Model](./data.md)
+- [API](./api.md)
+- [Tests](./tests.md)

@@ -70,7 +70,6 @@ Module cốt lõi quản lý Cấu trúc Chương trình học (Subject, Grade, 
 - [ ] Media upload phát được trên tất cả thiết bị.
 - [ ] Quyền Teacher (tạo draft) và Admin (publish) hoạt động đúng.
 
----
 
 ## Review & Approval
 | Role | Name | Date | Status |
@@ -181,8 +180,11 @@ flowchart TD
 ## Security Requirements
 - [ ] Quét file upload để phát hiện malware (tích hợp VirusTotal hoặc ClamAV)
 
----
 
 ## Validation Checklist
 - [ ] Diagram khớp với logic code cho vòng lặp import
 - [ ] Cơ chế báo cáo lỗi hoạt động cho các lỗi một phần
+
+## References
+
+- [Overview](./overview.md)

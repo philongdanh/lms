@@ -62,7 +62,6 @@ Module quản trị hệ thống cung cấp các tính năng quản lý Tenant (
 - [ ] Import CSV báo cáo chính xác các dòng lỗi.
 - [ ] Audit log cho Impersonation đầy đủ.
 
----
 
 ## Review & Approval
 | Role | Name | Date | Status |
@@ -167,7 +166,10 @@ flowchart TB
 - [ ] Chỉ Root Admin mới có thể kích hoạt các workflow Tenant.
 - [ ] Tenant Admin chỉ có thể import user vào tenant của mình.
 
----
 
 ## Validation Checklist
 - [ ] CSV Parsing xử lý UTF-8 chính xác
+
+## References
+
+- [Overview](./overview.md)

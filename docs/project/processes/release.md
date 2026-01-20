@@ -8,7 +8,6 @@ sidebar_label: Release
 
 Quy trình release và deployment.
 
----
 
 ## Release Types
 
@@ -18,7 +17,6 @@ Quy trình release và deployment.
 | Minor | Bi-weekly (Sprint) | New features, enhancements |
 | Patch | As needed | Bug fixes, hotfixes |
 
----
 
 ## Versioning
 
@@ -32,7 +30,6 @@ v1.2.3
 └────── Major: Breaking changes
 ```
 
----
 
 ## Release Process
 
@@ -84,7 +81,6 @@ git push origin main --tags
 - [ ] Close sprint/milestone
 - [ ] Merge `main` back to `develop`
 
----
 
 ## Hotfix Process
 
@@ -109,7 +105,6 @@ git checkout develop
 git merge hotfix/v1.2.1
 ```
 
----
 
 ## Rollback Procedure
 
@@ -136,7 +131,6 @@ kubectl rollout undo deployment/lms-backend
 - Data corruption risk
 - Security vulnerability
 
----
 
 ## Environment Pipeline
 
@@ -150,7 +144,6 @@ kubectl rollout undo deployment/lms-backend
   Auto CI      Auto CD        Manual          Manual + Approval
 ```
 
----
 
 ## Release Checklist Template
 

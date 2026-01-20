@@ -8,13 +8,11 @@ sidebar_label: OpenAPI
 
 OpenAPI/Swagger specifications documentation.
 
----
 
 ## Overview
 
 This document describes the OpenAPI specification structure and guidelines.
 
----
 
 ## Contents
 
@@ -22,7 +20,6 @@ This document describes the OpenAPI specification structure and guidelines.
 |------|-------------|
 | [main.yaml](./openapi/main.yaml) | Main API specification |
 
----
 
 ## Base Structure
 
@@ -35,7 +32,6 @@ This document describes the OpenAPI specification structure and guidelines.
 | `components` | Reusable schemas, parameters, responses |
 | `security` | Authentication requirements |
 
----
 
 ## File Organization
 
@@ -44,7 +40,6 @@ This document describes the OpenAPI specification structure and guidelines.
 | Single file | Small APIs |
 | Multi-file | Large APIs using $ref |
 
----
 
 ## Naming Conventions
 
@@ -55,7 +50,6 @@ This document describes the OpenAPI specification structure and guidelines.
 | Schemas | PascalCase | `UserProfile` |
 | Properties | camelCase | `firstName` |
 
----
 
 ## Server Definitions
 
@@ -65,7 +59,6 @@ This document describes the OpenAPI specification structure and guidelines.
 | Staging | `https://staging-api.lms.com/v1` | Pre-production |
 | Development | `http://localhost:3000/v1` | Local development |
 
----
 
 ## Path Operations
 
@@ -120,7 +113,6 @@ This document describes the OpenAPI specification structure and guidelines.
 | Success Response | 204 No Content |
 | Error Response | 404 Not Found |
 
----
 
 ## References
 

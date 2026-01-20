@@ -39,3 +39,10 @@ Module quản lý thi đấu trực tuyến, hỗ trợ: Tournament, Round, Room
 |---------|-----|-------|-----------|-----------|----------|
 | BR-TOUR-001 | Time Window | Chỉ tham gia được trong time window | Now < start OR Now > end | Block Join | - |
 | BR-TOUR-002 | Room Capacity | Giới hạn số user mỗi room | Users >= Max | Create New Round or Reject | - |
+
+## References
+
+- [Logic](./logic.md)
+- [Data Model](./data.md)
+- [API](./api.md)
+- [Tests](./tests.md)

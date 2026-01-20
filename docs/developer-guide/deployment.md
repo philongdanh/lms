@@ -8,7 +8,6 @@ sidebar_label: Deployment
 
 Mô tả quy trình triển khai LMS Platform lên production. Hệ thống triển khai dưới dạng container với Docker, hỗ trợ on-premise và cloud. Kiến trúc stateless cho phép horizontal scaling và zero-downtime deployment.
 
----
 
 ## Infrastructure Architecture
 
@@ -59,7 +58,6 @@ App.AppN -> Data.Redis
     AppN --> PG
 ```
 
----
 
 ## Docker Compose Deployment
 
@@ -130,7 +128,6 @@ server {
 }
 ```
 
----
 
 ## Deployment Process
 
@@ -193,7 +190,6 @@ Blue: "5. Keep for rollback (30 min), then shutdown" {
 }
 ```
 
----
 
 ## Backup & Recovery
 
@@ -237,7 +233,6 @@ Redis được cấu hình với AOF persistence để đảm bảo data durabil
 - **AOF**: Append Only File với fsync every second
 - **RDB**: Snapshot mỗi 1 giờ hoặc 1000 changes
 
----
 
 ## Monitoring & Logging
 
@@ -259,7 +254,6 @@ Application logs được structured và gửi đến centralized logging stack:
 - **Fields**: timestamp, level, message, request_id, tenant_id, user_id
 - **Retention**: 30 ngày cho production logs
 
----
 
 ## Scaling Strategy
 
@@ -279,7 +273,6 @@ Application logs được structured và gửi đến centralized logging stack:
 | PostgreSQL | 2GB RAM | 4GB RAM | 8GB+ RAM |
 | Redis | 512MB RAM | 1GB RAM | 2GB RAM |
 
----
 
 ## Rollback Procedure
 
@@ -294,7 +287,6 @@ docker-compose up -d app --force-recreate
 docker-compose exec app npx prisma migrate resolve --rolled-back <migration_name>
 ```
 
----
 
 ## References
 

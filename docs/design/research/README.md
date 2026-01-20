@@ -10,7 +10,6 @@ User research documentation for understanding users and their needs.
 
 > **Note**: The primary user research documentation is maintained in [specs/00-business/research/](../../specs/00-business/research/README.md). This folder contains design-specific research artifacts.
 
----
 
 ## Contents
 
@@ -20,7 +19,6 @@ User research documentation for understanding users and their needs.
 | [Journeys](../../specs/00-business/research/journeys.md) | User journey maps |
 | [Usability](../../specs/00-business/research/usability.md) | Usability guidelines and heuristics |
 
----
 
 ## Design Research Artifacts
 
@@ -31,7 +29,6 @@ User research documentation for understanding users and their needs.
 | Usability Tests | Task-based testing results |
 | Survey Results | Quantitative user data |
 
----
 
 ## References
 

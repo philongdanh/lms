@@ -61,7 +61,6 @@ Module này cung cấp hạ tầng WebSocket để hỗ trợ các tính năng t
 - [ ] Tính năng Broadcast hoạt động trên nhiều server nodes (Redis Adapter).
 - [ ] Xử lý 10k kết nối đồng thời.
 
----
 
 ## Review & Approval
 | Role | Name | Date | Status |
@@ -163,7 +162,10 @@ flowchart TD
 - [ ] Bắt buộc sử dụng WSS.
 - [ ] Xác thực Token trên mỗi kết nối.
 
----
 
 ## Validation Checklist
 - [ ] Kiểm tra Redis Failover
+
+## References
+
+- [Overview](./overview.md)

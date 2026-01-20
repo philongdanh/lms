@@ -39,3 +39,10 @@ Module quản lý hệ thống phần thưởng, bao gồm Điểm Kinh nghiệm
 | Rule ID | Rule Name | Description | Condition | Action | Exception |
 |---------|----------|-------|------------|---------|------------|
 | BR-GAME-001 | Level Formula | Công thức tính Level | EXP tích lũy | Level = $100 \times N^{1.5}$ | - |
+
+## References
+
+- [Logic](./logic.md)
+- [Data Model](./data.md)
+- [API](./api.md)
+- [Tests](./tests.md)

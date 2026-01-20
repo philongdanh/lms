@@ -8,13 +8,11 @@ sidebar_label: Backend
 
 API design, database schema, and external tool references.
 
----
 
 ## Overview
 
 This document consolidates backend architecture including API design patterns, database schema, and references to external API documentation tools.
 
----
 
 ## External References
 
@@ -25,7 +23,6 @@ This document consolidates backend architecture including API design patterns, d
 | Apidog | API Documentation | `[Apidog URL]` |
 | GraphQL Playground | GraphQL Explorer | `/graphql` |
 
----
 
 ## Tech Stack
 
@@ -40,7 +37,6 @@ This document consolidates backend architecture including API design patterns, d
 | Search | Elasticsearch | latest |
 | ORM | Prisma | latest |
 
----
 
 ## API Design
 
@@ -63,7 +59,6 @@ This document consolidates backend architecture including API design patterns, d
 | `/api/webhooks/*` | POST | External webhooks | API Key |
 | `/health` | GET | Health check | No |
 
----
 
 ## GraphQL Schema Conventions
 
@@ -111,7 +106,6 @@ type CreateUserPayload {
 }
 ```
 
----
 
 ## Pagination
 
@@ -137,7 +131,6 @@ type PageInfo {
 }
 ```
 
----
 
 ## Error Handling
 
@@ -162,7 +155,6 @@ enum ErrorCode {
 
 > For complete error codes and response format, see [API Contracts](../../api/contracts.md).
 
----
 
 ## Database Design
 
@@ -225,7 +217,6 @@ erDiagram
     TOURNAMENTS ||--o{ MATCHES : contains
 ```
 
----
 
 ## References
 

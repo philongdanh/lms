@@ -77,8 +77,11 @@ erDiagram
 ## Data Security
 - **Invite Code**: Hash trước khi so sánh hoặc rate limit kiểm tra code.
 
----
 
 ## Validation Checklist
 - [ ] Đã xác minh các thao tác Redis ZSET
 - [ ] Xử lý join đồng thời
+
+## References
+
+- [Overview](./overview.md)
