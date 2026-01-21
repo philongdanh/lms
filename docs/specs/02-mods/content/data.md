@@ -1,6 +1,6 @@
 ---
-id: content-data
-title: Content - Data Model
+id: data
+title: Data Model
 sidebar_label: Data
 sidebar_position: 3
 ---

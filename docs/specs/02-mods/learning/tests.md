@@ -1,6 +1,6 @@
 ---
-id: learning-tests
-title: Learning - Test Cases
+id: tests
+title: Test Cases
 sidebar_label: Tests
 sidebar_position: 4
 ---

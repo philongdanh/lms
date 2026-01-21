@@ -1,6 +1,6 @@
 ---
-id: content-logic
-title: Content - Business Logic
+id: logic
+title: Business Logic
 sidebar_label: Logic
 sidebar_position: 2
 ---
