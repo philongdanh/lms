@@ -19,7 +19,7 @@ Hệ thống sử dụng **kiến trúc monolithic** với hỗ trợ **multi-te
 trường học là một tenant độc lập, đảm bảo cách ly dữ liệu hoàn toàn.
 
 ```d2
-direction: down
+direction: right
 
 Web: Web Application
 App: Application

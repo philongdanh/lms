@@ -30,6 +30,7 @@ Hướng dẫn triển khai hệ thống lên các môi trường vận hành.
 ---
 
 # Infrastructure Architecture
+direction: right
 Client: Clients
 
 LB: Load Balancer {
