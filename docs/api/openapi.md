@@ -6,8 +6,8 @@ sidebar_position: 1
 ---
 
 # OpenAPI Specification
-
-Tài liệu đặc tả OpenAPI/Swagger.
+ 
+Tài liệu đặc tả các giao diện lập trình theo chuẩn OpenAPI.
 
 ---
 
