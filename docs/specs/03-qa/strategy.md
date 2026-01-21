@@ -6,8 +6,8 @@ sidebar_position: 1
 ---
 
 # Strategy
-
-Chiến lược test tổng thể và coverage goals.
+ 
+Chiến lược kiểm thử tổng thể và mục tiêu độ bao phủ.
 
 ---
 

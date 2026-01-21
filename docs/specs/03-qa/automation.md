@@ -6,8 +6,8 @@ sidebar_position: 4
 ---
 
 # Test Automation
-
-Test automation framework và setup.
+ 
+Cấu trúc và thiết lập hệ thống kiểm thử tự động.
 
 ---
 
