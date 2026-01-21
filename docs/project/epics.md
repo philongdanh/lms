@@ -218,5 +218,5 @@ MVP tập trung vào 3 module chính:
 
 ## References
 
-- [Sprint Plan](./02-sprint-plan.md)
-- [Backlog](./03-backlog.md)
+- [Sprint Plan](./plan.md)
+- [Backlog](./backlog.md)

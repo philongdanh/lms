@@ -81,4 +81,4 @@ Các ràng buộc kỹ thuật và nghiệp vụ.
 
 - [Business Overview](/specs)
 - [Success Metrics](./metrics.md)
-- [System Design](../01-architecture/system-design.md)
+- [System Design](../01-arch/design.md)

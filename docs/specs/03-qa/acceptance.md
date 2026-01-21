@@ -361,5 +361,5 @@ This document defines clear, testable acceptance criteria for LMS features.
 
 ## References
 
-- [Test Cases](./test-cases.md)
-- [Test Strategy](./test-strategy.md)
+- [Test Cases](./cases.md)
+- [Test Strategy](./strategy.md)

@@ -221,7 +221,7 @@ erDiagram
 
 ## References
 
-- [System Design](./system-design.md)
-- [Tech Stack](./tech-stack.md)
-- [Data Model](./data-model.md)
+- [System Design](./design.md)
+- [Tech Stack](./stack.md)
+- [Data Model](./data.md)
 - [API Contracts](../../api/contracts.md)

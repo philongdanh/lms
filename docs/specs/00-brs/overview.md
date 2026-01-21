@@ -114,7 +114,7 @@ tăng động lực học tập.
 ## References
 
 - [Requirements](./requirements.md)
-- [Use Cases](./use-cases.md)
-- [Product Roadmap](./product-roadmap.md)
+- [Use Cases](./cases.md)
+- [Product Roadmap](./roadmap.md)
 - [Constraints](./constraints.md)
 - [Metrics](./metrics.md)

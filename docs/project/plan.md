@@ -11,7 +11,7 @@ Kế hoạch cấp sprint với các sản phẩm bàn giao và phân bổ năng
 
 > **Phạm vi**: Tài liệu này bao gồm việc lập kế hoạch và thực hiện sprint. Đối
 > với lộ trình cấp sản phẩm, xem
-> [Product Roadmap](../specs/00-business/product-roadmap.md).
+> [Product Roadmap](../specs/00-brs/roadmap.md).
 
 ---
 
@@ -219,6 +219,6 @@ Sprint 1 → Sprint 2 → Sprint 3 → M2 (Auth)
 
 ## References
 
-- [Epics](./01-epics.md)
-- [Backlog](./03-backlog.md)
-- [Product Roadmap](../specs/00-business/product-roadmap.md)
+- [Epics](./epics.md)
+- [Backlog](./backlog.md)
+- [Product Roadmap](../specs/00-brs/roadmap.md)

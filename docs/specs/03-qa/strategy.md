@@ -196,4 +196,4 @@ flowchart LR
 
 - [Automation](./automation.md)
 - [Benchmarks](./benchmarks.md)
-- [Monitoring](../01-architecture/cross-cutting/monitoring.md)
+- [Monitoring](../01-arch/common/monitoring.md)

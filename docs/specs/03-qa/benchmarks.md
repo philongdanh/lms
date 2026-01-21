@@ -200,6 +200,6 @@ export default function () {
 
 ## References
 
-- [Test Strategy](./test-strategy.md)
-- [Performance](../01-architecture/cross-cutting/performance.md)
-- [Monitoring](../01-architecture/cross-cutting/monitoring.md)
+- [Test Strategy](./strategy.md)
+- [Performance](../01-arch/common/performance.md)
+- [Monitoring](../01-arch/common/monitoring.md)

@@ -330,5 +330,6 @@ test('User can join and participate in tournament', async ({ page }) => {
 ## References
 
 - [Acceptance Criteria](./acceptance.md)
-- [Test Strategy](./test-strategy.md)
+- [Test Strategy](./strategy.md)
 - [Automation](./automation.md)
+```

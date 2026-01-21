@@ -297,5 +297,5 @@ docker-compose restart redis
 
 - [Development Guide](./development.md)
 - [Deployment Guide](./deployment.md)
-- [System Design](../specs/01-architecture/system-design.md)
-- [Data Model](../specs/01-architecture/data-model.md)
+- [System Design](../../specs/01-arch/design.md)
+- [Data Model](../../specs/01-arch/data.md)

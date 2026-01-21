@@ -604,6 +604,6 @@ App -> Parent: Display dashboard {
 
 ## References
 
-- [Business Overview](../00-business/overview.md)
-- [Data Model](./data-model.md)
+- [Business Overview](../00-brs/overview.md)
+- [Data Model](./data.md)
 - [Cross-Cutting](/specs)

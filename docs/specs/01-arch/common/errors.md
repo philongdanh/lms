@@ -173,5 +173,5 @@ Tiêu chuẩn và mô hình xử lý lỗi hệ thống.
 
 ## References
 
-- [API Gateway](./api-gateway.md)
+- [API Gateway](./gateway.md)
 - [Monitoring](./monitoring.md)

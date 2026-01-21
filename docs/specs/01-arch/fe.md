@@ -231,5 +231,5 @@ export function useAuth() {
 ## References
 
 - [Design System](/design)
-- [System Design](./system-design.md)
-- [Tech Stack](./tech-stack.md)
+- [System Design](./design.md)
+- [Tech Stack](./stack.md)
