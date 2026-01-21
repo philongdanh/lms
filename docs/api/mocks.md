@@ -6,8 +6,8 @@ sidebar_position: 3
 ---
 
 # Mock Data
-
-API mock server phục vụ phát triển và kiểm thử.
+ 
+Hệ thống dữ liệu giả lập phục vụ phát triển và kiểm thử.
 
 ---
 

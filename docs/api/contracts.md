@@ -6,8 +6,8 @@ sidebar_position: 2
 ---
 
 # API Contracts
-
-Hợp đồng API (Consumer-driven contracts) phục vụ việc kiểm thử API.
+ 
+Tiêu chuẩn và thỏa thuận về cấu trúc dữ liệu giao tiếp.
 
 ---
 
