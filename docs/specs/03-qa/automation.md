@@ -26,7 +26,7 @@ Test automation framework và setup.
 ## Project Structure
 
 ```
-tests/
+../01-arch/common/
 ├── unit/
 │   ├── services/
 │   ├── utils/
@@ -234,5 +234,5 @@ stages:
 
 ## References
 
-- [Test Strategy](./test-strategy.md)
+- [Test Strategy](./strategy.md)
 - [Benchmarks](./benchmarks.md)

@@ -117,5 +117,5 @@ Lựa chọn công nghệ và tiêu chuẩn thực thi.
 
 ## References
 
-- [System Design](./system-design.md)
-- [Decisions](./decisions.md)
+- [System Design](./design.md)
+- [Decisions](./adrs.md)

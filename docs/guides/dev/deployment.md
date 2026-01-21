@@ -362,6 +362,6 @@ docker-compose exec app npx prisma migrate resolve --rolled-back <migration_name
 
 - [Setup Guide](./setup.md)
 - [Development Guide](./development.md)
-- [System Design](../specs/01-architecture/system-design.md)
-- [Data Model](../specs/01-architecture/data-model.md)
-- [API Standards](../specs/01-architecture/cross-cutting/api-gateway.md)
+- [System Design](../../specs/01-arch/design.md)
+- [Data Model](../../specs/01-arch/data.md)
+- [API Standards](../../specs/01-arch/common/gateway.md)

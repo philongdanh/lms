@@ -965,5 +965,5 @@ flowchart TD
 ## References
 
 - [Business Overview](/specs)
-- [System Design](./system-design.md)
+- [System Design](./design.md)
 - [Cross-Cutting](/specs)

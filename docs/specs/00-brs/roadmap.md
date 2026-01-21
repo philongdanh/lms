@@ -10,7 +10,7 @@ sidebar_position: 8
 Lộ trình và các cột mốc chiến lược.
 
 > [!NOTE] Tài liệu này mô tả lộ trình cấp sản phẩm. Xem
-> [Sprint Plan](../../project/02-sprint-plan.md) để biết kế hoạch chi tiết cho
+> [Sprint Plan](../../project/plan.md) để biết kế hoạch chi tiết cho
 > từng giai đoạn phát triển ngắn hạn.
 
 ---

@@ -106,6 +106,6 @@ Lịch sử các quyết định kiến trúc và kỹ thuật quan trọng.
 
 ## References
 
-- [System Design](./system-design.md)
-- [Data Model](./data-model.md)
-- [Tech Stack](./tech-stack.md)
+- [System Design](./design.md)
+- [Data Model](./data.md)
+- [Tech Stack](./stack.md)

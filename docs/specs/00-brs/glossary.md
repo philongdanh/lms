@@ -29,4 +29,4 @@ Thuật ngữ và định nghĩa chuyên ngành.
 ## References
 
 - [Business Overview](/specs)
-- [System Design](../01-architecture/system-design.md)
+- [System Design](../01-arch/design.md)

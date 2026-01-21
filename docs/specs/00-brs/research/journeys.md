@@ -160,4 +160,4 @@ Top 3? -> XP & Encourage: No
 ## References
 
 - [Personas](./personas.md)
-- [Usability](./usability.md)
+- [UX Design](./ux.md)

@@ -149,4 +149,4 @@ Tiêu chuẩn hiệu năng và chiến lược tối ưu hóa.
 ## References
 
 - [Monitoring](./monitoring.md)
-- [System Design](../system-design.md)
+- [System Design](../design.md)
