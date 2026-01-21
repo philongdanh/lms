@@ -11,8 +11,6 @@ Kiến trúc thành phần, quản lý trạng thái và điều phối giao di�
 
 ---
 
----
-
 ## External References
 
 | Tool      | Purpose           | Link                  |
