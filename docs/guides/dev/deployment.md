@@ -6,10 +6,8 @@ sidebar_position: 3
 ---
 
 # Deployment Guide
-
-Mô tả quy trình triển khai LMS Platform lên production. Hệ thống triển khai dưới
-dạng container với Docker, hỗ trợ on-premise và cloud. Kiến trúc stateless cho
-phép horizontal scaling và zero-downtime deployment.
+ 
+Hướng dẫn triển khai hệ thống lên các môi trường vận hành.
 
 ---
 

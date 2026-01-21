@@ -6,8 +6,8 @@ sidebar_position: 1
 ---
 
 # Getting Started
-
-Hướng dẫn nhanh để bắt đầu sử dụng hệ thống LMS Platform.
+ 
+Hướng dẫn các bước cơ bản để làm quen và sử dụng hệ thống.
 
 ---
 

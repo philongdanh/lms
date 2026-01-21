@@ -6,9 +6,8 @@ sidebar_position: 1
 ---
 
 # Setup Guide
-
-Hướng dẫn cài đặt môi trường phát triển cho LMS Platform. Kết quả: môi trường
-development hoàn chỉnh với tất cả dependencies cần thiết.
+ 
+Hướng dẫn cài đặt và thiết lập môi trường phát triển.
 
 ---
 

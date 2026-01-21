@@ -6,9 +6,8 @@ sidebar_position: 2
 ---
 
 # Development Guide
-
-Mô tả các tiêu chuẩn và quy trình phát triển cho LMS Platform. Mục tiêu: đảm bảo
-tính nhất quán trong codebase, dễ bảo trì và tối ưu hiệu suất làm việc nhóm.
+ 
+Tiêu chuẩn và quy trình phát triển phần mềm.
 
 ---
 
