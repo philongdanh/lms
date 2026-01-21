@@ -1,0 +1,7 @@
+{
+  "label": "Realtime",
+  "link": {
+    "type": "generated-index",
+    "description": "Mô-đun xử lý thời gian thực"
+  }
+}
