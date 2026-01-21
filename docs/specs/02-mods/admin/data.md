@@ -1,3 +1,9 @@
+---
+id: admin-data
+title: Admin - Data Model
+sidebar_label: Data
+sidebar_position: 3
+---
 
 # Admin & Tenant - Data Model
  

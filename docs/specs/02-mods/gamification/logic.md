@@ -1,3 +1,9 @@
+---
+id: gamification-logic
+title: Gamification - Business Logic
+sidebar_label: Logic
+sidebar_position: 2
+---
 
 # Gamification & Rewards - Business Logic
  

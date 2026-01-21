@@ -1,3 +1,9 @@
+---
+id: content-logic
+title: Content - Business Logic
+sidebar_label: Logic
+sidebar_position: 2
+---
 
 # Content & Question Bank - Business Logic
  

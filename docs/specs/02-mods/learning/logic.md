@@ -1,3 +1,9 @@
+---
+id: learning-logic
+title: Learning - Business Logic
+sidebar_label: Logic
+sidebar_position: 2
+---
 
 # Learning & Personalization - Business Logic
  

@@ -1,3 +1,9 @@
+---
+id: realtime-logic
+title: Realtime - Business Logic
+sidebar_label: Logic
+sidebar_position: 2
+---
 
 # Real-time Communication - Business Logic
  

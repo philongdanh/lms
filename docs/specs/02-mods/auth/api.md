@@ -1,3 +1,9 @@
+---
+id: auth-api
+title: Auth - API Endpoints
+sidebar_label: API
+sidebar_position: 1
+---
 
 # Auth - API Endpoints
  

@@ -1,3 +1,9 @@
+---
+id: realtime-data
+title: Realtime - Data Model
+sidebar_label: Data
+sidebar_position: 3
+---
 
 # Realtime - Data Model
  

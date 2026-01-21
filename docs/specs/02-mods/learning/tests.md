@@ -1,3 +1,9 @@
+---
+id: learning-tests
+title: Learning - Test Cases
+sidebar_label: Tests
+sidebar_position: 4
+---
 
 # Learning & Personalization - Test Cases
  

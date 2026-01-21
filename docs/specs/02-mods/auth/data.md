@@ -1,3 +1,9 @@
+---
+id: auth-data
+title: Auth - Data Model
+sidebar_label: Data
+sidebar_position: 3
+---
 
 # Auth - Data Model
  

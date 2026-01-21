@@ -1,3 +1,9 @@
+---
+id: learning-data
+title: Learning - Data Model
+sidebar_label: Data
+sidebar_position: 3
+---
 
 # Learning - Data Model
  

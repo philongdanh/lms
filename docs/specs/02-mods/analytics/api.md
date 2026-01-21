@@ -1,3 +1,9 @@
+---
+id: analytics-api
+title: Analytics - API Endpoints
+sidebar_label: API
+sidebar_position: 1
+---
 
 # Analytics - API Endpoints
  

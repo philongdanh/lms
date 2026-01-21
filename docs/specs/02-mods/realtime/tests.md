@@ -1,3 +1,9 @@
+---
+id: realtime-tests
+title: Realtime - Test Cases
+sidebar_label: Tests
+sidebar_position: 4
+---
 
 # Real-time Communication - Test Cases
 

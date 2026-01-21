@@ -1,3 +1,9 @@
+---
+id: tournament-data
+title: Tournament - Data Model
+sidebar_label: Data
+sidebar_position: 3
+---
 
 # Tournament - Data Model
  

@@ -1,5 +1,11 @@
+---
+id: analytics-logic
+title: Analytics - Business Logic
+sidebar_label: Logic
+sidebar_position: 2
+---
 
-# Analytics &# Analytics - Business Logic
+# Analytics & Analytics - Business Logic
  
 Quy tắc nghiệp vụ tính toán báo cáo và phân tích dữ liệu.
 

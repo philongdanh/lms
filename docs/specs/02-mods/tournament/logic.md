@@ -1,3 +1,9 @@
+---
+id: tournament-logic
+title: Tournament - Business Logic
+sidebar_label: Logic
+sidebar_position: 2
+---
 
 # Tournament & Competition - Business Logic
  
