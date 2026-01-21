@@ -16,8 +16,8 @@ development hoàn chỉnh với tất cả dependencies cần thiết.
 
 ### Required Software
 
-| Software           | Version | Purpose                       | Download                                               |
-| ------------------ | ------- | ----------------------------- | ------------------------------------------------------ |
+| Software           | Version | Purpose                              | Download                                               |
+| ------------------ | ------- | ------------------------------------ | ------------------------------------------------------ |
 | **Node.js**        | 18.x+   | Môi trường chạy JavaScript (Runtime) | [nodejs.org](https://nodejs.org)                       |
 | **Docker**         | 20.10+  | Container hóa                        | [docker.com](https://docker.com)                       |
 | **Docker Compose** | v2.0+   | Điều phối đa container               | Có sẵn trong Docker Desktop                            |
@@ -64,14 +64,14 @@ cp .env.example .env
 
 **Variables to configure**:
 
-| Variable               | Description           | Development Value                                       |
-| ---------------------- | --------------------- | ------------------------------------------------------- |
-| `DATABASE_URL`         | Kết nối PostgreSQL    | `postgresql://postgres:postgres@localhost:5432/lms_dev` |
-| `REDIS_URL`            | Kết nối Redis         | `redis://localhost:6379`                                |
-| `JWT_SECRET`           | Khóa ký JWT           | `dev-secret-key-change-in-production`                   |
-| `JWT_EXPIRY`           | Thời hạn Access token | `15m`                                                   |
-| `REFRESH_TOKEN_EXPIRY` | Thời hạn Refresh token| `7d`                                                    |
-| `MAX_DEVICES_PER_USER` | Giới hạn thiết bị     | `3`                                                     |
+| Variable               | Description            | Development Value                                       |
+| ---------------------- | ---------------------- | ------------------------------------------------------- |
+| `DATABASE_URL`         | Kết nối PostgreSQL     | `postgresql://postgres:postgres@localhost:5432/lms_dev` |
+| `REDIS_URL`            | Kết nối Redis          | `redis://localhost:6379`                                |
+| `JWT_SECRET`           | Khóa ký JWT            | `dev-secret-key-change-in-production`                   |
+| `JWT_EXPIRY`           | Thời hạn Access token  | `15m`                                                   |
+| `REFRESH_TOKEN_EXPIRY` | Thời hạn Refresh token | `7d`                                                    |
+| `MAX_DEVICES_PER_USER` | Giới hạn thiết bị      | `3`                                                     |
 
 ### Start Infrastructure
 
@@ -281,15 +281,15 @@ docker-compose restart redis
 
 ## Common Commands
 
-| Command                                         | Purpose                  |
-| ----------------------------------------------- | ------------------------ |
-| `docker-compose up -d`                          | Khởi động tất cả services|
-| `docker-compose down`                           | Dừng tất cả services     |
-| `docker-compose logs -f`                        | Xem logs (theo dõi)      |
-| `docker-compose ps`                             | Liệt kê container đang chạy |
+| Command                                         | Purpose                      |
+| ----------------------------------------------- | ---------------------------- |
+| `docker-compose up -d`                          | Khởi động tất cả services    |
+| `docker-compose down`                           | Dừng tất cả services         |
+| `docker-compose logs -f`                        | Xem logs (theo dõi)          |
+| `docker-compose ps`                             | Liệt kê container đang chạy  |
 | `docker-compose restart <service>`              | Khởi động lại service cụ thể |
-| `docker-compose exec postgres psql -U postgres` | Truy cập PostgreSQL shell|
-| `docker-compose exec redis redis-cli`           | Truy cập Redis CLI       |
+| `docker-compose exec postgres psql -U postgres` | Truy cập PostgreSQL shell    |
+| `docker-compose exec redis redis-cli`           | Truy cập Redis CLI           |
 
 ---
 

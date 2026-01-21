@@ -7,7 +7,8 @@ sidebar_position: 1
 
 # System Design
 
-Kiến trúc nền tảng LMS - một hệ thống quản lý học tập đa người thuê (multi-tenant) có khả năng mở rộng cao.
+Kiến trúc nền tảng LMS - một hệ thống quản lý học tập đa người thuê
+(multi-tenant) có khả năng mở rộng cao.
 
 ---
 
@@ -15,7 +16,8 @@ Kiến trúc nền tảng LMS - một hệ thống quản lý học tập đa ng
 
 ### Architecture Diagram
 
-Hệ thống sử dụng **kiến trúc monolithic** với hỗ trợ **multi-tenant** - mỗi trường học là một tenant độc lập, đảm bảo cách ly dữ liệu hoàn toàn.
+Hệ thống sử dụng **kiến trúc monolithic** với hỗ trợ **multi-tenant** - mỗi
+trường học là một tenant độc lập, đảm bảo cách ly dữ liệu hoàn toàn.
 
 ```d2
 direction: down
@@ -140,7 +142,8 @@ App -> Data Layer.Redis
 ### 4.1. Client Layer
 
 - **Thành phần**: Single Page Application (SPA) với server-side rendering
-- **Người dùng mục tiêu**: Tất cả người dùng (Học sinh, Phụ huynh, Giáo viên, Quản trị viên)
+- **Người dùng mục tiêu**: Tất cả người dùng (Học sinh, Phụ huynh, Giáo viên,
+  Quản trị viên)
 - **Các tính năng chính**:
   - Giao diện tương tác cho học tập và thi đấu
   - Dashboard đa vai trò với cập nhật thời gian thực
@@ -154,19 +157,23 @@ App -> Data Layer.Redis
 
 #### 4.2.1. Business Modules
 
-| Module                 | Main Functions                                                                          | Corresponding FR         | Technology Stack                 |
-| ---------------------- | --------------------------------------------------------------------------------------- | ------------------------ | -------------------------------- |
+| Module                 | Main Functions                                                                             | Corresponding FR         | Technology Stack                 |
+| ---------------------- | ------------------------------------------------------------------------------------------ | ------------------------ | -------------------------------- |
 | **Auth & RBAC Module** | Quản lý người dùng, phân quyền RBAC, session đa thiết bị, liên kết phụ huynh-học sinh, 2FA | FR-AUTH-01 to FR-AUTH-09 | NestJS, JWT, Redis, Prisma       |
-| **Tournament Module**  | Tổ chức thi đấu và đấu trường đa cấp, thi đấu thời gian thực | FR-COMP-01 to FR-COMP-09 | NestJS, Socket.IO, Redis Pub/Sub |
-| **... other modules**  | Học tập, Phân tích, Nội dung, Admin, Gamification, Thông báo | Các FR khác              | Nhiều công nghệ khác             |
+| **Tournament Module**  | Tổ chức thi đấu và đấu trường đa cấp, thi đấu thời gian thực                               | FR-COMP-01 to FR-COMP-09 | NestJS, Socket.IO, Redis Pub/Sub |
+| **... other modules**  | Học tập, Phân tích, Nội dung, Admin, Gamification, Thông báo                               | Các FR khác              | Nhiều công nghệ khác             |
 
 #### 4.2.2. Real-time & WebSocket Module
 
-- **WebSocket Gateway**: Điểm truy cập cho tất cả kết nối WebSocket, xử lý xác thực và định tuyến
+- **WebSocket Gateway**: Điểm truy cập cho tất cả kết nối WebSocket, xử lý xác
+  thực và định tuyến
 - **Message Queue**: Redis Pub/Sub để đồng bộ sự kiện giữa các instance ứng dụng
-- **Presence Service**: Theo dõi trạng thái online/offline của người dùng, quản lý phòng thi đấu
-- **Real-time Cache**: Cache Redis tối ưu cho dữ liệu thời gian thực (bảng xếp hạng, dữ liệu session)
-- **Event Bus**: Hệ thống sự kiện nội bộ cho giao tiếp thời gian thực giữa các module
+- **Presence Service**: Theo dõi trạng thái online/offline của người dùng, quản
+  lý phòng thi đấu
+- **Real-time Cache**: Cache Redis tối ưu cho dữ liệu thời gian thực (bảng xếp
+  hạng, dữ liệu session)
+- **Event Bus**: Hệ thống sự kiện nội bộ cho giao tiếp thời gian thực giữa các
+  module
 - **Graceful Degradation**: Fallback về polling khi WebSocket không khả dụng
 
 ### 4.3. Data Layer
@@ -180,10 +187,12 @@ App -> Data Layer.Redis
   - Indexing tối ưu cho các truy vấn phân tích
   - Database sharding theo tenant khi mở rộng lớn
 - **Cấu trúc nội dung**:
-  - Tổ chức theo: Môn học (Subject) → Khối lớp (Grade) → Chủ đề (Topic) (có trạng thái hiển thị) → Bài học (Lesson) (theo học kỳ)
+  - Tổ chức theo: Môn học (Subject) → Khối lớp (Grade) → Chủ đề (Topic) (có
+    trạng thái hiển thị) → Bài học (Lesson) (theo học kỳ)
   - Bảng `topics` có trường `is_active` để quản lý trạng thái hiển thị
 - **Chiến lược Soft Delete**:
-  - Chỉ áp dụng `deleted_at` cho: User, Topic, QuestionBank, Question, Exam, Tournament, Reward
+  - Chỉ áp dụng `deleted_at` cho: User, Topic, QuestionBank, Question, Exam,
+    Tournament, Reward
   - Cascade delete ở cấp ứng dụng cho các bảng soft delete
 - **Quản lý vòng đời Tenant**:
   - Trạng thái Tenant: ACTIVE, SUSPENDED, PENDING_DEACTIVATION
@@ -431,41 +440,55 @@ App -> Parent: Display dashboard {
 1. **Single Responsibility**: Mỗi module chỉ xử lý một phạm vi nghiệp vụ cụ thể
 2. **Dependency Injection**: Quản lý dependency linh hoạt và dễ dàng kiểm thử
 3. **Repository Pattern**: Tách biệt business logic và truy cập dữ liệu
-4. **Event-Driven Communication**: Giảm sự phụ thuộc giữa các module thông qua sự kiện
+4. **Event-Driven Communication**: Giảm sự phụ thuộc giữa các module thông qua
+   sự kiện
 
 ### 6.2. Security Principles
 
-1. **Principale of Least Privilege**: Mỗi role chỉ có quyền hạn tối thiểu cần thiết
-2. **Tenant Isolation**: Dữ liệu giữa các tenant hoàn toàn độc lập, không truy cập chéo
+1. **Principale of Least Privilege**: Mỗi role chỉ có quyền hạn tối thiểu cần
+   thiết
+2. **Tenant Isolation**: Dữ liệu giữa các tenant hoàn toàn độc lập, không truy
+   cập chéo
 3. **Defense in Depth**: Nhiều lớp bảo vệ cho dữ liệu nhạy cảm
 4. **Audit Logging**: Ghi lại tất cả hoạt động quan trọng để truy vết
 5. **2FA for Admin Accounts**: Xác thực đa yếu tố cho tài khoản admin cấp cao
 6. **WebSocket Security**: Xác thực và ủy quyền cho tất cả kết nối WebSocket
-7. **Token Security**: Refresh token được lưu dưới dạng hash trong database, không lưu plain text
+7. **Token Security**: Refresh token được lưu dưới dạng hash trong database,
+   không lưu plain text
 
 ### 6.3. Real-time Principles
 
-1. **Connection Management**: Quản lý connection pooling WebSocket hiệu quả và xử lý kết nối lại
-2. **Room-based Architecture**: Phòng ảo cho mỗi cuộc thi, lớp học với theo dõi hiện diện
-3. **Event-driven Updates**: Mô hình Pub/Sub cho cập nhật thời gian thực với Redis
+1. **Connection Management**: Quản lý connection pooling WebSocket hiệu quả và
+   xử lý kết nối lại
+2. **Room-based Architecture**: Phòng ảo cho mỗi cuộc thi, lớp học với theo dõi
+   hiện diện
+3. **Event-driven Updates**: Mô hình Pub/Sub cho cập nhật thời gian thực với
+   Redis
 4. **Presence Tracking**: Theo dõi trạng thái người dùng theo thời gian thực
 5. **Graceful Degradation**: Fallback về polling khi WebSocket không khả dụng
 
 ### 6.4. Data Management Principles
 
-1. **Selective Soft Delete**: Chỉ áp dụng `deleted_at` cho các bảng: User, Topic, QuestionBank, Question, Exam, Tournament, Reward
+1. **Selective Soft Delete**: Chỉ áp dụng `deleted_at` cho các bảng: User,
+   Topic, QuestionBank, Question, Exam, Tournament, Reward
 2. **Cascade Delete Strategy**:
    - Hard delete cascade ở cấp database cho các bảng không cần soft delete
    - Soft delete cascade ở cấp ứng dụng cho các bảng có `deleted_at`
-3. **Tenant Lifecycle**: Hỗ trợ đầy đủ vòng đời tenant với các trạng thái: ACTIVE, SUSPENDED, PENDING_DEACTIVATION
-4. **Data Retention Policy**: Xóa dữ liệu tự động theo chính sách lưu trữ được định nghĩa
-5. **RBAC Implementation**: Loại người dùng được xác định qua Role, không lưu trực tiếp trong User
+3. **Tenant Lifecycle**: Hỗ trợ đầy đủ vòng đời tenant với các trạng thái:
+   ACTIVE, SUSPENDED, PENDING_DEACTIVATION
+4. **Data Retention Policy**: Xóa dữ liệu tự động theo chính sách lưu trữ được
+   định nghĩa
+5. **RBAC Implementation**: Loại người dùng được xác định qua Role, không lưu
+   trực tiếp trong User
 
 ### 6.5. Scalability Principles
 
-1. **Horizontal Scaling Ready**: Ứng dụng Stateless, có thể mở rộng bằng cách thêm instance
-2. **Database Scalability**: Thiết kế hỗ trợ sharding theo tenant khi cần, read replicas
-3. **Future Microservices Ready**: Module hóa rõ ràng để dễ dàng tách thành microservices sau này
+1. **Horizontal Scaling Ready**: Ứng dụng Stateless, có thể mở rộng bằng cách
+   thêm instance
+2. **Database Scalability**: Thiết kế hỗ trợ sharding theo tenant khi cần, read
+   replicas
+3. **Future Microservices Ready**: Module hóa rõ ràng để dễ dàng tách thành
+   microservices sau này
 4. **WebSocket Scaling**: Redis adapter cho mở rộng cluster WebSocket
 5. **Cache Strategy**: Caching đa cấp với Redis cluster
 
@@ -475,18 +498,18 @@ App -> Parent: Display dashboard {
 
 ### 7.1. Business Requirements Mapping
 
-| BR ID     | Main Module              | Architecture Component                           | Implementation Description                                                            |
-| --------- | ------------------------ | ------------------------------------------------ | ------------------------------------------------------------------------------------- |
-| **BR-01** | Learning, Analytics      | AI Service, KnowledgeMap                         | AI phân tích lịch sử học tập để đề xuất lộ trình cá nhân hóa                          |
-| **BR-02** | Tournament               | Tournament Module, WebSocket                     | Hệ thống đấu trường đa cấp với thi đấu thời gian thực                                 |
-| **BR-03** | Analytics, Learning      | Analytics Module, StudentAnswer                  | Báo cáo 4 cấp độ từ dữ liệu học tập và thi đấu                                        |
-| **BR-04** | Content, Admin           | Content Management, Exam, QuestionBank           | Bộ công cụ hoàn chỉnh cho giáo viên quản lý và tạo bài kiểm tra                       |
-| **BR-05** | Tournament, Learning     | Gamification Service, UserExp, Badge             | Hệ thống điểm kinh nghiệm, danh hiệu, cửa hàng đổi thưởng                             |
-| **BR-06** | Learning, Content        | Content Module, Topic, Lesson                    | Kho nội dung học tập tổ chức theo Môn -> Khối -> Chủ đề -> Bài học                    |
-| **BR-07** | Auth, Admin, All Modules | Multi-tenant Architecture, Tenant Management     | Kiến trúc hỗ trợ nhiều tenant với quản lý vòng đời và xóa cascade                     |
-| **BR-08** | Auth Module              | Session Service, Device Management               | Quản lý session đa thiết bị với khả năng đăng xuất từ xa                              |
-| **BR-09** | Real-time Module         | WebSocket Gateway, Redis Pub/Sub                 | Hỗ trợ thời gian thực cho thi đấu và thông báo                                        |
-| **BR-10** | Admin Module             | Cascade Delete Service, Tenant Lifecycle Manager | Chiến lược xóa cascade cho quản lý vòng đời tenant                                    |
+| BR ID     | Main Module              | Architecture Component                           | Implementation Description                                         |
+| --------- | ------------------------ | ------------------------------------------------ | ------------------------------------------------------------------ |
+| **BR-01** | Learning, Analytics      | AI Service, KnowledgeMap                         | AI phân tích lịch sử học tập để đề xuất lộ trình cá nhân hóa       |
+| **BR-02** | Tournament               | Tournament Module, WebSocket                     | Hệ thống đấu trường đa cấp với thi đấu thời gian thực              |
+| **BR-03** | Analytics, Learning      | Analytics Module, StudentAnswer                  | Báo cáo 4 cấp độ từ dữ liệu học tập và thi đấu                     |
+| **BR-04** | Content, Admin           | Content Management, Exam, QuestionBank           | Bộ công cụ hoàn chỉnh cho giáo viên quản lý và tạo bài kiểm tra    |
+| **BR-05** | Tournament, Learning     | Gamification Service, UserExp, Badge             | Hệ thống điểm kinh nghiệm, danh hiệu, cửa hàng đổi thưởng          |
+| **BR-06** | Learning, Content        | Content Module, Topic, Lesson                    | Kho nội dung học tập tổ chức theo Môn -> Khối -> Chủ đề -> Bài học |
+| **BR-07** | Auth, Admin, All Modules | Multi-tenant Architecture, Tenant Management     | Kiến trúc hỗ trợ nhiều tenant với quản lý vòng đời và xóa cascade  |
+| **BR-08** | Auth Module              | Session Service, Device Management               | Quản lý session đa thiết bị với khả năng đăng xuất từ xa           |
+| **BR-09** | Real-time Module         | WebSocket Gateway, Redis Pub/Sub                 | Hỗ trợ thời gian thực cho thi đấu và thông báo                     |
+| **BR-10** | Admin Module             | Cascade Delete Service, Tenant Lifecycle Manager | Chiến lược xóa cascade cho quản lý vòng đời tenant                 |
 
 ### 7.2. Functional Requirements Mapping
 
@@ -528,7 +551,8 @@ App -> Parent: Display dashboard {
 
 - **On-premise**: Triển khai trực tiếp trên hạ tầng của trường
 - **Multi-tenant**: Một instance phần mềm phục vụ nhiều trường độc lập
-- **Container-based**: Ứng dụng đóng gói trong container cho việc triển khai nhất quán
+- **Container-based**: Ứng dụng đóng gói trong container cho việc triển khai
+  nhất quán
 - **CI/CD Pipeline**: Triển khai tự động với khả năng rollback
 - **WebSocket Load Balancing**: Sticky sessions hoặc Redis adapter
 
@@ -538,15 +562,18 @@ App -> Parent: Display dashboard {
 - **Business Metrics**: Đo lường các chỉ số doanh nghiệp quan trọng
 - **Automated Backup**: Sao lưu dữ liệu tự động định kỳ
 - **Centralized Logging**: Thu thập, phân tích và trực quan hóa log
-- **Real-time Monitoring**: Giám sát kết nối WebSocket, thông lượng tin nhắn, độ trễ
-- **Tenant Health Monitoring**: Giám sát trạng thái và sử dụng tài nguyên của từng tenant
+- **Real-time Monitoring**: Giám sát kết nối WebSocket, thông lượng tin nhắn, độ
+  trễ
+- **Tenant Health Monitoring**: Giám sát trạng thái và sử dụng tài nguyên của
+  từng tenant
 
 ### 9.3. Deployment Process
 
 1. **Development**: Developer commit code vào feature branches
 2. **Testing**: Test tự động chạy unit tests, integration tests, WebSocket tests
 3. **Staging**: Deploy tự động lên môi trường staging sau khi merge
-4. **Production**: Phê duyệt thủ công → deploy lên production với chiến lược blue-green
+4. **Production**: Phê duyệt thủ công → deploy lên production với chiến lược
+   blue-green
 5. **Rollback**: Rollback tự động nếu health check thất bại sau khi deploy
 6. **WebSocket Migration**: Di chuyển kết nối graceful khi deploy phiên bản mới
 
@@ -571,7 +598,8 @@ App -> Parent: Display dashboard {
 1. **Database Backup**: Sao lưu hàng ngày tự động với point-in-time recovery
 2. **Redis Persistence**: RDB và AOF persistence cho phục hồi cache
 3. **Tenant Isolation**: Sự cố của một tenant không ảnh hưởng đến tenant khác
-4. **Graceful Degradation**: Hệ thống tiếp tục hoạt động với chức năng cơ bản khi các dịch vụ phụ gặp sự cố
+4. **Graceful Degradation**: Hệ thống tiếp tục hoạt động với chức năng cơ bản
+   khi các dịch vụ phụ gặp sự cố
 
 ---
 

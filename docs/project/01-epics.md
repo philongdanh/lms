@@ -14,17 +14,18 @@ Phân chia Epic với nhóm tính năng và phân bổ sprint.
 
 ## Overview
 
-Epics là các khối lượng công việc lớn có thể được chia nhỏ thành các tính năng và user story. Mỗi epic đại diện cho một khả năng sản phẩm quan trọng.
+Epics là các khối lượng công việc lớn có thể được chia nhỏ thành các tính năng
+và user story. Mỗi epic đại diện cho một khả năng sản phẩm quan trọng.
 
 ---
 
 ## Priority Legend
 
-| Priority      | Color     | Description          |
-| ------------- | --------- | -------------------- |
-| P0 - Critical | `#DC2626` | Bắt buộc cho MVP   |
-| P1 - High     | `#F97316` | Nên có cho MVP     |
-| P2 - Medium   | `#EAB308` | Nên có (không bắt buộc) |
+| Priority      | Color     | Description              |
+| ------------- | --------- | ------------------------ |
+| P0 - Critical | `#DC2626` | Bắt buộc cho MVP         |
+| P1 - High     | `#F97316` | Nên có cho MVP           |
+| P2 - Medium   | `#EAB308` | Nên có (không bắt buộc)  |
 | P3 - Low      | `#22C55E` | Cân nhắc trong tương lai |
 
 ---
