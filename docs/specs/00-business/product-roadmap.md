@@ -21,7 +21,7 @@ Lộ trình và các cột mốc chiến lược.
 
 ### Milestones
 
-| Cột mốc             | Ngày mục tiêu | Sản phẩm bàn giao                         |
+| Milestone           | Target Date   | Deliverable                               |
 | ------------------- | ------------- | ----------------------------------------- |
 | M1 - Nền tảng       | 22/01/2026    | Monorepo, CI/CD, Design System, GraphQL   |
 | M2 - Xác thực MVP   | 26/01/2026    | Xác thực đa thực thể, RBAC, JWT           |
@@ -31,7 +31,7 @@ Lộ trình và các cột mốc chiến lược.
 
 ### Features
 
-| Tính năng          | Phân hệ   | Ưu tiên | Nỗ lực |
+| Feature            | Module    | Priority | Effort     |
 | ------------------ | -------- | ------- | ------ |
 | Xác thực đa thực thể| Auth     | P0      | Cao    |
 | RBAC (5 vai trò)   | Auth     | P0      | Trung bình |
@@ -49,7 +49,7 @@ Lộ trình và các cột mốc chiến lược.
 
 ### Milestones
 
-| Cột mốc                | Ngày mục tiêu | Sản phẩm bàn giao                       |
+| Milestone              | Target Date   | Deliverable                             |
 | ---------------------- | ------------- | --------------------------------------- |
 | M6 - Thi đấu V2        | 10/02/2026    | Thi đấu đội, Giải đấu tùy chỉnh         |
 | M7 - Trò chơi hóa toàn diện| 15/02/2026 | Huy hiệu, Chuỗi ngày học, Chợ phần thưởng |
@@ -57,7 +57,7 @@ Lộ trình và các cột mốc chiến lược.
 
 ### Features
 
-| Tính năng            | Phân hệ       | Ưu tiên | Nỗ lực |
+| Feature              | Module        | Priority | Effort     |
 | -------------------- | ------------ | ------- | ------ |
 | Thi đấu đồng đội     | Tournament   | P0      | Cao    |
 | Hệ thống huy hiệu    | Gamification | P0      | Trung bình |
@@ -73,7 +73,7 @@ Lộ trình và các cột mốc chiến lược.
 
 ### Features
 
-| Tính năng                  | Phân hệ   | Ưu tiên | Nỗ lực |
+| Feature                    | Module    | Priority | Effort     |
 | -------------------------- | --------- | ------- | ------ |
 | Lộ trình học tập AI        | Học tập   | P0      | Rất cao|
 | Gợi ý nội dung             | Content   | P1      | Cao    |
@@ -86,7 +86,7 @@ Lộ trình và các cột mốc chiến lược.
 
 ### External Dependencies
 
-| Thành phần phụ thuộc | Chủ sở hữu | Yêu cầu bởi     |
+| Dependency           | Owner      | Required By     |
 | -------------------- | ---------- | --------------- |
 | Google OAuth         | Google     | Phase 1 Auth    |
 | OpenAI API           | OpenAI     | Phase 3 AI      |
@@ -94,7 +94,7 @@ Lộ trình và các cột mốc chiến lược.
 
 ### Internal Dependencies
 
-| Tính năng            | Phụ thuộc vào   | Ảnh hưởng nếu chậm trễ              |
+| Feature              | Depends On      | Impact if Delayed                   |
 | -------------------- | --------------- | ----------------------------------- |
 | Lộ trình học tập AI  | Phân tích V2    | Thiếu dữ liệu để huấn luyện mô hình |
 | Chợ phần thưởng      | Cổng thanh toán | Không thể đổi phần thưởng vật lý    |
@@ -104,7 +104,7 @@ Lộ trình và các cột mốc chiến lược.
 
 ## Risks
 
-| Rủi ro                   | Xác suất | Ảnh hưởng | Biện pháp giảm thiểu                                |
+| Risk                     | Probability | Impact    | Mitigation                                          |
 | ------------------------ | -------- | --------- | --------------------------------------------------- |
 | Mô hình AI chất lượng thấp| Trung bình| Cao       | Thử nghiệm quy mô nhỏ trước khi triển khai diện rộng|
 | Khả năng mở rộng thực tế | Trung bình| Cao       | Kiểm tra tải sớm, cơ chế dự phòng khi quá tải       |
@@ -115,7 +115,7 @@ Lộ trình và các cột mốc chiến lược.
 
 ## Release Plan
 
-| Phiên bản | Version | Ngày       | Tính năng chính     | Ghi chú              |
+| Release   | Version | Date       | Main Features       | Notes                |
 | --------- | ------- | ---------- | ------------------- | -------------------- |
 | Alpha     | 0.1.0   | 20/01/2026 | Nền tảng            | Thử nghiệm nội bộ    |
 | Beta      | 0.5.0   | 05/02/2026 | Hoàn thiện MVP      | Giới hạn một số trường|

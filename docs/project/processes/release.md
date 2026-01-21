@@ -15,9 +15,9 @@ Quy trình release và deployment.
 
 | Type  | Frequency          | Scope                          |
 | ----- | ------------------ | ------------------------------ |
-| Major | Quarterly          | New features, breaking changes |
-| Minor | Bi-weekly (Sprint) | New features, enhancements     |
-| Patch | As needed          | Bug fixes, hotfixes            |
+| Major | Hàng quý           | Tính năng mới, breaking changes |
+| Minor | 2 tuần/lần (Sprint)| Tính năng mới, cải tiến        |
+| Patch | Khi cần thiết      | Sửa lỗi, hotfixes              |
 
 ---
 
@@ -39,11 +39,11 @@ v1.2.3
 
 ### 1. Pre-Release (T-2 days)
 
-- [ ] Code freeze cho sprint features
-- [ ] All PRs merged to `develop`
-- [ ] QA sign-off on staging
-- [ ] Release notes drafted
-- [ ] Version bumped
+- [ ] Code freeze cho các tính năng trong sprint
+- [ ] Tất cả PR đã được merge vào `develop`
+- [ ] QA xác nhận (sign-off) trên staging
+- [ ] Dự thảo Release notes
+- [ ] Nâng version (bump version)
 
 ```bash
 
@@ -60,17 +60,17 @@ git checkout -b release/v1.2.0
 
 ### 2. Release Candidate (T-1 day)
 
-- [ ] Deploy to staging
-- [ ] Full regression test
-- [ ] Performance test
-- [ ] Security scan
-- [ ] Stakeholder demo
+- [ ] Deploy lên staging
+- [ ] Test hồi quy toàn diện (full regression test)
+- [ ] Test hiệu năng (performance test)
+- [ ] Quét bảo mật (security scan)
+- [ ] Demo cho stakeholder
 
 ### 3. Production Release (T-0)
 
-- [ ] Final approval from PO
-- [ ] Merge to `main`
-- [ ] Tag release
+- [ ] Phê duyệt cuối cùng từ PO
+- [ ] Merge vào `main`
+- [ ] Tạo tag release
 
 ```bash
 git checkout main
@@ -79,16 +79,16 @@ git tag v1.2.0
 git push origin main --tags
 ```
 
-- [ ] Deploy to production
-- [ ] Smoke test production
-- [ ] Monitor for issues
+- [ ] Deploy lên production
+- [ ] Chạy smoke test trên production
+- [ ] Giám sát (monitor) các vấn đề phát sinh
 
 ### 4. Post-Release
 
-- [ ] Announce release
-- [ ] Update documentation
-- [ ] Close sprint/milestone
-- [ ] Merge `main` back to `develop`
+- [ ] Thông báo release
+- [ ] Cập nhật tài liệu
+- [ ] Đóng sprint/milestone
+- [ ] Merge ngược từ `main` về `develop`
 
 ---
 
@@ -183,33 +183,33 @@ kubectl rollout undo deployment/lms-backend
 
 ## Release v1.x.x Checklist
 
-### Pre-Release
+### Pre-Release (Trước khi Release)
 
-- [ ] All stories Done
+- [ ] Tất cả story đã Done
 - [ ] Code freeze
-- [ ] Version bumped
-- [ ] CHANGELOG updated
-- [ ] Release notes written
+- [ ] Đã nâng version
+- [ ] Cập nhật CHANGELOG
+- [ ] Đã viết Release notes
 
-### QA
+### QA (Đảm bảo chất lượng)
 
-- [ ] Staging deployed
-- [ ] Regression tests pass
-- [ ] Performance OK
-- [ ] Security scan OK
+- [ ] Đã deploy lên staging
+- [ ] Vượt qua các bài test hồi quy (regression tests)
+- [ ] Hiệu năng (performance) ổn định
+- [ ] Vượt qua quét bảo mật (security scan)
 
-### Release
+### Release (Triển khai)
 
-- [ ] PO approval
-- [ ] Merge to main
-- [ ] Tag created
-- [ ] Production deployed
-- [ ] Smoke test OK
+- [ ] PO phê duyệt
+- [ ] Merge vào main
+- [ ] Đã tạo tag
+- [ ] Đã deploy lên production
+- [ ] Vượt qua smoke test
 
-### Post-Release
+### Post-Release (Sau khi Release)
 
-- [ ] Monitoring OK
-- [ ] No critical issues
-- [ ] Team notified
-- [ ] Documentation updated
+- [ ] Giám sát (monitoring) ổn định
+- [ ] Không có lỗi nghiêm trọng (critical issues)
+- [ ] Đã thông báo cho team
+- [ ] Tài liệu đã được cập nhật
 ```

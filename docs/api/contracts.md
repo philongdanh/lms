@@ -88,7 +88,7 @@ contracts/
 
 ## Guidelines
 
-| Nguyên tắc             | Mô tả                         |
+| Principle              | Description                   |
 | ---------------------- | ----------------------------- |
 | Giữ contract tối giản  | Chì bao gồm các field cần thiết |
 | Sử dụng provider state | Thiết lập dữ liệu kiểm thử    |
@@ -99,7 +99,7 @@ contracts/
 
 ## Tools
 
-| Công cụ      | Mục đích                      |
+| Tool         | Purpose                       |
 | ------------ | ----------------------------- |
 | Pact         | Framework kiểm thử contract   |
 | Pact Broker  | Lưu trữ contract              |

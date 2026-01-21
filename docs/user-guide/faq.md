@@ -13,13 +13,13 @@ Tổng hợp các câu hỏi thường gặp và giải đáp về LMS Platform.
 
 ## General
 
-### What is LMS Platform?
+### LMS Platform là gì?
 
 LMS Platform là hệ thống quản lý học tập thông minh, kết hợp **AI Learning
 Paths** và **Gamification** để cá nhân hóa trải nghiệm học tập cho học sinh từ
 lớp 1-12.
 
-### Who is LMS for?
+### Ai là người sử dụng LMS?
 
 | Audience       | Description                                    |
 | -------------- | ---------------------------------------------- |
@@ -28,7 +28,7 @@ lớp 1-12.
 | **Giáo viên**  | Quản lý lớp học, tạo đề thi, giám sát học sinh |
 | **Trường học** | Quản trị hệ thống, tổ chức tournament          |
 
-### What is the pricing?
+### Chi phí sử dụng là bao nhiêu?
 
 LMS được cung cấp thông qua trường học. Vui lòng liên hệ quản trị viên trường để
 biết chi tiết.
@@ -37,19 +37,19 @@ biết chi tiết.
 
 ## Account
 
-### How to create an account?
+### Làm thế nào để tạo account?
 
 1. Liên hệ quản trị viên trường học để được cấp tài khoản
 2. Hoặc đăng ký tại trang chủ LMS (nếu được cho phép)
 3. Xác nhận email và đăng nhập lần đầu
 
-### How to reset password?
+### Làm thế nào để reset password?
 
 1. Nhấn **Quên mật khẩu** tại trang đăng nhập
 2. Nhập email đã đăng ký
 3. Kiểm tra email và làm theo hướng dẫn
 
-### How to delete account?
+### Làm thế nào để xóa account?
 
 Liên hệ quản trị viên trường học hoặc gửi yêu cầu qua email hỗ trợ.
 
@@ -57,20 +57,20 @@ Liên hệ quản trị viên trường học hoặc gửi yêu cầu qua email 
 
 ## Features
 
-### How to join Tournament?
+### Làm thế nào để tham gia Tournament?
 
 1. Vào menu **Tournament** trong thanh điều hướng
 2. Chọn cuộc thi có trạng thái **Đang mở đăng ký**
 3. Nhấn **Tham gia** và chờ đến giờ thi
 4. Hoàn thành bài thi trong thời gian quy định
 
-### How to view Learning Path?
+### Làm thế nào để xem Learning Path?
 
 1. Đăng nhập vào hệ thống
 2. Vào **Dashboard** hoặc **Lộ trình học tập**
 3. Hệ thống AI sẽ gợi ý lộ trình phù hợp với năng lực của bạn
 
-### How does the gamification system work?
+### Hệ thống gamification hoạt động như thế nào?
 
 - **Điểm kinh nghiệm (XP)**: Nhận được khi hoàn thành bài học, bài tập
 - **Huy hiệu (Badge)**: Đạt được khi hoàn thành mục tiêu đặc biệt
@@ -81,7 +81,7 @@ Liên hệ quản trị viên trường học hoặc gửi yêu cầu qua email 
 
 ## Troubleshooting
 
-### Why can't I login?
+### Tại sao tôi không thể login?
 
 **Possible causes**:
 
@@ -95,7 +95,7 @@ Liên hệ quản trị viên trường học hoặc gửi yêu cầu qua email 
 2. Thử đặt lại mật khẩu
 3. Liên hệ quản trị viên nếu vẫn không được
 
-### Why can't I submit the test?
+### Tại sao tôi không thể submit bài test?
 
 **Possible causes**:
 
@@ -109,7 +109,7 @@ Liên hệ quản trị viên trường học hoặc gửi yêu cầu qua email 
 2. Refresh trang và thử lại
 3. Báo lỗi cho quản trị viên để được xem xét
 
-### How to report a bug?
+### Làm thế nào để report bug?
 
 1. Truy cập [GitHub Issues](https://github.com/idlongggg/lms/issues)
 2. Nhấn **New Issue**
@@ -119,7 +119,7 @@ Liên hệ quản trị viên trường học hoặc gửi yêu cầu qua email 
 
 ## Technical
 
-### Which browsers are supported?
+### Những trình duyệt nào được hỗ trợ?
 
 | Browser | Minimum Version |
 | ------- | --------------- |
@@ -128,7 +128,7 @@ Liên hệ quản trị viên trường học hoặc gửi yêu cầu qua email 
 | Safari  | 14+             |
 | Edge    | 90+             |
 
-### What are the system requirements?
+### Yêu cầu hệ thống là gì?
 
 | Requirement      | Specification      |
 | ---------------- | ------------------ |

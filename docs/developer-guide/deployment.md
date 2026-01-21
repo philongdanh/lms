@@ -15,17 +15,17 @@ phép horizontal scaling và zero-downtime deployment.
 
 ## Infrastructure Architecture
 
-### Key Components
+### Các thành phần chính
 
-| Component         | Technology        | Description                                       |
+| Component         | Tech              | Description                                       |
 | ----------------- | ----------------- | ------------------------------------------------- |
 | **Application**   | NestJS (Node 18+) | Stateless container, có thể scale horizontally    |
-| **Database**      | PostgreSQL 14+    | Primary data store với multi-tenant support       |
-| **Cache**         | Redis 6+          | Session storage, token blacklisting, Pub/Sub      |
-| **Load Balancer** | Nginx             | Reverse proxy, SSL termination, WebSocket support |
+| **Database**      | PostgreSQL 14+    | Lưu trữ dữ liệu chính với hỗ trợ đa thực thể (multi-tenant) |
+| **Cache**         | Redis 6+          | Lưu trữ session, blacklisting token, Pub/Sub      |
+| **Load Balancer** | Nginx             | Reverse proxy, SSL termination, hỗ trợ WebSocket  |
 | **File Storage**  | Local/S3          | Lưu trữ tệp tin (video, hình ảnh, tài liệu)       |
 
-### Infrastructure Diagram
+### Sơ đồ hạ tầng
 
 ```d2
 
@@ -71,16 +71,16 @@ App.AppN -> Data.Redis
 
 ## Docker Compose Deployment
 
-### System Requirements
+### Yêu cầu hệ thống
 
-| Requirement | Minimum Version | Notes |
+| Requirement | Min Version     | Notes |
 |-------------|-----------------|-------|
 | Docker Engine | 20.10+ | Hỗ trợ multi-stage builds |
 | Docker Compose | v2.0+ | Compose v2 syntax |
 | RAM | 4GB+ | Tối thiểu cho development |
 | Storage | 20GB+ | Database + Files |
 
-### Docker Compose Configuration
+### Cấu hình Docker Compose
 
 File `docker-compose.yml` định nghĩa các services:
 
@@ -90,7 +90,7 @@ File `docker-compose.yml` định nghĩa các services:
 | **postgres** | `postgres:14-alpine` | 5432 | Data directory (persistent) |
 | **redis** | `redis:6-alpine` | 6379 | AOF persistence enabled |
 
-### Nginx WebSocket Configuration
+### Cấu hình Nginx WebSocket
 
 Nginx cần được cấu hình để hỗ trợ WebSocket connections cho real-time features (thi đấu, thông báo):
 
@@ -155,7 +155,7 @@ server {
 
 ## Deployment Process
 
-### Zero-Downtime Deployment
+### Triển khai không gián đoạn (Zero-Downtime)
 
 Để đạt được zero-downtime deployment, thực hiện theo các bước sau:
 
@@ -190,7 +190,7 @@ docker-compose up -d --no-deps --scale app=1 app
 
 ````
 
-### Blue-Green Deployment (Production)
+### Triển khai Blue-Green (Production)
 
 Cho môi trường production với yêu cầu cao về availability:
 
@@ -238,7 +238,7 @@ style.opacity: 0.5
 
 ## Backup & Recovery
 
-### Database Backup
+### Sao lưu Database (Backup)
 
 **Automated Daily Backup**:
 
@@ -266,7 +266,7 @@ find ${BACKUP_DIR} -name "lms_db_*.sql.gz" -mtime +30 -delete
 docker-compose exec postgres pg_dump -U postgres lms_db > backup_$(date +%F).sql
 ```
 
-### Database Restore
+### Phục hồi Database (Restore)
 
 ```bash
 
@@ -286,7 +286,7 @@ cat backup_file.sql | docker-compose exec -T postgres psql -U postgres lms_db
 docker-compose start app
 ```
 
-### Redis Persistence
+### Tính bền vững của Redis (Persistence)
 
 Redis được cấu hình với AOF persistence để đảm bảo data durability:
 
@@ -297,18 +297,18 @@ Redis được cấu hình với AOF persistence để đảm bảo data durabil
 
 ## Monitoring & Logging
 
-### Health Checks
+### Kiểm tra sức khỏe hệ thống (Health Checks)
 
 Hệ thống expose các health check endpoints:
 
-| Endpoint        | Purpose               | Expected Response     |
+| Endpoint        | Purpose               | Response              |
 | --------------- | --------------------- | --------------------- |
 | `/health`       | Liveness check        | `200 OK`              |
 | `/health/ready` | Readiness check       | `200 OK` with details |
 | `/health/db`    | Database connectivity | `200 OK`              |
 | `/health/redis` | Redis connectivity    | `200 OK`              |
 
-### Centralized Logging
+### Quản lý Log tập trung (Centralized Logging)
 
 Application logs được structured và gửi đến centralized logging stack:
 
@@ -320,7 +320,7 @@ Application logs được structured và gửi đến centralized logging stack:
 
 ## Scaling Strategy
 
-### Horizontal Scaling
+### Mở rộng quy mô theo chiều ngang (Horizontal Scaling)
 
 | Tier            | Strategy        | Trigger                     |
 | --------------- | --------------- | --------------------------- |
@@ -328,7 +328,7 @@ Application logs được structured và gửi đến centralized logging stack:
 | **Redis**       | Cluster mode    | > 10k connections           |
 | **Database**    | Read replicas   | Query latency > 100ms       |
 
-### Vertical Scaling
+### Mở rộng quy quy mô theo chiều dọc (Vertical Scaling)
 
 | Component     | Min Spec           | Recommended    | High Load      |
 | ------------- | ------------------ | -------------- | -------------- |

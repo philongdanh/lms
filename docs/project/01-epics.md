@@ -56,11 +56,6 @@ MVP tập trung vào 3 module chính:
 ## E01: Foundation & Infrastructure
 
 | Attribute    | Value                 |
-| ------------ | --------------------- |
-| Priority     | `#DC2626` P0 Critical |
-| Sprints      | Sprint 1              |
-| Total Points | 30                    |
-| Owner        | [Assign]              |
 
 ### Features
 

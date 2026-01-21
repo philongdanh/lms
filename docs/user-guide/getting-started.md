@@ -31,19 +31,19 @@ Trước khi sử dụng, hãy đảm bảo bạn có:
 
 ## Quick Start
 
-### Step 1: Login
+### Bước 1: Login
 
 1. Truy cập địa chỉ LMS của trường bạn
 2. Nhập email và mật khẩu được cấp
 3. Nhấn **Đăng nhập**
 
-### Step 2: Complete Profile
+### Bước 2: Hoàn tất Profile
 
 1. Cập nhật thông tin cá nhân (họ tên, lớp, trường)
 2. Chọn các môn học quan tâm
 3. Đặt mục tiêu học tập
 
-### Step 3: Start Learning
+### Bước 3: Bắt đầu học tập
 
 1. Xem lộ trình học tập được AI gợi ý
 2. Chọn bài học hoặc bài tập
@@ -64,13 +64,13 @@ Trước khi sử dụng, hãy đảm bảo bạn có:
 
 ## Common Tasks
 
-### Join Tournament
+### Tham gia Tournament
 
 1. Vào menu **Tournament**
 2. Chọn cuộc thi đang mở đăng ký
 3. Nhấn **Tham gia** và hoàn thành bài thi
 
-### View Learning Report
+### Xem báo cáo học tập
 
 1. Vào menu **Báo cáo**
 2. Chọn khoảng thời gian cần xem

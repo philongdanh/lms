@@ -30,7 +30,7 @@ https://api.example.com/api/{version}/{module}/{resource}/{id}
 
 ### HTTP Methods
 
-| Method | Mục đích          | Idempotent | Safe |
+| Method | Purpose          | Idempotent | Safe |
 | ------ | ----------------- | ---------- | ---- |
 | GET    | Lấy resource      | ✅         | ✅   |
 | POST   | Tạo resource      | ❌         | ❌   |

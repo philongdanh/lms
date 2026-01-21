@@ -9,7 +9,7 @@ sidebar_position: 4
 
 Thuật ngữ và định nghĩa chuyên ngành.
 
-| Thuật ngữ             | Định nghĩa                                                                       |
+| Term                  | Definition                                                                       |
 | --------------------- | -------------------------------------------------------------------------------- |
 | **Tenant**            | Đơn vị thuê bao độc lập như trường học hoặc trung tâm giáo dục với dữ liệu được cách ly |
 | **LMS**               | Hệ thống quản lý học tập                                                         |

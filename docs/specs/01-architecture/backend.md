@@ -13,7 +13,7 @@ Thiết kế API, cấu trúc database và tham chiếu công cụ.
 
 ## External References
 
-| Tool               | Purpose           | Link                       |
+| Tool                | Purpose           | Link                       |
 | ------------------ | ----------------- | -------------------------- |
 | OpenAPI            | API Specification |                            |
 | Postman            | API Testing       |                            |
@@ -24,16 +24,16 @@ Thiết kế API, cấu trúc database và tham chiếu công cụ.
 
 ## Tech Stack
 
-| Layer         | Technology              | Version |
-| ------------- | ----------------------- | ------- |
-| Runtime       | Node.js                 | 20.x    |
-| Framework     | NestJS                  | latest  |
-| API           | GraphQL (Apollo Server) | 4.x     |
-| Database      | PostgreSQL              | 15.x    |
-| Cache         | Redis                   | latest  |
-| Message Queue | RabbitMQ                | latest  |
-| Search        | Elasticsearch           | latest  |
-| ORM           | Prisma                  | latest  |
+| Layer         | Tech                    | Version   |
+| ------------- | ----------------------- | --------- |
+| Runtime       | Node.js                 | 20.x      |
+| Framework     | NestJS                  | latest    |
+| API           | GraphQL (Apollo Server) | 4.x       |
+| Database      | PostgreSQL              | 15.x      |
+| Cache         | Redis                   | latest    |
+| Message Queue | RabbitMQ                | latest    |
+| Search        | Elasticsearch           | latest    |
+| ORM           | Prisma                  | latest    |
 
 ---
 
@@ -41,22 +41,22 @@ Thiết kế API, cấu trúc database và tham chiếu công cụ.
 
 ### API Style
 
-| Aspect     | Choice                   |
+| Aspect    | Choice                   |
 | ---------- | ------------------------ |
-| Primary    | GraphQL                  |
-| Secondary  | REST (webhooks, uploads) |
-| Format     | JSON                     |
+| Chính      | GraphQL                  |
+| Phụ        | REST (webhooks, uploads) |
+| Định dạng  | JSON                     |
 | Versioning | Schema versioning        |
 | Auth       | Bearer token (JWT)       |
 
 ### Endpoint Summary
 
-| Endpoint          | Method | Description       | Auth     |
-| ----------------- | ------ | ----------------- | -------- |
-| `/graphql`        | POST   | GraphQL API       | Optional |
-| `/api/upload`     | POST   | File upload       | Required |
-| `/api/webhooks/*` | POST   | External webhooks | API Key  |
-| `/health`         | GET    | Health check      | No       |
+| Endpoint          | Method      | Description       | Auth      |
+| ----------------- | ----------- | ----------------- | -------- |
+| `/graphql`        | POST        | GraphQL API       | Optional |
+| `/api/upload`     | POST        | File upload       | Required |
+| `/api/webhooks/*` | POST        | External webhooks | API Key  |
+| `/health`         | GET         | Health check      | No       |
 
 ---
 
@@ -64,13 +64,13 @@ Thiết kế API, cấu trúc database và tham chiếu công cụ.
 
 ### Naming
 
-| Element  | Convention                | Example                          |
-| -------- | ------------------------- | -------------------------------- |
-| Query    | camelCase                 | `learningPath`, `tournaments`    |
-| Mutation | camelCase, verb prefix    | `createUser`, `updateLesson`     |
-| Type     | PascalCase                | `User`, `LearningPath`           |
-| Input    | PascalCase + Input suffix | `CreateUserInput`                |
-| Enum     | UPPER_SNAKE_CASE          | `USER_ROLE`, `TOURNAMENT_STATUS` |
+| Component  | Rule                      | Example                          |
+| ---------- | ------------------------- | -------------------------------- |
+| Query      | camelCase                 | `learningPath`, `tournaments`    |
+| Mutation   | camelCase, verb prefix    | `createUser`, `updateLesson`     |
+| Type       | PascalCase                | `User`, `LearningPath`           |
+| Input      | PascalCase + Input suffix | `CreateUserInput`                |
+| Enum       | UPPER_SNAKE_CASE          | `USER_ROLE`, `TOURNAMENT_STATUS` |
 
 ### Query Pattern
 
@@ -164,16 +164,16 @@ enum ErrorCode {
 
 ### Database Info
 
-| Aspect     | Value               |
-| ---------- | ------------------- |
-| DBMS       | PostgreSQL 15       |
-| Charset    | UTF-8               |
-| Collation  | en_US.UTF-8         |
-| Extensions | uuid-ossp, pgcrypto |
+| Aspect    | Value               |
+| --------- | ------------------- |
+| DBMS      | PostgreSQL 15       |
+| Charset   | UTF-8               |
+| Collation | en_US.UTF-8         |
+| Tiện ích  | uuid-ossp, pgcrypto |
 
 ### Naming Conventions
 
-| Element     | Convention              | Example                   |
+| Component   | Rule                    | Example                   |
 | ----------- | ----------------------- | ------------------------- |
 | Table       | snake_case, plural      | `users`, `learning_paths` |
 | Column      | snake_case              | `created_at`, `user_id`   |
@@ -186,23 +186,23 @@ enum ErrorCode {
 
 All tables include:
 
-| Column       | Type        | Description            |
-| ------------ | ----------- | ---------------------- |
-| `id`         | UUID        | Primary key            |
-| `created_at` | TIMESTAMPTZ | Creation time          |
-| `updated_at` | TIMESTAMPTZ | Last update time       |
-| `deleted_at` | TIMESTAMPTZ | Soft delete (optional) |
+| Column       | Data Type    | Description           |
+| ------------ | ------------ | --------------------- |
+| `id`         | UUID         | Primary key           |
+| `created_at` | TIMESTAMPTZ  | Thời gian tạo         |
+| `updated_at` | TIMESTAMPTZ  | Lần cập nhật cuối     |
+| `deleted_at` | TIMESTAMPTZ  | Xóa mềm (không bắt buộc) |
 
 ### Core Tables
 
-| Table         | Description              | Key Columns                     |
+| Table         | Description              | Main Columns                    |
 | ------------- | ------------------------ | ------------------------------- |
-| `users`       | User accounts            | id, email, role, tenant_id      |
-| `subjects`    | Subjects                 | id, name, slug, icon            |
-| `topics`      | Topics within subjects   | id, subject_id, grade_id, name  |
-| `lessons`     | Lessons within topics    | id, topic_id, title, content    |
-| `exercises`   | Exercises within lessons | id, lesson_id, type, difficulty |
-| `tournaments` | Tournament definitions   | id, name, status, start_time    |
+| `users`       | Tài khoản người dùng     | id, email, role, tenant_id      |
+| `subjects`    | Môn học                  | id, name, slug, icon            |
+| `topics`      | Chủ đề trong môn học     | id, subject_id, grade_id, name  |
+| `lessons`     | Bài học trong chủ đề     | id, topic_id, title, content    |
+| `exercises`   | Bài tập trong bài học    | id, lesson_id, type, difficulty |
+| `tournaments` | Định nghĩa giải đấu      | id, name, status, start_time    |
 
 ### Entity Relationship
 

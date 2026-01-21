@@ -14,7 +14,7 @@ development hoàn chỉnh với tất cả dependencies cần thiết.
 
 ## System Requirements
 
-### Required Software
+### Phần mềm yêu cầu
 
 | Software           | Version | Purpose                              | Download                                               |
 | ------------------ | ------- | ------------------------------------ | ------------------------------------------------------ |
@@ -24,7 +24,7 @@ development hoàn chỉnh với tất cả dependencies cần thiết.
 | **Git**            | 2.30+   | Quản lý phiên bản                    | [git-scm.com](https://git-scm.com)                     |
 | **VS Code**        | Latest  | IDE (Khuyên dùng)                    | [code.visualstudio.com](https://code.visualstudio.com) |
 
-### Recommended Extensions
+### Các Extension khuyên dùng
 
 | Extension      | Purpose                    |
 | -------------- | -------------------------- |
@@ -38,7 +38,7 @@ development hoàn chỉnh với tất cả dependencies cần thiết.
 
 ## Environment Setup
 
-### Clone Repository
+### Clone mã nguồn (Repository)
 
 ```bash
 
@@ -54,7 +54,7 @@ cd lms-project
 git checkout develop
 ```
 
-### Configure Environment Variables
+### Cấu hình biến môi trường
 
 Copy file `.env.example` thành `.env` và cập nhật các giá trị:
 
@@ -62,7 +62,7 @@ Copy file `.env.example` thành `.env` và cập nhật các giá trị:
 cp .env.example .env
 ```
 
-**Variables to configure**:
+**Các biến môi trường cần cấu hình**:
 
 | Variable               | Description            | Development Value                                       |
 | ---------------------- | ---------------------- | ------------------------------------------------------- |
@@ -73,7 +73,7 @@ cp .env.example .env
 | `REFRESH_TOKEN_EXPIRY` | Thời hạn Refresh token | `7d`                                                    |
 | `MAX_DEVICES_PER_USER` | Giới hạn thiết bị      | `3`                                                     |
 
-### Start Infrastructure
+### Khởi động hạ tầng (Infrastructure)
 
 Khởi động PostgreSQL và Redis bằng Docker Compose:
 
@@ -90,7 +90,7 @@ docker-compose up -d postgres redis
 docker-compose ps
 ```
 
-**Expected output**:
+**Kết quả mong đợi**:
 
 ```
 NAME                SERVICE    STATUS    PORTS
@@ -98,7 +98,7 @@ lms-postgres        postgres   running   0.0.0.0:5432->5432/tcp
 lms-redis           redis      running   0.0.0.0:6379->6379/tcp
 ```
 
-### Install Dependencies
+### Cài đặt Dependencies
 
 ```bash
 
@@ -113,7 +113,7 @@ npm install
 npx prisma generate
 ```
 
-### Initialize Database
+### Khởi tạo Database
 
 Chạy migrations và seed data:
 
@@ -130,7 +130,7 @@ npx prisma migrate dev
 npx prisma db seed
 ```
 
-**Seed Data includes**:
+**Dữ liệu mẫu (Seed Data) bao gồm**:
 
 - 5 Roles: `root-admin`, `tenant-admin`, `teacher`, `parent`, `student`
 - Permission groups: `user:*`, `content:*`, `exam:*`, `tournament:*`, etc.
@@ -142,7 +142,7 @@ npx prisma db seed
 
 ## Running the Application
 
-### Development Mode
+### Chế độ Development
 
 ```bash
 
@@ -152,7 +152,7 @@ npx prisma db seed
 npm run start:dev
 ```
 
-**Endpoints**:
+**Các Endpoint**:
 
 | URL                              | Description               |
 | -------------------------------- | ------------------------- |
@@ -160,7 +160,7 @@ npm run start:dev
 | `http://localhost:3000/api/docs` | Swagger API Documentation |
 | `http://localhost:3000/health`   | Health Check              |
 
-### Frontend Development Mode
+### Chế độ Frontend Development
 
 ```bash
 
@@ -174,7 +174,7 @@ npm run dev
 
 **URL**: `http://localhost:3001`
 
-### Verify Installation
+### Xác minh cài đặt
 
 Kiểm tra hệ thống hoạt động bằng cách gọi health check:
 
@@ -182,7 +182,7 @@ Kiểm tra hệ thống hoạt động bằng cách gọi health check:
 curl http://localhost:3000/health
 ```
 
-**Expected response**:
+**Kết quả phản hồi mong đợi**:
 
 ```json
 {
@@ -196,7 +196,7 @@ curl http://localhost:3000/health
 
 ## Troubleshooting
 
-### Database Connection Issues
+### Các vấn đề kết nối Database
 
 **Triệu chứng**: `Can't reach database server`
 
@@ -220,7 +220,7 @@ docker-compose restart postgres
 docker-compose logs postgres
 ```
 
-### Prisma Client Out of Sync
+### Prisma Client không đồng bộ
 
 **Triệu chứng**: `Unknown field` hoặc `Property does not exist`
 
@@ -239,7 +239,7 @@ npx prisma generate
 npm run start:dev
 ```
 
-### Port Already in Use
+### Cổng (Port) đã bị sử dụng
 
 **Triệu chứng**: `EADDRINUSE: address already in use`
 
@@ -258,7 +258,7 @@ lsof -i :3000
 kill -9 <PID>
 ```
 
-### Redis Connection Failed
+### Kết nối Redis thất bại
 
 **Triệu chứng**: `ECONNREFUSED 127.0.0.1:6379`
 

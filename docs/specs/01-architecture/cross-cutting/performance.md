@@ -23,7 +23,7 @@ Tiêu chuẩn hiệu năng và chiến lược tối ưu hóa.
 
 ### Throughput
 
-| Metric               | Target | Ghi chú        |
+| Metric               | Target | Notes          |
 | -------------------- | ------ | -------------- |
 | Requests/second      | 1000   | Normal load    |
 | Peak Requests/second | 5000   | Peak load      |
@@ -80,7 +80,7 @@ Tiêu chuẩn hiệu năng và chiến lược tối ưu hóa.
 
 ### Connection Pooling
 
-| Setting         | Value   | Ghi chú             |
+| Setting         | Value   | Notes               |
 | --------------- | ------- | ------------------- |
 | Min connections | 5       | Baseline            |
 | Max connections | 20      | Per instance        |

@@ -19,9 +19,9 @@ Yêu cầu nghiệp vụ và kỹ thuật.
 FR-{MODULE}-{NUMBER}
 ```
 
-### Learning Module
+### Phân hệ Học tập
 
-| ID       | Yêu cầu                                  | Ưu tiên |
+| ID       | Requirement                              | Priority |
 | -------- | ---------------------------------------- | ------- |
 | FR-HS-01 | Hiển thị lộ trình học tập AI             | P0      |
 | FR-HS-02 | Duyệt nội dung: Môn → Khối lớp → Chủ đề → Bài học | P0      |
@@ -29,9 +29,9 @@ FR-{MODULE}-{NUMBER}
 | FR-HS-04 | Video bài giảng và bài tập tương tác     | P0      |
 | FR-HS-05 | Nhật ký học tập                          | P1      |
 
-### Tournament Module
+### Phân hệ Tournament
 
-| ID         | Yêu cầu                     | Ưu tiên |
+| ID         | Requirement                 | Priority |
 | ---------- | --------------------------- | ------- |
 | FR-COMP-01 | Đăng ký tham gia giải đấu   | P0      |
 | FR-COMP-02 | Nút Xem lại và Tham gia     | P0      |
@@ -41,9 +41,9 @@ FR-{MODULE}-{NUMBER}
 | FR-COMP-06 | Thách đấu trực tiếp         | P2      |
 | FR-COMP-07 | Bảng xếp hạng thời gian thực| P0      |
 
-### Auth Module
+### Phân hệ Auth
 
-| ID         | Yêu cầu                     | Ưu tiên |
+| ID         | Requirement                 | Priority |
 | ---------- | --------------------------- | ------- |
 | FR-AUTH-01 | Đăng ký với các vai trò     | P0      |
 | FR-AUTH-02 | Liên kết phụ huynh và học sinh| P1      |
@@ -62,9 +62,9 @@ FR-{MODULE}-{NUMBER}
 NFR-{CATEGORY}-{NUMBER}
 ```
 
-### Performance
+### Hiệu năng
 
-| ID          | Yêu cầu                   | Chỉ số                  |
+| ID          | Requirement               | Metric                  |
 | ----------- | ------------------------- | ----------------------- |
 | NFR-PERF-01 | Khả năng người dùng đồng thời| 10,000 người dùng       |
 | NFR-PERF-02 | Độ trễ thi đấu            | < 100ms                 |
@@ -73,9 +73,9 @@ NFR-{CATEGORY}-{NUMBER}
 | NFR-PERF-05 | Kết nối WebSocket         | < 500ms                 |
 | NFR-PERF-06 | Sự kiện thời gian thực    | < 50ms                  |
 
-### Security
+### Bảo mật
 
-| ID         | Yêu cầu                 | Chỉ số                     |
+| ID         | Requirement             | Metric                     |
 | ---------- | ----------------------- | -------------------------- |
 | NFR-SEC-01 | Thực thi RBAC           | 5 vai trò mặc định         |
 | NFR-SEC-02 | Mã hóa dữ liệu          | TLS 1.3                    |
@@ -83,9 +83,9 @@ NFR-{CATEGORY}-{NUMBER}
 | NFR-SEC-04 | Xác thực 2 lớp cho quản trị viên| Hỗ trợ TOTP         |
 | NFR-SEC-05 | Quản lý đa thiết bị     | Đăng xuất từ xa            |
 
-### Reliability
+### Độ tin cậy
 
-| ID         | Yêu cầu           | Chỉ số                            |
+| ID         | Requirement       | Metric                            |
 | ---------- | ----------------- | --------------------------------- |
 | NFR-REL-01 | Độ khả dụng       | 99.9% thời gian hoạt động         |
 | NFR-REL-02 | Sao lưu dữ liệu   | Hàng ngày với khả năng khôi phục tại một thời điểm |
@@ -95,7 +95,7 @@ NFR-{CATEGORY}-{NUMBER}
 
 ## Traceability Matrix
 
-| Yêu cầu     | Use Case     | Phân hệ     | Test Case    |
+| Requirement | Use Case     | Module      | Test Case    |
 | ----------- | ------------ | ----------- | ------------ |
 | FR-AUTH-01  | UC-AUTH-001  | Auth        | TC-AUTH-001  |
 | FR-AUTH-03  | UC-AUTH-002  | Auth        | TC-AUTH-002  |

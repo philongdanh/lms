@@ -50,7 +50,7 @@ theo mức độ ưu tiên và sprint.
 
 ## Backlog Summary
 
-| Priority        | Số lượng | Điểm | % Tổng số |
+| Priority        | Count    | Points | % Total   |
 | --------------- | -------- | ---- | --------- |
 | `#DC2626` P0    | 24       | 120  | 48%       |
 | `#F97316` P1    | 18       | 85   | 34%       |
