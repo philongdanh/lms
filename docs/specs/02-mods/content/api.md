@@ -1,6 +1,6 @@
 ---
-id: content-api
-title: Content - API Endpoints
+id: api
+title: API Endpoints
 sidebar_label: API
 sidebar_position: 1
 ---

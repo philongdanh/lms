@@ -361,7 +361,7 @@ O -> H
 - [Business Overview](/specs)
 - [System Design](../design.md)
 - [Data Model](../data.md)
-- [Auth Module](@site/docs/specs/02-mods/auth/logic.md)
+- [Auth Module](../../02-mods/auth/logic.md)
 
 ---
 
@@ -461,5 +461,6 @@ Check_Blacklist -> Pass_User_Ctx: OK
 ### Tài liệu tham khảo
 
 - [RFC 7519](https://tools.ietf.org/html/rfc7519)
-- [Auth Logic](@site/docs/specs/02-mods/auth/logic.md)
-- [Auth Data](@site/docs/specs/02-mods/auth/data.md)
+- [Auth Logic](../../02-mods/auth/logic.md)
+- [Auth Data](../../02-mods/auth/data.md)
+```

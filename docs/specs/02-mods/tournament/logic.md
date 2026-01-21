@@ -1,6 +1,6 @@
 ---
-id: tournament-logic
-title: Tournament - Business Logic
+id: logic
+title: Business Logic
 sidebar_label: Logic
 sidebar_position: 2
 ---
