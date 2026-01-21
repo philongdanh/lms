@@ -1,7 +1,7 @@
 ---
-id: use-cases
-title: Use Cases
-sidebar_label: Use Cases
+id: cases
+title: Cases
+sidebar_label: Cases
 sidebar_position: 3
 ---
 

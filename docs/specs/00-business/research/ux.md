@@ -1,7 +1,7 @@
 ---
-id: usability
-title: Usability Guidelines
-sidebar_label: Usability
+id: ux
+title: UX
+sidebar_label: UX
 sidebar_position: 3
 ---
 
