@@ -13,10 +13,10 @@ Tiêu chuẩn bảo mật, kiểm soát truy cập và xác thực.
 
 ## RBAC Model
 
-### 2.1. Tổng quan kiến trúc
+### Tổng quan kiến trúc
 
 ```d2
-direction: down
+direction: right
 
 Authentication_Layer: Authentication Layer {
   JWT: JWT Token
@@ -46,7 +46,7 @@ Authentication_Layer.Refresh -> Authentication_Layer.Blacklist
 Data_Layer.User -> Data_Layer.Tenant
 ```
 
-### 2.2. Các thành phần chính
+### Các thành phần chính
 
 | Component            | Description                                         | Storage Location       |
 | -------------------- | --------------------------------------------------- | ---------------------- |
@@ -63,66 +63,63 @@ Data_Layer.User -> Data_Layer.Tenant
 
 ## Authentication Flow
 
-### 3.1. Luồng đăng nhập
+### Luồng đăng nhập
 
 ```d2
-shape: sequence_diagram
+direction: right
 
-Client
-API
-AuthService
-SessionService
-DB
-Redis
+Client: Client
+API: API
+AuthService: AuthService
+SessionService: SessionService
+DB: Database
+Redis: Redis Cache
 
-Client -> API: POST /auth/login {email, password}
+Client -> API: POST /auth/login
 API -> AuthService: Validate credentials
 AuthService -> DB: Find user by email
 DB -> AuthService: User record
-AuthService -> AuthService: Verify password hash
-AuthService -> DB: Get user roles & permissions
+AuthService -> DB: Get roles & permissions
 DB -> AuthService: Roles & Permissions
 AuthService -> SessionService: Check device limit
-SessionService -> DB: Count active sessions
-SessionService -> DB: Revoke oldest session (if limit exceeded)
-SessionService -> Redis: Blacklist old token (if limit exceeded)
-AuthService -> DB: Create UserSession (hash refresh token)
-AuthService -> AuthService: Generate JWT (include permissions)
-AuthService -> API: {accessToken, refreshToken}
+SessionService -> DB: Count sessions
+SessionService -> DB: Revoke oldest (if needed)
+SessionService -> Redis: Blacklist token
+AuthService -> DB: Create UserSession
+AuthService -> API: Return tokens
 API -> Client: Login success
 ```
 
-### 3.2. Luồng Refresh Token
+### Luồng Refresh Token
 
 ```d2
-shape: sequence_diagram
+direction: right
 
-Client
-API
-AuthService
-Redis
-DB
+Client: Client
+API: API
+AuthService: AuthService
+Redis: Redis Cache
+DB: Database
 
-Client -> API: POST /auth/refresh {refreshToken}
+Client -> API: POST /auth/refresh
 API -> AuthService: Validate refresh token
-AuthService -> Redis: Check if token blacklisted
+AuthService -> Redis: Check blacklist
 Redis -> AuthService: Token status
-AuthService -> DB: Find session by token hash (if not blacklisted)
+AuthService -> DB: Find session
 DB -> AuthService: Session record
-AuthService -> AuthService: Generate new access token
-AuthService -> DB: Rotate refresh token (new hash)
-AuthService -> Client: {newAccessToken, newRefreshToken} (if valid)
-AuthService -> Client: 401 Token revoked (if blacklisted)
+AuthService -> DB: Rotate token
+AuthService -> Client: New tokens (if valid)
+AuthService -> Client: 401 Revoked (if blacklisted)
 ```
 
 ---
 
 ## Authorization Flow
 
-### 4.1. Luồng xác thực quyền
+### Luồng xác thực quyền
 
 ```d2
-direction: down
+direction: right
 
 A: Incoming Request
 B: Extract JWT
@@ -158,7 +155,7 @@ K -> I: No
 I -> M
 ```
 
-### 4.2. Các cấp độ chi tiết quyền
+### Các cấp độ chi tiết quyền
 
 Hệ thống hỗ trợ 3 mức độ chi tiết của permission:
 
@@ -168,7 +165,7 @@ Hệ thống hỗ trợ 3 mức độ chi tiết của permission:
 | **Action-level** | `module:action` | `exam:read` | Specific action trên module     |
 | **Special**      | `admin:*`       | `admin:all` | Root admin bypass               |
 
-### 4.3. Pipeline xử lý yêu cầu
+### Pipeline xử lý yêu cầu
 
 ```d2
 shape: sequence_diagram
@@ -202,7 +199,7 @@ PermissionGuard -> Client: 403 Forbidden (if denied)
 
 ## Security Policies
 
-### 5.1. Bảo mật Token
+### Bảo mật Token
 
 | Policy                    | Value                | Description                  |
 | ------------------------- | -------------------- | ---------------------------- |
@@ -212,7 +209,7 @@ PermissionGuard -> Client: 403 Forbidden (if denied)
 | **Refresh Token Storage** | Chỉ hash             | Không lưu plain text         |
 | **Blacklist TTL**         | Token expiry + 1 giờ | Cleanup sau khi hết hạn      |
 
-### 5.2. Bảo mật phiên
+### Bảo mật phiên
 
 | Policy                    | Value                     | Description                  |
 | ------------------------- | ------------------------- | ---------------------------- |
@@ -221,7 +218,7 @@ PermissionGuard -> Client: 403 Forbidden (if denied)
 | **Remote Logout**         | Có hỗ trợ                 | Logout các thiết bị khác     |
 | **Oldest Session Revoke** | Tự động                   | Khi vượt limit               |
 
-### 5.3. Bảo mật mật khẩu
+### Bảo mật mật khẩu
 
 | Policy             | Value    | Description                   |
 | ------------------ | -------- | ----------------------------- |
@@ -230,7 +227,7 @@ PermissionGuard -> Client: 403 Forbidden (if denied)
 | **Min Length**     | 8 ký tự  | Yêu cầu tối thiểu             |
 | **Complexity**     | Optional | Uppercase, number, special    |
 
-### 5.4. Xác thực 2 yếu tố (2FA)
+### Xác thực 2 yếu tố (2FA)
 
 | Áp dụng cho    | Method                      | Required |
 | -------------- | --------------------------- | -------- |
@@ -242,14 +239,14 @@ PermissionGuard -> Client: 403 Forbidden (if denied)
 
 ## Multi-Tenant Security
 
-### 6.1. Quy tắc cô lập dữ liệu
+### Quy tắc cô lập dữ liệu
 
 1. **Query Filter**: Tất cả queries PHẢI include `tenant_id` (trừ system tables)
 2. **Cross-Tenant Block**: Không cho phép access dữ liệu tenant khác
 3. **API Validation**: Validate `tenant_id` trong request body/params
 4. **Audit Log**: Log tất cả cross-tenant access bởi root-admin
 
-### 6.2. Ma trận phạm vi Tenant
+### Ma trận phạm vi Tenant
 
 | Role           | Tenant của mình  | Tenant khác        | System Data     |
 | -------------- | ---------------- | ------------------ | --------------- |
@@ -264,7 +261,7 @@ PermissionGuard -> Client: 403 Forbidden (if denied)
 ## Permission Change Process
 
 ```d2
-direction: down
+direction: right
 
 A: Permission Change Request
 B: Requirement Analysis
@@ -307,7 +304,7 @@ O -> H
 
 ## Rate Limiting & Protection
 
-### 8.1. Cấu hình giới hạn tốc độ
+### Cấu hình giới hạn tốc độ
 
 | Endpoint                | Limit          | Window | Block Duration |
 | ----------------------- | -------------- | ------ | -------------- |
@@ -317,7 +314,7 @@ O -> H
 | General API             | 100 requests   | 1 phút | 1 phút         |
 | WebSocket connect       | 10 connections | 1 phút | 5 phút         |
 
-### 8.2. Các bảo vệ bổ sung
+### Các bảo vệ bổ sung
 
 | Protection             | Implementation    | Purpose                       |
 | ---------------------- | ----------------- | ----------------------------- |
@@ -330,7 +327,7 @@ O -> H
 
 ## Audit Logging
 
-### 9.1. Các sự kiện được log
+### Các sự kiện được log
 
 | Event Category     | Events                                     | Retention |
 | ------------------ | ------------------------------------------ | --------- |
@@ -339,7 +336,7 @@ O -> H
 | **Data Access**    | CRUD operations trên sensitive data        | 6 tháng   |
 | **Admin Actions**  | Tenant management, user management         | 2 năm     |
 
-### 9.2. Định dạng Log
+### Định dạng Log
 
 ```json
 {
@@ -370,13 +367,13 @@ O -> H
 
 ## JWT Token Specification
 
-### 10.1. Tổng quan
+### Tổng quan
 
 - **Standard**: RFC 7519 (JSON Web Token).
 - **Role**: Authentication (Stateless) & Authorization.
 - **Đặc điểm**: Compact, Secure (Signed), Scalable.
 
-### 10.2. Cấu trúc Token
+### Cấu trúc Token
 
 Format: `Header.Payload.Signature`
 
@@ -403,7 +400,7 @@ Algorithm: `HS256` (HMAC SHA-256).
 
 `HMACSHA256(base64(header) + "." + base64(payload), secret)`
 
-### 10.3. Chiến lược (Dual Token)
+### Chiến lược (Dual Token)
 
 | Token       | TTL | Storage (Client) | Mục đích            |
 | ----------- | --- | ---------------- | ------------------- |
@@ -413,10 +410,10 @@ Algorithm: `HS256` (HMAC SHA-256).
 **Rotation Policy**: New Access Token = New Refresh Token. Old Refresh Token
 invalidated ngay (Reuse Detection).
 
-### 10.4. Quy trình xác thực
+### Quy trình xác thực
 
 ```d2
-direction: down
+direction: right
 
 Request
 Auth_Header: Auth Header? {
@@ -445,14 +442,14 @@ Check_Blacklist -> Revoked_401: Listed
 Check_Blacklist -> Pass_User_Ctx: OK
 ```
 
-### 10.5. Các thực hành bảo mật tốt nhất
+### Các thực hành bảo mật tốt nhất
 
 1.  **Storage**: Access Token trong Memory (No XSS). Refresh Token trong
     HttpOnly Cookie.
 2.  **Revocation**: Redis Blacklist (key: `session_id`, ttl: `exp`).
 3.  **Algorithm**: Enforce `HS256`, reject `none`.
 
-### 10.6. Mã lỗi
+### Mã lỗi
 
 | Code                  | Status | Description     |
 | --------------------- | ------ | --------------- |
@@ -461,7 +458,7 @@ Check_Blacklist -> Pass_User_Ctx: OK
 | `TOKEN_INVALID`       | 401    | Bad signature   |
 | `SESSION_REVOKED`     | 401    | Session revoked |
 
-### 10.7. Tài liệu tham khảo
+### Tài liệu tham khảo
 
 - [RFC 7519](https://tools.ietf.org/html/rfc7519)
 - [Auth Business Logic](../../02-mods/auth/logic.md)
