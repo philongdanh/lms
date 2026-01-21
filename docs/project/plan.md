@@ -6,8 +6,8 @@ sidebar_position: 2
 ---
 
 # Project Plan
-
-Kế hoạch cấp sprint với các sản phẩm bàn giao và phân bổ năng lực.
+ 
+Kế hoạch chi tiết và phân bổ nguồn lực theo từng giai đoạn.
 
 > **Phạm vi**: Tài liệu này bao gồm việc lập kế hoạch và thực hiện sprint. Đối
 > với lộ trình cấp sản phẩm, xem
