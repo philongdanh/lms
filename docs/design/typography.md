@@ -6,8 +6,8 @@ sidebar_position: 2
 ---
 
 # Typography
-
-Typography system and text styles.
+ 
+Hệ thống kiểu chữ và các tiêu chuẩn trình bày văn bản.
 
 ---
 

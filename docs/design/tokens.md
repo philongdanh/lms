@@ -6,8 +6,8 @@ sidebar_position: 1
 ---
 
 # Design Tokens
-
-Design tokens for consistent styling.
+ 
+Các thông số thiết kế cốt lõi để đảm bảo sự nhất quán về kiểu dáng.
 
 ---
 
