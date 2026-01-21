@@ -6,8 +6,8 @@ sidebar_position: 1
 ---
 
 # Learning - API Endpoints
-
-API endpoints cho module Learning: tiến độ học tập, bài tập, quiz.
+ 
+Các giao diện lập trình cho tiến trình học tập và kiểm tra.
 
 ---
 

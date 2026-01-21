@@ -6,8 +6,8 @@ sidebar_position: 2
 ---
 
 # Admin & Tenant Management - Business Logic
-
-Chi tiết quy tắc nghiệp vụ, workflows và xử lý lỗi cho module Admin.
+ 
+Quy tắc nghiệp vụ quản trị và vận hành hệ thống.
 
 ---
 

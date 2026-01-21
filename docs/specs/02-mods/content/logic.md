@@ -6,8 +6,8 @@ sidebar_position: 2
 ---
 
 # Content & Question Bank - Business Logic
-
-Chi tiết quy tắc nghiệp vụ, workflows và xử lý lỗi cho module Content.
+ 
+Quy tắc nghiệp vụ quản lý và phân phối nội dung.
 
 ---
 

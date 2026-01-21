@@ -6,8 +6,8 @@ sidebar_position: 4
 ---
 
 # Content & Question Bank - Test Cases
-
-Test cases cho module Content: kiểm thử business logic, API endpoints,
+ 
+Kịch bản kiểm thử hệ thống quản lý nội dung.
 import/export workflows.
 
 ---

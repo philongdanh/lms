@@ -6,8 +6,8 @@ sidebar_position: 2
 ---
 
 # Tournament & Competition - Business Logic
-
-Chi tiết quy tắc nghiệp vụ, workflows và xử lý lỗi cho module Tournament.
+ 
+Quy tắc nghiệp vụ tổ chức và điều hành giải đấu.
 
 ---
 

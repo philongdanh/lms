@@ -6,8 +6,8 @@ sidebar_position: 1
 ---
 
 # Tournament - API Endpoints
-
-API endpoints cho module Tournament: giải đấu, trận đấu, bảng xếp hạng.
+ 
+Các giao diện lập trình cho quản lý giải đấu và bảng xếp hạng.
 
 ---
 

@@ -6,8 +6,8 @@ sidebar_position: 2
 ---
 
 # Auth - Business Logic
-
-Chi tiết quy tắc nghiệp vụ, workflows và xử lý lỗi cho module Auth.
+ 
+Quy tắc nghiệp vụ và quy trình xử lý xác thực.
 
 ---
 

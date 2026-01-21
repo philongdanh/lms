@@ -6,8 +6,8 @@ sidebar_position: 3
 ---
 
 # Auth - Data Model
-
-Data model cho module Auth: User, Role, Permission, Session, Tenant.
+ 
+Cấu trúc dữ liệu cho hệ thống xác thực và quản lý người dùng.
 
 ---
 

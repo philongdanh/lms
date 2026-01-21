@@ -6,9 +6,8 @@ sidebar_position: 4
 ---
 
 # Learning & Personalization - Test Cases
-
-Test cases cho module Learning: kiểm thử personalized path, quiz scoring,
-progress tracking.
+ 
+Kịch bản kiểm thử hệ thống học tập và cá nhân hóa.
 
 ---
 

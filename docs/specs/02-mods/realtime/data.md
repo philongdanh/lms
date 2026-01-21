@@ -6,8 +6,8 @@ sidebar_position: 3
 ---
 
 # Realtime - Data Model
-
-Data model cho module Realtime: Presence, Notification, ConnectionLog.
+ 
+Cấu trúc dữ liệu cho trạng thái kết nối và thông báo.
 
 ---
 

@@ -6,9 +6,8 @@ sidebar_position: 1
 ---
 
 # Realtime - API Endpoints
-
-API endpoints cho module Realtime: WebSocket connections, notifications, live
-updates.
+ 
+Các giao diện kết nối thời gian thực và thông báo trực tiếp.
 
 ---
 

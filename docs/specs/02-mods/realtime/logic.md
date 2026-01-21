@@ -6,8 +6,8 @@ sidebar_position: 2
 ---
 
 # Real-time Communication - Business Logic
-
-Chi tiết quy tắc nghiệp vụ, workflows và xử lý lỗi cho module Real-time.
+ 
+Quy tắc nghiệp vụ xử lý giao tiếp thời gian thực.
 
 ---
 

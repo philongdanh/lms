@@ -6,8 +6,8 @@ sidebar_position: 4
 ---
 
 # Auth - Test Cases
-
-Test cases được derive từ specifications của module Auth.
+ 
+Kịch bản và chỉ số kiểm thử cho hệ thống xác thực.
 
 ---
 

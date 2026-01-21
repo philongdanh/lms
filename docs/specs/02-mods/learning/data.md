@@ -6,8 +6,8 @@ sidebar_position: 3
 ---
 
 # Learning - Data Model
-
-Data model cho module Learning: StudentProgress, StudentAnswer, PracticeSession.
+ 
+Cấu trúc dữ liệu theo dõi tiến độ và kết quả học tập.
 
 ---
 
