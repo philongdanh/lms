@@ -40,7 +40,7 @@ API endpoints cho module Auth: Login, Register, quản lý Session.
 
 **Description**: Xác thực credentials người dùng
 
-#### Request
+#### Yêu cầu
 
 ```http
 POST /api/v1/auth/login
@@ -54,7 +54,7 @@ Content-Type: application/json
 | email     | string | ✅       | Email người dùng |
 | password  | string | ✅       | Mật khẩu raw     |
 
-#### Response
+#### Phản hồi
 
 **Success (200 OK)**:
 
@@ -71,16 +71,16 @@ Content-Type: application/json
 
 **Error Responses**:
 
-| Code | Error               | Description        |
-| ---- | ------------------- | ------------------ |
-| 401  | INVALID_CREDENTIALS | Sai mật khẩu       |
-| 429  | RATE_LIMITED        | Quá nhiều lần thử  |
+| Code | Error               | Description       |
+| ---- | ------------------- | ----------------- |
+| 401  | INVALID_CREDENTIALS | Sai mật khẩu      |
+| 429  | RATE_LIMITED        | Quá nhiều lần thử |
 
 ### Endpoint: POST `/refresh`
 
 **Description**: Lấy access token mới
 
-#### Request
+#### Yêu cầu
 
 ```http
 POST /api/v1/auth/refresh
@@ -89,11 +89,11 @@ Content-Type: application/json
 
 **Body**:
 
-| Parameter     | Type   | Required | Description         |
-| ------------- | ------ | -------- | ------------------- |
+| Parameter     | Type   | Required | Description          |
+| ------------- | ------ | -------- | -------------------- |
 | refresh_token | string | ✅       | Refresh token hợp lệ |
 
-#### Response
+#### Phản hồi
 
 **Success (200 OK)**:
 

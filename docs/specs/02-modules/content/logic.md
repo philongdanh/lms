@@ -25,11 +25,11 @@ Chi tiết quy tắc nghiệp vụ, workflows và xử lý lỗi cho module Cont
 
 ## Dependencies
 
-### Internal Dependencies
+### Phụ thuộc nội bộ
 
 - ❌ Không có - Content là module nền tảng (Core).
 
-### External Dependencies
+### Phụ thuộc bên ngoài
 
 - ✅ File Storage (S3/MinIO) - Lưu trữ Videos, Images, Documents.
 - ✅ Search Engine (Elasticsearch) - Tìm kiếm câu hỏi và bài học.
@@ -156,7 +156,7 @@ flowchart TD
 
 ## Events
 
-### System Events
+### Sự kiện hệ thống
 
 | Event Name          | Description               | Payload             | Emitted By  |
 | ------------------- | ------------------------- | ------------------- | ----------- |

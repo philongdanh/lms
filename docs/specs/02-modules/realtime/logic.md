@@ -24,12 +24,12 @@ Chi tiết quy tắc nghiệp vụ, workflows và xử lý lỗi cho module Real
 
 ## Dependencies
 
-### Internal Dependencies
+### Phụ thuộc nội bộ
 
 - ✅ Auth Module - Xác thực JWT.
 - ✅ Redis - Pub/Sub Adapter & Presence Store.
 
-### External Dependencies
+### Phụ thuộc bên ngoài
 
 - ❌ Không có - Self-hosted Socket.IO cluster.
 
@@ -145,7 +145,7 @@ flowchart TD
 
 ## Events
 
-### System Events
+### Sự kiện hệ thống
 
 | Event Name          | Description           | Payload                | Emitted By |
 | ------------------- | --------------------- | ---------------------- | ---------- |

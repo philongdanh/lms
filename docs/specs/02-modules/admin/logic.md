@@ -24,12 +24,12 @@ Chi tiết quy tắc nghiệp vụ, workflows và xử lý lỗi cho module Admi
 
 ## Dependencies
 
-### Internal Dependencies
+### Phụ thuộc nội bộ
 
 - ✅ Auth Module - Quản lý User/Đăng nhập.
 - ✅ Analytics Module - Tổng hợp dữ liệu khi xóa Tenant.
 
-### External Dependencies
+### Phụ thuộc bên ngoài
 
 - ✅ Email Service (SendGrid) - Gửi email kích hoạt.
 
@@ -147,7 +147,7 @@ flowchart TB
 
 ## Events
 
-### System Events
+### Sự kiện hệ thống
 
 | Event Name         | Description         | Payload               | Emitted By |
 | ------------------ | ------------------- | --------------------- | ---------- |

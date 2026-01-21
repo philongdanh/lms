@@ -22,15 +22,15 @@ Tiêu chuẩn thiết kế và quản lý API tập trung.
 
 ## Technical Standards
 
-### URL Structure
+### Cấu trúc URL
 
 ```
 https://api.example.com/api/{version}/{module}/{resource}/{id}
 ```
 
-### HTTP Methods
+### Phương thức HTTP
 
-| Method | Purpose          | Idempotent | Safe |
+| Method | Purpose           | Idempotent | Safe |
 | ------ | ----------------- | ---------- | ---- |
 | GET    | Lấy resource      | ✅         | ✅   |
 | POST   | Tạo resource      | ❌         | ❌   |
@@ -49,7 +49,7 @@ Accept: application/json
 X-Request-ID: {uuid}
 ```
 
-### Response Format
+### Định dạng Response
 
 **Success**:
 
@@ -85,13 +85,13 @@ X-Request-ID: {uuid}
 
 ## Security Standards
 
-### Authentication
+### Xác thực
 
 - **Method**: JWT Bearer tokens
 - **Token Format**: [Format]
 - **Refresh**: [Policy]
 
-### Authorization
+### Phân quyền
 
 - **Method**: Role-based access control
 - **Permissions**: [Structure]
@@ -105,7 +105,7 @@ X-Request-ID: {uuid}
 
 ## Performance Standards
 
-### Response Times
+### Thời gian phản hồi
 
 | Percentile | Max Response Time |
 | ---------- | ----------------- |
@@ -113,7 +113,7 @@ X-Request-ID: {uuid}
 | P95        | 500ms             |
 | P99        | 1000ms            |
 
-### Rate Limiting
+### Giới hạn tốc độ
 
 | Tier   | Requests/phút | Burst |
 | ------ | ------------- | ----- |
@@ -132,14 +132,14 @@ X-Request-ID: {uuid}
 
 ## Monitoring & Logging
 
-### Metrics to Track
+### Chỉ số cần theo dõi
 
 - Response times
 - Error rates
 - Throughput
 - Latency
 
-### Logging Requirements
+### Yêu cầu Logging
 
 - Request/response logging
 - Error logging

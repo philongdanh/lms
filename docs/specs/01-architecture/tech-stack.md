@@ -11,13 +11,13 @@ Lựa chọn công nghệ và tiêu chuẩn thực thi.
 
 ---
 
-| Layer    | Tech            | Version   | Purpose                       |
-| -------- | --------------- | --------- | ----------------------------- |
-| Backend  | NestJS          | Latest    | API Server, WebSocket Gateway |
-| Frontend | Next.js + React | Latest    | Web UI với SSR/SSG            |
-| Database | PostgreSQL      | 15+       | Lưu trữ dữ liệu chính         |
-| Cache    | Redis           | 7+        | Session, caching, Pub/Sub     |
-| Queue    | Bull + Redis    | Latest    | Xử lý bất đồng bộ             |
+| Layer    | Tech            | Version | Purpose                       |
+| -------- | --------------- | ------- | ----------------------------- |
+| Backend  | NestJS          | Latest  | API Server, WebSocket Gateway |
+| Frontend | Next.js + React | Latest  | Web UI với SSR/SSG            |
+| Database | PostgreSQL      | 15+     | Lưu trữ dữ liệu chính         |
+| Cache    | Redis           | 7+      | Session, caching, Pub/Sub     |
+| Queue    | Bull + Redis    | Latest  | Xử lý bất đồng bộ             |
 
 ---
 
@@ -25,20 +25,20 @@ Lựa chọn công nghệ và tiêu chuẩn thực thi.
 
 ### Runtime & Framework
 
-| Component  | Tech        | Rationale                                                 |
-| ---------- | ----------- | --------------------------------------------------------- |
-| Runtime    | Node.js 20+ | Hiệu năng cao, TypeScript support tốt, ecosystem lớn      |
-| Framework  | NestJS      | Kiến trúc module, dependency injection, enterprise-ready  |
-| ORM        | Prisma      | Type-safe, migration tốt, schema-first approach           |
+| Component | Tech        | Rationale                                                |
+| --------- | ----------- | -------------------------------------------------------- |
+| Runtime   | Node.js 20+ | Hiệu năng cao, TypeScript support tốt, ecosystem lớn     |
+| Framework | NestJS      | Kiến trúc module, dependency injection, enterprise-ready |
+| ORM       | Prisma      | Type-safe, migration tốt, schema-first approach          |
 
-### Key Libraries
+### Thư viện chính
 
-| Library         | Purpose                   | Version   |
-| --------------- | ------------------------- | --------- |
-| Socket.IO       | WebSocket real-time       | Latest    |
-| Passport        | Authentication strategies | Latest    |
-| Bull            | Job queue processing      | Latest    |
-| class-validator | Request validation        | Latest    |
+| Library         | Purpose                   | Version |
+| --------------- | ------------------------- | ------- |
+| Socket.IO       | WebSocket real-time       | Latest  |
+| Passport        | Authentication strategies | Latest  |
+| Bull            | Job queue processing      | Latest  |
+| class-validator | Request validation        | Latest  |
 
 ---
 
@@ -52,19 +52,19 @@ Lựa chọn công nghệ và tiêu chuẩn thực thi.
 | Build Tool       | Turbopack (via Next.js) | Build nhanh, HMR hiệu quả         |
 | State Management | React Context + Zustand | Đơn giản, nhẹ, đủ cho use case    |
 
-### UI Libraries
+### Thư viện UI
 
-| Library          | Purpose               | Version   |
-| ---------------- | --------------------- | --------- |
-| HeroUI           | Component library     | Latest    |
-| TailwindCSS      | Utility-first styling | 3.x       |
-| Socket.IO Client | WebSocket client      | Latest    |
+| Library          | Purpose               | Version |
+| ---------------- | --------------------- | ------- |
+| HeroUI           | Component library     | Latest  |
+| TailwindCSS      | Utility-first styling | 3.x     |
+| Socket.IO Client | WebSocket client      | Latest  |
 
 ---
 
 ## Infrastructure
 
-### Containerization
+### Container hóa
 
 | Component     | Tech           | Purpose                                 |
 | ------------- | -------------- | --------------------------------------- |
@@ -74,11 +74,11 @@ Lựa chọn công nghệ và tiêu chuẩn thực thi.
 
 ### CI/CD
 
-| Stage     | Tool             | Purpose                            |
-| --------- | ---------------- | ---------------------------------- |
-| Build     | GitHub Actions   | Tự động build và test              |
-| Test      | Jest + Supertest | Unit và integration testing        |
-| Deploy    | Docker + Scripts | Blue-green deployment với rollback |
+| Stage  | Tool             | Purpose                            |
+| ------ | ---------------- | ---------------------------------- |
+| Build  | GitHub Actions   | Tự động build và test              |
+| Test   | Jest + Supertest | Unit và integration testing        |
+| Deploy | Docker + Scripts | Blue-green deployment với rollback |
 
 ---
 

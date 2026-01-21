@@ -17,13 +17,13 @@ phép horizontal scaling và zero-downtime deployment.
 
 ### Các thành phần chính
 
-| Component         | Tech              | Description                                       |
-| ----------------- | ----------------- | ------------------------------------------------- |
-| **Application**   | NestJS (Node 18+) | Stateless container, có thể scale horizontally    |
+| Component         | Tech              | Description                                                 |
+| ----------------- | ----------------- | ----------------------------------------------------------- |
+| **Application**   | NestJS (Node 18+) | Stateless container, có thể scale horizontally              |
 | **Database**      | PostgreSQL 14+    | Lưu trữ dữ liệu chính với hỗ trợ đa thực thể (multi-tenant) |
-| **Cache**         | Redis 6+          | Lưu trữ session, blacklisting token, Pub/Sub      |
-| **Load Balancer** | Nginx             | Reverse proxy, SSL termination, hỗ trợ WebSocket  |
-| **File Storage**  | Local/S3          | Lưu trữ tệp tin (video, hình ảnh, tài liệu)       |
+| **Cache**         | Redis 6+          | Lưu trữ session, blacklisting token, Pub/Sub                |
+| **Load Balancer** | Nginx             | Reverse proxy, SSL termination, hỗ trợ WebSocket            |
+| **File Storage**  | Local/S3          | Lưu trữ tệp tin (video, hình ảnh, tài liệu)                 |
 
 ### Sơ đồ hạ tầng
 

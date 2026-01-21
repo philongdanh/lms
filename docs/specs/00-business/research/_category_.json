@@ -1,7 +1,6 @@
 {
   "label": "Research",
   "link": {
-    "type": "generated-index",
-    "description": "Tài liệu nghiên cứu người dùng"
+    "type": "generated-index"
   }
 }

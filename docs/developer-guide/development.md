@@ -16,13 +16,13 @@ tính nhất quán trong codebase, dễ bảo trì và tối ưu hiệu suất l
 
 ### Danh sách công nghệ (Tech Stack)
 
-| Layer         | Tech                  | Purpose                   |
-| ------------- | --------------------- | ------------------------- |
-| **Backend**   | NestJS + TypeScript   | Business logic, API       |
+| Layer         | Tech                  | Purpose                            |
+| ------------- | --------------------- | ---------------------------------- |
+| **Backend**   | NestJS + TypeScript   | Business logic, API                |
 | **Frontend**  | Next.js + TypeScript  | Giao diện người dùng (UI), SSR/SSG |
-| **Database**  | PostgreSQL + Prisma 7 | Lưu trữ dữ liệu, ORM      |
-| **Cache**     | Redis                 | Session, caching, Pub/Sub |
-| **Real-time** | Socket.IO             | Kết nối WebSocket         |
+| **Database**  | PostgreSQL + Prisma 7 | Lưu trữ dữ liệu, ORM               |
+| **Cache**     | Redis                 | Session, caching, Pub/Sub          |
+| **Real-time** | Socket.IO             | Kết nối WebSocket                  |
 
 ### Công cụ chất lượng code
 

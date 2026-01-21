@@ -13,7 +13,7 @@ Tiêu chuẩn hiệu năng và chiến lược tối ưu hóa.
 
 ## Performance Targets
 
-### Response Time
+### Thời gian phản hồi
 
 | Percentile | Target  | Threshold | Alert |
 | ---------- | ------- | --------- | ----- |
@@ -21,7 +21,7 @@ Tiêu chuẩn hiệu năng và chiến lược tối ưu hóa.
 | P95        | < 200ms | 500ms     | Có    |
 | P99        | < 500ms | 1000ms    | Có    |
 
-### Throughput
+### Thông lượng
 
 | Metric               | Target | Notes          |
 | -------------------- | ------ | -------------- |
@@ -29,7 +29,7 @@ Tiêu chuẩn hiệu năng và chiến lược tối ưu hóa.
 | Peak Requests/second | 5000   | Peak load      |
 | Concurrent Users     | 10,000 | Max concurrent |
 
-### Availability
+### Tính sẵn sàng
 
 | Metric | Target    |
 | ------ | --------- |
@@ -41,7 +41,7 @@ Tiêu chuẩn hiệu năng và chiến lược tối ưu hóa.
 
 ## Caching Strategy
 
-### Cache Layers
+### Các lớp Cache
 
 | Layer       | Tool                    | TTL       | Use Case         |
 | ----------- | ----------------------- | --------- | ---------------- |
@@ -49,7 +49,7 @@ Tiêu chuẩn hiệu năng và chiến lược tối ưu hóa.
 | Application | Redis                   | 5-15 phút | API responses    |
 | Database    | Query cache             | 1 phút    | Frequent queries |
 
-### Cache Patterns
+### Mẫu Cache
 
 | Pattern       | Description        | Use Case        |
 | ------------- | ------------------ | --------------- |
@@ -57,7 +57,7 @@ Tiêu chuẩn hiệu năng và chiến lược tối ưu hóa.
 | Write-Through | Ghi vào cache + DB | Cần consistency |
 | Write-Behind  | Ghi DB async       | High throughput |
 
-### Cache Invalidation
+### Thu hồi Cache
 
 | Strategy      | Description               |
 | ------------- | ------------------------- |
@@ -69,7 +69,7 @@ Tiêu chuẩn hiệu năng và chiến lược tối ưu hóa.
 
 ## Database Optimization
 
-### Query Guidelines
+### Hướng dẫn truy vấn
 
 | Guideline               | Description                 |
 | ----------------------- | --------------------------- |
@@ -91,7 +91,7 @@ Tiêu chuẩn hiệu năng và chiến lược tối ưu hóa.
 
 ## API Optimization
 
-### Response Optimization
+### Tối ưu hóa Response
 
 | Technique       | Description              |
 | --------------- | ------------------------ |
@@ -100,7 +100,7 @@ Tiêu chuẩn hiệu năng và chiến lược tối ưu hóa.
 | Compression     | gzip responses           |
 | ETags           | Conditional requests     |
 
-### Request Optimization
+### Tối ưu hóa Request
 
 | Technique        | Description                       |
 | ---------------- | --------------------------------- |
@@ -112,7 +112,7 @@ Tiêu chuẩn hiệu năng và chiến lược tối ưu hóa.
 
 ## Load Testing
 
-### Test Scenarios
+### Kịch bản kiểm thử
 
 | Scenario | Users | Duration | Goal          |
 | -------- | ----- | -------- | ------------- |
@@ -122,7 +122,7 @@ Tiêu chuẩn hiệu năng và chiến lược tối ưu hóa.
 | Spike    | 1000  | 5 min    | Peak handling |
 | Soak     | 100   | 4 hours  | Memory leaks  |
 
-### Success Criteria
+### Tiêu chí thành công
 
 | Metric      | Pass        | Fail       |
 | ----------- | ----------- | ---------- |
@@ -134,7 +134,7 @@ Tiêu chuẩn hiệu năng và chiến lược tối ưu hóa.
 
 ## Monitoring
 
-### Key Metrics
+### Các chỉ số chính
 
 | Metric            | Alert Condition   |
 | ----------------- | ----------------- |

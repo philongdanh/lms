@@ -1,7 +1,6 @@
 {
   "label": "Auth",
   "link": {
-    "type": "generated-index",
-    "description": "Mô-đun xác thực và phân quyền"
+    "type": "generated-index"
   }
 }

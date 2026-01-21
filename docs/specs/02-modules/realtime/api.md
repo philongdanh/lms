@@ -7,7 +7,8 @@ sidebar_position: 2
 
 # Realtime - API Endpoints
 
-API endpoints cho module Realtime: WebSocket connections, notifications, live updates.
+API endpoints cho module Realtime: WebSocket connections, notifications, live
+updates.
 
 ---
 
@@ -22,21 +23,21 @@ API endpoints cho module Realtime: WebSocket connections, notifications, live up
 
 ## Endpoints Summary
 
-| Method | Endpoint              | Description           | Auth Required | Rate Limit |
-| ------ | --------------------- | --------------------- | ------------- | ---------- |
-| GET    | `/notifications`      | Danh sách thông báo   | ✅            | 100/min    |
-| PUT    | `/notifications/:id/read` | Đánh dấu đã đọc   | ✅            | 200/min    |
-| DELETE | `/notifications/:id`  | Xóa thông báo         | ✅            | 100/min    |
-| WS     | `/ws`                 | WebSocket connection  | ✅            | -          |
+| Method | Endpoint                  | Description          | Auth Required | Rate Limit |
+| ------ | ------------------------- | -------------------- | ------------- | ---------- |
+| GET    | `/notifications`          | Danh sách thông báo  | ✅            | 100/min    |
+| PUT    | `/notifications/:id/read` | Đánh dấu đã đọc      | ✅            | 200/min    |
+| DELETE | `/notifications/:id`      | Xóa thông báo        | ✅            | 100/min    |
+| WS     | `/ws`                     | WebSocket connection | ✅            | -          |
 
 ## WebSocket Events
 
-| Event                | Direction  | Description                |
-| -------------------- | ---------- | -------------------------- |
-| `notification.new`   | Server→Client | Thông báo mới           |
-| `progress.updated`   | Server→Client | Cập nhật tiến độ        |
-| `tournament.start`   | Server→Client | Giải đấu bắt đầu        |
-| `match.update`       | Server→Client | Cập nhật trận đấu       |
+| Event              | Direction     | Description       |
+| ------------------ | ------------- | ----------------- |
+| `notification.new` | Server→Client | Thông báo mới     |
+| `progress.updated` | Server→Client | Cập nhật tiến độ  |
+| `tournament.start` | Server→Client | Giải đấu bắt đầu  |
+| `match.update`     | Server→Client | Cập nhật trận đấu |
 
 ---
 

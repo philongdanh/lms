@@ -13,11 +13,11 @@ Kiến trúc thành phần, quản lý trạng thái và điều phối giao di�
 
 ## External References
 
-| Tool      | Purpose           | Link                  |
-| --------- | ----------------- | --------------------- |
-| Figma     | UI/UX Design      |                       |
-| Storybook | Component Library |                       |
-| Chromatic | Visual Testing    |                       |
+| Tool      | Purpose           | Link |
+| --------- | ----------------- | ---- |
+| Figma     | UI/UX Design      |      |
+| Storybook | Component Library |      |
+| Chromatic | Visual Testing    |      |
 
 ---
 
@@ -40,7 +40,7 @@ Kiến trúc thành phần, quản lý trạng thái và điều phối giao di�
 
 ## Component Architecture
 
-### Component Categories
+### Danh mục Component
 
 | Category | Path                       | Purpose                   |
 | -------- | -------------------------- | ------------------------- |
@@ -49,7 +49,7 @@ Kiến trúc thành phần, quản lý trạng thái và điều phối giao di�
 | Features | `src/components/features/` | Business logic components |
 | Shared   | `src/components/shared/`   | Reusable utilities        |
 
-### Component Hierarchy
+### Phân cấp Component
 
 ```
 src/components/
@@ -75,7 +75,7 @@ src/components/
     └── charts/
 ```
 
-### Component Naming
+### Quy tắc đặt tên
 
 | Type      | Convention                  | Example                |
 | --------- | --------------------------- | ---------------------- |
@@ -85,7 +85,7 @@ src/components/
 | Type      | PascalCase                  | `User.types.ts`        |
 | Test      | Same name + `.test`         | `UserProfile.test.tsx` |
 
-### UI Components
+### Component UI
 
 | Component | Description   | Props                         |
 | --------- | ------------- | ----------------------------- |
@@ -96,7 +96,7 @@ src/components/
 | `Avatar`  | User avatar   | `src`, `fallback`             |
 | `Badge`   | Label/badge   | `variant`, `children`         |
 
-### Feature Components
+### Component tính năng
 
 | Module       | Components                                                     |
 | ------------ | -------------------------------------------------------------- |
@@ -109,7 +109,7 @@ src/components/
 
 ## State Management
 
-### State Categories
+### Danh mục trạng thái
 
 | Category          | Scope        | Storage         | Example            |
 | ----------------- | ------------ | --------------- | ------------------ |
@@ -119,7 +119,7 @@ src/components/
 | **Form State**    | Form data    | React Hook Form | Input values       |
 | **URL State**     | Navigation   | React Router    | Query params       |
 
-### State Patterns
+### Mẫu trạng thái
 
 | Pattern          | Tool           | Description                                     |
 | ---------------- | -------------- | ----------------------------------------------- |
@@ -129,7 +129,7 @@ src/components/
 | GraphQL Mutation | Apollo         | Use `useMutation` with `refetchQueries`         |
 | Context          | React Context  | Create context, provider, and custom hook       |
 
-### Global State with Context
+### State toàn cục với Context
 
 ```typescript
 // contexts/AuthContext.tsx
@@ -154,7 +154,7 @@ export function useAuth() {
 
 ## Routing
 
-### Route Structure
+### Cấu trúc Route
 
 | Path                  | Component              | Auth  | Description       |
 | --------------------- | ---------------------- | ----- | ----------------- |
@@ -208,7 +208,7 @@ export function useAuth() {
 
 ## Component Guidelines
 
-### Do's
+### Nên làm
 
 - Keep components small and focused
 - Use composition over inheritance
@@ -217,7 +217,7 @@ export function useAuth() {
 - Write unit tests for complex logic
 - Use React.memo for heavy components
 
-### Don'ts
+### Không nên làm
 
 - Don't use inline styles (use Tailwind)
 - Don't hardcode strings (use i18n)

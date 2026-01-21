@@ -25,12 +25,12 @@ Chi tiết quy tắc nghiệp vụ, workflows và xử lý lỗi cho module Gami
 
 ## Dependencies
 
-### Internal Dependencies
+### Phụ thuộc nội bộ
 
 - ✅ Learning Module - Kích hoạt sự kiện khi hoàn thành bài học.
 - ✅ Tournament Module - Kích hoạt sự kiện khi thắng giải đấu.
 
-### External Dependencies
+### Phụ thuộc bên ngoài
 
 - ✅ Redis - Cache bảng xếp hạng (Sorted Sets).
 
@@ -166,7 +166,7 @@ sequenceDiagram
 
 ## Events
 
-### System Events
+### Sự kiện hệ thống
 
 | Event Name     | Description           | Payload                        | Emitted By |
 | -------------- | --------------------- | ------------------------------ | ---------- |

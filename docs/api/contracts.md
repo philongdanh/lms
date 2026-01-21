@@ -88,22 +88,22 @@ contracts/
 
 ## Guidelines
 
-| Principle              | Description                   |
-| ---------------------- | ----------------------------- |
+| Principle              | Description                     |
+| ---------------------- | ------------------------------- |
 | Giữ contract tối giản  | Chì bao gồm các field cần thiết |
-| Sử dụng provider state | Thiết lập dữ liệu kiểm thử    |
-| Quản lý phiên bản      | Theo dõi các breaking change  |
-| Tự động hóa xác thực   | Tích hợp với CI/CD            |
+| Sử dụng provider state | Thiết lập dữ liệu kiểm thử      |
+| Quản lý phiên bản      | Theo dõi các breaking change    |
+| Tự động hóa xác thực   | Tích hợp với CI/CD              |
 
 ---
 
 ## Tools
 
-| Tool         | Purpose                       |
-| ------------ | ----------------------------- |
-| Pact         | Framework kiểm thử contract   |
-| Pact Broker  | Lưu trữ contract              |
-| can-i-deploy | Xác thực triển khai an toàn   |
+| Tool         | Purpose                     |
+| ------------ | --------------------------- |
+| Pact         | Framework kiểm thử contract |
+| Pact Broker  | Lưu trữ contract            |
+| can-i-deploy | Xác thực triển khai an toàn |
 
 ---
 
@@ -112,4 +112,3 @@ contracts/
 - [OpenAPI](./openapi.md)
 - [Mocks](./mocks.md)
 - [API Gateway](../specs/01-architecture/cross-cutting/api-gateway.md)
-

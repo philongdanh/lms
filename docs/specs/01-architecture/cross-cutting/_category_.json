@@ -1,7 +1,6 @@
 {
   "label": "Cross-Cutting",
   "link": {
-    "type": "generated-index",
-    "description": "Tài liệu các vấn đề cắt ngang (Cross-cutting concerns)"
+    "type": "generated-index"
   }
 }

@@ -1,9 +1,8 @@
 {
-  "label": "Quality Assurance",
   "position": 4,
+  "label": "QA",
   "link": {
     "type": "generated-index",
-    "description": "Chiến lược kiểm thử và tiêu chuẩn chất lượng.",
-    "slug": "quality"
+    "title": "Quality Assurance"
   }
 }

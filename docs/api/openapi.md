@@ -19,23 +19,23 @@ Các file đặc tả OpenAPI được lưu trữ trong thư mục `static/opena
 
 ## Base Structure
 
-| Section      | Purpose                                    |
-| ------------ | ------------------------------------------ |
+| Section      | Purpose                                        |
+| ------------ | ---------------------------------------------- |
 | `info`       | Metadata của API (title, version, description) |
-| `servers`    | URL của API server (prod, staging, dev)    |
-| `tags`       | Nhóm các endpoint                          |
-| `paths`      | Định nghĩa các endpoint                    |
-| `components` | Reusable schemas, parameters, responses    |
-| `security`   | Yêu cầu xác thực                           |
+| `servers`    | URL của API server (prod, staging, dev)        |
+| `tags`       | Nhóm các endpoint                              |
+| `paths`      | Định nghĩa các endpoint                        |
+| `components` | Reusable schemas, parameters, responses        |
+| `security`   | Yêu cầu xác thực                               |
 
 ---
 
 ## File Organization
 
-| Method      | Use Case              |
-| ----------- | --------------------- |
-| Single file | API nhỏ               |
-| Multi-file  | API lớn sử dụng $ref  |
+| Method      | Use Case             |
+| ----------- | -------------------- |
+| Single file | API nhỏ              |
+| Multi-file  | API lớn sử dụng $ref |
 
 ---
 
@@ -52,11 +52,11 @@ Các file đặc tả OpenAPI được lưu trữ trong thư mục `static/opena
 
 ## Server Definitions
 
-| Environment | URL Structure                    | Description       |
-| ---------- | -------------------------------- | ----------------- |
-| Production | `https://api.lms.com/v1`         | API chính thức    |
-| Staging    | `https://staging-api.lms.com/v1` | Môi trường thử nghiệm |
-| Development| `http://localhost:3000/v1`       | Phát triển tại máy lẻ |
+| Environment | URL Structure                    | Description           |
+| ----------- | -------------------------------- | --------------------- |
+| Production  | `https://api.lms.com/v1`         | API chính thức        |
+| Staging     | `https://staging-api.lms.com/v1` | Môi trường thử nghiệm |
+| Development | `http://localhost:3000/v1`       | Phát triển tại máy lẻ |
 
 ---
 
@@ -120,4 +120,3 @@ Các file đặc tả OpenAPI được lưu trữ trong thư mục `static/opena
 - [Contracts](./contracts.md)
 - [Mocks](./mocks.md)
 - [API Gateway](../specs/01-architecture/cross-cutting/api-gateway.md)
-

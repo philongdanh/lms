@@ -11,17 +11,6 @@ Kịch bản và sơ đồ luồng nghiệp vụ.
 
 ---
 
-## User Story Format
-
-| Component    | Description                 |
-| ------------ | --------------------------- |
-| Vai trò      | Với tư cách là [vai trò]    |
-| Hành động    | Tôi muốn [hành động]        |
-| Lợi ích      | Để [lợi ích]                |
-| Tiêu chí     | Danh sách tiêu chí chấp nhận|
-
----
-
 ## User Stories
 
 ### Epic: Hành trình học tập
@@ -96,47 +85,47 @@ Kịch bản và sơ đồ luồng nghiệp vụ.
 
 ### UC-AUTH-001: Đăng ký người dùng
 
-| Field            | Value                                                                                                           |
-| ---------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Tác nhân         | Người dùng khách                                                                                                 |
-| Điều kiện tiên quyết| Người dùng chưa đăng nhập                                                                                        |
-| Tác nhân kích hoạt| Người dùng nhấn "Đăng ký"                                                                                        |
-| Luồng chính      | Nhập email/SĐT, mật khẩu, tên → Gửi biểu mẫu → Nhận mã OTP → Xác thực OTP → Kích hoạt tài khoản|
-| Điều kiện sau    | Tài khoản người dùng được tạo và kích hoạt                                                                       |
-| Ngoại lệ         | E1: Email đã tồn tại, E2: Mã OTP không hợp lệ                                                                    |
+| Field                | Value                                                                                           |
+| -------------------- | ----------------------------------------------------------------------------------------------- |
+| Tác nhân             | Người dùng khách                                                                                |
+| Điều kiện tiên quyết | Người dùng chưa đăng nhập                                                                       |
+| Tác nhân kích hoạt   | Người dùng nhấn "Đăng ký"                                                                       |
+| Luồng chính          | Nhập email/SĐT, mật khẩu, tên → Gửi biểu mẫu → Nhận mã OTP → Xác thực OTP → Kích hoạt tài khoản |
+| Điều kiện sau        | Tài khoản người dùng được tạo và kích hoạt                                                      |
+| Ngoại lệ             | E1: Email đã tồn tại, E2: Mã OTP không hợp lệ                                                   |
 
 ### UC-AUTH-002: Đăng nhập người dùng
 
-| Field            | Value                                                                |
-| ---------------- | -------------------------------------------------------------------- |
-| Tác nhân         | Người dùng đã đăng ký                                                |
-| Điều kiện tiên quyết| Tài khoản đã tồn tại và được xác thực                                |
-| Tác nhân kích hoạt| Người dùng nhấn "Đăng nhập"                                          |
-| Luồng chính      | Nhập thông tin đăng nhập → Xác thực → Cấp mã thông báo → Chuyển hướng đến bảng điều khiển|
-| Điều kiện sau    | Người dùng đã được xác thực                                          |
-| Ngoại lệ         | E1: Thông tin không hợp lệ, E2: Tài khoản bị khóa                    |
+| Field                | Value                                                                                     |
+| -------------------- | ----------------------------------------------------------------------------------------- |
+| Tác nhân             | Người dùng đã đăng ký                                                                     |
+| Điều kiện tiên quyết | Tài khoản đã tồn tại và được xác thực                                                     |
+| Tác nhân kích hoạt   | Người dùng nhấn "Đăng nhập"                                                               |
+| Luồng chính          | Nhập thông tin đăng nhập → Xác thực → Cấp mã thông báo → Chuyển hướng đến bảng điều khiển |
+| Điều kiện sau        | Người dùng đã được xác thực                                                               |
+| Ngoại lệ             | E1: Thông tin không hợp lệ, E2: Tài khoản bị khóa                                         |
 
 ### UC-LEARN-001: Xem lộ trình học tập AI
 
-| Trường thông tin | Giá trị                                                                                                         |
-| ---------------- | --------------------------------------------------------------------------------------------------------------- |
-| Tác nhân         | Học sinh                                                                                                        |
-| Điều kiện tiên quyết| Đăng nhập với vai trò Học sinh                                                                                  |
-| Tác nhân kích hoạt| Người dùng mở bảng điều khiển học tập                                                                           |
-| Luồng chính      | Tải hồ sơ người dùng → AI phân tích lịch sử học tập → Tạo lộ trình cá nhân hóa → Hiển thị các gợi ý|
-| Điều kiện sau    | Lộ trình học tập AI được hiển thị                                                                               |
-| Ngoại lệ         | E1: Chưa có lịch sử học tập, E2: Dịch vụ AI không khả dụng                                                      |
+| Trường thông tin     | Giá trị                                                                                             |
+| -------------------- | --------------------------------------------------------------------------------------------------- |
+| Tác nhân             | Học sinh                                                                                            |
+| Điều kiện tiên quyết | Đăng nhập với vai trò Học sinh                                                                      |
+| Tác nhân kích hoạt   | Người dùng mở bảng điều khiển học tập                                                               |
+| Luồng chính          | Tải hồ sơ người dùng → AI phân tích lịch sử học tập → Tạo lộ trình cá nhân hóa → Hiển thị các gợi ý |
+| Điều kiện sau        | Lộ trình học tập AI được hiển thị                                                                   |
+| Ngoại lệ             | E1: Chưa có lịch sử học tập, E2: Dịch vụ AI không khả dụng                                          |
 
 ### UC-COMP-001: Tham gia giải đấu
 
-| Trường thông tin | Giá trị                                                                             |
-| ---------------- | ----------------------------------------------------------------------------------- |
-| Tác nhân         | Học sinh                                                                            |
-| Điều kiện tiên quyết| Đã đăng nhập, giải đấu đang khả dụng                                                |
-| Tác nhân kích hoạt| Người dùng nhấn "Tham gia giải đấu"                                                 |
-| Luồng chính      | Chọn giải đấu → Xác thực điều kiện tham gia → Xác nhận đăng ký → Vào phòng chờ|
-| Điều kiện sau    | Người dùng đã đăng ký tham gia giải đấu                                             |
-| Ngoại lệ         | E1: Không đủ điều kiện, E2: Giải đấu đã đầy                                         |
+| Trường thông tin     | Giá trị                                                                        |
+| -------------------- | ------------------------------------------------------------------------------ |
+| Tác nhân             | Học sinh                                                                       |
+| Điều kiện tiên quyết | Đã đăng nhập, giải đấu đang khả dụng                                           |
+| Tác nhân kích hoạt   | Người dùng nhấn "Tham gia giải đấu"                                            |
+| Luồng chính          | Chọn giải đấu → Xác thực điều kiện tham gia → Xác nhận đăng ký → Vào phòng chờ |
+| Điều kiện sau        | Người dùng đã đăng ký tham gia giải đấu                                        |
+| Ngoại lệ             | E1: Không đủ điều kiện, E2: Giải đấu đã đầy                                    |
 
 ---
 

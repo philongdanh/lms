@@ -7,7 +7,8 @@ sidebar_position: 5
 
 # Tournament & Competition - Test Cases
 
-Test cases cho module Tournament: kiểm thử joining, scoring, leaderboard, real-time matches.
+Test cases cho module Tournament: kiểm thử joining, scoring, leaderboard,
+real-time matches.
 
 ---
 
@@ -23,7 +24,7 @@ Test cases cho module Tournament: kiểm thử joining, scoring, leaderboard, re
 
 ## Test Categories
 
-### 1. Functional Tests
+### 1. Kiểm thử chức năng
 
 #### Business Logic
 
@@ -33,13 +34,13 @@ Test cases cho module Tournament: kiểm thử joining, scoring, leaderboard, re
 | TC-TOUR-FUN-002 | Join muộn              | BR-TOUR-001 | Bị chặn             | P1       |
 | TC-TOUR-FUN-003 | Điểm chính xác         | BR-TOUR-003 | Điểm khớp công thức | P0       |
 
-### 2. Integration Tests
+### 2. Kiểm thử tích hợp
 
 | Test ID         | Description           | Components | Result         |
 | --------------- | --------------------- | ---------- | -------------- |
 | TC-TOUR-INT-001 | User thắng nhận Badge | Tour, Game | Badge được gán |
 
-### 3. Performance Tests
+### 3. Kiểm thử hiệu năng
 
 | Test ID          | Scenario        | Load        | Result          |
 | ---------------- | --------------- | ----------- | --------------- |
@@ -61,7 +62,7 @@ Test cases cho module Tournament: kiểm thử joining, scoring, leaderboard, re
 
 ## Performance Targets
 
-### Response Times
+### Thời gian phản hồi
 
 | Operation           | P50   | P95   | P99   | Max   | Đo lường         |
 | ------------------- | ----- | ----- | ----- | ----- | ---------------- |
@@ -69,7 +70,7 @@ Test cases cho module Tournament: kiểm thử joining, scoring, leaderboard, re
 | Submit Answer (WS)  | 50ms  | 100ms | 200ms | 500ms | Server Ack       |
 | Leaderboard Refresh | 100ms | 200ms | 500ms | 1s    | Broadcast        |
 
-### Throughput Requirements
+### Yêu cầu thông lượng
 
 | Scenario    | Requests/sec       | Concurrent Users |
 | ----------- | ------------------ | ---------------- |
@@ -79,7 +80,7 @@ Test cases cho module Tournament: kiểm thử joining, scoring, leaderboard, re
 
 ## Scalability Requirements
 
-### Horizontal Scaling
+### Mở rộng theo chiều ngang
 
 - **WebSocket Cluster**: Auto-scale dựa trên CPU/Connections.
 - **Room Sharding**: Phân phối room trên các node.

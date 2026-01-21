@@ -1,9 +1,8 @@
 {
-  "label": "Business Requirements",
   "position": 1,
+  "label": "BRs",
   "link": {
     "type": "generated-index",
-    "description": "Tổng quan về Yêu cầu Nghiệp vụ",
-    "slug": "business"
+    "title": "Business Requirements"
   }
 }

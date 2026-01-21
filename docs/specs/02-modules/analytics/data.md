@@ -13,13 +13,12 @@ Data model cho module Analytics: KnowledgeMap, DailyLearningStats.
 
 ## Entities
 
-### Entity: KnowledgeMap
+### Thực thể: KnowledgeMap
 
 **Description**: Lưu trữ mức độ thành thạo kiến thức của học sinh theo chủ đề.
-**Storage**: Database (PostgreSQL)
-**Retention**: Vĩnh viễn
+**Storage**: Database (PostgreSQL) **Retention**: Vĩnh viễn
 
-#### Fields
+#### Các trường
 
 | Field Name          | Type      | Required | Default  | Validation  | Description              |
 | ------------------- | --------- | -------- | -------- | ----------- | ------------------------ |
@@ -31,12 +30,12 @@ Data model cho module Analytics: KnowledgeMap, DailyLearningStats.
 | questions_correct   | Integer   | ✅       | 0        | >= 0        | Số câu trả lời đúng      |
 | last_practiced_at   | Timestamp | ❌       | null     | -           | Thời gian luyện tập cuối |
 
-### Entity: DailyLearningStats
+### Thực thể: DailyLearningStats
 
-**Description**: Bảng tổng hợp hoạt động học tập hàng ngày.
-**Storage**: Database (PostgreSQL)
+**Description**: Bảng tổng hợp hoạt động học tập hàng ngày. **Storage**:
+Database (PostgreSQL)
 
-#### Fields
+#### Các trường
 
 | Field Name          | Type    | Required | Default  | Validation | Description               |
 | ------------------- | ------- | -------- | -------- | ---------- | ------------------------- |
@@ -47,7 +46,7 @@ Data model cho module Analytics: KnowledgeMap, DailyLearningStats.
 | lessons_completed   | Integer | ✅       | 0        | >= 0       | Số bài học hoàn thành     |
 | exercises_done      | Integer | ✅       | 0        | >= 0       | Số bài tập đã làm         |
 
-#### Relationships
+#### Mối quan hệ
 
 ```mermaid
 ---

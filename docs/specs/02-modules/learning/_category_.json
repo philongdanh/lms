@@ -1,7 +1,6 @@
 {
   "label": "Learning",
   "link": {
-    "type": "generated-index",
-    "description": "Mô-đun quản lý học tập"
+    "type": "generated-index"
   }
 }

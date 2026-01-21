@@ -15,20 +15,20 @@ Các quy tắc và quy trình làm việc cho đội ngũ phát triển LMS Plat
 
 ### Các vai trò chính
 
-| Role              | Responsibility                                         |
-| ----------------- | ---------------------------------------------------------------------- |
-| **Product Owner** | Định hướng sản phẩm, ưu tiên tính năng, phê duyệt business logic      |
-| **Tech Lead**     | Quyết định kiến trúc, review spec, đảm bảo chất lượng code            |
-| **Developer**     | Triển khai từ specification, viết test, tham gia code review          |
-| **QA Engineer**   | Lập kế hoạch test, thực hiện testing, báo cáo bug                     |
+| Role              | Responsibility                                                   |
+| ----------------- | ---------------------------------------------------------------- |
+| **Product Owner** | Định hướng sản phẩm, ưu tiên tính năng, phê duyệt business logic |
+| **Tech Lead**     | Quyết định kiến trúc, review spec, đảm bảo chất lượng code       |
+| **Developer**     | Triển khai từ specification, viết test, tham gia code review     |
+| **QA Engineer**   | Lập kế hoạch test, thực hiện testing, báo cáo bug                |
 
 ### Ma trận phối hợp
 
-| Activity | PO   | Lead    | Dev    | QA     |
-| -------- | ---- | ------- | ------ | ------ |
-| Spec     | Lead | Phê duyệt| Draft  | Review |
-| Code     | -    | Review  | Tạo mới | -      |
-| Test     | UAT  | -       | Unit   | Lead   |
+| Activity | PO   | Lead      | Dev     | QA     |
+| -------- | ---- | --------- | ------- | ------ |
+| Spec     | Lead | Phê duyệt | Draft   | Review |
+| Code     | -    | Review    | Tạo mới | -      |
+| Test     | UAT  | -         | Unit    | Lead   |
 
 ---
 
@@ -36,10 +36,10 @@ Các quy tắc và quy trình làm việc cho đội ngũ phát triển LMS Plat
 
 ### Mô hình Branching
 
-| Branch      | Purpose                            | Protection | Lifespan  |
-| ----------- | ---------------------------------- | ---------- | --------- |
-| `main`      | Nguồn sự thật, luôn sẵn sàng deploy | Được bảo vệ | Vĩnh viễn  |
-| `feature/*` | Nhánh tính năng ngắn hạn           | Không      | < 1 ngày   |
+| Branch      | Purpose                             | Protection  | Lifespan  |
+| ----------- | ----------------------------------- | ----------- | --------- |
+| `main`      | Nguồn sự thật, luôn sẵn sàng deploy | Được bảo vệ | Vĩnh viễn |
+| `feature/*` | Nhánh tính năng ngắn hạn            | Không       | < 1 ngày  |
 
 > **Important**:
 >
@@ -64,15 +64,15 @@ Branch from main --> Code --> Pull Request --> CI Checks --> Review --> Merge to
 
 Format: `<type>(<scope>): <subject>`
 
-| Type       | Description          |
-| ---------- | -------------------- |
-| `feat`     | Tính năng mới        |
-| `fix`      | Sửa lỗi              |
-| `docs`     | Cập nhật tài liệu    |
-| `style`    | Định dạng code       |
-| `refactor` | Tái cấu trúc         |
-| `test`     | Thêm test            |
-| `chore`    | Bảo trì              |
+| Type       | Description       |
+| ---------- | ----------------- |
+| `feat`     | Tính năng mới     |
+| `fix`      | Sửa lỗi           |
+| `docs`     | Cập nhật tài liệu |
+| `style`    | Định dạng code    |
+| `refactor` | Tái cấu trúc      |
+| `test`     | Thêm test         |
+| `chore`    | Bảo trì           |
 
 ---
 
@@ -87,12 +87,12 @@ Format: `<type>(<scope>): <subject>`
 
 ### Các nghi thức Sprint
 
-| Ceremony          | Timing         | Duration   | Purpose                          |
-| ----------------- | -------------- | ---------- | -------------------------------- |
-| **Planning**      | Tuần 1, thứ Hai | 2 giờ      | Chọn story, chia nhỏ task        |
-| **Daily Standup** | Hàng ngày      | 15 phút    | Đồng bộ tiến độ                  |
-| **Sprint Review** | Tuần 2, thứ Sáu | 1 giờ      | Demo và thu thập feedback        |
-| **Retrospective** | Tuần 2, thứ Sáu | 45 phút    | Cải tiến quy trình               |
+| Ceremony          | Timing          | Duration | Purpose                   |
+| ----------------- | --------------- | -------- | ------------------------- |
+| **Planning**      | Tuần 1, thứ Hai | 2 giờ    | Chọn story, chia nhỏ task |
+| **Daily Standup** | Hàng ngày       | 15 phút  | Đồng bộ tiến độ           |
+| **Sprint Review** | Tuần 2, thứ Sáu | 1 giờ    | Demo và thu thập feedback |
+| **Retrospective** | Tuần 2, thứ Sáu | 45 phút  | Cải tiến quy trình        |
 
 ---
 

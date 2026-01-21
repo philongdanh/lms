@@ -23,7 +23,7 @@ Tiêu chuẩn giám sát, nhật ký và cảnh báo hệ thống.
 
 ## Metrics
 
-### System Metrics
+### Chỉ số hệ thống
 
 | Metric       | Description        | Alert Threshold |
 | ------------ | ------------------ | --------------- |
@@ -32,7 +32,7 @@ Tiêu chuẩn giám sát, nhật ký và cảnh báo hệ thống.
 | Disk Usage   | Disk utilization   | > 90%           |
 | Network I/O  | Network throughput | Anomaly         |
 
-### Application Metrics
+### Chỉ số ứng dụng
 
 | Metric              | Description           | Target  | Alert   |
 | ------------------- | --------------------- | ------- | ------- |
@@ -42,7 +42,7 @@ Tiêu chuẩn giám sát, nhật ký và cảnh báo hệ thống.
 | Response Time (P95) | 95th percentile       | < 200ms | > 500ms |
 | Response Time (P99) | 99th percentile       | < 500ms | > 1s    |
 
-### Business Metrics
+### Chỉ số nghiệp vụ
 
 | Metric          | Description           | Measurement |
 | --------------- | --------------------- | ----------- |
@@ -54,7 +54,7 @@ Tiêu chuẩn giám sát, nhật ký và cảnh báo hệ thống.
 
 ## Logging
 
-### Log Levels
+### Mức độ Log
 
 | Level | Usage                 | Example                       |
 | ----- | --------------------- | ----------------------------- |
@@ -63,7 +63,7 @@ Tiêu chuẩn giám sát, nhật ký và cảnh báo hệ thống.
 | INFO  | Hoạt động bình thường | Request start/end             |
 | DEBUG | Debug chi tiết        | Variable values               |
 
-### Log Format
+### Định dạng Log
 
 ```json
 {
@@ -78,7 +78,7 @@ Tiêu chuẩn giám sát, nhật ký và cảnh báo hệ thống.
 }
 ```
 
-### What to Log
+### Những gì cần log
 
 | Event          | Level | Fields                |
 | -------------- | ----- | --------------------- |
@@ -88,7 +88,7 @@ Tiêu chuẩn giám sát, nhật ký và cảnh báo hệ thống.
 | Authentication | INFO  | userId, result        |
 | Business Event | INFO  | event, data           |
 
-### What NOT to Log
+### Những gì KHÔNG được log
 
 - Passwords hoặc secrets
 - Full credit card numbers
@@ -107,7 +107,7 @@ Tiêu chuẩn giám sát, nhật ký và cảnh báo hệ thống.
 | Span ID        | Unique ID for operation     |
 | Parent Span ID | Parent operation            |
 
-### Key Spans
+### Span chính
 
 | Span             | Description            |
 | ---------------- | ---------------------- |
@@ -120,7 +120,7 @@ Tiêu chuẩn giám sát, nhật ký và cảnh báo hệ thống.
 
 ## Alerting
 
-### Alert Priorities
+### Mức độ ưu tiên cảnh báo
 
 | Priority    | Response Time     | Notification      |
 | ----------- | ----------------- | ----------------- |
@@ -129,7 +129,7 @@ Tiêu chuẩn giám sát, nhật ký và cảnh báo hệ thống.
 | P3 Medium   | < 1 hour          | Slack             |
 | P4 Low      | Next business day | Email             |
 
-### Alert Rules
+### Quy tắc cảnh báo
 
 | Alert           | Condition                | Priority | Action       |
 | --------------- | ------------------------ | -------- | ------------ |
@@ -142,14 +142,14 @@ Tiêu chuẩn giám sát, nhật ký và cảnh báo hệ thống.
 
 ## Dashboards
 
-### Overview Dashboard
+### Dashboard tổng quan
 
 - Request rate and error rate
 - Response time percentiles
 - Active users
 - System resources
 
-### Service Dashboard
+### Dashboard dịch vụ
 
 - Per-service metrics
 - Dependency health

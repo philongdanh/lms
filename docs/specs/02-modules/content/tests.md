@@ -7,7 +7,8 @@ sidebar_position: 5
 
 # Content & Question Bank - Test Cases
 
-Test cases cho module Content: kiểm thử business logic, API endpoints, import/export workflows.
+Test cases cho module Content: kiểm thử business logic, API endpoints,
+import/export workflows.
 
 ---
 
@@ -23,7 +24,7 @@ Test cases cho module Content: kiểm thử business logic, API endpoints, impor
 
 ## Test Categories
 
-### 1. Functional Tests
+### 1. Kiểm thử chức năng
 
 #### Business Logic
 
@@ -32,13 +33,13 @@ Test cases cho module Content: kiểm thử business logic, API endpoints, impor
 | TC-CONT-FUN-001 | Validate Hierarchy  | BR-CONT-001 | Ngăn tạo Lesson không có Topic | P0       |
 | TC-CONT-FUN-002 | Import Format Check | BR-CONT-005 | Từ chối file .exe              | P1       |
 
-### 2. Integration Tests
+### 2. Kiểm thử tích hợp
 
 | Test ID         | Description                         | Components            | Result             |
 | --------------- | ----------------------------------- | --------------------- | ------------------ |
 | TC-CONT-INT-001 | Sự kiện Publish kích hoạt thông báo | Content, Notification | Thông báo được gửi |
 
-### 4. Security Tests
+### 4. Kiểm thử bảo mật
 
 | Test ID         | Aspect                            | Method                | Result        |
 | --------------- | --------------------------------- | --------------------- | ------------- |
@@ -60,7 +61,7 @@ Test cases cho module Content: kiểm thử business logic, API endpoints, impor
 
 ## Performance Targets
 
-### Response Times
+### Thời gian phản hồi
 
 | Operation                 | P50   | P95   | P99   | Max | Measurement       |
 | ------------------------- | ----- | ----- | ----- | --- | ----------------- |
@@ -68,7 +69,7 @@ Test cases cho module Content: kiểm thử business logic, API endpoints, impor
 | Search Questions          | 100ms | 300ms | 800ms | 2s  | Tìm kiếm fulltext |
 | Import Process (100 rows) | 2s    | 5s    | 10s   | 30s | Thời gian task    |
 
-### Throughput Requirements
+### Yêu cầu thông lượng
 
 | Scenario        | Requests/sec | Concurrent Users | Data Volume |
 | --------------- | ------------ | ---------------- | ----------- |
@@ -78,7 +79,7 @@ Test cases cho module Content: kiểm thử business logic, API endpoints, impor
 
 ## Scalability Requirements
 
-### Horizontal Scaling
+### Mở rộng theo chiều ngang
 
 - **Content Service**: Scale stateless pods tự do.
 - **Import Workers**: Pool worker riêng cho việc parsing file.

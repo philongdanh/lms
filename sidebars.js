@@ -5,10 +5,8 @@ const sidebars = {
       label: 'Specs',
       link: {
         type: 'generated-index',
-        title: 'Specs',
-        description:
-          'Tài liệu đặc tả yêu cầu, kiến trúc và chức năng của hệ thống.',
-        slug: '/specs',
+        title: 'Specifications',
+        slug: 'specs',
       },
       items: [
         {
@@ -25,8 +23,7 @@ const sidebars = {
       link: {
         type: 'generated-index',
         title: 'Design',
-        description: 'Quy định về UI, UX và Design Tokens.',
-        slug: '/design',
+        slug: 'design',
       },
       items: [
         {
@@ -39,12 +36,11 @@ const sidebars = {
   api: [
     {
       type: 'category',
-      label: 'API Reference',
+      label: 'API',
       link: {
         type: 'generated-index',
         title: 'API Reference',
-        description: 'Tài liệu đặc tả API Contracts và OpenAPI Specification.',
-        slug: '/api',
+        slug: 'api',
       },
       items: [
         {
@@ -61,8 +57,7 @@ const sidebars = {
       link: {
         type: 'generated-index',
         title: 'Developer Guide',
-        description: 'Hướng dẫn cài đặt, phát triển và đóng góp cho dự án.',
-        slug: '/developer-guide',
+        slug: 'developer-guide',
       },
       items: [
         {
@@ -79,9 +74,7 @@ const sidebars = {
       link: {
         type: 'generated-index',
         title: 'User Guide',
-        description:
-          'Hướng dẫn sử dụng các tính năng của hệ thống cho từng đối tượng người dùng.',
-        slug: '/user-guide',
+        slug: 'user-guide',
       },
       items: [
         {
@@ -97,10 +90,8 @@ const sidebars = {
       label: 'Project',
       link: {
         type: 'generated-index',
-        title: 'Project',
-        description:
-          'Thông tin về quản lý dự án, quy trình và đội ngũ phát triển.',
-        slug: '/project',
+        title: 'Project Management',
+        slug: 'project',
       },
       items: [
         {
@@ -117,8 +108,7 @@ const sidebars = {
       link: {
         type: 'generated-index',
         title: "What's New",
-        description: 'Lịch sử thay đổi và cập nhật của dự án.',
-        slug: '/changelog',
+        slug: 'changelog',
       },
       items: [
         {

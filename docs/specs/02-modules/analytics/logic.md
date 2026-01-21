@@ -24,12 +24,12 @@ Chi tiết quy tắc nghiệp vụ, workflows và xử lý lỗi cho module Anal
 
 ## Dependencies
 
-### Internal Dependencies
+### Phụ thuộc nội bộ
 
 - ✅ Learning Module - Nguồn dữ liệu bài tập/tiến độ.
 - ✅ Auth Module - Thông tin người dùng/vai trò.
 
-### External Dependencies
+### Phụ thuộc bên ngoài
 
 - ✅ PostgreSQL - Lưu trữ time-series (thông qua partitioning).
 - ✅ Redis - Caching báo cáo.
@@ -153,7 +153,7 @@ sequenceDiagram
 
 ## Events
 
-### System Events
+### Sự kiện hệ thống
 
 | Event Name                   | Description                    | Payload            | Emitted By    |
 | ---------------------------- | ------------------------------ | ------------------ | ------------- |

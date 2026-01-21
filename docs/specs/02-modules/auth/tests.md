@@ -23,9 +23,9 @@ Test cases được derive từ specifications của module Auth.
 
 ## Test Categories
 
-### 1. Functional Tests
+### 1. Kiểm thử chức năng
 
-#### Business Logic Tests
+#### Kiểm thử logic nghiệp vụ
 
 | Test ID         | Description             | Preconditions               | Test Steps                           | Expected Result                       | Priority |
 | --------------- | ----------------------- | --------------------------- | ------------------------------------ | ------------------------------------- | -------- |
@@ -38,7 +38,7 @@ Test cases được derive từ specifications của module Auth.
 | TC-AUTH-FUN-007 | Multi-device session    | User đã login trên device A | 1. Login từ device B                 | Cả 2 sessions đều active              | P1       |
 | TC-AUTH-FUN-008 | Logout invalidate token | User đã login               | 1. POST /logout                      | refreshToken bị revoke                | P1       |
 
-#### API Tests
+#### Kiểm thử API
 
 | Test ID         | Endpoint                       | Method | Test Data             | Expected Response  | Status Code |
 | --------------- | ------------------------------ | ------ | --------------------- | ------------------ | ----------- |
@@ -49,7 +49,7 @@ Test cases được derive từ specifications của module Auth.
 | TC-AUTH-API-005 | `/graphql` (me)                | POST   | Authorization header  | user profile       | 200         |
 | TC-AUTH-API-006 | `/graphql` (resetPassword)     | POST   | email                 | success: true      | 200         |
 
-### 2. Integration Tests
+### 2. Kiểm thử tích hợp
 
 | Test ID         | Description             | Components            | Test Scenario                     | Expected Result        |
 | --------------- | ----------------------- | --------------------- | --------------------------------- | ---------------------- |
@@ -58,7 +58,7 @@ Test cases được derive từ specifications của module Auth.
 | TC-AUTH-INT-003 | Parent-Student link     | Auth + User Service   | Parent nhập code của student      | Accounts được link     |
 | TC-AUTH-INT-004 | Multi-tenant isolation  | Auth + Tenant Service | Login vào tenant A                | Chỉ thấy data tenant A |
 
-### 3. Performance Tests
+### 3. Kiểm thử hiệu năng
 
 | Test ID          | Scenario             | Load Profile              | Success Criteria         |
 | ---------------- | -------------------- | ------------------------- | ------------------------ |
@@ -66,7 +66,7 @@ Test cases được derive từ specifications của module Auth.
 | TC-AUTH-PERF-002 | Token refresh storm  | 5000 concurrent refreshes | P95 < 100ms, 0% errors   |
 | TC-AUTH-PERF-003 | Sustained login load | 100 req/s for 10 min      | CPU < 70%, Memory stable |
 
-### 4. Security Tests
+### 4. Kiểm thử bảo mật
 
 | Test ID         | Security Aspect        | Test Method                   | Expected Result            |
 | --------------- | ---------------------- | ----------------------------- | -------------------------- |
@@ -80,7 +80,7 @@ Test cases được derive từ specifications của module Auth.
 
 ## Test Data Requirements
 
-### Data Sets
+### Bộ dữ liệu
 
 | Data Set         | Purpose           | Size         | Refresh Frequency |
 | ---------------- | ----------------- | ------------ | ----------------- |
@@ -88,7 +88,7 @@ Test cases được derive từ specifications của module Auth.
 | Load Test Users  | Performance tests | 10,000 users | Weekly            |
 | Edge Case Emails | Email validation  | 50 records   | Monthly           |
 
-### Test Users
+### Người dùng kiểm thử
 
 | Role    | Username            | Password | Permissions                  |
 | ------- | ------------------- | -------- | ---------------------------- |
@@ -118,7 +118,7 @@ Test cases được derive từ specifications của module Auth.
 
 ## Reporting Requirements
 
-### Test Results Format
+### Định dạng kết quả kiểm thử
 
 ```json
 {
@@ -130,7 +130,7 @@ Test cases được derive từ specifications của module Auth.
 }
 ```
 
-### Metrics to Monitor
+### Chỉ số cần theo dõi
 
 - Test pass rate
 - Defect density
@@ -156,7 +156,7 @@ Test cases được derive từ specifications của module Auth.
 
 ## Performance Targets
 
-### Response Times
+### Thời gian phản hồi
 
 | Operation     | P50   | P95   | P99   | Max   | Measurement |
 | ------------- | ----- | ----- | ----- | ----- | ----------- |
@@ -165,7 +165,7 @@ Test cases được derive từ specifications của module Auth.
 | Register      | 100ms | 250ms | 400ms | 800ms | End-to-end  |
 | Get Profile   | 30ms  | 80ms  | 150ms | 300ms | End-to-end  |
 
-### Throughput Requirements
+### Yêu cầu thông lượng
 
 | Scenario                 | Requests/sec | Concurrent Users | Data Volume |
 | ------------------------ | ------------ | ---------------- | ----------- |
@@ -177,13 +177,13 @@ Test cases được derive từ specifications của module Auth.
 
 ## Scalability Requirements
 
-### Vertical Scaling
+### Mở rộng theo chiều dọc
 
 - **CPU**: Max 8 cores
 - **Memory**: Max 16 GB
 - **Storage**: Max 100 GB (logs + sessions)
 
-### Horizontal Scaling
+### Mở rộng theo chiều ngang
 
 - **Min Instances**: 2
 - **Max Instances**: 10
@@ -236,7 +236,7 @@ lúc **Test Parameters**:
 
 ## Monitoring & Alerting
 
-### Metrics to Monitor
+### Chỉ số cần theo dõi
 
 - [x] Response time percentiles
 - [x] Error rates by endpoint
@@ -244,7 +244,7 @@ lúc **Test Parameters**:
 - [x] JWT validation failures
 - [x] Rate limit triggers
 
-### Alerting Rules
+### Quy tắc cảnh báo
 
 | Metric              | Warning   | Critical  | Notification Channel |
 | ------------------- | --------- | --------- | -------------------- |
