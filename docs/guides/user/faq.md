@@ -6,8 +6,8 @@ sidebar_position: 2
 ---
 
 # Frequently Asked Questions
-
-Tổng hợp các câu hỏi thường gặp và giải đáp về LMS Platform.
+ 
+Giải đáp các câu hỏi thường gặp trong quá trình sử dụng.
 
 ---
 

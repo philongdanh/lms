@@ -6,8 +6,8 @@ sidebar_position: 4
 ---
 
 # Contributing Guide
-
-Các quy tắc và quy trình làm việc cho đội ngũ phát triển LMS Platform.
+ 
+Quy tắc và quy trình cộng tác phát triển hệ thống.
 
 ---
 
