@@ -124,16 +124,16 @@ direction: right
 A: Incoming Request
 B: Extract JWT
 C: Decode JWT Payload
-D: JWT Permissions Set\nPj = {p1, p2, p3, ...}
-E: Endpoint Required Permissions\nPe = {pA, pB, pC, ...}
+D: "JWT Permissions Set\nPj = {p1, p2, p3, ...}"
+E: "Endpoint Required Permissions\nPe = {pA, pB, pC, ...}"
 F: Check Permission Intersection
-G: Is Pj ∩ Pe ≠ ∅? {
+G: "Is Pj ∩ Pe ≠ ∅?" {
   shape: diamond
 }
 H: Access Granted
-I: Access Denied\n403 Forbidden
+I: "Access Denied\n403 Forbidden"
 J: Check Tenant Scope
-K: Is tenant_id valid? {
+K: "Is tenant_id valid?" {
   shape: diamond
 }
 L: Process Request
@@ -462,5 +462,5 @@ Check_Blacklist -> Pass_User_Ctx: OK
 
 - [RFC 7519](https://tools.ietf.org/html/rfc7519)
 - [Auth Business Logic](../../02-mods/auth/logic.md)
-- [Auth Logic](../02-mods/auth/logic.md)
-- [Auth Data](../02-mods/auth/data.md)
+- [Auth Logic](../../02-mods/auth/logic.md)
+- [Auth Data](../../02-mods/auth/data.md)
