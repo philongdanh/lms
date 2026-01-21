@@ -833,28 +833,6 @@ flowchart TD
     Tenant --> Exam[Exam]
     Tenant --> Reward[Reward]
 
-    subgraph "Soft Delete"
-        User
-        Topic
-        QuestionBank
-        Tournament
-        Exam
-        Reward
-    end
-
-    User --> UserSession[UserSession]
-    User --> UserRole[UserRole]
-    User --> UserExp[UserExp]
-    User --> UserBadge[UserBadge]
-    User --> Presence[Presence]
-
-    Topic --> Lesson[Lesson]
-    Topic --> KnowledgeMap[KnowledgeMap]
-
-    QuestionBank --> Question[Question]
-
-    Tournament --> CompetitionRound[CompetitionRound]
-
     Exam --> ExamQuestion[ExamQuestion]
     Exam --> ExamAssignment[ExamAssignment]
 

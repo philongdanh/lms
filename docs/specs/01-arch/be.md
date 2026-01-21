@@ -202,19 +202,56 @@ All tables include:
 
 ### Sơ đồ quan hệ thực thể
 
-```mermaid
-erDiagram
-    USERS ||--o{ LEARNING_PROGRESS : has
-    USERS ||--o{ EXERCISE_ATTEMPTS : makes
-    USERS ||--o{ TOURNAMENT_PARTICIPATIONS : joins
-    USERS ||--o{ USER_BADGES : earns
+```d2
+direction: right
 
-    SUBJECTS ||--o{ TOPICS : contains
-    TOPICS ||--o{ LESSONS : contains
-    LESSONS ||--o{ EXERCISES : has
+USERS: {
+  shape: sql_table
+}
+LEARNING_PROGRESS: {
+  shape: sql_table
+}
+EXERCISE_ATTEMPTS: {
+  shape: sql_table
+}
+TOURNAMENT_PARTICIPATIONS: {
+  shape: sql_table
+}
+USER_BADGES: {
+  shape: sql_table
+}
 
-    TOURNAMENTS ||--o{ TOURNAMENT_PARTICIPATIONS : has
-    TOURNAMENTS ||--o{ MATCHES : contains
+SUBJECTS: {
+  shape: sql_table
+}
+TOPICS: {
+  shape: sql_table
+}
+LESSONS: {
+  shape: sql_table
+}
+EXERCISES: {
+  shape: sql_table
+}
+
+TOURNAMENTS: {
+  shape: sql_table
+}
+MATCHES: {
+  shape: sql_table
+}
+
+USERS -> LEARNING_PROGRESS: has
+USERS -> EXERCISE_ATTEMPTS: makes
+USERS -> TOURNAMENT_PARTICIPATIONS: joins
+USERS -> USER_BADGES: earns
+
+SUBJECTS -> TOPICS: contains
+TOPICS -> LESSONS: contains
+LESSONS -> EXERCISES: has
+
+TOURNAMENTS -> TOURNAMENT_PARTICIPATIONS: has
+TOURNAMENTS -> MATCHES: contains
 ```
 
 ---

@@ -15,39 +15,35 @@ Tiêu chuẩn bảo mật, kiểm soát truy cập và xác thực.
 
 ### 2.1. Tổng quan kiến trúc
 
-```mermaid
----
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
----
-flowchart TB
-    subgraph "Authentication Layer"
-        JWT["JWT Token"]
-        Refresh["Refresh Token (Hashed)"]
-        Blacklist["Token Blacklist (Redis)"]
-    end
+```d2
+direction: down
 
-    subgraph "Authorization Layer"
-        Role["Role"]
-        Permission["Permission"]
-        RolePermission["RolePermission"]
-    end
+Authentication_Layer: Authentication Layer {
+  JWT: JWT Token
+  Refresh: Refresh Token (Hashed)
+  Blacklist: Token Blacklist (Redis)
+}
 
-    subgraph "Data Layer"
-        User["User"]
-        UserRole["UserRole"]
-        Tenant["Tenant"]
-    end
+Authorization_Layer: Authorization Layer {
+  Role: Role
+  Permission: Permission
+  RolePermission: RolePermission
+}
 
-    User --> UserRole
-    UserRole --> Role
-    Role --> RolePermission
-    RolePermission --> Permission
+Data_Layer: Data Layer {
+  User: User
+  UserRole: UserRole
+  Tenant: Tenant
+}
 
-    JWT --> User
-    Refresh --> Blacklist
-    User --> Tenant
+Data_Layer.User -> Data_Layer.UserRole
+Data_Layer.UserRole -> Authorization_Layer.Role
+Authorization_Layer.Role -> Authorization_Layer.RolePermission
+Authorization_Layer.RolePermission -> Authorization_Layer.Permission
+
+Authentication_Layer.JWT -> Data_Layer.User
+Authentication_Layer.Refresh -> Authentication_Layer.Blacklist
+Data_Layer.User -> Data_Layer.Tenant
 ```
 
 ### 2.2. Các thành phần chính
@@ -69,75 +65,54 @@ flowchart TB
 
 ### 3.1. Luồng đăng nhập
 
-```mermaid
----
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
----
-sequenceDiagram
-    participant Client
-    participant API
-    participant AuthService
-    participant SessionService
-    participant DB
-    participant Redis
+```d2
+shape: sequence_diagram
 
-    Client->>API: POST /auth/login {email, password}
-    API->>AuthService: Validate credentials
-    AuthService->>DB: Find user by email
-    DB-->>AuthService: User record
+Client
+API
+AuthService
+SessionService
+DB
+Redis
 
-    AuthService->>AuthService: Verify password hash
-    AuthService->>DB: Get user roles & permissions
-    DB-->>AuthService: Roles & Permissions
-
-    AuthService->>SessionService: Check device limit
-    SessionService->>DB: Count active sessions
-
-    alt Device limit exceeded
-        SessionService->>DB: Revoke oldest session
-        SessionService->>Redis: Blacklist old token
-    end
-
-    AuthService->>DB: Create UserSession (hash refresh token)
-    AuthService->>AuthService: Generate JWT (include permissions)
-
-    AuthService-->>API: {accessToken, refreshToken}
-    API-->>Client: Login success
+Client -> API: POST /auth/login {email, password}
+API -> AuthService: Validate credentials
+AuthService -> DB: Find user by email
+DB -> AuthService: User record
+AuthService -> AuthService: Verify password hash
+AuthService -> DB: Get user roles & permissions
+DB -> AuthService: Roles & Permissions
+AuthService -> SessionService: Check device limit
+SessionService -> DB: Count active sessions
+SessionService -> DB: Revoke oldest session (if limit exceeded)
+SessionService -> Redis: Blacklist old token (if limit exceeded)
+AuthService -> DB: Create UserSession (hash refresh token)
+AuthService -> AuthService: Generate JWT (include permissions)
+AuthService -> API: {accessToken, refreshToken}
+API -> Client: Login success
 ```
 
 ### 3.2. Luồng Refresh Token
 
-```mermaid
----
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
----
-sequenceDiagram
-    participant Client
-    participant API
-    participant AuthService
-    participant Redis
-    participant DB
+```d2
+shape: sequence_diagram
 
-    Client->>API: POST /auth/refresh {refreshToken}
-    API->>AuthService: Validate refresh token
+Client
+API
+AuthService
+Redis
+DB
 
-    AuthService->>Redis: Check if token blacklisted
-
-    alt Token is blacklisted
-        AuthService-->>Client: 401 Token revoked
-    else Token valid
-        AuthService->>DB: Find session by token hash
-        DB-->>AuthService: Session record
-
-        AuthService->>AuthService: Generate new access token
-        AuthService->>DB: Rotate refresh token (new hash)
-
-        AuthService-->>Client: {newAccessToken, newRefreshToken}
-    end
+Client -> API: POST /auth/refresh {refreshToken}
+API -> AuthService: Validate refresh token
+AuthService -> Redis: Check if token blacklisted
+Redis -> AuthService: Token status
+AuthService -> DB: Find session by token hash (if not blacklisted)
+DB -> AuthService: Session record
+AuthService -> AuthService: Generate new access token
+AuthService -> DB: Rotate refresh token (new hash)
+AuthService -> Client: {newAccessToken, newRefreshToken} (if valid)
+AuthService -> Client: 401 Token revoked (if blacklisted)
 ```
 
 ---
@@ -146,38 +121,41 @@ sequenceDiagram
 
 ### 4.1. Luồng xác thực quyền
 
-```mermaid
----
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
----
-flowchart TD
-    A[Incoming Request] --> B[Extract JWT]
-    B --> C[Decode JWT Payload]
+```d2
+direction: down
 
-    C --> D["JWT Permissions Set<br/>Pj = {p1, p2, p3, ...}"]
-    A --> E["Endpoint Required Permissions<br/>Pe = {pA, pB, pC, ...}"]
+A: Incoming Request
+B: Extract JWT
+C: Decode JWT Payload
+D: JWT Permissions Set\nPj = {p1, p2, p3, ...}
+E: Endpoint Required Permissions\nPe = {pA, pB, pC, ...}
+F: Check Permission Intersection
+G: Is Pj ∩ Pe ≠ ∅? {
+  shape: diamond
+}
+H: Access Granted
+I: Access Denied\n403 Forbidden
+J: Check Tenant Scope
+K: Is tenant_id valid? {
+  shape: diamond
+}
+L: Process Request
+M: Log Permission Denial
 
-    D --> F{Check Permission Intersection}
-    E --> F
-
-    F --> G{"Is Pj ∩ Pe ≠ ∅?"}
-
-    G -- Yes --> H[Access Granted]
-    G -- No --> I[Access Denied<br/>403 Forbidden]
-
-    H --> J[Check Tenant Scope]
-    J --> K{"Is tenant_id valid?"}
-    K -- Yes --> L[Process Request]
-    K -- No --> I
-
-    H --> J[Check Tenant Scope]
-    J --> K{"Is tenant_id valid?"}
-    K -- Yes --> L[Process Request]
-    K -- No --> I
-
-    I --> M[Log Permission Denial]
+A -> B
+B -> C
+C -> D
+A -> E
+D -> F
+E -> F
+F -> G
+G -> H: Yes
+G -> I: No
+H -> J
+J -> K
+K -> L: Yes
+K -> I: No
+I -> M
 ```
 
 ### 4.2. Các cấp độ chi tiết quyền
@@ -192,43 +170,32 @@ Hệ thống hỗ trợ 3 mức độ chi tiết của permission:
 
 ### 4.3. Pipeline xử lý yêu cầu
 
-```mermaid
----
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
----
-sequenceDiagram
-    participant Client
-    participant Nginx
-    participant AuthMiddleware
-    participant TenantGuard
-    participant PermissionGuard
-    participant Controller
-    participant Service
+```d2
+shape: sequence_diagram
 
-    Client->>Nginx: Request with JWT
-    Nginx->>AuthMiddleware: Forward request
+Client
+Nginx
+AuthMiddleware
+TenantGuard
+PermissionGuard
+Controller
+Service
 
-    AuthMiddleware->>AuthMiddleware: Validate JWT signature
-    AuthMiddleware->>AuthMiddleware: Check token expiry
-    AuthMiddleware->>AuthMiddleware: Extract user & permissions
-
-    AuthMiddleware->>TenantGuard: Pass to tenant guard
-    TenantGuard->>TenantGuard: Validate tenant_id in request
-    TenantGuard->>TenantGuard: Check user belongs to tenant
-
-    TenantGuard->>PermissionGuard: Pass to permission guard
-    PermissionGuard->>PermissionGuard: Get required permissions for route
-    PermissionGuard->>PermissionGuard: Check intersection
-
-    alt Permission granted
-        PermissionGuard->>Controller: Forward to controller
-        Controller->>Service: Business logic
-        Service-->>Client: 200 OK
-    else Permission denied
-        PermissionGuard-->>Client: 403 Forbidden
-    end
+Client -> Nginx: Request with JWT
+Nginx -> AuthMiddleware: Forward request
+AuthMiddleware -> AuthMiddleware: Validate JWT signature
+AuthMiddleware -> AuthMiddleware: Check token expiry
+AuthMiddleware -> AuthMiddleware: Extract user & permissions
+AuthMiddleware -> TenantGuard: Pass to tenant guard
+TenantGuard -> TenantGuard: Validate tenant_id in request
+TenantGuard -> TenantGuard: Check user belongs to tenant
+TenantGuard -> PermissionGuard: Pass to permission guard
+PermissionGuard -> PermissionGuard: Get required permissions for route
+PermissionGuard -> PermissionGuard: Check intersection
+PermissionGuard -> Controller: Forward to controller (if granted)
+Controller -> Service: Business logic
+Service -> Client: 200 OK (if granted)
+PermissionGuard -> Client: 403 Forbidden (if denied)
 ```
 
 ---
@@ -296,37 +263,44 @@ sequenceDiagram
 
 ## Permission Change Process
 
-```mermaid
----
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
----
-flowchart TD
-    A["Permission Change Request"] --> B["Requirement Analysis"]
-    B --> C["Security Impact Assessment"]
+```d2
+direction: down
 
-    C --> D["Code Changes"]
-    D --> E["Update Permission Definitions"]
-    E --> F["Update Role Mappings"]
-    F --> G["Update Route Decorators"]
+A: Permission Change Request
+B: Requirement Analysis
+C: Security Impact Assessment
+D: Code Changes
+E: Update Permission Definitions
+F: Update Role Mappings
+G: Update Route Decorators
+H: Unit & Integration Testing
+I: Security Review
+J: Staging Deployment
+K: Production Deployment
+L: User Notification
+M: Monitoring & Audit
+N: Any Issues? {
+  shape: diamond
+}
+O: Rollback
+P: Change Complete
 
-    G --> H["Unit & Integration Testing"]
-    H --> I["Security Review"]
-    I --> J["Staging Deployment"]
-
-    J --> K["Production Deployment"]
-    K --> L["User Notification"]
-    L --> M["Monitoring & Audit"]
-
-    M --> N{Any Issues?}
-    N -- Yes --> O["Rollback"]
-    N -- No --> P["Change Complete"]
-
-    O --> H
-
-    style K fill:#10b981,color:#fff
-    style P fill:#10b981,color:#fff
+A -> B
+B -> C
+C -> D
+D -> E
+E -> F
+F -> G
+G -> H
+H -> I
+I -> J
+J -> K
+K -> L
+L -> M
+M -> N
+N -> O: Yes
+N -> P: No
+O -> H
 ```
 
 ---
@@ -441,22 +415,34 @@ invalidated ngay (Reuse Detection).
 
 ### 10.4. Quy trình xác thực
 
-```mermaid
----
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
----
-flowchart TD
-    A[Request] --> B{Auth Header?}
-    B -- No --> C[401]
-    B -- Yes --> D[Verify Sig]
-    D -- Invalid --> C
-    D -- Valid --> E{Check Exp}
-    E -- Expired --> F[401 Expired]
-    E -- Valid --> G{Check Blacklist}
-    G -- Listed --> H[401 Revoked]
-    G -- OK --> I[Pass User Ctx]
+```d2
+direction: down
+
+Request
+Auth_Header: Auth Header? {
+  shape: diamond
+}
+Verify_Sig: Verify Signature
+Check_Exp: Check Expiration {
+  shape: diamond
+}
+Check_Blacklist: Check Blacklist {
+  shape: diamond
+}
+Pass_User_Ctx: Pass User Context
+Unauthorized_401: 401 Unauthorized
+Expired_401: 401 Expired
+Revoked_401: 401 Revoked
+
+Request -> Auth_Header
+Auth_Header -> Unauthorized_401: No
+Auth_Header -> Verify_Sig: Yes
+Verify_Sig -> Unauthorized_401: Invalid
+Verify_Sig -> Check_Exp: Valid
+Check_Exp -> Expired_401: Expired
+Check_Exp -> Check_Blacklist: Valid
+Check_Blacklist -> Revoked_401: Listed
+Check_Blacklist -> Pass_User_Ctx: OK
 ```
 
 ### 10.5. Các thực hành bảo mật tốt nhất
