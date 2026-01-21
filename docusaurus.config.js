@@ -78,16 +78,21 @@ async function createConfig() {
             position: 'left',
           },
           {
-            type: 'docSidebar',
-            sidebarId: 'devGuide',
-            label: 'Developer Guide',
+            type: 'dropdown',
+            label: 'Guides',
             position: 'left',
-          },
-          {
-            type: 'docSidebar',
-            sidebarId: 'userGuide',
-            label: 'User Guide',
-            position: 'left',
+            items: [
+              {
+                type: 'docSidebar',
+                sidebarId: 'userGuide',
+                label: 'User',
+              },
+              {
+                type: 'docSidebar',
+                sidebarId: 'devGuide',
+                label: 'Dev',
+              },
+            ],
           },
           {
             type: 'docSidebar',
