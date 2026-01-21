@@ -115,47 +115,6 @@ async function createConfig() {
       },
       footer: {
         style: 'dark',
-        links: [
-          {
-            title: 'Documentation',
-            items: [
-              {
-                label: 'User Guide',
-                to: '/user-guide/getting-started',
-              },
-              {
-                label: 'Developer Guide',
-                to: '/developer-guide/setup',
-              },
-            ],
-          },
-          {
-            title: 'Technical',
-            items: [
-              {
-                label: 'Specifications',
-                to: '/specs',
-              },
-              {
-                label: 'Design System',
-                to: '/design',
-              },
-              {
-                label: 'API Reference',
-                to: '/api',
-              },
-            ],
-          },
-          {
-            title: 'Links',
-            items: [
-              {
-                label: 'GitHub Repository',
-                href: 'https://github.com/idlongggg/lms-docs',
-              },
-            ],
-          },
-        ],
         copyright: `© ${new Date().getFullYear()} LMS - Danh Phi Long`,
       },
     },
