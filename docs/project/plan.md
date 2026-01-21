@@ -1,11 +1,11 @@
 ---
-id: sprint-plan
-title: Sprint Plan
-sidebar_label: Sprint Plan
+id: plan
+title: Plan
+sidebar_label: Plan
 sidebar_position: 2
 ---
 
-# Sprint Plan
+# Project Plan
 
 Kế hoạch cấp sprint với các sản phẩm bàn giao và phân bổ năng lực.
 
