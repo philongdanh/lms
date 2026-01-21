@@ -13,16 +13,16 @@ Chân dung người dùng mục tiêu.
 
 ## Primary Personas
 
-### Persona 1: Phi Long - Học sinh Tiểu học
+### Chân dung 1: Phi Long - Học sinh Tiểu học
 
 **Nhân khẩu học**:
 
-| Thuộc tính | Giá trị |
-| ---------- | ------- |
-| Độ tuổi    | 7-11 tuổi |
-| Vai trò    | Học sinh |
-| Kinh nghiệm| Mới làm quen với công nghệ |
-| Địa điểm   | Thành phố lớn |
+| Thuộc tính  | Giá trị                    |
+| ----------- | -------------------------- |
+| Độ tuổi     | 7-11 tuổi                  |
+| Vai trò     | Học sinh                   |
+| Kinh nghiệm | Mới làm quen với công nghệ |
+| Địa điểm    | Thành phố lớn              |
 
 **Mục tiêu**:
 
@@ -52,16 +52,16 @@ Chân dung người dùng mục tiêu.
 2. Thi đấu giải đấu cuối tuần với bạn cùng lớp.
 3. Xem lại video bài giảng khi chưa hiểu bài.
 
-### Persona 2: Minh Lưng - Học sinh THCS
+### Chân dung 2: Minh Lưng - Học sinh THCS
 
 **Nhân khẩu học**:
 
-| Thuộc tính | Giá trị |
-| ---------- | ------- |
-| Độ tuổi    | 12-15 tuổi |
-| Vai trò    | Học sinh |
-| Kinh nghiệm| Thành thạo thiết bị di động và máy tính |
-| Địa điểm   | Toàn quốc |
+| Thuộc tính  | Giá trị                                 |
+| ----------- | --------------------------------------- |
+| Độ tuổi     | 12-15 tuổi                              |
+| Vai trò     | Học sinh                                |
+| Kinh nghiệm | Thành thạo thiết bị di động và máy tính |
+| Địa điểm    | Toàn quốc                               |
 
 **Mục tiêu**:
 
@@ -91,16 +91,16 @@ Chân dung người dùng mục tiêu.
 2. Tự học các chủ đề khó vào thời gian rảnh.
 3. Theo dõi tiến độ so với kế hoạch học tập đề ra.
 
-### Persona 3: Nhựt Linh - Phụ huynh
+### Chân dung 3: Nhựt Linh - Phụ huynh
 
 **Nhân khẩu học**:
 
-| Thuộc tính | Giá trị |
-| ---------- | ------- |
-| Độ tuổi    | 35-50 tuổi |
-| Vai trò    | Phụ huynh |
-| Kinh nghiệm| Sử dụng điện thoại thông minh cơ bản |
-| Địa điểm   | Toàn quốc |
+| Thuộc tính  | Giá trị                              |
+| ----------- | ------------------------------------ |
+| Độ tuổi     | 35-50 tuổi                           |
+| Vai trò     | Phụ huynh                            |
+| Kinh nghiệm | Sử dụng điện thoại thông minh cơ bản |
+| Địa điểm    | Toàn quốc                            |
 
 **Mục tiêu**:
 
@@ -122,7 +122,8 @@ Chân dung người dùng mục tiêu.
 
 **Trích dẫn**:
 
-> "Tôi cần một cách để nắm bắt tình hình học tập của con mà không làm con cảm thấy bị kiểm soát."
+> "Tôi cần một cách để nắm bắt tình hình học tập của con mà không làm con cảm
+> thấy bị kiểm soát."
 
 **Kịch bản chính**:
 
@@ -134,15 +135,15 @@ Chân dung người dùng mục tiêu.
 
 ## Secondary Personas
 
-### Persona 4: Thầy Tùng - Giáo viên
+### Chân dung 4: Thầy Tùng - Giáo viên
 
 **Nhân khẩu học**:
 
-| Thuộc tính | Giá trị |
-| ---------- | ------- |
-| Độ tuổi    | 30-55 tuổi |
-| Vai trò    | Giáo viên |
-| Kinh nghiệm| Sử dụng công nghệ ở mức cơ bản đến khá |
+| Thuộc tính  | Giá trị                                |
+| ----------- | -------------------------------------- |
+| Độ tuổi     | 30-55 tuổi                             |
+| Vai trò     | Giáo viên                              |
+| Kinh nghiệm | Sử dụng công nghệ ở mức cơ bản đến khá |
 
 **Mục tiêu**:
 
@@ -156,15 +157,15 @@ Chân dung người dùng mục tiêu.
 - Khó nhận diện sớm các học sinh đang gặp khó khăn kiến thức.
 - Thiếu công cụ để phản hồi nhanh chóng cho nhiều học sinh cùng lúc.
 
-### Persona 5: Cô Ngọc Mới - Quản trị viên trường học
+### Chân dung 5: Cô Ngọc Mới - Quản trị viên trường học
 
 **Nhân khẩu học**:
 
-| Thuộc tính | Giá trị |
-| ---------- | ------- |
-| Độ tuổi    | 35-50 tuổi |
-| Vai trò    | Quản trị viên trường học |
-| Kinh nghiệm| Thành thạo các công cụ văn phòng và hệ thống quản lý |
+| Thuộc tính  | Giá trị                                              |
+| ----------- | ---------------------------------------------------- |
+| Độ tuổi     | 35-50 tuổi                                           |
+| Vai trò     | Quản trị viên trường học                             |
+| Kinh nghiệm | Thành thạo các công cụ văn phòng và hệ thống quản lý |
 
 **Mục tiêu**:
 
@@ -182,10 +183,10 @@ Chân dung người dùng mục tiêu.
 
 ## Persona Usage
 
-| Quyết định thiết kế | Persona chính            | Lưu ý triển khai                        |
-| ------------------- | ------------------------ | --------------------------------------- |
-| Trò chơi hóa nổi bật| Phi Long (Tiểu học)      | Huy hiệu, sao thưởng, hiệu ứng chúc mừng |
-| Báo cáo phân tích   | Minh Lưng (THCS), Nhựt Linh (Parent) | Phân tích lỗ hổng kiến thức, so sánh|
-| Giao diện tối giản  | Nhựt Linh (Parent)       | Ưu tiên di động, nút bấm lớn, nhãn rõ ràng|
-| Nhập liệu hàng loạt | Cô Ngọc Mới (Admin)      | Tải lên CSV, tải xuống tệp mẫu          |
-| Trình tạo bài tập   | Thầy Tùng (Teacher)      | Kéo thả, tích hợp ngân hàng câu hỏi     |
+| Quyết định thiết kế  | Persona chính                        | Lưu ý triển khai                           |
+| -------------------- | ------------------------------------ | ------------------------------------------ |
+| Trò chơi hóa nổi bật | Phi Long (Tiểu học)                  | Huy hiệu, sao thưởng, hiệu ứng chúc mừng   |
+| Báo cáo phân tích    | Minh Lưng (THCS), Nhựt Linh (Parent) | Phân tích lỗ hổng kiến thức, so sánh       |
+| Giao diện tối giản   | Nhựt Linh (Parent)                   | Ưu tiên di động, nút bấm lớn, nhãn rõ ràng |
+| Nhập liệu hàng loạt  | Cô Ngọc Mới (Admin)                  | Tải lên CSV, tải xuống tệp mẫu             |
+| Trình tạo bài tập    | Thầy Tùng (Teacher)                  | Kéo thả, tích hợp ngân hàng câu hỏi        |

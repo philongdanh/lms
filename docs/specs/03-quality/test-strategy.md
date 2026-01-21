@@ -29,11 +29,11 @@ flowchart TB
 
 ### Coverage Goals
 
-| Test Type         | Coverage Target    | Current  |
-| ----------------- | ------------------ | -------- |
-| Unit Tests        | 80%                | [%]      |
-| Integration Tests | 70% critical paths | [%]      |
-| E2E Tests         | 100% happy paths   | [%]      |
+| Test Type         | Coverage Target    | Current |
+| ----------------- | ------------------ | ------- |
+| Unit Tests        | 80%                | [%]     |
+| Integration Tests | 70% critical paths | [%]     |
+| E2E Tests         | 100% happy paths   | [%]     |
 
 ---
 

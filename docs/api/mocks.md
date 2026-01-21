@@ -71,23 +71,23 @@ npx @stoplight/prism-cli mock openapi/main.yaml --port 3001
 
 ## Mock Data Guidelines
 
-| Principle      | Description                       |
-| -------------- | --------------------------------- |
-| Dữ liệu thực tế | Sử dụng tên, email thực tế       |
-| Edge case      | Bao gồm empty state, lỗi          |
-| ID nhất quán   | Sử dụng ID dễ đoán cho kiểm thử   |
-| Timestamp      | Sử dụng ngày tương đối            |
+| Principle       | Description                     |
+| --------------- | ------------------------------- |
+| Dữ liệu thực tế | Sử dụng tên, email thực tế      |
+| Edge case       | Bao gồm empty state, lỗi        |
+| ID nhất quán    | Sử dụng ID dễ đoán cho kiểm thử |
+| Timestamp       | Sử dụng ngày tương đối          |
 
 ---
 
 ## Mock Scenarios
 
-| Scenario      | Activation        |
-| ------------- | ----------------- |
-| Thành công    | Response mặc định |
+| Scenario        | Activation        |
+| --------------- | ----------------- |
+| Thành công      | Response mặc định |
 | Danh sách trống | `?scenario=empty` |
-| Lỗi           | `?scenario=error` |
-| Phản hồi chậm | `?scenario=slow`  |
+| Lỗi             | `?scenario=error` |
+| Phản hồi chậm   | `?scenario=slow`  |
 
 ---
 
@@ -119,4 +119,3 @@ npm run test:integration
 
 - [Contracts](./contracts.md)
 - [OpenAPI](./openapi.md)
-

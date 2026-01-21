@@ -13,13 +13,12 @@ Data model cho module Learning: StudentProgress, StudentAnswer, PracticeSession.
 
 ## Entities
 
-### Entity: StudentProgress
+### Thực thể: StudentProgress
 
-**Description**: Lưu trữ trạng thái và tiến độ của student cho một bài học cụ thể.
-**Storage**: Database (PostgreSQL)
-**Retention**: Vĩnh viễn
+**Description**: Lưu trữ trạng thái và tiến độ của student cho một bài học cụ
+thể. **Storage**: Database (PostgreSQL) **Retention**: Vĩnh viễn
 
-#### Fields
+#### Các trường
 
 | Field Name            | Type      | Required | Default     | Validation   | Description                                            |
 | --------------------- | --------- | -------- | ----------- | ------------ | ------------------------------------------------------ |
@@ -39,13 +38,14 @@ Data model cho module Learning: StudentProgress, StudentAnswer, PracticeSession.
 | idx_progress_student        | [student_id]            | B-tree | Lọc theo student               |
 | idx_progress_student_lesson | [student_id, lesson_id] | B-tree | Tra cứu tiến độ bài học cụ thể |
 
-### Entity: StudentAnswer
+### Thực thể: StudentAnswer
 
-**Description**: Lưu trữ lịch sử trả lời chi tiết cho mỗi câu hỏi trong bài tập/quiz.
-**Storage**: Database (PostgreSQL) -> Có thể chuyển sang TimeSeries DB hoặc Partitioning nếu dữ liệu lớn.
-**Retention**: Vĩnh viễn (hoặc archive sau 2 năm)
+**Description**: Lưu trữ lịch sử trả lời chi tiết cho mỗi câu hỏi trong bài
+tập/quiz. **Storage**: Database (PostgreSQL) -> Có thể chuyển sang TimeSeries DB
+hoặc Partitioning nếu dữ liệu lớn. **Retention**: Vĩnh viễn (hoặc archive sau 2
+năm)
 
-#### Fields
+#### Các trường
 
 | Field Name  | Type      | Required | Default  | Validation     | Description                      |
 | ----------- | --------- | -------- | -------- | -------------- | -------------------------------- |
@@ -58,7 +58,7 @@ Data model cho module Learning: StudentProgress, StudentAnswer, PracticeSession.
 | time_taken  | Integer   | ✅       | 0        | >= 0           | Thời gian trả lời (ms)           |
 | answered_at | Timestamp | ✅       | now()    | -              | Thời gian nộp bài                |
 
-#### Relationships
+#### Mối quan hệ
 
 ```mermaid
 ---

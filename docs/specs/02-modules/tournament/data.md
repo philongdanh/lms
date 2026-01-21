@@ -7,18 +7,19 @@ sidebar_position: 3
 
 # Tournament - Data Model
 
-Data model cho module Tournament: Tournament, CompetitionRound, CompetitionParticipant.
+Data model cho module Tournament: Tournament, CompetitionRound,
+CompetitionParticipant.
 
 ---
 
 ## Entities
 
-### Entity: Tournament
+### Thực thể: Tournament
 
-**Description**: Cuộc thi lớn (ví dụ: Math Arena).
-**Storage**: Database (PostgreSQL)
+**Description**: Cuộc thi lớn (ví dụ: Math Arena). **Storage**: Database
+(PostgreSQL)
 
-#### Fields
+#### Các trường
 
 | Field Name | Type      | Required | Default  | Validation  | Description               |
 | ---------- | --------- | -------- | -------- | ----------- | ------------------------- |
@@ -29,12 +30,12 @@ Data model cho module Tournament: Tournament, CompetitionRound, CompetitionParti
 | starts_at  | Timestamp | ✅       | -        | -           | Thời gian bắt đầu         |
 | ends_at    | Timestamp | ✅       | -        | > starts_at | Thời gian kết thúc        |
 
-### Entity: CompetitionRound
+### Thực thể: CompetitionRound
 
-**Description**: Vòng thi cụ thể (ví dụ: Vòng 1, Chung kết).
-**Storage**: Database (PostgreSQL)
+**Description**: Vòng thi cụ thể (ví dụ: Vòng 1, Chung kết). **Storage**:
+Database (PostgreSQL)
 
-#### Fields
+#### Các trường
 
 | Field Name        | Type    | Required | Default  | Validation | Description          |
 | ----------------- | ------- | -------- | -------- | ---------- | -------------------- |
@@ -44,12 +45,11 @@ Data model cho module Tournament: Tournament, CompetitionRound, CompetitionParti
 | requires_invite   | Boolean | ✅       | false    | -          | Yêu cầu invite code? |
 | participant_limit | Integer | ✅       | 100      | > 0        | Giới hạn user/room   |
 
-### Entity: CompetitionParticipant
+### Thực thể: CompetitionParticipant
 
-**Description**: Người tham gia vòng thi.
-**Storage**: Database (PostgreSQL)
+**Description**: Người tham gia vòng thi. **Storage**: Database (PostgreSQL)
 
-#### Fields
+#### Các trường
 
 | Field Name | Type      | Required | Default  | Validation | Description           |
 | ---------- | --------- | -------- | -------- | ---------- | --------------------- |
@@ -60,7 +60,7 @@ Data model cho module Tournament: Tournament, CompetitionRound, CompetitionParti
 | rank       | Integer   | ❌       | null     | -          | Hạng cuối cùng        |
 | started_at | Timestamp | ❌       | null     | -          | Thời gian bắt đầu thi |
 
-#### Relationships
+#### Mối quan hệ
 
 ```mermaid
 ---

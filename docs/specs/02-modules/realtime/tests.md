@@ -7,7 +7,8 @@ sidebar_position: 5
 
 # Real-time Communication - Test Cases
 
-Test cases cho module Realtime: kiểm thử WebSocket connection, notifications, presence.
+Test cases cho module Realtime: kiểm thử WebSocket connection, notifications,
+presence.
 
 ---
 
@@ -23,7 +24,7 @@ Test cases cho module Realtime: kiểm thử WebSocket connection, notifications
 
 ## Test Categories
 
-### 1. Functional Tests
+### 1. Kiểm thử chức năng
 
 #### Business Logic
 
@@ -33,13 +34,13 @@ Test cases cho module Realtime: kiểm thử WebSocket connection, notifications
 | TC-RT-FUN-002 | Kết nối không Token     | BR-RT-001 | Thất bại 401    | P0       |
 | TC-RT-FUN-003 | Giới hạn tham gia phòng | BR-RT-003 | Từ chối nếu đầy | P1       |
 
-### 2. Integration Tests
+### 2. Kiểm thử tích hợp
 
 | Test ID       | Description   | Components     | Result               |
 | ------------- | ------------- | -------------- | -------------------- |
 | TC-RT-INT-001 | Gửi broadcast | API, Redis, WS | Client nhận được msg |
 
-### 3. Performance Tests
+### 3. Kiểm thử hiệu năng
 
 | Test ID        | Scenario    | Load       | Result    |
 | -------------- | ----------- | ---------- | --------- |
@@ -61,7 +62,7 @@ Test cases cho module Realtime: kiểm thử WebSocket connection, notifications
 
 ## Performance Targets
 
-### Response Times
+### Thời gian phản hồi
 
 | Operation         | P50  | P95   | P99   | Max   | Cách đo      |
 | ----------------- | ---- | ----- | ----- | ----- | ------------ |
@@ -69,7 +70,7 @@ Test cases cho module Realtime: kiểm thử WebSocket connection, notifications
 | Message Delivery  | 20ms | 50ms  | 100ms | 500ms | End-to-end   |
 | Presence Query    | 5ms  | 10ms  | 20ms  | 50ms  | Redis Read   |
 
-### Throughput Requirements
+### Yêu cầu thông lượng
 
 | Scenario                | Requests/sec    | Concurrent Users | Data Volume |
 | ----------------------- | --------------- | ---------------- | ----------- |
@@ -79,7 +80,7 @@ Test cases cho module Realtime: kiểm thử WebSocket connection, notifications
 
 ## Scalability Requirements
 
-### Horizontal Scaling
+### Mở rộng theo chiều ngang
 
 - **WebSocket Servers**: Yêu cầu sticky session load balancing.
 - **Redis**: Cluster mode cho thông lượng Pub/Sub.

@@ -1,9 +1,8 @@
 {
-  "label": "Modules",
   "position": 3,
+  "label": "Mods",
   "link": {
     "type": "generated-index",
-    "description": "Đặc tả chi tiết từng phân hệ chức năng (Modules).",
-    "slug": "modules"
+    "title": "Modules"
   }
 }

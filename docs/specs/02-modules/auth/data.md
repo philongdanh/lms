@@ -13,12 +13,12 @@ Data model cho module Auth: User, Role, Permission, Session, Tenant.
 
 ## Entities
 
-### Entity: User
+### Thực thể: User
 
 **Description**: Người dùng hệ thống (Admin, Teacher, Student, Parent)
 **Storage**: Database (PostgreSQL) **Retention**: Vĩnh viễn (Soft delete)
 
-#### Fields
+#### Các trường
 
 | Field Name    | Type      | Required | Default  | Validation   | Description        |
 | ------------- | --------- | -------- | -------- | ------------ | ------------------ |
@@ -29,7 +29,7 @@ Data model cho module Auth: User, Role, Permission, Session, Tenant.
 | is_active     | Boolean   | ❌       | true     | -            | Status             |
 | deleted_at    | Timestamp | ❌       | null     | -            | Soft delete        |
 
-#### Relationships
+#### Mối quan hệ
 
 ```mermaid
 ---
@@ -43,12 +43,12 @@ erDiagram
     User ||--o{ UserSession : "has"
 ```
 
-### Entity: UserSession
+### Thực thể: UserSession
 
 **Description**: Session đăng nhập của người dùng **Storage**: Database + Redis
 **Retention**: 7 ngày (TTL)
 
-#### Fields
+#### Các trường
 
 | Field Name         | Type      | Required | Default  | Validation | Description        |
 | ------------------ | --------- | -------- | -------- | ---------- | ------------------ |
@@ -58,12 +58,12 @@ erDiagram
 | refresh_token_hash | String    | ✅       | -        | sha256     | Token an toàn      |
 | revoked_at         | Timestamp | ❌       | null     | -          | Trạng thái thu hồi |
 
-### Entity: Role
+### Thực thể: Role
 
 **Description**: Vai trò người dùng (RBAC) **Storage**: Database **Retention**:
 Vĩnh viễn
 
-#### Fields
+#### Các trường
 
 | Field Name | Type   | Required | Default  | Validation | Description            |
 | ---------- | ------ | -------- | -------- | ---------- | ---------------------- |
@@ -96,14 +96,14 @@ stateDiagram-v2
 
 ## Storage Specifications
 
-### Database
+### Cơ sở dữ liệu
 
 - **Table Name**: `users`, `roles`, `user_sessions`
 - **Engine**: PostgreSQL
 - **Charset**: utf8mb4
 - **Partitioning**: Không
 
-### Caching Strategy
+### Chiến lược Caching
 
 - **Cache Type**: Redis
 - **TTL**: 15 phút (User Profile), 7 ngày (Refresh Token)

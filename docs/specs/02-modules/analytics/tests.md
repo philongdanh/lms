@@ -23,7 +23,7 @@ Test cases cho module Analytics: kiểm thử tính toán mastery, báo cáo, th
 
 ## Test Categories
 
-### 1. Functional Tests
+### 1. Kiểm thử chức năng
 
 #### Business Logic
 
@@ -32,13 +32,13 @@ Test cases cho module Analytics: kiểm thử tính toán mastery, báo cáo, th
 | TC-ANA-FUN-001 | Tính toán Mastery  | BR-ANALYTICS-001 | Công thức chính xác | P0       |
 | TC-ANA-FUN-002 | Tổng hợp hàng ngày | BR-ANALYTICS-002 | Tổng khớp với logs  | P0       |
 
-### 2. Integration Tests
+### 2. Kiểm thử tích hợp
 
 | Test ID        | Description      | Components          | Result                                    |
 | -------------- | ---------------- | ------------------- | ----------------------------------------- |
 | TC-ANA-INT-001 | Event đến Report | Learning, Analytics | Bài học hoàn thành hiển thị trong báo cáo |
 
-### 3. Performance Tests
+### 3. Kiểm thử hiệu năng
 
 | Test ID         | Scenario     | Load         | Result |
 | --------------- | ------------ | ------------ | ------ |
@@ -60,7 +60,7 @@ Test cases cho module Analytics: kiểm thử tính toán mastery, báo cáo, th
 
 ## Performance Targets
 
-### Response Times
+### Thời gian phản hồi
 
 | Operation                   | P50   | P95   | P99   | Max | Measurement   |
 | --------------------------- | ----- | ----- | ----- | --- | ------------- |
@@ -68,7 +68,7 @@ Test cases cho module Analytics: kiểm thử tính toán mastery, báo cáo, th
 | Report Generation (30 ngày) | 200ms | 500ms | 1s    | 3s  | Agg Query     |
 | Admin Overview (Trường)     | 1s    | 3s    | 5s    | 10s | Heavy Query   |
 
-### Throughput Requirements
+### Yêu cầu thông lượng
 
 | Scenario        | Requests/sec | Concurrent Users | Data Volume |
 | --------------- | ------------ | ---------------- | ----------- |
@@ -78,11 +78,11 @@ Test cases cho module Analytics: kiểm thử tính toán mastery, báo cáo, th
 
 ## Scalability Requirements
 
-### Vertical Scaling
+### Mở rộng theo chiều dọc
 
 - **DB**: Bộ nhớ cao cho PostgreSQL chunk caching.
 
-### Horizontal Scaling
+### Mở rộng theo chiều ngang
 
 - **Consumer**: Các consumer song song cho event bus.
 

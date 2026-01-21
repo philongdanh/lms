@@ -26,12 +26,12 @@ Chi tiết quy tắc nghiệp vụ, workflows và xử lý lỗi cho module Auth
 
 ## Dependencies
 
-### Internal Dependencies
+### Phụ thuộc nội bộ
 
 - ✅ Tenant Service - Quản lý thông tin tenant
 - ❌ Notification Service - Gửi OTP/Welcome email
 
-### External Dependencies
+### Phụ thuộc bên ngoài
 
 - ✅ Redis - Caching session/tokens
 - ✅ PostgreSQL - Lưu trữ bền vững
@@ -135,7 +135,7 @@ Chi tiết quy tắc nghiệp vụ, workflows và xử lý lỗi cho module Auth
 
 ## Events
 
-### System Events
+### Sự kiện hệ thống
 
 | Event Name             | Description            | Payload                       | Emitted By     |
 | ---------------------- | ---------------------- | ----------------------------- | -------------- |

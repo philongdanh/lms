@@ -13,13 +13,12 @@ Data model cho module Realtime: Presence, Notification, ConnectionLog.
 
 ## Entities
 
-### Entity: Presence (Redis)
+### Thực thể: Presence (Redis)
 
-**Description**: Trạng thái online của người dùng.
-**Storage**: Redis (Key-Value)
-**Retention**: TTL (Heartbeat interval + buffer)
+**Description**: Trạng thái online của người dùng. **Storage**: Redis
+(Key-Value) **Retention**: TTL (Heartbeat interval + buffer)
 
-#### Fields
+#### Các trường
 
 | Field Name | Type      | Key                  | Description          |
 | ---------- | --------- | -------------------- | -------------------- |
@@ -28,12 +27,12 @@ Data model cho module Realtime: Presence, Notification, ConnectionLog.
 | socket_id  | String    | (Hash field)         | ID Session Socket    |
 | last_seen  | Timestamp | (Hash field)         | Thời gian ping cuối  |
 
-### Entity: Notification
+### Thực thể: Notification
 
-**Description**: Lưu trữ thông báo đã gửi để xem sau.
-**Storage**: Database (PostgreSQL)
+**Description**: Lưu trữ thông báo đã gửi để xem sau. **Storage**: Database
+(PostgreSQL)
 
-#### Fields
+#### Các trường
 
 | Field Name | Type      | Required | Default  | Validation | Description             |
 | ---------- | --------- | -------- | -------- | ---------- | ----------------------- |
@@ -46,7 +45,7 @@ Data model cho module Realtime: Presence, Notification, ConnectionLog.
 | read_at    | Timestamp | ❌       | null     | -          | Thời gian đọc           |
 | created_at | Timestamp | ✅       | now()    | -          | Thời gian tạo           |
 
-#### Relationships
+#### Mối quan hệ
 
 ```mermaid
 ---

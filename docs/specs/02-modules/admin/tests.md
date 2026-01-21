@@ -23,7 +23,7 @@ Test cases cho module Admin: kiểm thử business logic, API endpoints, workflo
 
 ## Test Categories
 
-### 1. Functional Tests
+### 1. Kiểm thử chức năng
 
 #### Business Logic
 
@@ -33,13 +33,13 @@ Test cases cho module Admin: kiểm thử business logic, API endpoints, workflo
 | TC-ADM-FUN-002 | Mã Tenant trùng lặp   | BR-ADMIN-001 | Lỗi "Code Exists"             | P1       |
 | TC-ADM-FUN-003 | Giới hạn Import Users | BR-ADMIN-004 | Lỗi nếu > 500 dòng            | P1       |
 
-### 2. Integration Tests
+### 2. Kiểm thử tích hợp
 
 | Test ID        | Description          | Components   | Result          |
 | -------------- | -------------------- | ------------ | --------------- |
 | TC-ADM-INT-001 | Tạo Tenant gửi email | Admin, Email | Email nhận được |
 
-### 4. Security Tests
+### 4. Kiểm thử bảo mật
 
 | Test ID        | Aspect                            | Method        | Result        |
 | -------------- | --------------------------------- | ------------- | ------------- |
@@ -61,7 +61,7 @@ Test cases cho module Admin: kiểm thử business logic, API endpoints, workflo
 
 ## Performance Targets
 
-### Response Times
+### Thời gian phản hồi
 
 | Operation          | P50   | P95   | P99   | Max | Measurement    |
 | ------------------ | ----- | ----- | ----- | --- | -------------- |
@@ -69,7 +69,7 @@ Test cases cho module Admin: kiểm thử business logic, API endpoints, workflo
 | Import Users (500) | 2s    | 5s    | 8s    | 15s | Job Duration   |
 | List Tenants       | 50ms  | 100ms | 300ms | 1s  | DB Query       |
 
-### Throughput Requirements
+### Yêu cầu thông lượng
 
 | Scenario         | Requests/sec | Concurrent Users | Data Volume |
 | ---------------- | ------------ | ---------------- | ----------- |
@@ -79,7 +79,7 @@ Test cases cho module Admin: kiểm thử business logic, API endpoints, workflo
 
 ## Scalability Requirements
 
-### Horizontal Scaling
+### Mở rộng theo chiều ngang
 
 - **Admin Service**: Scale dựa trên tải, thường có lưu lượng thấp.
 

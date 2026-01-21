@@ -13,7 +13,7 @@ Tiêu chuẩn bảo mật, kiểm soát truy cập và xác thực.
 
 ## RBAC Model
 
-### 2.1. Architecture Overview
+### 2.1. Tổng quan kiến trúc
 
 ```mermaid
 ---
@@ -50,7 +50,7 @@ flowchart TB
     User --> Tenant
 ```
 
-### 2.2. Main Components
+### 2.2. Các thành phần chính
 
 | Component            | Description                                         | Storage Location       |
 | -------------------- | --------------------------------------------------- | ---------------------- |
@@ -67,7 +67,7 @@ flowchart TB
 
 ## Authentication Flow
 
-### 3.1. Login Flow
+### 3.1. Luồng đăng nhập
 
 ```mermaid
 ---
@@ -107,7 +107,7 @@ sequenceDiagram
     API-->>Client: Login success
 ```
 
-### 3.2. Refresh Token Flow
+### 3.2. Luồng Refresh Token
 
 ```mermaid
 ---
@@ -144,7 +144,7 @@ sequenceDiagram
 
 ## Authorization Flow
 
-### 4.1. Permission Validation Flow
+### 4.1. Luồng xác thực quyền
 
 ```mermaid
 ---
@@ -179,7 +179,7 @@ flowchart TD
     style I fill:#ef4444,color:#fff
 ```
 
-### 4.2. Permission Granularity Levels
+### 4.2. Các cấp độ chi tiết quyền
 
 Hệ thống hỗ trợ 3 mức độ chi tiết của permission:
 
@@ -189,7 +189,7 @@ Hệ thống hỗ trợ 3 mức độ chi tiết của permission:
 | **Action-level** | `module:action` | `exam:read` | Specific action trên module     |
 | **Special**      | `admin:*`       | `admin:all` | Root admin bypass               |
 
-### 4.3. Request Processing Pipeline
+### 4.3. Pipeline xử lý yêu cầu
 
 ```mermaid
 ---
@@ -234,7 +234,7 @@ sequenceDiagram
 
 ## Security Policies
 
-### 5.1. Token Security
+### 5.1. Bảo mật Token
 
 | Policy                    | Value                | Description                  |
 | ------------------------- | -------------------- | ---------------------------- |
@@ -244,7 +244,7 @@ sequenceDiagram
 | **Refresh Token Storage** | Chỉ hash             | Không lưu plain text         |
 | **Blacklist TTL**         | Token expiry + 1 giờ | Cleanup sau khi hết hạn      |
 
-### 5.2. Session Security
+### 5.2. Bảo mật phiên
 
 | Policy                    | Value                     | Description                  |
 | ------------------------- | ------------------------- | ---------------------------- |
@@ -253,7 +253,7 @@ sequenceDiagram
 | **Remote Logout**         | Có hỗ trợ                 | Logout các thiết bị khác     |
 | **Oldest Session Revoke** | Tự động                   | Khi vượt limit               |
 
-### 5.3. Password Security
+### 5.3. Bảo mật mật khẩu
 
 | Policy             | Value    | Description                   |
 | ------------------ | -------- | ----------------------------- |
@@ -262,7 +262,7 @@ sequenceDiagram
 | **Min Length**     | 8 ký tự  | Yêu cầu tối thiểu             |
 | **Complexity**     | Optional | Uppercase, number, special    |
 
-### 5.4. 2FA (Two-Factor Authentication)
+### 5.4. Xác thực 2 yếu tố (2FA)
 
 | Áp dụng cho    | Method                      | Required |
 | -------------- | --------------------------- | -------- |
@@ -274,14 +274,14 @@ sequenceDiagram
 
 ## Multi-Tenant Security
 
-### 6.1. Data Isolation Rules
+### 6.1. Quy tắc cô lập dữ liệu
 
 1. **Query Filter**: Tất cả queries PHẢI include `tenant_id` (trừ system tables)
 2. **Cross-Tenant Block**: Không cho phép access dữ liệu tenant khác
 3. **API Validation**: Validate `tenant_id` trong request body/params
 4. **Audit Log**: Log tất cả cross-tenant access bởi root-admin
 
-### 6.2. Tenant Scope Matrix
+### 6.2. Ma trận phạm vi Tenant
 
 | Role           | Tenant của mình  | Tenant khác        | System Data     |
 | -------------- | ---------------- | ------------------ | --------------- |
@@ -332,7 +332,7 @@ flowchart TD
 
 ## Rate Limiting & Protection
 
-### 8.1. Rate Limit Configuration
+### 8.1. Cấu hình giới hạn tốc độ
 
 | Endpoint                | Limit          | Window | Block Duration |
 | ----------------------- | -------------- | ------ | -------------- |
@@ -342,9 +342,9 @@ flowchart TD
 | General API             | 100 requests   | 1 phút | 1 phút         |
 | WebSocket connect       | 10 connections | 1 phút | 5 phút         |
 
-### 8.2. Additional Protections
+### 8.2. Các bảo vệ bổ sung
 
-| Protection             | Implementation    | Purpose                      |
+| Protection             | Implementation    | Purpose                       |
 | ---------------------- | ----------------- | ----------------------------- |
 | **CORS**               | Whitelist origins | Chống cross-site attacks      |
 | **Helmet**             | Security headers  | XSS, clickjacking protection  |
@@ -355,7 +355,7 @@ flowchart TD
 
 ## Audit Logging
 
-### 9.1. Logged Events
+### 9.1. Các sự kiện được log
 
 | Event Category     | Events                                     | Retention |
 | ------------------ | ------------------------------------------ | --------- |
@@ -364,7 +364,7 @@ flowchart TD
 | **Data Access**    | CRUD operations trên sensitive data        | 6 tháng   |
 | **Admin Actions**  | Tenant management, user management         | 2 năm     |
 
-### 9.2. Log Format
+### 9.2. Định dạng Log
 
 ```json
 {
@@ -395,13 +395,13 @@ flowchart TD
 
 ## JWT Token Specification
 
-### 10.1. Overview
+### 10.1. Tổng quan
 
 - **Standard**: RFC 7519 (JSON Web Token).
 - **Role**: Authentication (Stateless) & Authorization.
 - **Đặc điểm**: Compact, Secure (Signed), Scalable.
 
-### 10.2. Token Structure
+### 10.2. Cấu trúc Token
 
 Format: `Header.Payload.Signature`
 
@@ -428,7 +428,7 @@ Algorithm: `HS256` (HMAC SHA-256).
 
 `HMACSHA256(base64(header) + "." + base64(payload), secret)`
 
-### 10.3. Strategy (Dual Token)
+### 10.3. Chiến lược (Dual Token)
 
 | Token       | TTL | Storage (Client) | Mục đích            |
 | ----------- | --- | ---------------- | ------------------- |
@@ -438,7 +438,7 @@ Algorithm: `HS256` (HMAC SHA-256).
 **Rotation Policy**: New Access Token = New Refresh Token. Old Refresh Token
 invalidated ngay (Reuse Detection).
 
-### 10.4. Validation Process
+### 10.4. Quy trình xác thực
 
 ```mermaid
 ---
@@ -458,14 +458,14 @@ flowchart TD
     G -- OK --> I[Pass User Ctx]
 ```
 
-### 10.5. Security Best Practices
+### 10.5. Các thực hành bảo mật tốt nhất
 
 1.  **Storage**: Access Token trong Memory (No XSS). Refresh Token trong
     HttpOnly Cookie.
 2.  **Revocation**: Redis Blacklist (key: `session_id`, ttl: `exp`).
 3.  **Algorithm**: Enforce `HS256`, reject `none`.
 
-### 10.6. Error Codes
+### 10.6. Mã lỗi
 
 | Code                  | Status | Description     |
 | --------------------- | ------ | --------------- |
@@ -474,7 +474,7 @@ flowchart TD
 | `TOKEN_INVALID`       | 401    | Bad signature   |
 | `SESSION_REVOKED`     | 401    | Session revoked |
 
-### 10.7. References
+### 10.7. Tài liệu tham khảo
 
 - [RFC 7519](https://tools.ietf.org/html/rfc7519)
 - [Auth Business Logic](../../02-modules/auth/logic.md)

@@ -13,12 +13,12 @@ Data model cho module Gamification: UserExp, Badge, UserBadge, Reward.
 
 ## Entities
 
-### Entity: UserExp
+### Thực thể: UserExp
 
-**Description**: Lưu trữ điểm kinh nghiệm và cấp độ của người dùng.
-**Storage**: Database (PostgreSQL) + Redis (Cache Level/EXP)
+**Description**: Lưu trữ điểm kinh nghiệm và cấp độ của người dùng. **Storage**:
+Database (PostgreSQL) + Redis (Cache Level/EXP)
 
-#### Fields
+#### Các trường
 
 | Field Name | Type      | Required | Default  | Validation | Description                |
 | ---------- | --------- | -------- | -------- | ---------- | -------------------------- |
@@ -29,12 +29,12 @@ Data model cho module Gamification: UserExp, Badge, UserBadge, Reward.
 | level      | Integer   | ✅       | 1        | >= 1       | Cấp độ hiện tại            |
 | updated_at | Timestamp | ✅       | now()    | -          | Thời điểm cập nhật cuối    |
 
-### Entity: Badge
+### Thực thể: Badge
 
-**Description**: Định nghĩa các danh hiệu/huy hiệu.
-**Storage**: Database (PostgreSQL)
+**Description**: Định nghĩa các danh hiệu/huy hiệu. **Storage**: Database
+(PostgreSQL)
 
-#### Fields
+#### Các trường
 
 | Field Name  | Type    | Required | Default  | Validation | Description           |
 | ----------- | ------- | -------- | -------- | ---------- | --------------------- |
@@ -45,12 +45,12 @@ Data model cho module Gamification: UserExp, Badge, UserBadge, Reward.
 | condition   | JSONB   | ❌       | {}       | -          | Điều kiện tự động cấp |
 | is_active   | Boolean | ✅       | true     | -          | Status                |
 
-### Entity: Reward
+### Thực thể: Reward
 
-**Description**: Các phần thưởng trong cửa hàng.
-**Storage**: Database (PostgreSQL)
+**Description**: Các phần thưởng trong cửa hàng. **Storage**: Database
+(PostgreSQL)
 
-#### Fields
+#### Các trường
 
 | Field Name  | Type    | Required | Default  | Validation | Description        |
 | ----------- | ------- | -------- | -------- | ---------- | ------------------ |
@@ -60,7 +60,7 @@ Data model cho module Gamification: UserExp, Badge, UserBadge, Reward.
 | stock       | Integer | ✅       | 0        | >= 0       | Tồn kho            |
 | type        | String  | ✅       | VIRTUAL  | enum       | VIRTUAL / PHYSICAL |
 
-#### Relationships
+#### Mối quan hệ
 
 ```mermaid
 ---

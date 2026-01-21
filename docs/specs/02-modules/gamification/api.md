@@ -7,7 +7,8 @@ sidebar_position: 2
 
 # Gamification - API Endpoints
 
-API endpoints cho module Gamification: EXP, Levels, Badges, Rewards, Leaderboard.
+API endpoints cho module Gamification: EXP, Levels, Badges, Rewards,
+Leaderboard.
 
 ---
 

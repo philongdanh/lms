@@ -1,7 +1,6 @@
 {
   "label": "Analytics",
   "link": {
-    "type": "generated-index",
-    "description": "Mô-đun quản lý phân tích và báo cáo"
+    "type": "generated-index"
   }
 }

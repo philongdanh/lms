@@ -45,7 +45,7 @@ Tiêu chuẩn và mô hình xử lý lỗi hệ thống.
 
 ## Error Codes
 
-### Authentication Errors (401)
+### Lỗi xác thực (401)
 
 | Code          | Message                 | Cause                |
 | ------------- | ----------------------- | -------------------- |
@@ -53,14 +53,14 @@ Tiêu chuẩn và mô hình xử lý lỗi hệ thống.
 | TOKEN_EXPIRED | Token has expired       | Access token hết hạn |
 | TOKEN_INVALID | Invalid token           | Token sai format     |
 
-### Authorization Errors (403)
+### Lỗi phân quyền (403)
 
 | Code               | Message                | Cause            |
 | ------------------ | ---------------------- | ---------------- |
 | FORBIDDEN          | Access denied          | Không đủ quyền   |
 | RESOURCE_FORBIDDEN | Cannot access resource | Không phải owner |
 
-### Validation Errors (400)
+### Lỗi Validation (400)
 
 | Code             | Message                | Cause                |
 | ---------------- | ---------------------- | -------------------- |
@@ -68,14 +68,14 @@ Tiêu chuẩn và mô hình xử lý lỗi hệ thống.
 | MISSING_FIELD    | Required field missing | Thiếu field bắt buộc |
 | INVALID_FORMAT   | Invalid format         | Sai data format      |
 
-### Not Found Errors (404)
+### Lỗi không tìm thấy (404)
 
 | Code               | Message            | Cause           |
 | ------------------ | ------------------ | --------------- |
 | NOT_FOUND          | Resource not found | ID không hợp lệ |
 | ENDPOINT_NOT_FOUND | Endpoint not found | URL sai         |
 
-### Business Errors (422)
+### Lỗi nghiệp vụ (422)
 
 | Code                    | Message                | Cause                  |
 | ----------------------- | ---------------------- | ---------------------- |
@@ -83,7 +83,7 @@ Tiêu chuẩn và mô hình xử lý lỗi hệ thống.
 | INSUFFICIENT_BALANCE    | Insufficient balance   | Không đủ credits       |
 | LIMIT_EXCEEDED          | Limit exceeded         | Đạt quota              |
 
-### Server Errors (500)
+### Lỗi Server (500)
 
 | Code                | Message               | Cause              |
 | ------------------- | --------------------- | ------------------ |
@@ -95,7 +95,7 @@ Tiêu chuẩn và mô hình xử lý lỗi hệ thống.
 
 ## Error Handling Patterns
 
-### Retry Strategy
+### Chiến lược Retry
 
 | Error Type       | Retry | Backoff             | Max Attempts |
 | ---------------- | ----- | ------------------- | ------------ |
@@ -122,7 +122,7 @@ Tiêu chuẩn và mô hình xử lý lỗi hệ thống.
 
 ## Logging Errors
 
-### Required Fields
+### Các trường bắt buộc
 
 | Field     | Description                |
 | --------- | -------------------------- |
@@ -134,7 +134,7 @@ Tiêu chuẩn và mô hình xử lý lỗi hệ thống.
 | stack     | Stack trace (non-prod)     |
 | context   | Relevant context           |
 
-### Example
+### Ví dụ
 
 ```json
 {
@@ -155,14 +155,14 @@ Tiêu chuẩn và mô hình xử lý lỗi hệ thống.
 
 ## User-Facing Messages
 
-### Guidelines
+### Hướng dẫn
 
 - Be specific but not technical
 - Suggest action when possible
 - Never expose system details
 - Localize messages
 
-### Examples
+### Ví dụ
 
 | Code                 | Technical                             | User-Friendly                                      |
 | -------------------- | ------------------------------------- | -------------------------------------------------- |

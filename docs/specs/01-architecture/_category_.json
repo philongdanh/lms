@@ -1,9 +1,7 @@
 {
-  "label": "Architecture",
   "position": 2,
+  "label": "Architecture",
   "link": {
-    "type": "generated-index",
-    "description": "Thiết kế hệ thống, data model và tech stack.",
-    "slug": "architecture"
+    "type": "generated-index"
   }
 }

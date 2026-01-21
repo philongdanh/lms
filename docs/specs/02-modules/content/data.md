@@ -13,13 +13,12 @@ Data model cho module Content: Topic, Lesson, Question, QuestionBank.
 
 ## Entities
 
-### Entity: Topic
+### Thực thể: Topic
 
-**Description**: Chủ đề học tập (Chương/Bài).
-**Storage**: Database (PostgreSQL)
+**Description**: Chủ đề học tập (Chương/Bài). **Storage**: Database (PostgreSQL)
 **Retention**: Vĩnh viễn
 
-#### Fields
+#### Các trường
 
 | Field Name | Type    | Required | Default  | Validation    | Description         |
 | ---------- | ------- | -------- | -------- | ------------- | ------------------- |
@@ -31,13 +30,12 @@ Data model cho module Content: Topic, Lesson, Question, QuestionBank.
 | order      | Integer | ✅       | 0        | -             | Thứ tự hiển thị     |
 | is_active  | Boolean | ✅       | false    | -             | Trạng thái hiển thị |
 
-### Entity: Lesson
+### Thực thể: Lesson
 
-**Description**: Bài học cụ thể trong một Topic.
-**Storage**: Database (PostgreSQL)
-**Retention**: Vĩnh viễn
+**Description**: Bài học cụ thể trong một Topic. **Storage**: Database
+(PostgreSQL) **Retention**: Vĩnh viễn
 
-#### Fields
+#### Các trường
 
 | Field Name | Type    | Required | Default   | Validation  | Description        |
 | ---------- | ------- | -------- | --------- | ----------- | ------------------ |
@@ -47,12 +45,12 @@ Data model cho module Content: Topic, Lesson, Question, QuestionBank.
 | semester   | String  | ✅       | SEMESTER1 | enum        | Học kỳ áp dụng     |
 | order      | Integer | ✅       | 0         | -           | Thứ tự trong Topic |
 
-### Entity: Question
+### Thực thể: Question
 
-**Description**: Câu hỏi trắc nghiệm hoặc tự luận.
-**Storage**: Database (PostgreSQL) - JSONB cho nội dung linh hoạt.
+**Description**: Câu hỏi trắc nghiệm hoặc tự luận. **Storage**: Database
+(PostgreSQL) - JSONB cho nội dung linh hoạt.
 
-#### Fields
+#### Các trường
 
 | Field Name     | Type   | Required | Default  | Validation   | Description                     |
 | -------------- | ------ | -------- | -------- | ------------ | ------------------------------- |
@@ -65,7 +63,7 @@ Data model cho module Content: Topic, Lesson, Question, QuestionBank.
 | explanation    | JSONB  |          | {}       | -            | Giải thích chi tiết             |
 | difficulty     | String | ✅       | MEDIUM   | enum         | Mức độ khó (EASY, MEDIUM, HARD) |
 
-#### Relationships
+#### Mối quan hệ
 
 ```mermaid
 ---

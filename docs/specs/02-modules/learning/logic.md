@@ -25,13 +25,13 @@ Chi tiết quy tắc nghiệp vụ, workflows và xử lý lỗi cho module Lear
 
 ## Dependencies
 
-### Internal Dependencies
+### Phụ thuộc nội bộ
 
 - ✅ Content Module - Cung cấp nội dung bài học, video, câu hỏi.
 - ✅ Analytics Module - Cung cấp Knowledge Map và phân tích dữ liệu.
 - ✅ Gamification Module - Xử lý điểm thưởng, huy hiệu.
 
-### External Dependencies
+### Phụ thuộc bên ngoài
 
 - ✅ AI Service (Python) - Mô hình đề xuất lộ trình học tập.
 
@@ -191,7 +191,7 @@ stateDiagram-v2
 
 ## Events
 
-### System Events
+### Sự kiện hệ thống
 
 | Event Name         | Description                   | Payload                              | Emitted By   |
 | ------------------ | ----------------------------- | ------------------------------------ | ------------ |

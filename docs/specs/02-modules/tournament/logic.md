@@ -24,13 +24,13 @@ Chi tiết quy tắc nghiệp vụ, workflows và xử lý lỗi cho module Tour
 
 ## Dependencies
 
-### Internal Dependencies
+### Phụ thuộc nội bộ
 
 - ✅ Realtime Module - Hạ tầng WebSocket.
 - ✅ Content Module - Nguồn câu hỏi.
 - ✅ Gamification Module - Phần thưởng sau thi đấu.
 
-### External Dependencies
+### Phụ thuộc bên ngoài
 
 - ✅ Redis - Leaderboard (ZSET).
 
@@ -143,7 +143,7 @@ sequenceDiagram
 
 ## Events
 
-### System Events
+### Sự kiện hệ thống
 
 | Event Name      | Description    | Payload      | Emitted By |
 | --------------- | -------------- | ------------ | ---------- |
@@ -174,4 +174,4 @@ sequenceDiagram
 
 ## References
 
-- [Overview](../../00-business/README.md)
+- [Overview](../../00-business/overview.md)

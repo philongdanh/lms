@@ -13,11 +13,11 @@ Quy trình release và deployment.
 
 ## Release Types
 
-| Type  | Frequency          | Scope                          |
-| ----- | ------------------ | ------------------------------ |
-| Major | Hàng quý           | Tính năng mới, breaking changes |
-| Minor | 2 tuần/lần (Sprint)| Tính năng mới, cải tiến        |
-| Patch | Khi cần thiết      | Sửa lỗi, hotfixes              |
+| Type  | Frequency           | Scope                           |
+| ----- | ------------------- | ------------------------------- |
+| Major | Hàng quý            | Tính năng mới, breaking changes |
+| Minor | 2 tuần/lần (Sprint) | Tính năng mới, cải tiến         |
+| Patch | Khi cần thiết       | Sửa lỗi, hotfixes               |
 
 ---
 

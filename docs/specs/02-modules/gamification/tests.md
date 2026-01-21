@@ -23,7 +23,7 @@ Test cases cho module Gamification: kiểm thử EXP, levels, badges, rewards.
 
 ## Test Categories
 
-### 1. Functional Tests
+### 1. Kiểm thử chức năng
 
 #### Business Logic
 
@@ -33,13 +33,13 @@ Test cases cho module Gamification: kiểm thử EXP, levels, badges, rewards.
 | TC-GAME-FUN-002 | Trừ Coin           | BR-GAME-002 | Coins giảm, Order được tạo  | P0       |
 | TC-GAME-FUN-003 | Không đủ Coins     | BR-GAME-002 | Trả về lỗi, không trừ tiền  | P1       |
 
-### 2. Integration Tests
+### 2. Kiểm thử tích hợp
 
 | Test ID         | Description                  | Components     | Result              |
 | --------------- | ---------------------------- | -------------- | ------------------- |
 | TC-GAME-INT-001 | Hoàn thành học kích hoạt EXP | Learning, Game | Người dùng nhận EXP |
 
-### 3. Performance Tests
+### 3. Kiểm thử hiệu năng
 
 | Test ID          | Scenario        | Load     | Result |
 | ---------------- | --------------- | -------- | ------ |
@@ -61,7 +61,7 @@ Test cases cho module Gamification: kiểm thử EXP, levels, badges, rewards.
 
 ## Performance Targets
 
-### Response Times
+### Thời gian phản hồi
 
 | Operation       | P50   | P95   | P99   | Max   | Measurement    |
 | --------------- | ----- | ----- | ----- | ----- | -------------- |
@@ -69,7 +69,7 @@ Test cases cho module Gamification: kiểm thử EXP, levels, badges, rewards.
 | Get Leaderboard | 20ms  | 50ms  | 100ms | 500ms | Redis Read     |
 | Redeem Reward   | 100ms | 300ms | 500ms | 2s    | DB Transaction |
 
-### Throughput Requirements
+### Yêu cầu thông lượng
 
 | Scenario         | Requests/sec | Concurrent Users | Data Volume |
 | ---------------- | ------------ | ---------------- | ----------- |
@@ -79,7 +79,7 @@ Test cases cho module Gamification: kiểm thử EXP, levels, badges, rewards.
 
 ## Scalability Requirements
 
-### Horizontal Scaling
+### Mở rộng theo chiều ngang
 
 - **Game Service**: Scale stateless pods.
 - **Worker**: Các worker xử lý event scale dựa trên độ sâu hàng đợi.

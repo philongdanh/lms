@@ -22,15 +22,15 @@ API endpoints cho module Content: quản lý nội dung học tập, ngân hàng
 
 ## Endpoints Summary
 
-| Method | Endpoint              | Description           | Auth Required | Rate Limit |
-| ------ | --------------------- | --------------------- | ------------- | ---------- |
-| GET    | `/subjects`           | Danh sách môn học     | ❌            | 200/min    |
-| GET    | `/topics`             | Danh sách chủ đề      | ❌            | 200/min    |
-| GET    | `/lessons/:id`        | Chi tiết bài học      | ✅            | 200/min    |
-| POST   | `/questions/import`   | Import câu hỏi        | ✅ Teacher    | 10/min     |
-| GET    | `/questions/search`   | Tìm kiếm câu hỏi      | ✅ Teacher    | 100/min    |
-| POST   | `/lessons`            | Tạo bài học mới       | ✅ Teacher    | 50/min     |
-| PUT    | `/lessons/:id/publish`| Publish bài học       | ✅ Admin      | 50/min     |
+| Method | Endpoint               | Description       | Auth Required | Rate Limit |
+| ------ | ---------------------- | ----------------- | ------------- | ---------- |
+| GET    | `/subjects`            | Danh sách môn học | ❌            | 200/min    |
+| GET    | `/topics`              | Danh sách chủ đề  | ❌            | 200/min    |
+| GET    | `/lessons/:id`         | Chi tiết bài học  | ✅            | 200/min    |
+| POST   | `/questions/import`    | Import câu hỏi    | ✅ Teacher    | 10/min     |
+| GET    | `/questions/search`    | Tìm kiếm câu hỏi  | ✅ Teacher    | 100/min    |
+| POST   | `/lessons`             | Tạo bài học mới   | ✅ Teacher    | 50/min     |
+| PUT    | `/lessons/:id/publish` | Publish bài học   | ✅ Admin      | 50/min     |
 
 ---
 

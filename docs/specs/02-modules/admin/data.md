@@ -13,39 +13,37 @@ Data model cho module Admin: Tenant, TenantSettings, AuditLog.
 
 ## Entities
 
-### Entity: Tenant
+### Thực thể: Tenant
 
-**Description**: Đơn vị tổ chức (trường học, tổ chức giáo dục).
-**Storage**: Database (PostgreSQL)
-**Retention**: Vĩnh viễn (Soft delete)
+**Description**: Đơn vị tổ chức (trường học, tổ chức giáo dục). **Storage**:
+Database (PostgreSQL) **Retention**: Vĩnh viễn (Soft delete)
 
-#### Fields
-
-| Field Name | Type      | Required | Default  | Validation | Description       |
-| ---------- | --------- | -------- | -------- | ---------- | ----------------- |
-| id         | UUID      | ✅       | auto-gen | unique     | Khóa chính        |
-| code       | String    | ✅       | -        | unique     | Mã tenant duy nhất |
-| name       | String    | ✅       | -        | len > 3    | Tên hiển thị      |
-| status     | String    | ✅       | PENDING  | enum       | Trạng thái        |
-| deleted_at | Timestamp | ❌       | null     | -          | Soft delete       |
-
-### Entity: AuditLog
-
-**Description**: Ghi lại các hành động quản trị quan trọng.
-**Storage**: Database (PostgreSQL)
-**Retention**: 2 năm
-
-#### Fields
+#### Các trường
 
 | Field Name | Type      | Required | Default  | Validation | Description        |
 | ---------- | --------- | -------- | -------- | ---------- | ------------------ |
 | id         | UUID      | ✅       | auto-gen | unique     | Khóa chính         |
-| user_id    | UUID      | ✅       | -        | valid user | Người thực hiện    |
-| action     | String    | ✅       | -        | -          | Loại hành động     |
-| target     | JSONB     | ✅       | {}       | -          | Đối tượng bị tác động |
-| created_at | Timestamp | ✅       | now()    | -          | Thời gian          |
+| code       | String    | ✅       | -        | unique     | Mã tenant duy nhất |
+| name       | String    | ✅       | -        | len > 3    | Tên hiển thị       |
+| status     | String    | ✅       | PENDING  | enum       | Trạng thái         |
+| deleted_at | Timestamp | ❌       | null     | -          | Soft delete        |
 
-#### Relationships
+### Thực thể: AuditLog
+
+**Description**: Ghi lại các hành động quản trị quan trọng. **Storage**:
+Database (PostgreSQL) **Retention**: 2 năm
+
+#### Các trường
+
+| Field Name | Type      | Required | Default  | Validation | Description           |
+| ---------- | --------- | -------- | -------- | ---------- | --------------------- |
+| id         | UUID      | ✅       | auto-gen | unique     | Khóa chính            |
+| user_id    | UUID      | ✅       | -        | valid user | Người thực hiện       |
+| action     | String    | ✅       | -        | -          | Loại hành động        |
+| target     | JSONB     | ✅       | {}       | -          | Đối tượng bị tác động |
+| created_at | Timestamp | ✅       | now()    | -          | Thời gian             |
+
+#### Mối quan hệ
 
 ```mermaid
 ---
