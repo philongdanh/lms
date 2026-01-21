@@ -5,7 +5,7 @@ sidebar_label: Tests
 sidebar_position: 4
 ---
 
-# Analytics & Analytics - Test Cases
+# Analytics - Test Cases
 
 Kịch bản kiểm thử hệ thống báo cáo và thống kê.
 

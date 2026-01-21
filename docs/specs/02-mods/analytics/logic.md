@@ -5,7 +5,7 @@ sidebar_label: Logic
 sidebar_position: 2
 ---
 
-# Analytics & Analytics - Business Logic
+# Analytics - Business Logic
  
 Quy tắc nghiệp vụ tính toán báo cáo và phân tích dữ liệu.
 
