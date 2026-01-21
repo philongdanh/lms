@@ -7,8 +7,7 @@ sidebar_position: 4
 
 # Real-time Communication - Test Cases
 
-Test cases cho module Realtime: kiểm thử WebSocket connection, notifications,
-presence.
+Kịch bản kiểm thử hệ thống giao tiếp thời gian thực.
 
 ---
 

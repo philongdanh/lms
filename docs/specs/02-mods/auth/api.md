@@ -6,8 +6,8 @@ sidebar_position: 1
 ---
 
 # Auth - API Endpoints
-
-API endpoints cho module Auth: Login, Register, quản lý Session.
+ 
+Các giao diện lập trình cho hệ thống xác thực và phân quyền.
 
 ---
 

@@ -6,8 +6,8 @@ sidebar_position: 2
 ---
 
 # Gamification & Rewards - Business Logic
-
-Chi tiết quy tắc nghiệp vụ, workflows và xử lý lỗi cho module Gamification.
+ 
+Quy tắc nghiệp vụ hệ thống thi đua và trò chơi hóa.
 
 ---
 

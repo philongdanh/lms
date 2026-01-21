@@ -6,9 +6,8 @@ sidebar_position: 3
 ---
 
 # Tournament - Data Model
-
-Data model cho module Tournament: Tournament, CompetitionRound,
-CompetitionParticipant.
+ 
+Cấu trúc dữ liệu cho các cuộc thi và kết quả thi đấu.
 
 ---
 

@@ -6,8 +6,8 @@ sidebar_position: 3
 ---
 
 # Admin & Tenant - Data Model
-
-Data model cho module Admin: Tenant, TenantSettings, AuditLog.
+ 
+Cấu trúc dữ liệu quản lý thực thể và thiết lập hệ thống.
 
 ---
 

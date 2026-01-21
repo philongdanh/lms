@@ -6,8 +6,8 @@ sidebar_position: 3
 ---
 
 # Content & Question Bank - Data Model
-
-Data model cho module Content: Topic, Lesson, Question, QuestionBank.
+ 
+Cấu trúc dữ liệu cho nội dung học tập và kho câu hỏi.
 
 ---
 

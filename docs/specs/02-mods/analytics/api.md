@@ -6,8 +6,8 @@ sidebar_position: 1
 ---
 
 # Analytics - API Endpoints
-
-API endpoints cho module Analytics: báo cáo học tập, thống kê tiến độ.
+ 
+Các giao diện lập trình cho hệ thống báo cáo và thống kê.
 
 ---
 

@@ -7,8 +7,7 @@ sidebar_position: 4
 
 # Tournament & Competition - Test Cases
 
-Test cases cho module Tournament: kiểm thử joining, scoring, leaderboard,
-real-time matches.
+Kịch bản kiểm thử hệ thống thi đấu và xếp hạng.
 
 ---
 

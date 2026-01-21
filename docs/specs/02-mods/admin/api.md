@@ -6,8 +6,8 @@ sidebar_position: 1
 ---
 
 # Admin & Tenant - API Endpoints
-
-API endpoints cho module Admin: quản lý Tenant, User, và cấu hình hệ thống.
+ 
+Các giao diện quản trị hệ thống và cấu hình đa thực thể.
 
 ---
 

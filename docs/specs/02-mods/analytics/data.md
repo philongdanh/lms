@@ -6,8 +6,8 @@ sidebar_position: 3
 ---
 
 # Analytics - Data Model
-
-Data model cho module Analytics: KnowledgeMap, DailyLearningStats.
+ 
+Cấu trúc dữ liệu cho phân tích và theo dõi tiến độ.
 
 ---
 

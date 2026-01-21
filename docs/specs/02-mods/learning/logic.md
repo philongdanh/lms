@@ -6,8 +6,8 @@ sidebar_position: 2
 ---
 
 # Learning & Personalization - Business Logic
-
-Chi tiết quy tắc nghiệp vụ, workflows và xử lý lỗi cho module Learning.
+ 
+Quy tắc nghiệp vụ lộ trình và cá nhân hóa việc học.
 
 ---
 

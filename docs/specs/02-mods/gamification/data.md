@@ -6,8 +6,8 @@ sidebar_position: 3
 ---
 
 # Gamification - Data Model
-
-Data model cho module Gamification: UserExp, Badge, UserBadge, Reward.
+ 
+Cấu trúc dữ liệu cho điểm kinh nghiệm, danh hiệu và phần thưởng.
 
 ---
 

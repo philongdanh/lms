@@ -6,8 +6,8 @@ sidebar_position: 1
 ---
 
 # Content & Question Bank - API Endpoints
-
-API endpoints cho module Content: quản lý nội dung học tập, ngân hàng câu hỏi.
+ 
+Các giao diện lập trình quản lý nội dung và ngân hàng câu hỏi.
 
 ---
 

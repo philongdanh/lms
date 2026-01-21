@@ -6,9 +6,8 @@ sidebar_position: 1
 ---
 
 # Gamification - API Endpoints
-
-API endpoints cho module Gamification: EXP, Levels, Badges, Rewards,
-Leaderboard.
+ 
+Các giao diện lập trình cho hệ thống thành tích và khen thưởng.
 
 ---
 
