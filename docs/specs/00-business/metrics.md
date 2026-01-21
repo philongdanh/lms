@@ -13,7 +13,7 @@ Chỉ số đo lường hiệu quả và thành công.
 
 ## Business Metrics
 
-| Chỉ số            | Mục tiêu              | Phương pháp đo lường | Tần suất   |
+| Metric            | Target                | Measurement Method   | Frequency  |
 | ----------------- | --------------------- | -------------------- | ---------- |
 | Tỉ lệ chấp nhận   | 10,000 người dùng     | Theo dõi phân tích   | Hàng tuần  |
 | Mức độ hài lòng   | NPS > 50              | Khảo sát             | Hàng tháng |
@@ -23,7 +23,7 @@ Chỉ số đo lường hiệu quả và thành công.
 
 ## Technical Metrics
 
-| Chỉ số                  | Mục tiêu | Ngưỡng    | Cách đo lường         | Cảnh báo |
+| Metric                  | Target   | Threshold | Measurement Method    | Alert    |
 | ----------------------- | -------- | --------- | --------------------- | -------- |
 | Thời gian hoạt động     | 99.9%    | 99.5%     | Giám sát hệ thống     | Có       |
 | Thời gian phản hồi API  | < 200ms  | 500ms     | Quản lý hiệu suất ứng dụng| Có       |
@@ -35,7 +35,7 @@ Chỉ số đo lường hiệu quả và thành công.
 
 ## Quality Metrics
 
-| Chỉ số          | Mục tiêu     | Phương pháp đo lường |
+| Metric          | Target       | Measurement Method   |
 | --------------- | ------------ | -------------------- |
 | Độ bao phủ mã   | > 80%        | Luồng tích hợp liên tục|
 | Nợ kỹ thuật     | Thấp         | Phân tích mã nguồn   |
@@ -45,7 +45,7 @@ Chỉ số đo lường hiệu quả và thành công.
 
 ## User Experience Metrics
 
-| Chỉ số            | Mục tiêu | Phương pháp đo lường |
+| Metric            | Target   | Measurement Method   |
 | ----------------- | -------- | -------------------- |
 | Tỉ lệ hoàn thành  | > 95%    | Phân tích dữ liệu    |
 | Thời gian tải trang| < 3 giây | Giám sát hiệu suất   |
@@ -55,7 +55,7 @@ Chỉ số đo lường hiệu quả và thành công.
 
 ## Delivery Metrics
 
-| Chỉ số               | Mục tiêu   | Phương pháp đo lường |
+| Metric               | Target     | Measurement Method   |
 | -------------------- | ---------- | -------------------- |
 | Tốc độ Sprint        | Ổn định    | Theo dõi Sprint      |
 | Thời gian thực hiện  | < 5 ngày   | Trình theo dõi vấn đề|
@@ -65,7 +65,7 @@ Chỉ số đo lường hiệu quả và thành công.
 
 ## Security Metrics
 
-| Chỉ số                 | Mục tiêu            | Phương pháp đo lường |
+| Metric                 | Target              | Measurement Method   |
 | ---------------------- | ------------------- | -------------------- |
 | Đăng nhập thất bại     | Theo dõi bất thường | Nhật ký bảo mật      |
 | Tỉ lệ thu hồi mã thông báo| Giám sát         | Chỉ số Redis         |
@@ -75,7 +75,7 @@ Chỉ số đo lường hiệu quả và thành công.
 
 ## Tracking and Reporting
 
-### Dashboard
+### Dashboard (Bảng điều khiển)
 
 - Bảng điều khiển giám sát thời gian thực.
 - Báo cáo tiến độ hàng tuần.
@@ -83,7 +83,7 @@ Chỉ số đo lường hiệu quả và thành công.
 
 ### Review Cadence
 
-| Loại đánh giá   | Tần suất   | Thành phần tham gia  |
+| Review Type     | Frequency  | Participants         |
 | --------------- | ---------- | -------------------- |
 | Họp nhanh dự án | Hàng ngày  | Đội ngũ phát triển   |
 | Đánh giá Sprint | 2 tuần/lần | Các bên liên quan    |

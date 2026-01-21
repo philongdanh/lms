@@ -71,7 +71,7 @@ npx @stoplight/prism-cli mock openapi/main.yaml --port 3001
 
 ## Mock Data Guidelines
 
-| Nguyên tắc     | Mô tả                             |
+| Principle      | Description                       |
 | -------------- | --------------------------------- |
 | Dữ liệu thực tế | Sử dụng tên, email thực tế       |
 | Edge case      | Bao gồm empty state, lỗi          |
@@ -82,7 +82,7 @@ npx @stoplight/prism-cli mock openapi/main.yaml --port 3001
 
 ## Mock Scenarios
 
-| Scenario      | Cách kích hoạt    |
+| Scenario      | Activation        |
 | ------------- | ----------------- |
 | Thành công    | Response mặc định |
 | Danh sách trống | `?scenario=empty` |

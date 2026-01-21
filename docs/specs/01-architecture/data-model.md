@@ -541,91 +541,91 @@ Content -> StudentAnswer: in
 
 ### System
 
-| Table              | Description                            |
-| ------------------ | -------------------------------------- |
-| **Permission**     | System permissions, without timestamps |
-| **Role**           | User roles with colors and timestamps  |
-| **RolePermission** | Links permissions with roles           |
+| Table              | Description                             |
+| ------------------ | --------------------------------------- |
+| **Permission**     | Quyền hệ thống, không có timestamp      |
+| **Role**           | Vai trò người dùng với màu và timestamp |
+| **RolePermission** | Liên kết quyền với vai trò              |
 
 ### Tenant Management
 
-| Table      | Description                                                                           |
-| ---------- | ------------------------------------------------------------------------------------- |
-| **Tenant** | School/customer using the system with status: ACTIVE, SUSPENDED, PENDING_DEACTIVATION |
+| Bảng       | Mô tả                                                                               |
+| ---------- | ----------------------------------------------------------------------------------- |
+| **Tenant** | Trường học/khách hàng sử dụng hệ thống với trạng thái: ACTIVE, SUSPENDED, PENDING_DEACTIVATION |
 
 ### Authentication & Users
 
-| Table                 | Description                                                               |
-| --------------------- | ------------------------------------------------------------------------- |
-| **User**              | User account, user type determined through Role (RBAC)                    |
-| **UserRole**          | User's role in each tenant                                                |
-| **UserSession**       | Device-based login session with device tracking and refresh token hashing |
-| **ParentStudentLink** | Links parent with student (many-to-many relationship)                     |
+| Bảng                  | Mô tả                                                                        |
+| --------------------- | ---------------------------------------------------------------------------- |
+| **User**              | Tài khoản người dùng, loại người dùng xác định qua Role (RBAC)               |
+| **UserRole**          | Vai trò của người dùng trong từng tenant                                     |
+| **UserSession**       | Phiên đăng nhập theo thiết bị với tracking thiết bị và hash refresh token    |
+| **ParentStudentLink** | Liên kết phụ huynh với học sinh (quan hệ nhiều-nhiều)                        |
 
 ### Content Structure
 
-| Table       | Description                                         |
-| ----------- | --------------------------------------------------- |
-| **Subject** | Subjects (Math, Vietnamese, Math in English)        |
-| **Grade**   | Grade levels (1-12)                                 |
-| **Topic**   | Learning topics, with visibility status (is_active) |
-| **Lesson**  | Lessons, with semester (SEMESTER1, SEMESTER2)       |
-| **Content** | Lesson content: VIDEO, EXERCISE, TEXT, QUIZ         |
+| Bảng        | Mô tả                                                |
+| ----------- | ---------------------------------------------------- |
+| **Subject** | Môn học (Toán, Tiếng Việt, Toán Tiếng Anh)           |
+| **Grade**   | Khối lớp (1-12)                                      |
+| **Topic**   | Chủ đề học tập, có trạng thái hiển thị (is_active)  |
+| **Lesson**  | Bài học, có học kỳ (SEMESTER1, SEMESTER2)            |
+| **Content** | Nội dung bài học: VIDEO, EXERCISE, TEXT, QUIZ        |
 
 ### Question Bank
 
-| Table            | Description                                                                                       |
-| ---------------- | ------------------------------------------------------------------------------------------------- |
-| **QuestionBank** | Question collection, type: SYSTEM or TEACHER                                                      |
-| **Question**     | Questions with type: MULTIPLE_CHOICE, TRUE_FALSE, SHORT_ANSWER and difficulty: EASY, MEDIUM, HARD |
-| **QuestionTag**  | Tags for questions                                                                                |
+| Bảng             | Mô tả                                                                                           |
+| ---------------- | ----------------------------------------------------------------------------------------------- |
+| **QuestionBank** | Bộ sưu tập câu hỏi, loại: SYSTEM hoặc TEACHER                                                   |
+| **Question**     | Câu hỏi với loại: MULTIPLE_CHOICE, TRUE_FALSE, SHORT_ANSWER và độ khó: EASY, MEDIUM, HARD       |
+| **QuestionTag**  | Gắn thẻ cho câu hỏi                                                                             |
 
 ### Learning & Progress
 
-| Table               | Description                      |
-| ------------------- | -------------------------------- |
-| **StudentProgress** | Tracks student learning progress |
-| **StudentAnswer**   | Stores all student answers       |
+| Bảng                | Mô tả                                   |
+| ------------------- | --------------------------------------- |
+| **StudentProgress** | Theo dõi tiến độ học tập của học sinh   |
+| **StudentAnswer**   | Lưu trữ tất cả câu trả lời của học sinh |
 
 ### Tournament System
 
-| Table                      | Description                                                            |
-| -------------------------- | ---------------------------------------------------------------------- |
-| **Tournament**             | Arena with levels: SCHOOL, DISTRICT, PROVINCE, REGIONAL, NATIONAL      |
-| **CompetitionRound**       | Competition rounds within the arena                                    |
-| **CompetitionParticipant** | Participants joining competition rounds                                |
-| **InviteCode**             | Invitation codes for joining school-level and above competition rounds |
+| Bảng                       | Mô tả                                                              |
+| -------------------------- | ------------------------------------------------------------------ |
+| **Tournament**             | Đấu trường với các cấp: SCHOOL, DISTRICT, PROVINCE, REGIONAL, NATIONAL |
+| **CompetitionRound**       | Các vòng thi trong đấu trường                                      |
+| **CompetitionParticipant** | Thí sinh tham gia các vòng thi                                     |
+| **InviteCode**             | Mã mời tham gia các vòng thi cấp trường trở lên                   |
 
 ### Gamification
 
-| Table          | Description                                          |
+| Bảng           | Mô tả                                                |
 | -------------- | ---------------------------------------------------- |
-| **UserExp**    | User experience points and level                     |
-| **Badge**      | Badges with type: ACHIEVEMENT, COMPETITION, LEARNING |
-| **UserBadge**  | Badges earned by users                               |
-| **Reward**     | Rewards in the store, type: VIRTUAL or PHYSICAL      |
-| **UserReward** | Rewards redeemed by users                            |
+| **UserExp**    | Điểm kinh nghiệm và cấp độ của người dùng            |
+| **Badge**      | Huy hiệu với loại: ACHIEVEMENT, COMPETITION, LEARNING |
+| **UserBadge**  | Huy hiệu người dùng đạt được                         |
+| **Reward**     | Phần thưởng trong cửa hàng, loại: VIRTUAL hoặc PHYSICAL |
+| **UserReward** | Phần thưởng người dùng đã đổi                        |
 
 ### Exams & Assessment
 
-| Table              | Description                |
-| ------------------ | -------------------------- |
-| **Exam**           | Tests/exams                |
-| **ExamQuestion**   | Questions in exams         |
-| **ExamAssignment** | Exams assigned to students |
+| Bảng               | Mô tả                                |
+| ------------------ | ------------------------------------ |
+| **Exam**           | Các bài kiểm tra/thi                 |
+| **ExamQuestion**   | Các câu hỏi trong bài kiểm tra       |
+| **ExamAssignment** | Bài kiểm tra được giao cho học sinh |
 
 ### Analytics
 
-| Table                 | Description                   |
-| --------------------- | ----------------------------- |
-| **KnowledgeMap**      | Personalized knowledge map    |
-| **LearningAnalytics** | Daily learning analytics data |
+| Bảng                  | Mô tả                                     |
+| --------------------- | ----------------------------------------- |
+| **KnowledgeMap**      | Bản đồ kiến thức cá nhân hóa              |
+| **LearningAnalytics** | Dữ liệu phân tích học tập hàng ngày       |
 
 ### Notifications
 
-| Table            | Description                                                         |
-| ---------------- | ------------------------------------------------------------------- |
-| **Notification** | Notifications with type: SYSTEM, ACHIEVEMENT, COMPETITION, LEARNING |
+| Bảng             | Mô tả                                                                   |
+| ---------------- | ---------------------------------------------------------------------- |
+| **Notification** | Thông báo với loại: SYSTEM, ACHIEVEMENT, COMPETITION, LEARNING         |
 
 ---
 
@@ -753,7 +753,7 @@ The system will pre-seed the following RBAC data:
 
 ### Indexing Strategy
 
-| Bảng                   | Index Chính                                   | Purpose                       |
+| Table                  | Main Index                                    | Purpose                       |
 | ---------------------- | --------------------------------------------- | ----------------------------- |
 | User                   | (tenant_id, email, deleted_at)                | Login và truy vấn theo tenant |
 | Topic                  | (tenant_id, subject_id, grade_id, deleted_at) | Filter nội dung               |
@@ -766,7 +766,7 @@ The system will pre-seed the following RBAC data:
 
 ### Data Retention Policy
 
-| Loại Dữ Liệu        | Thời Gian Lưu Trữ | Ghi Chú                       |
+| Data Type           | Retention         | Notes                         |
 | ------------------- | ----------------- | ----------------------------- |
 | User Sessions       | 30 ngày           | Tự động xóa sau khi hết hạn   |
 | Audit Logs          | 1 năm             | Archive sau 1 năm             |
@@ -912,8 +912,8 @@ flowchart TD
 
 **Cascade Delete Rules Summary**
 
-| Parent Entity        | Action      | Child Entity           | Delete Type | Notes                   |
-| -------------------- | ----------- | ---------------------- | ----------- | ----------------------- |
+| Parent Entity         | Action    | Child Entity           | Delete Type | Notes                   |
+| -------------------- | --------- | ---------------------- | -------- | ----------------------- |
 | **Tenant**           | Soft Delete | User                   | Soft Delete | Set `deleted_at`        |
 | **Tenant**           | Soft Delete | Topic                  | Soft Delete | Set `deleted_at`        |
 | **Tenant**           | Soft Delete | QuestionBank           | Soft Delete | Set `deleted_at`        |
@@ -921,8 +921,8 @@ flowchart TD
 | **Tenant**           | Soft Delete | Exam                   | Soft Delete | Set `deleted_at`        |
 | **Tenant**           | Soft Delete | Reward                 | Soft Delete | Set `deleted_at`        |
 | **User**             | Soft Delete | UserSession            | Hard Delete | ON DELETE CASCADE       |
-| **User**             | Soft Delete | QuestionBank (creator) | Soft Delete | Only if user is creator |
-| **User**             | Soft Delete | Exam (creator)         | Soft Delete | Only if user is creator |
+| **User**             | Soft Delete | QuestionBank (creator) | Soft Delete | Chỉ khi user là creator |
+| **User**             | Soft Delete | Exam (creator)         | Soft Delete | Chỉ khi user là creator |
 | **Topic**            | Soft Delete | Lesson                 | Hard Delete | ON DELETE CASCADE       |
 | **QuestionBank**     | Soft Delete | Question               | Soft Delete | Set `deleted_at`        |
 | **Tournament**       | Soft Delete | CompetitionRound       | Hard Delete | ON DELETE CASCADE       |
@@ -946,22 +946,22 @@ flowchart TD
 
 ### 4.9. Business Requirements Mapping
 
-| BR ID | Related Tables                                                      | Description                                     |
-| ----- | ------------------------------------------------------------------- | ----------------------------------------------- |
-| BR-01 | KnowledgeMap, StudentAnswer, UserExp                                | AI analyzes strengths/weaknesses                |
-| BR-02 | Tournament, CompetitionRound, CompetitionParticipant                | Multi-level arena                               |
-| BR-03 | LearningAnalytics, KnowledgeMap, StudentProgress                    | 4-level reporting                               |
-| BR-04 | Exam, QuestionBank, ExamAssignment                                  | Teacher management tools                        |
-| BR-05 | UserExp, Badge, Reward, UserBadge, UserReward                       | Gamification system                             |
-| BR-06 | Subject, Grade, Topic, Lesson, Content                              | Learning content repository                     |
-| BR-07 | Tenant, User, UserSession, and all multi-tenant tables              | Multi-tenant scalability and session management |
-| BR-08 | UserSession, Device management                                      | Multi-device session management                 |
-| BR-09 | Tournament, CompetitionRound, StudentAnswer with real-time features | Real-time support for competitions              |
-| BR-10 | All tables with cascade delete                                      | Cascade delete strategy for tenant              |
+| BR ID | Related Tables                                                      | Description                                       |
+| ----- | ------------------------------------------------------------------- | ------------------------------------------------- |
+| BR-01 | KnowledgeMap, StudentAnswer, UserExp                                | AI phân tích điểm mạnh/yếu                        |
+| BR-02 | Tournament, CompetitionRound, CompetitionParticipant                | Đấu trường đa cấp                                 |
+| BR-03 | LearningAnalytics, KnowledgeMap, StudentProgress                    | Báo cáo 4 cấp độ                                  |
+| BR-04 | Exam, QuestionBank, ExamAssignment                                  | Bộ công cụ cho giáo viên                          |
+| BR-05 | UserExp, Badge, Reward, UserBadge, UserReward                       | Hệ thống Gamification                             |
+| BR-06 | Subject, Grade, Topic, Lesson, Content                              | Kho nội dung học tập                              |
+| BR-07 | Tenant, User, UserSession, và tất cả bảng đa thực thể               | Khả năng mở rộng đa thực thể và quản lý session   |
+| BR-08 | UserSession, Quản lý thiết bị                                       | Quản lý session đa thiết bị                       |
+| BR-09 | Tournament, CompetitionRound, StudentAnswer với tính năng real-time | Hỗ trợ thời gian thực cho thi đấu                 |
+| BR-10 | Tất cả các bảng có chức năng xóa cascade                            | Chiến lược xóa cascade cho tenant                 |
 
 ### 4.10. Functional Requirements Mapping
 
-| Module         | Related Tables                                                   | Main Functions             |
+| Module         | Related Tables                                                   | Main Function              |
 | -------------- | ---------------------------------------------------------------- | -------------------------- |
 | Learning       | Topic, Lesson, Content, StudentProgress                          | FR-HS-01 to FR-HS-05       |
 | Competition    | Tournament, CompetitionRound, CompetitionParticipant, InviteCode | FR-COMP-01 to FR-COMP-09   |

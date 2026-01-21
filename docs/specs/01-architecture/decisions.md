@@ -31,7 +31,7 @@ Lịch sử các quyết định kiến trúc và kỹ thuật quan trọng.
 
 ### ADR-001: Modular Monolith
 
-| Đặc điểm | Nội dung |
+| Feature | Content |
 | :--- | :--- |
 | **Context** | Cần một kiến trúc phù hợp với team nhỏ nhưng có khả năng mở rộng. |
 | **Decision** | Xây dựng **Modular Monolith** (các module Auth, Tournament, Learning). |
@@ -40,7 +40,7 @@ Lịch sử các quyết định kiến trúc và kỹ thuật quan trọng.
 
 ### ADR-002: PostgreSQL as Primary Database
 
-| Đặc điểm | Nội dung |
+| Feature | Content |
 | :--- | :--- |
 | **Context** | Cần database với ACID transactions và schema linh hoạt. |
 | **Decision** | Sử dụng **PostgreSQL 14+**. |
@@ -48,7 +48,7 @@ Lịch sử các quyết định kiến trúc và kỹ thuật quan trọng.
 
 ### ADR-003: JWT with Refresh Token Blacklisting
 
-| Đặc điểm | Nội dung |
+| Feature | Content |
 | :--- | :--- |
 | **Context** | Cần stateless auth cho multi-device support. |
 | **Decision** | **JWT** (15-30min) + **Refresh token** (7 ngày, hash trong DB) + **Redis blacklist**. |
@@ -56,7 +56,7 @@ Lịch sử các quyết định kiến trúc và kỹ thuật quan trọng.
 
 ### ADR-004: Redis for Cache and Pub/Sub
 
-| Đặc điểm | Nội dung |
+| Feature | Content |
 | :--- | :--- |
 | **Context** | Cần caching và real-time messaging. |
 | **Decision** | **Redis** cho session storage, token blacklist, cache, và Pub/Sub events. |
@@ -64,7 +64,7 @@ Lịch sử các quyết định kiến trúc và kỹ thuật quan trọng.
 
 ### ADR-005: Socket.IO with Redis Adapter
 
-| Đặc điểm | Nội dung |
+| Feature | Content |
 | :--- | :--- |
 | **Context** | Cần WebSocket cho real-time tournament và notifications. |
 | **Decision** | **Socket.IO** với **Redis Adapter** để sync đa instance. |
@@ -72,7 +72,7 @@ Lịch sử các quyết định kiến trúc và kỹ thuật quan trọng.
 
 ### ADR-006: Prisma ORM
 
-| Đặc điểm | Nội dung |
+| Feature | Content |
 | :--- | :--- |
 | **Context** | Cần type-safe ORM cho NestJS. |
 | **Decision** | **Prisma 7** làm ORM chính. |
@@ -80,7 +80,7 @@ Lịch sử các quyết định kiến trúc và kỹ thuật quan trọng.
 
 ### ADR-007: Multi-tenant via tenant_id
 
-| Đặc điểm | Nội dung |
+| Feature | Content |
 | :--- | :--- |
 | **Context** | Cần multi-tenant strategy cho nhiều trường. |
 | **Decision** | **Shared Database với tenant_id column**. |
@@ -88,7 +88,7 @@ Lịch sử các quyết định kiến trúc và kỹ thuật quan trọng.
 
 ### ADR-008: RBAC with 5 Seed Roles
 
-| Đặc điểm | Nội dung |
+| Feature | Content |
 | :--- | :--- |
 | **Context** | Cần authorization model linh hoạt. |
 | **Decision** | **RBAC** với 5 roles: `root-admin`, `tenant-admin`, `teacher`, `parent`, `student`. |
@@ -96,7 +96,7 @@ Lịch sử các quyết định kiến trúc và kỹ thuật quan trọng.
 
 ### ADR-009: Cascade Delete Strategy
 
-| Đặc điểm | Nội dung |
+| Feature | Content |
 | :--- | :--- |
 | **Context** | Cần data deletion strategy cho tenant/user lifecycle. |
 | **Decision** | **Soft Delete** (User, Topic, Exam...) + **Hard Delete CASCADE** (Sessions, Answers...). |

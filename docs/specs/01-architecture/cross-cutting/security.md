@@ -344,7 +344,7 @@ flowchart TD
 
 ### 8.2. Additional Protections
 
-| Protection             | Implementation    | Mục đích                      |
+| Protection             | Implementation    | Purpose                      |
 | ---------------------- | ----------------- | ----------------------------- |
 | **CORS**               | Whitelist origins | Chống cross-site attacks      |
 | **Helmet**             | Security headers  | XSS, clickjacking protection  |

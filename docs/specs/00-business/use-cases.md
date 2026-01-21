@@ -13,7 +13,7 @@ Kịch bản và sơ đồ luồng nghiệp vụ.
 
 ## User Story Format
 
-| Thành phần   | Mô tả                       |
+| Component    | Description                 |
 | ------------ | --------------------------- |
 | Vai trò      | Với tư cách là [vai trò]    |
 | Hành động    | Tôi muốn [hành động]        |
@@ -24,7 +24,7 @@ Kịch bản và sơ đồ luồng nghiệp vụ.
 
 ## User Stories
 
-### Epic: Learning Journey
+### Epic: Hành trình học tập
 
 #### US-LEARN-001: Lộ trình học tập AI
 
@@ -50,7 +50,7 @@ Kịch bản và sơ đồ luồng nghiệp vụ.
 - [ ] Áp dụng bộ lọc theo học kỳ.
 - [ ] Nội dung hiển thị đúng định dạng.
 
-### Epic: Tournament
+### Epic: Giải đấu (Tournament)
 
 #### US-COMP-001: Thi đấu thời gian thực
 
@@ -76,7 +76,7 @@ Kịch bản và sơ đồ luồng nghiệp vụ.
 - [ ] Các nút Xem và Tham gia hoạt động đúng.
 - [ ] Mã mời được xác thực chính xác.
 
-### Epic: Parent Monitoring
+### Epic: Theo dõi của phụ huynh
 
 #### US-PARENT-001: Theo dõi tiến độ
 
@@ -96,7 +96,7 @@ Kịch bản và sơ đồ luồng nghiệp vụ.
 
 ### UC-AUTH-001: Đăng ký người dùng
 
-| Trường thông tin | Giá trị                                                                                                          |
+| Field            | Value                                                                                                           |
 | ---------------- | ---------------------------------------------------------------------------------------------------------------- |
 | Tác nhân         | Người dùng khách                                                                                                 |
 | Điều kiện tiên quyết| Người dùng chưa đăng nhập                                                                                        |
@@ -107,7 +107,7 @@ Kịch bản và sơ đồ luồng nghiệp vụ.
 
 ### UC-AUTH-002: Đăng nhập người dùng
 
-| Trường thông tin | Giá trị                                                              |
+| Field            | Value                                                                |
 | ---------------- | -------------------------------------------------------------------- |
 | Tác nhân         | Người dùng đã đăng ký                                                |
 | Điều kiện tiên quyết| Tài khoản đã tồn tại và được xác thực                                |

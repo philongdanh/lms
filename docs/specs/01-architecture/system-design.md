@@ -156,7 +156,7 @@ App -> Data Layer.Redis
 
 #### Business Modules
 
-| Module                 | Main Functions                                                                             | Corresponding FR         | Technology Stack                 |
+| Module                 | Main Functions                                                                             | Corresponding FR         | Tech Stack                       |
 | ---------------------- | ------------------------------------------------------------------------------------------ | ------------------------ | -------------------------------- |
 | **Auth & RBAC Module** | Quản lý người dùng, phân quyền RBAC, session đa thiết bị, liên kết phụ huynh-học sinh, 2FA | FR-AUTH-01 to FR-AUTH-09 | NestJS, JWT, Redis, Prisma       |
 | **Tournament Module**  | Tổ chức thi đấu và đấu trường đa cấp, thi đấu thời gian thực                               | FR-COMP-01 to FR-COMP-09 | NestJS, Socket.IO, Redis Pub/Sub |
@@ -497,7 +497,7 @@ App -> Parent: Display dashboard {
 
 ### Business Requirements Mapping
 
-| BR ID     | Main Module              | Architecture Component                           | Implementation Description                                         |
+| BR ID     | Main Module              | Architecture Component                           | Description                                                        |
 | --------- | ------------------------ | ------------------------------------------------ | ------------------------------------------------------------------ |
 | **BR-01** | Learning, Analytics      | AI Service, KnowledgeMap                         | AI phân tích lịch sử học tập để đề xuất lộ trình cá nhân hóa       |
 | **BR-02** | Tournament               | Tournament Module, WebSocket                     | Hệ thống đấu trường đa cấp với thi đấu thời gian thực              |
@@ -512,7 +512,7 @@ App -> Parent: Display dashboard {
 
 ### Functional Requirements Mapping
 
-| Module             | FR IDs                     | Architecture Component                | Applied Technology                          |
+| Module             | FR IDs                     | Architecture Component                | Tech                                         |
 | ------------------ | -------------------------- | ------------------------------------- | ------------------------------------------- |
 | **Learning**       | FR-HS-01 to FR-HS-05       | Learning Module, AI Service           | React, NestJS, PostgreSQL, AI Python        |
 | **Competition**    | FR-COMP-01 to FR-COMP-09   | Tournament Module, WebSocket          | Socket.IO, Redis Pub/Sub, Real-time Cache   |
@@ -604,6 +604,6 @@ App -> Parent: Display dashboard {
 
 ## References
 
-- [Business Overview](../00-business/README.md)
+- [Business Overview](../00-business/overview.md)
 - [Data Model](./data-model.md)
 - [Cross-Cutting](/specs)

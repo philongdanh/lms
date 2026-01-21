@@ -72,7 +72,7 @@ Sprint 1 → Sprint 2 → Sprint 3 → M2 (Auth)
 | Capacity  | 30 story points                  |
 | Focus     | Infrastructure (Cơ sở hạ tầng)   |
 
-| Epic      | Features          | Points |
+| Epic      | Features    | Points |
 | --------- | ----------------- | ------ |
 | E01       | F01.1-F01.6 (All) | 30     |
 | **Total** |                   | 30     |

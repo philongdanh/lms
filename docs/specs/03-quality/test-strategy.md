@@ -29,7 +29,7 @@ flowchart TB
 
 ### Coverage Goals
 
-| Test Type         | Coverage Target    | Hiện tại |
+| Test Type         | Coverage Target    | Current  |
 | ----------------- | ------------------ | -------- |
 | Unit Tests        | 80%                | [%]      |
 | Integration Tests | 70% critical paths | [%]      |
@@ -116,7 +116,7 @@ flowchart TB
 
 ## Test Environments
 
-| Environment | Mục đích            | Data            |
+| Environment | Purpose             | Data            |
 | ----------- | ------------------- | --------------- |
 | Local       | Development testing | Mock/seed       |
 | CI          | Automated testing   | Seed data       |

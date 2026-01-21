@@ -19,7 +19,7 @@ Các file đặc tả OpenAPI được lưu trữ trong thư mục `static/opena
 
 ## Base Structure
 
-| Section      | Mục đích                                   |
+| Section      | Purpose                                    |
 | ------------ | ------------------------------------------ |
 | `info`       | Metadata của API (title, version, description) |
 | `servers`    | URL của API server (prod, staging, dev)    |
@@ -32,7 +32,7 @@ Các file đặc tả OpenAPI được lưu trữ trong thư mục `static/opena
 
 ## File Organization
 
-| Phương pháp | Trường hợp sử dụng    |
+| Method      | Use Case              |
 | ----------- | --------------------- |
 | Single file | API nhỏ               |
 | Multi-file  | API lớn sử dụng $ref  |
@@ -41,7 +41,7 @@ Các file đặc tả OpenAPI được lưu trữ trong thư mục `static/opena
 
 ## Naming Conventions
 
-| Thành phần | Quy tắc    | Ví dụ            |
+| Component  | Rule       | Example          |
 | ---------- | ---------- | ---------------- |
 | Paths      | kebab-case | `/user-profiles` |
 | Operations | HTTP verb  | `get`, `post`    |
@@ -52,7 +52,7 @@ Các file đặc tả OpenAPI được lưu trữ trong thư mục `static/opena
 
 ## Server Definitions
 
-| Môi trường | Cấu trúc URL                     | Mô tả             |
+| Environment | URL Structure                    | Description       |
 | ---------- | -------------------------------- | ----------------- |
 | Production | `https://api.lms.com/v1`         | API chính thức    |
 | Staging    | `https://staging-api.lms.com/v1` | Môi trường thử nghiệm |
@@ -64,7 +64,7 @@ Các file đặc tả OpenAPI được lưu trữ trong thư mục `static/opena
 
 ### GET List
 
-| Thuộc tính       | Giá trị                 |
+| Attribute        | Value                   |
 | ---------------- | ----------------------- |
 | Path             | `/resources`            |
 | Operation ID     | `listResources`         |

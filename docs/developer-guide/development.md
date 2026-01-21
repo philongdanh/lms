@@ -14,17 +14,17 @@ tính nhất quán trong codebase, dễ bảo trì và tối ưu hiệu suất l
 
 ## Code Standards
 
-### Technology Stack
+### Danh sách công nghệ (Tech Stack)
 
-| Layer         | Technology            | Purpose                   |
+| Layer         | Tech                  | Purpose                   |
 | ------------- | --------------------- | ------------------------- |
 | **Backend**   | NestJS + TypeScript   | Business logic, API       |
-| **Frontend**  | Next.js + TypeScript  | UI, SSR/SSG               |
-| **Database**  | PostgreSQL + Prisma 7 | Data persistence, ORM     |
+| **Frontend**  | Next.js + TypeScript  | Giao diện người dùng (UI), SSR/SSG |
+| **Database**  | PostgreSQL + Prisma 7 | Lưu trữ dữ liệu, ORM      |
 | **Cache**     | Redis                 | Session, caching, Pub/Sub |
-| **Real-time** | Socket.IO             | WebSocket connections     |
+| **Real-time** | Socket.IO             | Kết nối WebSocket         |
 
-### Code Quality Tools
+### Công cụ chất lượng code
 
 Dự án sử dụng các công cụ sau để đảm bảo chất lượng code:
 
@@ -35,14 +35,14 @@ Dự án sử dụng các công cụ sau để đảm bảo chất lượng code
 | **Husky**       | Git hooks            | `.husky/`      |
 | **lint-staged** | Pre-commit linting   | `package.json` |
 
-**Important rules**:
+**Các quy tắc quan trọng**:
 
 - **KHÔNG** disable ESLint rules mà không có lý do cụ thể và được approve trong
   code review
 - Mọi commit phải pass lint check (enforced by pre-commit hook)
 - Code coverage tối thiểu: 80% cho critical modules
 
-### Naming Conventions
+### Quy ước đặt tên (Naming Conventions)
 
 | Type                 | Convention | Example                          |
 | -------------------- | ---------- | -------------------------------- |
@@ -125,7 +125,7 @@ Analyze Requirements --> Database Design --> Run Migration --> Implement Backend
       --> Write Unit Tests --> Implement Frontend --> Integration Test --> Code Review --> Merge
 ```
 
-### Development Steps
+### Các bước phát triển
 
 1. **Analyze**: Đọc và hiểu requirements từ specs. Clarify với Product Owner nếu
    cần.
@@ -182,7 +182,7 @@ Scope là tên module hoặc component: `auth`, `tournament`, `learning`, `api`,
 
 ## Code Review Guidelines
 
-### Reviewer Checklist
+### Danh sách kiểm tra (Checklist) cho người Review
 
 - [ ] Code tuân thủ coding standards
 - [ ] Logic chính xác và xử lý edge cases
@@ -203,7 +203,7 @@ Scope là tên module hoặc component: `auth`, `tournament`, `learning`, `api`,
 
 ## Environment Variables
 
-### Required Variables
+### Các biến bắt buộc
 
 | Variable               | Description                  | Example                                     |
 | ---------------------- | ---------------------------- | ------------------------------------------- |
@@ -213,7 +213,7 @@ Scope là tên module hoặc component: `auth`, `tournament`, `learning`, `api`,
 | `JWT_EXPIRY`           | Access token expiry          | `15m`                                       |
 | `REFRESH_TOKEN_EXPIRY` | Refresh token expiry         | `7d`                                        |
 
-### Security Notes
+### Ghi chú bảo mật
 
 - **KHÔNG** commit `.env` file
 - Sử dụng `.env.example` làm template
