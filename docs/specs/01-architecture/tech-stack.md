@@ -7,11 +7,9 @@ sidebar_position: 2
 
 # Technology Stack
 
-Các lựa chọn công nghệ và lý do quyết định cho nền tảng LMS.
+Lựa chọn công nghệ và tiêu chuẩn thực thi.
 
 ---
-
-## Overview
 
 | Layer    | Technology      | Version | Purpose                       |
 | -------- | --------------- | ------- | ----------------------------- |

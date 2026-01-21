@@ -7,13 +7,11 @@ sidebar_position: 4
 
 # Monitoring & Observability
 
-Giám sát hệ thống, logging và alerting.
+Tiêu chuẩn giám sát, nhật ký và cảnh báo hệ thống.
 
 ---
 
-## Overview
-
-### Three Pillars
+## Three Pillars
 
 | Pillar  | Tool                 | Mục đích            |
 | ------- | -------------------- | ------------------- |

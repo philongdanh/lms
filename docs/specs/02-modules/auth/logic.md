@@ -7,34 +7,7 @@ sidebar_position: 4
 
 # Auth - Business Logic
 
----
-
-## Business Context
-
-- **Module**: Auth
-- **Version**: 1.0
-- **Status**: Approved
-- **Last Updated**: 2026-01-14
-
----
-
-## Overview
-
-Module cốt lõi: **Xác thực (Auth), Phân quyền (RBAC), Quản lý Session, Liên kết
-Phụ huynh, Vòng đời Tenant**.
-
----
-
-## Use Cases
-
-| Use Case ID | Name                 | Description                                   | Priority | Status |
-| ----------- | -------------------- | --------------------------------------------- | -------- | ------ |
-| UC-AUTH-001 | Register             | Đăng ký tài khoản trường (Tenant), người dùng | P0       | Done   |
-| UC-AUTH-002 | Login                | Xác thực credentials, 2FA, cấp JWT            | P0       | Done   |
-| UC-AUTH-003 | Session Management   | Theo dõi thiết bị, logout từ xa               | P1       | Done   |
-| UC-AUTH-004 | Authorization (RBAC) | Kiểm tra quyền hạn                            | P0       | Done   |
-| UC-AUTH-005 | Parent Linking       | Liên kết tài khoản phụ huynh với học sinh     | P1       | Done   |
-| UC-AUTH-006 | Tenant Management    | Vòng đời tenant (active, suspend)             | P1       | Done   |
+Chi tiết quy tắc nghiệp vụ, workflows và xử lý lỗi cho module Auth.
 
 ---
 
@@ -95,12 +68,6 @@ Phụ huynh, Vòng đời Tenant**.
 ---
 
 # Workflows
-
----
-
-## Overview
-
-Workflows và business processes cho module Auth.
 
 ---
 

@@ -7,7 +7,7 @@ sidebar_position: 5
 
 # Performance Guidelines
 
-Yêu cầu performance và chiến lược tối ưu.
+Tiêu chuẩn hiệu năng và chiến lược tối ưu hóa.
 
 ---
 

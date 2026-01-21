@@ -7,11 +7,7 @@ sidebar_position: 3
 
 # Content & Question Bank - Data Model
 
----
-
-## Overview
-
-Data model quản lý cấu trúc nội dung học tập và ngân hàng câu hỏi.
+Data model cho module Content: Topic, Lesson, Question, QuestionBank.
 
 ---
 
@@ -19,7 +15,8 @@ Data model quản lý cấu trúc nội dung học tập và ngân hàng câu h�
 
 ### Entity: Topic
 
-**Description**: Chủ đề học tập (Chương/Bài). **Storage**: Database (PostgreSQL)
+**Description**: Chủ đề học tập (Chương/Bài).
+**Storage**: Database (PostgreSQL)
 **Retention**: Vĩnh viễn
 
 #### Fields
@@ -36,8 +33,9 @@ Data model quản lý cấu trúc nội dung học tập và ngân hàng câu h�
 
 ### Entity: Lesson
 
-**Description**: Bài học cụ thể trong một Topic. **Storage**: Database
-(PostgreSQL) **Retention**: Vĩnh viễn
+**Description**: Bài học cụ thể trong một Topic.
+**Storage**: Database (PostgreSQL)
+**Retention**: Vĩnh viễn
 
 #### Fields
 
@@ -51,8 +49,8 @@ Data model quản lý cấu trúc nội dung học tập và ngân hàng câu h�
 
 ### Entity: Question
 
-**Description**: Câu hỏi trắc nghiệm hoặc tự luận. **Storage**: Database
-(PostgreSQL) - JSONB cho nội dung linh hoạt.
+**Description**: Câu hỏi trắc nghiệm hoặc tự luận.
+**Storage**: Database (PostgreSQL) - JSONB cho nội dung linh hoạt.
 
 #### Fields
 
@@ -76,73 +74,16 @@ config:
     fontFamily: "EB Garamond"
 ---
 erDiagram
-    Subject ||--o{ Grade : "has"
-    Grade ||--o{ Topic : "groups"
+    Subject ||--o{ Topic : "contains"
     Topic ||--o{ Lesson : "contains"
-    Lesson ||--o{ ContentItem : "includes"
-
-    QuestionBank ||--o{ Question : "stores"
-    Topic ||--o{ Question : "tagged_with"
+    Lesson ||--o{ LessonContent : "has"
+    QuestionBank ||--o{ Question : "contains"
 ```
-
----
-
-## Lifecycle States
-
-### Content Lifecycle
-
-```mermaid
----
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
----
-stateDiagram-v2
-    [*] --> DRAFT : Create
-    DRAFT --> ACTIVE : Publish
-    ACTIVE --> DRAFT : Unpublish
-    ACTIVE --> ARCHIVED : Obsolete
-    ARCHIVED --> DELETED : Remove
-```
-
----
-
-## Storage Specifications
-
-### Database
-
-- **Engine**: PostgreSQL
-- **Full Text Search**: Sử dụng `tsvector` để tìm kiếm câu hỏi theo nội dung.
-
-### File Storage
-
-- **Location**: S3 Bucket `lms-content`
-- **Path Structure**: `/{subject}/{grade}/{topic_id}/{content_id}/{filename}`
-- **Formats**: MP4 (HLS), PDF, JPEG/PNG.
-
----
-
-## Performance Requirements
-
-- **Status**: Approved
-- **Read**: Tải Catalog (Tree view) < 100ms.
-- **Search**: Tìm kiếm câu hỏi < 100ms.
-
----
-
-## Data Security
-
-- **Access**: Public (Nội dung Active), Private (Nội dung Draft - chỉ Teacher).
-
----
-
-## Validation Checklist
-
-- [ ] Ràng buộc phân cấp được đảm bảo qua FK
-- [ ] Index JSONB cho Question options
 
 ---
 
 ## References
 
-- [Overview](/specs)
+- [API Endpoints](./api.md)
+- [Business Logic](./logic.md)
+- [Test Cases](./tests.md)

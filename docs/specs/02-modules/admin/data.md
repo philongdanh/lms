@@ -5,13 +5,9 @@ sidebar_label: Data
 sidebar_position: 3
 ---
 
-# Admin & Tenant Management - Data Model
+# Admin & Tenant - Data Model
 
----
-
-## Overview
-
-Mô hình dữ liệu để lưu trữ thông tin Tenant và cấu hình hệ thống.
+Data model cho module Admin: Tenant, TenantSettings, AuditLog.
 
 ---
 
@@ -19,35 +15,35 @@ Mô hình dữ liệu để lưu trữ thông tin Tenant và cấu hình hệ th
 
 ### Entity: Tenant
 
-**Description**: Đại diện cho một đơn vị sử dụng (Trường học, Tổ chức).
+**Description**: Đơn vị tổ chức (trường học, tổ chức giáo dục).
 **Storage**: Database (PostgreSQL)
+**Retention**: Vĩnh viễn (Soft delete)
 
 #### Fields
 
-| Field Name        | Type      | Required | Default  | Validation   | Description                             |
-| ----------------- | --------- | -------- | -------- | ------------ | --------------------------------------- |
-| id                | UUID      | ✅       | auto-gen | unique       | Khóa chính                              |
-| name              | String    | ✅       | -        | len > 3      | Tên trường                              |
-| code              | String    | ✅       | -        | unique, slug | Mã trường (subdomain)                   |
-| status            | String    | ✅       | ACTIVE   | enum         | ACTIVE, SUSPENDED, PENDING_DEACTIVATION |
-| subscription_plan | String    | ✅       | FREE     | enum         | Gói dịch vụ                             |
-| created_at        | Timestamp | ✅       | now()    | -            | Ngày tạo                                |
-| deleted_at        | Timestamp | ❌       | null     | -            | Ngày xóa (Soft delete)                  |
+| Field Name | Type      | Required | Default  | Validation | Description       |
+| ---------- | --------- | -------- | -------- | ---------- | ----------------- |
+| id         | UUID      | ✅       | auto-gen | unique     | Khóa chính        |
+| code       | String    | ✅       | -        | unique     | Mã tenant duy nhất |
+| name       | String    | ✅       | -        | len > 3    | Tên hiển thị      |
+| status     | String    | ✅       | PENDING  | enum       | Trạng thái        |
+| deleted_at | Timestamp | ❌       | null     | -          | Soft delete       |
 
-### Entity: SystemConfig
+### Entity: AuditLog
 
-**Description**: Cấu hình toàn cục hoặc theo phạm vi tenant. **Storage**:
-Database (PostgreSQL)
+**Description**: Ghi lại các hành động quản trị quan trọng.
+**Storage**: Database (PostgreSQL)
+**Retention**: 2 năm
 
 #### Fields
 
-| Field Name | Type   | Required | Default  | Validation      | Description                 |
-| ---------- | ------ | -------- | -------- | --------------- | --------------------------- |
-| id         | UUID   | ✅       | auto-gen | unique          | Khóa chính                  |
-| scope      | String | ✅       | SYSTEM   | enum            | SYSTEM, TENANT              |
-| tenant_id  | UUID   | ❌       | null     | -               | Null nếu là cấu hình System |
-| key        | String | ✅       | -        | unique in scope | Tên cấu hình                |
-| value      | JSONB  | ✅       | {}       | -               | Giá trị cấu hình            |
+| Field Name | Type      | Required | Default  | Validation | Description        |
+| ---------- | --------- | -------- | -------- | ---------- | ------------------ |
+| id         | UUID      | ✅       | auto-gen | unique     | Khóa chính         |
+| user_id    | UUID      | ✅       | -        | valid user | Người thực hiện    |
+| action     | String    | ✅       | -        | -          | Loại hành động     |
+| target     | JSONB     | ✅       | {}       | -          | Đối tượng bị tác động |
+| created_at | Timestamp | ✅       | now()    | -          | Thời gian          |
 
 #### Relationships
 
@@ -58,61 +54,15 @@ config:
     fontFamily: "EB Garamond"
 ---
 erDiagram
-    Tenant ||--o{ User : "has_members"
-    Tenant ||--o{ SystemConfig : "has_settings"
+    Tenant ||--o{ User : "has"
+    Tenant ||--|| TenantSettings : "has"
+    User ||--o{ AuditLog : "creates"
 ```
-
----
-
-## Lifecycle States
-
-### Tenant Lifecycle
-
-```mermaid
----
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
----
-stateDiagram-v2
-    [*] --> ACTIVE : Create
-    ACTIVE --> SUSPENDED : Suspend
-    SUSPENDED --> ACTIVE : Reactivate
-    ACTIVE --> PENDING_DEACTIVATION : Delete Req
-    PENDING_DEACTIVATION --> [*] : Hard Delete (30days)
-```
-
----
-
-## Storage Specifications
-
-### Database
-
-- **Schema**: `public` (Shared Tables).
-- **Tenant Isolation**: Row-level security (RLS) dựa trên `tenant_id`.
-
----
-
-## Performance Requirements
-
-- **Tenant Resolution**: Phân giải tenant từ subdomain < 10ms (cached).
-
----
-
-## Data Security
-
-- **Isolation**: Đảm bảo các truy vấn luôn bao gồm `WHERE tenant_id = ?`.
-- **Encryption**: Mã hóa các cấu hình nhạy cảm (API Keys) trong `SystemConfig`.
-
----
-
-## Validation Checklist
-
-- [ ] Các policy RLS được áp dụng cho tất cả truy vấn
-- [ ] Kiểm tra xung đột Tenant Code
 
 ---
 
 ## References
 
-- [Overview](/specs)
+- [API Endpoints](./api.md)
+- [Business Logic](./logic.md)
+- [Test Cases](./tests.md)

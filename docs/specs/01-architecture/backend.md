@@ -7,14 +7,7 @@ sidebar_position: 3
 
 # Backend Architecture
 
-API design, database schema, and external tool references.
-
----
-
-## Overview
-
-This document consolidates backend architecture including API design patterns,
-database schema, and references to external API documentation tools.
+Thiết kế API, cấu trúc database và tham chiếu công cụ.
 
 ---
 
@@ -22,9 +15,9 @@ database schema, and references to external API documentation tools.
 
 | Tool               | Purpose           | Link                       |
 | ------------------ | ----------------- | -------------------------- |
-| OpenAPI            | API Specification | `[OpenAPI/Swagger URL]`    |
-| Postman            | API Testing       | `[Postman Collection URL]` |
-| Apidog             | API Documentation | `[Apidog URL]`             |
+| OpenAPI            | API Specification |                            |
+| Postman            | API Testing       |                            |
+| Apidog             | API Documentation |                            |
 | GraphQL Playground | GraphQL Explorer  | `/graphql`                 |
 
 ---
@@ -83,13 +76,8 @@ database schema, and references to external API documentation tools.
 
 ```graphql
 type Query {
-
----
-
   # Single entity
   user(id: ID!): User
-
----
 
   # List with pagination
   users(
@@ -97,8 +85,6 @@ type Query {
     after: String
     filter: UserFilter
   ): UserConnection!
-
----
 
   # Current user
   me: User

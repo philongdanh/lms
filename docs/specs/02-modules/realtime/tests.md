@@ -7,11 +7,7 @@ sidebar_position: 5
 
 # Real-time Communication - Test Cases
 
----
-
-## Overview
-
-Các test case cho module Real-time.
+Test cases cho module Realtime: kiểm thử WebSocket connection, notifications, presence.
 
 ---
 
@@ -60,10 +56,6 @@ Các test case cho module Real-time.
 # Performance Requirements
 
 ---
-
-## Overview
-
-Các đặc tả hiệu năng cho module Real-time.
 
 ---
 

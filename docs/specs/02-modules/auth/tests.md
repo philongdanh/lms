@@ -7,11 +7,7 @@ sidebar_position: 5
 
 # Auth - Test Cases
 
----
-
-## Overview
-
-Test cases được derive từ specifications của module Auth
+Test cases được derive từ specifications của module Auth.
 
 ---
 
@@ -155,10 +151,6 @@ Test cases được derive từ specifications của module Auth
 # Performance Requirements
 
 ---
-
-## Overview
-
-Performance specifications cho module Auth
 
 ---
 

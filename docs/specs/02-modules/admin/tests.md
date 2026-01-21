@@ -7,11 +7,7 @@ sidebar_position: 5
 
 # Admin & Tenant Management - Test Cases
 
----
-
-## Overview
-
-Các test case cho module Admin.
+Test cases cho module Admin: kiểm thử business logic, API endpoints, workflows.
 
 ---
 
@@ -60,10 +56,6 @@ Các test case cho module Admin.
 # Performance Requirements
 
 ---
-
-## Overview
-
-Các thông số hiệu năng cho module Admin.
 
 ---
 

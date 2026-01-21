@@ -7,11 +7,7 @@ sidebar_position: 5
 
 # Learning & Personalization - Test Cases
 
----
-
-## Overview
-
-Test cases được derive từ specifications của module Learning.
+Test cases cho module Learning: kiểm thử personalized path, quiz scoring, progress tracking.
 
 ---
 
@@ -98,10 +94,6 @@ JUnit XML chuẩn + HTML Report.
 # Performance Requirements
 
 ---
-
-## Overview
-
-Performance specifications cho module Learning & Personalization.
 
 ---
 
