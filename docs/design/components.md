@@ -7,7 +7,7 @@ sidebar_position: 3
 
 # Component Guidelines
 
-UI component design guidelines and patterns.
+Hướng dẫn thiết kế UI components: buttons, forms, cards, modals, tables, navigation.
 
 ---
 

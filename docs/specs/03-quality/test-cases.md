@@ -7,14 +7,7 @@ sidebar_position: 2
 
 # Test Cases
 
-Test case templates for integration and E2E testing.
-
----
-
-## Overview
-
-This document provides test cases covering API integration tests and end-to-end
-user flows.
+Test case templates cho integration và E2E testing. Bao gồm quy ước đặt tên, độ ưu tiên và các công cụ sử dụng.
 
 ---
 

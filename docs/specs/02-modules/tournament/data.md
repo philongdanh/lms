@@ -5,13 +5,9 @@ sidebar_label: Data
 sidebar_position: 3
 ---
 
-# Tournament & Competition - Data Model
+# Tournament - Data Model
 
----
-
-## Overview
-
-Mô hình dữ liệu để quản lý cuộc thi và người tham gia.
+Data model cho module Tournament: Tournament, CompetitionRound, CompetitionParticipant.
 
 ---
 
@@ -19,8 +15,8 @@ Mô hình dữ liệu để quản lý cuộc thi và người tham gia.
 
 ### Entity: Tournament
 
-**Description**: Cuộc thi lớn (ví dụ: Math Arena). **Storage**: Database
-(PostgreSQL)
+**Description**: Cuộc thi lớn (ví dụ: Math Arena).
+**Storage**: Database (PostgreSQL)
 
 #### Fields
 
@@ -35,8 +31,8 @@ Mô hình dữ liệu để quản lý cuộc thi và người tham gia.
 
 ### Entity: CompetitionRound
 
-**Description**: Vòng thi cụ thể (ví dụ: Vòng 1, Chung kết). **Storage**:
-Database (PostgreSQL)
+**Description**: Vòng thi cụ thể (ví dụ: Vòng 1, Chung kết).
+**Storage**: Database (PostgreSQL)
 
 #### Fields
 
@@ -50,7 +46,8 @@ Database (PostgreSQL)
 
 ### Entity: CompetitionParticipant
 
-**Description**: Người tham gia vòng thi. **Storage**: Database (PostgreSQL)
+**Description**: Người tham gia vòng thi.
+**Storage**: Database (PostgreSQL)
 
 #### Fields
 
@@ -72,43 +69,16 @@ config:
     fontFamily: "EB Garamond"
 ---
 erDiagram
-    Tournament ||--o{ CompetitionRound : "consists_of"
-    CompetitionRound ||--o{ CompetitionParticipant : "has_players"
-    User ||--o{ CompetitionParticipant : "joins"
+    Tournament ||--o{ CompetitionRound : "has"
+    CompetitionRound ||--o{ CompetitionParticipant : "has"
+    User ||--o{ CompetitionParticipant : "participates_as"
+    Subject ||--o{ Tournament : "has"
 ```
-
----
-
-## Storage Specifications
-
-### Redis
-
-- **Leaderboard**: ZSET `round:{id}:scores` (Member: `user_id`, Score:
-  `points`).
-- **Room State**: Hash `room:{id}` (Trạng thái, QuestionIndex).
-
----
-
-## Performance Requirements
-
-- **Leaderboard Write**: < 1ms (Redis).
-- **Participant Insert**: Batch insert cho việc join đồng thời cao.
-
----
-
-## Data Security
-
-- **Invite Code**: Hash trước khi so sánh hoặc rate limit kiểm tra code.
-
----
-
-## Validation Checklist
-
-- [ ] Đã xác minh các thao tác Redis ZSET
-- [ ] Xử lý join đồng thời
 
 ---
 
 ## References
 
-- [Overview](/specs)
+- [API Endpoints](./api.md)
+- [Business Logic](./logic.md)
+- [Test Cases](./tests.md)

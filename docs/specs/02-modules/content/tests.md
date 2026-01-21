@@ -7,11 +7,7 @@ sidebar_position: 5
 
 # Content & Question Bank - Test Cases
 
----
-
-## Overview
-
-Các test cases cho module Content.
+Test cases cho module Content: kiểm thử business logic, API endpoints, import/export workflows.
 
 ---
 
@@ -59,10 +55,6 @@ Các test cases cho module Content.
 # Performance Requirements
 
 ---
-
-## Overview
-
-Performance specifications cho module Content.
 
 ---
 

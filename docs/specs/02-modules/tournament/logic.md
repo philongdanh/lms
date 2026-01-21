@@ -7,44 +7,7 @@ sidebar_position: 4
 
 # Tournament & Competition - Business Logic
 
----
-
-## Business Context
-
-- **Module**: Tournament & Competition
-- **Version**: 1.0
-- **Status**: Approved
-- **Last Updated**: 2026-01-14
-
----
-
-## Overview
-
-Module quản lý thi đấu trực tuyến, hỗ trợ: Tournament, Round, Room, và Real-time
-Leaderboard.
-
----
-
-## Use Cases
-
-| Use Case ID | Name                | Description                    | Priority | Status  |
-| ----------- | ------------------- | ------------------------------ | -------- | ------- |
-| UC-TOUR-001 | Create Tournament   | Tạo cuộc thi mới (Admin)       | P1       | Planned |
-| UC-TOUR-002 | Join Round          | Đăng ký tham gia vòng thi      | P0       | Planned |
-| UC-TOUR-003 | Compete (Real-time) | Thi real-time qua WebSocket    | P0       | Planned |
-| UC-TOUR-004 | View Leaderboard    | Xem bảng xếp hạng vòng thi     | P0       | Planned |
-| UC-TOUR-005 | Invite Users        | Mời người chơi qua invite code | P2       | Planned |
-
-### UC-TOUR-003: Compete
-
-**Actor**: Student **Preconditions**: Đã tham gia round và kết nối qua
-WebSocket. **Main Flow**:
-
-1. Server gửi câu hỏi.
-2. Student trả lời.
-3. Server chấm điểm ngay (base score + time bonus).
-4. Server cập nhật Real-time leaderboard.
-5. Server gửi câu hỏi tiếp theo (nếu có).
+Chi tiết quy tắc nghiệp vụ, workflows và xử lý lỗi cho module Tournament.
 
 ---
 
@@ -103,10 +66,6 @@ WebSocket. **Main Flow**:
 # Workflows
 
 ---
-
-## Overview
-
-Các workflow cho quy trình thi đấu.
 
 ---
 
@@ -215,4 +174,4 @@ sequenceDiagram
 
 ## References
 
-- [Overview](/specs)
+- [Overview](../../00-business/README.md)

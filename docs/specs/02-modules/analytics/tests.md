@@ -7,11 +7,7 @@ sidebar_position: 5
 
 # Analytics & Reporting - Test Cases
 
----
-
-## Overview
-
-Các test case cho module Analytics.
+Test cases cho module Analytics: kiểm thử tính toán mastery, báo cáo, thống kê.
 
 ---
 
@@ -59,10 +55,6 @@ Các test case cho module Analytics.
 # Performance Requirements
 
 ---
-
-## Overview
-
-Các thông số hiệu suất cho module Analytics.
 
 ---
 

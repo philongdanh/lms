@@ -7,14 +7,9 @@ sidebar_position: 4
 
 # Frontend Architecture
 
-Component hierarchy, state management, routing, and external tool references.
+Kiến trúc thành phần, quản lý trạng thái và điều phối giao diện.
 
 ---
-
-## Overview
-
-This document consolidates frontend architecture decisions including component
-structure, state management patterns, and route definitions.
 
 ---
 
@@ -22,9 +17,9 @@ structure, state management patterns, and route definitions.
 
 | Tool      | Purpose           | Link                  |
 | --------- | ----------------- | --------------------- |
-| Figma     | UI/UX Design      | `[Figma Project URL]` |
-| Storybook | Component Library | `[Storybook URL]`     |
-| Chromatic | Visual Testing    | `[Chromatic URL]`     |
+| Figma     | UI/UX Design      |                       |
+| Storybook | Component Library |                       |
+| Chromatic | Visual Testing    |                       |
 
 ---
 

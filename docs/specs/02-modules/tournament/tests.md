@@ -7,11 +7,7 @@ sidebar_position: 5
 
 # Tournament & Competition - Test Cases
 
----
-
-## Overview
-
-Các test case cho module Tournament.
+Test cases cho module Tournament: kiểm thử joining, scoring, leaderboard, real-time matches.
 
 ---
 
@@ -60,10 +56,6 @@ Các test case cho module Tournament.
 # Performance Requirements
 
 ---
-
-## Overview
-
-Đặc tả hiệu năng cho module Tournament.
 
 ---
 

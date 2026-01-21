@@ -7,45 +7,7 @@ sidebar_position: 4
 
 # Admin & Tenant Management - Business Logic
 
----
-
-## Business Context
-
-- **Module**: Admin & Tenant Management
-- **Version**: 1.0
-- **Status**: Approved
-- **Last Updated**: 2026-01-14
-
----
-
-## Overview
-
-Module quản trị hệ thống cung cấp các tính năng quản lý Tenant (Trường học),
-quản lý User (Giáo viên, Học sinh), và cấu hình hệ thống. Phân quyền nghiêm ngặt
-giữa Root Admin và Tenant Admin.
-
----
-
-## Use Cases
-
-| Use Case ID  | Use Case Name     | Description                        | Priority | Status  |
-| ------------ | ----------------- | ---------------------------------- | -------- | ------- |
-| UC-ADMIN-001 | Create Tenant     | Tạo mới một Tenant (Trường học)    | P0       | Planned |
-| UC-ADMIN-002 | Suspend Tenant    | Tạm ngưng hoạt động của Tenant     | P1       | Planned |
-| UC-ADMIN-003 | Impersonate Admin | Đăng nhập với tư cách Tenant Admin | P1       | Planned |
-| UC-ADMIN-004 | Import Users      | Import danh sách user từ file CSV  | P0       | Planned |
-| UC-ADMIN-005 | Configure System  | Thay đổi cấu hình hệ thống         | P2       | Planned |
-
-### UC-ADMIN-004: Import Users
-
-**Actor**: Tenant Admin **Preconditions**: File CSV đúng định dạng. **Main
-Flow**:
-
-1. Admin tải lên file CSV.
-2. Hệ thống xác thực định dạng và dữ liệu.
-3. Hệ thống tạo các tài khoản User.
-4. Hệ thống gửi email kích hoạt (tùy chọn).
-5. Hệ thống trả về kết quả import.
+Chi tiết quy tắc nghiệp vụ, workflows và xử lý lỗi cho module Admin.
 
 ---
 
@@ -102,12 +64,6 @@ Flow**:
 ---
 
 # Workflows
-
----
-
-## Overview
-
-Các workflow để quản lý vòng đời Tenant và Import User.
 
 ---
 

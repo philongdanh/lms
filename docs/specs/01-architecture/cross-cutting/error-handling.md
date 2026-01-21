@@ -7,7 +7,7 @@ sidebar_position: 3
 
 # Error Handling
 
-Các patterns và best practices xử lý lỗi.
+Tiêu chuẩn và mô hình xử lý lỗi hệ thống.
 
 ---
 

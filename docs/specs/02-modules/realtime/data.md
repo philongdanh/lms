@@ -5,13 +5,9 @@ sidebar_label: Data
 sidebar_position: 3
 ---
 
-# Real-time Communication - Data Model
+# Realtime - Data Model
 
----
-
-## Overview
-
-Data model cho Realtime tập trung vào lưu trữ tạm thời (Redis) và logs.
+Data model cho module Realtime: Presence, Notification, ConnectionLog.
 
 ---
 
@@ -19,8 +15,9 @@ Data model cho Realtime tập trung vào lưu trữ tạm thời (Redis) và log
 
 ### Entity: Presence (Redis)
 
-**Description**: Trạng thái online của người dùng. **Storage**: Redis
-(Key-Value) **Retention**: TTL (Heartbeat interval + buffer)
+**Description**: Trạng thái online của người dùng.
+**Storage**: Redis (Key-Value)
+**Retention**: TTL (Heartbeat interval + buffer)
 
 #### Fields
 
@@ -33,8 +30,8 @@ Data model cho Realtime tập trung vào lưu trữ tạm thời (Redis) và log
 
 ### Entity: Notification
 
-**Description**: Lưu trữ thông báo đã gửi để xem sau. **Storage**: Database
-(MongDB/PostgreSQL)
+**Description**: Lưu trữ thông báo đã gửi để xem sau.
+**Storage**: Database (PostgreSQL)
 
 #### Fields
 
@@ -59,43 +56,13 @@ config:
 ---
 erDiagram
     User ||--o{ Notification : "receives"
+    User ||--|| Presence : "has"
 ```
-
----
-
-## Storage Specifications
-
-### Redis
-
-- **Clustering**: Master-Replica.
-- **Eviction**: Volatile-LRU (ưu tiên xóa presence cũ).
-
-### Database
-
-- **Optimization**: Phân vùng `Notification` theo tháng.
-
----
-
-## Performance Requirements
-
-- **Presence Check**: < 5ms.
-- **Notification Write**: Async write < 50ms.
-
----
-
-## Data Security
-
-- **Encryption**: WSS (TLS) cho tất cả kết nối.
-
----
-
-## Validation Checklist
-
-- [ ] Redis keys hết hạn hoạt động đúng
-- [ ] Truy vấn lịch sử thông báo được tối ưu
 
 ---
 
 ## References
 
-- [Overview](/specs)
+- [API Endpoints](./api.md)
+- [Business Logic](./logic.md)
+- [Test Cases](./tests.md)

@@ -7,44 +7,7 @@ sidebar_position: 4
 
 # Analytics & Reporting - Business Logic
 
----
-
-## Business Context
-
-- **Module**: Analytics & Reporting
-- **Version**: 1.0
-- **Status**: Đã phê duyệt
-- **Cập nhật lần cuối**: 2026-01-14
-
----
-
-## Overview
-
-Module chịu trách nhiệm thu thập, xử lý và trực quan hóa dữ liệu hoạt động học
-tập. Cung cấp báo cáo đa cấp cho Học sinh, Phụ huynh, Giáo viên và Quản trị
-viên.
-
----
-
-## Use Cases
-
-| Use Case ID      | Use Case Name          | Description                                       | Priority | Status          |
-| ---------------- | ---------------------- | ------------------------------------------------- | -------- | --------------- |
-| UC-ANALYTICS-001 | View Knowledge Map     | Xem bản đồ kiến thức cá nhân                      | P0       | Đã lên kế hoạch |
-| UC-ANALYTICS-002 | View Learning Report   | Xem báo cáo học tập cá nhân (hàng ngày/hàng tuần) | P1       | Đã lên kế hoạch |
-| UC-ANALYTICS-003 | View Class Performance | Giáo viên xem tiến độ học tập của lớp             | P0       | Đã lên kế hoạch |
-| UC-ANALYTICS-004 | View System Overview   | Admin xem thống kê tổng quan hệ thống             | P2       | Đã lên kế hoạch |
-| UC-ANALYTICS-005 | Export Report          | Xuất báo cáo sang định dạng Excel/PDF             | P2       | Đã lên kế hoạch |
-
-### UC-ANALYTICS-001: View Knowledge Map
-
-**Actor**: Học sinh, Giáo viên **Preconditions**: Dữ liệu học tập tồn tại.
-**Luồng chính**:
-
-1. Người dùng truy cập Dashboard.
-2. Hệ thống tải dữ liệu Knowledge Map từ DB/Cache.
-3. Hệ thống tính toán mức độ thành thạo cho từng Topic.
-4. Hệ thống hiển thị biểu đồ cây/lưới kiến thức.
+Chi tiết quy tắc nghiệp vụ, workflows và xử lý lỗi cho module Analytics.
 
 ---
 
@@ -103,10 +66,6 @@ viên.
 # Workflows
 
 ---
-
-## Overview
-
-Các quy trình xử lý dữ liệu (ETL) và truy xuất báo cáo.
 
 ---
 

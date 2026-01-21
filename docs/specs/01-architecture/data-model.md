@@ -7,6 +7,8 @@ sidebar_position: 5
 
 # Data Model
 
+ERD và quy định dữ liệu.
+
 ---
 
 ## ER Diagram
@@ -16,8 +18,6 @@ between schools. All business tables have `tenant_id` and `created_at`,
 `updated_at` timestamps (except system tables).
 
 ```d2
-
----
 
 # ========== SYSTEM TABLES ==========
 Permission: {
@@ -42,8 +42,6 @@ RolePermission: {
   permission_id: string {constraint: foreign_key}
   created_at: timestamp
 }
-
----
 
 # ========== TENANT MANAGEMENT ==========
 Tenant: {
@@ -541,7 +539,7 @@ Content -> StudentAnswer: in
 
 ## Entity Descriptions
 
-### 2.1. System
+### System
 
 | Table              | Description                            |
 | ------------------ | -------------------------------------- |
@@ -549,13 +547,13 @@ Content -> StudentAnswer: in
 | **Role**           | User roles with colors and timestamps  |
 | **RolePermission** | Links permissions with roles           |
 
-### 2.2. Tenant Management
+### Tenant Management
 
 | Table      | Description                                                                           |
 | ---------- | ------------------------------------------------------------------------------------- |
 | **Tenant** | School/customer using the system with status: ACTIVE, SUSPENDED, PENDING_DEACTIVATION |
 
-### 2.3. Authentication & Users
+### Authentication & Users
 
 | Table                 | Description                                                               |
 | --------------------- | ------------------------------------------------------------------------- |
@@ -564,7 +562,7 @@ Content -> StudentAnswer: in
 | **UserSession**       | Device-based login session with device tracking and refresh token hashing |
 | **ParentStudentLink** | Links parent with student (many-to-many relationship)                     |
 
-### 2.4. Content Structure
+### Content Structure
 
 | Table       | Description                                         |
 | ----------- | --------------------------------------------------- |
@@ -574,7 +572,7 @@ Content -> StudentAnswer: in
 | **Lesson**  | Lessons, with semester (SEMESTER1, SEMESTER2)       |
 | **Content** | Lesson content: VIDEO, EXERCISE, TEXT, QUIZ         |
 
-### 2.5. Question Bank
+### Question Bank
 
 | Table            | Description                                                                                       |
 | ---------------- | ------------------------------------------------------------------------------------------------- |
@@ -582,14 +580,14 @@ Content -> StudentAnswer: in
 | **Question**     | Questions with type: MULTIPLE_CHOICE, TRUE_FALSE, SHORT_ANSWER and difficulty: EASY, MEDIUM, HARD |
 | **QuestionTag**  | Tags for questions                                                                                |
 
-### 2.6. Learning & Progress
+### Learning & Progress
 
 | Table               | Description                      |
 | ------------------- | -------------------------------- |
 | **StudentProgress** | Tracks student learning progress |
 | **StudentAnswer**   | Stores all student answers       |
 
-### 2.7. Tournament System
+### Tournament System
 
 | Table                      | Description                                                            |
 | -------------------------- | ---------------------------------------------------------------------- |
@@ -598,7 +596,7 @@ Content -> StudentAnswer: in
 | **CompetitionParticipant** | Participants joining competition rounds                                |
 | **InviteCode**             | Invitation codes for joining school-level and above competition rounds |
 
-### 2.8. Gamification
+### Gamification
 
 | Table          | Description                                          |
 | -------------- | ---------------------------------------------------- |
@@ -608,7 +606,7 @@ Content -> StudentAnswer: in
 | **Reward**     | Rewards in the store, type: VIRTUAL or PHYSICAL      |
 | **UserReward** | Rewards redeemed by users                            |
 
-### 2.9. Exams & Assessment
+### Exams & Assessment
 
 | Table              | Description                |
 | ------------------ | -------------------------- |
@@ -616,14 +614,14 @@ Content -> StudentAnswer: in
 | **ExamQuestion**   | Questions in exams         |
 | **ExamAssignment** | Exams assigned to students |
 
-### 2.10. Analytics
+### Analytics
 
 | Table                 | Description                   |
 | --------------------- | ----------------------------- |
 | **KnowledgeMap**      | Personalized knowledge map    |
 | **LearningAnalytics** | Daily learning analytics data |
 
-### 2.11. Notifications
+### Notifications
 
 | Table            | Description                                                         |
 | ---------------- | ------------------------------------------------------------------- |
@@ -633,14 +631,14 @@ Content -> StudentAnswer: in
 
 ## Key Relationships
 
-### 3.1. Multi-tenant Relationships
+### Multi-tenant Relationships
 
 - **Tenant** is the center, linked to all business data
 - Each **User** belongs to one **Tenant**
 - **Topic**, **QuestionBank**, **Tournament**, **Exam**, **Reward** all have
   `tenant_id`
 
-### 3.2. User RBAC Relationships
+### User RBAC Relationships
 
 - **User** can have multiple **Roles** via **UserRole** table (e.g., user can be
   both teacher and parent)
@@ -648,19 +646,19 @@ Content -> StudentAnswer: in
   relationship)
 - **User** can be the creator of: **QuestionBank**, **Exam**, **InviteCode**
 
-### 3.3. Content Structure
+### Content Structure
 
 - **Subject** → **Grade** → **Topic** → **Lesson** → **Content**
 - **Question** can link to **Topic** and/or **Lesson**
 - **Lesson** has `semester` attribute (SEMESTER1, SEMESTER2)
 
-### 3.4. Tournament System
+### Tournament System
 
 - **Tournament** → **CompetitionRound** → **CompetitionParticipant**
 - **InviteCode** allows joining competition rounds when `requires_invite=true`
 - **StudentAnswer** can belong to **CompetitionRound**
 
-### 3.5. Gamification & Analytics
+### Gamification & Analytics
 
 - **UserExp** tracks experience points
 - **Badge** is awarded to **User** via **UserBadge**
@@ -671,7 +669,7 @@ Content -> StudentAnswer: in
 
 ## Database Specifications
 
-### 4.1. Naming Conventions
+### Naming Conventions
 
 - **Primary Key**: `id` (UUID v4)
 - **Foreign Key**: `{table_name}_id` (e.g., `user_id`, `tenant_id`)
@@ -679,7 +677,7 @@ Content -> StudentAnswer: in
 - **Soft Delete**: Only apply `deleted_at` for tables: User, Topic,
   QuestionBank, Question, Exam, Tournament, Reward
 
-### 4.2. Data Rules
+### Data Rules
 
 1. **Multi-tenancy**: All queries must include `tenant_id` except for system
    tables
@@ -698,7 +696,7 @@ Content -> StudentAnswer: in
 9. **Semester applies to lessons only**: The `semester` field only exists in
    `Lesson` table, not applied to `Topic`
 
-### 4.3. RBAC Seed Data
+### RBAC Seed Data
 
 The system will pre-seed the following RBAC data:
 
@@ -722,7 +720,7 @@ The system will pre-seed the following RBAC data:
 - `system:*` - System administration (root-admin only)
 - `session:*` - Manage multi-device sessions
 
-### 4.4. Hidden Support Tables
+### Hidden Support Tables
 
 **AuditLog** (System activity logging):
 
@@ -744,7 +742,7 @@ The system will pre-seed the following RBAC data:
 - `id`, `user_id`, `tenant_id`, `status`, `last_seen_at`, `room_id`, `device_id`
 - `metadata` (JSONB), `created_at`, `updated_at`
 
-### 4.5. Migration & Versioning
+### Migration & Versioning
 
 - **Migration Tool**: Prisma Migrate
 - **Version Control**: Git với semantic versioning
@@ -753,7 +751,7 @@ The system will pre-seed the following RBAC data:
 - **Cascade Delete Strategy**: Tất cả foreign keys sẽ có `ON DELETE CASCADE`
   ngoại trừ các bảng yêu cầu soft delete
 
-### 4.6. Indexing Strategy
+### Indexing Strategy
 
 | Bảng                   | Index Chính                                   | Purpose                       |
 | ---------------------- | --------------------------------------------- | ----------------------------- |
@@ -766,7 +764,7 @@ The system will pre-seed the following RBAC data:
 | UserSession            | (user_id, device_id, is_active)               | Quản lý thiết bị đăng nhập    |
 | Presence               | (user_id, tenant_id, room_id)                 | Theo dõi real-time presence   |
 
-### 4.7. Data Retention Policy
+### Data Retention Policy
 
 | Loại Dữ Liệu        | Thời Gian Lưu Trữ | Ghi Chú                       |
 | ------------------- | ----------------- | ----------------------------- |
@@ -778,7 +776,7 @@ The system will pre-seed the following RBAC data:
 | Soft Deleted Data   | 1 năm             | Tự động hard delete sau 1 năm |
 | Presence Data       | 7 ngày            | Tự động xóa sau khi offline   |
 
-### 4.8. Cascade Delete Strategy
+### Cascade Delete Strategy
 
 **Hard Cascade Delete (ON DELETE CASCADE)** Applied to tables without
 `deleted_at`:

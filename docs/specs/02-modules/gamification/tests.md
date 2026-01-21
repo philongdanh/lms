@@ -7,11 +7,7 @@ sidebar_position: 5
 
 # Gamification & Rewards - Test Cases
 
----
-
-## Overview
-
-Các test case cho module Gamification.
+Test cases cho module Gamification: kiểm thử EXP, levels, badges, rewards.
 
 ---
 
@@ -60,10 +56,6 @@ Các test case cho module Gamification.
 # Performance Requirements
 
 ---
-
-## Overview
-
-Các đặc tả hiệu năng cho module Gamification.
 
 ---
 

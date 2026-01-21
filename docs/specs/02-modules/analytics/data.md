@@ -5,13 +5,9 @@ sidebar_label: Data
 sidebar_position: 3
 ---
 
-# Analytics & Reporting - Data Model
+# Analytics - Data Model
 
----
-
-## Overview
-
-Mô hình dữ liệu để lưu trữ thống kê và bản đồ kiến thức.
+Data model cho module Analytics: KnowledgeMap, DailyLearningStats.
 
 ---
 
@@ -20,7 +16,8 @@ Mô hình dữ liệu để lưu trữ thống kê và bản đồ kiến thức
 ### Entity: KnowledgeMap
 
 **Description**: Lưu trữ mức độ thành thạo kiến thức của học sinh theo chủ đề.
-**Storage**: Database (PostgreSQL) **Retention**: Vĩnh viễn
+**Storage**: Database (PostgreSQL)
+**Retention**: Vĩnh viễn
 
 #### Fields
 
@@ -36,8 +33,8 @@ Mô hình dữ liệu để lưu trữ thống kê và bản đồ kiến thức
 
 ### Entity: DailyLearningStats
 
-**Description**: Bảng tổng hợp hoạt động học tập hàng ngày. **Storage**:
-Database (PostgreSQL)
+**Description**: Bảng tổng hợp hoạt động học tập hàng ngày.
+**Storage**: Database (PostgreSQL)
 
 #### Fields
 
@@ -60,43 +57,14 @@ config:
 ---
 erDiagram
     User ||--o{ KnowledgeMap : "has"
-    Topic ||--o{ KnowledgeMap : "tracked_in"
-    User ||--o{ DailyLearningStats : "has_history"
+    User ||--o{ DailyLearningStats : "has"
+    Topic ||--o{ KnowledgeMap : "referenced_by"
 ```
-
----
-
-## Storage Specifications
-
-### Database
-
-- **Engine**: PostgreSQL extension cho `DailyLearningStats` (hypertables) để tối
-  ưu truy vấn theo khoảng thời gian.
-- **Indexes**: Composite index trên `(student_id, date)`.
-
----
-
-## Performance Requirements
-
-- **Aggregation**: Job hàng đêm xử lý 1 triệu raw events trong < 1 giờ.
-- **Query**: Truy xuất lịch sử 30 ngày cho 1 người dùng < 50ms.
-
----
-
-## Data Security
-
-- **PII**: Dữ liệu Analytics có thể chứa thông tin nhạy cảm về hiệu suất học tập
-  -> Yêu cầu bảo vệ nghiêm ngặt.
-
----
-
-## Validation Checklist
-
-- [ ] Đã cấu hình PostgreSQL partitioning
-- [ ] Đã triển khai chính sách lưu trữ dữ liệu
 
 ---
 
 ## References
 
-- [Overview](/specs)
+- [API Endpoints](./api.md)
+- [Business Logic](./logic.md)
+- [Test Cases](./tests.md)

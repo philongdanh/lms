@@ -5,14 +5,9 @@ sidebar_label: Data
 sidebar_position: 3
 ---
 
-# Learning & Personalization - Data Model
+# Learning - Data Model
 
----
-
-## Overview
-
-Data model cho module Learning, lưu trữ tiến độ học tập của student và lịch sử
-trả lời.
+Data model cho module Learning: StudentProgress, StudentAnswer, PracticeSession.
 
 ---
 
@@ -20,8 +15,9 @@ trả lời.
 
 ### Entity: StudentProgress
 
-**Description**: Lưu trữ trạng thái và tiến độ của student cho một bài học cụ
-thể. **Storage**: Database (PostgreSQL) **Retention**: Vĩnh viễn
+**Description**: Lưu trữ trạng thái và tiến độ của student cho một bài học cụ thể.
+**Storage**: Database (PostgreSQL)
+**Retention**: Vĩnh viễn
 
 #### Fields
 
@@ -45,10 +41,9 @@ thể. **Storage**: Database (PostgreSQL) **Retention**: Vĩnh viễn
 
 ### Entity: StudentAnswer
 
-**Description**: Lưu trữ lịch sử trả lời chi tiết cho mỗi câu hỏi trong bài
-tập/quiz. **Storage**: Database (PostgreSQL) -> Có thể chuyển sang TimeSeries DB
-hoặc Partitioning nếu dữ liệu lớn. **Retention**: Vĩnh viễn (hoặc archive sau 2
-năm)
+**Description**: Lưu trữ lịch sử trả lời chi tiết cho mỗi câu hỏi trong bài tập/quiz.
+**Storage**: Database (PostgreSQL) -> Có thể chuyển sang TimeSeries DB hoặc Partitioning nếu dữ liệu lớn.
+**Retention**: Vĩnh viễn (hoặc archive sau 2 năm)
 
 #### Fields
 
@@ -72,79 +67,16 @@ config:
     fontFamily: "EB Garamond"
 ---
 erDiagram
-    User ||--o{ StudentProgress : "tracks"
-    Lesson ||--o{ StudentProgress : "has"
-
+    User ||--o{ StudentProgress : "has"
+    Lesson ||--o{ StudentProgress : "tracked_by"
     User ||--o{ StudentAnswer : "submits"
-    Question ||--o{ StudentAnswer : "answers"
-    PracticeSession ||--o{ StudentAnswer : "contains"
+    Question ||--o{ StudentAnswer : "answered_by"
 ```
-
----
-
-## Lifecycle States
-
-### Lesson Progress State Machine
-
-```mermaid
----
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
----
-stateDiagram-v2
-    [*] --> LOCKED
-    LOCKED --> AVAILABLE : Prerequisite Met
-    AVAILABLE --> IN_PROGRESS : Start Learning
-    IN_PROGRESS --> COMPLETED : Video > 80% & Quiz > 70%
-    COMPLETED --> IN_PROGRESS : Review (Optional)
-```
-
----
-
-## Storage Specifications
-
-### Database
-
-- **Table Name**: `student_progress`, `student_answers`
-- **Engine**: PostgreSQL
-- **Partitioning**: Cân nhắc partitioning `student_answers` theo tháng nếu lượng
-  user lớn.
-
-### Caching Strategy
-
-- **Cache Type**: Redis
-- **Key**: `learning:path:{student_id}`
-- **TTL**: 1 giờ (invalidate khi có tiến độ mới hoặc cập nhật nội dung)
-- **Content**: Danh sách bài học được đề xuất hiện tại.
-
----
-
-## Performance Requirements
-
-- **Hiệu năng Query**: Get Learning Path < 200ms
-- **Write Throughput**: Hỗ trợ 5000 concurrent submissions/sec (Peak).
-- **Storage Growth**: Dự kiến `StudentAnswer` tăng trưởng 50GB/tháng.
-
----
-
-## Data Security
-
-- **Access Control**: Students chỉ có thể xem tiến độ của chính mình.
-  Teachers/Admins có thể xem tiến độ của students được phân công.
-- **Masking**: Không áp dụng.
-
----
-
-## Validation Checklist
-
-- [ ] Tất cả entities được định nghĩa với đầy đủ fields
-- [ ] Indexes được tối ưu cho tra cứu theo student_id
-- [ ] Chiến lược partitioning cho bảng lớn được định nghĩa
-- [ ] Caching cho personalized path được thiết kế
 
 ---
 
 ## References
 
-- [Overview](/specs)
+- [API Endpoints](./api.md)
+- [Business Logic](./logic.md)
+- [Test Cases](./tests.md)

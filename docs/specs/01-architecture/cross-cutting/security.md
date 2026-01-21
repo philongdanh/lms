@@ -7,13 +7,7 @@ sidebar_position: 2
 
 # Security Policy
 
----
-
-## Overview
-
-Mô tả hệ thống kiểm soát truy cập và chính sách bảo mật của nền tảng LMS. Áp
-dụng mô hình RBAC với 5 roles, kết hợp với JWT authentication và multi-tenant
-isolation.
+Tiêu chuẩn bảo mật, kiểm soát truy cập và xác thực.
 
 ---
 

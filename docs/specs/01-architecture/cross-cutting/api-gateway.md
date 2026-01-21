@@ -7,11 +7,7 @@ sidebar_position: 1
 
 # API Gateway
 
----
-
-## Overview
-
-Tiêu chuẩn thiết kế API cho toàn hệ thống
+Tiêu chuẩn thiết kế và quản lý API tập trung.
 
 ---
 

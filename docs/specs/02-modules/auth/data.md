@@ -7,10 +7,6 @@ sidebar_position: 3
 
 # Auth - Data Model
 
----
-
-## Overview
-
 Data model cho module Auth: User, Role, Permission, Session, Tenant.
 
 ---

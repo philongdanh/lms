@@ -7,23 +7,23 @@ sidebar_position: 6
 
 # Architecture Decision Records
 
-Ghi chép các quyết định kỹ thuật quan trọng trong nền tảng LMS.
+Lịch sử các quyết định kiến trúc và kỹ thuật quan trọng.
 
 ---
 
 ## Decision Index
 
-| ID          | Title                               | Status      | Date       |
-| ----------- | ----------------------------------- | ----------- | ---------- |
-| **ADR-001** | Modular Monolith                    | ✅ Accepted | 2024-05-20 |
-| **ADR-002** | PostgreSQL as Primary DB            | ✅ Accepted | 2024-05-21 |
-| **ADR-003** | JWT with Refresh Token Blacklisting | ✅ Accepted | 2024-05-22 |
-| **ADR-004** | Redis for Cache and Pub/Sub         | ✅ Accepted | 2024-05-23 |
-| **ADR-005** | Socket.IO with Redis Adapter        | ✅ Accepted | 2024-05-24 |
-| **ADR-006** | Prisma ORM                          | ✅ Accepted | 2024-05-25 |
-| **ADR-007** | Multi-tenant via tenant_id          | ✅ Accepted | 2024-05-26 |
-| **ADR-008** | RBAC with 5 Seed Roles              | ✅ Accepted | 2024-05-27 |
-| **ADR-009** | Cascade Delete Strategy             | ✅ Accepted | 2024-05-28 |
+| ID          | Title                               | Date       |
+| ----------- | ----------------------------------- | ---------- |
+| **ADR-001** | Modular Monolith                    | 2024-05-20 |
+| **ADR-002** | PostgreSQL as Primary DB            | 2024-05-21 |
+| **ADR-003** | JWT with Refresh Token Blacklisting | 2024-05-22 |
+| **ADR-004** | Redis for Cache and Pub/Sub         | 2024-05-23 |
+| **ADR-005** | Socket.IO with Redis Adapter        | 2024-05-24 |
+| **ADR-006** | Prisma ORM                          | 2024-05-25 |
+| **ADR-007** | Multi-tenant via tenant_id          | 2024-05-26 |
+| **ADR-008** | RBAC with 5 Seed Roles              | 2024-05-27 |
+| **ADR-009** | Cascade Delete Strategy             | 2024-05-28 |
 
 ---
 

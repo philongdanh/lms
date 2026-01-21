@@ -7,10 +7,6 @@ sidebar_position: 2
 
 # Auth - API Endpoints
 
----
-
-## Overview
-
 API endpoints cho module Auth: Login, Register, quản lý Session.
 
 ---
@@ -51,9 +47,12 @@ POST /api/v1/auth/login
 Content-Type: application/json
 ```
 
-**Body**: | Parameter | Type | Required | Description |
-|-----------|------|----------|-------| | email | string | ✅ | Email người dùng
-| | password | string | ✅ | Mật khẩu raw |
+**Body**:
+
+| Parameter | Type   | Required | Description      |
+| --------- | ------ | -------- | ---------------- |
+| email     | string | ✅       | Email người dùng |
+| password  | string | ✅       | Mật khẩu raw     |
 
 #### Response
 
@@ -70,9 +69,12 @@ Content-Type: application/json
 }
 ```
 
-**Error Responses**: | Code | Error | Description | |------|-------|-------| |
-401 | INVALID_CREDENTIALS | Sai mật khẩu | | 429 | RATE_LIMITED | Quá nhiều lần
-thử |
+**Error Responses**:
+
+| Code | Error               | Description        |
+| ---- | ------------------- | ------------------ |
+| 401  | INVALID_CREDENTIALS | Sai mật khẩu       |
+| 429  | RATE_LIMITED        | Quá nhiều lần thử  |
 
 ### Endpoint: POST `/refresh`
 
@@ -85,9 +87,11 @@ POST /api/v1/auth/refresh
 Content-Type: application/json
 ```
 
-**Body**: | Parameter | Type | Required | Description |
-|-----------|------|----------|-------| | refresh_token | string | ✅ | Refresh
-token hợp lệ |
+**Body**:
+
+| Parameter     | Type   | Required | Description         |
+| ------------- | ------ | -------- | ------------------- |
+| refresh_token | string | ✅       | Refresh token hợp lệ |
 
 #### Response
 
