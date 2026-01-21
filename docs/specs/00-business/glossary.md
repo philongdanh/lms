@@ -7,22 +7,22 @@ sidebar_position: 4
 
 # Glossary
 
-Định nghĩa các thuật ngữ thường dùng trong hệ thống LMS.
+Thuật ngữ và định nghĩa chuyên ngành.
 
-| Term                  | Definition                                                                       |
+| Thuật ngữ             | Định nghĩa                                                                       |
 | --------------------- | -------------------------------------------------------------------------------- |
-| **Tenant**            | Mỗi trường/trung tâm là một đơn vị thuê bao độc lập với dữ liệu cách ly          |
-| **LMS**               | Learning Management System - Hệ thống quản lý học tập                            |
-| **RBAC**              | Role-Based Access Control - Kiểm soát truy cập dựa trên vai trò người dùng       |
-| **Adaptive Learning** | Hệ thống tự động điều chỉnh nội dung dựa trên khả năng học sinh                  |
-| **Knowledge Map**     | Cấu trúc cây các chủ đề và mối quan hệ giữa chúng                                |
-| **Gamification**      | Áp dụng cơ chế game (huy hiệu, điểm, bảng xếp hạng) vào ngữ cảnh không phải game |
-| **Root Admin**        | Quản trị viên hệ thống (Super Admin) quản lý toàn bộ Platform                    |
-| **Tenant Admin**      | Quản trị viên của một trường cụ thể (School Admin)                               |
-| **JWT**               | JSON Web Token - Chuẩn token được sử dụng để xác thực an toàn giữa các bên       |
-| **Tournament**        | Cuộc thi đấu trí tuệ giữa các học sinh                                           |
-| **Session**           | Phiên đăng nhập của người dùng trên một thiết bị                                 |
-| **WebSocket**         | Giao thức kết nối hai chiều real-time giữa client và server                      |
+| **Tenant**            | Đơn vị thuê bao độc lập như trường học hoặc trung tâm giáo dục với dữ liệu được cách ly |
+| **LMS**               | Hệ thống quản lý học tập                                                         |
+| **RBAC**              | Kiểm soát truy cập dựa trên vai trò người dùng                                   |
+| **Adaptive Learning** | Học tập thích ứng giúp tự động điều chỉnh nội dung dựa trên khả năng của học sinh |
+| **Knowledge Map**     | Bản đồ kiến thức thể hiện cấu trúc các chủ đề và mối quan hệ giữa chúng          |
+| **Gamification**      | Trò chơi hóa thông qua việc áp dụng các cơ chế game vào ngữ cảnh giáo dục         |
+| **Root Admin**        | Quản trị viên tối cao quản lý toàn bộ nền tảng                                   |
+| **Tenant Admin**      | Quản trị viên của một đơn vị cụ thể như trường học                               |
+| **JWT**               | Tiêu chuẩn mã thông báo an toàn được sử dụng để xác thực giữa các bên            |
+| **Tournament**        | Giải đấu trí tuệ dành cho học sinh                                               |
+| **Session**           | Phiên làm việc của người dùng trên một thiết bị                                  |
+| **WebSocket**         | Giao thức kết nối hai chiều thời gian thực giữa ứng dụng khách và máy chủ        |
 
 ---
 

@@ -7,69 +7,69 @@ sidebar_position: 6
 
 # Success Metrics
 
-Các chỉ số đo lường thành công của dự án.
+Chỉ số đo lường hiệu quả và thành công.
 
 ---
 
 ## Business Metrics
 
-| Metric            | Target                | Current | Measurement Method | Frequency  |
-| ----------------- | --------------------- | ------- | ------------------ | ---------- |
-| User Adoption     | 10,000 active users   | -       | Analytics tracking | Hàng tuần  |
-| User Satisfaction | NPS > 50              | -       | Khảo sát           | Hàng tháng |
-| Learning Progress | > 70% completion rate | -       | System tracking    | Hàng tuần  |
+| Chỉ số            | Mục tiêu              | Phương pháp đo lường | Tần suất   |
+| ----------------- | --------------------- | -------------------- | ---------- |
+| Tỉ lệ chấp nhận   | 10,000 người dùng     | Theo dõi phân tích   | Hàng tuần  |
+| Mức độ hài lòng   | NPS > 50              | Khảo sát             | Hàng tháng |
+| Tiến độ học tập   | > 70% tỉ lệ hoàn thành| Theo dõi hệ thống    | Hàng tuần  |
 
 ---
 
 ## Technical Metrics
 
-| Metric                  | Target  | Threshold | Measurement          | Alert |
-| ----------------------- | ------- | --------- | -------------------- | ----- |
-| System Uptime           | 99.9%   | 99.5%     | Monitoring           | Yes   |
-| API Response Time (P95) | < 200ms | 500ms     | APM                  | Yes   |
-| WebSocket Latency       | < 50ms  | 100ms     | Real-time monitoring | Yes   |
-| Error Rate              | < 0.1%  | 1%        | Logging              | Yes   |
-| Database Query (P95)    | < 100ms | 200ms     | Query monitoring     | Yes   |
+| Chỉ số                  | Mục tiêu | Ngưỡng    | Cách đo lường         | Cảnh báo |
+| ----------------------- | -------- | --------- | --------------------- | -------- |
+| Thời gian hoạt động     | 99.9%    | 99.5%     | Giám sát hệ thống     | Có       |
+| Thời gian phản hồi API  | < 200ms  | 500ms     | Quản lý hiệu suất ứng dụng| Có       |
+| Độ trễ WebSocket        | < 50ms   | 100ms     | Giám sát thời gian thực| Có       |
+| Tỉ lệ lỗi               | < 0.1%   | 1%        | Nhật ký hệ thống      | Có       |
+| Truy vấn cơ sở dữ liệu  | < 100ms  | 200ms     | Giám sát truy vấn     | Có       |
 
 ---
 
 ## Quality Metrics
 
-| Metric         | Target       | Measurement Method |
-| -------------- | ------------ | ------------------ |
-| Code Coverage  | > 80%        | CI Pipeline        |
-| Technical Debt | Thấp         | Code Analysis      |
-| Bug Density    | < 1 bug/KLOC | Issue Tracker      |
+| Chỉ số          | Mục tiêu     | Phương pháp đo lường |
+| --------------- | ------------ | -------------------- |
+| Độ bao phủ mã   | > 80%        | Luồng tích hợp liên tục|
+| Nợ kỹ thuật     | Thấp         | Phân tích mã nguồn   |
+| Mật độ lỗi      | < 1 lỗi/KLOC | Trình theo dõi vấn đề|
 
 ---
 
 ## User Experience Metrics
 
-| Metric               | Target | Measurement            |
-| -------------------- | ------ | ---------------------- |
-| Task Completion Rate | > 95%  | Analytics              |
-| Page Load Time       | < 3s   | Performance monitoring |
-| User Error Rate      | < 5%   | Analytics              |
+| Chỉ số            | Mục tiêu | Phương pháp đo lường |
+| ----------------- | -------- | -------------------- |
+| Tỉ lệ hoàn thành  | > 95%    | Phân tích dữ liệu    |
+| Thời gian tải trang| < 3 giây | Giám sát hiệu suất   |
+| Tỉ lệ lỗi người dùng| < 5%     | Phân tích dữ liệu    |
 
 ---
 
 ## Delivery Metrics
 
-| Metric               | Target     | Measurement     |
-| -------------------- | ---------- | --------------- |
-| Sprint Velocity      | Ổn định    | Sprint tracking |
-| Lead Time            | < 5 ngày   | Issue tracker   |
-| Deployment Frequency | 2 lần/tuần | CI/CD           |
+| Chỉ số               | Mục tiêu   | Phương pháp đo lường |
+| -------------------- | ---------- | -------------------- |
+| Tốc độ Sprint        | Ổn định    | Theo dõi Sprint      |
+| Thời gian thực hiện  | < 5 ngày   | Trình theo dõi vấn đề|
+| Tần suất triển khai  | 2 lần/tuần | Tích hợp liên tục    |
 
 ---
 
 ## Security Metrics
 
-| Metric                 | Target              | Measurement   |
-| ---------------------- | ------------------- | ------------- |
-| Failed Login Attempts  | Theo dõi bất thường | Security logs |
-| Token Revocation Rate  | Giám sát            | Redis metrics |
-| Permission Denial Rate | < 0.01%             | Audit logs    |
+| Chỉ số                 | Mục tiêu            | Phương pháp đo lường |
+| ---------------------- | ------------------- | -------------------- |
+| Đăng nhập thất bại     | Theo dõi bất thường | Nhật ký bảo mật      |
+| Tỉ lệ thu hồi mã thông báo| Giám sát         | Chỉ số Redis         |
+| Tỉ lệ từ chối quyền    | < 0.01%             | Nhật ký kiểm tra     |
 
 ---
 
@@ -77,17 +77,17 @@ Các chỉ số đo lường thành công của dự án.
 
 ### Dashboard
 
-- Dashboard giám sát real-time
-- Báo cáo tiến độ hàng tuần
-- Đánh giá nghiệp vụ hàng tháng
+- Bảng điều khiển giám sát thời gian thực.
+- Báo cáo tiến độ hàng tuần.
+- Đánh giá nghiệp vụ hàng tháng.
 
 ### Review Cadence
 
-| Review Type     | Frequency  | Participants |
-| --------------- | ---------- | ------------ |
-| Daily Standup   | Hàng ngày  | Team         |
-| Sprint Review   | 2 tuần/lần | Stakeholders |
-| Business Review | Hàng tháng | Leadership   |
+| Loại đánh giá   | Tần suất   | Thành phần tham gia  |
+| --------------- | ---------- | -------------------- |
+| Họp nhanh dự án | Hàng ngày  | Đội ngũ phát triển   |
+| Đánh giá Sprint | 2 tuần/lần | Các bên liên quan    |
+| Đánh giá kinh doanh| Hàng tháng | Ban lãnh đạo         |
 
 ---
 

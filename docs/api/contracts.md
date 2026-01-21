@@ -7,14 +7,7 @@ sidebar_position: 2
 
 # API Contracts
 
-Consumer-driven contracts for API testing.
-
----
-
-## Overview
-
-API contracts define expected behavior between services (consumers and
-providers) using tools like Pact.
+Hợp đồng API (Consumer-driven contracts) phục vụ việc kiểm thử API.
 
 ---
 
@@ -30,7 +23,7 @@ contracts/
 
 ## Contract Template
 
-### Pact Contract Example
+### Ví dụ Pact Contract
 
 ```json
 {
@@ -79,38 +72,38 @@ contracts/
 
 ## Workflow
 
-### Consumer Side
+### Phía Consumer
 
-1. Write consumer tests to generate contracts
-2. Publish contracts to Pact Broker
-3. Run on every consumer PR
+1. Viết consumer test để tạo contract
+2. Publish contract lên Pact Broker
+3. Chạy trên mỗi PR của consumer
 
-### Provider Side
+### Phía Provider
 
-1. Pull contracts from Pact Broker
-2. Verify provider against contracts
-3. Run on every provider PR
+1. Lấy contract từ Pact Broker
+2. Xác thực provider dựa trên contract
+3. Chạy trên mỗi PR của provider
 
 ---
 
 ## Guidelines
 
-| Guideline              | Description                  |
-| ---------------------- | ---------------------------- |
-| Keep contracts minimal | Include only required fields |
-| Use provider states    | Set up test data             |
-| Version management     | Track breaking changes       |
-| Automate verification  | Integrate with CI/CD         |
+| Nguyên tắc             | Mô tả                         |
+| ---------------------- | ----------------------------- |
+| Giữ contract tối giản  | Chì bao gồm các field cần thiết |
+| Sử dụng provider state | Thiết lập dữ liệu kiểm thử    |
+| Quản lý phiên bản      | Theo dõi các breaking change  |
+| Tự động hóa xác thực   | Tích hợp với CI/CD            |
 
 ---
 
 ## Tools
 
-| Tool         | Purpose                      |
-| ------------ | ---------------------------- |
-| Pact         | Contract testing framework   |
-| Pact Broker  | Contract storage             |
-| can-i-deploy | Safe deployment verification |
+| Công cụ      | Mục đích                      |
+| ------------ | ----------------------------- |
+| Pact         | Framework kiểm thử contract   |
+| Pact Broker  | Lưu trữ contract              |
+| can-i-deploy | Xác thực triển khai an toàn   |
 
 ---
 
@@ -119,3 +112,4 @@ contracts/
 - [OpenAPI](./openapi.md)
 - [Mocks](./mocks.md)
 - [API Gateway](../specs/01-architecture/cross-cutting/api-gateway.md)
+

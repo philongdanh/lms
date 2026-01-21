@@ -7,25 +7,18 @@ sidebar_position: 3
 
 # Use Cases
 
-User stories, use case catalog, and flow diagrams.
-
----
-
-## Overview
-
-This document defines user stories following the standard format and use cases
-with clear acceptance criteria.
+Kịch bản và sơ đồ luồng nghiệp vụ.
 
 ---
 
 ## User Story Format
 
-| Component | Description              |
-| --------- | ------------------------ |
-| Role      | As a [role]              |
-| Action    | I want to [action]       |
-| Benefit   | So that [benefit]        |
-| Criteria  | Acceptance criteria list |
+| Thành phần   | Mô tả                       |
+| ------------ | --------------------------- |
+| Vai trò      | Với tư cách là [vai trò]    |
+| Hành động    | Tôi muốn [hành động]        |
+| Lợi ích      | Để [lợi ích]                |
+| Tiêu chí     | Danh sách tiêu chí chấp nhận|
 
 ---
 
@@ -33,117 +26,117 @@ with clear acceptance criteria.
 
 ### Epic: Learning Journey
 
-#### US-LEARN-001: AI Learning Path
+#### US-LEARN-001: Lộ trình học tập AI
 
-**As a** student  
-**I want** to view AI-recommended learning path  
-**So that** I can learn according to my personal needs
+**Với tư cách là** học sinh  
+**Tôi muốn** xem lộ trình học tập được AI gợi ý  
+**Để** tôi có thể học tập theo nhu cầu cá nhân
 
-**Acceptance Criteria**:
+**Tiêu chí chấp nhận**:
 
-- [ ] AI analyzes strengths/weaknesses
-- [ ] Suggests appropriate lessons
-- [ ] Updates based on progress
+- [ ] AI phân tích điểm mạnh và điểm yếu.
+- [ ] Gợi ý các bài học phù hợp.
+- [ ] Cập nhật dựa trên tiến độ học tập.
 
-#### US-LEARN-002: Browse Learning Content
+#### US-LEARN-002: Duyệt nội dung học tập
 
-**As a** student  
-**I want** to browse content by Subject → Grade → Topic → Lesson  
-**So that** I can find relevant learning materials
+**Với tư cách là** học sinh  
+**Tôi muốn** duyệt nội dung theo Môn, Khối lớp, Chủ đề và Bài học  
+**Để** tôi có thể tìm thấy các tài liệu học tập phù hợp
 
-**Acceptance Criteria**:
+**Tiêu chí chấp nhận**:
 
-- [ ] Navigation works correctly
-- [ ] Filter by semester applied
-- [ ] Content displays properly
+- [ ] Điều hướng hoạt động chính xác.
+- [ ] Áp dụng bộ lọc theo học kỳ.
+- [ ] Nội dung hiển thị đúng định dạng.
 
 ### Epic: Tournament
 
-#### US-COMP-001: Real-time Competition
+#### US-COMP-001: Thi đấu thời gian thực
 
-**As a** student  
-**I want** to compete real-time with other students  
-**So that** I have motivation to learn
+**Với tư cách là** học sinh  
+**Tôi muốn** thi đấu thời gian thực với các học sinh khác  
+**Để** tôi có thêm động lực học tập
 
-**Acceptance Criteria**:
+**Tiêu chí chấp nhận**:
 
-- [ ] Countdown in competition rounds
-- [ ] Scores update instantly
-- [ ] Real-time leaderboard
+- [ ] Hiển thị đếm ngược trong các vòng đấu.
+- [ ] Điểm số được cập nhật tức thì.
+- [ ] Bảng xếp hạng cập nhật thời gian thực.
 
-#### US-COMP-002: Tournament Registration
+#### US-COMP-002: Đăng ký giải đấu
 
-**As a** student  
-**I want** to register for tournaments  
-**So that** I can participate in competitions
+**Với tư cách là** học sinh  
+**Tôi muốn** đăng ký tham gia các giải đấu  
+**Để** tôi có thể tham gia tranh tài
 
-**Acceptance Criteria**:
+**Tiêu chí chấp nhận**:
 
-- [ ] Registration successful
-- [ ] View and Join buttons work
-- [ ] Invitation codes validated
+- [ ] Đăng ký thành công.
+- [ ] Các nút Xem và Tham gia hoạt động đúng.
+- [ ] Mã mời được xác thực chính xác.
 
 ### Epic: Parent Monitoring
 
-#### US-PARENT-001: Progress Tracking
+#### US-PARENT-001: Theo dõi tiến độ
 
-**As a** parent  
-**I want** to track my child's learning progress  
-**So that** I can support their education
+**Với tư cách là** phụ huynh  
+**Tôi muốn** theo dõi tiến độ học tập của con mình  
+**Để** tôi có thể hỗ trợ việc học của con
 
-**Acceptance Criteria**:
+**Tiêu chí chấp nhận**:
 
-- [ ] View detailed reports
-- [ ] Real-time notifications
-- [ ] 4-level reporting access
+- [ ] Xem được các báo cáo chi tiết.
+- [ ] Nhận thông báo thời gian thực.
+- [ ] Quyền truy cập báo cáo 4 cấp độ.
 
 ---
 
 ## Use Case Catalog
 
-### UC-AUTH-001: User Registration
+### UC-AUTH-001: Đăng ký người dùng
 
-| Field         | Value                                                                                                 |
-| ------------- | ----------------------------------------------------------------------------------------------------- |
-| Actor         | Guest User                                                                                            |
-| Precondition  | User not logged in                                                                                    |
-| Trigger       | User clicks "Register"                                                                                |
-| Main Flow     | 1. Enter email/phone, password, name 2. Submit form 3. Receive OTP 4. Verify OTP 5. Account activated |
-| Postcondition | User account created and active                                                                       |
-| Exceptions    | E1: Email exists, E2: Invalid OTP                                                                     |
+| Trường thông tin | Giá trị                                                                                                          |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Tác nhân         | Người dùng khách                                                                                                 |
+| Điều kiện tiên quyết| Người dùng chưa đăng nhập                                                                                        |
+| Tác nhân kích hoạt| Người dùng nhấn "Đăng ký"                                                                                        |
+| Luồng chính      | Nhập email/SĐT, mật khẩu, tên → Gửi biểu mẫu → Nhận mã OTP → Xác thực OTP → Kích hoạt tài khoản|
+| Điều kiện sau    | Tài khoản người dùng được tạo và kích hoạt                                                                       |
+| Ngoại lệ         | E1: Email đã tồn tại, E2: Mã OTP không hợp lệ                                                                    |
 
-### UC-AUTH-002: User Login
+### UC-AUTH-002: Đăng nhập người dùng
 
-| Field         | Value                                                                     |
-| ------------- | ------------------------------------------------------------------------- |
-| Actor         | Registered User                                                           |
-| Precondition  | Account exists and verified                                               |
-| Trigger       | User clicks "Login"                                                       |
-| Main Flow     | 1. Enter credentials 2. Validate 3. Issue tokens 4. Redirect to dashboard |
-| Postcondition | User authenticated                                                        |
-| Exceptions    | E1: Invalid credentials, E2: Account locked                               |
+| Trường thông tin | Giá trị                                                              |
+| ---------------- | -------------------------------------------------------------------- |
+| Tác nhân         | Người dùng đã đăng ký                                                |
+| Điều kiện tiên quyết| Tài khoản đã tồn tại và được xác thực                                |
+| Tác nhân kích hoạt| Người dùng nhấn "Đăng nhập"                                          |
+| Luồng chính      | Nhập thông tin đăng nhập → Xác thực → Cấp mã thông báo → Chuyển hướng đến bảng điều khiển|
+| Điều kiện sau    | Người dùng đã được xác thực                                          |
+| Ngoại lệ         | E1: Thông tin không hợp lệ, E2: Tài khoản bị khóa                    |
 
-### UC-LEARN-001: View AI Learning Path
+### UC-LEARN-001: Xem lộ trình học tập AI
 
-| Field         | Value                                                                                                         |
-| ------------- | ------------------------------------------------------------------------------------------------------------- |
-| Actor         | Student                                                                                                       |
-| Precondition  | User logged in as Student                                                                                     |
-| Trigger       | User opens Learning dashboard                                                                                 |
-| Main Flow     | 1. Load user profile 2. AI analyzes learning history 3. Generate personalized path 4. Display recommendations |
-| Postcondition | AI learning path displayed                                                                                    |
-| Exceptions    | E1: No learning history, E2: AI service unavailable                                                           |
+| Trường thông tin | Giá trị                                                                                                         |
+| ---------------- | --------------------------------------------------------------------------------------------------------------- |
+| Tác nhân         | Học sinh                                                                                                        |
+| Điều kiện tiên quyết| Đăng nhập với vai trò Học sinh                                                                                  |
+| Tác nhân kích hoạt| Người dùng mở bảng điều khiển học tập                                                                           |
+| Luồng chính      | Tải hồ sơ người dùng → AI phân tích lịch sử học tập → Tạo lộ trình cá nhân hóa → Hiển thị các gợi ý|
+| Điều kiện sau    | Lộ trình học tập AI được hiển thị                                                                               |
+| Ngoại lệ         | E1: Chưa có lịch sử học tập, E2: Dịch vụ AI không khả dụng                                                      |
 
-### UC-COMP-001: Join Tournament
+### UC-COMP-001: Tham gia giải đấu
 
-| Field         | Value                                                                                    |
-| ------------- | ---------------------------------------------------------------------------------------- |
-| Actor         | Student                                                                                  |
-| Precondition  | User logged in, Tournament available                                                     |
-| Trigger       | User clicks "Join Tournament"                                                            |
-| Main Flow     | 1. Select tournament 2. Verify eligibility 3. Confirm registration 4. Enter waiting room |
-| Postcondition | User registered for tournament                                                           |
-| Exceptions    | E1: Not eligible, E2: Tournament full                                                    |
+| Trường thông tin | Giá trị                                                                             |
+| ---------------- | ----------------------------------------------------------------------------------- |
+| Tác nhân         | Học sinh                                                                            |
+| Điều kiện tiên quyết| Đã đăng nhập, giải đấu đang khả dụng                                                |
+| Tác nhân kích hoạt| Người dùng nhấn "Tham gia giải đấu"                                                 |
+| Luồng chính      | Chọn giải đấu → Xác thực điều kiện tham gia → Xác nhận đăng ký → Vào phòng chờ|
+| Điều kiện sau    | Người dùng đã đăng ký tham gia giải đấu                                             |
+| Ngoại lệ         | E1: Không đủ điều kiện, E2: Giải đấu đã đầy                                         |
 
 ---
 
