@@ -1,7 +1,7 @@
 ---
-id: test-cases
-title: Test Cases
-sidebar_label: Test Cases
+id: cases
+title: Cases
+sidebar_label: Cases
 sidebar_position: 3
 ---
 

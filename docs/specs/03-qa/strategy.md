@@ -1,11 +1,11 @@
 ---
-id: test-strategy
-title: Test Strategy
-sidebar_label: Test Strategy
+id: strategy
+title: Strategy
+sidebar_label: Strategy
 sidebar_position: 1
 ---
 
-# Test Strategy
+# Strategy
 
 Chiến lược test tổng thể và coverage goals.
 
