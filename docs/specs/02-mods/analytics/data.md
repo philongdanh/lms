@@ -1,6 +1,6 @@
 ---
-id: analytics-data
-title: Analytics - Data Model
+id: data
+title: Data Model
 sidebar_label: Data
 sidebar_position: 3
 ---

@@ -1,11 +1,11 @@
 ---
-id: admin-tests
-title: Admin - Test Cases
+id: tests
+title: Test Cases
 sidebar_label: Tests
 sidebar_position: 4
 ---
 
-# Admin & Tenant Management - Test Cases
+# Test Cases
  
 Kịch bản kiểm thử quy trình quản trị và thiết lập.
 

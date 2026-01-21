@@ -1,11 +1,11 @@
 ---
-id: admin-api
-title: Admin - API Endpoints
+id: api
+title: API Endpoints
 sidebar_label: API
 sidebar_position: 1
 ---
 
-# Admin & Tenant - API Endpoints
+# API Endpoints
  
 Các giao diện quản trị hệ thống và cấu hình đa thực thể.
 
