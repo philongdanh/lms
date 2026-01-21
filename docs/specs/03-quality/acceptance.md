@@ -2,7 +2,7 @@
 id: acceptance
 title: Acceptance Criteria
 sidebar_label: Acceptance
-sidebar_position: 4
+sidebar_position: 2
 ---
 
 # Acceptance Criteria

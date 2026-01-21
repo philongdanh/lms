@@ -2,7 +2,7 @@
 id: admin-api
 title: Admin API Endpoints
 sidebar_label: API
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # Admin & Tenant - API Endpoints

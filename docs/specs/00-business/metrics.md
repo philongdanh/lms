@@ -2,7 +2,7 @@
 id: metrics
 title: Success Metrics
 sidebar_label: Metrics
-sidebar_position: 6
+sidebar_position: 7
 ---
 
 # Success Metrics

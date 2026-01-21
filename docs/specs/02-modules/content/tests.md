@@ -2,7 +2,7 @@
 id: content-tests
 title: Content Test Cases
 sidebar_label: Tests
-sidebar_position: 5
+sidebar_position: 4
 ---
 
 # Content & Question Bank - Test Cases

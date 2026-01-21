@@ -2,7 +2,7 @@
 id: admin-logic
 title: Admin Business Logic
 sidebar_label: Logic
-sidebar_position: 4
+sidebar_position: 2
 ---
 
 # Admin & Tenant Management - Business Logic

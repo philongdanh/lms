@@ -2,7 +2,7 @@
 id: tournament-tests
 title: Tournament Test Cases
 sidebar_label: Tests
-sidebar_position: 5
+sidebar_position: 4
 ---
 
 # Tournament & Competition - Test Cases
