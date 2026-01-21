@@ -1,7 +1,7 @@
 ---
-id: error-handling
-title: Error Handling
-sidebar_label: Error Handling
+id: errors
+title: Errors
+sidebar_label: Errors
 sidebar_position: 3
 ---
 

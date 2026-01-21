@@ -1,7 +1,7 @@
 ---
-id: backend
-title: Backend Architecture
-sidebar_label: Backend
+id: be
+title: Backend
+sidebar_label: BE
 sidebar_position: 3
 ---
 

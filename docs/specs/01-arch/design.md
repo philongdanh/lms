@@ -1,7 +1,7 @@
 ---
-id: system-design
-title: System Design
-sidebar_label: System Design
+id: design
+title: Design
+sidebar_label: Design
 sidebar_position: 1
 ---
 
