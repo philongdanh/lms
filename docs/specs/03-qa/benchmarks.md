@@ -6,8 +6,8 @@ sidebar_position: 5
 ---
 
 # Performance Benchmarks
-
-Performance targets và đo lường.
+ 
+Các chỉ số mục tiêu và phương pháp đo lường hiệu năng.
 
 ---
 

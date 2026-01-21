@@ -6,9 +6,8 @@ sidebar_position: 3
 ---
 
 # Test Cases
-
-Test case templates cho integration và E2E testing. Bao gồm quy ước đặt tên, độ
-ưu tiên và các công cụ sử dụng.
+ 
+Biểu mẫu và quy ước thiết kế kịch bản kiểm thử.
 
 ---
 
