@@ -11,73 +11,13 @@ Kịch bản và sơ đồ luồng nghiệp vụ.
 
 ---
 
-## User Stories
-
-### Epic: Hành trình học tập
-
-#### US-LEARN-001: Lộ trình học tập AI
-
-**Với tư cách là** học sinh  
-**Tôi muốn** xem lộ trình học tập được AI gợi ý  
-**Để** tôi có thể học tập theo nhu cầu cá nhân
-
-**Tiêu chí chấp nhận**:
-
-- [ ] AI phân tích điểm mạnh và điểm yếu.
-- [ ] Gợi ý các bài học phù hợp.
-- [ ] Cập nhật dựa trên tiến độ học tập.
-
-#### US-LEARN-002: Duyệt nội dung học tập
-
-**Với tư cách là** học sinh  
-**Tôi muốn** duyệt nội dung theo Môn, Khối lớp, Chủ đề và Bài học  
-**Để** tôi có thể tìm thấy các tài liệu học tập phù hợp
-
-**Tiêu chí chấp nhận**:
-
-- [ ] Điều hướng hoạt động chính xác.
-- [ ] Áp dụng bộ lọc theo học kỳ.
-- [ ] Nội dung hiển thị đúng định dạng.
-
-### Epic: Giải đấu (Tournament)
-
-#### US-COMP-001: Thi đấu thời gian thực
-
-**Với tư cách là** học sinh  
-**Tôi muốn** thi đấu thời gian thực với các học sinh khác  
-**Để** tôi có thêm động lực học tập
-
-**Tiêu chí chấp nhận**:
-
-- [ ] Hiển thị đếm ngược trong các vòng đấu.
-- [ ] Điểm số được cập nhật tức thì.
-- [ ] Bảng xếp hạng cập nhật thời gian thực.
-
-#### US-COMP-002: Đăng ký giải đấu
-
-**Với tư cách là** học sinh  
-**Tôi muốn** đăng ký tham gia các giải đấu  
-**Để** tôi có thể tham gia tranh tài
-
-**Tiêu chí chấp nhận**:
-
-- [ ] Đăng ký thành công.
-- [ ] Các nút Xem và Tham gia hoạt động đúng.
-- [ ] Mã mời được xác thực chính xác.
-
-### Epic: Theo dõi của phụ huynh
-
-#### US-PARENT-001: Theo dõi tiến độ
-
-**Với tư cách là** phụ huynh  
-**Tôi muốn** theo dõi tiến độ học tập của con mình  
-**Để** tôi có thể hỗ trợ việc học của con
-
-**Tiêu chí chấp nhận**:
-
-- [ ] Xem được các báo cáo chi tiết.
-- [ ] Nhận thông báo thời gian thực.
-- [ ] Quyền truy cập báo cáo 4 cấp độ.
+| US ID | Epic | User Story | Tiêu chí chấp nhận |
+| :--- | :--- | :--- | :--- |
+| **US-LEARN-001** | Hành trình học tập | **Với tư cách là** học sinh<br/>**Tôi muốn** xem lộ trình học tập được AI gợi ý<br/>**Để** tôi có thể học tập theo nhu cầu cá nhân | - AI phân tích điểm mạnh và điểm yếu.<br/>- Gợi ý các bài học phù hợp.<br/>- Cập nhật dựa trên tiến độ học tập. |
+| **US-LEARN-002** | Hành trình học tập | **Với tư cách là** học sinh<br/>**Tôi muốn** duyệt nội dung theo Môn → Khối lớp → Chủ đề → Bài học<br/>**Để** tôi có thể tìm thấy các tài liệu học tập phù hợp | - Điều hướng hoạt động chính xác.<br/>- Áp dụng bộ lọc theo học kỳ.<br/>- Nội dung hiển thị đúng định dạng. |
+| **US-COMP-001** | Giải đấu (Tournament) | **Với tư cách là** học sinh<br/>**Tôi muốn** thi đấu thời gian thực với các học sinh khác<br/>**Để** tôi có thêm động lực học tập | - Hiển thị đếm ngược trong các vòng đấu.<br/>- Điểm số được cập nhật tức thì.<br/>- Bảng xếp hạng cập nhật thời gian thực. |
+| **US-COMP-002** | Giải đấu (Tournament) | **Với tư cách là** học sinh<br/>**Tôi muốn** đăng ký tham gia các giải đấu<br/>**Để** tôi có thể tham gia tranh tài | - Đăng ký thành công.<br/>- Các nút Xem và Tham gia hoạt động đúng.<br/>- Mã mời được xác thực chính xác. |
+| **US-PARENT-001** | Theo dõi của phụ huynh | **Với tư cách là** phụ huynh<br/>**Tôi muốn** theo dõi tiến độ học tập của con mình<br/>**Để** tôi có thể hỗ trợ việc học của con | - Xem được các báo cáo chi tiết.<br/>- Nhận thông báo thời gian thực.<br/>- Quyền truy cập báo cáo 4 cấp độ. |
 
 ---
 
