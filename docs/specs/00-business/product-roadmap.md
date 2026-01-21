@@ -2,7 +2,7 @@
 id: product-roadmap
 title: Product Roadmap
 sidebar_label: Product Roadmap
-sidebar_position: 7
+sidebar_position: 8
 ---
 
 # Product Roadmap

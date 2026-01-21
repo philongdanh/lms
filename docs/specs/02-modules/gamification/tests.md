@@ -2,7 +2,7 @@
 id: gamification-tests
 title: Gamification Test Cases
 sidebar_label: Tests
-sidebar_position: 5
+sidebar_position: 4
 ---
 
 # Gamification & Rewards - Test Cases

@@ -2,7 +2,7 @@
 id: automation
 title: Test Automation
 sidebar_label: Automation
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # Test Automation

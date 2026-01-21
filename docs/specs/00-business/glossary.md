@@ -2,7 +2,7 @@
 id: glossary
 title: Glossary
 sidebar_label: Glossary
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # Glossary

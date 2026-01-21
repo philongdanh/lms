@@ -2,7 +2,7 @@
 id: admin-tests
 title: Admin Test Cases
 sidebar_label: Tests
-sidebar_position: 5
+sidebar_position: 4
 ---
 
 # Admin & Tenant Management - Test Cases

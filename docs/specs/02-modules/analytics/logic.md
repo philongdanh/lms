@@ -2,7 +2,7 @@
 id: analytics-logic
 title: Analytics Business Logic
 sidebar_label: Logic
-sidebar_position: 4
+sidebar_position: 2
 ---
 
 # Analytics & Reporting - Business Logic

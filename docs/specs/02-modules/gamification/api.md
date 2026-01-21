@@ -2,7 +2,7 @@
 id: gamification-api
 title: Gamification API Endpoints
 sidebar_label: API
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # Gamification - API Endpoints
