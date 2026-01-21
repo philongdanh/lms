@@ -20,25 +20,25 @@ và user story. Mỗi epic đại diện cho một khả năng sản phẩm quan
 
 ## Priority Legend
 
-| Priority      | Color     | Description              |
-| ------------- | --------- | ------------------------ |
-| P0 - Critical | `#DC2626` | Bắt buộc cho MVP         |
-| P1 - High     | `#F97316` | Nên có cho MVP           |
-| P2 - Medium   | `#EAB308` | Nên có (không bắt buộc)  |
-| P3 - Low      | `#22C55E` | Cân nhắc trong tương lai |
+| Priority      | Description              |
+| ------------- | ------------------------ |
+| P0 - Critical | Bắt buộc cho MVP         |
+| P1 - High     | Nên có cho MVP           |
+| P2 - Medium   | Nên có (không bắt buộc)  |
+| P3 - Low      | Cân nhắc trong tương lai |
 
 ---
 
 ## Epic List
 
-| ID  | Epic                        | Priority     | Sprints | Points |
-| --- | --------------------------- | ------------ | ------- | ------ |
-| E01 | Foundation & Infrastructure | `#DC2626` P0 | S1      | 30     |
-| E02 | Authentication              | `#DC2626` P0 | S2-S4   | 45     |
-| E03 | Learning Core               | `#DC2626` P0 | S4-S5   | 50     |
-| E04 | Tournament                  | `#F97316` P1 | S5-S6   | 55     |
-| E05 | Gamification                | `#F97316` P1 | S5-S6   | 25     |
-| E06 | Parent Dashboard            | `#EAB308` P2 | S7-S8   | 25     |
+| ID  | Epic                        | Priority | Sprints | Points |
+| --- | --------------------------- | -------- | ------- | ------ |
+| E01 | Foundation & Infrastructure | P0       | S1      | 30     |
+| E02 | Authentication              | P0       | S2-S4   | 45     |
+| E03 | Learning Core               | P0       | S4-S5   | 50     |
+| E04 | Tournament                  | P1       | S5-S6   | 55     |
+| E05 | Gamification                | P1       | S5-S6   | 25     |
+| E06 | Parent Dashboard            | P2       | S7-S8   | 25     |
 
 ---
 
@@ -81,7 +81,7 @@ MVP tập trung vào 3 module chính:
 
 | Attribute    | Value                 |
 | ------------ | --------------------- |
-| Priority     | `#DC2626` P0 Critical |
+| Priority     | P0 Critical         |
 | Sprints      | Sprint 2 - Sprint 4   |
 | Total Points | 45                    |
 | Owner        | [Assign]              |
@@ -114,7 +114,7 @@ MVP tập trung vào 3 module chính:
 
 | Attribute    | Value                 |
 | ------------ | --------------------- |
-| Priority     | `#DC2626` P0 Critical |
+| Priority     | P0 Critical         |
 | Sprints      | Sprint 4 - Sprint 5   |
 | Total Points | 50                    |
 | Owner        | [Assign]              |
@@ -147,7 +147,7 @@ MVP tập trung vào 3 module chính:
 
 | Attribute    | Value               |
 | ------------ | ------------------- |
-| Priority     | `#F97316` P1 High   |
+| Priority     | P1 High             |
 | Sprints      | Sprint 5 - Sprint 6 |
 | Total Points | 55                  |
 | Owner        | [Assign]            |
@@ -180,7 +180,7 @@ MVP tập trung vào 3 module chính:
 
 | Attribute    | Value               |
 | ------------ | ------------------- |
-| Priority     | `#F97316` P1 High   |
+| Priority     | P1 High             |
 | Sprints      | Sprint 5 - Sprint 6 |
 | Total Points | 25                  |
 | Owner        | [Assign]            |

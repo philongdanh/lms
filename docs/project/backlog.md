@@ -22,29 +22,29 @@ theo mức độ ưu tiên và sprint.
 
 ### Priority
 
-| Priority | Color     | Description                                |
-| -------- | --------- | ------------------------------------------ |
-| P0       | `#DC2626` | Critical - Blocker (Nghiêm trọng - Chặn)   |
-| P1       | `#F97316` | High - Must have (Cao - Phải có)           |
-| P2       | `#EAB308` | Medium - Should have (Trung bình - Nên có) |
-| P3       | `#22C55E` | Low - Nice to have (Thấp - Nên có)         |
+| Priority | Description                                |
+| -------- | ------------------------------------------ |
+| P0       | Critical - Blocker (Nghiêm trọng - Chặn)   |
+| P1       | High - Must have (Cao - Phải có)           |
+| P2       | Medium - Should have (Trung bình - Nên có) |
+| P3       | Low - Nice to have (Thấp - Nên có)         |
 
 ### Difficulty
 
-| Difficulty | Color     | Points Range |
-| ---------- | --------- | ------------ |
-| Easy       | `#22C55E` | 1-2 pts      |
-| Medium     | `#F59E0B` | 3-5 pts      |
-| Hard       | `#EF4444` | 8-13 pts     |
+| Difficulty | Points Range |
+| ---------- | ------------ |
+| Easy       | 1-2 pts      |
+| Medium     | 3-5 pts      |
+| Hard       | 8-13 pts     |
 
 ### Type
 
-| Type       | Color        | Description            |
-| ---------- | ------------ | ---------------------- |
-| Frontend   | `#3B82F6` FE | Triển khai UI/UX       |
-| Backend    | `#8B5CF6` BE | Công việc API/Database |
-| Full-stack | `#6366F1` FS | Cả FE và BE            |
-| DevOps     | `#14B8A6` DO | Cơ sở hạ tầng          |
+| Type       | Description            |
+| ---------- | ---------------------- |
+| Frontend   | Triển khai UI/UX       |
+| Backend    | Công việc API/Database |
+| Full-stack | Cả FE và BE            |
+| DevOps     | Cơ sở hạ tầng          |
 
 ---
 
@@ -52,10 +52,10 @@ theo mức độ ưu tiên và sprint.
 
 | Priority        | Count | Points | % Total |
 | --------------- | ----- | ------ | ------- |
-| `#DC2626` P0    | 24    | 120    | 48%     |
-| `#F97316` P1    | 18    | 85     | 34%     |
-| `#EAB308` P2    | 12    | 45     | 18%     |
-| `#22C55E` P3    | 8     | 40     | -       |
+| P0              | 24    | 120    | 48%     |
+| P1              | 18    | 85     | 34%     |
+| P2              | 12    | 45     | 18%     |
+| P3              | 8     | 40     | -       |
 | **Total (MVP)** | 54    | 250    | 100%    |
 
 ---

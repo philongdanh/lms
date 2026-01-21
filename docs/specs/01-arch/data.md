@@ -896,18 +896,6 @@ flowchart TD
         StudentAnswer2
         StudentAnswer3
     end
-
-    style Tenant fill:#ff6b6b,stroke:#333,stroke-width:3px,color:#fff
-    style User fill:#ffd166,stroke:#333,stroke-width:2px
-    style Topic fill:#ffd166,stroke:#333,stroke-width:2px
-    style QuestionBank fill:#ffd166,stroke:#333,stroke-width:2px
-    style Tournament fill:#ffd166,stroke:#333,stroke-width:2px
-    style Exam fill:#ffd166,stroke:#333,stroke-width:2px
-    style Reward fill:#ffd166,stroke:#333,stroke-width:2px
-    style UserSession fill:#06d6a0,stroke:#333,stroke-width:2px,color:#000
-    style Lesson fill:#06d6a0,stroke:#333,stroke-width:2px,color:#000
-    style Content fill:#118ab2,stroke:#333,stroke-width:2px,color:#fff
-    style CompetitionRound fill:#06d6a0,stroke:#333,stroke-width:2px,color:#000
 ```
 
 **Cascade Delete Rules Summary**

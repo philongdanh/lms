@@ -172,11 +172,12 @@ flowchart TD
     K -- Yes --> L[Process Request]
     K -- No --> I
 
-    I --> M[Log Permission Denial]
+    H --> J[Check Tenant Scope]
+    J --> K{"Is tenant_id valid?"}
+    K -- Yes --> L[Process Request]
+    K -- No --> I
 
-    style H fill:#10b981,color:#fff
-    style L fill:#10b981,color:#fff
-    style I fill:#ef4444,color:#fff
+    I --> M[Log Permission Denial]
 ```
 
 ### 4.2. Các cấp độ chi tiết quyền
