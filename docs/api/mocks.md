@@ -7,17 +7,7 @@ sidebar_position: 3
 
 # Mock Data
 
-API mock server for development and testing.
-
----
-
-## Overview
-
-Mock servers provide fake API responses for:
-
-- Frontend development without backend
-- Integration testing
-- Demo environments
+API mock server phục vụ phát triển và kiểm thử.
 
 ---
 
@@ -36,7 +26,7 @@ mocks/
 
 ## Setup Options
 
-### Option 1: Mock Service Worker (MSW)
+### Tùy chọn 1: Mock Service Worker (MSW)
 
 ```javascript
 // handlers.js
@@ -58,7 +48,7 @@ export const handlers = [
 ];
 ```
 
-### Option 2: JSON Server
+### Tùy chọn 2: JSON Server
 
 ```json
 // db.json
@@ -71,7 +61,7 @@ export const handlers = [
 npx json-server --watch db.json --port 3001
 ```
 
-### Option 3: Prism (OpenAPI)
+### Tùy chọn 3: Prism (OpenAPI)
 
 ```bash
 npx @stoplight/prism-cli mock openapi/main.yaml --port 3001
@@ -81,29 +71,29 @@ npx @stoplight/prism-cli mock openapi/main.yaml --port 3001
 
 ## Mock Data Guidelines
 
-| Guideline      | Description                     |
-| -------------- | ------------------------------- |
-| Realistic data | Use realistic names, emails     |
-| Edge cases     | Include empty states, errors    |
-| Consistent IDs | Use predictable IDs for testing |
-| Timestamps     | Use relative dates              |
+| Nguyên tắc     | Mô tả                             |
+| -------------- | --------------------------------- |
+| Dữ liệu thực tế | Sử dụng tên, email thực tế       |
+| Edge case      | Bao gồm empty state, lỗi          |
+| ID nhất quán   | Sử dụng ID dễ đoán cho kiểm thử   |
+| Timestamp      | Sử dụng ngày tương đối            |
 
 ---
 
 ## Mock Scenarios
 
-| Scenario      | How to trigger    |
+| Scenario      | Cách kích hoạt    |
 | ------------- | ----------------- |
-| Success       | Default response  |
-| Empty list    | `?scenario=empty` |
-| Error         | `?scenario=error` |
-| Slow response | `?scenario=slow`  |
+| Thành công    | Response mặc định |
+| Danh sách trống | `?scenario=empty` |
+| Lỗi           | `?scenario=error` |
+| Phản hồi chậm | `?scenario=slow`  |
 
 ---
 
 ## Integration
 
-### Development
+### Phát triển
 
 ```bash
 
@@ -113,7 +103,7 @@ npx @stoplight/prism-cli mock openapi/main.yaml --port 3001
 npm run mock:start
 ```
 
-### Testing
+### Kiểm thử
 
 ```bash
 
@@ -129,3 +119,4 @@ npm run test:integration
 
 - [Contracts](./contracts.md)
 - [OpenAPI](./openapi.md)
+

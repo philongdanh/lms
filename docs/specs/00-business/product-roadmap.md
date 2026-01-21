@@ -7,89 +7,78 @@ sidebar_position: 7
 
 # Product Roadmap
 
-Tầm nhìn sản phẩm dài hạn, các giai đoạn và cột mốc chiến lược.
+Lộ trình và các cột mốc chiến lược.
 
-> **Phạm vi**: Tài liệu này mô tả roadmap cấp sản phẩm (quý, giai đoạn, release
-> lớn). Xem [Sprint Plan](../../project/02-sprint-plan.md) cho kế hoạch sprint.
-
----
-
-## Overview
-
-| Phase   | Timeline | Focus                          | Status      |
-| ------- | -------- | ------------------------------ | ----------- |
-| Phase 1 | Q1 2024  | MVP - Core Learning & Auth     | Done        |
-| Phase 2 | Q2 2024  | Tournament & Gamification      | In Progress |
-| Phase 3 | Q3 2024  | AI Personalization & Analytics | Planned     |
-| Phase 4 | Q4 2024  | Mobile Native & Offline        | Planned     |
+> [!NOTE]
+> Tài liệu này mô tả lộ trình cấp sản phẩm. Xem [Sprint Plan](../../project/02-sprint-plan.md) để biết kế hoạch chi tiết cho từng giai đoạn phát triển ngắn hạn.
 
 ---
 
 ## Phase 1: MVP Foundation
 
-**Timeline**: 2024-01-01 - 2024-03-22 **Goal**: Ra mắt nền tảng học tập cốt lõi
-với Auth, Content và Learning modules
+**Thời hạn**: 20/01/2026 - 05/02/2026  
+**Mục tiêu**: Ra mắt nền tảng học tập cốt lõi với các phân hệ xác thực, nội dung và học tập.
 
 ### Milestones
 
-| Milestone           | Target Date | Deliverables                              | Status |
-| ------------------- | ----------- | ----------------------------------------- | ------ |
-| M1 - Foundation     | 2024-01-15  | Monorepo, CI/CD, Design System, GraphQL   | Done   |
-| M2 - Auth MVP       | 2024-01-29  | Multi-tenant Auth, RBAC, JWT              | Done   |
-| M3 - Learning MVP   | 2024-02-12  | Content CMS, Learning Paths, Video Player | Done   |
-| M4 - Tournament MVP | 2024-02-26  | Realtime Quiz, Matchmaking, Leaderboard   | Done   |
-| M5 - Beta Release   | 2024-03-11  | Gamification, Parent Reports, Polish      | Done   |
+| Cột mốc             | Ngày mục tiêu | Sản phẩm bàn giao                         |
+| ------------------- | ------------- | ----------------------------------------- |
+| M1 - Nền tảng       | 22/01/2026    | Monorepo, CI/CD, Design System, GraphQL   |
+| M2 - Xác thực MVP   | 26/01/2026    | Xác thực đa thực thể, RBAC, JWT           |
+| M3 - Học tập MVP    | 30/01/2026    | Content CMS, Lộ trình học tập, Trình phát video |
+| M4 - Thi đấu MVP    | 02/02/2026    | Quiz thời gian thực, Ghép cặp, Bảng xếp hạng |
+| M5 - Bản thử nghiệm | 05/02/2026    | Gamification, Báo cáo phụ huynh, Tinh chỉnh |
 
 ### Features
 
-| Feature            | Module   | Priority | Effort | Status |
-| ------------------ | -------- | -------- | ------ | ------ |
-| Multi-tenant Auth  | Auth     | P0       | L      | Done   |
-| RBAC (5 roles)     | Auth     | P0       | M      | Done   |
-| Content Management | Content  | P0       | L      | Done   |
-| Video Lessons      | Learning | P0       | M      | Done   |
-| Quiz Engine        | Learning | P0       | L      | Done   |
-| Progress Tracking  | Learning | P1       | M      | Done   |
+| Tính năng          | Phân hệ   | Ưu tiên | Nỗ lực |
+| ------------------ | -------- | ------- | ------ |
+| Xác thực đa thực thể| Auth     | P0      | Cao    |
+| RBAC (5 vai trò)   | Auth     | P0      | Trung bình |
+| Quản lý nội dung   | Content  | P0      | Cao    |
+| Bài học video      | Học tập  | P0      | Trung bình |
+| Công cụ Quiz       | Học tập  | P0      | Cao    |
+| Theo dõi tiến độ   | Học tập  | P1      | Trung bình |
 
 ---
 
 ## Phase 2: Engagement & Gamification
 
-**Timeline**: 2024-04-01 - 2024-06-30 **Goal**: Tăng cường tương tác người dùng
-với Tournament, Gamification và Analytics nâng cao
+**Thời hạn**: 06/02/2026 - 20/02/2026  
+**Mục tiêu**: Tăng cường tương tác người dùng với các tính năng thi đấu, trò chơi hóa và phân tích nâng cao.
 
 ### Milestones
 
-| Milestone              | Target Date | Deliverables                            | Status      |
-| ---------------------- | ----------- | --------------------------------------- | ----------- |
-| M6 - Tournament V2     | 2024-04-30  | Team battles, Custom tournaments        | In Progress |
-| M7 - Gamification Full | 2024-05-31  | Badges, Streaks, Rewards marketplace    | Planned     |
-| M8 - Analytics V2      | 2024-06-30  | Predictive analytics, Learning insights | Planned     |
+| Cột mốc                | Ngày mục tiêu | Sản phẩm bàn giao                       |
+| ---------------------- | ------------- | --------------------------------------- |
+| M6 - Thi đấu V2        | 10/02/2026    | Thi đấu đội, Giải đấu tùy chỉnh         |
+| M7 - Trò chơi hóa toàn diện| 15/02/2026 | Huy hiệu, Chuỗi ngày học, Chợ phần thưởng |
+| M8 - Phân tích V2      | 20/02/2026    | Phân tích dự báo, Thông tin học tập     |
 
 ### Features
 
-| Feature              | Module       | Priority | Effort | Status      |
-| -------------------- | ------------ | -------- | ------ | ----------- |
-| Team Tournaments     | Tournament   | P0       | L      | In Progress |
-| Badge System         | Gamification | P0       | M      | Planned     |
-| Reward Marketplace   | Gamification | P1       | L      | Planned     |
-| Predictive Analytics | Analytics    | P1       | L      | Planned     |
+| Tính năng            | Phân hệ       | Ưu tiên | Nỗ lực |
+| -------------------- | ------------ | ------- | ------ |
+| Thi đấu đồng đội     | Tournament   | P0      | Cao    |
+| Hệ thống huy hiệu    | Gamification | P0      | Trung bình |
+| Chợ phần thưởng      | Gamification | P1      | Cao    |
+| Phân tích dự báo     | Analytics    | P1      | Cao    |
 
 ---
 
 ## Phase 3: AI Personalization
 
-**Timeline**: 2024-07-01 - 2024-09-30 **Goal**: Tích hợp AI để cá nhân hóa lộ
-trình học tập và gợi ý nội dung
+**Thời hạn**: 21/02/2026 - 28/02/2026  
+**Mục tiêu**: Tích hợp trí tuệ nhân tạo để cá nhân hóa lộ trình học tập và gợi ý nội dung.
 
 ### Features
 
-| Feature                    | Module    | Priority | Effort | Status  |
-| -------------------------- | --------- | -------- | ------ | ------- |
-| AI Learning Paths          | Learning  | P0       | XL     | Planned |
-| Content Recommendations    | Content   | P1       | L      | Planned |
-| Adaptive Assessments       | Learning  | P1       | L      | Planned |
-| Knowledge Mastery Tracking | Analytics | P1       | M      | Planned |
+| Tính năng                  | Phân hệ   | Ưu tiên | Nỗ lực |
+| -------------------------- | --------- | ------- | ------ |
+| Lộ trình học tập AI        | Học tập   | P0      | Rất cao|
+| Gợi ý nội dung             | Content   | P1      | Cao    |
+| Đánh giá thích ứng         | Học tập   | P1      | Cao    |
+| Theo dõi mức độ thành thạo | Analytics | P1      | Trung bình |
 
 ---
 
@@ -97,42 +86,42 @@ trình học tập và gợi ý nội dung
 
 ### External Dependencies
 
-| Dependency      | Owner      | Required By     | Status      |
-| --------------- | ---------- | --------------- | ----------- |
-| Google OAuth    | Google     | Phase 1 Auth    | Done        |
-| OpenAI API      | OpenAI     | Phase 3 AI      | Pending     |
-| Payment Gateway | VNPay/Momo | Phase 2 Rewards | In Progress |
+| Thành phần phụ thuộc | Chủ sở hữu | Yêu cầu bởi     |
+| -------------------- | ---------- | --------------- |
+| Google OAuth         | Google     | Phase 1 Auth    |
+| OpenAI API           | OpenAI     | Phase 3 AI      |
+| Cổng thanh toán      | VNPay/Momo | Phase 2 Rewards |
 
 ### Internal Dependencies
 
-| Feature            | Depends On      | Impact if Delayed                   |
-| ------------------ | --------------- | ----------------------------------- |
-| AI Learning Paths  | Analytics V2    | Không có dữ liệu để train models    |
-| Reward Marketplace | Payment Gateway | Không thể đổi phần thưởng vật lý    |
-| Team Tournaments   | Tournament V1   | Cần infrastructure realtime ổn định |
+| Tính năng            | Phụ thuộc vào   | Ảnh hưởng nếu chậm trễ              |
+| -------------------- | --------------- | ----------------------------------- |
+| Lộ trình học tập AI  | Phân tích V2    | Thiếu dữ liệu để huấn luyện mô hình |
+| Chợ phần thưởng      | Cổng thanh toán | Không thể đổi phần thưởng vật lý    |
+| Thi đấu đồng đội     | Tournament V1   | Cần hạ tầng thời gian thực ổn định  |
 
 ---
 
 ## Risks
 
-| Risk                     | Probability | Impact | Mitigation                                          |
-| ------------------------ | ----------- | ------ | --------------------------------------------------- |
-| AI model chất lượng thấp | Medium      | High   | Pilot test với nhóm nhỏ trước khi rollout           |
-| Realtime scalability     | Medium      | High   | Load testing sớm, fallback graceful degradation     |
-| Content thiếu đa dạng    | Low         | Medium | Partnership với đối tác nội dung giáo dục           |
-| User adoption chậm       | Medium      | High   | Gamification, referral program, school partnerships |
+| Rủi ro                   | Xác suất | Ảnh hưởng | Biện pháp giảm thiểu                                |
+| ------------------------ | -------- | --------- | --------------------------------------------------- |
+| Mô hình AI chất lượng thấp| Trung bình| Cao       | Thử nghiệm quy mô nhỏ trước khi triển khai diện rộng|
+| Khả năng mở rộng thực tế | Trung bình| Cao       | Kiểm tra tải sớm, cơ chế dự phòng khi quá tải       |
+| Nội dung thiếu đa dạng   | Thấp     | Trung bình| Hợp tác với các đối tác nội dung giáo dục uy tín    |
+| Tốc độ chấp nhận thấp    | Trung bình| Cao       | Trò chơi hóa, chương trình giới thiệu, hợp tác trường học |
 
 ---
 
 ## Release Plan
 
-| Release | Version | Date       | Features           | Notes            |
-| ------- | ------- | ---------- | ------------------ | ---------------- |
-| Alpha   | 0.1.0   | 2024-01-15 | Foundation         | Internal testing |
-| Beta    | 0.5.0   | 2024-03-11 | MVP Full           | Limited schools  |
-| GA      | 1.0.0   | 2024-04-08 | Production         | Pilot 10 schools |
-| v1.5    | 1.5.0   | 2024-06-30 | Gamification Full  | Public launch    |
-| v2.0    | 2.0.0   | 2024-09-30 | AI Personalization | Premium features |
+| Phiên bản | Version | Ngày       | Tính năng chính     | Ghi chú              |
+| --------- | ------- | ---------- | ------------------- | -------------------- |
+| Alpha     | 0.1.0   | 20/01/2026 | Nền tảng            | Thử nghiệm nội bộ    |
+| Beta      | 0.5.0   | 05/02/2026 | Hoàn thiện MVP      | Giới hạn một số trường|
+| GA        | 1.0.0   | 10/02/2026 | Sản phẩm chính thức | Thử nghiệm 10 trường |
+| v1.5      | 1.5.0   | 20/02/2026 | Trò chơi hóa        | Phát hành công khai  |
+| v2.0      | 2.0.0   | 28/02/2026 | Cá nhân hóa AI      | Các tính năng cao cấp|
 
 ---
 

@@ -7,121 +7,128 @@ sidebar_position: 2
 
 # User Journeys
 
-Bản đồ hành trình người dùng cho các luồng chính.
+Hành trình và tương tác người dùng.
 
 ---
 
 ## Core Journeys
 
-### Journey 1: Student Learning Session
+### Journey 1: Học tập của học sinh
 
-**Persona**: Minh (Học sinh Tiểu học) **Goal**: Hoàn thành bài học hàng ngày và
-nhận phần thưởng **Scenario**: Minh mở app sau giờ cơm tối, học 30 phút theo lộ
-trình AI gợi ý
+**Persona**: Phi Long (Học sinh Tiểu học)  
+**Mục tiêu**: Hoàn thành bài học hàng ngày và nhận phần thưởng.  
+**Kịch bản**: Phi Long mở ứng dụng sau giờ ăn tối, học 30 phút theo lộ trình AI gợi ý.
 
 #### Journey Phases
 
-| Phase    | Action                     | Thought                      | Emotion | Opportunity                       |
-| -------- | -------------------------- | ---------------------------- | ------- | --------------------------------- |
-| Login    | Mở app, thấy streak 5 ngày | "Mình đang giữ streak tốt!"  |         | Gamification ngay từ màn hình đầu |
-| Explore  | Xem bài học được gợi ý     | "Hôm nay học Toán nhé"       |         | AI gợi ý dựa trên gap knowledge   |
-| Learn    | Xem video 5 phút           | "Video ngắn, dễ hiểu"        |         | Bite-size content, progress bar   |
-| Practice | Làm quiz 10 câu            | "Sao mình sai câu này?"      |         | Giải thích ngay khi sai           |
-| Reward   | Nhận 50 XP + 1 sao         | "Yeah! Gần đủ mở badge mới!" |         | Animation celebrate, progress     |
+| Giai đoạn | Hành động                  | Suy nghĩ                     | Cảm xúc | Cơ hội                            |
+| --------- | -------------------------- | ---------------------------- | ------- | --------------------------------- |
+| Đăng nhập | Mở ứng dụng, thấy chuỗi học tập| "Mình đang giữ phong độ tốt!"|         | Trò chơi hóa ngay từ màn hình đầu |
+| Khám phá  | Xem bài học được gợi ý     | "Hôm nay học Toán nhé"       |         | AI gợi ý dựa trên lỗ hổng kiến thức|
+| Học tập   | Xem video 5 phút           | "Video ngắn, dễ hiểu"        |         | Nội dung nhỏ gọn, thanh tiến độ   |
+| Luyện tập | Làm bài trắc nghiệm 10 câu | "Sao mình sai câu này?"      |         | Giải thích ngay khi làm sai       |
+| Thưởng    | Nhận 50 XP và 1 sao        | "Yeah! Sắp mở được huy hiệu rồi!"|      | Hiệu ứng chúc mừng sinh động      |
 
 #### Journey Flow
 
-```mermaid
-flowchart LR
-    A["Mở App"] --> B["Dashboard"]
-    B --> C["Chọn bài học"]
-    C --> D["Xem video"]
-    D --> E["Làm quiz"]
-    E --> F{"Pass?"}
-    F -->|"Đúng 70%+"| G["Nhận rewards"]
-    F -->|"Dưới 70%"| H["Xem lại bài"]
-    H --> D
-    G --> I["Streak +1"]
+```d2
+direction: right
+
+Open App -> Dashboard
+Dashboard -> Select Lesson
+Select Lesson -> Watch Video
+Watch Video -> Take Quiz
+Take Quiz -> Passed?: {
+  shape: diamond
+}
+Passed? -> Get Reward: Score >= 70%
+Passed? -> Review Lesson: Score < 70%
+Review Lesson -> Watch Video
+Get Reward -> Continuous Learning +1
 ```
 
-**Key Metrics**:
+**Chỉ số chính**:
 
-- Completion rate: 85%
-- Time per session: 25-35 phút
-- Drop-off points: Quiz fail → xem lại video
+- Tỉ lệ hoàn thành: 85%
+- Thời gian mỗi phiên: 25-35 phút
+- Điểm đứt gãy: Thất bại ở Quiz → phải xem lại video
 
-### Journey 2: Parent Monitoring
+### Journey 2: Giám sát của phụ huynh
 
-**Persona**: Hoa (Phụ huynh) **Goal**: Xem báo cáo tuần của con mà không cần hỏi
-trực tiếp **Scenario**: Tối Chủ nhật, Hoa mở app để review tiến độ học tập của
-con trong tuần
+**Persona**: Nhựt Linh (Phụ huynh)  
+**Mục tiêu**: Xem báo cáo tuần của con mà không cần hỏi trực tiếp.  
+**Kịch bản**: Tối Chủ nhật, Nhựt Linh mở ứng dụng để xem xét tiến độ học tập của con trong tuần.
 
-| Stage     | Actions                 | Touchpoint                  | Pain Points             | Solutions                  |
+| Giai đoạn | Hành động               | Điểm chạm                   | Khó khăn                | Giải pháp                  |
 | --------- | ----------------------- | --------------------------- | ----------------------- | -------------------------- |
-| Access    | Mở app từ notification  | Push notification hàng tuần | Quên check báo cáo      | Auto reminder Chủ nhật 8pm |
-| Overview  | Xem dashboard tổng quan | Parent Dashboard            | Quá nhiều số liệu       | Highlight 3 metrics chính  |
-| Deep dive | Xem chi tiết môn yếu    | Subject Analytics           | Không hiểu % nghĩa gì   | So sánh với tuần trước     |
-| Action    | Đặt goal cho tuần tới   | Goal Setting                | Không biết goal phù hợp | Gợi ý goal dựa trên data   |
-| Share     | Khen con qua app        | In-app message              | Ngại khen trực tiếp     | Template messages          |
+| Truy cập  | Mở từ thông báo         | Thông báo đẩy hàng tuần     | Quên kiểm tra báo cáo   | Nhắc nhở tự động 20h Chủ nhật|
+| Tổng quan | Xem bảng điều khiển     | Bảng điều khiển phụ huynh   | Quá nhiều số liệu       | Làm nổi bật 3 chỉ số chính |
+| Chi tiết  | Xem môn học còn yếu     | Phân tích môn học           | Không hiểu ý nghĩa %    | So sánh với tuần trước     |
+| Hành động | Đặt mục tiêu tuần tới   | Đặt mục tiêu                | Chưa biết mục tiêu phù hợp| Gợi ý mục tiêu dựa trên dữ liệu|
+| Chia sẻ   | Khen ngợi con qua app   | Tin nhắn trong ứng dụng     | Ngại khen trực tiếp     | Các mẫu tin nhắn có sẵn    |
 
-**Key Metrics**:
+**Chỉ số chính**:
 
-- Weekly active parents: 60%
-- Avg time on report: 3 phút
-- Goal setting rate: 40%
+- Phụ huynh hoạt động hàng tuần: 60%
+- Thời gian xem báo cáo bình quân: 3 phút
+- Tỉ lệ đặt mục tiêu: 40%
 
-### Journey 3: Tournament Battle
+### Journey 3: Thi đấu giải đấu
 
-**Persona**: Lan (Học sinh THCS) **Goal**: Thi đấu Toán với bạn cùng trường vào
-cuối tuần **Scenario**: Thứ 7 chiều, Lan join tournament do trường tổ chức
+**Persona**: Minh Lưng (Học sinh THCS)  
+**Mục tiêu**: Thi đấu Toán với bạn cùng trường vào cuối tuần.  
+**Kịch bản**: Chiều Thứ 7, Minh Lưng tham gia giải đấu do trường tổ chức.
 
-| Stage    | Actions                   | Touchpoint           | Pain Points         | Solutions                           |
-| -------- | ------------------------- | -------------------- | ------------------- | ----------------------------------- |
-| Discover | Nhận thông báo tournament | Push + In-app banner | Không biết có event | Remind 24h + 1h trước               |
-| Register | Đăng ký tham gia          | Tournament Lobby     | Sợ thua xấu mặt     | Hiển thị ranking ẩn danh option     |
-| Wait     | Chờ matchmaking           | Waiting Room         | Chờ lâu, buồn       | Mini game trong lúc chờ             |
-| Battle   | Trả lời 10 câu realtime   | Battle Screen        | Lag, mất kết nối    | Graceful reconnect, pause timer     |
-| Result   | Xem kết quả, ranking      | Leaderboard          | Thua, buồn          | "Improvement" highlight vs previous |
+| Giai đoạn | Hành động                 | Điểm chạm            | Khó khăn            | Giải pháp                           |
+| --------- | ------------------------- | -------------------- | ------------------- | ----------------------------------- |
+| Khám phá  | Nhận thông báo giải đấu   | Thông báo + Banner   | Không biết có sự kiện| Nhắc nhở trước 24 giờ và 1 giờ      |
+| Đăng ký   | Đăng ký tham gia          | Sảnh giải đấu        | Sợ kết quả không tốt| Tùy chọn hiển thị ẩn danh           |
+| Chờ đợi   | Chờ ghép cặp              | Phòng chờ            | Thời gian chờ nhàm chán| Trò chơi nhỏ trong lúc chờ          |
+| Thi đấu   | Trả lời 10 câu thời gian thực| Màn hình thi đấu  | Gián đoạn kết nối   | Tự động kết nối lại, tạm dừng đếm ngược|
+| Kết quả   | Xem kết quả, thứ hạng     | Bảng xếp hạng        | Kết quả thấp gây nản| Làm nổi bật sự cải thiện so với trước|
 
 #### Journey Flow
 
-```mermaid
-flowchart LR
-    A["Nhận notification"] --> B["Register"]
-    B --> C["Waiting Room"]
-    C --> D["Matchmaking"]
-    D --> E["Battle 10 câu"]
-    E --> F["Result"]
-    F --> G{"Top 3?"}
-    G -->|"Yes"| H["Badge + Rewards"]
-    G -->|"No"| I["XP + Encourage"]
+```d2
+direction: right
+
+Receive Notification -> Register
+Register -> Waiting Room
+Waiting Room -> Matchmaking
+Matchmaking -> Battle 10 Questions
+Battle 10 Questions -> Result
+Result -> Top 3?: {
+  shape: diamond
+}
+Top 3? -> Badge & Rewards: Yes
+Top 3? -> XP & Encourage: No
 ```
 
-**Key Metrics**:
+**Chỉ số chính**:
 
-- Registration rate: 70% từ notification
-- Completion rate: 90% (ít bỏ giữa chừng)
-- Replay rate: 65% tham gia tournament tiếp theo
+- Tỉ lệ đăng ký: 70% từ thông báo
+- Tỉ lệ hoàn thành: 90%
+- Tỉ lệ tham gia lại: 65% cho các giải đấu tiếp theo
 
-### Journey 4: Teacher Assessment Creation
+### Journey 4: Giáo viên tạo đề đánh giá
 
-**Persona**: Thầy Hùng (Giáo viên) **Goal**: Tạo đề thi 15 phút cho lớp 8A từ
-ngân hàng câu hỏi **Scenario**: Thứ 5 tối, Thầy Hùng cần tạo đề kiểm tra cho
-tiết sau
+**Persona**: Thầy Tùng (Giáo viên)  
+**Mục tiêu**: Tạo đề thi 15 phút cho lớp từ ngân hàng câu hỏi.  
+**Kịch bản**: Tối Thứ 5, Thầy Tùng cần tạo đề kiểm tra cho tiết học ngày mai.
 
-| Stage  | Actions                  | Touchpoint     | Pain Points                 | Solutions                 |
-| ------ | ------------------------ | -------------- | --------------------------- | ------------------------- |
-| Access | Đăng nhập Teacher Portal | Web Portal     | Quên password               | SSO với Google Workspace  |
-| Select | Chọn lớp và môn          | Class Selector | Nhiều lớp, khó tìm          | Recent classes on top     |
-| Build  | Chọn câu hỏi từ bank     | Question Bank  | Mất thời gian chọn từng câu | AI suggest based on topic |
-| Review | Xem preview đề           | Preview Mode   | Không thấy như học sinh     | Student view preview      |
-| Assign | Giao đề cho lớp          | Assignment     | Quên set deadline           | Auto deadline suggestions |
+| Giai đoạn | Hành động                  | Điểm chạm      | Khó khăn                    | Giải pháp                 |
+| --------- | -------------------------- | -------------- | --------------------------- | ------------------------- |
+| Truy cập  | Đăng nhập cổng giáo viên   | Cổng Web       | Quên mật khẩu               | Xác thực qua tài khoản Google |
+| Lựa chọn  | Chọn lớp và môn học        | Chọn lớp       | Nhiều lớp, khó tìm          | Đưa các lớp gần đây lên đầu |
+| Xây dựng  | Chọn câu hỏi từ ngân hàng  | Ngân hàng câu hỏi| Mất thời gian chọn từng câu| AI gợi ý dựa trên chủ đề  |
+| Đánh giá  | Xem xem trước đề thi       | Chế độ xem trước| Không thấy được góc nhìn HS| Xem trước dưới tư cách học sinh|
+| Giao bài  | Giao đề cho lớp            | Giao bài       | Quên thiết lập hạn chót     | Gợi ý hạn chót tự động    |
 
-**Key Metrics**:
+**Chỉ số chính**:
 
-- Avg time to create: < 10 phút
-- Questions from bank: 80%
-- Custom questions: 20%
+- Thời gian tạo đề trung bình: < 10 phút
+- Tỉ trọng câu hỏi từ ngân hàng: 80%
+- Câu hỏi tự biên soạn: 20%
 
 ---
 
@@ -129,22 +136,22 @@ tiết sau
 
 ### Pain Point Summary
 
-| Journey            | Major Pain Points                | Priority |
-| ------------------ | -------------------------------- | -------- |
-| Student Learning   | Quiz fail → demotivation         | High     |
-| Parent Monitoring  | Quá nhiều data, không actionable | High     |
-| Tournament         | Lag/disconnect khi battle        | High     |
-| Teacher Assessment | Mất thời gian chọn câu hỏi       | Medium   |
+| Hành trình            | Khó khăn chính                   | Ưu tiên |
+| --------------------- | -------------------------------- | ------- |
+| Học tập học sinh      | Thất bại ở Quiz gây nản lòng     | Cao     |
+| Giám sát phụ huynh    | Quá nhiều dữ liệu, khó hành động | Cao     |
+| Giải đấu              | Gián đoạn kết nối khi thi đấu    | Cao     |
+| Đánh giá của giáo viên| Mất thời gian chọn lựa câu hỏi   | Trung bình|
 
 ### Opportunity Areas
 
-| Opportunity                        | Impact | Effort | Priority |
-| ---------------------------------- | ------ | ------ | -------- |
-| AI gợi ý bài học gap knowledge     | High   | High   | P0       |
-| Parent weekly digest notification  | High   | Low    | P0       |
-| Reconnect graceful cho tournament  | High   | Medium | P1       |
-| Template đề thi theo topic         | Medium | Low    | P1       |
-| Gamification cho Parent engagement | Medium | Medium | P2       |
+| Cơ hội                            | Ảnh hưởng | Nỗ lực | Ưu tiên |
+| --------------------------------- | --------- | ------ | ------- |
+| AI gợi ý bài học bù đắp kiến thức | Cao       | Cao    | P0      |
+| Thông báo báo cáo tuần cho phụ huynh| Cao     | Thấp   | P0      |
+| Kết nối lại ổn định cho giải đấu  | Cao       | Trung bình| P1    |
+| Mẫu đề thi theo chủ đề            | Trung bình| Thấp   | P1      |
+| Trò chơi hóa cho phụ huynh        | Trung bình| Trung bình| P2    |
 
 ---
 

@@ -7,47 +7,41 @@ sidebar_position: 1
 
 # OpenAPI Specification
 
-OpenAPI/Swagger specifications documentation.
-
----
-
-## Overview
-
-This document describes the OpenAPI specification structure and guidelines.
+Tài liệu đặc tả OpenAPI/Swagger.
 
 ---
 
 ## Contents
 
-OpenAPI specification files are stored in `static/openapi/` directory.
+Các file đặc tả OpenAPI được lưu trữ trong thư mục `static/openapi/`.
 
 ---
 
 ## Base Structure
 
-| Section      | Purpose                                    |
+| Section      | Mục đích                                   |
 | ------------ | ------------------------------------------ |
-| `info`       | API metadata (title, version, description) |
-| `servers`    | API server URLs (prod, staging, dev)       |
-| `tags`       | Endpoint grouping                          |
-| `paths`      | Endpoint definitions                       |
+| `info`       | Metadata của API (title, version, description) |
+| `servers`    | URL của API server (prod, staging, dev)    |
+| `tags`       | Nhóm các endpoint                          |
+| `paths`      | Định nghĩa các endpoint                    |
 | `components` | Reusable schemas, parameters, responses    |
-| `security`   | Authentication requirements                |
+| `security`   | Yêu cầu xác thực                           |
 
 ---
 
 ## File Organization
 
-| Approach    | Use Case              |
+| Phương pháp | Trường hợp sử dụng    |
 | ----------- | --------------------- |
-| Single file | Small APIs            |
-| Multi-file  | Large APIs using $ref |
+| Single file | API nhỏ               |
+| Multi-file  | API lớn sử dụng $ref  |
 
 ---
 
 ## Naming Conventions
 
-| Element    | Convention | Example          |
+| Thành phần | Quy tắc    | Ví dụ            |
 | ---------- | ---------- | ---------------- |
 | Paths      | kebab-case | `/user-profiles` |
 | Operations | HTTP verb  | `get`, `post`    |
@@ -58,11 +52,11 @@ OpenAPI specification files are stored in `static/openapi/` directory.
 
 ## Server Definitions
 
-| Environment | URL Pattern                      | Description       |
-| ----------- | -------------------------------- | ----------------- |
-| Production  | `https://api.lms.com/v1`         | Live API          |
-| Staging     | `https://staging-api.lms.com/v1` | Pre-production    |
-| Development | `http://localhost:3000/v1`       | Local development |
+| Môi trường | Cấu trúc URL                     | Mô tả             |
+| ---------- | -------------------------------- | ----------------- |
+| Production | `https://api.lms.com/v1`         | API chính thức    |
+| Staging    | `https://staging-api.lms.com/v1` | Môi trường thử nghiệm |
+| Development| `http://localhost:3000/v1`       | Phát triển tại máy lẻ |
 
 ---
 
@@ -70,7 +64,7 @@ OpenAPI specification files are stored in `static/openapi/` directory.
 
 ### GET List
 
-| Attribute        | Value                   |
+| Thuộc tính       | Giá trị                 |
 | ---------------- | ----------------------- |
 | Path             | `/resources`            |
 | Operation ID     | `listResources`         |
@@ -80,7 +74,7 @@ OpenAPI specification files are stored in `static/openapi/` directory.
 
 ### GET Single
 
-| Attribute        | Value             |
+| Thuộc tính       | Giá trị           |
 | ---------------- | ----------------- |
 | Path             | `/resources/{id}` |
 | Operation ID     | `getResource`     |
@@ -90,7 +84,7 @@ OpenAPI specification files are stored in `static/openapi/` directory.
 
 ### POST Create
 
-| Attribute        | Value            |
+| Thuộc tính       | Giá trị          |
 | ---------------- | ---------------- |
 | Path             | `/resources`     |
 | Operation ID     | `createResource` |
@@ -100,7 +94,7 @@ OpenAPI specification files are stored in `static/openapi/` directory.
 
 ### PUT Update
 
-| Attribute        | Value             |
+| Thuộc tính       | Giá trị           |
 | ---------------- | ----------------- |
 | Path             | `/resources/{id}` |
 | Operation ID     | `updateResource`  |
@@ -111,7 +105,7 @@ OpenAPI specification files are stored in `static/openapi/` directory.
 
 ### DELETE
 
-| Attribute        | Value             |
+| Thuộc tính       | Giá trị           |
 | ---------------- | ----------------- |
 | Path             | `/resources/{id}` |
 | Operation ID     | `deleteResource`  |
@@ -126,3 +120,4 @@ OpenAPI specification files are stored in `static/openapi/` directory.
 - [Contracts](./contracts.md)
 - [Mocks](./mocks.md)
 - [API Gateway](../specs/01-architecture/cross-cutting/api-gateway.md)
+

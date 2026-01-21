@@ -7,56 +7,56 @@ sidebar_position: 3
 
 # Usability Guidelines
 
-Các nguyên tắc và heuristics về khả dụng.
+Tiêu chuẩn khả năng sử dụng và trải nghiệm.
 
 ---
 
 ## Usability Heuristics
 
-Dựa trên 10 Usability Heuristics của Nielsen:
+Dựa trên 10 nguyên tắc khả dụng của Nielsen:
 
-| Heuristic                    | Description                   | Áp dụng                       |
+| Nguyên tắc                   | Mô tả                         | Áp dụng cụ thể                |
 | ---------------------------- | ----------------------------- | ----------------------------- |
-| Visibility of system status  | Giữ người dùng được thông báo | Loading states, progress bars |
-| Match system and real world  | Sử dụng ngôn ngữ quen thuộc   | Thuật ngữ domain              |
-| User control and freedom     | Hỗ trợ undo/redo              | Nút thoát, hủy rõ ràng        |
-| Consistency and standards    | Tuân theo conventions         | Hướng dẫn nền tảng            |
-| Error prevention             | Ngăn ngừa vấn đề              | Validation, confirmation      |
-| Recognition over recall      | Giảm tải bộ nhớ               | Tùy chọn hiển thị, gợi ý      |
-| Flexibility and efficiency   | Hỗ trợ shortcuts              | Tính năng power user          |
-| Aesthetic and minimal design | Loại bỏ không cần thiết       | UI sạch, tập trung            |
-| Help users with errors       | Thông báo lỗi rõ ràng         | Gợi ý khắc phục               |
-| Help and documentation       | Cung cấp hỗ trợ               | Trợ giúp theo ngữ cảnh        |
+| Hiển thị trạng thái hệ thống | Luôn thông báo cho người dùng | Trạng thái tải, thanh tiến độ |
+| Phù hợp với thế giới thực    | Sử dụng ngôn ngữ quen thuộc   | Thuật ngữ chuyên ngành giáo dục|
+| Kiểm soát và tự do           | Hỗ trợ hoàn tác và làm lại    | Nút thoát, hủy thao tác rõ ràng|
+| Nhất quán và tiêu chuẩn      | Tuân thủ các quy ước chung    | Hướng dẫn giao diện thống nhất|
+| Ngăn ngừa lỗi                | Hạn chế tối đa sai sót        | Xác thực dữ liệu, xác nhận xóa|
+| Gợi nhớ thay vì ghi nhớ      | Giảm tải cho bộ nhớ           | Hiển thị tùy chọn, gợi ý thông minh|
+| Linh hoạt và hiệu quả        | Hỗ trợ các lối tắt            | Tính năng dành cho người dùng chuyên sâu|
+| Thiết kế tối giản và thẩm mỹ | Loại bỏ yếu tố không cần thiết| Giao diện sạch sẽ, tập trung  |
+| Hỗ trợ xử lý lỗi             | Thông báo lỗi rõ ràng         | Gợi ý cách khắc phục cụ thể   |
+| Trợ giúp và tài liệu         | Cung cấp hướng dẫn sử dụng    | Trợ giúp theo ngữ cảnh        |
 
 ---
 
 ## Accessibility (WCAG 2.1)
 
-### Level A (Minimum)
+### Level A (Tối thiểu)
 
-| Guideline         | Requirement                | Implementation  |
-| ----------------- | -------------------------- | --------------- |
-| Text alternatives | Alt text for images        | `<img alt="">`  |
-| Keyboard          | All functions via keyboard | Tab navigation  |
-| Pause/stop        | Control moving content     | Pause buttons   |
-| No seizures       | Avoid flashing             | < 3 flashes/sec |
+| Hướng dẫn         | Yêu cầu                    | Triển khai thực tế |
+| ----------------- | -------------------------- | ------------------ |
+| Văn bản thay thế  | Mô tả cho hình ảnh         | `<img alt="">`     |
+| Bàn phím          | Sử dụng đầy đủ qua bàn phím| Điều hướng bằng phím Tab|
+| Tạm dừng/Dừng     | Kiểm soát nội dung chuyển động| Nút tạm dừng cho video/slider|
+| Tránh gây co giật | Không nháy quá nhanh       | < 3 lần nháy/giây  |
 
-### Level AA (Recommended)
+### Level AA (Khuyến nghị)
 
-| Guideline      | Requirement             | Implementation       |
-| -------------- | ----------------------- | -------------------- |
-| Color contrast | 4.5:1 ratio text        | Use contrast checker |
-| Resize text    | 200% without loss       | Responsive design    |
-| Focus visible  | Visible focus indicator | Focus styles         |
-| Language       | Page language set       | `lang` attribute     |
+| Hướng dẫn      | Yêu cầu                 | Triển khai thực tế |
+| -------------- | ----------------------- | ------------------ |
+| Độ tương phản  | Tỉ lệ 4.5:1 cho văn bản | Kiểm tra bằng công cụ tương phản |
+| Thay đổi kích thước| Phóng to 200% không mất nội dung| Thiết kế đáp ứng |
+| Trạng thái tập trung| Chỉ báo tập trung rõ ràng| Hiệu ứng focus rõ nét|
+| Ngôn ngữ trang | Thiết lập ngôn ngữ trang| Thuộc tính `lang` trong HTML|
 
-### Level AAA (Enhanced)
+### Level AAA (Nâng cao)
 
-| Guideline         | Requirement        | Implementation       |
+| Hướng dẫn         | Yêu cầu            | Triển khai thực tế   |
 | ----------------- | ------------------ | -------------------- |
-| Sign language     | Video alternatives | Sign language videos |
-| Extended audio    | Descriptions       | Audio descriptions   |
-| Contrast enhanced | 7:1 ratio          | High contrast mode   |
+| Ngôn ngữ ký hiệu  | Thay thế cho video | Video ngôn ngữ ký hiệu|
+| Âm thanh mở rộng  | Mô tả âm thanh     | Thuyết minh âm thanh |
+| Tương phản cao    | Tỉ lệ 7:1          | Chế độ tương phản cao|
 
 ---
 
@@ -64,20 +64,20 @@ Dựa trên 10 Usability Heuristics của Nielsen:
 
 ### Breakpoints
 
-| Breakpoint | Width       | Target  |
-| ---------- | ----------- | ------- |
-| Mobile     | < 640px     | Phone   |
-| Tablet     | 640-1024px  | Tablet  |
-| Desktop    | 1024-1440px | Laptop  |
-| Large      | > 1440px    | Desktop |
+| Điểm ngắt  | Chiều rộng  | Đối tượn mục tiêu |
+| ---------- | ----------- | ----------------- |
+| Di động    | < 640px     | Điện thoại        |
+| Máy tính bảng| 640-1024px  | Máy tính bảng     |
+| Máy tính   | 1024-1440px | Máy tính xách tay |
+| Màn hình lớn| > 1440px    | Máy tính để bàn   |
 
 ### Touch Targets
 
-| Element | Minimum Size | Spacing |
-| ------- | ------------ | ------- |
-| Button  | 44x44px      | 8px     |
-| Link    | 44px height  | 8px     |
-| Icon    | 24x24px      | 16px    |
+| Thành phần | Kích thước tối thiểu | Khoảng cách |
+| ---------- | -------------------- | ----------- |
+| Nút bấm    | 44x44px              | 8px         |
+| Liên kết   | Chiều cao 44px       | 8px         |
+| Biểu tượng | 24x24px              | 16px        |
 
 ---
 
@@ -85,22 +85,22 @@ Dựa trên 10 Usability Heuristics của Nielsen:
 
 ### Perceived Performance
 
-| Threshold | Perception   | Guideline              |
-| --------- | ------------ | ---------------------- |
-| < 100ms   | Instant      | Direct manipulation    |
-| 100-300ms | Slight delay | No feedback needed     |
-| 300ms-1s  | Noticeable   | Show loading indicator |
-| 1-10s     | Long wait    | Show progress bar      |
-| > 10s     | Too long     | Allow background       |
+| Ngưỡng thời gian | Cảm nhận của người dùng | Hướng dẫn xử lý               |
+| ---------------- | ----------------------- | ----------------------------- |
+| < 100ms          | Tức thì                 | Phản hồi trực tiếp            |
+| 100-300ms        | Trễ nhẹ                 | Không cần phản hồi trạng thái |
+| 300ms-1s         | Thấy rõ sự chờ đợi      | Hiển thị biểu tượng đang tải  |
+| 1-10s            | Chờ đợi lâu             | Hiển thị thanh tiến độ        |
+| > 10s            | Quá lâu                 | Cho phép xử lý ngầm           |
 
 ### Loading States
 
-| State        | Implementation      |
-| ------------ | ------------------- |
-| Skeleton     | Placeholder shapes  |
-| Spinner      | For short waits     |
-| Progress bar | For known duration  |
-| Message      | For long operations |
+| Trạng thái     | Triển khai thực tế  |
+| -------------- | ------------------- |
+| Khung xương    | Hình khối giữ chỗ   |
+| Vòng quay      | Cho thời gian chờ ngắn|
+| Thanh tiến độ  | Khi xác định được thời gian|
+| Thông báo      | Cho các tác vụ rất lâu|
 
 ---
 
@@ -108,20 +108,20 @@ Dựa trên 10 Usability Heuristics của Nielsen:
 
 ### Usability Testing
 
-| Method      | When         | Participants       |
-| ----------- | ------------ | ------------------ |
-| Moderated   | Early design | 5-8 users          |
-| Unmoderated | Validation   | 10-20 users        |
-| A/B Testing | Optimization | Statistical sample |
+| Phương pháp     | Thời điểm triển khai | Số lượng người tham gia |
+| --------------- | -------------------- | ----------------------- |
+| Có người điều phối| Giai đoạn đầu thiết kế| 5-8 người dùng          |
+| Tự thực hiện    | Giai đoạn xác thực   | 10-20 người dùng        |
+| Thử nghiệm A/B  | Giai đoạn tối ưu hóa | Mẫu thống kê đủ lớn     |
 
 ### Metrics
 
-| Metric       | Description            | Target        |
-| ------------ | ---------------------- | ------------- |
-| Task Success | Completion rate        | > 90%         |
-| Time on Task | Duration               | < [benchmark] |
-| Error Rate   | Mistakes made          | < 5%          |
-| SUS Score    | System Usability Scale | > 68          |
+| Chỉ số           | Mô tả                    | Mục tiêu      |
+| ---------------- | ------------------------ | ------------- |
+| Thành công tác vụ| Tỉ lệ hoàn thành         | > 90%         |
+| Thời gian thực hiện| Thời lượng hoàn thành  | < mức chuẩn   |
+| Tỉ lệ lỗi        | Số sai sót mắc phải      | < 5%          |
+| Điểm SUS         | Thang đo khả dụng hệ thống| > 68          |
 
 ---
 
