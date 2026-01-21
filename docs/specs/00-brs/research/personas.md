@@ -135,7 +135,7 @@ Chân dung người dùng mục tiêu.
 
 ## Secondary Personas
 
-### Chân dung 4: Thầy Tùng - Giáo viên
+### Chân dung 4: Giáo viên
 
 **Nhân khẩu học**:
 
@@ -157,7 +157,7 @@ Chân dung người dùng mục tiêu.
 - Khó nhận diện sớm các học sinh đang gặp khó khăn kiến thức.
 - Thiếu công cụ để phản hồi nhanh chóng cho nhiều học sinh cùng lúc.
 
-### Chân dung 5: Cô Ngọc Mới - Quản trị viên trường học
+### Chân dung 5: Quản trị viên trường học
 
 **Nhân khẩu học**:
 
@@ -183,10 +183,10 @@ Chân dung người dùng mục tiêu.
 
 ## Persona Usage
 
-| Quyết định thiết kế  | Persona chính                        | Lưu ý triển khai                           |
-| -------------------- | ------------------------------------ | ------------------------------------------ |
-| Trò chơi hóa nổi bật | Phi Long (Tiểu học)                  | Huy hiệu, sao thưởng, hiệu ứng chúc mừng   |
-| Báo cáo phân tích    | Minh Lưng (THCS), Nhựt Linh (Parent) | Phân tích lỗ hổng kiến thức, so sánh       |
-| Giao diện tối giản   | Nhựt Linh (Parent)                   | Ưu tiên di động, nút bấm lớn, nhãn rõ ràng |
-| Nhập liệu hàng loạt  | Cô Ngọc Mới (Admin)                  | Tải lên CSV, tải xuống tệp mẫu             |
-| Trình tạo bài tập    | Thầy Tùng (Teacher)                  | Kéo thả, tích hợp ngân hàng câu hỏi        |
+| Quyết định thiết kế  | Persona chính                    | Lưu ý triển khai                           |
+| -------------------- | -------------------------------- | ------------------------------------------ |
+| Trò chơi hóa nổi bật | Phi Long (Tiểu học)              | Huy hiệu, sao thưởng, hiệu ứng chúc mừng   |
+| Báo cáo phân tích    | Minh Lưng (THCS), Nhựt Linh (PH) | Phân tích lỗ hổng kiến thức, so sánh       |
+| Giao diện tối giản   | Phụ huynh                        | Ưu tiên di động, nút bấm lớn, nhãn rõ ràng |
+| Nhập liệu hàng loạt  | Quản trị viên                    | Tải lên CSV, tải xuống tệp mẫu             |
+| Trình tạo bài tập    | Giáo viên                        | Kéo thả, tích hợp ngân hàng câu hỏi        |
