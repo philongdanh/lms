@@ -1,7 +1,7 @@
 ---
-id: frontend
-title: Frontend Architecture
-sidebar_label: Frontend
+id: fe
+title: Frontend
+sidebar_label: FE
 sidebar_position: 4
 ---
 

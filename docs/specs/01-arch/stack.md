@@ -1,11 +1,11 @@
 ---
-id: tech-stack
-title: Technology Stack
-sidebar_label: Tech Stack
+id: stack
+title: Stack
+sidebar_label: Stack
 sidebar_position: 2
 ---
 
-# Technology Stack
+# Stack
 
 Lựa chọn công nghệ và tiêu chuẩn thực thi.
 

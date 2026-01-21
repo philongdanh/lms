@@ -1,6 +1,6 @@
 {
-  "position": 2,
-  "label": "Architecture",
+  "label": "Shared",
+  "position": 7,
   "link": {
     "type": "generated-index"
   }

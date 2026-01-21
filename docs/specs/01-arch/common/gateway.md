@@ -1,11 +1,11 @@
 ---
-id: api-gateway
-title: API Gateway
-sidebar_label: API Gateway
+id: gateway
+title: Gateway
+sidebar_label: Gateway
 sidebar_position: 1
 ---
 
-# API Gateway
+# Gateway
 
 Tiêu chuẩn thiết kế và quản lý API tập trung.
 

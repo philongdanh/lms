@@ -1,7 +1,7 @@
 ---
-id: data-model
-title: Data Model
-sidebar_label: Data Model
+id: data
+title: Data
+sidebar_label: Data
 sidebar_position: 5
 ---
 

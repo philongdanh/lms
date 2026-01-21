@@ -1,7 +1,7 @@
 ---
-id: decisions
-title: Architecture Decisions
-sidebar_label: Decisions
+id: adrs
+title: Decisions
+sidebar_label: ADRs
 sidebar_position: 6
 ---
 

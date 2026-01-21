@@ -1,6 +1,6 @@
 ---
 id: security
-title: Security Policy
+title: Security
 sidebar_label: Security
 sidebar_position: 2
 ---
