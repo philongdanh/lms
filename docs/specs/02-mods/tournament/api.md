@@ -1,24 +1,8 @@
----
-id: tournament-api
-title: Tournament API Endpoints
-sidebar_label: API
-sidebar_position: 1
----
 
 # Tournament - API Endpoints
  
 Các giao diện lập trình cho quản lý giải đấu và bảng xếp hạng.
 
----
-
-## Base Information
-
-- **Base URL**: `/api/v1/tournaments`
-- **Version**: 1.0
-- **Format**: JSON
-- **Authentication**: Bearer Token
-
----
 
 ## Endpoints Summary
 
@@ -32,10 +16,3 @@ Các giao diện lập trình cho quản lý giải đấu và bảng xếp hạ
 | GET    | `/:id/leaderboard`    | Bảng xếp hạng giải đấu   | ✅            | 100/min    |
 | POST   | `/`                   | Tạo giải đấu mới         | ✅ Admin      | 10/min     |
 
----
-
-## References
-
-- [Business Logic](./logic.md)
-- [Data Model](./data.md)
-- [Test Cases](./tests.md)

@@ -1,25 +1,8 @@
----
-id: auth-tests
-title: Auth Test Cases
-sidebar_label: Tests
-sidebar_position: 4
----
 
 # Auth - Test Cases
  
 Kịch bản và chỉ số kiểm thử cho hệ thống xác thực.
 
----
-
-## Test Coverage Matrix
-
-| Specification  | Test Cases | Covered | Status      |
-| -------------- | ---------- | ------- | ----------- |
-| Business Logic | 15         | 80%     | In Progress |
-| API Endpoints  | 12         | 90%     | Done        |
-| Workflows      | 8          | 70%     | In Progress |
-
----
 
 ## Test Categories
 
@@ -76,29 +59,6 @@ Kịch bản và chỉ số kiểm thử cho hệ thống xác thực.
 | TC-AUTH-SEC-004 | XSS in username        | Script tag trong name         | HTML được escape           |
 | TC-AUTH-SEC-005 | CSRF protection        | Request không có CSRF token   | Request bị reject          |
 
----
-
-## Test Data Requirements
-
-### Bộ dữ liệu
-
-| Data Set         | Purpose           | Size         | Refresh Frequency |
-| ---------------- | ----------------- | ------------ | ----------------- |
-| Test Users       | Functional tests  | 100 users    | Per test run      |
-| Load Test Users  | Performance tests | 10,000 users | Weekly            |
-| Edge Case Emails | Email validation  | 50 records   | Monthly           |
-
-### Người dùng kiểm thử
-
-| Role    | Username            | Password | Permissions                  |
-| ------- | ------------------- | -------- | ---------------------------- |
-| Student | student@test.lms.vn | Test@123 | learning:\*, tournament:join |
-| Parent  | parent@test.lms.vn  | Test@123 | reports:view, children:\*    |
-| Teacher | teacher@test.lms.vn | Test@123 | class:\*, content:create     |
-| Admin   | admin@test.lms.vn   | Test@123 | school:_, users:_            |
-| Root    | root@test.lms.vn    | Test@123 | _:_                          |
-
----
 
 ## Test Automation
 
@@ -114,30 +74,6 @@ Kịch bản và chỉ số kiểm thử cho hệ thống xác thực.
 - [x] Tests chạy khi merge to main
 - [ ] Tests chạy hàng đêm (performance)
 
----
-
-## Reporting Requirements
-
-### Định dạng kết quả kiểm thử
-
-```json
-{
-  "test_id": "TC-AUTH-001",
-  "status": "pass/fail",
-  "duration": "ms",
-  "environment": "staging/prod",
-  "timestamp": "ISO8601"
-}
-```
-
-### Chỉ số cần theo dõi
-
-- Test pass rate
-- Defect density
-- Test execution time
-- Test coverage
-
----
 
 ## Validation Checklist
 
@@ -146,34 +82,7 @@ Kịch bản và chỉ số kiểm thử cho hệ thống xác thực.
 - [x] Test data requirements defined
 - [x] Automation strategy specified
 
----
 
-# Performance Requirements
-
----
-
----
-
-## Performance Targets
-
-### Thời gian phản hồi
-
-| Operation     | P50   | P95   | P99   | Max   | Measurement |
-| ------------- | ----- | ----- | ----- | ----- | ----------- |
-| Login         | 50ms  | 150ms | 300ms | 500ms | End-to-end  |
-| Token Refresh | 20ms  | 50ms  | 100ms | 200ms | End-to-end  |
-| Register      | 100ms | 250ms | 400ms | 800ms | End-to-end  |
-| Get Profile   | 30ms  | 80ms  | 150ms | 300ms | End-to-end  |
-
-### Yêu cầu thông lượng
-
-| Scenario                 | Requests/sec | Concurrent Users | Data Volume |
-| ------------------------ | ------------ | ---------------- | ----------- |
-| Normal Load              | 500          | 2000             | 100MB/hour  |
-| Peak Load                | 2000         | 10000            | 500MB/hour  |
-| Spike (Tournament start) | 5000         | 25000            | 1GB/hour    |
-
----
 
 ## Scalability Requirements
 
@@ -189,18 +98,6 @@ Kịch bản và chỉ số kiểm thử cho hệ thống xác thực.
 - **Max Instances**: 10
 - **Auto-scaling**: CPU > 70% for 2 min → scale up
 
----
-
-## Resource Utilization Limits
-
-| Resource          | Warning Threshold | Critical Threshold | Required Action        |
-| ----------------- | ----------------- | ------------------ | ---------------------- |
-| CPU Usage         | 70%               | 90%                | Scale up               |
-| Memory Usage      | 75%               | 90%                | Add memory             |
-| Redis Connections | 80%               | 95%                | Scale Redis            |
-| DB Connections    | 70%               | 85%                | Connection pool resize |
-
----
 
 ## Load Testing Scenarios
 
@@ -232,27 +129,6 @@ lúc **Test Parameters**:
 - [x] Error rate < 0.1%
 - [x] Memory leak: 0
 
----
-
-## Monitoring & Alerting
-
-### Chỉ số cần theo dõi
-
-- [x] Response time percentiles
-- [x] Error rates by endpoint
-- [x] Throughput
-- [x] JWT validation failures
-- [x] Rate limit triggers
-
-### Quy tắc cảnh báo
-
-| Metric              | Warning   | Critical  | Notification Channel |
-| ------------------- | --------- | --------- | -------------------- |
-| P95 Response Time   | > 150ms   | > 300ms   | Slack #alerts        |
-| Error Rate          | > 0.5%    | > 2%      | PagerDuty            |
-| Rate Limit Triggers | > 100/min | > 500/min | Slack #security      |
-
----
 
 ## Infrastructure Requirements
 
@@ -267,16 +143,6 @@ lúc **Test Parameters**:
 - PostgreSQL 15, 2 vCPU, 4GB RAM
 - Redis 7, 1 vCPU, 2GB RAM
 
----
-
-## Validation Checklist
-
-- [x] All performance targets quantified
-- [x] Scalability requirements specified
-- [x] Monitoring metrics defined
-- [x] Load testing scenarios created
-
----
 
 ## References
 

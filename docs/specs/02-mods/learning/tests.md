@@ -1,25 +1,8 @@
----
-id: learning-tests
-title: Learning Test Cases
-sidebar_label: Tests
-sidebar_position: 4
----
 
 # Learning & Personalization - Test Cases
  
 Kịch bản kiểm thử hệ thống học tập và cá nhân hóa.
 
----
-
-## Test Coverage Matrix
-
-| Specification  | Test Cases | Covered | Status  |
-| -------------- | ---------- | ------- | ------- |
-| Business Logic | 6          | 100%    | Planned |
-| API Endpoints  | 15         | 100%    | Planned |
-| Workflows      | 5          | 80%     | Planned |
-
----
 
 ## Test Categories
 
@@ -58,16 +41,6 @@ Kịch bản kiểm thử hệ thống học tập và cá nhân hóa.
 | ---------------- | ---------------- | ---------------------- | --------------- |
 | TC-LEARN-SEC-001 | IDOR on Progress | Get path của user khác | 403 Forbidden   |
 
----
-
-## Test Data Requirements
-
-### Bộ dữ liệu
-
-- **User History**: ~1M rows lịch sử cho test AI model.
-- **Lesson Content**: Chương trình toán hoàn chỉnh (Lớp 1-12).
-
----
 
 ## Test Automation
 
@@ -76,45 +49,13 @@ Kịch bản kiểm thử hệ thống học tập và cá nhân hóa.
 - **API Tests**: Jest / Supertest
 - **Performance Tests**: k6
 
----
-
-## Reporting Requirements
-
-JUnit XML chuẩn + HTML Report.
-
----
 
 ## Validation Checklist
 
 - [ ] Test coverage matrix hoàn chỉnh
 - [ ] Security tests được bao gồm
 
----
 
-# Performance Requirements
-
----
-
----
-
-## Performance Targets
-
-### Thời gian phản hồi
-
-| Hoạt động         | P50   | P95   | P99   | Max   | Đo lường                     |
-| ----------------- | ----- | ----- | ----- | ----- | ---------------------------- |
-| Get Learning Path | 100ms | 300ms | 800ms | 2s    | End-to-end (với AI fallback) |
-| Submit Answer     | 50ms  | 150ms | 300ms | 1s    | Thời gian xử lý              |
-| Update Progress   | 50ms  | 100ms | 200ms | 500ms | Database write               |
-
-### Yêu cầu thông lượng
-
-| Scenario            | Requests/sec | Concurrent Users | Data Volume |
-| ------------------- | ------------ | ---------------- | ----------- |
-| Normal Load         | 500          | 2000             | 500MB/giờ   |
-| Peak Load (Giờ thi) | 5000         | 20000            | 5GB/giờ     |
-
----
 
 ## Scalability Requirements
 
@@ -129,16 +70,6 @@ JUnit XML chuẩn + HTML Report.
 - **Learning Service**: Stateless, scale auto (min 2, max 20).
 - **AI Service**: Scale consumer workers dựa trên queue lag.
 
----
-
-## Resource Utilization Limits
-
-| Resource     | Warning Threshold | Critical Threshold | Required Action              |
-| ------------ | ----------------- | ------------------ | ---------------------------- |
-| CPU Usage    | 70%               | 90%                | Scale up pods                |
-| Memory Usage | 75%               | 90%                | Restart pod / Phân tích leak |
-
----
 
 ## Load Testing Scenarios
 
@@ -157,32 +88,9 @@ Parameters**:
 - [ ] Error rate < 0.1%
 - [ ] Không mất dữ liệu (progress saves)
 
----
-
-## Monitoring & Alerting
-
-### Chỉ số cần theo dõi
-
-- [ ] Latency của `submit_answer`
-- [ ] Latency của `get_path` (phụ thuộc vào AI)
-- [ ] Redis Hit Rate cho cached paths
-
-### Quy tắc cảnh báo
-
-| Metric             | Cảnh báo | Nguy hiểm | Kênh thông báo |
-| ------------------ | -------- | --------- | -------------- |
-| AI Service Latency | > 1s     | > 3s      | Dev Team       |
-| Error Rate         | > 1%     | > 5%      | PagerDuty      |
-
----
 
 ## Validation Checklist
 
 - [ ] Tất cả performance targets được định lượng
 - [ ] Các load testing scenarios được tạo cho Peak Load
 
----
-
-## References
-
-- [Overview](/specs)

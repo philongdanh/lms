@@ -1,24 +1,8 @@
----
-id: realtime-api
-title: Realtime API Endpoints
-sidebar_label: API
-sidebar_position: 1
----
 
 # Realtime - API Endpoints
  
 Các giao diện kết nối thời gian thực và thông báo trực tiếp.
 
----
-
-## Base Information
-
-- **Base URL**: `/api/v1/realtime`
-- **WebSocket URL**: `wss://api.example.com/ws`
-- **Version**: 1.0
-- **Authentication**: Bearer Token
-
----
 
 ## Endpoints Summary
 
@@ -38,10 +22,3 @@ Các giao diện kết nối thời gian thực và thông báo trực tiếp.
 | `tournament.start` | Server→Client | Giải đấu bắt đầu  |
 | `match.update`     | Server→Client | Cập nhật trận đấu |
 
----
-
-## References
-
-- [Business Logic](./logic.md)
-- [Data Model](./data.md)
-- [Test Cases](./tests.md)

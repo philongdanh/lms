@@ -1,27 +1,8 @@
----
-id: content-logic
-title: Content Business Logic
-sidebar_label: Logic
-sidebar_position: 2
----
 
 # Content & Question Bank - Business Logic
  
 Quy tắc nghiệp vụ quản lý và phân phối nội dung.
 
----
-
-## Business Rules
-
-| Rule ID     | Rule Name         | Description                  | Condition                                        | Action                                         | Exception             |
-| ----------- | ----------------- | ---------------------------- | ------------------------------------------------ | ---------------------------------------------- | --------------------- |
-| BR-CONT-001 | Content Hierarchy | Cấu trúc phân cấp bắt buộc   | Subject -> Grade -> Topic -> Lesson -> Content   | Áp dụng ràng buộc FK                           | -                     |
-| BR-CONT-002 | Access Control    | Quyền truy cập nội dung      | Học sinh chỉ xem được `is_active=true`           | Lọc theo `is_active` trong Query               | -                     |
-| BR-CONT-003 | Unique Slug       | Định danh URL thân thiện SEO | Slug của Topic/Subject phải unique toàn hệ thống | Tự động tạo/Validate tính duy nhất             | Thêm suffix nếu trùng |
-| BR-CONT-004 | Question Points   | Tính điểm câu hỏi            | Tổng điểm Quiz phải được tính động hoặc cố định  | Validate tổng điểm                             | -                     |
-| BR-CONT-005 | Import Validation | Validation dữ liệu import    | Kích thước file < 10MB, đúng MIME type           | Từ chối file không hợp lệ, Parse content rules | -                     |
-
----
 
 ## Dependencies
 
@@ -34,17 +15,6 @@ Quy tắc nghiệp vụ quản lý và phân phối nội dung.
 - ✅ File Storage (S3/MinIO) - Lưu trữ Videos, Images, Documents.
 - ✅ Search Engine (Elasticsearch) - Tìm kiếm câu hỏi và bài học.
 
----
-
-## KPIs & Metrics
-
-| Metric                      | Target               | Measurement             | Frequency |
-| --------------------------- | -------------------- | ----------------------- | --------- |
-| Content Upload Success Rate | > 99%                | Giám sát Log            | Hàng ngày |
-| Question Import Speed       | < 5s cho 100 câu hỏi | Thời gian thực hiện Job | Real-time |
-| Search Latency              | < 100ms              | APM                     | Real-time |
-
----
 
 ## Validation Criteria
 
@@ -53,31 +23,9 @@ Quy tắc nghiệp vụ quản lý và phân phối nội dung.
 - [ ] Media upload phát được trên tất cả thiết bị.
 - [ ] Quyền Teacher (tạo draft) và Admin (publish) hoạt động đúng.
 
----
-
-## Review & Approval
-
-| Role              | Name | Date | Status |
-| ----------------- | ---- | ---- | ------ |
-| **Product Owner** |      |      |        |
-| **Tech Lead**     |      |      |        |
-| **QA Lead**       |      |      |        |
-
----
 
 # Workflows
 
----
-
-## Workflow Summary
-
-| Workflow ID | Workflow Name            | Trigger             | Actors              | Status |
-| ----------- | ------------------------ | ------------------- | ------------------- | ------ |
-| WF-CONT-001 | Create Content Hierarchy | Admin/Teacher setup | Teacher, Admin      | Active |
-| WF-CONT-002 | Bulk Import Questions    | Upload action       | Teacher, Import Svc | Active |
-| WF-CONT-003 | Content Publishing       | Publish action      | Teacher             | Active |
-
----
 
 ## Workflow Details
 
@@ -87,36 +35,25 @@ Quy tắc nghiệp vụ quản lý và phân phối nội dung.
 
 #### Flow Diagram
 
-```mermaid
----
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
----
-sequenceDiagram
-    participant User
-    participant API
-    participant ImportService
-    participant DB
-    participant FileStorage
+```d2
+```d2
+shape: sequence_diagram
 
-    User->>API: Upload File (questions.xlsx)
-    API->>ImportService: Process File
-    ImportService->>FileStorage: Save temp file
+User
+API
+ImportService
+DB
+FileStorage
 
-    loop For each row
-        ImportService->>ImportService: Validate Rules
-        alt Invalid
-            ImportService->>ImportService: Add to Error List
-        else Valid
-            ImportService->>ImportService: Parse LaTeX/Images
-            ImportService->>DB: Insert Question
-            DB-->>ImportService: New ID
-        end
-    end
-
-    ImportService-->>API: Summary (Success/Fail)
-    API-->>User: Display Report
+User -> API: Upload File (questions.xlsx)
+API -> ImportService: Process File
+ImportService -> FileStorage: Save temp file
+ImportService -> ImportService: Validate Rules (Loop)
+ImportService -> ImportService: Parse & Insert (if Valid)
+ImportService -> DB: Insert Question
+DB -> ImportService: New ID
+ImportService -> API: Summary (Success/Fail)
+API -> User: Display Report
 ```
 
 #### Steps
@@ -134,36 +71,30 @@ sequenceDiagram
 
 #### Flow Diagram
 
-```mermaid
----
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
----
-flowchart TD
-    A[Teacher/Admin] --> B{Choose Action}
+```d2
+```d2
+direction: down
 
-    B -- Manage Structure --> C[Create Topic]
-    C --> D[Assign Subject & Grade]
-    D --> E[Set Active Status]
+A: Teacher/Admin
+B: Choose Action {
+  shape: diamond
+}
+C: Create Topic
+D: Assign Subject & Grade
+E: Set Active Status
+F: Create Lesson in Topic
+G: Upload Learning Materials
+H: Video/Slide/Doc
 
-    B -- Manage Lesson --> F[Create Lesson in Topic]
-    F --> G[Upload Learning Materials]
-    G --> H[Video/Slide/Doc]
+A -> B
+B -> C: Manage Structure
+C -> D
+D -> E
+B -> F: Manage Lesson
+F -> G
+G -> H
 ```
 
----
-
-## Events
-
-### Sự kiện hệ thống
-
-| Event Name          | Description               | Payload             | Emitted By  |
-| ------------------- | ------------------------- | ------------------- | ----------- |
-| `content.published` | Lesson/Topic được publish | `{id, type}`        | Content Svc |
-| `question.imported` | Import hoàn tất           | `{batch_id, count}` | Import Svc  |
-
----
 
 ## Error Handling
 
@@ -172,26 +103,11 @@ flowchart TD
 | Import File Corrupt    | Parse Error | Trả về "Invalid File Format"              | -          |
 | Partial Import Failure | Row Error   | Bỏ qua dòng, ghi log vào report, tiếp tục | -          |
 
----
-
-## Performance Requirements
-
-- **Import Throughput**: 100 câu hỏi / 5s.
-
----
 
 ## Security Requirements
 
 - [ ] Quét file upload để phát hiện malware (tích hợp VirusTotal hoặc ClamAV)
 
----
-
-## Validation Checklist
-
-- [ ] Diagram khớp với logic code cho vòng lặp import
-- [ ] Cơ chế báo cáo lỗi hoạt động cho các lỗi một phần
-
----
 
 ## References
 

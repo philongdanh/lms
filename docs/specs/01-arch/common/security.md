@@ -462,5 +462,5 @@ Check_Blacklist -> Pass_User_Ctx: OK
 
 - [RFC 7519](https://tools.ietf.org/html/rfc7519)
 - [Auth Business Logic](../../02-mods/auth/logic.md)
-- [Auth Workflows](../../02-mods/auth/logic.md)
-- [Auth Data Model](../../02-mods/auth/data.md)
+- [Auth Logic](../02-mods/auth/logic.md)
+- [Auth Data](../02-mods/auth/data.md)

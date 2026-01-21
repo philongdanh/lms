@@ -1,25 +1,8 @@
----
-id: admin-tests
-title: Admin Test Cases
-sidebar_label: Tests
-sidebar_position: 4
----
 
 # Admin & Tenant Management - Test Cases
  
 Kịch bản kiểm thử quy trình quản trị và thiết lập.
 
----
-
-## Test Coverage Matrix
-
-| Specification  | Test Cases | Coverage | Status  |
-| -------------- | ---------- | -------- | ------- |
-| Business Logic | 4          | 100%     | Planned |
-| API Endpoints  | 4          | 100%     | Planned |
-| Workflows      | 2          | 100%     | Planned |
-
----
 
 ## Test Categories
 
@@ -45,19 +28,9 @@ Kịch bản kiểm thử quy trình quản trị và thiết lập.
 | -------------- | --------------------------------- | ------------- | ------------- |
 | TC-ADM-SEC-001 | Tenant Admin không thể tạo Tenant | POST /tenants | 403 Forbidden |
 
----
-
-## Validation Checklist
-
-- [ ] Kiểm tra quyền hạn cho tất cả endpoints
-
----
 
 # Performance Requirements
 
----
-
----
 
 ## Performance Targets
 
@@ -75,15 +48,6 @@ Kịch bản kiểm thử quy trình quản trị và thiết lập.
 | ---------------- | ------------ | ---------------- | ----------- |
 | Admin Operations | 50           | 20 (Root Admins) | Thấp        |
 
----
-
-## Scalability Requirements
-
-### Mở rộng theo chiều ngang
-
-- **Admin Service**: Scale dựa trên tải, thường có lưu lượng thấp.
-
----
 
 ## Resource Utilization Limits
 
@@ -91,25 +55,8 @@ Kịch bản kiểm thử quy trình quản trị và thiết lập.
 | ----------------- | ----------------- | ------------------ | ---------------- |
 | CSV Parser Memory | 500MB             | 1GB                | Từ chối file lớn |
 
----
-
-## Load Testing Scenarios
-
-### Scenario 1: Bulk Import
-
-**Description**: Nhiều Tenant Admin import user đồng thời. **Success Criteria**:
-
-- [ ] Không có DB Deadlocks
-- [ ] Email queue xử lý ổn định
-
----
 
 ## Validation Checklist
 
 - [ ] Xác minh việc thực thi giới hạn kích thước file tối đa
 
----
-
-## References
-
-- [Overview](/specs)

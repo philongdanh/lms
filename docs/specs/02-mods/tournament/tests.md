@@ -1,25 +1,8 @@
----
-id: tournament-tests
-title: Tournament Test Cases
-sidebar_label: Tests
-sidebar_position: 4
----
 
 # Tournament & Competition - Test Cases
 
 Kịch bản kiểm thử hệ thống thi đấu và xếp hạng.
 
----
-
-## Test Coverage Matrix
-
-| Specification  | Test Cases | Coverage | Status  |
-| -------------- | ---------- | -------- | ------- |
-| Business Logic | 5          | 100%     | Planned |
-| API Endpoints  | 4          | 100%     | Planned |
-| Workflows      | 2          | 100%     | Planned |
-
----
 
 ## Test Categories
 
@@ -45,19 +28,9 @@ Kịch bản kiểm thử hệ thống thi đấu và xếp hạng.
 | ---------------- | --------------- | ----------- | --------------- |
 | TC-TOUR-PERF-001 | 100k Concurrent | Start Event | Latency < 200ms |
 
----
-
-## Validation Checklist
-
-- [ ] Xử lý gửi bài đồng thời
-
----
 
 # Performance Requirements
 
----
-
----
 
 ## Performance Targets
 
@@ -75,16 +48,6 @@ Kịch bản kiểm thử hệ thống thi đấu và xếp hạng.
 | ----------- | ------------------ | ---------------- |
 | Sự kiện lớn | 50,000 Answers/sec | 100,000          |
 
----
-
-## Scalability Requirements
-
-### Mở rộng theo chiều ngang
-
-- **WebSocket Cluster**: Auto-scale dựa trên CPU/Connections.
-- **Room Sharding**: Phân phối room trên các node.
-
----
 
 ## Resource Utilization Limits
 
@@ -92,25 +55,8 @@ Kịch bản kiểm thử hệ thống thi đấu và xếp hạng.
 | --------- | ----------------- | ------------------ |
 | Redis CPU | 60%               | 85%                |
 
----
-
-## Load Testing Scenarios
-
-### Scenario 1: Big Rush
-
-**Description**: 100k users tham gia trong 1 phút. **Success Criteria**:
-
-- [ ] Không có DB Deadlock
-- [ ] Tỷ lệ kết nối thành công > 99.9%
-
----
 
 ## Validation Checklist
 
 - [ ] Đã xác minh Redis Cluster failover
 
----
-
-## References
-
-- [Overview](/specs)

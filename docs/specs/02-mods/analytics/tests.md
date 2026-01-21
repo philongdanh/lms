@@ -1,25 +1,8 @@
----
-id: analytics-tests
-title: Analytics Test Cases
-sidebar_label: Tests
-sidebar_position: 4
----
 
 # Analytics &# Analytics - Test Cases
 
 Kịch bản kiểm thử hệ thống báo cáo và thống kê.
 
----
-
-## Test Coverage Matrix
-
-| Specification  | Test Cases | Coverage | Status          |
-| -------------- | ---------- | -------- | --------------- |
-| Business Logic | 5          | 100%     | Đã lên kế hoạch |
-| API Endpoints  | 4          | 100%     | Đã lên kế hoạch |
-| Workflows      | 2          | 100%     | Đã lên kế hoạch |
-
----
 
 ## Test Categories
 
@@ -44,19 +27,9 @@ Kịch bản kiểm thử hệ thống báo cáo và thống kê.
 | --------------- | ------------ | ------------ | ------ |
 | TC-ANA-PERF-001 | Báo cáo nặng | Khoảng 1 năm | < 2s   |
 
----
-
-## Validation Checklist
-
-- [ ] Xác minh tính nhất quán dữ liệu (Raw vs Agg)
-
----
 
 # Performance Requirements
 
----
-
----
 
 ## Performance Targets
 
@@ -74,19 +47,6 @@ Kịch bản kiểm thử hệ thống báo cáo và thống kê.
 | --------------- | ------------ | ---------------- | ----------- |
 | Event Ingestion | 5000         | N/A              | 1GB/giờ     |
 
----
-
-## Scalability Requirements
-
-### Mở rộng theo chiều dọc
-
-- **DB**: Bộ nhớ cao cho PostgreSQL chunk caching.
-
-### Mở rộng theo chiều ngang
-
-- **Consumer**: Các consumer song song cho event bus.
-
----
 
 ## Storage
 
@@ -94,24 +54,8 @@ Kịch bản kiểm thử hệ thống báo cáo và thống kê.
   - Raw Logs: 90 ngày.
   - Daily Stats: 5 năm.
 
----
-
-## Load Testing Scenarios
-
-### Scenario 1: End of Month Reporting
-
-**Description**: Phụ huynh xem báo cáo cùng lúc. **Tiêu chí thành công**:
-
-- [ ] P95 < 1s cho Report Detail API
-
----
 
 ## Validation Checklist
 
 - [ ] Đã bật nén PostgreSQL
 
----
-
-## References
-
-- [Overview](/specs)
