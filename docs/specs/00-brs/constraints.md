@@ -2,7 +2,7 @@
 id: constraints
 title: Constraints
 sidebar_label: Constraints
-sidebar_position: 6
+sidebar_position: 5
 ---
 
 # Constraints

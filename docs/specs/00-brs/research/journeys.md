@@ -114,9 +114,9 @@ Top 3? -> XP & Encourage: No
 
 ### Hành trình 4: Giáo viên tạo đề đánh giá
 
-**Persona**: Thầy Tùng (Giáo viên)  
+**Persona**: Giáo viên  
 **Mục tiêu**: Tạo đề thi 15 phút cho lớp từ ngân hàng câu hỏi.  
-**Kịch bản**: Tối Thứ 5, Thầy Tùng cần tạo đề kiểm tra cho tiết học ngày mai.
+**Kịch bản**: Tối Thứ 5, giáo viên cần tạo đề kiểm tra cho tiết học ngày mai.
 
 | Giai đoạn | Hành động                 | Điểm chạm         | Khó khăn                    | Giải pháp                       |
 | --------- | ------------------------- | ----------------- | --------------------------- | ------------------------------- |

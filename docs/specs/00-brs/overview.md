@@ -13,9 +13,7 @@ Tầm nhìn, phạm vi và bối cảnh chiến lược.
 
 ## Vision
 
-Hệ thống LMS thông minh hướng đến cá nhân hóa giáo dục cho học sinh từ lớp 1-12.
-Điểm khác biệt cốt lõi là sự kết hợp lộ trình học tập AI và cơ chế thi đấu để
-tăng động lực học tập.
+Nền tảng học tập thông minh tích hợp AI và gamification, hỗ trợ cá nhân hóa trải nghiệm học tập và tăng cường động lực thông qua cơ chế thi đấu.
 
 ---
 
@@ -61,12 +59,12 @@ tăng động lực học tập.
 
 ## Stakeholders
 
-| Role          | Name            | Responsibility         |
-| ------------- | --------------- | ---------------------- |
-| Product Owner | Võ Nhựt Linh    | Tầm nhìn và ưu tiên    |
-| Tech Lead     | Danh Phi Long   | Quyết định kỹ thuật    |
-| Designer      | Trần Minh Luân  | Thiết kế UX/UI         |
-| Sponsor       | Lê Thanh Truyền | Ngân sách và nguồn lực |
+| Role          | Responsibility         | Involvement          |
+| ------------- | ---------------------- | -------------------- |
+| Product Owner | Tầm nhìn và ưu tiên    | Định hướng sản phẩm  |
+| Tech Lead     | Quyết định kỹ thuật    | Kiến trúc hệ thống   |
+| UX Designer   | Thiết kế UX/UI         | Trải nghiệm người dùng |
+| Sponsor       | Ngân sách và nguồn lực | Phê duyệt và hỗ trợ  |
 
 ---
 

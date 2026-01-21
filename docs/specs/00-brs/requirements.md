@@ -89,10 +89,6 @@ Yêu cầu nghiệp vụ và kỹ thuật.
 | FR-AUTH-03  | UC-AUTH-002  | Auth       | TC-AUTH-002  |
 | FR-HS-01    | UC-LEARN-001 | Learning   | TC-LEARN-001 |
 | FR-COMP-01  | UC-COMP-001  | Tournament | TC-COMP-001  |
-| FR-AUTH-01 | UC-AUTH-001 | Auth | TC-AUTH-001 |
-| FR-AUTH-03 | UC-AUTH-002 | Auth | TC-AUTH-002 |
-| FR-HS-01 | UC-LEARN-001 | Learning | TC-LEARN-001 |
-| FR-COMP-01 | UC-COMP-001 | Tournament | TC-COMP-001 |
 
 ---
 
