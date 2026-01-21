@@ -6,8 +6,8 @@ sidebar_position: 4
 ---
 
 # Wireframes
-
-Wireframe templates and layout patterns.
+ 
+Biểu mẫu thiết kế sơ đồ và các kiểu bố cục giao diện.
 
 ---
 
