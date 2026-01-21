@@ -1,3 +1,9 @@
+---
+id: content-data
+title: Content - Data Model
+sidebar_label: Data
+sidebar_position: 3
+---
 
 # Content & Question Bank - Data Model
  

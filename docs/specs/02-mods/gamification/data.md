@@ -1,3 +1,9 @@
+---
+id: gamification-data
+title: Gamification - Data Model
+sidebar_label: Data
+sidebar_position: 3
+---
 
 # Gamification - Data Model
  
