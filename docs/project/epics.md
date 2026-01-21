@@ -6,8 +6,8 @@ sidebar_position: 1
 ---
 
 # Epics
-
-Phân chia Epic với nhóm tính năng và phân bổ sprint.
+ 
+Các nhóm tính năng lớn và lộ trình triển khai theo giai đoạn.
 
 ---
 

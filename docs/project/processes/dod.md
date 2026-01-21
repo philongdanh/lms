@@ -6,8 +6,8 @@ sidebar_position: 1
 ---
 
 # Definition of Done
-
-Tiêu chí để xác định một story/task "Done".
+ 
+Tiêu chuẩn định nghĩa hoàn thành cho các tác vụ.
 
 ---
 

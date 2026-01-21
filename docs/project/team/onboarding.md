@@ -6,8 +6,8 @@ sidebar_position: 2
 ---
 
 # Team Onboarding
-
-Hướng dẫn onboarding cho team member mới.
+ 
+Hướng dẫn và quy trình dành cho thành viên mới.
 
 ---
 

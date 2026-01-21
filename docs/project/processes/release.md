@@ -6,8 +6,8 @@ sidebar_position: 2
 ---
 
 # Release Process
-
-Quy trình release và deployment.
+ 
+Quy trình phát hành và triển khai phần mềm.
 
 ---
 

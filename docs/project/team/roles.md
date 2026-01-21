@@ -6,8 +6,8 @@ sidebar_position: 1
 ---
 
 # Team Roles
-
-Định nghĩa vai trò và responsibilities.
+ 
+Vai trò và trách nhiệm của các thành viên trong dự án.
 
 ---
 

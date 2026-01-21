@@ -6,8 +6,8 @@ sidebar_position: 3
 ---
 
 # Backlog
-
-Backlog hoàn chỉnh với mức độ ưu tiên, độ khó và phân bổ sprint.
+ 
+Danh sách các yêu cầu và tính năng chờ triển khai.
 
 ---
 

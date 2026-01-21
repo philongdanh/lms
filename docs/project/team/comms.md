@@ -6,8 +6,8 @@ sidebar_position: 3
 ---
 
 # Communication
-
-Quy trình và kênh giao tiếp trong team.
+ 
+Quy trình và các kênh giao tiếp chính thức trong dự án.
 
 ---
 
