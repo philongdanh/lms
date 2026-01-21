@@ -44,11 +44,11 @@ Hệ thống LMS thông minh hướng đến cá nhân hóa giáo dục cho họ
 
 ### In Scope (Trong phạm vi)
 
-| Category  | Items                                              |
-| --------- | -------------------------------------------------- |
-| Features  | Học tập, Thi đấu, Gamification, Báo cáo            |
+| Category  | Items                                                            |
+| --------- | ---------------------------------------------------------------- |
+| Features  | Học tập, Thi đấu, Gamification, Báo cáo                          |
 | Users     | Học sinh, Phụ huynh, Giáo viên, Quản trị viên trường, Root Admin |
-| Platforms | Web (responsive)                                   |
+| Platforms | Web (responsive)                                                 |
 
 ### Out of Scope (Ngoài phạm vi)
 
@@ -61,12 +61,12 @@ Hệ thống LMS thông minh hướng đến cá nhân hóa giáo dục cho họ
 
 ## Stakeholders
 
-| Role          | Name  | Responsibility        |
-| ------------- | ----- | --------------------- |
-| Product Owner | [TBD] | Tầm nhìn và ưu tiên   |
-| Tech Lead     | [TBD] | Quyết định kỹ thuật   |
-| Designer      | [TBD] | Thiết kế UX/UI        |
-| Sponsor       | [TBD] | Ngân sách và nguồn lực|
+| Role          | Name  | Responsibility         |
+| ------------- | ----- | ---------------------- |
+| Product Owner | [TBD] | Tầm nhìn và ưu tiên    |
+| Tech Lead     | [TBD] | Quyết định kỹ thuật    |
+| Designer      | [TBD] | Thiết kế UX/UI         |
+| Sponsor       | [TBD] | Ngân sách và nguồn lực |
 
 ---
 
@@ -93,21 +93,21 @@ Hệ thống LMS thông minh hướng đến cá nhân hóa giáo dục cho họ
 
 ## Success Criteria
 
-| Criterion                | Target                | Measurement        |
-| ------------------------ | --------------------- | ------------------ |
-| User Engagement          | 70% DAU/MAU           | Analytics tracking |
-| Hoàn thành bài học       | 80% course completion | Progress tracking  |
-| Tham gia thi đấu         | 50% eligible users    | Tournament metrics |
+| Criterion          | Target                | Measurement        |
+| ------------------ | --------------------- | ------------------ |
+| User Engagement    | 70% DAU/MAU           | Analytics tracking |
+| Hoàn thành bài học | 80% course completion | Progress tracking  |
+| Tham gia thi đấu   | 50% eligible users    | Tournament metrics |
 
 ---
 
 ## Timeline
 
-| Phase   | Duration | Focus                            |
-| ------- | -------- | -------------------------------- |
-| Phase 1 | Q1-Q2    | MVP - Học tập cốt lõi & Thi đấu  |
-| Phase 2 | Q3-Q4    | Tính năng nâng cao, Mobile       |
-| Phase 3 | Year 2   | Mở rộng & Doanh nghiệp           |
+| Phase   | Duration | Focus                           |
+| ------- | -------- | ------------------------------- |
+| Phase 1 | Q1-Q2    | MVP - Học tập cốt lõi & Thi đấu |
+| Phase 2 | Q3-Q4    | Tính năng nâng cao, Mobile      |
+| Phase 3 | Year 2   | Mở rộng & Doanh nghiệp          |
 
 ---
 

@@ -9,14 +9,16 @@ sidebar_position: 2
 
 Kế hoạch cấp sprint với các sản phẩm bàn giao và phân bổ năng lực.
 
-> **Phạm vi**: Tài liệu này bao gồm việc lập kế hoạch và thực hiện sprint. Đối với lộ trình cấp sản phẩm, xem
+> **Phạm vi**: Tài liệu này bao gồm việc lập kế hoạch và thực hiện sprint. Đối
+> với lộ trình cấp sản phẩm, xem
 > [Product Roadmap](../specs/00-business/product-roadmap.md).
 
 ---
 
 ## Overview
 
-Lộ trình này xác định tất cả các sprint từ khi bắt đầu đến khi hoàn thành dự án, với các sản phẩm bàn giao và cột mốc rõ ràng.
+Lộ trình này xác định tất cả các sprint từ khi bắt đầu đến khi hoàn thành dự án,
+với các sản phẩm bàn giao và cột mốc rõ ràng.
 
 ---
 
