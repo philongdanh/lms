@@ -1,25 +1,8 @@
----
-id: realtime-tests
-title: Realtime Test Cases
-sidebar_label: Tests
-sidebar_position: 4
----
 
 # Real-time Communication - Test Cases
 
 Kịch bản kiểm thử hệ thống giao tiếp thời gian thực.
 
----
-
-## Test Coverage Matrix
-
-| Specification  | Test Cases | Coverage | Status  |
-| -------------- | ---------- | -------- | ------- |
-| Business Logic | 4          | 100%     | Planned |
-| API Endpoints  | 4          | 100%     | Planned |
-| Workflows      | 2          | 100%     | Planned |
-
----
 
 ## Test Categories
 
@@ -45,19 +28,9 @@ Kịch bản kiểm thử hệ thống giao tiếp thời gian thực.
 | -------------- | ----------- | ---------- | --------- |
 | TC-RT-PERF-001 | 10k kết nối | Ramp up 1m | Không lỗi |
 
----
-
-## Validation Checklist
-
-- [ ] Tuân thủ WebSocket Protocol (v4)
-
----
 
 # Performance Requirements
 
----
-
----
 
 ## Performance Targets
 
@@ -75,16 +48,6 @@ Kịch bản kiểm thử hệ thống giao tiếp thời gian thực.
 | ----------------------- | --------------- | ---------------- | ----------- |
 | Broadcast (Competition) | 10,000 msgs/sec | 50,000           | 1MB/sec     |
 
----
-
-## Scalability Requirements
-
-### Mở rộng theo chiều ngang
-
-- **WebSocket Servers**: Yêu cầu sticky session load balancing.
-- **Redis**: Cluster mode cho thông lượng Pub/Sub.
-
----
 
 ## Resource Utilization Limits
 
@@ -92,26 +55,8 @@ Kịch bản kiểm thử hệ thống giao tiếp thời gian thực.
 | --------------- | ----------------- | ------------------ | --------------- |
 | Open Files (FD) | 100,000           | 500,000            | Tăng ulimit     |
 
----
-
-## Load Testing Scenarios
-
-### Scenario 1: Live Tournament
-
-**Description**: 50k người dùng tham gia phòng và nhận câu hỏi đồng thời.
-**Success Criteria**:
-
-- [ ] Độ trễ gửi < 200ms cho 99% người dùng
-- [ ] Không có kết nối bị ngắt
-
----
 
 ## Validation Checklist
 
 - [ ] Tinh chỉnh Kernel cho đồng thời cao (sysctl)
 
----
-
-## References
-
-- [Overview](/specs)

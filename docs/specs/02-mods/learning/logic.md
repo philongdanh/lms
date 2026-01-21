@@ -1,27 +1,8 @@
----
-id: learning-logic
-title: Learning Business Logic
-sidebar_label: Logic
-sidebar_position: 2
----
 
 # Learning & Personalization - Business Logic
  
 Quy tắc nghiệp vụ lộ trình và cá nhân hóa việc học.
 
----
-
-## Business Rules
-
-| Rule ID      | Rule Name          | Description                      | Condition                                  | Action                                     | Exception                   |
-| ------------ | ------------------ | -------------------------------- | ------------------------------------------ | ------------------------------------------ | --------------------------- |
-| BR-LEARN-001 | Video Completion   | Điều kiện hoàn thành video       | Thời gian xem > 80% tổng thời lượng        | Đánh dấu Video Completed                   | Lỗi mạng -> Retry logic     |
-| BR-LEARN-002 | Lesson Completion  | Điều kiện hoàn thành bài học     | Video Completed VÀ Quiz Score > 70%        | Đánh dấu Lesson Completed, Trigger Reward  | -                           |
-| BR-LEARN-003 | Prerequisite Check | Kiểm tra điều kiện tiên quyết    | Bài học trước chưa hoàn thành              | Trạng thái Locked, Trả về `CONTENT_LOCKED` | -                           |
-| BR-LEARN-004 | Anti-Cheat         | Ngăn chặn gian lận trong bài tập | Client request đáp án trước khi submit     | Chặn request, Ghi log vi phạm              | -                           |
-| BR-LEARN-005 | Reward Trigger     | Trao thưởng khi hoàn thành       | Lesson Completed thay đổi từ False -> True | Gọi Gamification Service thêm EXP          | Service down -> Queue event |
-
----
 
 ## Dependencies
 
@@ -35,17 +16,6 @@ Quy tắc nghiệp vụ lộ trình và cá nhân hóa việc học.
 
 - ✅ AI Service (Python) - Mô hình đề xuất lộ trình học tập.
 
----
-
-## KPIs & Metrics
-
-| Metric                 | Target  | Measurement                        | Frequency |
-| ---------------------- | ------- | ---------------------------------- | --------- |
-| Adaptive Path Accuracy | > 85%   | User feedback & click-through rate | Hàng tuần |
-| Lesson Completion Rate | > 60%   | DB query (completed / started)     | Hàng ngày |
-| P95 Latency (Submit)   | < 200ms | APM Monitoring                     | Real-time |
-
----
 
 ## Validation Criteria
 
@@ -54,31 +24,9 @@ Quy tắc nghiệp vụ lộ trình và cá nhân hóa việc học.
 - [ ] Luồng tương tác với AI Service được định nghĩa rõ ràng (fallback khi lỗi).
 - [ ] Cơ chế anti-cheat được thiết kế.
 
----
-
-## Review & Approval
-
-| Role              | Name | Date | Status |
-| ----------------- | ---- | ---- | ------ |
-| **Product Owner** |      |      |        |
-| **Tech Lead**     |      |      |        |
-| **QA Lead**       |      |      |        |
-
----
 
 # Workflows
 
----
-
-## Workflow Summary
-
-| Workflow ID  | Workflow Name            | Trigger                         | Actors              | Status |
-| ------------ | ------------------------ | ------------------------------- | ------------------- | ------ |
-| WF-LEARN-001 | Submit Exercise          | Student nộp câu trả lời         | Student, System     | Active |
-| WF-LEARN-002 | Generate Learning Path   | Student truy cập dashboard      | Student, AI Service | Active |
-| WF-LEARN-003 | Lesson Progress Tracking | Student xem video/vượt qua quiz | Student, System     | Active |
-
----
 
 ## Workflow Details
 
@@ -89,31 +37,41 @@ tập.
 
 #### Flow Diagram
 
-```mermaid
----
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
----
-flowchart TD
-    A[Student Selects Answers] --> B[Submit Request]
-    B --> C{Validate Session}
+```d2
+direction: down
 
-    C -- Valid --> D["Fetch Correct Answers (Server-side)"]
-    D --> E[Compare & Calculate Score]
+A: Student Selects Answers
+B: Submit Request
+C: Validate Session? {
+  shape: diamond
+}
+D: Fetch Correct Answers (Server-side)
+E: Compare & Calculate Score
+F: Score >= PassThreshold? {
+  shape: diamond
+}
+G: Mark Lesson Completed
+H: Keep 'In Progress'
+I: Publish 'LESSON_COMPLETED' Event
+J: Return Result & Hints
+K: Gamification: Add EXP
+L: Analytics: Update Knowledge Map
+M: Return Result with Rewards
+N: Client Show Celebration
 
-    E --> F{Score >= PassThreshold?}
-    F -- Yes --> G[Mark Lesson Completed]
-    F -- No --> H[Keep 'In Progress']
-
-    G --> I[Publish 'LESSON_COMPLETED' Event]
-    H --> J[Return Result & Hints]
-
-    I --> K[Gamification: Add EXP]
-    I --> L[Analytics: Update Knowledge Map]
-
-    K --> M[Return Result with Rewards]
-    M --> N[Client Show Celebration]
+A -> B
+B -> C
+C -> D: Valid
+D -> E
+E -> F
+F -> G: Yes
+F -> H: No
+G -> I
+H -> J
+I -> K
+I -> L
+K -> M
+M -> N
 ```
 
 #### Steps
@@ -138,33 +96,25 @@ flowchart TD
 
 #### Flow Diagram
 
-```mermaid
----
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
----
-sequenceDiagram
-    participant Student
-    participant API
-    participant PathService
-    participant Analytics
-    participant AI_Model
+```d2
+shape: sequence_diagram
 
-    Student->>API: Get Learning Path
-    API->>PathService: Request Path for Student
+Student
+API
+PathService
+Analytics
+DB
+AI_Model
 
-    par Fetch Data
-        PathService->>Analytics: Get Knowledge Map
-        PathService->>DB: Get Recent Activity
-    end
-
-    PathService->>AI_Model: Generate Recommendation(Profile, History)
-    AI_Model-->>PathService: List<LessonID> (Ordered)
-
-    PathService->>DB: Enrich with Lesson Metadata
-    PathService-->>API: Full Learning Path
-    API-->>Student: Display Personalized Route
+Student -> API: Get Learning Path
+API -> PathService: Request Path for Student
+PathService -> Analytics: Get Knowledge Map
+PathService -> DB: Get Recent Activity
+PathService -> AI_Model: Generate Recommendation
+AI_Model -> PathService: List<LessonID> (Ordered)
+PathService -> DB: Enrich with Lesson Metadata
+PathService -> API: Full Learning Path
+API -> Student: Display Personalized Route
 ```
 
 ### WF-LEARN-003: Lesson Progress State
@@ -173,32 +123,22 @@ sequenceDiagram
 
 #### Flow Diagram
 
-```mermaid
----
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
----
-stateDiagram-v2
-    [*] --> LOCKED: Prerequisite not met
-    LOCKED --> AVAILABLE: Prerequisite met
-    AVAILABLE --> IN_PROGRESS: Started watching/doing
-    IN_PROGRESS --> COMPLETED: Criteria met (Video > 80%, Quiz > 70%)
-    COMPLETED --> REVIEW: Re-learning
+```d2
+direction: right
+
+LOCKED
+AVAILABLE
+IN_PROGRESS
+COMPLETED
+REVIEW
+
+(*) -> LOCKED: Prerequisite not met
+LOCKED -> AVAILABLE: Prerequisite met
+AVAILABLE -> IN_PROGRESS: Started watching/doing
+IN_PROGRESS -> COMPLETED: Criteria met
+COMPLETED -> REVIEW: Re-learning
 ```
 
----
-
-## Events
-
-### Sự kiện hệ thống
-
-| Event Name         | Description                   | Payload                              | Emitted By   |
-| ------------------ | ----------------------------- | ------------------------------------ | ------------ |
-| `lesson.completed` | Bài học hoàn thành            | `{student_id, lesson_id, timestamp}` | Learning Svc |
-| `path.generated`   | Lộ trình học tập mới được tạo | `{student_id, path_id}`              | Learning Svc |
-
----
 
 ## Error Handling
 
@@ -207,28 +147,12 @@ stateDiagram-v2
 | AI Model Timeout | Timeout > 2s | Trả về Default Path (theo Curriculum) | Log warning |
 | DB Write Fail    | Exception    | Trả lỗi cho client, retry client-side | -           |
 
----
-
-## Performance Requirements
-
-- **Thời gian xử lý**: Submit answer < 200ms
-- **Throughput**: 5000 requests/sec (Submit)
-
----
 
 ## Security Requirements
 
 - [ ] Rate limiting theo user
 - [ ] Xác thực quyền sở hữu session
 
----
-
-## Validation Checklist
-
-- [ ] Tất cả workflows đã được vẽ sơ đồ
-- [ ] Xử lý lỗi được chỉ định cho AI failure
-
----
 
 ## References
 

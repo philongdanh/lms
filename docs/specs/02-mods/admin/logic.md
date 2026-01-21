@@ -1,26 +1,8 @@
----
-id: admin-logic
-title: Admin Business Logic
-sidebar_label: Logic
-sidebar_position: 2
----
 
 # Admin & Tenant Management - Business Logic
  
 Quy tắc nghiệp vụ quản trị và vận hành hệ thống.
 
----
-
-## Business Rules
-
-| Rule ID      | Rule Name          | Description                       | Condition                       | Action                                               | Exception |
-| ------------ | ------------------ | --------------------------------- | ------------------------------- | ---------------------------------------------------- | --------- |
-| BR-ADMIN-001 | Unique Tenant Code | Mã Tenant phải là duy nhất        | Mã đã tồn tại trong DB          | Từ chối tạo mới                                      | -         |
-| BR-ADMIN-002 | Tenant Soft Delete | Xóa Tenant chỉ đánh dấu là đã xóa | Yêu cầu xóa                     | Đặt `deleted_at`, Lên lịch xóa vĩnh viễn sau 30 ngày | -         |
-| BR-ADMIN-003 | User Protection    | Không thể tự xóa chính mình       | User ID trùng với người yêu cầu | Chặn xóa                                             | -         |
-| BR-ADMIN-004 | Import Limit       | Giới hạn số lượng import          | Số dòng > 500                   | Từ chối yêu cầu                                      | -         |
-
----
 
 ## Dependencies
 
@@ -33,16 +15,6 @@ Quy tắc nghiệp vụ quản trị và vận hành hệ thống.
 
 - ✅ Email Service (SendGrid) - Gửi email kích hoạt.
 
----
-
-## KPIs & Metrics
-
-| Metric               | Target            | Measurement  | Frequency |
-| -------------------- | ----------------- | ------------ | --------- |
-| Tenant Creation Time | < 2s              | API Latency  | Real-time |
-| Import Speed         | < 10s / 500 users | Job Duration | Real-time |
-
----
 
 ## Validation Criteria
 
@@ -51,30 +23,9 @@ Quy tắc nghiệp vụ quản trị và vận hành hệ thống.
 - [ ] Import CSV báo cáo chính xác các dòng lỗi.
 - [ ] Audit log cho Impersonation đầy đủ.
 
----
-
-## Review & Approval
-
-| Role              | Name | Date | Status |
-| ----------------- | ---- | ---- | ------ |
-| **Product Owner** |      |      |        |
-| **Tech Lead**     |      |      |        |
-| **QA Lead**       |      |      |        |
-
----
 
 # Workflows
 
----
-
-## Workflow Summary
-
-| Workflow ID  | Workflow Name | Trigger           | Actors               | Status |
-| ------------ | ------------- | ----------------- | -------------------- | ------ |
-| WF-ADMIN-001 | Create Tenant | Admin gửi form    | Root Admin, System   | Active |
-| WF-ADMIN-002 | Import Users  | Admin tải lên CSV | Tenant Admin, System | Active |
-
----
 
 ## Workflow Details
 
@@ -84,28 +35,23 @@ Quy tắc nghiệp vụ quản trị và vận hành hệ thống.
 
 #### Flow Diagram
 
-```mermaid
----
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
----
-sequenceDiagram
-    participant RootAdmin
-    participant API
-    participant TenantService
-    participant DB
-    participant Email
+```d2
+```d2
+shape: sequence_diagram
 
-    RootAdmin->>API: POST /admin/tenants
-    API->>TenantService: Create tenant
-    TenantService->>DB: Check Unique Code
-    TenantService->>DB: Insert Tenant
-    TenantService->>DB: Create tenant-admin user
-    TenantService->>Email: Send activation email
-    TenantService-->>RootAdmin: Tenant created
+RootAdmin
+API
+TenantService
+DB
+Email
 
-    Note over RootAdmin,DB: Tenant is ACTIVE
+RootAdmin -> API: POST /admin/tenants
+API -> TenantService: Create tenant
+TenantService -> DB: Check Unique Code
+TenantService -> DB: Insert Tenant
+TenantService -> DB: Create tenant-admin user
+TenantService -> Email: Send activation email
+TenantService -> RootAdmin: Tenant created
 ```
 
 ### WF-ADMIN-002: Import Users
@@ -114,24 +60,30 @@ sequenceDiagram
 
 #### Flow Diagram
 
-```mermaid
----
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
----
-flowchart TB
-    Upload["Upload CSV"] --> Parse["Parse File"]
-    Parse --> Validate["Validate Rows"]
+```d2
+```d2
+direction: down
 
-    Validate --> Valid{"All Valid?"}
-    Valid -->|Yes| Insert["Batch Insert"]
-    Valid -->|No| Report["Generate Error Report"]
+Upload: Upload CSV
+Parse: Parse File
+Validate: Validate Rows
+Valid: All Valid? {
+  shape: diamond
+}
+Insert: Batch Insert
+Report: Generate Error Report
+Email: Send Welcome Emails
+Success: Return Success Report
+Partial: Return Error Report
 
-    Insert --> Email["Send Welcome Emails"]
-    Email --> Success["Return Success Report"]
-
-    Report --> Partial["Return Error Report"]
+Upload -> Parse
+Parse -> Validate
+Validate -> Valid
+Valid -> Insert: Yes
+Valid -> Report: No
+Insert -> Email
+Email -> Success
+Report -> Partial
 ```
 
 #### Steps
@@ -143,18 +95,6 @@ flowchart TB
 | 3    | Batch Insert     | System | DB Transaction Insert           | Users đã tạo   |
 | 4    | Thông báo        | System | Async Email Queue               | -              |
 
----
-
-## Events
-
-### Sự kiện hệ thống
-
-| Event Name         | Description         | Payload               | Emitted By |
-| ------------------ | ------------------- | --------------------- | ---------- |
-| `tenant.created`   | Tenant mới được tạo | `{tenant_id, name}`   | Admin Svc  |
-| `tenant.suspended` | Tenant bị tạm ngưng | `{tenant_id, reason}` | Admin Svc  |
-
----
 
 ## Error Handling
 
@@ -163,26 +103,12 @@ flowchart TB
 | Email trùng lặp trong Import  | DB Constraint | Bỏ qua dòng, ghi log lỗi | -          |
 | Email Service không hoạt động | Timeout       | Thử lại sau (Job)        | -          |
 
----
-
-## Performance Requirements
-
-- **Tenant Creation**: < 2s.
-
----
 
 ## Security Requirements
 
 - [ ] Chỉ Root Admin mới có thể kích hoạt các workflow Tenant.
 - [ ] Tenant Admin chỉ có thể import user vào tenant của mình.
 
----
-
-## Validation Checklist
-
-- [ ] CSV Parsing xử lý UTF-8 chính xác
-
----
 
 ## References
 
