@@ -18,6 +18,7 @@ between schools. All business tables have `tenant_id` and `created_at`,
 `updated_at` timestamps (except system tables).
 
 ```d2
+direction: right
 
 # ========== SYSTEM TABLES ==========
 Permission: {

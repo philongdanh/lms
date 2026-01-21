@@ -89,7 +89,7 @@ Login -> Locked: 5 Failed Attempts
 ### Learning Flow
 
 ```d2
-direction: down
+direction: right
 
 Dashboard -> Browse: View Content
 Browse -> Subject: Select Subject
