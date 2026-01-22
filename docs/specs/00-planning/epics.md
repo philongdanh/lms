@@ -218,6 +218,6 @@ MVP tập trung vào 3 module chính:
 
 ## References
 
-- [Sprint Plan](./sprint-plan.md)
+- [Plan](./plan.md)
 - [Backlog](./backlog.md)
 - [Stories](./stories.md)

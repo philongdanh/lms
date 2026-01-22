@@ -180,5 +180,5 @@ theo mức độ ưu tiên và sprint.
 ## References
 
 - [Epics](./epics.md)
-- [Sprint Plan](./sprint-plan.md)
+- [Plan](./plan.md)
 - [Stories](./stories.md)

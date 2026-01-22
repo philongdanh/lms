@@ -1,7 +1,7 @@
 ---
-id: sprint-plan
-title: Sprint Plan
-sidebar_label: Sprint Plan
+id: plan
+title: Plan
+sidebar_label: Plan
 sidebar_position: 30
 ---
 

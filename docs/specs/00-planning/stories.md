@@ -7,7 +7,7 @@ sidebar_position: 3
 
 # Stories
 
-Danh sách các User Stories chi tiết của hệ thống. Xem [Vision](./vision.md) cho tầm nhìn sản phẩm và actors.
+Danh sách tính năng cần triển khai.
 
 ---
 
