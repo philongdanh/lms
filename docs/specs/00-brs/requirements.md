@@ -105,22 +105,21 @@ Yêu cầu nghiệp vụ và kỹ thuật.
 
 ## Traceability Matrix
 
-| Requirement | Use Case     | Module       | Test Case    |
-| ----------- | ------------ | ------------ | ------------ |
-| FR-AUTH-01  | UC-AUTH-001  | Auth         | TC-AUTH-001  |
-| FR-AUTH-03  | UC-AUTH-002  | Auth         | TC-AUTH-002  |
-| FR-HS-01    | UC-LEARN-001 | Learning     | TC-LEARN-001 |
-| FR-COMP-01  | UC-COMP-001  | Tournament   | TC-COMP-001  |
-| FR-COMP-08  | UC-COMP-002  | Tournament   | TC-COMP-002  |
-| FR-HS-06    | UC-LEARN-002 | Learning     | TC-LEARN-002 |
-| FR-CONT-01  | UC-CONT-001  | Content      | TC-CONT-001  |
-| FR-REP-02   | UC-REP-001   | Reporting    | TC-REP-001   |
-| FR-AUTH-07  | UC-AUTH-003  | Auth         | TC-AUTH-003  |
+| Requirement | Module       | Test Case    |
+| ----------- | ------------ | ------------ |
+| FR-AUTH-01  | Auth         | TC-AUTH-001  |
+| FR-AUTH-03  | Auth         | TC-AUTH-002  |
+| FR-HS-01    | Learning     | TC-LEARN-001 |
+| FR-COMP-01  | Tournament   | TC-COMP-001  |
+| FR-COMP-08  | Tournament   | TC-COMP-002  |
+| FR-HS-06    | Learning     | TC-LEARN-002 |
+| FR-CONT-01  | Content      | TC-CONT-001  |
+| FR-REP-02   | Reporting    | TC-REP-001   |
+| FR-AUTH-07  | Auth         | TC-AUTH-003  |
 
 ---
 
 ## References
 
 - [Business Overview](./overview.md)
-- [Use Cases](./use-cases/uc-auth-001-register.md)
 - [System Design](../01-arch/design.md)
