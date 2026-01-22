@@ -11,18 +11,6 @@ Lựa chọn công nghệ và tiêu chuẩn kỹ thuật cho hệ thống.
 
 ---
 
-| Layer | Tech | Version | Mục đích chính | Phù hợp với ràng buộc |
-|-------|------|---------|----------------|----------------------|
-| **Frontend** | Next.js + React + TypeScript | Latest | Web UI với SSR/SSG, SEO tốt | Web responsive (BC-003) |
-| **Backend** | NestJS + Node.js | Node 20+, NestJS latest | API Server, WebSocket Gateway, Module hóa | Monolithic modular (TC-ARCH-01) |
-| **Database** | PostgreSQL | 15+ | Lưu trữ dữ liệu chính, ACID compliance | JSONB support, mature |
-| **Cache & Pub/Sub** | Redis | 7+ | Session cache, real-time Pub/Sub, leaderboard | Độ trễ thấp (NFR-PERF-05) |
-| **Container** | Docker + Docker Compose | Latest | Đóng gói và triển khai nhất quán | On-premise deployment (BC-006) |
-| **AI/ML** | Python microservice + OpenAI API | - | Phân tích học tập, đề xuất cá nhân hóa | Sử dụng bên thứ ba (BC-015) |
-| **File Storage** | Local storage | - | Lưu trữ video bài giảng, tài liệu | Self-hosted (BC-008) |
-
----
-
 ## Layer Details
 
 ### FE

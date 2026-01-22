@@ -19,22 +19,7 @@ Kiến trúc thành phần, quản lý trạng thái và điều phối giao di�
 | Storybook | Component Library |      |
 | Chromatic | Visual Testing    |      |
 
----
-
-## Tech Stack
-
-| Layer           | Technology           | Version |
-| --------------- | -------------------- | ------- |
-| Framework       | React                | 18.x    |
-| Language        | TypeScript           | 5.x     |
-| Build Tool      | Vite + SWC           | 5.x     |
-| Styling         | Tailwind CSS         | 3.x     |
-| UI Components   | shadcn/ui + Radix UI | latest  |
-| State (Server)  | TanStack Query       | 5.x     |
-| State (GraphQL) | Apollo Client        | 4.x     |
-| Forms           | React Hook Form      | 7.x     |
-| Validation      | Zod                  | 3.x     |
-| Routing         | React Router         | 6.x     |
+> For detailed Technology Stack, see [Tech Stack](./tech-stack.md).
 
 ---
 

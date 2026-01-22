@@ -20,20 +20,7 @@ Thiết kế API, cấu trúc database và tham chiếu công cụ.
 | Apidog             | API Documentation |            |
 | GraphQL Playground | GraphQL Explorer  | `/graphql` |
 
----
-
-## Tech Stack
-
-| Layer         | Tech                    | Version |
-| ------------- | ----------------------- | ------- |
-| Runtime       | Node.js                 | 20.x    |
-| Framework     | NestJS                  | latest  |
-| API           | GraphQL (Apollo Server) | 4.x     |
-| Database      | PostgreSQL              | 15.x    |
-| Cache         | Redis                   | latest  |
-| Message Queue | RabbitMQ                | latest  |
-| Search        | Elasticsearch           | latest  |
-| ORM           | Prisma                  | latest  |
+> For detailed Technology Stack, see [Tech Stack](./tech-stack.md).
 
 ---
 
