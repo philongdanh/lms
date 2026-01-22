@@ -7,7 +7,7 @@ sidebar_position: 1
 
 # Business Overview
 
-Tầm nhìn, phạm vi và bối cảnh chiến lược.
+Vision, scope, and strategic context.
 
 ---
 
@@ -38,22 +38,21 @@ Nền tảng học tập thông minh tích hợp AI và gamification, hỗ trợ
 
 ---
 
-## Scope
+## High-Level Scope
+
+> **Chi tiết phạm vi và ràng buộc cụ thể: xem [Constraints](./constraints.md)**
 
 ### Trong phạm vi
+- Nền tảng học tập số tích hợp AI và gamification
+- 3 môn học chính (Toán, Tiếng Việt, Toán tiếng Anh)
+- Hệ thống thi đấu thời gian thực
+- Báo cáo 4 cấp cho phụ huynh và nhà trường
+- Multi-tenancy với tùy chỉnh giao diện
 
-| Category   | Content                                                          |
-| ---------- | ---------------------------------------------------------------- |
-| Tính năng  | Học tập, Thi đấu, Gamification, Báo cáo                          |
-| Người dùng | Học sinh, Phụ huynh, Giáo viên, Quản trị viên trường, Root Admin |
-| Nền tảng   | Web responsive                                                   |
-
-### Ngoài phạm vi
-
-| Content            | Rationale   |
-| ------------------ | ----------- |
-| Mobile Native App  | Giai đoạn 2 |
-| Chế độ ngoại tuyến | Giai đoạn 2 |
+### Ngoài phạm vi (Giai đoạn 1)
+- Ứng dụng di động native
+- Chế độ học tập offline
+- Tích hợp video từ nền tảng bên thứ ba
 
 ---
 
@@ -81,11 +80,26 @@ Nền tảng học tập thông minh tích hợp AI và gamification, hỗ trợ
 
 ## Value Proposition
 
-- **Cho học sinh**: Lộ trình học AI cá nhân hóa, thi đấu hấp dẫn, hệ thống phần
-  thưởng.
-- **Cho phụ huynh**: Báo cáo chi tiết 4 cấp, theo dõi thời gian thực.
-- **Cho giáo viên**: Bộ công cụ quản lý toàn diện, ngân hàng câu hỏi.
-- **Cho trường học**: Cách ly đa thực thể, tổ chức giải đấu.
+- **Cho học sinh**: Lộ trình học AI cá nhân hóa, thi đấu hấp dẫn, bảng thành tích, hệ thống streak và phần thưởng.
+- **Cho phụ huynh**: Báo cáo chi tiết 4 cấp, biểu đồ tiến độ, báo cáo PDF định kỳ.
+- **Cho giáo viên**: Bộ công cụ quản lý toàn diện, ngân hàng câu hỏi chia sẻ.
+- **Cho trường học**: Cách ly đa thực thể, tổ chức giải đấu, dữ liệu tổng hợp.
+
+---
+
+## High-Level Timeline
+
+> **Chi tiết timeline và deadlines: xem [Roadmap](./roadmap.md) và [Constraints](./constraints.md#timeline-constraints)**
+
+### Giai đoạn 1 (25/01 - 15/02/2026)
+- MVP: Học tập cốt lõi và thi đấu
+- Nền tảng web responsive
+
+### Giai đoạn 2 (16/02 - 01/03/2026)
+- Tính năng nâng cao và gamification
+
+### Giai đoạn 3 (02/03 - 15/03/2026)
+- AI Personalization và hoàn thiện toàn bộ tính năng
 
 ---
 
@@ -96,16 +110,7 @@ Nền tảng học tập thông minh tích hợp AI và gamification, hỗ trợ
 | Tương tác người dùng | 70% DAU/MAU                 | Theo dõi phân tích |
 | Hoàn thành bài học   | 80% khóa học                | Theo dõi tiến độ   |
 | Tham gia thi đấu     | 50% người dùng đủ điều kiện | Chỉ số giải đấu    |
-
----
-
-## Timeline
-
-| Phase       | Deadline | Focus                            |
-| ----------- | -------- | -------------------------------- |
-| Giai đoạn 1 | Q1-Q2    | MVP - Học tập cốt lõi và thi đấu |
-| Giai đoạn 2 | Q3-Q4    | Tính năng nâng cao, Mobile       |
-| Giai đoạn 3 | Năm 2    | Mở rộng và doanh nghiệp          |
+| Duy trì streak       | 30% người dùng đạt streak 7+ ngày | Hệ thống gamification |
 
 ---
 
