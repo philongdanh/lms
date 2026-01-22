@@ -1,8 +1,9 @@
 {
   "position": 2,
-  "label": "Arch",
+  "label": "Architecture",
   "link": {
     "type": "generated-index",
-    "title": "Architecture"
+    "title": "Architecture",
+    "slug": "arch"
   }
 }

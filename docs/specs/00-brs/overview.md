@@ -7,7 +7,7 @@ sidebar_position: 1
 
 # Business Overview
 
-Vision, scope, and strategic context.
+Tầm nhìn, phạm vi và bối cảnh chiến lược.
 
 ---
 
