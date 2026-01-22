@@ -5,7 +5,7 @@ sidebar_label: Plan
 sidebar_position: 30
 ---
 
-# Project Plan
+# Plan
  
 Kế hoạch chi tiết và phân bổ nguồn lực theo từng giai đoạn.
 

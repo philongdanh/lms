@@ -154,3 +154,12 @@ X-Request-ID: {uuid}
 - [ ] Proper error handling
 - [ ] Security standards implemented
 - [ ] Performance requirements met
+
+---
+
+## References
+
+- [Security](./security.md)
+- [Error Handling](./errors.md)
+- [Performance](./performance.md)
+

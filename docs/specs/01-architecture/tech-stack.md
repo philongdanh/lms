@@ -132,7 +132,7 @@ Lựa chọn công nghệ và tiêu chuẩn kỹ thuật cho hệ thống.
 
 ---
 
-## Tham chiếu
+## References
 
 - [System Design](./design.md)
 - [ADRs](./decisions.md)

@@ -184,53 +184,53 @@ App -> PhụHuynh: Hiển thị dashboard
 ```d2
 shape: sequence_diagram
 
-NgườiDùng: Người dùng
-Device1: Chrome
-Device2: iPhone
-App: Application
-Auth: Auth Module
-Session: Session Service
-Redis: Redis Cache
-DB: Database
-WSServer: WebSocket Server
+user: "User"
+device1: "Chrome"
+device2: "iPhone"
+app: "Application"
+auth: "Auth Module"
+session_svc: "Session Service"
+redis: "Redis Cache"
+db: "Database"
+ws_server: "WebSocket Server"
 
-NgườiDùng -> Device1: Đăng nhập trên Chrome
-Device1 -> App: POST /auth/login
-App -> Auth: Xác thực thông tin
-Auth -> DB: Tạo UserSession
-Auth -> Redis: Lưu refresh token
-Auth -> App: Trả về tokens
-App -> Device1: Đăng nhập thành công
+user -> device1: "Login on Chrome"
+device1 -> app: "POST /auth/login"
+app -> auth: "Validate credentials"
+auth -> db: "Create UserSession"
+auth -> redis: "Store refresh token"
+auth -> app: "Return tokens"
+app -> device1: "Login success"
 
-NgườiDùng -> Device2: Đăng nhập trên iPhone
-Device2 -> App: POST /auth/login
-App -> Auth: Xác thực thông tin
-Auth -> Session: Kiểm tra giới hạn thiết bị
-Session -> DB: Đếm session đang hoạt động
-Session -> DB: Tìm session cũ nhất (vượt giới hạn)
-DB -> Session: Session cũ nhất
-Session -> DB: Thu hồi session cũ
-Session -> Redis: Blacklist token cũ
-Auth -> DB: Tạo UserSession mới
-Auth -> App: Trả về tokens mới
-App -> Device2: Đăng nhập thành công
+user -> device2: "Login on iPhone"
+device2 -> app: "POST /auth/login"
+app -> auth: "Validate credentials"
+auth -> session_svc: "Check device limit"
+session_svc -> db: "Count active sessions"
+session_svc -> db: "Find oldest session"
+db -> session_svc: "Oldest session"
+session_svc -> db: "Revoke old session"
+session_svc -> redis: "Blacklist old token"
+auth -> db: "Create new UserSession"
+auth -> app: "Return new tokens"
+app -> device2: "Login success"
 
-NgườiDùng -> Device1: Xem session đang hoạt động
-Device1 -> App: GET /auth/sessions
-App -> Session: Lấy tất cả session
-Session -> DB: Truy vấn UserSession
-DB -> Session: Danh sách session
-Session -> App: Chi tiết session
-App -> Device1: Hiển thị danh sách session
+user -> device1: "View active sessions"
+device1 -> app: "GET /auth/sessions"
+app -> session_svc: "Get all sessions"
+session_svc -> db: "Query UserSession"
+db -> session_svc: "Session list"
+session_svc -> app: "Session details"
+app -> device1: "Display session list"
 
-NgườiDùng -> Device1: Đăng xuất iPhone từ xa
-Device1 -> App: DELETE /auth/sessions/{id}
-App -> Session: Thu hồi session cụ thể
-Session -> DB: Cập nhật session
-Session -> Redis: Thêm vào blacklist
-Session -> WSServer: Gửi force_logout
-WSServer -> Device2: Ép đăng xuất
-Device2 -> NgườiDùng: Tự động đăng xuất
+user -> device1: "Remote logout iPhone"
+device1 -> app: "DELETE /auth/sessions/{id}"
+app -> session_svc: "Revoke specific session"
+session_svc -> db: "Update session"
+session_svc -> redis: "Add to blacklist"
+session_svc -> ws_server: "Send force_logout"
+ws_server -> device2: "Force logout"
+device2 -> user: "Auto logout"
 ```
 
 ---
