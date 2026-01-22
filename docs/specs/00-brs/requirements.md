@@ -121,6 +121,6 @@ Yêu cầu nghiệp vụ và kỹ thuật.
 
 ## References
 
-- [Overview](/specs)
+- [Business Overview](./overview.md)
 - [Use Cases](./cases.md)
 - [System Design](../01-arch/design.md)

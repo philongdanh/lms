@@ -115,8 +115,8 @@ Các ràng buộc kỹ thuật và nghiệp vụ.
 
 ## References
 
-- [Business Overview](/specs)
+- [Business Overview](./overview.md)
 - [Requirements](./requirements.md)
 - [Roadmap](./roadmap.md)
-- [Success Metrics](./metrics.md)
+- [Metrics](./metrics.md)
 - [System Design](../01-arch/design.md)
