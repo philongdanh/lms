@@ -15,8 +15,8 @@ Kế hoạch chi tiết và phân bổ nguồn lực theo từng giai đoạn.
 
 | Attribute       | Value        |
 | --------------- | ------------ |
-| Project Start   | 2026-01-25   |
-| Project End     | 2026-03-15   |
+| Project Start   | 25/01/2026   |
+| Project End     | 15/03/2026   |
 | Total Duration  | 7 tuần       |
 | Sprint Duration | 2 tuần       |
 | Total Sprints   | 4 (MVP)      |
@@ -27,12 +27,12 @@ Kế hoạch chi tiết và phân bổ nguồn lực theo từng giai đoạn.
 
 | Milestone           | Target Date | Sprints  |
 | ------------------- | ----------- | -------- |
-| M1 - Foundation     | 2026-02-07  | S1       |
-| M2 - Auth MVP       | 2026-02-21  | S2       |
-| M3 - Learning MVP   | 2026-03-07  | S3       |
-| M4 - Tournament MVP | 2026-03-15  | S4       |
-| M5 - Beta Release   | 2026-03-15  | S4       |
-| M6 - Production     | 2026-03-22  | Post-MVP |
+| M1 - Foundation     | 07/02/2026  | S1       |
+| M2 - Auth MVP       | 21/02/2026  | S2       |
+| M3 - Learning MVP   | 07/03/2026  | S3       |
+| M4 - Tournament MVP | 15/03/2026  | S4       |
+| M5 - Beta Release   | 15/03/2026  | S4       |
+| M6 - Production     | 22/03/2026  | Post-MVP |
 
 ---
 

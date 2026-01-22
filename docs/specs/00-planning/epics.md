@@ -47,8 +47,6 @@ MVP tập trung vào 3 module chính:
 
 ## E01: Foundation & Infrastructure
 
-| Attribute | Value |
-
 ### Tính năng
 
 | ID    | Feature                  | Points | Sprint |
