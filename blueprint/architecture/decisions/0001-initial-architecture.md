@@ -2,7 +2,7 @@
 id: decisions
 title: Decisions
 sidebar_label: Decisions
-sidebar_position: 6
+sidebar_position: 4
 ---
 
 # Decisions

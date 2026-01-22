@@ -1,3 +1,10 @@
+---
+id: system-design
+title: System Design
+sidebar_label: System Design
+sidebar_position: 1
+---
+
 # System Design Blueprint
 
 ## High-Level Architecture

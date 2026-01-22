@@ -2,7 +2,7 @@
 id: data
 title: Data
 sidebar_label: Database
-sidebar_position: 5
+sidebar_position: 3
 ---
 
 # Data Model

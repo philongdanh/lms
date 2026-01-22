@@ -2,7 +2,7 @@
 id: backlog
 title: Backlog
 sidebar_label: Backlog
-sidebar_position: 20
+sidebar_position: 3
 ---
 
 # Backlog

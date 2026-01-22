@@ -2,7 +2,7 @@
 id: interfaces
 title: Interfaces & API
 sidebar_label: UI System
-sidebar_position: 15
+sidebar_position: 2
 ---
 
 # Interfaces & API Standards

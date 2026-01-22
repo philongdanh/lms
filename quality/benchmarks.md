@@ -2,7 +2,7 @@
 id: benchmarks
 title: Performance Benchmarks
 sidebar_label: Benchmarks
-sidebar_position: 5
+sidebar_position: 4
 ---
 
 # Performance Benchmarks

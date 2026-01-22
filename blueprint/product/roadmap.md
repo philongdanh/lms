@@ -2,7 +2,7 @@
 id: plan
 title: Plan
 sidebar_label: Roadmap
-sidebar_position: 30
+sidebar_position: 2
 ---
 
 # Plan
