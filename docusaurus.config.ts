@@ -22,7 +22,7 @@ const config: Config = {
           include: [
             'blueprint/**/*.md',
             'spec/**/*.md',
-            'quality/**/*.md',
+            'qa/**/*.md',
             'docs/**/*.md',
             'README.md',
           ],
@@ -77,14 +77,14 @@ const config: Config = {
         },
         {
           type: 'docSidebar',
-          sidebarId: 'specs',
-          label: 'Specs',
+          sidebarId: 'spec',
+          label: 'Spec',
           position: 'left',
         },
         {
           type: 'docSidebar',
-          sidebarId: 'quality',
-          label: 'Quality',
+          sidebarId: 'qa',
+          label: 'QA',
           position: 'left',
         },
         {

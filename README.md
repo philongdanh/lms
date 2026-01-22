@@ -24,13 +24,13 @@ Detailed technical specifications.
 - **Interfaces**: [UI System](./spec/interface/ui-system.md),
   [Gateway](./spec/interface/gateway.md), [API](./spec/interface/api-v1.yaml)
 
-### 3. [Quality](./quality/cases/test-cases.md)
+### 3. [Quality](./qa/cases/test-cases.md)
 
 Quality assurance and testing.
 
-- [Strategy](./quality/strategy.md)
-- [Test Cases](./quality/cases/test-cases.md)
-- [Benchmarks](./quality/benchmarks.md)
+- [Strategy](./qa/strategy.md)
+- [Test Cases](./qa/cases/test-cases.md)
+- [Benchmarks](./qa/benchmarks.md)
 
 ### 4. Guides
 
