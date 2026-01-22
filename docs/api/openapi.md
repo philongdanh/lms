@@ -119,4 +119,4 @@ Các file đặc tả OpenAPI được lưu trữ trong thư mục `static/opena
 
 - [Contracts](./contracts.md)
 - [Mocks](./mocks.md)
-- [API Gateway](../specs/01-arch/common/gateway.md)
+- [API Gateway](../specs/01-architecture/common/gateway.md)

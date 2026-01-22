@@ -79,9 +79,9 @@ bun run dev
 | Document                                                         | Priority |
 | ---------------------------------------------------------------- | -------- |
 | [Product Overview](/specs)                                       | Must     |
-| [Tech Stack](../../specs/01-arch/stack.md)          | Must     |
-| [Frontend Architecture](../../specs/01-arch/fe.md) | Must     |
-| [Backend Architecture](../../specs/01-arch/be.md)   | Should   |
+| [Tech Stack](../../specs/01-architecture/tech-stack.md)          | Must     |
+| [Frontend Architecture](../../specs/01-architecture/frontend.md) | Must     |
+| [Backend Architecture](../../specs/01-architecture/backend.md)   | Should   |
 | [DoD](../processes/dod.md)                                       | Must     |
 
 ---

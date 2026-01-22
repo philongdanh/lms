@@ -111,4 +111,4 @@ contracts/
 
 - [OpenAPI](./openapi.md)
 - [Mocks](./mocks.md)
-- [API Gateway](../specs/01-arch/common/gateway.md)
+- [API Gateway](../specs/01-architecture/common/gateway.md)

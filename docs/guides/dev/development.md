@@ -224,6 +224,6 @@ Scope là tên module hoặc component: `auth`, `tournament`, `learning`, `api`,
 
 -   [Setup Guide](./setup.md)
 -   [Deployment Guide](./deployment.md)
--   [System Design](../../specs/01-arch/design.md)
--   [Data Model](../../specs/01-arch/data.md)
+-   [System Design](../../specs/01-architecture/design.md)
+-   [Data Model](../../specs/01-architecture/database.md)
 -   [Team Handbook](./contributing.md)
