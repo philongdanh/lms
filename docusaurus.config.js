@@ -97,12 +97,6 @@ async function createConfig() {
           },
           {
             type: 'docSidebar',
-            sidebarId: 'project',
-            label: 'Project',
-            position: 'left',
-          },
-          {
-            type: 'docSidebar',
             sidebarId: 'changelog',
             label: "What's New",
             position: 'right',

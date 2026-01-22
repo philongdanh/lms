@@ -2,7 +2,7 @@
 id: epics
 title: Epics
 sidebar_label: Epics
-sidebar_position: 1
+sidebar_position: 10
 ---
 
 # Epics
@@ -218,5 +218,6 @@ MVP tập trung vào 3 module chính:
 
 ## References
 
-- [Sprint Plan](./plan.md)
+- [Sprint Plan](./sprint-plan.md)
 - [Backlog](./backlog.md)
+- [Stories](./stories.md)

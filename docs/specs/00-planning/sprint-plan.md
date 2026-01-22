@@ -1,8 +1,8 @@
 ---
-id: plan
-title: Plan
-sidebar_label: Plan
-sidebar_position: 2
+id: sprint-plan
+title: Sprint Plan
+sidebar_label: Sprint Plan
+sidebar_position: 30
 ---
 
 # Project Plan
@@ -11,7 +11,7 @@ Kế hoạch chi tiết và phân bổ nguồn lực theo từng giai đoạn.
 
 > **Phạm vi**: Tài liệu này bao gồm việc lập kế hoạch và thực hiện sprint. Đối
 > với lộ trình cấp sản phẩm, xem
-> [Product Roadmap](../specs/00-planning/stories.md).
+> [Product Roadmap](./stories.md).
 
 ---
 
@@ -221,4 +221,4 @@ Sprint 1 → Sprint 2 → Sprint 3 → M2 (Auth)
 
 - [Epics](./epics.md)
 - [Backlog](./backlog.md)
-- [Product Roadmap](../specs/00-planning/stories.md)
+- [Stories](./stories.md)

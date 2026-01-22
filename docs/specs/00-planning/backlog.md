@@ -2,7 +2,7 @@
 id: backlog
 title: Backlog
 sidebar_label: Backlog
-sidebar_position: 3
+sidebar_position: 20
 ---
 
 # Backlog
@@ -180,4 +180,5 @@ theo mức độ ưu tiên và sprint.
 ## References
 
 - [Epics](./epics.md)
-- [Sprint Plan](./plan.md)
+- [Sprint Plan](./sprint-plan.md)
+- [Stories](./stories.md)
