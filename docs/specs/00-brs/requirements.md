@@ -22,6 +22,9 @@ Yêu cầu nghiệp vụ và kỹ thuật.
 | FR-HS-03 | Lọc nội dung theo học kỳ                          | P1       |
 | FR-HS-04 | Video bài giảng và bài tập tương tác              | P0       |
 | FR-HS-05 | Nhật ký học tập                                   | P1       |
+| FR-HS-06 | Đề xuất ôn tập dựa trên lịch sử làm bài sai       | P2       |
+| FR-HS-07 | Bảng thành tích (leaderboard) theo lớp/trường/toàn hệ thống | P1       |
+| FR-HS-08 | Hệ thống streak – thưởng huy hiệu khi duy trì học tập liên tục (ví dụ: 7 ngày) | P2       |
 
 ### Phân hệ Tournament
 
@@ -32,8 +35,10 @@ Yêu cầu nghiệp vụ và kỹ thuật.
 | FR-COMP-03 | Mã mời cho các vòng thi      | P1       |
 | FR-COMP-04 | Thi đấu thời gian thực       | P0       |
 | FR-COMP-05 | Thăng hạng tự động           | P1       |
-| FR-COMP-06 | Thách đấu trực tiếp          | P2       |
+| FR-COMP-06 | Thách đấu trực tiếp – có thể tùy chỉnh số câu, thời gian; kết quả không ảnh hưởng đến bảng xếp hạng chính | P2       |
 | FR-COMP-07 | Bảng xếp hạng thời gian thực | P0       |
+| FR-COMP-08 | Cấu hình vòng thi (số câu, thời gian, loại câu hỏi) | P1       |
+| FR-COMP-09 | Chọn tiêu chí xếp hạng: Top X hoặc Điểm số        | P1       |
 
 ### Phân hệ Auth
 
@@ -42,9 +47,26 @@ Yêu cầu nghiệp vụ và kỹ thuật.
 | FR-AUTH-01 | Đăng ký với các vai trò        | P0       |
 | FR-AUTH-02 | Liên kết phụ huynh và học sinh | P1       |
 | FR-AUTH-03 | RBAC với 5 vai trò             | P0       |
-| FR-AUTH-04 | Cách ly đa thực thể            | P0       |
+| FR-AUTH-04 | Cách ly đa thực thể – mỗi trường có thể tùy chỉnh logo, màu sắc giao diện | P0       |
 | FR-AUTH-05 | Quản lý thiết bị               | P1       |
-| FR-AUTH-06 | Đăng xuất từ xa                | P1       |
+| FR-AUTH-06 | Đăng xuất từ xa – hỗ trợ tính năng “Đăng xuất tất cả thiết bị” | P1       |
+| FR-AUTH-07 | Super admin có quyền xem dữ liệu tổng hợp toàn hệ thống | P1       |
+
+### Phân hệ Nội dung
+
+| ID         | Requirement                                      | Priority |
+| ---------- | ------------------------------------------------ | -------- |
+| FR-CONT-01 | Giáo viên có thể đóng góp câu hỏi/bài giảng → chờ phê duyệt từ nhà trường | P1       |
+| FR-CONT-02 | Video bài giảng phải tự host, không nhúng từ nền tảng khác | P0       |
+| FR-CONT-03 | Ngân hàng câu hỏi chia sẻ giữa các trường, hỗ trợ gắn thẻ (tag) theo độ khó, chủ đề, mục tiêu học tập | P1       |
+
+### Phân hệ Báo cáo
+
+| ID        | Requirement                                     | Priority |
+| --------- | ----------------------------------------------- | -------- |
+| FR-REP-01 | Biểu đồ trực quan hóa tiến độ học tập theo thời gian | P1       |
+| FR-REP-02 | Báo cáo PDF định kỳ (tuần/tháng) tự động gửi cho phụ huynh | P1       |
+| FR-REP-03 | Báo cáo 4 cấp (học sinh/lớp/trường/toàn hệ thống) – không tùy chỉnh | P0       |
 
 ---
 
@@ -83,12 +105,17 @@ Yêu cầu nghiệp vụ và kỹ thuật.
 
 ## Traceability Matrix
 
-| Requirement | Use Case     | Module     | Test Case    |
-| ----------- | ------------ | ---------- | ------------ |
-| FR-AUTH-01  | UC-AUTH-001  | Auth       | TC-AUTH-001  |
-| FR-AUTH-03  | UC-AUTH-002  | Auth       | TC-AUTH-002  |
-| FR-HS-01    | UC-LEARN-001 | Learning   | TC-LEARN-001 |
-| FR-COMP-01  | UC-COMP-001  | Tournament | TC-COMP-001  |
+| Requirement | Use Case     | Module       | Test Case    |
+| ----------- | ------------ | ------------ | ------------ |
+| FR-AUTH-01  | UC-AUTH-001  | Auth         | TC-AUTH-001  |
+| FR-AUTH-03  | UC-AUTH-002  | Auth         | TC-AUTH-002  |
+| FR-HS-01    | UC-LEARN-001 | Learning     | TC-LEARN-001 |
+| FR-COMP-01  | UC-COMP-001  | Tournament   | TC-COMP-001  |
+| FR-COMP-08  | UC-COMP-002  | Tournament   | TC-COMP-002  |
+| FR-HS-06    | UC-LEARN-002 | Learning     | TC-LEARN-002 |
+| FR-CONT-01  | UC-CONT-001  | Content      | TC-CONT-001  |
+| FR-REP-02   | UC-REP-001   | Reporting    | TC-REP-001   |
+| FR-AUTH-07  | UC-AUTH-003  | Auth         | TC-AUTH-003  |
 
 ---
 

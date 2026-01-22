@@ -17,7 +17,7 @@ Lộ trình và các cột mốc chiến lược.
 
 ## Phase 1: MVP Foundation
 
-**Thời hạn**: 20/01/2026 - 05/02/2026  
+**Thời hạn**: 25/01/2026 - 15/02/2026  
 **Mục tiêu**: Ra mắt nền tảng học tập cốt lõi với các phân hệ xác thực, nội dung
 và học tập.
 
@@ -25,11 +25,11 @@ và học tập.
 
 | Milestone           | Target Date | Deliverable                                     |
 | ------------------- | ----------- | ----------------------------------------------- |
-| M1 - Nền tảng       | 22/01/2026  | Monorepo, CI/CD, Design System, GraphQL         |
-| M2 - Xác thực MVP   | 26/01/2026  | Xác thực đa thực thể, RBAC, JWT                 |
-| M3 - Học tập MVP    | 30/01/2026  | Content CMS, Lộ trình học tập, Trình phát video |
-| M4 - Thi đấu MVP    | 02/02/2026  | Quiz thời gian thực, Ghép cặp, Bảng xếp hạng    |
-| M5 - Bản thử nghiệm | 05/02/2026  | Gamification, Báo cáo phụ huynh, Tinh chỉnh     |
+| M1 - Nền tảng       | 30/01/2026  | Monorepo, CI/CD, Design System, GraphQL         |
+| M2 - Xác thực MVP   | 05/02/2026  | Xác thực đa thực thể, RBAC, JWT                 |
+| M3 - Học tập MVP    | 10/02/2026  | Content CMS, Lộ trình học tập, Trình phát video |
+| M4 - Thi đấu MVP    | 15/02/2026  | Quiz thời gian thực, Ghép cặp, Bảng xếp hạng    |
+| M5 - Bản thử nghiệm | 15/02/2026  | Gamification, Báo cáo phụ huynh, Tinh chỉnh     |
 
 ### Tính năng
 
@@ -46,7 +46,7 @@ và học tập.
 
 ## Phase 2: Engagement & Gamification
 
-**Thời hạn**: 06/02/2026 - 20/02/2026  
+**Thời hạn**: 16/02/2026 - 01/03/2026  
 **Mục tiêu**: Tăng cường tương tác người dùng với các tính năng thi đấu, trò
 chơi hóa và phân tích nâng cao.
 
@@ -54,9 +54,9 @@ chơi hóa và phân tích nâng cao.
 
 | Milestone                   | Target Date | Deliverable                               |
 | --------------------------- | ----------- | ----------------------------------------- |
-| M6 - Thi đấu V2             | 10/02/2026  | Thi đấu đội, Giải đấu tùy chỉnh           |
-| M7 - Trò chơi hóa toàn diện | 15/02/2026  | Huy hiệu, Chuỗi ngày học, Chợ phần thưởng |
-| M8 - Phân tích V2           | 20/02/2026  | Phân tích dự báo, Thông tin học tập       |
+| M6 - Thi đấu V2             | 22/02/2026  | Thi đấu đội, Giải đấu tùy chỉnh           |
+| M7 - Trò chơi hóa toàn diện | 26/02/2026  | Huy hiệu, Chuỗi ngày học, Chợ phần thưởng |
+| M8 - Phân tích V2           | 01/03/2026  | Phân tích dự báo, Thông tin học tập       |
 
 ### Tính năng
 
@@ -69,11 +69,18 @@ chơi hóa và phân tích nâng cao.
 
 ---
 
-## Phase 3: AI Personalization
+## Phase 3: AI Personalization & Advanced Features
 
-**Thời hạn**: 21/02/2026 - 28/02/2026  
-**Mục tiêu**: Tích hợp trí tuệ nhân tạo để cá nhân hóa lộ trình học tập và gợi ý
-nội dung.
+**Thời hạn**: 02/03/2026 - 15/03/2026  
+**Mục tiêu**: Tích hợp trí tuệ nhân tạo để cá nhân hóa lộ trình học tập và triển khai các tính năng nâng cao.
+
+### Cột mốc
+
+| Milestone                | Target Date | Deliverable                           |
+| ------------------------ | ----------- | ------------------------------------- |
+| M9 - AI Personalization  | 08/03/2026  | Lộ trình AI, Đề xuất ôn tập, Phân tích |
+| M10 - Advanced Features  | 12/03/2026  | Báo cáo 4 cấp, Content Management    |
+| M11 - Final Polish       | 15/03/2026  | Tối ưu hiệu năng, Testing, Deployment |
 
 ### Tính năng
 
@@ -81,8 +88,10 @@ nội dung.
 | -------------------------- | --------- | -------- | ---------- |
 | Lộ trình học tập AI        | Học tập   | P0       | Rất cao    |
 | Gợi ý nội dung             | Content   | P1       | Cao        |
-| Đánh giá thích ứng         | Học tập   | P1       | Cao        |
-| Theo dõi mức độ thành thạo | Analytics | P1       | Trung bình |
+| Đề xuất ôn tập dựa trên lịch sử sai | Học tập | P2       | Cao        |
+| Báo cáo 4 cấp              | Reporting | P0       | Trung bình |
+| Quản lý nội dung giáo viên | Content   | P1       | Trung bình |
+| Ngân hàng câu hỏi chia sẻ  | Content   | P1       | Cao        |
 
 ---
 
@@ -121,11 +130,11 @@ nội dung.
 
 | Release | Version | Date       | Main Features       | Notes                  |
 | ------- | ------- | ---------- | ------------------- | ---------------------- |
-| Alpha   | 0.1.0   | 20/01/2026 | Nền tảng            | Thử nghiệm nội bộ      |
-| Beta    | 0.5.0   | 05/02/2026 | Hoàn thiện MVP      | Giới hạn một số trường |
-| GA      | 1.0.0   | 10/02/2026 | Sản phẩm chính thức | Thử nghiệm 10 trường   |
-| v1.5    | 1.5.0   | 20/02/2026 | Trò chơi hóa        | Phát hành công khai    |
-| v2.0    | 2.0.0   | 28/02/2026 | Cá nhân hóa AI      | Các tính năng cao cấp  |
+| Alpha   | 0.1.0   | 30/01/2026 | Nền tảng            | Thử nghiệm nội bộ      |
+| Beta    | 0.5.0   | 15/02/2026 | Hoàn thiện MVP      | Giới hạn một số trường |
+| RC1     | 0.9.0   | 01/03/2026 | Gamification        | Thử nghiệm mở rộng     |
+| RC2     | 0.9.5   | 08/03/2026 | AI Personalization  | Thử nghiệm AI features |
+| GA      | 1.0.0   | 15/03/2026 | Sản phẩm chính thức | Phát hành toàn bộ tính năng |
 
 ---
 
