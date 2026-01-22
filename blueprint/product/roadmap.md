@@ -1,7 +1,7 @@
 ---
 id: plan
 title: Plan
-sidebar_label: Plan
+sidebar_label: Roadmap
 sidebar_position: 30
 ---
 
@@ -205,6 +205,4 @@ Kế hoạch chi tiết và phân bổ nguồn lực theo từng giai đoạn.
 
 ## References
 
-- [Epics](./epics.md)
 - [Backlog](./backlog.md)
-- [Stories](./stories.md)

@@ -89,8 +89,9 @@ Trước khi sử dụng, hãy đảm bảo bạn có:
 ## Next Steps
 
 - [FAQ - Các câu hỏi thường gặp](./faq.md)
-- [Specifications](/specs) - Tìm hiểu thêm về hệ thống
-- [Developer Guide](/developer-guide) - Xem thêm tại Developer Guide
+- [Specifications](../../spec/modules/auth.md) - Tìm hiểu thêm về hệ thống
+- [Developer Guide](../../docs/onboarding/setup.md) - Xem thêm tại Developer
+  Guide
 - **Hỗ trợ**: Liên hệ quản trị viên trường học
 - **Báo lỗi**: Tạo issue tại
   [GitHub Repository](https://github.com/idlongggg/lms/issues)

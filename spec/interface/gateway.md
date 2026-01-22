@@ -159,6 +159,4 @@ X-Request-ID: {uuid}
 
 ## References
 
-- [Security](./security.md)
-- [Error Handling](./errors.md)
-- [Performance](./performance.md)
+- [System Design](../../blueprint/architecture/system-design.md)

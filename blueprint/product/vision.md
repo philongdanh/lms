@@ -33,5 +33,4 @@ nghiệm học tập và tăng cường động lực thông qua cơ chế thi �
 
 ## References
 
-- [Stories](./stories.md)
 - [Constraints](./constraints.md)

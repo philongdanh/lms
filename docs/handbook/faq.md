@@ -142,5 +142,5 @@ Liên hệ quản trị viên trường học hoặc gửi yêu cầu qua email 
 ## Still Have Questions?
 
 - **Email hỗ trợ**: Liên hệ quản trị viên trường học
-- **Tài liệu kỹ thuật**: [Developer Guide](/developer-guide)
+- **Tài liệu kỹ thuật**: [Developer Guide](../onboarding/setup.md)
 - **GitHub**: [LMS Repository](https://github.com/idlongggg/lms)

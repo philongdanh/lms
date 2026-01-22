@@ -4,7 +4,7 @@ Welcome to the official LMS documentation.
 
 ## Documentation Structure
 
-### 1. [Blueprint](./blueprint/)
+### 1. [Blueprint](./blueprint/product/vision.md)
 
 Strategic documents and core architecture.
 
@@ -15,7 +15,7 @@ Strategic documents and core architecture.
   [Tech Stack](./blueprint/architecture/stack.md),
   [Database](./blueprint/architecture/database.md)
 
-### 2. [Specifications](./spec/)
+### 2. [Specifications](./spec/modules/auth.md)
 
 Detailed technical specifications.
 
@@ -24,7 +24,7 @@ Detailed technical specifications.
 - **Interfaces**: [UI System](./spec/interface/ui-system.md),
   [Gateway](./spec/interface/gateway.md), [API](./spec/interface/api-v1.yaml)
 
-### 3. [Quality](./quality/)
+### 3. [Quality](./quality/cases/test-cases.md)
 
 Quality assurance and testing.
 
@@ -34,10 +34,10 @@ Quality assurance and testing.
 
 ### 4. Guides
 
-- **[Onboarding (Dev)](./docs/onboarding/)**:
+- **[Onboarding (Dev)](./docs/onboarding/setup.md)**:
   [Setup](./docs/onboarding/setup.md),
   [Contributing](./docs/onboarding/contributing.md)
-- **[Handbook (User)](./docs/handbook/)**:
+- **[Handbook (User)](./docs/handbook/getting-started.md)**:
   [Getting Started](./docs/handbook/getting-started.md),
   [FAQ](./docs/handbook/faq.md)
 

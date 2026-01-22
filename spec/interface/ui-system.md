@@ -1,7 +1,7 @@
 ---
 id: interfaces
 title: Interfaces & API
-sidebar_label: Interfaces
+sidebar_label: UI System
 sidebar_position: 15
 ---
 

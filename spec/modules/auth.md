@@ -120,8 +120,6 @@ Các giao diện lập trình cho hệ thống xác thực và phân quyền.
 
 ## References
 
-- [Overview](/specs)
-
 ---
 
 # Auth - Data Model
@@ -306,7 +304,5 @@ lúc **Test Parameters**:
 - Redis 7, 1 vCPU, 2GB RAM
 
 ## References
-
-- [Overview](/specs)
 
 ---

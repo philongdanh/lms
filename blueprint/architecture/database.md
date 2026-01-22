@@ -1,7 +1,7 @@
 ---
 id: data
 title: Data
-sidebar_label: Data
+sidebar_label: Database
 sidebar_position: 5
 ---
 
@@ -942,7 +942,3 @@ flowchart TD
 ---
 
 ## References
-
-- [Business Overview](/specs)
-- [System Design](./design.md)
-- [Cross-Cutting](/specs)

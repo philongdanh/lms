@@ -150,8 +150,6 @@ COMPLETED -> REVIEW: Re-learning
 
 ## References
 
-- [Overview](/specs)
-
 ---
 
 # Learning - API Endpoints
@@ -181,9 +179,7 @@ config: themeVariables: fontFamily: "EB Garamond"
 
 -
 -
--
-
----
+- ***
 
 # Learning & Personalization - Test Cases
 

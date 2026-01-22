@@ -106,8 +106,6 @@ Report -> Partial
 
 ## References
 
-- [Overview](/specs)
-
 ---
 
 # API Endpoints
@@ -137,9 +135,7 @@ config: themeVariables: fontFamily: "EB Garamond"
 
 -
 -
--
-
----
+- ***
 
 # Test Cases
 

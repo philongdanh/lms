@@ -48,8 +48,6 @@ fontFamily: "EB Garamond"
 
 ## References
 
-- [Overview](/specs)
-
 ---
 
 # Analytics - API Endpoints
@@ -78,9 +76,7 @@ config: themeVariables: fontFamily: "EB Garamond"
 
 -
 -
--
-
----
+- ***
 
 # Analytics - Test Cases
 

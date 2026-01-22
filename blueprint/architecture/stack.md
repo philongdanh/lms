@@ -125,8 +125,6 @@ Lựa chọn công nghệ và tiêu chuẩn kỹ thuật cho hệ thống.
 
 ## References
 
-- [System Design](./design.md)
-- [ADRs](./decisions.md)
-- [BE](./backend.md)
-- [FE](./frontend.md)
-- [Data](./database.md)
+- [System Design](./system-design.md)
+- [ADRs](./decisions/0001-initial-architecture.md)
+- [Database](./database.md)

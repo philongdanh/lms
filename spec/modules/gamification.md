@@ -80,9 +80,7 @@ config: themeVariables: fontFamily: "EB Garamond"
 
 -
 -
--
-
----
+- ***
 
 # Gamification & Rewards - Test Cases
 

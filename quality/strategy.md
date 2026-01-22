@@ -194,6 +194,6 @@ flowchart LR
 
 ## References
 
-- [Automation](./automation.md)
+- [Automation](./automation-setup.md)
 - [Benchmarks](./benchmarks.md)
 - [Monitoring](#)

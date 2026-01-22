@@ -105,8 +105,6 @@ G -> H
 
 ## References
 
-- [Overview](/specs)
-
 ---
 
 # Content & Question Bank - API Endpoints
@@ -137,9 +135,7 @@ config: themeVariables: fontFamily: "EB Garamond"
 
 -
 -
--
-
----
+- ***
 
 # Content & Question Bank - Test Cases
 

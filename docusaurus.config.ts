@@ -104,11 +104,6 @@ const config: Config = {
             },
           ],
         },
-        {
-          to: 'ui',
-          label: 'UI',
-          position: 'left',
-        },
       ],
     },
     footer: {

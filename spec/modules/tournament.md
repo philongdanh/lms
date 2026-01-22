@@ -79,9 +79,7 @@ config: themeVariables: fontFamily: "EB Garamond"
 
 -
 -
--
-
----
+- ***
 
 # Tournament & Competition - Test Cases
 

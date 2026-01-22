@@ -140,6 +140,4 @@ Danh sách các yêu cầu và tính năng chờ triển khai.
 
 ## References
 
-- [Epics](./epics.md)
-- [Plan](./plan.md)
-- [Stories](./stories.md)
+- [Roadmap](./roadmap.md)
