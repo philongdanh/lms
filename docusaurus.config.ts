@@ -4,13 +4,13 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'LMS Documentation',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.svg',
   future: {
     v4: true,
   },
   url: 'http://localhost',
   baseUrl: '/',
-  organizationName: 'idlonggg',
+  organizationName: 'idlongggg',
   projectName: 'lms-docs',
   onBrokenLinks: 'warn',
   presets: [
@@ -62,7 +62,7 @@ const config: Config = {
   ],
   themes: [],
   themeConfig: {
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/favicon.svg',
     colorMode: {
       respectPrefersColorScheme: true,
     },
