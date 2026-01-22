@@ -58,8 +58,3 @@ Danh sách các User Stories chi tiết của hệ thống.
 | **US-ADMIN-002** | Tùy chỉnh giao diện | **Với tư cách là** quản trị viên trường<br/>**Tôi muốn** tùy chỉnh logo và màu sắc giao diện cho trường tôi<br/>**Để** tạo bản sắc riêng và nhận diện thương hiệu | - Giao diện cài đặt cho phép upload logo, chọn màu.<br/>- Thay đổi được áp dụng ngay lập tức.<br/>- Hỗ trợ định dạng ảnh và palette màu chuẩn. |
 | **US-ADMIN-003** | Quản lý thiết bị | **Với tư cách là** người dùng<br/>**Tôi muốn** đăng xuất từ xa tất cả các thiết bị khác<br/>**Để** bảo vệ tài khoản nếu bị mất thiết bị | - Tính năng "Đăng xuất tất cả thiết bị" dễ tìm.<br/>- Xác nhận hành động rõ ràng.<br/>- Tất cả phiên đăng nhập khác bị chấm dứt. |
 
----
-
-## References
-
-- [Use Cases](./use-cases/uc-auth-001-register.md)
