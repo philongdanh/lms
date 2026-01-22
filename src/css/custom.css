@@ -4,7 +4,7 @@
 
 :root {
   --ifm-font-family-base:
-    'Google Sans', 'EB Garamond', -apple-system, BlinkMacSystemFont,
+    '', 'EB Garamond', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --ifm-font-family-monospace:
     'Fantasque Sans Mono', 'Menlo', 'Monaco', 'Courier New', 'Consolas',

@@ -1,11 +1,11 @@
 ---
-id: adrs
+id: decisions
 title: Decisions
-sidebar_label: ADRs
+sidebar_label: Decisions
 sidebar_position: 6
 ---
 
-# Architecture Decision Records
+# Decisions
 
 Lịch sử các quyết định kiến trúc và kỹ thuật quan trọng.
 

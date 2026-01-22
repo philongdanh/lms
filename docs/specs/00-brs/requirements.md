@@ -122,5 +122,5 @@ Yêu cầu nghiệp vụ và kỹ thuật.
 ## References
 
 - [Business Overview](./overview.md)
-- [Use Cases](./cases.md)
+- [Use Cases](./use-cases/uc-auth-001-register.md)
 - [System Design](../01-arch/design.md)

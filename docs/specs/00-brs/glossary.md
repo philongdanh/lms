@@ -86,7 +86,7 @@ Thuật ngữ và định nghĩa chuyên ngành.
 
 - [Business Overview](./overview.md)
 - [Requirements](./requirements.md)
-- [Use Cases](./cases.md)
+- [Use Cases](./use-cases/uc-auth-001-register.md)
 - [UX Guidelines](./research/ux.md)
 - [Personas](./research/personas.md)
 - [Journeys](./research/journeys.md)
