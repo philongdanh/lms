@@ -6,9 +6,8 @@ sidebar_position: 10
 ---
 
 # Gamification - API Endpoints
- 
-Các giao diện lập trình cho hệ thống thành tích và khen thưởng.
 
+Các giao diện lập trình cho hệ thống thành tích và khen thưởng.
 
 ## Endpoints Summary
 
@@ -20,4 +19,3 @@ Các giao diện lập trình cho hệ thống thành tích và khen thưởng.
 | GET    | `/rewards`            | Danh sách phần thưởng | ✅            | 100/min    |
 | POST   | `/rewards/:id/redeem` | Đổi phần thưởng       | ✅            | 20/min     |
 | GET    | `/streaks`            | Thông tin streak      | ✅            | 200/min    |
-

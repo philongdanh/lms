@@ -6,9 +6,8 @@ sidebar_position: 10
 ---
 
 # Realtime - API Endpoints
- 
-Các giao diện kết nối thời gian thực và thông báo trực tiếp.
 
+Các giao diện kết nối thời gian thực và thông báo trực tiếp.
 
 ## Endpoints Summary
 
@@ -27,4 +26,3 @@ Các giao diện kết nối thời gian thực và thông báo trực tiếp.
 | `progress.updated` | Server→Client | Cập nhật tiến độ  |
 | `tournament.start` | Server→Client | Giải đấu bắt đầu  |
 | `match.update`     | Server→Client | Cập nhật trận đấu |
-

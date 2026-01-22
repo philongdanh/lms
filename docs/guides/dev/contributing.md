@@ -6,7 +6,7 @@ sidebar_position: 4
 ---
 
 # Contributing Guide
- 
+
 Quy tắc và quy trình cộng tác phát triển hệ thống.
 
 ---

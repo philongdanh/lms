@@ -9,7 +9,6 @@ sidebar_position: 40
 
 Kịch bản kiểm thử hệ thống báo cáo và thống kê.
 
-
 ## Test Categories
 
 ### 1. Kiểm thử chức năng
@@ -33,9 +32,7 @@ Kịch bản kiểm thử hệ thống báo cáo và thống kê.
 | --------------- | ------------ | ------------ | ------ |
 | TC-ANA-PERF-001 | Báo cáo nặng | Khoảng 1 năm | < 2s   |
 
-
 # Performance Requirements
-
 
 ## Performance Targets
 
@@ -53,15 +50,12 @@ Kịch bản kiểm thử hệ thống báo cáo và thống kê.
 | --------------- | ------------ | ---------------- | ----------- |
 | Event Ingestion | 5000         | N/A              | 1GB/giờ     |
 
-
 ## Storage
 
 - **Retention Policy**:
   - Raw Logs: 90 ngày.
   - Daily Stats: 5 năm.
 
-
 ## Validation Checklist
 
 - ✅ Đã bật nén PostgreSQL
-

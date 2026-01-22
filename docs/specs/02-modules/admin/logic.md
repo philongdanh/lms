@@ -6,9 +6,8 @@ sidebar_position: 20
 ---
 
 # Admin & Tenant Management - Business Logic
- 
-Quy tắc nghiệp vụ quản trị và vận hành hệ thống.
 
+Quy tắc nghiệp vụ quản trị và vận hành hệ thống.
 
 ## Dependencies
 
@@ -21,7 +20,6 @@ Quy tắc nghiệp vụ quản trị và vận hành hệ thống.
 
 - ✅ Email Service (SendGrid) - Gửi email kích hoạt.
 
-
 ## Validation Criteria
 
 - ✅ Kiểm tra tính duy nhất của Tenant Code hoạt động chính xác.
@@ -29,9 +27,7 @@ Quy tắc nghiệp vụ quản trị và vận hành hệ thống.
 - ✅ Import CSV báo cáo chính xác các dòng lỗi.
 - ✅ Audit log cho Impersonation đầy đủ.
 
-
 # Workflows
-
 
 ## Workflow Details
 
@@ -41,7 +37,7 @@ Quy tắc nghiệp vụ quản trị và vận hành hệ thống.
 
 #### Flow Diagram
 
-```d2
+````d2
 ```d2
 shape: sequence_diagram
 
@@ -58,7 +54,7 @@ TenantService -> DB: Insert Tenant
 TenantService -> DB: Create tenant-admin user
 TenantService -> Email: Send activation email
 TenantService -> RootAdmin: Tenant created
-```
+````
 
 ### WF-ADMIN-002: Import Users
 
@@ -66,7 +62,7 @@ TenantService -> RootAdmin: Tenant created
 
 #### Flow Diagram
 
-```d2
+````d2
 ```d2
 direction: down
 
@@ -90,7 +86,7 @@ Valid -> Report: No
 Insert -> Email
 Email -> Success
 Report -> Partial
-```
+````
 
 #### Steps
 
@@ -101,7 +97,6 @@ Report -> Partial
 | 3    | Batch Insert     | System | DB Transaction Insert           | Users đã tạo   |
 | 4    | Thông báo        | System | Async Email Queue               | -              |
 
-
 ## Error Handling
 
 | Error Scenario                | Detection     | Recovery Action          | Escalation |
@@ -109,12 +104,10 @@ Report -> Partial
 | Email trùng lặp trong Import  | DB Constraint | Bỏ qua dòng, ghi log lỗi | -          |
 | Email Service không hoạt động | Timeout       | Thử lại sau (Job)        | -          |
 
-
 ## Security Requirements
 
 - ✅ Chỉ Root Admin mới có thể kích hoạt các workflow Tenant.
 - ✅ Tenant Admin chỉ có thể import user vào tenant của mình.
-
 
 ## References
 

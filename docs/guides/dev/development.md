@@ -6,7 +6,7 @@ sidebar_position: 2
 ---
 
 # Development Guide
- 
+
 Tiêu chuẩn và quy trình phát triển phần mềm.
 
 ---
@@ -222,8 +222,8 @@ Scope là tên module hoặc component: `auth`, `tournament`, `learning`, `api`,
 
 ## References
 
--   [Setup Guide](./setup.md)
--   [Deployment Guide](./deployment.md)
--   [System Design](../../specs/01-architecture/design.md)
--   [Data Model](../../specs/01-architecture/database.md)
--   [Team Handbook](./contributing.md)
+- [Setup Guide](./setup.md)
+- [Deployment Guide](./deployment.md)
+- [System Design](../../specs/01-architecture/design.md)
+- [Data Model](../../specs/01-architecture/database.md)
+- [Team Handbook](./contributing.md)

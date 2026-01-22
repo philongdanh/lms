@@ -6,9 +6,8 @@ sidebar_position: 20
 ---
 
 # Content & Question Bank - Business Logic
- 
-Quy tắc nghiệp vụ quản lý và phân phối nội dung.
 
+Quy tắc nghiệp vụ quản lý và phân phối nội dung.
 
 ## Dependencies
 
@@ -21,7 +20,6 @@ Quy tắc nghiệp vụ quản lý và phân phối nội dung.
 - ✅ File Storage (S3/MinIO) - Lưu trữ Videos, Images, Documents.
 - ✅ Search Engine (Elasticsearch) - Tìm kiếm câu hỏi và bài học.
 
-
 ## Validation Criteria
 
 - ✅ Cây cấu trúc nội dung hiển thị đúng phân cấp.
@@ -29,9 +27,7 @@ Quy tắc nghiệp vụ quản lý và phân phối nội dung.
 - ✅ Media upload phát được trên tất cả thiết bị.
 - ✅ Quyền Teacher (tạo draft) và Admin (publish) hoạt động đúng.
 
-
 # Workflows
-
 
 ## Workflow Details
 
@@ -41,7 +37,7 @@ Quy tắc nghiệp vụ quản lý và phân phối nội dung.
 
 #### Flow Diagram
 
-```d2
+````d2
 ```d2
 shape: sequence_diagram
 
@@ -60,7 +56,7 @@ ImportService -> DB: Insert Question
 DB -> ImportService: New ID
 ImportService -> API: Summary (Success/Fail)
 API -> User: Display Report
-```
+````
 
 #### Steps
 
@@ -77,7 +73,7 @@ API -> User: Display Report
 
 #### Flow Diagram
 
-```d2
+````d2
 ```d2
 direction: down
 
@@ -99,8 +95,7 @@ D -> E
 B -> F: Manage Lesson
 F -> G
 G -> H
-```
-
+````
 
 ## Error Handling
 
@@ -109,11 +104,9 @@ G -> H
 | Import File Corrupt    | Parse Error | Trả về "Invalid File Format"              | -          |
 | Partial Import Failure | Row Error   | Bỏ qua dòng, ghi log vào report, tiếp tục | -          |
 
-
 ## Security Requirements
 
 - ✅ Quét file upload để phát hiện malware (tích hợp VirusTotal hoặc ClamAV)
-
 
 ## References
 

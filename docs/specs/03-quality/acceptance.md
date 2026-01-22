@@ -6,7 +6,7 @@ sidebar_position: 2
 ---
 
 # Acceptance Criteria
- 
+
 Tiêu chuẩn nghiệm thu theo định dạng Given-When-Then.
 
 ---

@@ -10,11 +10,12 @@ slug: /
 
 Chào mừng bạn đến với hệ thống tài liệu chính thức của LMS.
 
---- 
+---
 
 ## Khám phá tài liệu
 
-Tại đây, bạn có thể tìm thấy các thông tin về giải pháp kỹ thuật, quy trình nghiệp vụ và hướng dẫn sử dụng.
+Tại đây, bạn có thể tìm thấy các thông tin về giải pháp kỹ thuật, quy trình
+nghiệp vụ và hướng dẫn sử dụng.
 
 - [Business Requirements](./specs/00-planning/stories.md)
 - [Architecture](./specs/01-architecture/tech-stack.md)

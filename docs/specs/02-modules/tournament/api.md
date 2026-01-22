@@ -6,9 +6,8 @@ sidebar_position: 10
 ---
 
 # Tournament - API Endpoints
- 
-Các giao diện lập trình cho quản lý giải đấu và bảng xếp hạng.
 
+Các giao diện lập trình cho quản lý giải đấu và bảng xếp hạng.
 
 ## Endpoints Summary
 
@@ -21,4 +20,3 @@ Các giao diện lập trình cho quản lý giải đấu và bảng xếp hạ
 | POST   | `/matches/:id/submit` | Nộp câu trả lời trận đấu | ✅            | 50/min     |
 | GET    | `/:id/leaderboard`    | Bảng xếp hạng giải đấu   | ✅            | 100/min    |
 | POST   | `/`                   | Tạo giải đấu mới         | ✅ Admin      | 10/min     |
-

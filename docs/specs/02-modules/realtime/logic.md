@@ -6,9 +6,8 @@ sidebar_position: 20
 ---
 
 # Real-time Communication - Business Logic
- 
-Quy tắc nghiệp vụ xử lý giao tiếp thời gian thực.
 
+Quy tắc nghiệp vụ xử lý giao tiếp thời gian thực.
 
 ## Dependencies
 
@@ -21,16 +20,13 @@ Quy tắc nghiệp vụ xử lý giao tiếp thời gian thực.
 
 - ❌ Không có - Self-hosted Socket.IO cluster.
 
-
 ## Validation Criteria
 
 - ✅ Kết nối thành công với JWT hợp lệ.
 - ✅ Tính năng Broadcast hoạt động trên nhiều server nodes (Redis Adapter).
 - ✅ Xử lý 10k kết nối đồng thời.
 
-
 # Workflows
-
 
 ## Workflow Summary
 
@@ -39,12 +35,8 @@ Quy tắc nghiệp vụ xử lý giao tiếp thời gian thực.
 | WF-RT-001   | WebSocket Handshake | Client kết nối    | Client, Server | Active |
 | WF-RT-002   | Broadcast Event     | Internal API Call | System, Redis  | Active |
 
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
+config: themeVariables: fontFamily: "EB Garamond" config: themeVariables:
+fontFamily: "EB Garamond"
 
 ## Events
 
@@ -55,13 +47,10 @@ config:
 | `socket.connect`    | Người dùng mới online | `{user_id, socket_id}` | WS Server  |
 | `socket.disconnect` | Người dùng offline    | `{user_id, reason}`    | WS Server  |
 
-
 ## Performance Requirements
 
 - **Handshake Time**: < 100ms.
 
-
 ## Validation Checklist
 
 - ✅ Kiểm tra Redis Failover
-

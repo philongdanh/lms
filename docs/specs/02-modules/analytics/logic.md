@@ -6,9 +6,8 @@ sidebar_position: 20
 ---
 
 # Analytics - Business Logic
- 
-Quy tắc nghiệp vụ tính toán báo cáo và phân tích dữ liệu.
 
+Quy tắc nghiệp vụ tính toán báo cáo và phân tích dữ liệu.
 
 ## Dependencies
 
@@ -22,16 +21,13 @@ Quy tắc nghiệp vụ tính toán báo cáo và phân tích dữ liệu.
 - ✅ PostgreSQL - Lưu trữ time-series (thông qua partitioning).
 - ✅ Redis - Caching báo cáo.
 
-
 ## Validation Criteria
 
 - ✅ Dữ liệu báo cáo khớp với dữ liệu gốc (Tính chính xác dữ liệu).
 - ✅ Tính năng phân quyền hoạt động đúng (Giáo viên lớp A không thể xem lớp B).
 - ✅ Hiệu suất ổn định với dữ liệu lớn.
 
-
 # Workflows
-
 
 ## Workflow Summary
 
@@ -40,12 +36,8 @@ Quy tắc nghiệp vụ tính toán báo cáo và phân tích dữ liệu.
 | WF-ANA-001  | ETL Pipeline    | User Action Event | System       | Đang hoạt động |
 | WF-ANA-002  | Generate Report | UI Request        | User, System | Đang hoạt động |
 
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
+config: themeVariables: fontFamily: "EB Garamond" config: themeVariables:
+fontFamily: "EB Garamond"
 
 ## Events
 
@@ -55,11 +47,9 @@ config:
 | ---------------------------- | ------------------------------ | ------------------ | ------------- |
 | `analytics.report.generated` | Báo cáo lớn hoàn thành (async) | `{report_id, url}` | Analytics Svc |
 
-
 ## Performance Requirements
 
 - **ETL Latency**: Cập nhật thời gian thực (Knowledge Map) < 5s độ trễ từ event.
-
 
 ## References
 

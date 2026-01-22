@@ -13,7 +13,8 @@ Tổng quan kiến trúc hệ thống.
 
 ## High-Level Architecture
 
-Hệ thống áp dụng **kiến trúc monolithic có module hóa rõ ràng**, hỗ trợ **multi-tenant** với cơ chế cách ly dữ liệu hoàn toàn giữa các trường.
+Hệ thống áp dụng **kiến trúc monolithic có module hóa rõ ràng**, hỗ trợ
+**multi-tenant** với cơ chế cách ly dữ liệu hoàn toàn giữa các trường.
 
 ```d2
 direction: right
@@ -60,13 +61,19 @@ App -> Data Layer.Redis
 
 ### Đặc điểm chính
 
-1. **Modular Monolith**: Ứng dụng được tổ chức thành các module nghiệp vụ độc lập, dễ bảo trì và phát triển.
-2. **Multi-Tenancy với Data Isolation**: Mỗi tenant (trường học) có không gian dữ liệu riêng, đảm bảo bảo mật và riêng tư.
-3. **RBAC nghiêm ngặt**: 5 vai trò mặc định với quyền hạn được kiểm soát chặt chẽ.
-4. **Kiến trúc hướng sự kiện**: Các module giao tiếp qua event, giảm phụ thuộc trực tiếp.
-5. **Hỗ trợ thời gian thực**: WebSocket với Redis Pub/Sub cho thi đấu, thông báo, cập nhật bảng xếp hạng.
+1. **Modular Monolith**: Ứng dụng được tổ chức thành các module nghiệp vụ độc
+   lập, dễ bảo trì và phát triển.
+2. **Multi-Tenancy với Data Isolation**: Mỗi tenant (trường học) có không gian
+   dữ liệu riêng, đảm bảo bảo mật và riêng tư.
+3. **RBAC nghiêm ngặt**: 5 vai trò mặc định với quyền hạn được kiểm soát chặt
+   chẽ.
+4. **Kiến trúc hướng sự kiện**: Các module giao tiếp qua event, giảm phụ thuộc
+   trực tiếp.
+5. **Hỗ trợ thời gian thực**: WebSocket với Redis Pub/Sub cho thi đấu, thông
+   báo, cập nhật bảng xếp hạng.
 6. **Quản lý session đa thiết bị**: Hỗ trợ đăng xuất từ xa và theo dõi thiết bị.
-7. **Chiến lược xóa dữ liệu linh hoạt**: Hỗ trợ cả hard delete và soft delete cascade.
+7. **Chiến lược xóa dữ liệu linh hoạt**: Hỗ trợ cả hard delete và soft delete
+   cascade.
 
 ### Sơ đồ luồng dữ liệu chính
 
@@ -144,7 +151,8 @@ Tournament -> Presence: Xóa phòng
 WSServer -> WS: Hiển thị kết quả cuối
 ```
 
-- **Luồng liên kết phụ huynh - học sinh**: Xác thực OTP và chia sẻ dữ liệu an toàn.
+- **Luồng liên kết phụ huynh - học sinh**: Xác thực OTP và chia sẻ dữ liệu an
+  toàn.
 
 ```d2
 shape: sequence_diagram
@@ -238,34 +246,42 @@ device2 -> user: "Auto logout"
 ## Core Design Principles
 
 ### Phát triển
+
 - **Single Responsibility**: Mỗi module chỉ đảm nhận một phạm vi nghiệp vụ.
 - **Dependency Injection**: Dễ dàng testing và thay thế thành phần.
 - **Repository Pattern**: Tách biệt logic nghiệp vụ và truy cập dữ liệu.
 - **Event-Driven Communication**: Giảm coupling giữa các module.
 
 ### Bảo mật
+
 - **Least Privilege**: Người dùng chỉ có quyền tối thiểu cần thiết.
 - **Tenant Isolation**: Dữ liệu giữa các trường hoàn toàn độc lập.
 - **Defense in Depth**: Nhiều lớp bảo vệ cho dữ liệu nhạy cảm.
 - **Audit Logging**: Ghi lại đầy đủ hoạt động quan trọng.
 
 ### Thời gian thực
+
 - **Connection Management**: Quản lý kết nối WebSocket hiệu quả.
 - **Room-based Architecture**: Tổ chức phòng ảo cho thi đấu và lớp học.
 - **Event-driven Updates**: Cập nhật real-time qua Redis Pub/Sub.
 - **Graceful Degradation**: Fallback về polling khi WebSocket không khả dụng.
 
 ### Quản lý dữ liệu
+
 - **Selective Soft Delete**: Chỉ áp dụng soft delete cho các thực thể chính.
 - **Cascade Delete Strategy**: Kết hợp hard delete (DB) và soft delete (app).
-- **Tenant Lifecycle**: Hỗ trợ đầy đủ trạng thái tenant (ACTIVE, SUSPENDED, PENDING_DEACTIVATION).
-- **RBAC via Roles**: Loại người dùng được xác định qua role, không lưu trực tiếp.
+- **Tenant Lifecycle**: Hỗ trợ đầy đủ trạng thái tenant (ACTIVE, SUSPENDED,
+  PENDING_DEACTIVATION).
+- **RBAC via Roles**: Loại người dùng được xác định qua role, không lưu trực
+  tiếp.
 
 ---
 
 ## Requirements Mapping
 
-Kiến trúc được thiết kế để đáp ứng toàn bộ yêu cầu nghiệp vụ (BR) và chức năng (FR) từ tài liệu đặc tả. Các module chính bao gồm:
+Kiến trúc được thiết kế để đáp ứng toàn bộ yêu cầu nghiệp vụ (BR) và chức năng
+(FR) từ tài liệu đặc tả. Các module chính bao gồm:
+
 - **Auth & RBAC**: Đăng ký, xác thực, phân quyền, multi-tenancy.
 - **Learning**: Lộ trình AI, nội dung học, video bài giảng, bài tập.
 - **Tournament**: Thi đấu thời gian thực, giải đấu, bảng xếp hạng.
@@ -277,7 +293,9 @@ Kiến trúc được thiết kế để đáp ứng toàn bộ yêu cầu nghi�
 
 ## Deployment & Operations
 
-Hệ thống được thiết kế để triển khai **on-premise** tại các trường học, hỗ trợ **multi-tenant** trên một instance. Các nguyên tắc triển khai bao gồm:
+Hệ thống được thiết kế để triển khai **on-premise** tại các trường học, hỗ trợ
+**multi-tenant** trên một instance. Các nguyên tắc triển khai bao gồm:
+
 - **Container-based**: Docker với Docker Compose.
 - **CI/CD Pipeline**: Triển khai tự động với khả năng rollback.
 - **High Availability**: Cluster Redis, load balancer hỗ trợ WebSocket.

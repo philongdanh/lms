@@ -6,12 +6,10 @@ sidebar_position: 30
 ---
 
 # Content & Question Bank - Data Model
- 
+
 Cấu trúc dữ liệu cho nội dung học tập và kho câu hỏi.
 
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
+config: themeVariables: fontFamily: "EB Garamond"
 
 ## References
 

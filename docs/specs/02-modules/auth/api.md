@@ -6,9 +6,8 @@ sidebar_position: 10
 ---
 
 # Auth - API Endpoints
- 
-Các giao diện lập trình cho hệ thống xác thực và phân quyền.
 
+Các giao diện lập trình cho hệ thống xác thực và phân quyền.
 
 ## Endpoints Summary
 
@@ -22,7 +21,6 @@ Các giao diện lập trình cho hệ thống xác thực và phân quyền.
 | DELETE | `/sessions/:id` | Thu hồi session    | ✅            | 50/min     |
 | POST   | `/parents/link` | Liên kết phụ huynh | ✅            | 10/min     |
 
-
 ## Test Cases
 
 | Test Case       | Description   | Request     | Expected Response |
@@ -31,14 +29,12 @@ Các giao diện lập trình cho hệ thống xác thực và phân quyền.
 | TC-API-AUTH-002 | Login Invalid | Wrong pass  | 401               |
 | TC-API-AUTH-003 | Refresh Valid | Valid token | 200 + new tokens  |
 
-
 ## Security Requirements
 
 - ✅ Yêu cầu authentication
 - ✅ Input validation (Email format)
 - ✅ Rate limiting theo IP
 - ✅ Secure Headers
-
 
 ## References
 

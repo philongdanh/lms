@@ -6,9 +6,8 @@ sidebar_position: 40
 ---
 
 # Test Cases
- 
-Kịch bản kiểm thử quy trình quản trị và thiết lập.
 
+Kịch bản kiểm thử quy trình quản trị và thiết lập.
 
 ## Test Categories
 
@@ -34,9 +33,7 @@ Kịch bản kiểm thử quy trình quản trị và thiết lập.
 | -------------- | --------------------------------- | ------------- | ------------- |
 | TC-ADM-SEC-001 | Tenant Admin không thể tạo Tenant | POST /tenants | 403 Forbidden |
 
-
 # Performance Requirements
-
 
 ## Performance Targets
 
@@ -54,15 +51,12 @@ Kịch bản kiểm thử quy trình quản trị và thiết lập.
 | ---------------- | ------------ | ---------------- | ----------- |
 | Admin Operations | 50           | 20 (Root Admins) | Thấp        |
 
-
 ## Resource Utilization Limits
 
 | Resource          | Warning Threshold | Critical Threshold | Required Action  |
 | ----------------- | ----------------- | ------------------ | ---------------- |
 | CSV Parser Memory | 500MB             | 1GB                | Từ chối file lớn |
 
-
 ## Validation Checklist
 
 - ✅ Xác minh việc thực thi giới hạn kích thước file tối đa
-

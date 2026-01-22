@@ -6,9 +6,8 @@ sidebar_position: 40
 ---
 
 # Gamification & Rewards - Test Cases
- 
-Kịch bản kiểm thử hệ thống thành tích và khen thưởng.
 
+Kịch bản kiểm thử hệ thống thành tích và khen thưởng.
 
 ## Test Categories
 
@@ -34,9 +33,7 @@ Kịch bản kiểm thử hệ thống thành tích và khen thưởng.
 | ---------------- | --------------- | -------- | ------ |
 | TC-GAME-PERF-001 | Đọc Leaderboard | 1000 RPS | < 50ms |
 
-
 # Performance Requirements
-
 
 ## Performance Targets
 
@@ -54,15 +51,12 @@ Kịch bản kiểm thử hệ thống thành tích và khen thưởng.
 | ---------------- | ------------ | ---------------- | ----------- |
 | Event Processing | 1000         | N/A (Async)      | 50MB/giờ    |
 
-
 ## Resource Utilization Limits
 
 | Resource     | Warning Threshold | Critical Threshold | Required Action       |
 | ------------ | ----------------- | ------------------ | --------------------- |
 | Redis Memory | 70%               | 90%                | Xóa key cũ / Scale up |
 
-
 ## Validation Checklist
 
 - ✅ Cụm Redis được cấu hình để có tính sẵn sàng cao
-

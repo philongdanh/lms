@@ -6,12 +6,10 @@ sidebar_position: 30
 ---
 
 # Gamification - Data Model
- 
+
 Cấu trúc dữ liệu cho điểm kinh nghiệm, danh hiệu và phần thưởng.
 
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
+config: themeVariables: fontFamily: "EB Garamond"
 
 ## References
 

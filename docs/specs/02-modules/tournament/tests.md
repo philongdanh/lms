@@ -9,7 +9,6 @@ sidebar_position: 40
 
 Kịch bản kiểm thử hệ thống thi đấu và xếp hạng.
 
-
 ## Test Categories
 
 ### 1. Kiểm thử chức năng
@@ -34,9 +33,7 @@ Kịch bản kiểm thử hệ thống thi đấu và xếp hạng.
 | ---------------- | --------------- | ----------- | --------------- |
 | TC-TOUR-PERF-001 | 100k Concurrent | Start Event | Latency < 200ms |
 
-
 # Performance Requirements
-
 
 ## Performance Targets
 
@@ -54,15 +51,12 @@ Kịch bản kiểm thử hệ thống thi đấu và xếp hạng.
 | ----------- | ------------------ | ---------------- |
 | Sự kiện lớn | 50,000 Answers/sec | 100,000          |
 
-
 ## Resource Utilization Limits
 
 | Resource  | Warning Threshold | Critical Threshold |
 | --------- | ----------------- | ------------------ |
 | Redis CPU | 60%               | 85%                |
 
-
 ## Validation Checklist
 
 - ✅ Đã xác minh Redis Cluster failover
-

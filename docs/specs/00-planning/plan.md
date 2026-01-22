@@ -6,20 +6,20 @@ sidebar_position: 30
 ---
 
 # Plan
- 
+
 Kế hoạch chi tiết và phân bổ nguồn lực theo từng giai đoạn.
 
 ---
 
 ## Project Timeline
 
-| Attribute       | Value        |
-| --------------- | ------------ |
-| Project Start   | 25/01/2026   |
-| Project End     | 15/03/2026   |
-| Total Duration  | 7 tuần       |
-| Sprint Duration | 2 tuần       |
-| Total Sprints   | 4 (MVP)      |
+| Attribute       | Value      |
+| --------------- | ---------- |
+| Project Start   | 25/01/2026 |
+| Project End     | 15/03/2026 |
+| Total Duration  | 7 tuần     |
+| Sprint Duration | 2 tuần     |
+| Total Sprints   | 4 (MVP)    |
 
 ---
 
@@ -187,7 +187,6 @@ Kế hoạch chi tiết và phân bổ nguồn lực theo từng giai đoạn.
 - ✅ Đạt các chỉ số hiệu năng
 - ✅ Tài liệu người dùng hoàn chỉnh
 - ✅ Beta release được deploy
-
 
 ---
 

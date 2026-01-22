@@ -6,9 +6,8 @@ sidebar_position: 20
 ---
 
 # Tournament & Competition - Business Logic
- 
-Quy tắc nghiệp vụ tổ chức và điều hành giải đấu.
 
+Quy tắc nghiệp vụ tổ chức và điều hành giải đấu.
 
 ## Dependencies
 
@@ -22,16 +21,13 @@ Quy tắc nghiệp vụ tổ chức và điều hành giải đấu.
 
 - ✅ Redis - Leaderboard (ZSET).
 
-
 ## Validation Criteria
 
 - ✅ Tính điểm chính xác theo thời gian.
 - ✅ Leaderboard cập nhật đúng thứ tự.
 - ✅ Load balancing giữa các room thi đấu hoạt động tốt.
 
-
 # Workflows
-
 
 ## Workflow Summary
 
@@ -40,12 +36,8 @@ Quy tắc nghiệp vụ tổ chức và điều hành giải đấu.
 | WF-TOUR-001 | Join Competition | User nhấn Join | User, System | Active |
 | WF-TOUR-002 | Realtime Scoring | User trả lời   | User, System | Active |
 
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
+config: themeVariables: fontFamily: "EB Garamond" config: themeVariables:
+fontFamily: "EB Garamond"
 
 ## Events
 
@@ -56,11 +48,9 @@ config:
 | `round.started` | Round bắt đầu  | `{round_id}` | Scheduler  |
 | `round.ended`   | Round kết thúc | `{round_id}` | Scheduler  |
 
-
 ## Performance Requirements
 
 - **Broadcast**: < 500ms latency đến 10k users.
-
 
 ## References
 

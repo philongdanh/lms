@@ -6,9 +6,8 @@ sidebar_position: 20
 ---
 
 # Learning & Personalization - Business Logic
- 
-Quy tắc nghiệp vụ lộ trình và cá nhân hóa việc học.
 
+Quy tắc nghiệp vụ lộ trình và cá nhân hóa việc học.
 
 ## Dependencies
 
@@ -22,7 +21,6 @@ Quy tắc nghiệp vụ lộ trình và cá nhân hóa việc học.
 
 - ✅ AI Service (Python) - Mô hình đề xuất lộ trình học tập.
 
-
 ## Validation Criteria
 
 - ✅ Tất cả use cases đã được định nghĩa và review.
@@ -30,9 +28,7 @@ Quy tắc nghiệp vụ lộ trình và cá nhân hóa việc học.
 - ✅ Luồng tương tác với AI Service được định nghĩa rõ ràng (fallback khi lỗi).
 - ✅ Cơ chế anti-cheat được thiết kế.
 
-
 # Workflows
-
 
 ## Workflow Details
 
@@ -145,7 +141,6 @@ IN_PROGRESS -> COMPLETED: Criteria met
 COMPLETED -> REVIEW: Re-learning
 ```
 
-
 ## Error Handling
 
 | Error Scenario   | Detection    | Recovery Action                       | Escalation  |
@@ -153,12 +148,10 @@ COMPLETED -> REVIEW: Re-learning
 | AI Model Timeout | Timeout > 2s | Trả về Default Path (theo Curriculum) | Log warning |
 | DB Write Fail    | Exception    | Trả lỗi cho client, retry client-side | -           |
 
-
 ## Security Requirements
 
 - ✅ Rate limiting theo user
 - ✅ Xác thực quyền sở hữu session
-
 
 ## References
 

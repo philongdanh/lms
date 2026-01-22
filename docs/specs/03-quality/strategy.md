@@ -6,7 +6,7 @@ sidebar_position: 1
 ---
 
 # Strategy
- 
+
 Chiến lược kiểm thử tổng thể và mục tiêu độ bao phủ.
 
 ---

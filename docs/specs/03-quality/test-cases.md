@@ -6,7 +6,7 @@ sidebar_position: 3
 ---
 
 # Test Cases
- 
+
 Biểu mẫu và quy ước thiết kế kịch bản kiểm thử.
 
 ---
@@ -331,4 +331,7 @@ test('User can join and participate in tournament', async ({ page }) => {
 - [Acceptance Criteria](./acceptance.md)
 - [Test Strategy](./strategy.md)
 - [Automation](./automation.md)
+
+```
+
 ```

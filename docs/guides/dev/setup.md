@@ -6,7 +6,7 @@ sidebar_position: 1
 ---
 
 # Setup Guide
- 
+
 Hướng dẫn cài đặt và thiết lập môi trường phát triển.
 
 ---

@@ -6,12 +6,10 @@ sidebar_position: 30
 ---
 
 # Tournament - Data Model
- 
+
 Cấu trúc dữ liệu cho các cuộc thi và kết quả thi đấu.
 
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
+config: themeVariables: fontFamily: "EB Garamond"
 
 ## References
 

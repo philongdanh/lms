@@ -6,9 +6,8 @@ sidebar_position: 40
 ---
 
 # Learning & Personalization - Test Cases
- 
-Kịch bản kiểm thử hệ thống học tập và cá nhân hóa.
 
+Kịch bản kiểm thử hệ thống học tập và cá nhân hóa.
 
 ## Test Categories
 
@@ -47,7 +46,6 @@ Kịch bản kiểm thử hệ thống học tập và cá nhân hóa.
 | ---------------- | ---------------- | ---------------------- | --------------- |
 | TC-LEARN-SEC-001 | IDOR on Progress | Get path của user khác | 403 Forbidden   |
 
-
 ## Test Automation
 
 ### Framework
@@ -55,13 +53,10 @@ Kịch bản kiểm thử hệ thống học tập và cá nhân hóa.
 - **API Tests**: Jest / Supertest
 - **Performance Tests**: k6
 
-
 ## Validation Checklist
 
 - ✅ Test coverage matrix hoàn chỉnh
 - ✅ Security tests được bao gồm
-
-
 
 ## Scalability Requirements
 
@@ -75,7 +70,6 @@ Kịch bản kiểm thử hệ thống học tập và cá nhân hóa.
 
 - **Learning Service**: Stateless, scale auto (min 2, max 20).
 - **AI Service**: Scale consumer workers dựa trên queue lag.
-
 
 ## Load Testing Scenarios
 
@@ -94,9 +88,7 @@ Parameters**:
 - ✅ Error rate < 0.1%
 - ✅ Không mất dữ liệu (progress saves)
 
-
 ## Validation Checklist
 
 - ✅ Tất cả performance targets được định lượng
 - ✅ Các load testing scenarios được tạo cho Peak Load
-

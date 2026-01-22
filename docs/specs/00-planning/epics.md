@@ -6,7 +6,7 @@ sidebar_position: 10
 ---
 
 # Epics
- 
+
 Các nhóm tính năng lớn và lộ trình triển khai theo giai đoạn.
 
 ---
@@ -70,12 +70,12 @@ MVP tập trung vào 3 module chính:
 
 ## E02: Authentication
 
-| Attribute    | Value                 |
-| ------------ | --------------------- |
+| Attribute    | Value               |
+| ------------ | ------------------- |
 | Priority     | P0 Critical         |
-| Sprints      | Sprint 2 - Sprint 4   |
-| Total Points | 45                    |
-| Owner        | [Assign]              |
+| Sprints      | Sprint 2 - Sprint 4 |
+| Total Points | 45                  |
+| Owner        | [Assign]            |
 
 ### Tính năng
 
@@ -103,12 +103,12 @@ MVP tập trung vào 3 module chính:
 
 ## E03: Learning Core
 
-| Attribute    | Value                 |
-| ------------ | --------------------- |
+| Attribute    | Value               |
+| ------------ | ------------------- |
 | Priority     | P0 Critical         |
-| Sprints      | Sprint 4 - Sprint 5   |
-| Total Points | 50                    |
-| Owner        | [Assign]              |
+| Sprints      | Sprint 4 - Sprint 5 |
+| Total Points | 50                  |
+| Owner        | [Assign]            |
 
 ### Tính năng
 

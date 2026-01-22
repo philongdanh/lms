@@ -6,9 +6,8 @@ sidebar_position: 20
 ---
 
 # Gamification & Rewards - Business Logic
- 
-Quy tắc nghiệp vụ hệ thống thi đua và trò chơi hóa.
 
+Quy tắc nghiệp vụ hệ thống thi đua và trò chơi hóa.
 
 ## Dependencies
 
@@ -21,17 +20,14 @@ Quy tắc nghiệp vụ hệ thống thi đua và trò chơi hóa.
 
 - ✅ Redis - Cache bảng xếp hạng (Sorted Sets).
 
-
 ## Validation Criteria
 
 - ✅ Công thức tính Level hoạt động chính xác.
 - ✅ Giao dịch đổi xu đảm bảo Atomicity (không trừ tiền mà không có phần
-      thưởng).
+  thưởng).
 - ✅ Bảng xếp hạng cập nhật realtime.
 
-
 # Workflows
-
 
 ## Workflow Summary
 
@@ -40,12 +36,8 @@ Quy tắc nghiệp vụ hệ thống thi đua và trò chơi hóa.
 | WF-GAME-001 | Process EXP Event | Hoàn thành học/thi | System (Async) | Active |
 | WF-GAME-002 | Reward Redemption | Kết nối tới Store  | Student, Admin | Active |
 
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
+config: themeVariables: fontFamily: "EB Garamond" config: themeVariables:
+fontFamily: "EB Garamond"
 
 ## Events
 
@@ -56,13 +48,10 @@ config:
 | `level.up`     | Người dùng lên cấp    | `{user_id, new_level, reward}` | Game Svc   |
 | `badge.earned` | Người dùng nhận badge | `{user_id, badge_id}`          | Game Svc   |
 
-
 ## Performance Requirements
 
 - **Async Processing**: Độ trễ hàng đợi event < 1s.
 
-
 ## Validation Checklist
 
 - ✅ Việc trừ phần thưởng có tính transactional
-

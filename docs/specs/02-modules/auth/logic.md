@@ -6,9 +6,8 @@ sidebar_position: 20
 ---
 
 # Auth - Business Logic
- 
-Quy tắc nghiệp vụ và quy trình xử lý xác thực.
 
+Quy tắc nghiệp vụ và quy trình xử lý xác thực.
 
 ## Dependencies
 
@@ -22,7 +21,6 @@ Quy tắc nghiệp vụ và quy trình xử lý xác thực.
 - ✅ Redis - Caching session/tokens
 - ✅ PostgreSQL - Lưu trữ bền vững
 
-
 ## Validation Criteria
 
 - ✅ Tất cả use cases đã định nghĩa
@@ -30,9 +28,7 @@ Quy tắc nghiệp vụ và quy trình xử lý xác thực.
 - ✅ Dependencies đã xác định
 - ✅ KPIs có thể đo lường
 
-
 # Workflows
-
 
 ## Workflow Details
 
@@ -81,7 +77,6 @@ Quy tắc nghiệp vụ và quy trình xử lý xác thực.
 
 #### Flow Diagram
 
-
 ## Error Handling
 
 | Error Scenario     | Detection       | Recovery Action       | Escalation |
@@ -89,10 +84,8 @@ Quy tắc nghiệp vụ và quy trình xử lý xác thực.
 | Redis Down         | Connection Fail | Fallback to DB (slow) | Alert Ops  |
 | Email Service Fail | Timeout         | Retry 3x, then Queue  | Alert Ops  |
 
-
 ## Security Requirements
 
 - ✅ Audit logging cho tất cả sự kiện registration/login
 - ✅ Input sanitization
 - ✅ Rate limiting
-

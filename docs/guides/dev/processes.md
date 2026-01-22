@@ -17,20 +17,20 @@ Definition of Done và Release Process.
 
 Một User Story được coi là **Done** khi:
 
-| Category | Criteria |
-|----------|----------|
-| **Code** | ✅ Triển khai theo requirements |
-|  | ✅ TypeScript strict mode pass |
-|  | ✅ Không lỗi ESLint |
-| **Testing** | ✅ Unit tests pass (coverage ≥ 70%) |
-|  | ✅ Manual testing done |
-|  | ✅ Edge cases checked |
-| **Review** | ✅ Code reviewed & approved |
-|  | ✅ All comments resolved |
-| **Deploy** | ✅ CI pipeline pass |
-|  | ✅ Deployed to staging |
-|  | ✅ Smoke test pass |
-| **Acceptance** | ✅ PO reviewed & accepted |
+| Category       | Criteria                            |
+| -------------- | ----------------------------------- |
+| **Code**       | ✅ Triển khai theo requirements     |
+|                | ✅ TypeScript strict mode pass      |
+|                | ✅ Không lỗi ESLint                 |
+| **Testing**    | ✅ Unit tests pass (coverage ≥ 70%) |
+|                | ✅ Manual testing done              |
+|                | ✅ Edge cases checked               |
+| **Review**     | ✅ Code reviewed & approved         |
+|                | ✅ All comments resolved            |
+| **Deploy**     | ✅ CI pipeline pass                 |
+|                | ✅ Deployed to staging              |
+|                | ✅ Smoke test pass                  |
+| **Acceptance** | ✅ PO reviewed & accepted           |
 
 ### Sprint DoD
 
@@ -56,21 +56,23 @@ v1.2.3
 
 ### Loại Release
 
-| Type | Frequency | Scope |
-|------|-----------|-------|
-| Major | Hàng quý | Breaking changes |
-| Minor | 2 tuần/lần | New features |
-| Patch | Khi cần | Bug fixes |
+| Type  | Frequency  | Scope            |
+| ----- | ---------- | ---------------- |
+| Major | Hàng quý   | Breaking changes |
+| Minor | 2 tuần/lần | New features     |
+| Patch | Khi cần    | Bug fixes        |
 
 ### Các bước Release
 
 **Pre-Release (T-2 days)**
+
 - ✅ Code freeze
 - ✅ All PR merged to `develop`
 - ✅ QA sign-off on staging
 - ✅ Bump version
 
 **Production (T-0)**
+
 - ✅ PO approval
 - ✅ Merge to `main`
 - ✅ Create release tag

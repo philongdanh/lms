@@ -6,12 +6,10 @@ sidebar_position: 30
 ---
 
 # Auth - Data Model
- 
+
 Cấu trúc dữ liệu cho hệ thống xác thực và quản lý người dùng.
 
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
+config: themeVariables: fontFamily: "EB Garamond"
 
 ## Lifecycle States
 
@@ -36,13 +34,11 @@ direction: right
     PENDING_DEACTIVATION --> [*] : hard_delete_30d
 ```
 
-
 ## Performance Requirements
 
 - **Query Performance**: < 50ms cho Login by Email
 - **Write Throughput**: 1000 register/sec
 - **Storage Growth**: 1GB/tháng
-
 
 ## Validation Checklist
 
@@ -50,4 +46,3 @@ direction: right
 - ✅ Relationships được document rõ ràng
 - ✅ Indexes tối ưu cho query patterns
 - ✅ Performance requirements khả thi
-

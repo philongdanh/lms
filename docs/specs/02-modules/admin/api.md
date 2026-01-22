@@ -6,9 +6,8 @@ sidebar_position: 10
 ---
 
 # API Endpoints
- 
-Các giao diện quản trị hệ thống và cấu hình đa thực thể.
 
+Các giao diện quản trị hệ thống và cấu hình đa thực thể.
 
 ## Endpoints Summary
 
@@ -20,4 +19,3 @@ Các giao diện quản trị hệ thống và cấu hình đa thực thể.
 | DELETE | `/tenants/:id`           | Xóa tenant (soft)   | ✅ Root Admin | 10/min     |
 | POST   | `/users/import`          | Import users từ CSV | ✅ Admin      | 5/min      |
 | POST   | `/users/:id/impersonate` | Đăng nhập thay user | ✅ Admin      | 10/min     |
-

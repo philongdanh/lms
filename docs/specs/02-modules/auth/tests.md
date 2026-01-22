@@ -6,9 +6,8 @@ sidebar_position: 40
 ---
 
 # Auth - Test Cases
- 
-Kịch bản và chỉ số kiểm thử cho hệ thống xác thực.
 
+Kịch bản và chỉ số kiểm thử cho hệ thống xác thực.
 
 ## Test Categories
 
@@ -65,7 +64,6 @@ Kịch bản và chỉ số kiểm thử cho hệ thống xác thực.
 | TC-AUTH-SEC-004 | XSS in username        | Script tag trong name         | HTML được escape           |
 | TC-AUTH-SEC-005 | CSRF protection        | Request không có CSRF token   | Request bị reject          |
 
-
 ## Test Automation
 
 ### Framework
@@ -80,15 +78,12 @@ Kịch bản và chỉ số kiểm thử cho hệ thống xác thực.
 - ✅ Tests chạy khi merge to main
 - ✅ Tests chạy hàng đêm (performance)
 
-
 ## Validation Checklist
 
 - ✅ Test coverage matrix complete
 - ✅ All specs have test cases
 - ✅ Test data requirements defined
 - ✅ Automation strategy specified
-
-
 
 ## Scalability Requirements
 
@@ -103,7 +98,6 @@ Kịch bản và chỉ số kiểm thử cho hệ thống xác thực.
 - **Min Instances**: 2
 - **Max Instances**: 10
 - **Auto-scaling**: CPU > 70% for 2 min → scale up
-
 
 ## Load Testing Scenarios
 
@@ -135,7 +129,6 @@ lúc **Test Parameters**:
 - ✅ Error rate < 0.1%
 - ✅ Memory leak: 0
 
-
 ## Infrastructure Requirements
 
 ### Production
@@ -148,7 +141,6 @@ lúc **Test Parameters**:
 
 - PostgreSQL 15, 2 vCPU, 4GB RAM
 - Redis 7, 1 vCPU, 2GB RAM
-
 
 ## References
 

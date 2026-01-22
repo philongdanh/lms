@@ -6,12 +6,10 @@ sidebar_position: 30
 ---
 
 # Analytics - Data Model
- 
+
 Cấu trúc dữ liệu cho phân tích và theo dõi tiến độ.
 
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
+config: themeVariables: fontFamily: "EB Garamond"
 
 ## References
 

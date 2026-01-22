@@ -6,7 +6,7 @@ sidebar_position: 4
 ---
 
 # Test Automation
- 
+
 Cấu trúc và thiết lập hệ thống kiểm thử tự động.
 
 ---

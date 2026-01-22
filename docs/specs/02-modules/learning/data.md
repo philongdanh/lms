@@ -6,12 +6,10 @@ sidebar_position: 30
 ---
 
 # Learning - Data Model
- 
+
 Cấu trúc dữ liệu theo dõi tiến độ và kết quả học tập.
 
-config:
-  themeVariables:
-    fontFamily: "EB Garamond"
+config: themeVariables: fontFamily: "EB Garamond"
 
 ## References
 

@@ -6,10 +6,8 @@ sidebar_position: 40
 ---
 
 # Content & Question Bank - Test Cases
- 
-Kịch bản kiểm thử hệ thống quản lý nội dung.
-import/export workflows.
 
+Kịch bản kiểm thử hệ thống quản lý nội dung. import/export workflows.
 
 ## Test Categories
 
@@ -34,9 +32,7 @@ import/export workflows.
 | --------------- | --------------------------------- | --------------------- | ------------- |
 | TC-CONT-SEC-001 | Chỉnh sửa nội dung của người khác | PUT /questions/`{id}` | 403 Forbidden |
 
-
 # Performance Requirements
-
 
 ## Performance Targets
 
@@ -54,15 +50,12 @@ import/export workflows.
 | --------------- | ------------ | ---------------- | ----------- |
 | Normal Browsing | 2000         | 10000            | 100MB/giờ   |
 
-
 ## Storage
 
 - **Database**: 500GB/năm (Dữ liệu text ngân hàng câu hỏi).
 - **File Storage**: 10TB/năm (Videos, Images).
 
-
 ## Validation Checklist
 
 - ✅ Autoscaling worker pool đã được cấu hình
 - ✅ Đã bật S3 upload acceleration (nếu cần)
-

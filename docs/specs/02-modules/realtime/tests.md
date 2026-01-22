@@ -9,7 +9,6 @@ sidebar_position: 40
 
 Kịch bản kiểm thử hệ thống giao tiếp thời gian thực.
 
-
 ## Test Categories
 
 ### 1. Kiểm thử chức năng
@@ -34,9 +33,7 @@ Kịch bản kiểm thử hệ thống giao tiếp thời gian thực.
 | -------------- | ----------- | ---------- | --------- |
 | TC-RT-PERF-001 | 10k kết nối | Ramp up 1m | Không lỗi |
 
-
 # Performance Requirements
-
 
 ## Performance Targets
 
@@ -54,15 +51,12 @@ Kịch bản kiểm thử hệ thống giao tiếp thời gian thực.
 | ----------------------- | --------------- | ---------------- | ----------- |
 | Broadcast (Competition) | 10,000 msgs/sec | 50,000           | 1MB/sec     |
 
-
 ## Resource Utilization Limits
 
 | Resource        | Warning Threshold | Critical Threshold | Required Action |
 | --------------- | ----------------- | ------------------ | --------------- |
 | Open Files (FD) | 100,000           | 500,000            | Tăng ulimit     |
 
-
 ## Validation Checklist
 
 - ✅ Tinh chỉnh Kernel cho đồng thời cao (sysctl)
-
