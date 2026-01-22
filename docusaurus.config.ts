@@ -18,10 +18,23 @@ const config: Config = {
       'classic',
       {
         docs: {
-          path: 'docs',
+          path: '.',
+          include: [
+            'blueprint/**/*.md',
+            'spec/**/*.md',
+            'quality/**/*.md',
+            'docs/**/*.md',
+            'README.md',
+          ],
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.ts'),
-          exclude: ['**/generated/**', '**/templates/**', '**/node_modules/**'],
+          exclude: [
+            '**/generated/**',
+            '**/templates/**',
+            '**/node_modules/**',
+            '**/build/**',
+            '**/dist/**',
+          ],
           remarkPlugins: [
             [
               require('remark-d2'),
@@ -58,24 +71,36 @@ const config: Config = {
       items: [
         {
           type: 'docSidebar',
+          sidebarId: 'blueprint',
+          label: 'Blueprint',
+          position: 'left',
+        },
+        {
+          type: 'docSidebar',
           sidebarId: 'specs',
           label: 'Specs',
           position: 'left',
         },
         {
+          type: 'docSidebar',
+          sidebarId: 'quality',
+          label: 'Quality',
+          position: 'left',
+        },
+        {
           type: 'dropdown',
-          label: 'Guides',
+          label: 'Docs',
           position: 'left',
           items: [
             {
               type: 'docSidebar',
-              sidebarId: 'userGuide',
-              label: 'User',
+              sidebarId: 'handbook',
+              label: 'Handbook',
             },
             {
               type: 'docSidebar',
-              sidebarId: 'devGuide',
-              label: 'Dev',
+              sidebarId: 'onboarding',
+              label: 'Onboarding',
             },
           ],
         },

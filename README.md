@@ -1,45 +1,66 @@
-# Website
+# LMS Documentation
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern
-static website generator.
+Welcome to the official LMS documentation.
 
-## Installation
+## Documentation Structure
+
+### 1. [Blueprint](./blueprint/)
+
+Strategic documents and core architecture.
+
+- **Product**: [Vision](./blueprint/product/vision.md),
+  [Roadmap](./blueprint/product/roadmap.md),
+  [Backlog](./blueprint/product/backlog.md)
+- **Architecture**: [System Design](./blueprint/architecture/system-design.md),
+  [Tech Stack](./blueprint/architecture/stack.md),
+  [Database](./blueprint/architecture/database.md)
+
+### 2. [Specifications](./spec/)
+
+Detailed technical specifications.
+
+- **Modules**: [Auth](./spec/modules/auth.md),
+  [Learning](./spec/modules/learning.md), [Admin](./spec/modules/admin.md), etc.
+- **Interfaces**: [UI System](./spec/interface/ui-system.md),
+  [Gateway](./spec/interface/gateway.md), [API](./spec/interface/api-v1.yaml)
+
+### 3. [Quality](./quality/)
+
+Quality assurance and testing.
+
+- [Strategy](./quality/strategy.md)
+- [Test Cases](./quality/cases/test-cases.md)
+- [Benchmarks](./quality/benchmarks.md)
+
+### 4. Guides
+
+- **[Onboarding (Dev)](./docs/onboarding/)**:
+  [Setup](./docs/onboarding/setup.md),
+  [Contributing](./docs/onboarding/contributing.md)
+- **[Handbook (User)](./docs/handbook/)**:
+  [Getting Started](./docs/handbook/getting-started.md),
+  [FAQ](./docs/handbook/faq.md)
+
+---
+
+## Docusaurus Setup
+
+This repository contains the documentation website.
+
+### Installation
 
 ```bash
 yarn
 ```
 
-## Local Development
+### Local Development
 
 ```bash
 yarn start
 ```
 
-This command starts a local development server and opens up a browser window.
-Most changes are reflected live without having to restart the server.
-
-## Build
+### Build
 
 ```bash
 yarn build
 ```
-
-This command generates static content into the `build` directory and can be
-served using any static contents hosting service.
-
-## Deployment
-
-Using SSH:
-
-```bash
-USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```bash
-GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to
-build the website and push to the `gh-pages` branch.
