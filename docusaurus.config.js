@@ -50,7 +50,7 @@ async function createConfig() {
           },
           blog: false,
           theme: {
-            customCss: './src/css/custom.css',
+            customCss: './static/css/custom.css',
           },
         }),
       ],
@@ -81,12 +81,19 @@ async function createConfig() {
                 sidebarId: 'devGuide',
                 label: 'Dev',
               },
-              {
-                type: 'docSidebar',
-                sidebarId: 'designGuide',
-                label: 'Design',
-              },
             ],
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'ui',
+            label: 'UI',
+            position: 'left',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'api',
+            label: 'API',
+            position: 'left',
           },
           {
             href: 'https://github.com/idlongggg/lms-docs',
