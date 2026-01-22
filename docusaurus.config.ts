@@ -59,7 +59,6 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
-  themes: [],
   themeConfig: {
     image: 'img/favicon.svg',
     colorMode: {
@@ -108,7 +107,15 @@ const config: Config = {
     footer: {
       copyright: `© ${new Date().getFullYear()} LMS - Danh Phi Long`,
     },
+    zoom: {
+      selector: '.markdown img',
+      background: {
+        light: 'rgb(255, 255, 255)',
+        dark: 'rgb(50, 50, 50)'
+      },
+    }
   } satisfies Preset.ThemeConfig,
+  plugins: ['docusaurus-plugin-image-zoom'],
 };
 
 export default config;

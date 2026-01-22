@@ -14,3 +14,9 @@
 html {
   font-size: 110%;
 }
+
+/* Fix for medium-zoom image being covered by navbar */
+.medium-zoom-overlay,
+.medium-zoom-image--opened {
+  z-index: 99999 !important;
+}
