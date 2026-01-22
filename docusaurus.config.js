@@ -84,8 +84,7 @@ async function createConfig() {
             ],
           },
           {
-            type: 'docSidebar',
-            sidebarId: 'ui',
+            to: 'ui',
             label: 'UI',
             position: 'left',
           },
