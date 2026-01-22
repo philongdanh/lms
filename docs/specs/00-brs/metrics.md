@@ -1,11 +1,11 @@
 ---
 id: metrics
-title: Success Metrics
+title: Metrics
 sidebar_label: Metrics
 sidebar_position: 6
 ---
 
-# Success Metrics
+# Metrics
 
 Chỉ số đo lường hiệu quả và thành công.
 
@@ -150,8 +150,8 @@ Chỉ số đo lường hiệu quả và thành công.
 
 ## References
 
-- [Business Overview](/specs)
-- [Success Criteria in Overview](./overview.md#success-criteria)
+- [Business Overview](./overview.md)
+- [Success Criteria](./overview.md#success-criteria)
 - [Technical Constraints](./constraints.md#technical-constraints)
-- [Product Roadmap](./roadmap.md)
+- [Roadmap](./roadmap.md)
 - [Non-Functional Requirements](./requirements.md#non-functional-requirements)

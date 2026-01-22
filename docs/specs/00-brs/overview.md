@@ -1,6 +1,6 @@
 ---
 id: overview
-title: Business Overview
+title: Overview
 sidebar_label: Overview
 sidebar_position: 1
 ---
