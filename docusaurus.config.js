@@ -67,18 +67,6 @@ async function createConfig() {
             position: 'left',
           },
           {
-            type: 'docSidebar',
-            sidebarId: 'design',
-            label: 'Design',
-            position: 'left',
-          },
-          {
-            type: 'docSidebar',
-            sidebarId: 'api',
-            label: 'API',
-            position: 'left',
-          },
-          {
             type: 'dropdown',
             label: 'Guides',
             position: 'left',
@@ -93,13 +81,12 @@ async function createConfig() {
                 sidebarId: 'devGuide',
                 label: 'Dev',
               },
+              {
+                type: 'docSidebar',
+                sidebarId: 'designGuide',
+                label: 'Design',
+              },
             ],
-          },
-          {
-            type: 'docSidebar',
-            sidebarId: 'changelog',
-            label: "What's New",
-            position: 'right',
           },
           {
             href: 'https://github.com/idlongggg/lms-docs',

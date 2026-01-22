@@ -2,7 +2,7 @@
 id: tests
 title: Test Cases
 sidebar_label: Tests
-sidebar_position: 4
+sidebar_position: 40
 ---
 
 # Test Cases
@@ -64,5 +64,5 @@ Kịch bản kiểm thử quy trình quản trị và thiết lập.
 
 ## Validation Checklist
 
-- [ ] Xác minh việc thực thi giới hạn kích thước file tối đa
+- ✅ Xác minh việc thực thi giới hạn kích thước file tối đa
 

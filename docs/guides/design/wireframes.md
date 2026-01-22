@@ -168,11 +168,11 @@ wireframes/
 
 ## Checklist
 
-- [ ] All main screens covered
-- [ ] States documented (empty, loading, error)
-- [ ] Responsive variants (mobile, tablet, desktop)
-- [ ] Annotations added
-- [ ] Stakeholder review completed
+- ✅ All main screens covered
+- ✅ States documented (empty, loading, error)
+- ✅ Responsive variants (mobile, tablet, desktop)
+- ✅ Annotations added
+- ✅ Stakeholder review completed
 
 ---
 
@@ -180,4 +180,4 @@ wireframes/
 
 - [Tokens](./tokens.md)
 - [Components](./components.md)
-- [Research](/design)
+- [Design Guide](/design-guide)

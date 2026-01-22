@@ -2,7 +2,7 @@
 id: tests
 title: Test Cases
 sidebar_label: Tests
-sidebar_position: 4
+sidebar_position: 40
 ---
 
 # Gamification & Rewards - Test Cases
@@ -64,5 +64,5 @@ Kịch bản kiểm thử hệ thống thành tích và khen thưởng.
 
 ## Validation Checklist
 
-- [ ] Cụm Redis được cấu hình để có tính sẵn sàng cao
+- ✅ Cụm Redis được cấu hình để có tính sẵn sàng cao
 

@@ -2,7 +2,7 @@
 id: data
 title: Data Model
 sidebar_label: Data
-sidebar_position: 3
+sidebar_position: 30
 ---
 
 # Realtime - Data Model

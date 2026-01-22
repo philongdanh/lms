@@ -2,7 +2,7 @@
 id: tests
 title: Test Cases
 sidebar_label: Tests
-sidebar_position: 4
+sidebar_position: 40
 ---
 
 # Learning & Personalization - Test Cases
@@ -58,8 +58,8 @@ Kịch bản kiểm thử hệ thống học tập và cá nhân hóa.
 
 ## Validation Checklist
 
-- [ ] Test coverage matrix hoàn chỉnh
-- [ ] Security tests được bao gồm
+- ✅ Test coverage matrix hoàn chỉnh
+- ✅ Security tests được bao gồm
 
 
 
@@ -90,13 +90,13 @@ Parameters**:
 
 **Tiêu chí thành công**:
 
-- [ ] P95 response time < 300ms
-- [ ] Error rate < 0.1%
-- [ ] Không mất dữ liệu (progress saves)
+- ✅ P95 response time < 300ms
+- ✅ Error rate < 0.1%
+- ✅ Không mất dữ liệu (progress saves)
 
 
 ## Validation Checklist
 
-- [ ] Tất cả performance targets được định lượng
-- [ ] Các load testing scenarios được tạo cho Peak Load
+- ✅ Tất cả performance targets được định lượng
+- ✅ Các load testing scenarios được tạo cho Peak Load
 

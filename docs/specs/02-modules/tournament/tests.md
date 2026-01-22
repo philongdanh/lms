@@ -2,7 +2,7 @@
 id: tests
 title: Test Cases
 sidebar_label: Tests
-sidebar_position: 4
+sidebar_position: 40
 ---
 
 # Tournament & Competition - Test Cases
@@ -64,5 +64,5 @@ Kịch bản kiểm thử hệ thống thi đấu và xếp hạng.
 
 ## Validation Checklist
 
-- [ ] Đã xác minh Redis Cluster failover
+- ✅ Đã xác minh Redis Cluster failover
 

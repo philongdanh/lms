@@ -2,7 +2,7 @@
 id: logic
 title: Business Logic
 sidebar_label: Logic
-sidebar_position: 2
+sidebar_position: 20
 ---
 
 # Tournament & Competition - Business Logic
@@ -25,9 +25,9 @@ Quy tắc nghiệp vụ tổ chức và điều hành giải đấu.
 
 ## Validation Criteria
 
-- [ ] Tính điểm chính xác theo thời gian.
-- [ ] Leaderboard cập nhật đúng thứ tự.
-- [ ] Load balancing giữa các room thi đấu hoạt động tốt.
+- ✅ Tính điểm chính xác theo thời gian.
+- ✅ Leaderboard cập nhật đúng thứ tự.
+- ✅ Load balancing giữa các room thi đấu hoạt động tốt.
 
 
 # Workflows

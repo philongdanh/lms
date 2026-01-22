@@ -69,11 +69,11 @@ MVP tập trung vào 3 module chính:
 
 ### Tiêu chí chấp nhận
 
-- [ ] Monorepo structure hoàn chỉnh với NestJS + Next.js
-- [ ] CI/CD pipeline với GitHub Actions
-- [ ] Design system foundation với Tailwind CSS
-- [ ] Database schema và migrations
-- [ ] GraphQL server với Apollo
+- ✅ Monorepo structure hoàn chỉnh với NestJS + Next.js
+- ✅ CI/CD pipeline với GitHub Actions
+- ✅ Design system foundation với Tailwind CSS
+- ✅ Database schema và migrations
+- ✅ GraphQL server với Apollo
 
 ---
 
@@ -102,11 +102,11 @@ MVP tập trung vào 3 module chính:
 
 ### Tiêu chí chấp nhận
 
-- [ ] Đăng ký với email và phone
-- [ ] Xác thực OTP
-- [ ] Login flow với JWT
-- [ ] Session management đa thiết bị
-- [ ] Protected routes với guards
+- ✅ Đăng ký với email và phone
+- ✅ Xác thực OTP
+- ✅ Login flow với JWT
+- ✅ Session management đa thiết bị
+- ✅ Protected routes với guards
 
 ---
 
@@ -135,11 +135,11 @@ MVP tập trung vào 3 module chính:
 
 ### Tiêu chí chấp nhận
 
-- [ ] Hiển thị danh sách môn học
-- [ ] Learning path view với progress
-- [ ] Lesson content viewer với media
-- [ ] Quiz exercises với scoring
-- [ ] Progress tracking real-time
+- ✅ Hiển thị danh sách môn học
+- ✅ Learning path view với progress
+- ✅ Lesson content viewer với media
+- ✅ Quiz exercises với scoring
+- ✅ Progress tracking real-time
 
 ---
 
@@ -168,11 +168,11 @@ MVP tập trung vào 3 module chính:
 
 ### Tiêu chí chấp nhận
 
-- [ ] Danh sách tournament với filter
-- [ ] Chi tiết tournament và đăng ký
-- [ ] Match gameplay real-time
-- [ ] Leaderboard live update
-- [ ] Results và scoring system
+- ✅ Danh sách tournament với filter
+- ✅ Chi tiết tournament và đăng ký
+- ✅ Match gameplay real-time
+- ✅ Leaderboard live update
+- ✅ Results và scoring system
 
 ---
 
@@ -196,10 +196,10 @@ MVP tập trung vào 3 module chính:
 
 ### Tiêu chí chấp nhận
 
-- [ ] Badges và achievements system
-- [ ] User profile với stats
-- [ ] Leaderboard theo nhiều tiêu chí
-- [ ] Rewards shop với virtual currency
+- ✅ Badges và achievements system
+- ✅ User profile với stats
+- ✅ Leaderboard theo nhiều tiêu chí
+- ✅ Rewards shop với virtual currency
 
 ---
 

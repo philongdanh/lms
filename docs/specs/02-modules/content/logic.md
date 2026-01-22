@@ -2,7 +2,7 @@
 id: logic
 title: Business Logic
 sidebar_label: Logic
-sidebar_position: 2
+sidebar_position: 20
 ---
 
 # Content & Question Bank - Business Logic
@@ -24,10 +24,10 @@ Quy tắc nghiệp vụ quản lý và phân phối nội dung.
 
 ## Validation Criteria
 
-- [ ] Cây cấu trúc nội dung hiển thị đúng phân cấp.
-- [ ] Quy trình import chạy đúng với file template và file lỗi.
-- [ ] Media upload phát được trên tất cả thiết bị.
-- [ ] Quyền Teacher (tạo draft) và Admin (publish) hoạt động đúng.
+- ✅ Cây cấu trúc nội dung hiển thị đúng phân cấp.
+- ✅ Quy trình import chạy đúng với file template và file lỗi.
+- ✅ Media upload phát được trên tất cả thiết bị.
+- ✅ Quyền Teacher (tạo draft) và Admin (publish) hoạt động đúng.
 
 
 # Workflows
@@ -112,7 +112,7 @@ G -> H
 
 ## Security Requirements
 
-- [ ] Quét file upload để phát hiện malware (tích hợp VirusTotal hoặc ClamAV)
+- ✅ Quét file upload để phát hiện malware (tích hợp VirusTotal hoặc ClamAV)
 
 
 ## References

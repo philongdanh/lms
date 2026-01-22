@@ -23,9 +23,9 @@ học sinh từ lớp 1-12.
 
 Trước khi sử dụng, hãy đảm bảo bạn có:
 
-- [x] Tài khoản được cấp bởi trường học hoặc đăng ký mới
-- [x] Trình duyệt web hiện đại (Chrome, Firefox, Safari, Edge)
-- [x] Kết nối internet ổn định
+- ✅ Tài khoản được cấp bởi trường học hoặc đăng ký mới
+- ✅ Trình duyệt web hiện đại (Chrome, Firefox, Safari, Edge)
+- ✅ Kết nối internet ổn định
 
 ---
 

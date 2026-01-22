@@ -34,11 +34,11 @@ Một User Story được coi là **Done** khi:
 
 ### Sprint DoD
 
-- [ ] Tất cả committed stories Done
-- [ ] Đạt sprint goal
-- [ ] Demo hoàn thành
-- [ ] Retrospective done
-- [ ] Không còn critical bugs
+- ✅ Tất cả committed stories Done
+- ✅ Đạt sprint goal
+- ✅ Demo hoàn thành
+- ✅ Retrospective done
+- ✅ Không còn critical bugs
 
 ---
 
@@ -65,17 +65,17 @@ v1.2.3
 ### Các bước Release
 
 **Pre-Release (T-2 days)**
-- [ ] Code freeze
-- [ ] All PR merged to `develop`
-- [ ] QA sign-off on staging
-- [ ] Bump version
+- ✅ Code freeze
+- ✅ All PR merged to `develop`
+- ✅ QA sign-off on staging
+- ✅ Bump version
 
 **Production (T-0)**
-- [ ] PO approval
-- [ ] Merge to `main`
-- [ ] Create release tag
-- [ ] Deploy to production
-- [ ] Smoke test
+- ✅ PO approval
+- ✅ Merge to `main`
+- ✅ Create release tag
+- ✅ Deploy to production
+- ✅ Smoke test
 
 ### Quy trình Hotfix
 

@@ -63,10 +63,10 @@ Vai trò, onboarding và giao tiếp trong dự án.
 ## Onboarding
 
 ### Checklist ngày đầu
-- [ ] GitHub organization access
-- [ ] Slack workspace
-- [ ] Jira/Linear project
-- [ ] Dev environment setup
+- ✅ GitHub organization access
+- ✅ Slack workspace
+- ✅ Jira/Linear project
+- ✅ Dev environment setup
 
 ### Kỳ vọng tuần đầu
 | Week | Expectation |

@@ -2,7 +2,7 @@
 id: logic
 title: Business Logic
 sidebar_label: Logic
-sidebar_position: 2
+sidebar_position: 20
 ---
 
 # Learning & Personalization - Business Logic
@@ -25,10 +25,10 @@ Quy tắc nghiệp vụ lộ trình và cá nhân hóa việc học.
 
 ## Validation Criteria
 
-- [ ] Tất cả use cases đã được định nghĩa và review.
-- [ ] Logic hoàn thành bài học (BR-LEARN-001, BR-LEARN-002) được test kỹ lưỡng.
-- [ ] Luồng tương tác với AI Service được định nghĩa rõ ràng (fallback khi lỗi).
-- [ ] Cơ chế anti-cheat được thiết kế.
+- ✅ Tất cả use cases đã được định nghĩa và review.
+- ✅ Logic hoàn thành bài học (BR-LEARN-001, BR-LEARN-002) được test kỹ lưỡng.
+- ✅ Luồng tương tác với AI Service được định nghĩa rõ ràng (fallback khi lỗi).
+- ✅ Cơ chế anti-cheat được thiết kế.
 
 
 # Workflows
@@ -156,8 +156,8 @@ COMPLETED -> REVIEW: Re-learning
 
 ## Security Requirements
 
-- [ ] Rate limiting theo user
-- [ ] Xác thực quyền sở hữu session
+- ✅ Rate limiting theo user
+- ✅ Xác thực quyền sở hữu session
 
 
 ## References

@@ -139,7 +139,7 @@ enum ErrorCode {
 ```
 
 > For complete error codes and response format, see
-> [API Contracts](../../api/contracts.md).
+> [API Contracts](./interfaces.md).
 
 ---
 
@@ -248,4 +248,4 @@ TOURNAMENTS -> MATCHES: contains
 - [System Design](./design.md)
 - [Tech Stack](./tech-stack.md)
 - [Data Model](./database.md)
-- [API Contracts](../../api/contracts.md)
+- [API Contracts](./interfaces.md)

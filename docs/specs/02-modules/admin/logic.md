@@ -2,7 +2,7 @@
 id: logic
 title: Business Logic
 sidebar_label: Logic
-sidebar_position: 2
+sidebar_position: 20
 ---
 
 # Admin & Tenant Management - Business Logic
@@ -24,10 +24,10 @@ Quy tắc nghiệp vụ quản trị và vận hành hệ thống.
 
 ## Validation Criteria
 
-- [ ] Kiểm tra tính duy nhất của Tenant Code hoạt động chính xác.
-- [ ] Quy trình Soft Delete -> Hard Delete chạy đúng.
-- [ ] Import CSV báo cáo chính xác các dòng lỗi.
-- [ ] Audit log cho Impersonation đầy đủ.
+- ✅ Kiểm tra tính duy nhất của Tenant Code hoạt động chính xác.
+- ✅ Quy trình Soft Delete -> Hard Delete chạy đúng.
+- ✅ Import CSV báo cáo chính xác các dòng lỗi.
+- ✅ Audit log cho Impersonation đầy đủ.
 
 
 # Workflows
@@ -112,8 +112,8 @@ Report -> Partial
 
 ## Security Requirements
 
-- [ ] Chỉ Root Admin mới có thể kích hoạt các workflow Tenant.
-- [ ] Tenant Admin chỉ có thể import user vào tenant của mình.
+- ✅ Chỉ Root Admin mới có thể kích hoạt các workflow Tenant.
+- ✅ Tenant Admin chỉ có thể import user vào tenant của mình.
 
 
 ## References

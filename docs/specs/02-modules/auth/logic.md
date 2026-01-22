@@ -2,7 +2,7 @@
 id: logic
 title: Business Logic
 sidebar_label: Logic
-sidebar_position: 2
+sidebar_position: 20
 ---
 
 # Auth - Business Logic
@@ -25,10 +25,10 @@ Quy tắc nghiệp vụ và quy trình xử lý xác thực.
 
 ## Validation Criteria
 
-- [ ] Tất cả use cases đã định nghĩa
-- [ ] Business rules đầy đủ và chính xác
-- [ ] Dependencies đã xác định
-- [ ] KPIs có thể đo lường
+- ✅ Tất cả use cases đã định nghĩa
+- ✅ Business rules đầy đủ và chính xác
+- ✅ Dependencies đã xác định
+- ✅ KPIs có thể đo lường
 
 
 # Workflows
@@ -92,7 +92,7 @@ Quy tắc nghiệp vụ và quy trình xử lý xác thực.
 
 ## Security Requirements
 
-- [x] Audit logging cho tất cả sự kiện registration/login
-- [x] Input sanitization
-- [x] Rate limiting
+- ✅ Audit logging cho tất cả sự kiện registration/login
+- ✅ Input sanitization
+- ✅ Rate limiting
 

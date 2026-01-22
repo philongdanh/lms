@@ -2,7 +2,7 @@
 id: tests
 title: Test Cases
 sidebar_label: Tests
-sidebar_position: 4
+sidebar_position: 40
 ---
 
 # Content & Question Bank - Test Cases
@@ -63,6 +63,6 @@ import/export workflows.
 
 ## Validation Checklist
 
-- [ ] Autoscaling worker pool đã được cấu hình
-- [ ] Đã bật S3 upload acceleration (nếu cần)
+- ✅ Autoscaling worker pool đã được cấu hình
+- ✅ Đã bật S3 upload acceleration (nếu cần)
 

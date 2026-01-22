@@ -149,9 +149,9 @@ theo mức độ ưu tiên và sprint.
 
 ### Mục tiêu Sprint
 
-- [ ] [Goal 1]
-- [ ] [Goal 2]
-- [ ] [Goal 3]
+- ✅ [Goal 1]
+- ✅ [Goal 2]
+- ✅ [Goal 3]
 
 ### Sprint Backlog
 

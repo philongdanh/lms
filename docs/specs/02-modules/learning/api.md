@@ -2,7 +2,7 @@
 id: api
 title: API Endpoints
 sidebar_label: API
-sidebar_position: 1
+sidebar_position: 10
 ---
 
 # Learning - API Endpoints

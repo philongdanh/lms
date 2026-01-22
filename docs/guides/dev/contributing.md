@@ -106,16 +106,16 @@ Backlog --[Groomed]--> Ready --[Started]--> InProgress --[PR Opened]--> CodeRevi
 
 ### Definition of Ready (DoR)
 
-- [ ] Yêu cầu rõ ràng
-- [ ] Spec được phê duyệt
-- [ ] Đã ước lượng nỗ lực
+- ✅ Yêu cầu rõ ràng
+- ✅ Spec được phê duyệt
+- ✅ Đã ước lượng nỗ lực
 
 ### Definition of Done (DoD)
 
-- [ ] Triển khai hoàn tất
-- [ ] Test đã pass
-- [ ] Code đã được review
-- [ ] Tài liệu đã cập nhật
+- ✅ Triển khai hoàn tất
+- ✅ Test đã pass
+- ✅ Code đã được review
+- ✅ Tài liệu đã cập nhật
 
 ---
 
@@ -123,21 +123,21 @@ Backlog --[Groomed]--> Ready --[Started]--> InProgress --[PR Opened]--> CodeRevi
 
 ### Trước khi triển khai
 
-- [ ] Tài liệu thiết kế được phê duyệt bởi các bên liên quan
-- [ ] Các test case được định nghĩa trong spec
-- [ ] Tính khả thi về mặt kỹ thuật được xác nhận
+- ✅ Tài liệu thiết kế được phê duyệt bởi các bên liên quan
+- ✅ Các test case được định nghĩa trong spec
+- ✅ Tính khả thi về mặt kỹ thuật được xác nhận
 
 ### Trong khi triển khai
 
-- [ ] Code review dựa trên spec
-- [ ] Độ bao phủ test đạt yêu cầu
-- [ ] Benchmarks hiệu năng được xác nhận
+- ✅ Code review dựa trên spec
+- ✅ Độ bao phủ test đạt yêu cầu
+- ✅ Benchmarks hiệu năng được xác nhận
 
 ### Trước khi Release
 
-- [ ] Tất cả các yêu cầu trong spec đã được triển khai
-- [ ] Tất cả các test đã pass
-- [ ] Tài liệu đã được cập nhật
+- ✅ Tất cả các yêu cầu trong spec đã được triển khai
+- ✅ Tất cả các test đã pass
+- ✅ Tài liệu đã được cập nhật
 
 ---
 

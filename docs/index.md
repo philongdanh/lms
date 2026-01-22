@@ -18,5 +18,5 @@ Tại đây, bạn có thể tìm thấy các thông tin về giải pháp kỹ 
 
 - [Business Requirements](./specs/00-planning/stories.md)
 - [Architecture](./specs/01-architecture/tech-stack.md)
-- [API](./api/openapi.md)
+- [Interfaces](./specs/01-architecture/interfaces.md)
 - [Developer Guide](./guides/dev/setup.md)

@@ -2,7 +2,7 @@
 id: tests
 title: Test Cases
 sidebar_label: Tests
-sidebar_position: 4
+sidebar_position: 40
 ---
 
 # Real-time Communication - Test Cases
@@ -64,5 +64,5 @@ Kịch bản kiểm thử hệ thống giao tiếp thời gian thực.
 
 ## Validation Checklist
 
-- [ ] Tinh chỉnh Kernel cho đồng thời cao (sysctl)
+- ✅ Tinh chỉnh Kernel cho đồng thời cao (sysctl)
 

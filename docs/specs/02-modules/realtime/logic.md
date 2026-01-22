@@ -2,7 +2,7 @@
 id: logic
 title: Business Logic
 sidebar_label: Logic
-sidebar_position: 2
+sidebar_position: 20
 ---
 
 # Real-time Communication - Business Logic
@@ -24,9 +24,9 @@ Quy tắc nghiệp vụ xử lý giao tiếp thời gian thực.
 
 ## Validation Criteria
 
-- [ ] Kết nối thành công với JWT hợp lệ.
-- [ ] Tính năng Broadcast hoạt động trên nhiều server nodes (Redis Adapter).
-- [ ] Xử lý 10k kết nối đồng thời.
+- ✅ Kết nối thành công với JWT hợp lệ.
+- ✅ Tính năng Broadcast hoạt động trên nhiều server nodes (Redis Adapter).
+- ✅ Xử lý 10k kết nối đồng thời.
 
 
 # Workflows
@@ -63,5 +63,5 @@ config:
 
 ## Validation Checklist
 
-- [ ] Kiểm tra Redis Failover
+- ✅ Kiểm tra Redis Failover
 

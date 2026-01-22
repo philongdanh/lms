@@ -2,7 +2,7 @@
 id: api
 title: API Endpoints
 sidebar_label: API
-sidebar_position: 1
+sidebar_position: 10
 ---
 
 # Auth - API Endpoints
@@ -34,10 +34,10 @@ Các giao diện lập trình cho hệ thống xác thực và phân quyền.
 
 ## Security Requirements
 
-- [x] Yêu cầu authentication
-- [x] Input validation (Email format)
-- [x] Rate limiting theo IP
-- [x] Secure Headers
+- ✅ Yêu cầu authentication
+- ✅ Input validation (Email format)
+- ✅ Rate limiting theo IP
+- ✅ Secure Headers
 
 
 ## References

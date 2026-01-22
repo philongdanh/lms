@@ -177,11 +177,11 @@ Hướng dẫn thiết kế và quy chuẩn các thành phần giao diện.
 
 ### Features
 
-- [ ] Sorting
-- [ ] Filtering
-- [ ] Pagination
-- [ ] Selection
-- [ ] Resizable columns
+- ✅ Sorting
+- ✅ Filtering
+- ✅ Pagination
+- ✅ Selection
+- ✅ Resizable columns
 
 ---
 

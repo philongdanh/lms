@@ -2,7 +2,7 @@
 id: tests
 title: Test Cases
 sidebar_label: Tests
-sidebar_position: 4
+sidebar_position: 40
 ---
 
 # Analytics - Test Cases
@@ -63,5 +63,5 @@ Kịch bản kiểm thử hệ thống báo cáo và thống kê.
 
 ## Validation Checklist
 
-- [ ] Đã bật nén PostgreSQL
+- ✅ Đã bật nén PostgreSQL
 

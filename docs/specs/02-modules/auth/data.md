@@ -2,7 +2,7 @@
 id: data
 title: Data Model
 sidebar_label: Data
-sidebar_position: 3
+sidebar_position: 30
 ---
 
 # Auth - Data Model
@@ -46,8 +46,8 @@ direction: right
 
 ## Validation Checklist
 
-- [x] Tất cả entities định nghĩa đầy đủ fields
-- [x] Relationships được document rõ ràng
-- [x] Indexes tối ưu cho query patterns
-- [x] Performance requirements khả thi
+- ✅ Tất cả entities định nghĩa đầy đủ fields
+- ✅ Relationships được document rõ ràng
+- ✅ Indexes tối ưu cho query patterns
+- ✅ Performance requirements khả thi
 

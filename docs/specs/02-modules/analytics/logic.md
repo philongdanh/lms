@@ -2,7 +2,7 @@
 id: logic
 title: Business Logic
 sidebar_label: Logic
-sidebar_position: 2
+sidebar_position: 20
 ---
 
 # Analytics - Business Logic
@@ -25,9 +25,9 @@ Quy tắc nghiệp vụ tính toán báo cáo và phân tích dữ liệu.
 
 ## Validation Criteria
 
-- [ ] Dữ liệu báo cáo khớp với dữ liệu gốc (Tính chính xác dữ liệu).
-- [ ] Tính năng phân quyền hoạt động đúng (Giáo viên lớp A không thể xem lớp B).
-- [ ] Hiệu suất ổn định với dữ liệu lớn.
+- ✅ Dữ liệu báo cáo khớp với dữ liệu gốc (Tính chính xác dữ liệu).
+- ✅ Tính năng phân quyền hoạt động đúng (Giáo viên lớp A không thể xem lớp B).
+- ✅ Hiệu suất ổn định với dữ liệu lớn.
 
 
 # Workflows

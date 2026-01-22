@@ -2,7 +2,7 @@
 id: tests
 title: Test Cases
 sidebar_label: Tests
-sidebar_position: 4
+sidebar_position: 40
 ---
 
 # Auth - Test Cases
@@ -76,17 +76,17 @@ Kịch bản và chỉ số kiểm thử cho hệ thống xác thực.
 
 ### CI/CD Integration
 
-- [x] Tests chạy khi PR
-- [x] Tests chạy khi merge to main
-- [ ] Tests chạy hàng đêm (performance)
+- ✅ Tests chạy khi PR
+- ✅ Tests chạy khi merge to main
+- ✅ Tests chạy hàng đêm (performance)
 
 
 ## Validation Checklist
 
-- [x] Test coverage matrix complete
-- [x] All specs have test cases
-- [x] Test data requirements defined
-- [x] Automation strategy specified
+- ✅ Test coverage matrix complete
+- ✅ All specs have test cases
+- ✅ Test data requirements defined
+- ✅ Automation strategy specified
 
 
 
@@ -118,9 +118,9 @@ lúc **Test Parameters**:
 
 **Success Criteria**:
 
-- [x] P95 response time < 200ms
-- [x] Error rate < 0.5%
-- [x] Throughput > 2000 req/sec
+- ✅ P95 response time < 200ms
+- ✅ Error rate < 0.5%
+- ✅ Throughput > 2000 req/sec
 
 ### Scenario 2: Sustained Load (School Hours)
 
@@ -131,9 +131,9 @@ lúc **Test Parameters**:
 
 **Success Criteria**:
 
-- [x] P95 response time < 150ms
-- [x] Error rate < 0.1%
-- [x] Memory leak: 0
+- ✅ P95 response time < 150ms
+- ✅ Error rate < 0.1%
+- ✅ Memory leak: 0
 
 
 ## Infrastructure Requirements

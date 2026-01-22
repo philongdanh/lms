@@ -2,7 +2,7 @@
 id: logic
 title: Business Logic
 sidebar_label: Logic
-sidebar_position: 2
+sidebar_position: 20
 ---
 
 # Gamification & Rewards - Business Logic
@@ -24,10 +24,10 @@ Quy tắc nghiệp vụ hệ thống thi đua và trò chơi hóa.
 
 ## Validation Criteria
 
-- [ ] Công thức tính Level hoạt động chính xác.
-- [ ] Giao dịch đổi xu đảm bảo Atomicity (không trừ tiền mà không có phần
+- ✅ Công thức tính Level hoạt động chính xác.
+- ✅ Giao dịch đổi xu đảm bảo Atomicity (không trừ tiền mà không có phần
       thưởng).
-- [ ] Bảng xếp hạng cập nhật realtime.
+- ✅ Bảng xếp hạng cập nhật realtime.
 
 
 # Workflows
@@ -64,5 +64,5 @@ config:
 
 ## Validation Checklist
 
-- [ ] Việc trừ phần thưởng có tính transactional
+- ✅ Việc trừ phần thưởng có tính transactional
 

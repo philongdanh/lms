@@ -183,13 +183,13 @@ Scope là tên module hoặc component: `auth`, `tournament`, `learning`, `api`,
 
 ### Danh sách kiểm tra (Checklist) cho người Review
 
-- [ ] Code tuân thủ coding standards
-- [ ] Logic chính xác và xử lý edge cases
-- [ ] Có unit tests với coverage đủ
-- [ ] Không hardcode secrets hoặc credentials
-- [ ] Performance không bị ảnh hưởng tiêu cực
-- [ ] Documentation được cập nhật (nếu cần)
-- [ ] Migration an toàn và reversible
+- ✅ Code tuân thủ coding standards
+- ✅ Logic chính xác và xử lý edge cases
+- ✅ Có unit tests với coverage đủ
+- ✅ Không hardcode secrets hoặc credentials
+- ✅ Performance không bị ảnh hưởng tiêu cực
+- ✅ Documentation được cập nhật (nếu cần)
+- ✅ Migration an toàn và reversible
 
 ### Merge Criteria
 
