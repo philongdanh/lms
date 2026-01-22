@@ -1,4 +1,3 @@
-import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
@@ -107,12 +106,7 @@ const config: Config = {
       ],
     },
     footer: {
-      style: 'dark',
       copyright: `© ${new Date().getFullYear()} LMS - Danh Phi Long`,
-    },
-    prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
 };
