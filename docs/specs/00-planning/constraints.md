@@ -55,28 +55,28 @@ Các ràng buộc kỹ thuật và nghiệp vụ.
 ### Performance Constraints
 | ID | Constraint | Metric |
 | :--- | :--- | :--- |
-| **TC-PERF-01** | Hỗ trợ 10,000 người dùng đồng thời | Concurrent users |
-| **TC-PERF-02** | Độ trễ thi đấu &lt;100ms | Latency |
-| **TC-PERF-03** | Thời gian phản hồi API &lt;200ms | API response time |
-| **TC-PERF-04** | Thời gian tải trang &lt;3 giây | Page load time |
-| **TC-PERF-05** | Kết nối WebSocket &lt;500ms | WebSocket latency |
-| **TC-PERF-06** | Sự kiện thời gian thực &lt;50ms | Real-time event latency |
+| **NFR-PERF-01** | Hỗ trợ 10,000 người dùng đồng thời | Concurrent users |
+| **NFR-PERF-02** | Độ trễ thi đấu &lt;100ms | Latency |
+| **NFR-PERF-03** | Thời gian phản hồi API &lt;200ms | API response time |
+| **NFR-PERF-04** | Thời gian tải trang &lt;3 giây | Page load time |
+| **NFR-PERF-05** | Kết nối WebSocket &lt;500ms | WebSocket latency |
+| **NFR-PERF-06** | Sự kiện thời gian thực &lt;50ms | Real-time event latency |
 
 ### Security Constraints
 | ID | Constraint | Metric |
 | :--- | :--- | :--- |
-| **TC-SEC-01** | Thực thi RBAC với 5 vai trò | Role-based access |
-| **TC-SEC-02** | Mã hóa dữ liệu với TLS 1.3 | Encryption standard |
-| **TC-SEC-03** | Xác thực JWT với chặn refresh token | Authentication method |
-| **TC-SEC-04** | 2FA cho admin với TOTP | Two-factor auth |
-| **TC-SEC-05** | Quản lý đa thiết bị với đăng xuất từ xa | Device management |
+| **NFR-SEC-01** | Thực thi RBAC với 5 vai trò | Role-based access |
+| **NFR-SEC-02** | Mã hóa dữ liệu với TLS 1.3 | Encryption standard |
+| **NFR-SEC-03** | Xác thực JWT với chặn refresh token | Authentication method |
+| **NFR-SEC-04** | 2FA cho admin với TOTP | Two-factor auth |
+| **NFR-SEC-05** | Quản lý đa thiết bị với đăng xuất từ xa | Device management |
 
 ### Reliability Constraints
 | ID | Constraint | Metric |
 | :--- | :--- | :--- |
-| **TC-REL-01** | Độ khả dụng 99.9% | Uptime SLA |
-| **TC-REL-02** | Sao lưu dữ liệu hàng ngày | Backup frequency |
-| **TC-REL-03** | Phục hồi sau thảm họa trong &lt;4 giờ | Recovery Time Objective |
+| **NFR-REL-01** | Độ khả dụng 99.9% | Uptime SLA |
+| **NFR-REL-02** | Sao lưu dữ liệu hàng ngày | Backup frequency |
+| **NFR-REL-03** | Phục hồi sau thảm họa trong &lt;4 giờ | Recovery Time Objective |
 
 ### Architecture Constraints
 | ID         | Constraint                                | Rationale                      |
