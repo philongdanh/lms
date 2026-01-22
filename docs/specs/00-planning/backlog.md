@@ -11,13 +11,6 @@ Danh sách các yêu cầu và tính năng chờ triển khai.
 
 ---
 
-## Overview
-
-Tài liệu này chứa tất cả các ticket (user stories, tasks, bugs) được tổ chức
-theo mức độ ưu tiên và sprint.
-
----
-
 ## Legend
 
 ### Độ ưu tiên
@@ -142,38 +135,6 @@ theo mức độ ưu tiên và sprint.
 | LMS-063 | Social login (Google)   | FS   | 5      | TBD    |
 | LMS-064 | Social login (Facebook) | FS   | 5      | TBD    |
 | LMS-065 | Rewards shop            | FS   | 8      | TBD    |
-
----
-
-## Sprint Planning Template
-
-### Mục tiêu Sprint
-
-- ✅ [Goal 1]
-- ✅ [Goal 2]
-- ✅ [Goal 3]
-
-### Sprint Backlog
-
-| ID      | Title   | Type | Points | Assignee |
-| ------- | ------- | ---- | ------ | -------- |
-| LMS-XXX | [Title] | FS   | [N]    | [Name]   |
-
----
-
-## Ticket Template
-
-| Field      | Required | Description                      |
-| ---------- | -------- | -------------------------------- |
-| ID         | ✅       | Unique identifier (LMS-XXX)      |
-| Title      | ✅       | Tiêu đề rõ ràng, hướng hành động |
-| Type       | ✅       | FE/BE/FS/DO                      |
-| Priority   | ✅       | P0/P1/P2/P3                      |
-| Difficulty | ✅       | Easy/Medium/Hard                 |
-| Points     | ✅       | Story points (1,2,3,5,8,13)      |
-| Epic       | ✅       | Parent epic ID                   |
-| Sprint     | ✅       | Target sprint                    |
-| Assignee   | ❌       | Developer được phân công         |
 
 ---
 

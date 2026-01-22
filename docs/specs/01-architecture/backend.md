@@ -20,7 +20,7 @@ Thiết kế API, cấu trúc database và tham chiếu công cụ.
 | Apidog             | API Documentation |            |
 | GraphQL Playground | GraphQL Explorer  | `/graphql` |
 
-> For detailed Technology Stack, see [Tech Stack](./tech-stack.md).
+> Xem chi tiết Technology Stack tại [Tech Stack](./tech-stack.md).
 
 ---
 
@@ -138,7 +138,7 @@ enum ErrorCode {
 }
 ```
 
-> For complete error codes and response format, see
+> Xem danh sách đầy đủ mã lỗi và định dạng phản hồi tại
 > [API Contracts](./interfaces.md).
 
 ---

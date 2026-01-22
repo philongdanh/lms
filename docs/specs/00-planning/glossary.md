@@ -71,14 +71,7 @@ Thuật ngữ và định nghĩa chuyên ngành.
 | **KPI (Key Performance Indicator)** | Chỉ số hiệu suất chính dùng để đo lường thành công. | Metrics |
 | **Leaderboard (Bảng xếp hạng)** | Bảng hiển thị thứ hạng của người tham gia dựa trên điểm số hoặc thành tích. | FR-HS-07 |
 | **NPS (Net Promoter Score)** | Chỉ số đo lường mức độ sẵn sàng giới thiệu sản phẩm của khách hàng. | Metrics |
-| **Persona** | Hồ sơ người dùng điển hình, đại diện cho một nhóm người dùng với đặc điểm, mục tiêu và hành vi chung. | Personas |
-| **Product Roadmap (Lộ trình sản phẩm)** | Tài liệu chiến lược thể hiện kế hoạch phát triển sản phẩm theo thời gian. | Roadmap |
-| **Stakeholder** | Cá nhân hoặc nhóm có quan tâm, ảnh hưởng hoặc chịu ảnh hưởng bởi dự án/sản phẩm. | Overview - Stakeholders |
-| **SUS (System Usability Scale)** | Thang đo khả năng sử dụng hệ thống thông qua bảng câu hỏi tiêu chuẩn. | UX - Testing Methods |
-| **Tenant** | Một thực thể độc lập (ví dụ: trường học) trong hệ thống multi-tenant. | Glossary (trước) |
-| **Use Case** | Mô tả chi tiết về cách người dùng tương tác với hệ thống để đạt mục tiêu cụ thể. | Cases |
-| **User Story** | Mô tả đơn giản, ngắn gọn về một tính năng từ góc độ người dùng cuối. | Cases - User Stories |
-| **Value Proposition (Đề xuất giá trị)** | Lời hứa về giá trị mà sản phẩm/dịch vụ mang lại cho một nhóm khách hàng cụ thể. | Overview - Value Proposition |
+
 
 ---
 

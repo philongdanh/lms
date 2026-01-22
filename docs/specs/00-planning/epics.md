@@ -11,13 +11,6 @@ Các nhóm tính năng lớn và lộ trình triển khai theo giai đoạn.
 
 ---
 
-## Overview
-
-Epics là các khối lượng công việc lớn có thể được chia nhỏ thành các tính năng
-và user story. Mỗi epic đại diện cho một khả năng sản phẩm quan trọng.
-
----
-
 ## Priority Legend
 
 | Priority      | Description              |

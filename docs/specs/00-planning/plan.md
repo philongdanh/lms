@@ -9,17 +9,6 @@ sidebar_position: 30
  
 Kế hoạch chi tiết và phân bổ nguồn lực theo từng giai đoạn.
 
-> **Phạm vi**: Tài liệu này bao gồm việc lập kế hoạch và thực hiện sprint. Đối
-> với lộ trình cấp sản phẩm, xem
-> [Product Roadmap](./stories.md).
-
----
-
-## Overview
-
-Lộ trình này xác định tất cả các sprint từ khi bắt đầu đến khi hoàn thành dự án,
-với các sản phẩm bàn giao và cột mốc rõ ràng.
-
 ---
 
 ## Project Timeline

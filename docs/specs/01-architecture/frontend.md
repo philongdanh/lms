@@ -19,7 +19,7 @@ Kiến trúc thành phần, quản lý trạng thái và điều phối giao di�
 | Storybook | Component Library |      |
 | Chromatic | Visual Testing    |      |
 
-> For detailed Technology Stack, see [Tech Stack](./tech-stack.md).
+> Xem chi tiết Technology Stack tại [Tech Stack](./tech-stack.md).
 
 ---
 
