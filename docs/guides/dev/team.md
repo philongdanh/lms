@@ -62,13 +62,13 @@ Vai trò, onboarding và giao tiếp trong dự án.
 
 ## Onboarding
 
-### Day 1 Checklist
+### Checklist ngày đầu
 - [ ] GitHub organization access
 - [ ] Slack workspace
 - [ ] Jira/Linear project
 - [ ] Dev environment setup
 
-### Week 1 Expectations
+### Kỳ vọng tuần đầu
 | Week | Expectation |
 |------|-------------|
 | Week 1 | Complete 1-2 starter tasks |
@@ -80,7 +80,7 @@ Vai trò, onboarding và giao tiếp trong dự án.
 
 ## Communication
 
-### Channels
+### Các kênh liên lạc
 
 | Channel | Purpose | Response Time |
 |---------|---------|---------------|
@@ -88,7 +88,7 @@ Vai trò, onboarding và giao tiếp trong dự án.
 | #lms-dev | Technical discussions | < 2 hours |
 | #lms-urgent | Critical issues | < 30 mins |
 
-### Meeting Schedule
+### Lịch họp
 
 | Meeting | When | Duration |
 |---------|------|----------|
@@ -98,7 +98,7 @@ Vai trò, onboarding và giao tiếp trong dự án.
 | Sprint Review | Fri (end) | 1 hour |
 | Retrospective | Fri (end) | 1 hour |
 
-### Standup Format
+### Định dạng Standup
 1. **Hôm qua** làm được gì?
 2. **Hôm nay** sẽ làm gì?
 3. **Blockers** nào cần giải quyết?

@@ -20,7 +20,7 @@ theo mức độ ưu tiên và sprint.
 
 ## Legend
 
-### Priority
+### Độ ưu tiên
 
 | Priority | Description                                |
 | -------- | ------------------------------------------ |
@@ -29,7 +29,7 @@ theo mức độ ưu tiên và sprint.
 | P2       | Medium - Should have (Trung bình - Nên có) |
 | P3       | Low - Nice to have (Thấp - Nên có)         |
 
-### Difficulty
+### Độ khó
 
 | Difficulty | Points Range |
 | ---------- | ------------ |
@@ -37,7 +37,7 @@ theo mức độ ưu tiên và sprint.
 | Medium     | 3-5 pts      |
 | Hard       | 8-13 pts     |
 
-### Type
+### Loại công việc
 
 | Type       | Description            |
 | ---------- | ---------------------- |
@@ -103,7 +103,7 @@ theo mức độ ưu tiên và sprint.
 
 ## Should Have
 
-### Learning Enhancements
+### Cải tiến Learning
 
 | ID      | Title                   | Type | Points | Sprint |
 | ------- | ----------------------- | ---- | ------ | ------ |
@@ -113,7 +113,7 @@ theo mức độ ưu tiên và sprint.
 | LMS-033 | Learning streak         | FS   | 5      | S7     |
 | LMS-034 | Lesson recommendations  | BE   | 8      | S8     |
 
-### Social Features
+### Tính năng xã hội
 
 | ID      | Title                 | Type | Points | Sprint |
 | ------- | --------------------- | ---- | ------ | ------ |
@@ -122,7 +122,7 @@ theo mức độ ưu tiên và sprint.
 | LMS-042 | Friend list           | FS   | 5      | S9     |
 | LMS-043 | Challenge friends     | FS   | 8      | S9     |
 
-### Parent Features
+### Tính năng phụ huynh
 
 | ID      | Title               | Type | Points | Sprint |
 | ------- | ------------------- | ---- | ------ | ------ |
@@ -147,7 +147,7 @@ theo mức độ ưu tiên và sprint.
 
 ## Sprint Planning Template
 
-### Sprint Goals
+### Mục tiêu Sprint
 
 - [ ] [Goal 1]
 - [ ] [Goal 2]

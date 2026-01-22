@@ -13,7 +13,7 @@ Definition of Done và Release Process.
 
 ## Definition of Done
 
-### Story DoD
+### Story DoD (Definition of Done)
 
 Một User Story được coi là **Done** khi:
 
@@ -44,7 +44,7 @@ Một User Story được coi là **Done** khi:
 
 ## Release Process
 
-### Versioning
+### Quy tắc đánh phiên bản
 
 ```
 v1.2.3
@@ -54,7 +54,7 @@ v1.2.3
 └────── Major: Breaking changes
 ```
 
-### Release Types
+### Loại Release
 
 | Type | Frequency | Scope |
 |------|-----------|-------|
@@ -62,7 +62,7 @@ v1.2.3
 | Minor | 2 tuần/lần | New features |
 | Patch | Khi cần | Bug fixes |
 
-### Release Steps
+### Các bước Release
 
 **Pre-Release (T-2 days)**
 - [ ] Code freeze
@@ -77,7 +77,7 @@ v1.2.3
 - [ ] Deploy to production
 - [ ] Smoke test
 
-### Hotfix Process
+### Quy trình Hotfix
 
 ```bash
 # 1. Create hotfix branch từ main

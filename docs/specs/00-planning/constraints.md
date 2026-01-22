@@ -13,21 +13,21 @@ Các ràng buộc kỹ thuật và nghiệp vụ.
 
 ## Business Constraints
 
-### Timeline Constraints
+### Ràng buộc thời gian
 | ID         | Constraint                                | Impact                        | Rationale                                      |
 | ---------- | ----------------------------------------- | ----------------------------- | ---------------------------------------------- |
 | **BC-001** | Timeline cố định: 25/01/2026 - 15/03/2026 | Không thể extend timeline     | Đã cam kết với stakeholders                    |
 | **BC-002** | MVP phải hoàn thành trước 15/02/2026      | Tính năng giai đoạn 2 bị ảnh hưởng nếu delay | Release plan cố định                            |
 | **BC-003** | Giai đoạn 1 chỉ tập trung vào web         | Mobile app delay đến giai đoạn 2 | Ưu tiên nền tảng web responsive trước          |
 
-### Budget Constraints
+### Ràng buộc ngân sách
 | ID         | Constraint                                | Impact                        | Rationale                                      |
 | ---------- | ----------------------------------------- | ----------------------------- | ---------------------------------------------- |
 | **BC-004** | Ngân sách phát triển có hạn               | Ưu tiên tính năng P0, P1      | Tối ưu chi phí phát triển                      |
 | **BC-005** | Sử dụng công nghệ nguồn mở                | Giảm chi phí license          | Phù hợp với startup                            |
 | **BC-006** | Triển khai tại chỗ (on-premise)           | Giảm chi phí đám mây          | Phù hợp với trường học Việt Nam                |
 
-### Scope Constraints
+### Ràng buộc phạm vi
 | ID         | Constraint                                | Impact                        | Rationale                                      |
 | ---------- | ----------------------------------------- | ----------------------------- | ---------------------------------------------- |
 | **BC-007** | Chỉ hỗ trợ 3 môn học chính (Toán, Tiếng Việt, Toán tiếng Anh) | Phạm vi ban đầu giới hạn      | Tập trung vào môn học cốt lõi                  |
@@ -35,14 +35,14 @@ Các ràng buộc kỹ thuật và nghiệp vụ.
 | **BC-009** | Báo cáo không thể tùy chỉnh                | Người dùng phải dùng mẫu cố định | Giảm độ phức tạp phát triển                   |
 | **BC-010** | Chưa hỗ trợ mobile app native             | Chỉ web responsive trong giai đoạn 1 | Tập trung phát triển web trước                |
 
-### Regulatory Constraints
+### Ràng buộc pháp lý
 | ID         | Constraint                                | Impact                        | Rationale                                      |
 | ---------- | ----------------------------------------- | ----------------------------- | ---------------------------------------------- |
 | **BC-011** | Tuân thủ Luật An ninh mạng Việt Nam       | Dữ liệu phải lưu trữ trong nước | Yêu cầu pháp lý bắt buộc                       |
 | **BC-012** | Tuân thủ Luật Bảo vệ quyền trẻ em         | Hạn chế thu thập dữ liệu nhạy cảm | Bảo vệ thông tin học sinh                      |
 | **BC-013** | Tuân thủ GDPR cho người dùng quốc tế      | Cơ chế xóa dữ liệu theo yêu cầu | Mở rộng thị trường quốc tế                     |
 
-### Resource Constraints
+### Ràng buộc nguồn lực
 | ID         | Constraint                                | Impact                        | Rationale                                      |
 | ---------- | ----------------------------------------- | ----------------------------- | ---------------------------------------------- |
 | **BC-014** | Đội ngũ nhỏ (dưới 10 lập trình viên)      | Ưu tiên đơn giản hóa kiến trúc | Tối ưu năng suất đội nhỏ                       |
@@ -52,7 +52,7 @@ Các ràng buộc kỹ thuật và nghiệp vụ.
 
 ## Technical Constraints
 
-### Performance Constraints
+### Ràng buộc hiệu năng
 | ID | Constraint | Metric |
 | :--- | :--- | :--- |
 | **NFR-PERF-01** | Hỗ trợ 10,000 người dùng đồng thời | Concurrent users |
@@ -62,7 +62,7 @@ Các ràng buộc kỹ thuật và nghiệp vụ.
 | **NFR-PERF-05** | Kết nối WebSocket &lt;500ms | WebSocket latency |
 | **NFR-PERF-06** | Sự kiện thời gian thực &lt;50ms | Real-time event latency |
 
-### Security Constraints
+### Ràng buộc bảo mật
 | ID | Constraint | Metric |
 | :--- | :--- | :--- |
 | **NFR-SEC-01** | Thực thi RBAC với 5 vai trò | Role-based access |
@@ -71,14 +71,14 @@ Các ràng buộc kỹ thuật và nghiệp vụ.
 | **NFR-SEC-04** | 2FA cho admin với TOTP | Two-factor auth |
 | **NFR-SEC-05** | Quản lý đa thiết bị với đăng xuất từ xa | Device management |
 
-### Reliability Constraints
+### Ràng buộc độ tin cậy
 | ID | Constraint | Metric |
 | :--- | :--- | :--- |
 | **NFR-REL-01** | Độ khả dụng 99.9% | Uptime SLA |
 | **NFR-REL-02** | Sao lưu dữ liệu hàng ngày | Backup frequency |
 | **NFR-REL-03** | Phục hồi sau thảm họa trong &lt;4 giờ | Recovery Time Objective |
 
-### Architecture Constraints
+### Ràng buộc kiến trúc
 | ID         | Constraint                                | Rationale                      |
 | ---------- | ----------------------------------------- | ------------------------------ |
 | **TC-ARCH-01** | Monolithic với modularization             | Đội ngũ nhỏ, triển khai đơn giản |
@@ -90,7 +90,7 @@ Các ràng buộc kỹ thuật và nghiệp vụ.
 | **TC-ARCH-07** | Self-hosted video, không third-party      | FR-CONT-02                     |
 | **TC-ARCH-08** | Shared question bank giữa các trường      | FR-CONT-03                     |
 
-### Integration Constraints
+### Ràng buộc tích hợp
 | ID         | Constraint                                | Rationale                      |
 | ---------- | ----------------------------------------- | ------------------------------ |
 | **TC-INT-01** | Không tích hợp với nền tảng video bên thứ ba | Tuân thủ bản quyền (FR-CONT-02) |

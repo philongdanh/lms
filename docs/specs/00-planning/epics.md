@@ -56,7 +56,7 @@ MVP tập trung vào 3 module chính:
 
 | Attribute | Value |
 
-### Features
+### Tính năng
 
 | ID    | Feature                  | Points | Sprint |
 | ----- | ------------------------ | ------ | ------ |
@@ -67,7 +67,7 @@ MVP tập trung vào 3 module chính:
 | F01.5 | GraphQL server setup     | 5      | S1     |
 | F01.6 | Frontend scaffolding     | 2      | S1     |
 
-### Acceptance Criteria
+### Tiêu chí chấp nhận
 
 - [ ] Monorepo structure hoàn chỉnh với NestJS + Next.js
 - [ ] CI/CD pipeline với GitHub Actions
@@ -86,7 +86,7 @@ MVP tập trung vào 3 module chính:
 | Total Points | 45                    |
 | Owner        | [Assign]              |
 
-### Features
+### Tính năng
 
 | ID    | Feature               | Points | Sprint |
 | ----- | --------------------- | ------ | ------ |
@@ -100,7 +100,7 @@ MVP tập trung vào 3 module chính:
 | F02.8 | Logout                | 2      | S4     |
 | F02.9 | Social login (Google) | 5      | P2     |
 
-### Acceptance Criteria
+### Tiêu chí chấp nhận
 
 - [ ] Đăng ký với email và phone
 - [ ] Xác thực OTP
@@ -119,7 +119,7 @@ MVP tập trung vào 3 module chính:
 | Total Points | 50                    |
 | Owner        | [Assign]              |
 
-### Features
+### Tính năng
 
 | ID    | Feature               | Points | Sprint |
 | ----- | --------------------- | ------ | ------ |
@@ -133,7 +133,7 @@ MVP tập trung vào 3 module chính:
 | F03.8 | Learning streak       | 5      | S5     |
 | F03.9 | Recommendations       | 8      | P2     |
 
-### Acceptance Criteria
+### Tiêu chí chấp nhận
 
 - [ ] Hiển thị danh sách môn học
 - [ ] Learning path view với progress
@@ -152,7 +152,7 @@ MVP tập trung vào 3 module chính:
 | Total Points | 55                  |
 | Owner        | [Assign]            |
 
-### Features
+### Tính năng
 
 | ID    | Feature               | Points | Sprint |
 | ----- | --------------------- | ------ | ------ |
@@ -166,7 +166,7 @@ MVP tập trung vào 3 module chính:
 | F04.8 | Prize distribution    | 5      | S6     |
 | F04.9 | Share results         | 3      | P2     |
 
-### Acceptance Criteria
+### Tiêu chí chấp nhận
 
 - [ ] Danh sách tournament với filter
 - [ ] Chi tiết tournament và đăng ký
@@ -185,7 +185,7 @@ MVP tập trung vào 3 module chính:
 | Total Points | 25                  |
 | Owner        | [Assign]            |
 
-### Features
+### Tính năng
 
 | ID    | Feature               | Points | Sprint |
 | ----- | --------------------- | ------ | ------ |
@@ -194,7 +194,7 @@ MVP tập trung vào 3 module chính:
 | F05.3 | Leaderboard (overall) | 5      | S6     |
 | F05.4 | Rewards shop          | 8      | P2     |
 
-### Acceptance Criteria
+### Tiêu chí chấp nhận
 
 - [ ] Badges và achievements system
 - [ ] User profile với stats
