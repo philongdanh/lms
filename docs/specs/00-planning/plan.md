@@ -15,11 +15,11 @@ Kế hoạch chi tiết và phân bổ nguồn lực theo từng giai đoạn.
 
 | Attribute       | Value        |
 | --------------- | ------------ |
-| Project Start   | [YYYY-MM-DD] |
-| Project End     | [YYYY-MM-DD] |
-| Total Duration  | 14 tuần      |
+| Project Start   | 2026-01-25   |
+| Project End     | 2026-03-15   |
+| Total Duration  | 7 tuần       |
 | Sprint Duration | 2 tuần       |
-| Total Sprints   | 6 (MVP)      |
+| Total Sprints   | 4 (MVP)      |
 
 ---
 
@@ -27,25 +27,22 @@ Kế hoạch chi tiết và phân bổ nguồn lực theo từng giai đoạn.
 
 | Milestone           | Target Date | Sprints  |
 | ------------------- | ----------- | -------- |
-| M1 - Foundation     | [TBD]       | S1       |
-| M2 - Auth MVP       | [TBD]       | S2-S3    |
-| M3 - Learning MVP   | [TBD]       | S4       |
-| M4 - Tournament MVP | [TBD]       | S5       |
-| M5 - Beta Release   | [TBD]       | S6       |
-| M6 - Production     | [TBD]       | Post-MVP |
+| M1 - Foundation     | 2026-02-07  | S1       |
+| M2 - Auth MVP       | 2026-02-21  | S2       |
+| M3 - Learning MVP   | 2026-03-07  | S3       |
+| M4 - Tournament MVP | 2026-03-15  | S4       |
+| M5 - Beta Release   | 2026-03-15  | S4       |
+| M6 - Production     | 2026-03-22  | Post-MVP |
 
 ---
 
 ## Timeline Diagram
 
-```
-Sprint 1 → Sprint 2 → Sprint 3 → M2 (Auth)
-                                   ↓
-                              Sprint 4 → M3 (Learning)
-                                   ↓
-                              Sprint 5 → M4 (Tournament)
-                                   ↓
-                              Sprint 6 → M5 (Beta/MVP)
+```d2
+"Sprint 1" -> "M1 (Foundation)"
+"Sprint 2" -> "M2 (Auth)"
+"Sprint 3" -> "M3 (Learning)"
+"Sprint 4" -> "M4 (Tournament)" -> "M5 (Beta/MVP)"
 ```
 
 ---
