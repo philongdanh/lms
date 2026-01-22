@@ -117,7 +117,7 @@ Nền tảng học tập thông minh tích hợp AI và gamification, hỗ trợ
 ## References
 
 - [Requirements](./requirements.md)
-- [Use Cases](./cases.md)
+- [Use Cases](./use-cases/uc-auth-001-register.md)
 - [Product Roadmap](./roadmap.md)
 - [Constraints](./constraints.md)
 - [Metrics](./metrics.md)

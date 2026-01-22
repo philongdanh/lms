@@ -135,7 +135,7 @@ Lựa chọn công nghệ và tiêu chuẩn kỹ thuật cho hệ thống.
 ## Tham chiếu
 
 - [System Design](./design.md)
-- [ADRs](./adrs.md)
+- [ADRs](./decisions.md)
 - [BE](./be.md)
 - [FE](./fe.md)
 - [Data](./data.md)

@@ -2,7 +2,7 @@ const sidebars = {
   specs: [
     {
       type: 'category',
-      label: 'Specs',
+      label: 'Specifications',
       link: {
         type: 'generated-index',
         title: 'Specifications',
