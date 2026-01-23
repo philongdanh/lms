@@ -15,16 +15,17 @@ Các câu hỏi thường gặp.
 
 ### LMS Platform là gì?
 
-Hệ thống quản lý học tập thông minh, kết hợp **AI Learning Paths** và **Gamification** để cá nhân hóa trải nghiệm học tập cho học sinh lớp 1-12.
+Hệ thống quản lý học tập thông minh, kết hợp **AI Learning Paths** và
+**Gamification** để cá nhân hóa trải nghiệm học tập cho học sinh lớp 1-12.
 
 ### Ai là người sử dụng?
 
-| Audience | Description |
-| -------- | ----------- |
-| Học sinh | Lớp 1-12, học tập và thi đấu |
-| Phụ huynh | Theo dõi tiến độ |
-| Giáo viên | Quản lý lớp, tạo đề |
-| Trường học | Quản trị hệ thống |
+| Audience   | Description                  |
+| ---------- | ---------------------------- |
+| Học sinh   | Lớp 1-12, học tập và thi đấu |
+| Phụ huynh  | Theo dõi tiến độ             |
+| Giáo viên  | Quản lý lớp, tạo đề          |
+| Trường học | Quản trị hệ thống            |
 
 ---
 
@@ -66,6 +67,7 @@ Hệ thống quản lý học tập thông minh, kết hợp **AI Learning Paths
 ### Không thể login?
 
 **Giải pháp:**
+
 1. Kiểm tra lại thông tin đăng nhập
 2. Thử đặt lại mật khẩu
 3. Liên hệ quản trị viên
@@ -73,6 +75,7 @@ Hệ thống quản lý học tập thông minh, kết hợp **AI Learning Paths
 ### Không thể submit bài test?
 
 **Giải pháp:**
+
 1. Kiểm tra kết nối internet
 2. Refresh trang và thử lại
 3. Báo lỗi cho quản trị viên
@@ -85,9 +88,9 @@ Hệ thống quản lý học tập thông minh, kết hợp **AI Learning Paths
 
 | Browser | Minimum |
 | ------- | ------- |
-| Chrome | 90+ |
-| Firefox | 88+ |
-| Safari | 14+ |
-| Edge | 90+ |
+| Chrome  | 90+     |
+| Firefox | 88+     |
+| Safari  | 14+     |
+| Edge    | 90+     |
 
 ---

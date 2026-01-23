@@ -1,7 +1,7 @@
 ---
 id: adr-001
-title: "ADR-001: Modular Monolith"
-sidebar_label: "001: Modular Monolith"
+title: 'ADR-001: Modular Monolith'
+sidebar_label: '001: Modular Monolith'
 sidebar_position: 1
 ---
 

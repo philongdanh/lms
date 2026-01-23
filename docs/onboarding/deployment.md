@@ -13,13 +13,13 @@ Hướng dẫn triển khai hệ thống.
 
 ## Infrastructure
 
-| Component | Tech | Description |
-| --------- | ---- | ----------- |
-| Application | NestJS (Node 18+) | Stateless container |
-| Database | PostgreSQL 14+ | Multi-tenant data |
-| Cache | Redis 6+ | Session, Pub/Sub |
-| Load Balancer | Nginx | SSL, WebSocket |
-| File Storage | Local/S3 | Video, images |
+| Component     | Tech              | Description         |
+| ------------- | ----------------- | ------------------- |
+| Application   | NestJS (Node 18+) | Stateless container |
+| Database      | PostgreSQL 14+    | Multi-tenant data   |
+| Cache         | Redis 6+          | Session, Pub/Sub    |
+| Load Balancer | Nginx             | SSL, WebSocket      |
+| File Storage  | Local/S3          | Video, images       |
 
 ---
 
@@ -27,20 +27,20 @@ Hướng dẫn triển khai hệ thống.
 
 ### Requirements
 
-| Requirement | Min Version |
-| ----------- | ----------- |
-| Docker Engine | 20.10+ |
-| Docker Compose | v2.0+ |
-| RAM | 4GB+ |
-| Storage | 20GB+ |
+| Requirement    | Min Version |
+| -------------- | ----------- |
+| Docker Engine  | 20.10+      |
+| Docker Compose | v2.0+       |
+| RAM            | 4GB+        |
+| Storage        | 20GB+       |
 
 ### Services
 
-| Service | Image | Port |
-| ------- | ----- | ---- |
-| app | `node:18-alpine` | 3000 |
+| Service  | Image                | Port |
+| -------- | -------------------- | ---- |
+| app      | `node:18-alpine`     | 3000 |
 | postgres | `postgres:14-alpine` | 5432 |
-| redis | `redis:6-alpine` | 6379 |
+| redis    | `redis:6-alpine`     | 6379 |
 
 ---
 
@@ -87,11 +87,11 @@ docker-compose start app
 
 ## Health Checks
 
-| Endpoint | Purpose |
-| -------- | ------- |
-| `/health` | Liveness check |
-| `/health/ready` | Readiness check |
-| `/health/db` | Database connectivity |
-| `/health/redis` | Redis connectivity |
+| Endpoint        | Purpose               |
+| --------------- | --------------------- |
+| `/health`       | Liveness check        |
+| `/health/ready` | Readiness check       |
+| `/health/db`    | Database connectivity |
+| `/health/redis` | Redis connectivity    |
 
 ---

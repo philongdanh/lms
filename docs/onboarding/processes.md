@@ -15,15 +15,16 @@ Quy trình phát triển và tiêu chuẩn chất lượng.
 
 ### Git Flow
 
-| Branch | Purpose | Naming |
-| ------ | ------- | ------ |
-| `main` | Production | - |
-| `develop` | Integration | - |
-| `feature/*` | New features | `feature/auth-login` |
-| `fix/*` | Bug fixes | `fix/login-redirect` |
-| `hotfix/*` | Production fixes | `hotfix/v1.2.1` |
+| Branch      | Purpose          | Naming               |
+| ----------- | ---------------- | -------------------- |
+| `main`      | Production       | -                    |
+| `develop`   | Integration      | -                    |
+| `feature/*` | New features     | `feature/auth-login` |
+| `fix/*`     | Bug fixes        | `fix/login-redirect` |
+| `hotfix/*`  | Production fixes | `hotfix/v1.2.1`      |
 
 **Commit Message Format:**
+
 ```
 <type>(<scope>): <description>
 
@@ -33,21 +34,21 @@ Example: feat(auth): add login with email
 
 ### Code Review
 
-| Criteria | Requirement |
-| -------- | ----------- |
-| Approvers | 1 minimum |
+| Criteria  | Requirement     |
+| --------- | --------------- |
+| Approvers | 1 minimum       |
 | CI Status | All checks pass |
-| Coverage | No decrease |
-| Comments | All resolved |
+| Coverage  | No decrease     |
+| Comments  | All resolved    |
 
 **Definition of Done:**
 
-| Category | Criteria |
-| -------- | -------- |
-| Code | TypeScript strict, no ESLint errors |
-| Testing | Unit tests pass (≥ 70% coverage) |
-| Review | Code reviewed & approved |
-| Deploy | CI pass, deployed to staging |
+| Category | Criteria                            |
+| -------- | ----------------------------------- |
+| Code     | TypeScript strict, no ESLint errors |
+| Testing  | Unit tests pass (≥ 70% coverage)    |
+| Review   | Code reviewed & approved            |
+| Deploy   | CI pass, deployed to staging        |
 
 ---
 
@@ -63,19 +64,19 @@ develop  auto    manual   manual + approval
 
 **Stages:**
 
-| Stage | Trigger | Actions |
-| ----- | ------- | ------- |
-| Build | Every commit | Install, lint, build |
-| Test | Every commit | Unit tests, integration tests |
-| Deploy (Staging) | Merge to develop | Auto deploy |
-| Deploy (Prod) | Release tag | Manual + approval |
+| Stage            | Trigger          | Actions                       |
+| ---------------- | ---------------- | ----------------------------- |
+| Build            | Every commit     | Install, lint, build          |
+| Test             | Every commit     | Unit tests, integration tests |
+| Deploy (Staging) | Merge to develop | Auto deploy                   |
+| Deploy (Prod)    | Release tag      | Manual + approval             |
 
 ### Release Process
 
-| Type | Frequency | Scope |
-| ---- | --------- | ----- |
+| Type  | Frequency | Scope            |
+| ----- | --------- | ---------------- |
 | Major | Quarterly | Breaking changes |
-| Minor | Bi-weekly | New features |
-| Patch | As needed | Bug fixes |
+| Minor | Bi-weekly | New features     |
+| Patch | As needed | Bug fixes        |
 
 ---

@@ -80,7 +80,12 @@ interface UserSession {
 
 ```typescript
 type LessonStatus = 'DRAFT' | 'PENDING_REVIEW' | 'PUBLISHED' | 'ARCHIVED';
-type QuestionType = 'SINGLE_CHOICE' | 'MULTIPLE_CHOICE' | 'TRUE_FALSE' | 'FILL_BLANK' | 'ESSAY';
+type QuestionType =
+  | 'SINGLE_CHOICE'
+  | 'MULTIPLE_CHOICE'
+  | 'TRUE_FALSE'
+  | 'FILL_BLANK'
+  | 'ESSAY';
 
 interface Subject {
   id: string;
@@ -137,7 +142,12 @@ interface QuestionOption {
 ## Learning Progress
 
 ```typescript
-type ProgressStatus = 'LOCKED' | 'AVAILABLE' | 'IN_PROGRESS' | 'COMPLETED' | 'REVIEW';
+type ProgressStatus =
+  | 'LOCKED'
+  | 'AVAILABLE'
+  | 'IN_PROGRESS'
+  | 'COMPLETED'
+  | 'REVIEW';
 
 interface LearningPath {
   id: string;
@@ -182,7 +192,12 @@ interface SubmissionAnswer {
 ## Tournament & Gamification
 
 ```typescript
-type TournamentStatus = 'DRAFT' | 'REGISTRATION' | 'IN_PROGRESS' | 'COMPLETED' | 'CANCELLED';
+type TournamentStatus =
+  | 'DRAFT'
+  | 'REGISTRATION'
+  | 'IN_PROGRESS'
+  | 'COMPLETED'
+  | 'CANCELLED';
 
 interface Tournament {
   id: string;

@@ -14,19 +14,20 @@ Tiêu chuẩn thiết kế và quản lý API tập trung.
 ## Standards
 
 ### URL Structure
+
 ```
 https://api.example.com/api/{version}/{module}/{resource}/{id}
 ```
 
 ### HTTP Methods
 
-| Method | Purpose | Idempotent | Safe |
-| ------ | ------- | ---------- | ---- |
-| GET | Lấy resource | ✅ | ✅ |
-| POST | Tạo resource | ❌ | ❌ |
-| PUT | Cập nhật/thay thế | ✅ | ❌ |
-| PATCH | Cập nhật một phần | ❌ | ❌ |
-| DELETE | Xóa resource | ✅ | ❌ |
+| Method | Purpose           | Idempotent | Safe |
+| ------ | ----------------- | ---------- | ---- |
+| GET    | Lấy resource      | ✅         | ✅   |
+| POST   | Tạo resource      | ❌         | ❌   |
+| PUT    | Cập nhật/thay thế | ✅         | ❌   |
+| PATCH  | Cập nhật một phần | ❌         | ❌   |
+| DELETE | Xóa resource      | ✅         | ❌   |
 
 ### Headers
 
@@ -42,6 +43,7 @@ X-Request-ID: {uuid}
 ## Response Format
 
 ### Success
+
 ```json
 {
   "status": "success",
@@ -51,6 +53,7 @@ X-Request-ID: {uuid}
 ```
 
 ### Error
+
 ```json
 {
   "status": "error",
@@ -65,16 +68,16 @@ X-Request-ID: {uuid}
 
 | Percentile | Max Response Time |
 | ---------- | ----------------- |
-| P50 | 100ms |
-| P95 | 500ms |
-| P99 | 1000ms |
+| P50        | 100ms             |
+| P95        | 500ms             |
+| P99        | 1000ms            |
 
 ### Rate Limits
 
-| Tier | Requests/min | Burst |
-| ---- | ------------ | ----- |
-| Standard | 100 | 200 |
-| Premium | 1000 | 2000 |
+| Tier     | Requests/min | Burst |
+| -------- | ------------ | ----- |
+| Standard | 100          | 200   |
+| Premium  | 1000         | 2000  |
 
 ---
 

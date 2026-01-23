@@ -1,7 +1,7 @@
 ---
 id: adr-007
-title: "ADR-007: Multi-tenant via tenant_id"
-sidebar_label: "007: Multi-tenant"
+title: 'ADR-007: Multi-tenant via tenant_id'
+sidebar_label: '007: Multi-tenant'
 sidebar_position: 7
 ---
 

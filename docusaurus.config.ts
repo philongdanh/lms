@@ -111,9 +111,9 @@ const config: Config = {
       selector: '.markdown img',
       background: {
         light: 'rgb(255, 255, 255)',
-        dark: 'rgb(50, 50, 50)'
+        dark: 'rgb(50, 50, 50)',
       },
-    }
+    },
   } satisfies Preset.ThemeConfig,
   plugins: ['docusaurus-plugin-image-zoom'],
 };

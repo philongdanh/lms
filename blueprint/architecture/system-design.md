@@ -15,13 +15,13 @@ Thiết kế kiến trúc hệ thống và các thành phần chính.
 
 ### Pattern áp dụng
 
-| Aspect | Pattern | Mô tả |
-| ------ | ------- | ----- |
-| Tổng quan | Modular Monolith | Module hóa rõ ràng, dễ bảo trì |
-| Multi-tenancy | Data Isolation | Mỗi tenant có không gian dữ liệu riêng |
-| Communication | Event-Driven | Các module giao tiếp qua event |
-| Realtime | WebSocket + Pub/Sub | Redis adapter cho scaling |
-| Security | RBAC | 5 vai trò với quyền hạn kiểm soát |
+| Aspect        | Pattern             | Mô tả                                  |
+| ------------- | ------------------- | -------------------------------------- |
+| Tổng quan     | Modular Monolith    | Module hóa rõ ràng, dễ bảo trì         |
+| Multi-tenancy | Data Isolation      | Mỗi tenant có không gian dữ liệu riêng |
+| Communication | Event-Driven        | Các module giao tiếp qua event         |
+| Realtime      | WebSocket + Pub/Sub | Redis adapter cho scaling              |
+| Security      | RBAC                | 5 vai trò với quyền hạn kiểm soát      |
 
 ### Diagram tổng quan
 
@@ -74,16 +74,17 @@ App -> Data Layer.Redis
 
 ### Giao tiếp hệ thống
 
-| Loại | Pattern | Mô tả |
-| ---- | ------- | ----- |
-| Sync | GraphQL | API chính cho queries/mutations |
-| Sync | REST | Webhooks, file uploads |
-| Async | Redis Pub/Sub | Event broadcasting |
-| Realtime | WebSocket | Socket.IO với rooms |
+| Loại     | Pattern       | Mô tả                           |
+| -------- | ------------- | ------------------------------- |
+| Sync     | GraphQL       | API chính cho queries/mutations |
+| Sync     | REST          | Webhooks, file uploads          |
+| Async    | Redis Pub/Sub | Event broadcasting              |
+| Realtime | WebSocket     | Socket.IO với rooms             |
 
 ### Data Flow
 
 **Luồng học tập:**
+
 ```d2
 shape: sequence_diagram
 direction: right
@@ -98,6 +99,7 @@ App -> Student: Hiển thị
 ```
 
 **Luồng thi đấu:**
+
 ```d2
 shape: sequence_diagram
 direction: right
@@ -113,22 +115,22 @@ Redis -> WS: Broadcast tới room
 
 ### API Design
 
-| Endpoint | Method | Mô tả | Auth |
-| -------- | ------ | ----- | ---- |
-| `/graphql` | POST | GraphQL API | Optional |
-| `/api/upload` | POST | File upload | Required |
-| `/api/webhooks/*` | POST | External webhooks | API Key |
-| `/health` | GET | Health check | No |
+| Endpoint          | Method | Mô tả             | Auth     |
+| ----------------- | ------ | ----------------- | -------- |
+| `/graphql`        | POST   | GraphQL API       | Optional |
+| `/api/upload`     | POST   | File upload       | Required |
+| `/api/webhooks/*` | POST   | External webhooks | API Key  |
+| `/health`         | GET    | Health check      | No       |
 
 ### Core Principles
 
-| Category | Principle | Mô tả |
-| -------- | --------- | ----- |
-| Dev | Single Responsibility | Mỗi module một phạm vi |
-| Dev | Dependency Injection | Dễ testing |
-| Security | Least Privilege | Quyền tối thiểu |
-| Security | Tenant Isolation | Dữ liệu độc lập |
-| Realtime | Room-based | Tổ chức phòng ảo |
-| Data | Selective Soft Delete | Chỉ cho entities chính |
+| Category | Principle             | Mô tả                  |
+| -------- | --------------------- | ---------------------- |
+| Dev      | Single Responsibility | Mỗi module một phạm vi |
+| Dev      | Dependency Injection  | Dễ testing             |
+| Security | Least Privilege       | Quyền tối thiểu        |
+| Security | Tenant Isolation      | Dữ liệu độc lập        |
+| Realtime | Room-based            | Tổ chức phòng ảo       |
+| Data     | Selective Soft Delete | Chỉ cho entities chính |
 
 ---

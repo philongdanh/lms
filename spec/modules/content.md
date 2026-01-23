@@ -15,12 +15,12 @@ Module quản lý nội dung học tập và ngân hàng câu hỏi.
 
 ### Workflow chính
 
-| Workflow | Mô tả | Actor | Kết quả |
-| -------- | ----- | ----- | ------- |
-| Create Structure | Tạo cây cấu trúc môn học | Admin/Teacher | Topic/Lesson được tạo |
-| Bulk Import | Import câu hỏi từ file | Teacher | Câu hỏi được import |
-| Publish Content | Phê duyệt và publish | Admin | Nội dung visible cho students |
-| Upload Media | Upload video/image | Teacher | Media được lưu trữ |
+| Workflow         | Mô tả                    | Actor         | Kết quả                       |
+| ---------------- | ------------------------ | ------------- | ----------------------------- |
+| Create Structure | Tạo cây cấu trúc môn học | Admin/Teacher | Topic/Lesson được tạo         |
+| Bulk Import      | Import câu hỏi từ file   | Teacher       | Câu hỏi được import           |
+| Publish Content  | Phê duyệt và publish     | Admin         | Nội dung visible cho students |
+| Upload Media     | Upload video/image       | Teacher       | Media được lưu trữ            |
 
 ### Rules & Constraints
 
@@ -47,22 +47,22 @@ PUBLISHED --> ARCHIVED : archive
 
 ### Schema & Entities
 
-| Entity | Fields chính | Mô tả |
-| ------ | ------------ | ----- |
-| Subject | id, name, grade, curriculum | Môn học |
-| Topic | id, subject_id, name, order | Chủ đề |
-| Lesson | id, topic_id, title, content, status | Bài học |
-| Question | id, lesson_id, type, content, answers | Câu hỏi |
-| Media | id, type, url, size, metadata | File media |
+| Entity   | Fields chính                          | Mô tả      |
+| -------- | ------------------------------------- | ---------- |
+| Subject  | id, name, grade, curriculum           | Môn học    |
+| Topic    | id, subject_id, name, order           | Chủ đề     |
+| Lesson   | id, topic_id, title, content, status  | Bài học    |
+| Question | id, lesson_id, type, content, answers | Câu hỏi    |
+| Media    | id, type, url, size, metadata         | File media |
 
 ### Relations
 
-| Relation | Mô tả |
-| -------- | ----- |
-| Subject → Topic | 1:N - Môn học có nhiều chủ đề |
-| Topic → Lesson | 1:N - Chủ đề có nhiều bài học |
+| Relation          | Mô tả                          |
+| ----------------- | ------------------------------ |
+| Subject → Topic   | 1:N - Môn học có nhiều chủ đề  |
+| Topic → Lesson    | 1:N - Chủ đề có nhiều bài học  |
 | Lesson → Question | 1:N - Bài học có nhiều câu hỏi |
-| Lesson → Media | N:M - Bài học dùng nhiều media |
+| Lesson → Media    | N:M - Bài học dùng nhiều media |
 
 ---
 
@@ -70,22 +70,22 @@ PUBLISHED --> ARCHIVED : archive
 
 ### Endpoints
 
-| Method | Endpoint | Mô tả | Auth | Rate Limit |
-| ------ | -------- | ----- | ---- | ---------- |
-| GET | `/subjects` | Danh sách môn học | ❌ | 200/min |
-| GET | `/topics` | Danh sách chủ đề | ❌ | 200/min |
-| GET | `/lessons/:id` | Chi tiết bài học | ✅ | 200/min |
-| POST | `/questions/import` | Import câu hỏi | ✅ Teacher | 10/min |
-| GET | `/questions/search` | Tìm kiếm câu hỏi | ✅ Teacher | 100/min |
-| POST | `/lessons` | Tạo bài học mới | ✅ Teacher | 50/min |
-| PUT | `/lessons/:id/publish` | Publish bài học | ✅ Admin | 50/min |
+| Method | Endpoint               | Mô tả             | Auth       | Rate Limit |
+| ------ | ---------------------- | ----------------- | ---------- | ---------- |
+| GET    | `/subjects`            | Danh sách môn học | ❌         | 200/min    |
+| GET    | `/topics`              | Danh sách chủ đề  | ❌         | 200/min    |
+| GET    | `/lessons/:id`         | Chi tiết bài học  | ✅         | 200/min    |
+| POST   | `/questions/import`    | Import câu hỏi    | ✅ Teacher | 10/min     |
+| GET    | `/questions/search`    | Tìm kiếm câu hỏi  | ✅ Teacher | 100/min    |
+| POST   | `/lessons`             | Tạo bài học mới   | ✅ Teacher | 50/min     |
+| PUT    | `/lessons/:id/publish` | Publish bài học   | ✅ Admin   | 50/min     |
 
 ### Events & Webhooks
 
-| Event | Trigger | Payload |
-| ----- | ------- | ------- |
-| `content.published` | Bài học được publish | `{ lessonId, publishedBy }` |
-| `import.completed` | Import hoàn tất | `{ success, failed, report }` |
+| Event               | Trigger              | Payload                       |
+| ------------------- | -------------------- | ----------------------------- |
+| `content.published` | Bài học được publish | `{ lessonId, publishedBy }`   |
+| `import.completed`  | Import hoàn tất      | `{ success, failed, report }` |
 
 ---
 
@@ -93,19 +93,19 @@ PUBLISHED --> ARCHIVED : archive
 
 ### Functional Requirements
 
-| ID | Requirement | Điều kiện |
-| -- | ----------- | --------- |
-| FR-CONT-01 | Validate hierarchy | Không tạo Lesson thiếu Topic |
-| FR-CONT-02 | Import format check | Từ chối file không hỗ trợ |
-| FR-CONT-03 | Media playback | Video chạy trên mọi device |
+| ID         | Requirement         | Điều kiện                    |
+| ---------- | ------------------- | ---------------------------- |
+| FR-CONT-01 | Validate hierarchy  | Không tạo Lesson thiếu Topic |
+| FR-CONT-02 | Import format check | Từ chối file không hỗ trợ    |
+| FR-CONT-03 | Media playback      | Video chạy trên mọi device   |
 
 ### Edge Cases
 
-| Case | Xử lý |
-| ---- | ----- |
-| Import file corrupt | Trả về "Invalid File Format" |
-| Partial import failure | Bỏ qua dòng lỗi, ghi log, tiếp tục |
-| Malware detected | Reject upload, alert admin |
-| Chỉnh sửa content người khác | 403 Forbidden |
+| Case                         | Xử lý                              |
+| ---------------------------- | ---------------------------------- |
+| Import file corrupt          | Trả về "Invalid File Format"       |
+| Partial import failure       | Bỏ qua dòng lỗi, ghi log, tiếp tục |
+| Malware detected             | Reject upload, alert admin         |
+| Chỉnh sửa content người khác | 403 Forbidden                      |
 
 ---

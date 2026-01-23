@@ -13,7 +13,8 @@ Hướng dẫn bắt đầu sử dụng hệ thống.
 
 ## Overview
 
-LMS Platform là hệ thống quản lý học tập thông minh với **AI Learning Paths** và **Gamification** cho học sinh lớp 1-12.
+LMS Platform là hệ thống quản lý học tập thông minh với **AI Learning Paths** và
+**Gamification** cho học sinh lớp 1-12.
 
 ---
 
@@ -49,12 +50,12 @@ LMS Platform là hệ thống quản lý học tập thông minh với **AI Lear
 
 ## Key Features
 
-| Feature | Description |
-| ------- | ----------- |
-| AI Learning Path | Lộ trình cá nhân hóa |
-| Tournament | Thi đấu với bạn bè |
-| Gamification | Điểm, huy hiệu, bảng xếp hạng |
-| Progress Tracking | Theo dõi tiến độ real-time |
+| Feature           | Description                   |
+| ----------------- | ----------------------------- |
+| AI Learning Path  | Lộ trình cá nhân hóa          |
+| Tournament        | Thi đấu với bạn bè            |
+| Gamification      | Điểm, huy hiệu, bảng xếp hạng |
+| Progress Tracking | Theo dõi tiến độ real-time    |
 
 ---
 

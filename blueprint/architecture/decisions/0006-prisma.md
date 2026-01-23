@@ -1,7 +1,7 @@
 ---
 id: adr-006
-title: "ADR-006: Prisma ORM"
-sidebar_label: "006: Prisma"
+title: 'ADR-006: Prisma ORM'
+sidebar_label: '006: Prisma'
 sidebar_position: 6
 ---
 

@@ -19,7 +19,7 @@ Kịch bản kiểm thử thành công theo module.
 
 ```gherkin
 Feature: User Registration
-  
+
   Scenario: Register with valid email
     Given a new user with email "test@example.com"
     And password is "Password123"
@@ -98,7 +98,8 @@ Feature: Token Invalidation on Logout
 
 ### TC-INT-LEARN-000: AI learning path generation
 
-> **Validates**: [FR-LEARN-01](../../spec/modules/learning.md#acceptance-criteria)
+> **Validates**:
+> [FR-LEARN-01](../../spec/modules/learning.md#acceptance-criteria)
 
 ```gherkin
 Feature: AI Learning Path
@@ -114,7 +115,6 @@ Feature: AI Learning Path
 
 ### TC-INT-LEARN-001: Get subjects list
 
-
 ```gherkin
 Feature: Subject Listing
 
@@ -129,7 +129,8 @@ Feature: Subject Listing
 
 ### TC-E2E-LEARN-001: Complete a lesson
 
-> **Validates**: [FR-LEARN-03](../../spec/modules/learning.md#acceptance-criteria)
+> **Validates**:
+> [FR-LEARN-03](../../spec/modules/learning.md#acceptance-criteria)
 
 ```gherkin
 Feature: Lesson Completion
@@ -147,7 +148,8 @@ Feature: Lesson Completion
 
 ### TC-E2E-LEARN-002: Complete quiz
 
-> **Validates**: [FR-LEARN-02](../../spec/modules/learning.md#acceptance-criteria)
+> **Validates**:
+> [FR-LEARN-02](../../spec/modules/learning.md#acceptance-criteria)
 
 ```gherkin
 Feature: Quiz Completion
@@ -168,7 +170,8 @@ Feature: Quiz Completion
 
 ### TC-E2E-TOUR-001: Join tournament
 
-> **Validates**: [FR-TOUR-01](../../spec/modules/tournament.md#acceptance-criteria)
+> **Validates**:
+> [FR-TOUR-01](../../spec/modules/tournament.md#acceptance-criteria)
 
 ```gherkin
 Feature: Tournament Registration
@@ -185,7 +188,8 @@ Feature: Tournament Registration
 
 ### TC-INT-TOUR-002: Tournament scoring
 
-> **Validates**: [FR-TOUR-02](../../spec/modules/tournament.md#acceptance-criteria)
+> **Validates**:
+> [FR-TOUR-02](../../spec/modules/tournament.md#acceptance-criteria)
 
 ```gherkin
 Feature: Tournament Scoring
@@ -201,7 +205,8 @@ Feature: Tournament Scoring
 
 ### TC-INT-TOUR-003: Leaderboard real-time
 
-> **Validates**: [FR-TOUR-03](../../spec/modules/tournament.md#acceptance-criteria)
+> **Validates**:
+> [FR-TOUR-03](../../spec/modules/tournament.md#acceptance-criteria)
 
 ```gherkin
 Feature: Leaderboard Updates
@@ -220,7 +225,8 @@ Feature: Leaderboard Updates
 
 ### TC-INT-GAME-001: Level up
 
-> **Validates**: [FR-GAME-01](../../spec/modules/gamification.md#acceptance-criteria)
+> **Validates**:
+> [FR-GAME-01](../../spec/modules/gamification.md#acceptance-criteria)
 
 ```gherkin
 Feature: Level Up System
@@ -235,7 +241,8 @@ Feature: Level Up System
 
 ### TC-INT-GAME-002: Reward redemption
 
-> **Validates**: [FR-GAME-02](../../spec/modules/gamification.md#acceptance-criteria)
+> **Validates**:
+> [FR-GAME-02](../../spec/modules/gamification.md#acceptance-criteria)
 
 ```gherkin
 Feature: Reward Redemption
@@ -251,7 +258,8 @@ Feature: Reward Redemption
 
 ### TC-INT-GAME-003: Gamification leaderboard
 
-> **Validates**: [FR-GAME-03](../../spec/modules/gamification.md#acceptance-criteria)
+> **Validates**:
+> [FR-GAME-03](../../spec/modules/gamification.md#acceptance-criteria)
 
 ```gherkin
 Feature: Gamification Leaderboard

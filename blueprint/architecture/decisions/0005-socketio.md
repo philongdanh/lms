@@ -1,7 +1,7 @@
 ---
 id: adr-005
-title: "ADR-005: Socket.IO with Redis Adapter"
-sidebar_label: "005: Socket.IO"
+title: 'ADR-005: Socket.IO with Redis Adapter'
+sidebar_label: '005: Socket.IO'
 sidebar_position: 5
 ---
 

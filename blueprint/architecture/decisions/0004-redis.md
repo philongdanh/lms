@@ -1,7 +1,7 @@
 ---
 id: adr-004
-title: "ADR-004: Redis for Cache and Pub/Sub"
-sidebar_label: "004: Redis"
+title: 'ADR-004: Redis for Cache and Pub/Sub'
+sidebar_label: '004: Redis'
 sidebar_position: 4
 ---
 

@@ -1,7 +1,7 @@
 ---
 id: adr-002
-title: "ADR-002: PostgreSQL as Primary Database"
-sidebar_label: "002: PostgreSQL"
+title: 'ADR-002: PostgreSQL as Primary Database'
+sidebar_label: '002: PostgreSQL'
 sidebar_position: 2
 ---
 

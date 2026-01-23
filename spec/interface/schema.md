@@ -38,11 +38,11 @@ model User {
   createdAt       DateTime    @default(now())
   updatedAt       DateTime    @updatedAt
   deletedAt       DateTime?
-  
+
   tenant          Tenant      @relation(fields: [tenantId], references: [id])
   roles           UserRole[]
   sessions        UserSession[]
-  
+
   @@unique([tenantId, email, deletedAt])
   @@index([tenantId, status])
 }
@@ -53,9 +53,9 @@ model UserRole {
   role       Role
   tenantId   String
   assignedAt DateTime @default(now())
-  
+
   user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
+
   @@unique([userId, role, tenantId])
 }
 
@@ -69,9 +69,9 @@ model UserSession {
   lastActiveAt DateTime @default(now())
   createdAt    DateTime @default(now())
   expiresAt    DateTime
-  
+
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
+
   @@index([userId, deviceId, isActive])
 }
 
@@ -110,9 +110,9 @@ model Subject {
   curriculum String
   order      Int      @default(0)
   createdAt  DateTime @default(now())
-  
+
   topics     Topic[]
-  
+
   @@index([tenantId, grade])
 }
 
@@ -122,10 +122,10 @@ model Topic {
   name      String
   order     Int      @default(0)
   createdAt DateTime @default(now())
-  
+
   subject   Subject  @relation(fields: [subjectId], references: [id], onDelete: Cascade)
   lessons   Lesson[]
-  
+
   @@index([subjectId, order])
 }
 
@@ -142,10 +142,10 @@ model Lesson {
   publishedAt      DateTime?
   createdAt        DateTime     @default(now())
   updatedAt        DateTime     @updatedAt
-  
+
   topic            Topic        @relation(fields: [topicId], references: [id], onDelete: Cascade)
   questions        Question[]
-  
+
   @@index([topicId, status])
 }
 
@@ -159,9 +159,9 @@ model Question {
   explanation   String?      @db.Text
   order         Int          @default(0)
   createdAt     DateTime     @default(now())
-  
+
   lesson        Lesson       @relation(fields: [lessonId], references: [id], onDelete: Cascade)
-  
+
   @@index([lessonId, order])
 }
 
@@ -193,7 +193,7 @@ model LearningPath {
   lessons    Json     @default("[]")
   generatedAt DateTime @default(now())
   validUntil DateTime
-  
+
   @@index([userId, subjectId])
 }
 
@@ -206,7 +206,7 @@ model LessonProgress {
   attempts    Int            @default(0)
   completedAt DateTime?
   updatedAt   DateTime       @updatedAt
-  
+
   @@unique([userId, lessonId])
   @@index([userId, status])
 }
@@ -220,7 +220,7 @@ model ExerciseSession {
   score            Int?
   timeSpentSeconds Int      @default(0)
   answers          Json     @default("[]")
-  
+
   @@index([userId, lessonId])
 }
 
@@ -248,9 +248,9 @@ model Tournament {
   endsAt          DateTime
   createdBy       String
   createdAt       DateTime         @default(now())
-  
+
   rounds          CompetitionRound[]
-  
+
   @@index([tenantId, status])
 }
 
@@ -261,10 +261,10 @@ model CompetitionRound {
   startsAt     DateTime
   endsAt       DateTime
   questions    Json     @default("[]")
-  
+
   tournament   Tournament   @relation(fields: [tournamentId], references: [id], onDelete: Cascade)
   participants Participant[]
-  
+
   @@unique([tournamentId, roundNumber])
 }
 
@@ -276,9 +276,9 @@ model Participant {
   rank       Int?
   finishedAt DateTime?
   joinedAt   DateTime  @default(now())
-  
+
   round      CompetitionRound @relation(fields: [roundId], references: [id], onDelete: Cascade)
-  
+
   @@unique([roundId, userId])
   @@index([roundId, score])
 }
@@ -305,7 +305,7 @@ model UserBadge {
   userId    String
   badgeId   String
   awardedAt DateTime @default(now())
-  
+
   @@unique([userId, badgeId])
 }
 
