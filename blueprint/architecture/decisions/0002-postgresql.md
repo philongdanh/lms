@@ -17,4 +17,5 @@ Sử dụng **PostgreSQL 14+**.
 
 ## Rationale
 
-JSONB support cho AI data, transactions mạnh cho scoring, sẵn sàng partitioning.
+`JSONB` support cho AI data, transactions mạnh cho scoring, sẵn sàng
+partitioning.

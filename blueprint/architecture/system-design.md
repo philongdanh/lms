@@ -90,7 +90,7 @@ shape: sequence_diagram
 direction: right
 
 Student -> App: Truy cập Dashboard
-App -> Learning: GET /learning/path
+App -> Learning: `GET` `/learning/path`
 Learning -> Cache: Kiểm tra cache
 Learning -> AI: Gửi dữ liệu phân tích
 AI -> Learning: Đề xuất lộ trình
@@ -117,10 +117,10 @@ Redis -> WS: Broadcast tới room
 
 | Endpoint          | Method | Mô tả             | Auth     |
 | ----------------- | ------ | ----------------- | -------- |
-| `/graphql`        | POST   | GraphQL API       | Optional |
-| `/api/upload`     | POST   | File upload       | Required |
-| `/api/webhooks/*` | POST   | External webhooks | API Key  |
-| `/health`         | GET    | Health check      | No       |
+| `/graphql`        | `POST` | `GraphQL` API     | Optional |
+| `/api/upload`     | `POST` | File upload       | Required |
+| `/api/webhooks/*` | `POST` | External webhooks | API Key  |
+| `/health`         | `GET`  | Health check      | No       |
 
 ### Core Principles
 

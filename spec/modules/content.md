@@ -27,7 +27,7 @@ Module quản lý nội dung học tập và ngân hàng câu hỏi.
 - Lesson phải thuộc về một Topic (hierarchy)
 - Teacher tạo draft, Admin publish
 - File upload được scan malware (ClamAV)
-- Hỗ trợ format: xlsx, docx, pdf cho import
+- Hỗ trợ format: `xlsx`, `docx`, `pdf` cho import
 - Max file size: 500MB cho video
 
 ### State Machine
@@ -47,22 +47,22 @@ PUBLISHED --> ARCHIVED : archive
 
 ### Schema & Entities
 
-| Entity   | Fields chính                          | Mô tả      |
-| -------- | ------------------------------------- | ---------- |
-| Subject  | id, name, grade, curriculum           | Môn học    |
-| Topic    | id, subject_id, name, order           | Chủ đề     |
-| Lesson   | id, topic_id, title, content, status  | Bài học    |
-| Question | id, lesson_id, type, content, answers | Câu hỏi    |
-| Media    | id, type, url, size, metadata         | File media |
+| Entity   | Fields chính                                    | Mô tả      |
+| -------- | ----------------------------------------------- | ---------- |
+| Subject  | `id`, `name`, `grade`, `curriculum`             | Môn học    |
+| Topic    | `id`, `subject_id`, `name`, `order`             | Chủ đề     |
+| Lesson   | `id`, `topic_id`, `title`, `content`, `status`  | Bài học    |
+| Question | `id`, `lesson_id`, `type`, `content`, `answers` | Câu hỏi    |
+| Media    | `id`, `type`, `url`, `size`, `metadata`         | File media |
 
 ### Relations
 
-| Relation          | Mô tả                          |
-| ----------------- | ------------------------------ |
-| Subject → Topic   | 1:N - Môn học có nhiều chủ đề  |
-| Topic → Lesson    | 1:N - Chủ đề có nhiều bài học  |
-| Lesson → Question | 1:N - Bài học có nhiều câu hỏi |
-| Lesson → Media    | N:M - Bài học dùng nhiều media |
+| Relation          | Mô tả                            |
+| ----------------- | -------------------------------- |
+| Subject → Topic   | `1:N` - Môn học có nhiều chủ đề  |
+| Topic → Lesson    | `1:N` - Chủ đề có nhiều bài học  |
+| Lesson → Question | `1:N` - Bài học có nhiều câu hỏi |
+| Lesson → Media    | `N:M` - Bài học dùng nhiều media |
 
 ---
 
@@ -72,13 +72,13 @@ PUBLISHED --> ARCHIVED : archive
 
 | Method | Endpoint               | Mô tả             | Auth       | Rate Limit |
 | ------ | ---------------------- | ----------------- | ---------- | ---------- |
-| GET    | `/subjects`            | Danh sách môn học | ❌         | 200/min    |
-| GET    | `/topics`              | Danh sách chủ đề  | ❌         | 200/min    |
-| GET    | `/lessons/:id`         | Chi tiết bài học  | ✅         | 200/min    |
-| POST   | `/questions/import`    | Import câu hỏi    | ✅ Teacher | 10/min     |
-| GET    | `/questions/search`    | Tìm kiếm câu hỏi  | ✅ Teacher | 100/min    |
-| POST   | `/lessons`             | Tạo bài học mới   | ✅ Teacher | 50/min     |
-| PUT    | `/lessons/:id/publish` | Publish bài học   | ✅ Admin   | 50/min     |
+| `GET`  | `/subjects`            | Danh sách môn học | ❌         | 200/min    |
+| `GET`  | `/topics`              | Danh sách chủ đề  | ❌         | 200/min    |
+| `GET`  | `/lessons/:id`         | Chi tiết bài học  | ✅         | 200/min    |
+| `POST` | `/questions/import`    | Import câu hỏi    | ✅ Teacher | 10/min     |
+| `GET`  | `/questions/search`    | Tìm kiếm câu hỏi  | ✅ Teacher | 100/min    |
+| `POST` | `/lessons`             | Tạo bài học mới   | ✅ Teacher | 50/min     |
+| `PUT`  | `/lessons/:id/publish` | Publish bài học   | ✅ Admin   | 50/min     |
 
 ### Events & Webhooks
 

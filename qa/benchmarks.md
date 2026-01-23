@@ -15,12 +15,12 @@ Các chỉ số mục tiêu và phương pháp đo lường hiệu năng.
 
 ### API Endpoints
 
-| Category         | P50   | P95   | P99   | Max   |
-| ---------------- | ----- | ----- | ----- | ----- |
-| Read (GET)       | 50ms  | 100ms | 200ms | 500ms |
-| Write (POST/PUT) | 100ms | 200ms | 500ms | 1s    |
-| Search           | 200ms | 500ms | 1s    | 2s    |
-| Report           | 500ms | 2s    | 5s    | 10s   |
+| Category             | P50   | P95   | P99   | Max   |
+| -------------------- | ----- | ----- | ----- | ----- |
+| Read (`GET`)         | 50ms  | 100ms | 200ms | 500ms |
+| Write (`POST`/`PUT`) | 100ms | 200ms | 500ms | 1s    |
+| Search               | 200ms | 500ms | 1s    | 2s    |
+| Report               | 500ms | 2s    | 5s    | 10s   |
 
 ### Database Operations
 

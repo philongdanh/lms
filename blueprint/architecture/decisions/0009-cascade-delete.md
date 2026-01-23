@@ -13,7 +13,7 @@ Cần data deletion strategy cho tenant/user lifecycle.
 
 ## Decision
 
-**Soft Delete** (User, Topic, Exam...) + **Hard Delete CASCADE** (Sessions,
+**Soft Delete** (User, Topic, Exam...) + **Hard Delete** `CASCADE` (Sessions,
 Answers...).
 
 ## Rationale

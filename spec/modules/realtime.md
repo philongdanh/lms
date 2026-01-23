@@ -48,20 +48,20 @@ DISCONNECTED --> [*]
 
 ### Schema & Entities
 
-| Entity       | Fields chính                        | Mô tả                  |
-| ------------ | ----------------------------------- | ---------------------- |
-| Notification | id, user_id, type, content, read_at | Thông báo              |
-| Presence     | user_id, socket_id, last_seen       | Trạng thái online      |
-| Room         | room_id, type, members[]            | Phòng chat/competition |
+| Entity       | Fields chính                                  | Mô tả                  |
+| ------------ | --------------------------------------------- | ---------------------- |
+| Notification | `id`, `user_id`, `type`, `content`, `read_at` | Thông báo              |
+| Presence     | `user_id`, `socket_id`, `last_seen`           | Trạng thái online      |
+| Room         | `room_id`, `type`, `members[]`                | Phòng chat/competition |
 
 ### Relations
 
-| Relation            | Mô tả                               |
-| ------------------- | ----------------------------------- |
-| User → Notification | 1:N - User có nhiều notifications   |
-| User → Presence     | 1:1 - Mỗi user có trạng thái online |
-| Realtime ← Auth     | Depends - Xác thực JWT              |
-| Realtime → Redis    | Uses - Pub/Sub, Presence store      |
+| Relation            | Mô tả                                 |
+| ------------------- | ------------------------------------- |
+| User → Notification | `1:N` - User có nhiều notifications   |
+| User → Presence     | `1:1` - Mỗi user có trạng thái online |
+| Realtime ← Auth     | Depends - Xác thực JWT                |
+| Realtime → Redis    | Uses - `Pub/Sub`, Presence store      |
 
 ---
 
@@ -69,12 +69,12 @@ DISCONNECTED --> [*]
 
 ### Endpoints
 
-| Method | Endpoint                  | Mô tả                | Auth | Rate Limit |
-| ------ | ------------------------- | -------------------- | ---- | ---------- |
-| GET    | `/notifications`          | Danh sách thông báo  | ✅   | 100/min    |
-| PUT    | `/notifications/:id/read` | Đánh dấu đã đọc      | ✅   | 200/min    |
-| DELETE | `/notifications/:id`      | Xóa thông báo        | ✅   | 100/min    |
-| WS     | `/ws`                     | WebSocket connection | ✅   | -          |
+| Method   | Endpoint                  | Mô tả                | Auth | Rate Limit |
+| -------- | ------------------------- | -------------------- | ---- | ---------- |
+| `GET`    | `/notifications`          | Danh sách thông báo  | ✅   | 100/min    |
+| `PUT`    | `/notifications/:id/read` | Đánh dấu đã đọc      | ✅   | 200/min    |
+| `DELETE` | `/notifications/:id`      | Xóa thông báo        | ✅   | 100/min    |
+| `WS`     | `/ws`                     | WebSocket connection | ✅   | -          |
 
 ### Events & Webhooks
 
@@ -95,7 +95,7 @@ DISCONNECTED --> [*]
 
 | ID       | Requirement                | Điều kiện                |
 | -------- | -------------------------- | ------------------------ |
-| FR-RT-01 | Connect với valid token    | JWT hợp lệ               |
+| FR-RT-01 | Connect với valid token    | `JWT` hợp lệ             |
 | FR-RT-02 | Broadcast hoạt động        | Redis adapter configured |
 | FR-RT-03 | 10k concurrent connections | Load test passed         |
 

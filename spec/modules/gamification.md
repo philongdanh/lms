@@ -40,21 +40,21 @@ N/A - Gamification events are transactional, no persistent state machine.
 
 ### Schema & Entities
 
-| Entity           | Fields chính                            | Mô tả                   |
-| ---------------- | --------------------------------------- | ----------------------- |
-| UserProfile      | user_id, exp, level, coins              | Thông tin game của user |
-| Badge            | id, name, criteria, icon                | Định nghĩa badge        |
-| UserBadge        | user_id, badge_id, earned_at            | Badge đã nhận           |
-| Reward           | id, name, cost, type                    | Phần thưởng có thể đổi  |
-| RewardRedemption | id, user_id, reward_id, status          | Lịch sử đổi thưởng      |
-| Streak           | user_id, current_streak, longest_streak | Chuỗi ngày học liên tục |
+| Entity           | Fields chính                                  | Mô tả                   |
+| ---------------- | --------------------------------------------- | ----------------------- |
+| UserProfile      | `user_id`, `exp`, `level`, `coins`            | Thông tin game của user |
+| Badge            | `id`, `name`, `criteria`, `icon`              | Định nghĩa badge        |
+| UserBadge        | `user_id`, `badge_id`, `earned_at`            | Badge đã nhận           |
+| Reward           | `id`, `name`, `cost`, `type`                  | Phần thưởng có thể đổi  |
+| RewardRedemption | `id`, `user_id`, `reward_id`, `status`        | Lịch sử đổi thưởng      |
+| Streak           | `user_id`, `current_streak`, `longest_streak` | Chuỗi ngày học liên tục |
 
 ### Relations
 
 | Relation                  | Mô tả                                 |
 | ------------------------- | ------------------------------------- |
-| User → UserProfile        | 1:1 - Mỗi user có 1 profile           |
-| User → UserBadge          | 1:N - User có nhiều badges            |
+| User → UserProfile        | `1:1` - Mỗi user có 1 profile         |
+| User → UserBadge          | `1:N` - User có nhiều badges          |
 | Gamification ← Learning   | Consumes - Nhận events hoàn thành bài |
 | Gamification ← Tournament | Consumes - Nhận events thắng thua     |
 
@@ -66,12 +66,12 @@ N/A - Gamification events are transactional, no persistent state machine.
 
 | Method | Endpoint              | Mô tả                 | Auth | Rate Limit |
 | ------ | --------------------- | --------------------- | ---- | ---------- |
-| GET    | `/profile`            | Thông tin EXP/Level   | ✅   | 200/min    |
-| GET    | `/badges`             | Danh sách badges      | ✅   | 100/min    |
-| GET    | `/leaderboard`        | Bảng xếp hạng         | ✅   | 100/min    |
-| GET    | `/rewards`            | Danh sách phần thưởng | ✅   | 100/min    |
-| POST   | `/rewards/:id/redeem` | Đổi phần thưởng       | ✅   | 20/min     |
-| GET    | `/streaks`            | Thông tin streak      | ✅   | 200/min    |
+| `GET`  | `/profile`            | Thông tin EXP/Level   | ✅   | 200/min    |
+| `GET`  | `/badges`             | Danh sách badges      | ✅   | 100/min    |
+| `GET`  | `/leaderboard`        | Bảng xếp hạng         | ✅   | 100/min    |
+| `GET`  | `/rewards`            | Danh sách phần thưởng | ✅   | 100/min    |
+| `POST` | `/rewards/:id/redeem` | Đổi phần thưởng       | ✅   | 20/min     |
+| `GET`  | `/streaks`            | Thông tin streak      | ✅   | 200/min    |
 
 ### Events & Webhooks
 

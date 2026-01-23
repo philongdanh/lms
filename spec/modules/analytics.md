@@ -38,19 +38,19 @@ N/A - Analytics là module read-only, không có state machine.
 
 ### Schema & Entities
 
-| Entity       | Fields chính                                 | Mô tả                     |
-| ------------ | -------------------------------------------- | ------------------------- |
-| KnowledgeMap | user_id, topic_id, mastery_score             | Mức độ nắm vững kiến thức |
-| DailyStats   | user_id, date, lessons_completed, time_spent | Thống kê hàng ngày        |
-| ReportCache  | report_id, params_hash, data, expires_at     | Cache báo cáo             |
+| Entity       | Fields chính                                         | Mô tả                     |
+| ------------ | ---------------------------------------------------- | ------------------------- |
+| KnowledgeMap | `user_id`, `topic_id`, `mastery_score`               | Mức độ nắm vững kiến thức |
+| DailyStats   | `user_id`, `date`, `lessons_completed`, `time_spent` | Thống kê hàng ngày        |
+| ReportCache  | `report_id`, `params_hash`, `data`, `expires_at`     | Cache báo cáo             |
 
 ### Relations
 
-| Relation             | Mô tả                                  |
-| -------------------- | -------------------------------------- |
-| User → KnowledgeMap  | 1:N - Mỗi user có map cho nhiều topics |
-| Analytics ← Learning | Consumes - Nhận events từ Learning     |
-| Analytics ← Auth     | Consumes - Lấy thông tin user/role     |
+| Relation             | Mô tả                                    |
+| -------------------- | ---------------------------------------- |
+| User → KnowledgeMap  | `1:N` - Mỗi user có map cho nhiều topics |
+| Analytics ← Learning | Consumes - Nhận events từ Learning       |
+| Analytics ← Auth     | Consumes - Lấy thông tin user/role       |
 
 ---
 
@@ -60,11 +60,11 @@ N/A - Analytics là module read-only, không có state machine.
 
 | Method | Endpoint                | Mô tả                      | Auth       | Rate Limit |
 | ------ | ----------------------- | -------------------------- | ---------- | ---------- |
-| GET    | `/progress/overview`    | Tổng quan tiến độ          | ✅         | 100/min    |
-| GET    | `/progress/subject/:id` | Tiến độ theo môn học       | ✅         | 100/min    |
-| GET    | `/knowledge-map`        | Bản đồ kiến thức           | ✅         | 50/min     |
-| GET    | `/daily-stats`          | Thống kê học tập hàng ngày | ✅         | 100/min    |
-| GET    | `/reports/class/:id`    | Báo cáo lớp học            | ✅ Teacher | 50/min     |
+| `GET`  | `/progress/overview`    | Tổng quan tiến độ          | ✅         | 100/min    |
+| `GET`  | `/progress/subject/:id` | Tiến độ theo môn học       | ✅         | 100/min    |
+| `GET`  | `/knowledge-map`        | Bản đồ kiến thức           | ✅         | 50/min     |
+| `GET`  | `/daily-stats`          | Thống kê học tập hàng ngày | ✅         | 100/min    |
+| `GET`  | `/reports/class/:id`    | Báo cáo lớp học            | ✅ Teacher | 50/min     |
 
 ### Events & Webhooks
 

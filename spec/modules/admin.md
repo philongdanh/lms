@@ -48,19 +48,19 @@ DELETED --> [*] : hard_delete_30d
 
 ### Schema & Entities
 
-| Entity         | Fields chính                            | Mô tả                 |
-| -------------- | --------------------------------------- | --------------------- |
-| Tenant         | id, code, name, status, settings        | Thông tin trường học  |
-| TenantSettings | id, tenant_id, config_json              | Cấu hình riêng tenant |
-| AuditLog       | id, actor_id, action, target, timestamp | Log hành động admin   |
+| Entity         | Fields chính                                      | Mô tả                 |
+| -------------- | ------------------------------------------------- | --------------------- |
+| Tenant         | `id`, `code`, `name`, `status`, `settings`        | Thông tin trường học  |
+| TenantSettings | `id`, `tenant_id`, `config_json`                  | Cấu hình riêng tenant |
+| AuditLog       | `id`, `actor_id`, `action`, `target`, `timestamp` | Log hành động admin   |
 
 ### Relations
 
-| Relation                | Mô tả                           |
-| ----------------------- | ------------------------------- |
-| Tenant → User           | 1:N - Tenant sở hữu nhiều users |
-| Tenant → TenantSettings | 1:1 - Mỗi tenant có 1 cấu hình  |
-| Admin → AuditLog        | 1:N - Log hành động của admin   |
+| Relation                | Mô tả                             |
+| ----------------------- | --------------------------------- |
+| Tenant → User           | `1:N` - Tenant sở hữu nhiều users |
+| Tenant → TenantSettings | `1:1` - Mỗi tenant có 1 cấu hình  |
+| Admin → AuditLog        | `1:N` - Log hành động của admin   |
 
 ---
 
@@ -68,14 +68,14 @@ DELETED --> [*] : hard_delete_30d
 
 ### Endpoints
 
-| Method | Endpoint                 | Mô tả               | Auth          | Rate Limit |
-| ------ | ------------------------ | ------------------- | ------------- | ---------- |
-| POST   | `/tenants`               | Tạo tenant mới      | ✅ Root Admin | 10/min     |
-| GET    | `/tenants`               | Danh sách tenants   | ✅ Root Admin | 100/min    |
-| PUT    | `/tenants/:id`           | Cập nhật tenant     | ✅ Root Admin | 50/min     |
-| DELETE | `/tenants/:id`           | Xóa tenant (soft)   | ✅ Root Admin | 10/min     |
-| POST   | `/users/import`          | Import users từ CSV | ✅ Admin      | 5/min      |
-| POST   | `/users/:id/impersonate` | Đăng nhập thay user | ✅ Admin      | 10/min     |
+| Method   | Endpoint                 | Mô tả               | Auth          | Rate Limit |
+| -------- | ------------------------ | ------------------- | ------------- | ---------- |
+| `POST`   | `/tenants`               | Tạo tenant mới      | ✅ Root Admin | 10/min     |
+| `GET`    | `/tenants`               | Danh sách tenants   | ✅ Root Admin | 100/min    |
+| `PUT`    | `/tenants/:id`           | Cập nhật tenant     | ✅ Root Admin | 50/min     |
+| `DELETE` | `/tenants/:id`           | Xóa tenant (soft)   | ✅ Root Admin | 10/min     |
+| `POST`   | `/users/import`          | Import users từ CSV | ✅ Admin      | 5/min      |
+| `POST`   | `/users/:id/impersonate` | Đăng nhập thay user | ✅ Admin      | 10/min     |
 
 ### Events & Webhooks
 
