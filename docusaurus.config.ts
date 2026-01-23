@@ -1,5 +1,6 @@
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import { themes as prismThemes } from 'prism-react-renderer';
 
 const config: Config = {
   title: 'LMS Documentation',
@@ -113,6 +114,10 @@ const config: Config = {
         light: 'rgb(255, 255, 255)',
         dark: 'rgb(50, 50, 50)',
       },
+    },
+    prism: {
+      theme: prismThemes.vsLight,
+      darkTheme: prismThemes.vsDark,
     },
   } satisfies Preset.ThemeConfig,
   plugins: ['docusaurus-plugin-image-zoom'],

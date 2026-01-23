@@ -20,3 +20,16 @@ html {
 .medium-zoom-image--opened {
   z-index: 99999 !important;
 }
+
+/* Custom Code Block Styles */
+:root {
+  --ifm-code-font-size: 85%;
+}
+
+/* Force no italics in code blocks */
+.token.italic,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  font-style: normal !important;
+}
