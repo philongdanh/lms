@@ -1,113 +1,81 @@
 ---
 id: processes
-title: Processes
+title: Development Processes
 sidebar_label: Processes
 sidebar_position: 6
 ---
 
-# Processes
+# Development Processes
 
-Definition of Done và Release Process.
-
----
-
-## Definition of Done
-
-### Story DoD (Definition of Done)
-
-Một User Story được coi là **Done** khi:
-
-| Category       | Criteria                            |
-| -------------- | ----------------------------------- |
-| **Code**       | ✅ Triển khai theo requirements     |
-|                | ✅ TypeScript strict mode pass      |
-|                | ✅ Không lỗi ESLint                 |
-| **Testing**    | ✅ Unit tests pass (coverage ≥ 70%) |
-|                | ✅ Manual testing done              |
-|                | ✅ Edge cases checked               |
-| **Review**     | ✅ Code reviewed & approved         |
-|                | ✅ All comments resolved            |
-| **Deploy**     | ✅ CI pipeline pass                 |
-|                | ✅ Deployed to staging              |
-|                | ✅ Smoke test pass                  |
-| **Acceptance** | ✅ PO reviewed & accepted           |
-
-### Sprint DoD
-
-- ✅ Tất cả committed stories Done
-- ✅ Đạt sprint goal
-- ✅ Demo hoàn thành
-- ✅ Retrospective done
-- ✅ Không còn critical bugs
+Quy trình phát triển và tiêu chuẩn chất lượng.
 
 ---
 
-## Release Process
+## Workflow
 
-### Quy tắc đánh phiên bản
+### Git Flow
 
+| Branch | Purpose | Naming |
+| ------ | ------- | ------ |
+| `main` | Production | - |
+| `develop` | Integration | - |
+| `feature/*` | New features | `feature/auth-login` |
+| `fix/*` | Bug fixes | `fix/login-redirect` |
+| `hotfix/*` | Production fixes | `hotfix/v1.2.1` |
+
+**Commit Message Format:**
 ```
-v1.2.3
-│ │ │
-│ │ └── Patch: Bug fixes
-│ └──── Minor: New features
-└────── Major: Breaking changes
+<type>(<scope>): <description>
+
+Types: feat, fix, docs, style, refactor, test, chore
+Example: feat(auth): add login with email
 ```
 
-### Loại Release
+### Code Review
 
-| Type  | Frequency  | Scope            |
-| ----- | ---------- | ---------------- |
-| Major | Hàng quý   | Breaking changes |
-| Minor | 2 tuần/lần | New features     |
-| Patch | Khi cần    | Bug fixes        |
+| Criteria | Requirement |
+| -------- | ----------- |
+| Approvers | 1 minimum |
+| CI Status | All checks pass |
+| Coverage | No decrease |
+| Comments | All resolved |
 
-### Các bước Release
+**Definition of Done:**
 
-**Pre-Release (T-2 days)**
-
-- ✅ Code freeze
-- ✅ All PR merged to `develop`
-- ✅ QA sign-off on staging
-- ✅ Bump version
-
-**Production (T-0)**
-
-- ✅ PO approval
-- ✅ Merge to `main`
-- ✅ Create release tag
-- ✅ Deploy to production
-- ✅ Smoke test
-
-### Quy trình Hotfix
-
-```bash
-# 1. Create hotfix branch từ main
-git checkout -b hotfix/v1.2.1 main
-
-# 2. Fix, test, bump patch version
-npm version patch
-
-# 3. Merge to main và develop
-git checkout main && git merge hotfix/v1.2.1
-git checkout develop && git merge hotfix/v1.2.1
-```
+| Category | Criteria |
+| -------- | -------- |
+| Code | TypeScript strict, no ESLint errors |
+| Testing | Unit tests pass (≥ 70% coverage) |
+| Review | Code reviewed & approved |
+| Deploy | CI pass, deployed to staging |
 
 ---
 
-## Environment Pipeline
+## CI/CD
+
+### Pipeline
 
 ```
 Dev → Staging → UAT → Production
  │       │       │        │
-develop  release/*  release/*   main
- │       │       │        │
-Auto CI  Auto CD  Manual  Manual + Approval
+develop  auto    manual   manual + approval
 ```
 
+**Stages:**
+
+| Stage | Trigger | Actions |
+| ----- | ------- | ------- |
+| Build | Every commit | Install, lint, build |
+| Test | Every commit | Unit tests, integration tests |
+| Deploy (Staging) | Merge to develop | Auto deploy |
+| Deploy (Prod) | Release tag | Manual + approval |
+
+### Release Process
+
+| Type | Frequency | Scope |
+| ---- | --------- | ----- |
+| Major | Quarterly | Breaking changes |
+| Minor | Bi-weekly | New features |
+| Patch | As needed | Bug fixes |
+
 ---
-
-## References
-
-- [Contributing](./contributing.md)
-- [Deployment](./deployment.md)

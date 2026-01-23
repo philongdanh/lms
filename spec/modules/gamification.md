@@ -1,141 +1,104 @@
-# Gamification Module Specification
+---
+id: gamification
+title: Gamification
+sidebar_label: Gamification
+sidebar_position: 7
+---
 
-# Gamification & Rewards - Business Logic
+# Gamification
 
-Quy tắc nghiệp vụ hệ thống thi đua và trò chơi hóa.
-
-## Dependencies
-
-### Phụ thuộc nội bộ
-
-- ✅ Learning Module - Kích hoạt sự kiện khi hoàn thành bài học.
-- ✅ Tournament Module - Kích hoạt sự kiện khi thắng giải đấu.
-
-### Phụ thuộc bên ngoài
-
-- ✅ Redis - Cache bảng xếp hạng (Sorted Sets).
-
-## Validation Criteria
-
-- ✅ Công thức tính Level hoạt động chính xác.
-- ✅ Giao dịch đổi xu đảm bảo Atomicity (không trừ tiền mà không có phần
-  thưởng).
-- ✅ Bảng xếp hạng cập nhật realtime.
-
-# Workflows
-
-## Workflow Summary
-
-| Workflow ID | Workflow Name     | Trigger            | Actors         | Status |
-| ----------- | ----------------- | ------------------ | -------------- | ------ |
-| WF-GAME-001 | Process EXP Event | Hoàn thành học/thi | System (Async) | Active |
-| WF-GAME-002 | Reward Redemption | Kết nối tới Store  | Student, Admin | Active |
-
-config: themeVariables: fontFamily: "EB Garamond" config: themeVariables:
-fontFamily: "EB Garamond"
-
-## Events
-
-### Sự kiện hệ thống
-
-| Event Name     | Description           | Payload                        | Emitted By |
-| -------------- | --------------------- | ------------------------------ | ---------- |
-| `level.up`     | Người dùng lên cấp    | `{user_id, new_level, reward}` | Game Svc   |
-| `badge.earned` | Người dùng nhận badge | `{user_id, badge_id}`          | Game Svc   |
-
-## Performance Requirements
-
-- **Async Processing**: Độ trễ hàng đợi event < 1s.
-
-## Validation Checklist
-
-- ✅ Việc trừ phần thưởng có tính transactional
+Module trò chơi hóa, quản lý điểm thưởng và bảng xếp hạng.
 
 ---
 
-# Gamification - API Endpoints
+## Business Logic
 
-Các giao diện lập trình cho hệ thống thành tích và khen thưởng.
+### Workflow chính
 
-## Endpoints Summary
+| Workflow | Mô tả | Actor | Kết quả |
+| -------- | ----- | ----- | ------- |
+| Process EXP | Xử lý sự kiện nhận EXP | System | User nhận EXP, có thể level up |
+| Award Badge | Gán badge cho user | System | Badge được gán |
+| Reward Redemption | Đổi xu lấy phần thưởng | Student | Xu trừ, reward được cấp |
+| Update Leaderboard | Cập nhật bảng xếp hạng | System | Leaderboard realtime |
 
-| Method | Endpoint              | Description           | Auth Required | Rate Limit |
-| ------ | --------------------- | --------------------- | ------------- | ---------- |
-| GET    | `/profile`            | Thông tin EXP/Level   | ✅            | 200/min    |
-| GET    | `/badges`             | Danh sách badges      | ✅            | 100/min    |
-| GET    | `/leaderboard`        | Bảng xếp hạng         | ✅            | 100/min    |
-| GET    | `/rewards`            | Danh sách phần thưởng | ✅            | 100/min    |
-| POST   | `/rewards/:id/redeem` | Đổi phần thưởng       | ✅            | 20/min     |
-| GET    | `/streaks`            | Thông tin streak      | ✅            | 200/min    |
+### Rules & Constraints
+
+- ✅ Công thức Level: EXP thresholds configurable
+- ✅ Transaction atomic: không trừ xu mà không có reward
+- ✅ Leaderboard dùng Redis Sorted Sets
+- ✅ Chỉ trigger EXP nếu là lần hoàn thành đầu tiên
+- ✅ Async processing: queue lag < 1s
+
+### State Machine
+
+N/A - Gamification events are transactional, no persistent state machine.
 
 ---
 
-# Gamification - Data Model
+## Data Model
 
-Cấu trúc dữ liệu cho điểm kinh nghiệm, danh hiệu và phần thưởng.
+### Schema & Entities
 
-config: themeVariables: fontFamily: "EB Garamond"
+| Entity | Fields chính | Mô tả |
+| ------ | ------------ | ----- |
+| UserProfile | user_id, exp, level, coins | Thông tin game của user |
+| Badge | id, name, criteria, icon | Định nghĩa badge |
+| UserBadge | user_id, badge_id, earned_at | Badge đã nhận |
+| Reward | id, name, cost, type | Phần thưởng có thể đổi |
+| RewardRedemption | id, user_id, reward_id, status | Lịch sử đổi thưởng |
+| Streak | user_id, current_streak, longest_streak | Chuỗi ngày học liên tục |
 
-## References
+### Relations
 
--
--
-- ***
+| Relation | Mô tả |
+| -------- | ----- |
+| User → UserProfile | 1:1 - Mỗi user có 1 profile |
+| User → UserBadge | 1:N - User có nhiều badges |
+| Gamification ← Learning | Consumes - Nhận events hoàn thành bài |
+| Gamification ← Tournament | Consumes - Nhận events thắng thua |
 
-# Gamification & Rewards - Test Cases
+---
 
-Kịch bản kiểm thử hệ thống thành tích và khen thưởng.
+## API & Integration
 
-## Test Categories
+### Endpoints
 
-### 1. Kiểm thử chức năng
+| Method | Endpoint | Mô tả | Auth | Rate Limit |
+| ------ | -------- | ----- | ---- | ---------- |
+| GET | `/profile` | Thông tin EXP/Level | ✅ | 200/min |
+| GET | `/badges` | Danh sách badges | ✅ | 100/min |
+| GET | `/leaderboard` | Bảng xếp hạng | ✅ | 100/min |
+| GET | `/rewards` | Danh sách phần thưởng | ✅ | 100/min |
+| POST | `/rewards/:id/redeem` | Đổi phần thưởng | ✅ | 20/min |
+| GET | `/streaks` | Thông tin streak | ✅ | 200/min |
 
-#### Business Logic
+### Events & Webhooks
 
-| Test ID         | Description        | Rules       | Expected Result             | Priority |
-| --------------- | ------------------ | ----------- | --------------------------- | -------- |
-| TC-GAME-FUN-001 | Tính toán Level Up | BR-GAME-001 | Level tăng khi EXP > ngưỡng | P0       |
-| TC-GAME-FUN-002 | Trừ Coin           | BR-GAME-002 | Coins giảm, Order được tạo  | P0       |
-| TC-GAME-FUN-003 | Không đủ Coins     | BR-GAME-002 | Trả về lỗi, không trừ tiền  | P1       |
+| Event | Trigger | Payload |
+| ----- | ------- | ------- |
+| `level.up` | User lên cấp | `{ userId, newLevel, reward }` |
+| `badge.earned` | User nhận badge | `{ userId, badgeId }` |
+| `streak.updated` | Streak thay đổi | `{ userId, currentStreak }` |
 
-### 2. Kiểm thử tích hợp
+---
 
-| Test ID         | Description                  | Components     | Result              |
-| --------------- | ---------------------------- | -------------- | ------------------- |
-| TC-GAME-INT-001 | Hoàn thành học kích hoạt EXP | Learning, Game | Người dùng nhận EXP |
+## Acceptance Criteria
 
-### 3. Kiểm thử hiệu năng
+### Functional Requirements
 
-| Test ID          | Scenario        | Load     | Result |
-| ---------------- | --------------- | -------- | ------ |
-| TC-GAME-PERF-001 | Đọc Leaderboard | 1000 RPS | < 50ms |
+| ID | Requirement | Điều kiện |
+| -- | ----------- | --------- |
+| FR-GAME-01 | Level up chính xác | EXP vượt threshold |
+| FR-GAME-02 | Redeem transactional | Atomic trừ xu + cấp reward |
+| FR-GAME-03 | Leaderboard realtime | Update < 50ms |
 
-# Performance Requirements
+### Edge Cases
 
-## Performance Targets
-
-### Thời gian phản hồi
-
-| Operation       | P50   | P95   | P99   | Max   | Measurement    |
-| --------------- | ----- | ----- | ----- | ----- | -------------- |
-| Get Profile     | 30ms  | 100ms | 300ms | 1s    | DB Read        |
-| Get Leaderboard | 20ms  | 50ms  | 100ms | 500ms | Redis Read     |
-| Redeem Reward   | 100ms | 300ms | 500ms | 2s    | DB Transaction |
-
-### Yêu cầu thông lượng
-
-| Scenario         | Requests/sec | Concurrent Users | Data Volume |
-| ---------------- | ------------ | ---------------- | ----------- |
-| Event Processing | 1000         | N/A (Async)      | 50MB/giờ    |
-
-## Resource Utilization Limits
-
-| Resource     | Warning Threshold | Critical Threshold | Required Action       |
-| ------------ | ----------------- | ------------------ | --------------------- |
-| Redis Memory | 70%               | 90%                | Xóa key cũ / Scale up |
-
-## Validation Checklist
-
-- ✅ Cụm Redis được cấu hình để có tính sẵn sàng cao
+| Case | Xử lý |
+| ---- | ----- |
+| Không đủ coins | Trả về lỗi, không trừ tiền |
+| Redis memory cao | Xóa old keys, alert ops |
+| Duplicate EXP event | Idempotent processing |
 
 ---

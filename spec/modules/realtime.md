@@ -1,147 +1,111 @@
-# Realtime Module Specification
+---
+id: realtime
+title: Realtime
+sidebar_label: Realtime
+sidebar_position: 8
+---
 
-# Real-time Communication - Business Logic
+# Realtime
 
-Quy tắc nghiệp vụ xử lý giao tiếp thời gian thực.
-
-## Dependencies
-
-### Phụ thuộc nội bộ
-
-- ✅ Auth Module - Xác thực JWT.
-- ✅ Redis - Pub/Sub Adapter & Presence Store.
-
-### Phụ thuộc bên ngoài
-
-- ❌ Không có - Self-hosted Socket.IO cluster.
-
-## Validation Criteria
-
-- ✅ Kết nối thành công với JWT hợp lệ.
-- ✅ Tính năng Broadcast hoạt động trên nhiều server nodes (Redis Adapter).
-- ✅ Xử lý 10k kết nối đồng thời.
-
-# Workflows
-
-## Workflow Summary
-
-| Workflow ID | Workflow Name       | Trigger           | Actors         | Status |
-| ----------- | ------------------- | ----------------- | -------------- | ------ |
-| WF-RT-001   | WebSocket Handshake | Client kết nối    | Client, Server | Active |
-| WF-RT-002   | Broadcast Event     | Internal API Call | System, Redis  | Active |
-
-config: themeVariables: fontFamily: "EB Garamond" config: themeVariables:
-fontFamily: "EB Garamond"
-
-## Events
-
-### Sự kiện hệ thống
-
-| Event Name          | Description           | Payload                | Emitted By |
-| ------------------- | --------------------- | ---------------------- | ---------- |
-| `socket.connect`    | Người dùng mới online | `{user_id, socket_id}` | WS Server  |
-| `socket.disconnect` | Người dùng offline    | `{user_id, reason}`    | WS Server  |
-
-## Performance Requirements
-
-- **Handshake Time**: < 100ms.
-
-## Validation Checklist
-
-- ✅ Kiểm tra Redis Failover
+Module giao tiếp real-time qua WebSocket.
 
 ---
 
-# Realtime - API Endpoints
+## Business Logic
 
-Các giao diện kết nối thời gian thực và thông báo trực tiếp.
+### Workflow chính
 
-## Endpoints Summary
+| Workflow | Mô tả | Actor | Kết quả |
+| -------- | ----- | ----- | ------- |
+| WebSocket Handshake | Client kết nối với JWT | Client | Connection established |
+| Broadcast Event | Gửi message tới room | System | Clients nhận message |
+| Presence Tracking | Theo dõi online/offline | System | Presence store updated |
+| Room Management | Join/leave rooms | Client | Room membership updated |
 
-| Method | Endpoint                  | Description          | Auth Required | Rate Limit |
-| ------ | ------------------------- | -------------------- | ------------- | ---------- |
-| GET    | `/notifications`          | Danh sách thông báo  | ✅            | 100/min    |
-| PUT    | `/notifications/:id/read` | Đánh dấu đã đọc      | ✅            | 200/min    |
-| DELETE | `/notifications/:id`      | Xóa thông báo        | ✅            | 100/min    |
-| WS     | `/ws`                     | WebSocket connection | ✅            | -          |
+### Rules & Constraints
 
-## WebSocket Events
+- ✅ JWT required cho connection
+- ✅ Redis Pub/Sub adapter cho multi-node
+- ✅ Max 10k connections per node
+- ✅ Handshake time < 100ms
+- ✅ Message delivery < 50ms P50
 
-| Event              | Direction     | Description       |
-| ------------------ | ------------- | ----------------- |
-| `notification.new` | Server→Client | Thông báo mới     |
-| `progress.updated` | Server→Client | Cập nhật tiến độ  |
-| `tournament.start` | Server→Client | Giải đấu bắt đầu  |
-| `match.update`     | Server→Client | Cập nhật trận đấu |
+### State Machine
+
+```d2
+direction: right
+[*] --> CONNECTING : connect
+CONNECTING --> AUTHENTICATED : jwt_valid
+CONNECTING --> REJECTED : jwt_invalid
+AUTHENTICATED --> CONNECTED : handshake_complete
+CONNECTED --> DISCONNECTED : disconnect
+DISCONNECTED --> [*]
+```
 
 ---
 
-# Realtime - Data Model
+## Data Model
 
-Cấu trúc dữ liệu cho trạng thái kết nối và thông báo.
+### Schema & Entities
 
-config: themeVariables: fontFamily: "EB Garamond"
+| Entity | Fields chính | Mô tả |
+| ------ | ------------ | ----- |
+| Notification | id, user_id, type, content, read_at | Thông báo |
+| Presence | user_id, socket_id, last_seen | Trạng thái online |
+| Room | room_id, type, members[] | Phòng chat/competition |
 
-## References
+### Relations
 
--
--
-- ***
+| Relation | Mô tả |
+| -------- | ----- |
+| User → Notification | 1:N - User có nhiều notifications |
+| User → Presence | 1:1 - Mỗi user có trạng thái online |
+| Realtime ← Auth | Depends - Xác thực JWT |
+| Realtime → Redis | Uses - Pub/Sub, Presence store |
 
-# Real-time Communication - Test Cases
+---
 
-Kịch bản kiểm thử hệ thống giao tiếp thời gian thực.
+## API & Integration
 
-## Test Categories
+### Endpoints
 
-### 1. Kiểm thử chức năng
+| Method | Endpoint | Mô tả | Auth | Rate Limit |
+| ------ | -------- | ----- | ---- | ---------- |
+| GET | `/notifications` | Danh sách thông báo | ✅ | 100/min |
+| PUT | `/notifications/:id/read` | Đánh dấu đã đọc | ✅ | 200/min |
+| DELETE | `/notifications/:id` | Xóa thông báo | ✅ | 100/min |
+| WS | `/ws` | WebSocket connection | ✅ | - |
 
-#### Business Logic
+### Events & Webhooks
 
-| Test ID       | Description             | Rules     | Expected Result | Priority |
-| ------------- | ----------------------- | --------- | --------------- | -------- |
-| TC-RT-FUN-001 | Kết nối với Token       | BR-RT-001 | Thành công      | P0       |
-| TC-RT-FUN-002 | Kết nối không Token     | BR-RT-001 | Thất bại 401    | P0       |
-| TC-RT-FUN-003 | Giới hạn tham gia phòng | BR-RT-003 | Từ chối nếu đầy | P1       |
+| Event | Direction | Payload |
+| ----- | --------- | ------- |
+| `notification.new` | Server→Client | `{ type, content }` |
+| `progress.updated` | Server→Client | `{ lessonId, status }` |
+| `tournament.start` | Server→Client | `{ tournamentId }` |
+| `match.update` | Server→Client | `{ matchId, scores }` |
+| `socket.connect` | Internal | `{ userId, socketId }` |
+| `socket.disconnect` | Internal | `{ userId, reason }` |
 
-### 2. Kiểm thử tích hợp
+---
 
-| Test ID       | Description   | Components     | Result               |
-| ------------- | ------------- | -------------- | -------------------- |
-| TC-RT-INT-001 | Gửi broadcast | API, Redis, WS | Client nhận được msg |
+## Acceptance Criteria
 
-### 3. Kiểm thử hiệu năng
+### Functional Requirements
 
-| Test ID        | Scenario    | Load       | Result    |
-| -------------- | ----------- | ---------- | --------- |
-| TC-RT-PERF-001 | 10k kết nối | Ramp up 1m | Không lỗi |
+| ID | Requirement | Điều kiện |
+| -- | ----------- | --------- |
+| FR-RT-01 | Connect với valid token | JWT hợp lệ |
+| FR-RT-02 | Broadcast hoạt động | Redis adapter configured |
+| FR-RT-03 | 10k concurrent connections | Load test passed |
 
-# Performance Requirements
+### Edge Cases
 
-## Performance Targets
-
-### Thời gian phản hồi
-
-| Operation         | P50  | P95   | P99   | Max   | Cách đo      |
-| ----------------- | ---- | ----- | ----- | ----- | ------------ |
-| Connect Handshake | 50ms | 100ms | 300ms | 1s    | Xử lý Server |
-| Message Delivery  | 20ms | 50ms  | 100ms | 500ms | End-to-end   |
-| Presence Query    | 5ms  | 10ms  | 20ms  | 50ms  | Redis Read   |
-
-### Yêu cầu thông lượng
-
-| Scenario                | Requests/sec    | Concurrent Users | Data Volume |
-| ----------------------- | --------------- | ---------------- | ----------- |
-| Broadcast (Competition) | 10,000 msgs/sec | 50,000           | 1MB/sec     |
-
-## Resource Utilization Limits
-
-| Resource        | Warning Threshold | Critical Threshold | Required Action |
-| --------------- | ----------------- | ------------------ | --------------- |
-| Open Files (FD) | 100,000           | 500,000            | Tăng ulimit     |
-
-## Validation Checklist
-
-- ✅ Tinh chỉnh Kernel cho đồng thời cao (sysctl)
+| Case | Xử lý |
+| ---- | ----- |
+| Token hết hạn khi connected | Force disconnect, require reconnect |
+| Redis failover | Auto-reconnect to new master |
+| Room đầy | Reject join với error |
+| Network hiccup | Auto-reconnect với backoff |
 
 ---

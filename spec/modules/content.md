@@ -1,195 +1,111 @@
-# Content Module Specification
+---
+id: content
+title: Content
+sidebar_label: Content
+sidebar_position: 6
+---
 
-# Content & Question Bank - Business Logic
+# Content
 
-Quy tắc nghiệp vụ quản lý và phân phối nội dung.
-
-## Dependencies
-
-### Phụ thuộc nội bộ
-
-- ❌ Không có - Content là module nền tảng (Core).
-
-### Phụ thuộc bên ngoài
-
-- ✅ File Storage (S3/MinIO) - Lưu trữ Videos, Images, Documents.
-- ✅ Search Engine (Elasticsearch) - Tìm kiếm câu hỏi và bài học.
-
-## Validation Criteria
-
-- ✅ Cây cấu trúc nội dung hiển thị đúng phân cấp.
-- ✅ Quy trình import chạy đúng với file template và file lỗi.
-- ✅ Media upload phát được trên tất cả thiết bị.
-- ✅ Quyền Teacher (tạo draft) và Admin (publish) hoạt động đúng.
-
-# Workflows
-
-## Workflow Details
-
-### WF-CONT-002: Bulk Import Questions
-
-**Description**: Quy trình import câu hỏi từ file bên ngoài vào hệ thống.
-
-#### Flow Diagram
-
-````d2
-```d2
-shape: sequence_diagram
-
-User
-API
-ImportService
-DB
-FileStorage
-
-User -> API: Upload File (questions.xlsx)
-API -> ImportService: Process File
-ImportService -> FileStorage: Save temp file
-ImportService -> ImportService: Validate Rules (Loop)
-ImportService -> ImportService: Parse & Insert (if Valid)
-ImportService -> DB: Insert Question
-DB -> ImportService: New ID
-ImportService -> API: Summary (Success/Fail)
-API -> User: Display Report
-````
-
-#### Steps
-
-| Step | Description      | Actor  | System Action                    | Exit Condition   |
-| ---- | ---------------- | ------ | -------------------------------- | ---------------- |
-| 1    | Upload File      | User   | Nhận & Lưu Temp                  | File đã lưu      |
-| 2    | Parse & Validate | System | Đọc các dòng, kiểm tra định dạng | Parsing hoàn tất |
-| 3    | Insert DB        | System | Insert các câu hỏi hợp lệ        | -                |
-| 4    | Generate Report  | System | Tạo báo cáo tổng hợp             | Report sẵn sàng  |
-
-### WF-CONT-001: Create Content Structure
-
-**Description**: Tạo cây cấu trúc môn học.
-
-#### Flow Diagram
-
-````d2
-```d2
-direction: down
-
-A: Teacher/Admin
-B: Choose Action {
-  shape: diamond
-}
-C: Create Topic
-D: Assign Subject & Grade
-E: Set Active Status
-F: Create Lesson in Topic
-G: Upload Learning Materials
-H: Video/Slide/Doc
-
-A -> B
-B -> C: Manage Structure
-C -> D
-D -> E
-B -> F: Manage Lesson
-F -> G
-G -> H
-````
-
-## Error Handling
-
-| Error Scenario         | Detection   | Recovery Action                           | Escalation |
-| ---------------------- | ----------- | ----------------------------------------- | ---------- |
-| Import File Corrupt    | Parse Error | Trả về "Invalid File Format"              | -          |
-| Partial Import Failure | Row Error   | Bỏ qua dòng, ghi log vào report, tiếp tục | -          |
-
-## Security Requirements
-
-- ✅ Quét file upload để phát hiện malware (tích hợp VirusTotal hoặc ClamAV)
-
-## References
+Module quản lý nội dung học tập và ngân hàng câu hỏi.
 
 ---
 
-# Content & Question Bank - API Endpoints
+## Business Logic
 
-Các giao diện lập trình quản lý nội dung và ngân hàng câu hỏi.
+### Workflow chính
 
-## Endpoints Summary
+| Workflow | Mô tả | Actor | Kết quả |
+| -------- | ----- | ----- | ------- |
+| Create Structure | Tạo cây cấu trúc môn học | Admin/Teacher | Topic/Lesson được tạo |
+| Bulk Import | Import câu hỏi từ file | Teacher | Câu hỏi được import |
+| Publish Content | Phê duyệt và publish | Admin | Nội dung visible cho students |
+| Upload Media | Upload video/image | Teacher | Media được lưu trữ |
 
-| Method | Endpoint               | Description       | Auth Required | Rate Limit |
-| ------ | ---------------------- | ----------------- | ------------- | ---------- |
-| GET    | `/subjects`            | Danh sách môn học | ❌            | 200/min    |
-| GET    | `/topics`              | Danh sách chủ đề  | ❌            | 200/min    |
-| GET    | `/lessons/:id`         | Chi tiết bài học  | ✅            | 200/min    |
-| POST   | `/questions/import`    | Import câu hỏi    | ✅ Teacher    | 10/min     |
-| GET    | `/questions/search`    | Tìm kiếm câu hỏi  | ✅ Teacher    | 100/min    |
-| POST   | `/lessons`             | Tạo bài học mới   | ✅ Teacher    | 50/min     |
-| PUT    | `/lessons/:id/publish` | Publish bài học   | ✅ Admin      | 50/min     |
+### Rules & Constraints
+
+- ✅ Lesson phải thuộc về một Topic (hierarchy)
+- ✅ Teacher tạo draft, Admin publish
+- ✅ File upload được scan malware (ClamAV)
+- ✅ Hỗ trợ format: xlsx, docx, pdf cho import
+- ✅ Max file size: 500MB cho video
+
+### State Machine
+
+```d2
+direction: right
+[*] --> DRAFT : create
+DRAFT --> PENDING_REVIEW : submit
+PENDING_REVIEW --> PUBLISHED : approve
+PENDING_REVIEW --> DRAFT : reject
+PUBLISHED --> ARCHIVED : archive
+```
 
 ---
 
-# Content & Question Bank - Data Model
+## Data Model
 
-Cấu trúc dữ liệu cho nội dung học tập và kho câu hỏi.
+### Schema & Entities
 
-config: themeVariables: fontFamily: "EB Garamond"
+| Entity | Fields chính | Mô tả |
+| ------ | ------------ | ----- |
+| Subject | id, name, grade, curriculum | Môn học |
+| Topic | id, subject_id, name, order | Chủ đề |
+| Lesson | id, topic_id, title, content, status | Bài học |
+| Question | id, lesson_id, type, content, answers | Câu hỏi |
+| Media | id, type, url, size, metadata | File media |
 
-## References
+### Relations
 
--
--
-- ***
+| Relation | Mô tả |
+| -------- | ----- |
+| Subject → Topic | 1:N - Môn học có nhiều chủ đề |
+| Topic → Lesson | 1:N - Chủ đề có nhiều bài học |
+| Lesson → Question | 1:N - Bài học có nhiều câu hỏi |
+| Lesson → Media | N:M - Bài học dùng nhiều media |
 
-# Content & Question Bank - Test Cases
+---
 
-Kịch bản kiểm thử hệ thống quản lý nội dung. import/export workflows.
+## API & Integration
 
-## Test Categories
+### Endpoints
 
-### 1. Kiểm thử chức năng
+| Method | Endpoint | Mô tả | Auth | Rate Limit |
+| ------ | -------- | ----- | ---- | ---------- |
+| GET | `/subjects` | Danh sách môn học | ❌ | 200/min |
+| GET | `/topics` | Danh sách chủ đề | ❌ | 200/min |
+| GET | `/lessons/:id` | Chi tiết bài học | ✅ | 200/min |
+| POST | `/questions/import` | Import câu hỏi | ✅ Teacher | 10/min |
+| GET | `/questions/search` | Tìm kiếm câu hỏi | ✅ Teacher | 100/min |
+| POST | `/lessons` | Tạo bài học mới | ✅ Teacher | 50/min |
+| PUT | `/lessons/:id/publish` | Publish bài học | ✅ Admin | 50/min |
 
-#### Business Logic
+### Events & Webhooks
 
-| Test ID         | Description         | Rules       | Expected Result                | Priority |
-| --------------- | ------------------- | ----------- | ------------------------------ | -------- |
-| TC-CONT-FUN-001 | Validate Hierarchy  | BR-CONT-001 | Ngăn tạo Lesson không có Topic | P0       |
-| TC-CONT-FUN-002 | Import Format Check | BR-CONT-005 | Từ chối file .exe              | P1       |
+| Event | Trigger | Payload |
+| ----- | ------- | ------- |
+| `content.published` | Bài học được publish | `{ lessonId, publishedBy }` |
+| `import.completed` | Import hoàn tất | `{ success, failed, report }` |
 
-### 2. Kiểm thử tích hợp
+---
 
-| Test ID         | Description                         | Components            | Result             |
-| --------------- | ----------------------------------- | --------------------- | ------------------ |
-| TC-CONT-INT-001 | Sự kiện Publish kích hoạt thông báo | Content, Notification | Thông báo được gửi |
+## Acceptance Criteria
 
-### 4. Kiểm thử bảo mật
+### Functional Requirements
 
-| Test ID         | Aspect                            | Method                | Result        |
-| --------------- | --------------------------------- | --------------------- | ------------- |
-| TC-CONT-SEC-001 | Chỉnh sửa nội dung của người khác | PUT /questions/`{id}` | 403 Forbidden |
+| ID | Requirement | Điều kiện |
+| -- | ----------- | --------- |
+| FR-CONT-01 | Validate hierarchy | Không tạo Lesson thiếu Topic |
+| FR-CONT-02 | Import format check | Từ chối file không hỗ trợ |
+| FR-CONT-03 | Media playback | Video chạy trên mọi device |
 
-# Performance Requirements
+### Edge Cases
 
-## Performance Targets
-
-### Thời gian phản hồi
-
-| Operation                 | P50   | P95   | P99   | Max | Measurement       |
-| ------------------------- | ----- | ----- | ----- | --- | ----------------- |
-| Get Topic Tree            | 50ms  | 100ms | 300ms | 1s  | Tải full tree     |
-| Search Questions          | 100ms | 300ms | 800ms | 2s  | Tìm kiếm fulltext |
-| Import Process (100 rows) | 2s    | 5s    | 10s   | 30s | Thời gian task    |
-
-### Yêu cầu thông lượng
-
-| Scenario        | Requests/sec | Concurrent Users | Data Volume |
-| --------------- | ------------ | ---------------- | ----------- |
-| Normal Browsing | 2000         | 10000            | 100MB/giờ   |
-
-## Storage
-
-- **Database**: 500GB/năm (Dữ liệu text ngân hàng câu hỏi).
-- **File Storage**: 10TB/năm (Videos, Images).
-
-## Validation Checklist
-
-- ✅ Autoscaling worker pool đã được cấu hình
-- ✅ Đã bật S3 upload acceleration (nếu cần)
+| Case | Xử lý |
+| ---- | ----- |
+| Import file corrupt | Trả về "Invalid File Format" |
+| Partial import failure | Bỏ qua dòng lỗi, ghi log, tiếp tục |
+| Malware detected | Reject upload, alert admin |
+| Chỉnh sửa content người khác | 403 Forbidden |
 
 ---

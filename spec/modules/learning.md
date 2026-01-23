@@ -1,272 +1,112 @@
-# Learning Module Specification
+---
+id: learning
+title: Learning
+sidebar_label: Learning
+sidebar_position: 3
+---
 
-# Learning & Personalization - Business Logic
+# Learning
 
-Quy tắc nghiệp vụ lộ trình và cá nhân hóa việc học.
+Module học tập và cá nhân hóa lộ trình dựa trên AI.
 
-## Dependencies
+---
 
-### Phụ thuộc nội bộ
+## Business Logic
 
-- ✅ Content Module - Cung cấp nội dung bài học, video, câu hỏi.
-- ✅ Analytics Module - Cung cấp Knowledge Map và phân tích dữ liệu.
-- ✅ Gamification Module - Xử lý điểm thưởng, huy hiệu.
+### Workflow chính
 
-### Phụ thuộc bên ngoài
+| Workflow | Mô tả | Actor | Kết quả |
+| -------- | ----- | ----- | ------- |
+| Submit Exercise | Nộp câu trả lời bài tập | Student | Chấm điểm, cập nhật tiến độ |
+| Generate Learning Path | Tạo lộ trình học thích ứng | System | Danh sách bài học được đề xuất |
+| Complete Lesson | Hoàn thành bài học | Student | Tiến độ cập nhật, rewards gửi |
+| Track Progress | Theo dõi tiến độ học tập | Student/Parent | Dashboard hiển thị |
 
-- ✅ AI Service (Python) - Mô hình đề xuất lộ trình học tập.
+### Rules & Constraints
 
-## Validation Criteria
+- ✅ Điểm tối thiểu để pass: configurable per lesson (default 70%)
+- ✅ Anti-cheat: kiểm tra thời gian làm bài hợp lý
+- ✅ Chỉ trigger rewards nếu là lần hoàn thành đầu tiên
+- ✅ Session timeout: 30 phút không hoạt động
+- ✅ Rate limiting theo user
 
-- ✅ Tất cả use cases đã được định nghĩa và review.
-- ✅ Logic hoàn thành bài học (BR-LEARN-001, BR-LEARN-002) được test kỹ lưỡng.
-- ✅ Luồng tương tác với AI Service được định nghĩa rõ ràng (fallback khi lỗi).
-- ✅ Cơ chế anti-cheat được thiết kế.
-
-# Workflows
-
-## Workflow Details
-
-### WF-LEARN-001: Submit Exercise
-
-**Description**: Quy trình xử lý khi student nộp câu trả lời cho bài tập luyện
-tập.
-
-#### Flow Diagram
-
-```d2
-direction: down
-
-A: Student Selects Answers
-B: Submit Request
-C: Validate Session? {
-  shape: diamond
-}
-D: Fetch Correct Answers (Server-side)
-E: Compare & Calculate Score
-F: Score >= PassThreshold? {
-  shape: diamond
-}
-G: Mark Lesson Completed
-H: Keep 'In Progress'
-I: Publish 'LESSON_COMPLETED' Event
-J: Return Result & Hints
-K: Gamification: Add EXP
-L: Analytics: Update Knowledge Map
-M: Return Result with Rewards
-N: Client Show Celebration
-
-A -> B
-B -> C
-C -> D: Valid
-D -> E
-E -> F
-F -> G: Yes
-F -> H: No
-G -> I
-H -> J
-I -> K
-I -> L
-K -> M
-M -> N
-```
-
-#### Steps
-
-| Step | Description             | Actor   | System Action                   | Exit Condition |
-| ---- | ----------------------- | ------- | ------------------------------- | -------------- |
-| 1    | Student gửi câu trả lời | Student | Nhận request                    | -              |
-| 2    | Xác thực Session        | System  | Kiểm tra session ID & expiry    | Session Valid  |
-| 3    | Chấm điểm câu trả lời   | System  | So sánh với đáp án đúng         | -              |
-| 4    | Cập nhật tiến độ        | System  | Lưu vào DB, cập nhật stats      | -              |
-| 5    | Trigger Events          | System  | Emit completion events (nếu có) | -              |
-| 6    | Trả về Response         | System  | Gửi JSON result                 | -              |
-
-#### Business Rules
-
-- **BR-LEARN-004**: Kiểm tra Anti-Cheat trước khi chấm điểm.
-- **BR-LEARN-005**: Chỉ trigger rewards nếu đây là lần hoàn thành _đầu tiên_.
-
-### WF-LEARN-002: Adaptive Learning Path Generation
-
-**Description**: Tạo lộ trình học tập thích ứng dựa trên lịch sử.
-
-#### Flow Diagram
-
-```d2
-shape: sequence_diagram
-
-Student
-API
-PathService
-Analytics
-DB
-AI_Model
-
-Student -> API: Get Learning Path
-API -> PathService: Request Path for Student
-PathService -> Analytics: Get Knowledge Map
-PathService -> DB: Get Recent Activity
-PathService -> AI_Model: Generate Recommendation
-AI_Model -> PathService: List<LessonID> (Ordered)
-PathService -> DB: Enrich with Lesson Metadata
-PathService -> API: Full Learning Path
-API -> Student: Display Personalized Route
-```
-
-### WF-LEARN-003: Lesson Progress State
-
-**Description**: Trạng thái của một bài học đối với student.
-
-#### Flow Diagram
+### State Machine
 
 ```d2
 direction: right
-
-LOCKED
-AVAILABLE
-IN_PROGRESS
-COMPLETED
-REVIEW
-
-(*) -> LOCKED: Prerequisite not met
-LOCKED -> AVAILABLE: Prerequisite met
-AVAILABLE -> IN_PROGRESS: Started watching/doing
-IN_PROGRESS -> COMPLETED: Criteria met
-COMPLETED -> REVIEW: Re-learning
+LOCKED --> AVAILABLE : prerequisite_met
+AVAILABLE --> IN_PROGRESS : started
+IN_PROGRESS --> COMPLETED : score >= threshold
+IN_PROGRESS --> IN_PROGRESS : score < threshold
+COMPLETED --> REVIEW : re_learning
 ```
 
-## Error Handling
+---
 
-| Error Scenario   | Detection    | Recovery Action                       | Escalation  |
-| ---------------- | ------------ | ------------------------------------- | ----------- |
-| AI Model Timeout | Timeout > 2s | Trả về Default Path (theo Curriculum) | Log warning |
-| DB Write Fail    | Exception    | Trả lỗi cho client, retry client-side | -           |
+## Data Model
 
-## Security Requirements
+### Schema & Entities
 
-- ✅ Rate limiting theo user
-- ✅ Xác thực quyền sở hữu session
+| Entity | Fields chính | Mô tả |
+| ------ | ------------ | ----- |
+| LearningPath | id, user_id, subject_id, lessons[] | Lộ trình học của user |
+| LessonProgress | id, user_id, lesson_id, status, score | Tiến độ từng bài |
+| ExerciseSession | id, user_id, lesson_id, started_at, answers[] | Session làm bài |
+| SubmissionHistory | id, session_id, question_id, answer, is_correct | Lịch sử trả lời |
 
-## References
+### Relations
+
+| Relation | Mô tả |
+| -------- | ----- |
+| User → LearningPath | 1:N - User có nhiều learning paths |
+| User → LessonProgress | 1:N - Tiến độ từng bài |
+| LessonProgress → ExerciseSession | 1:N - Nhiều lần làm bài |
+| Learning → Content | Depends - Lấy nội dung từ Content module |
+| Learning → Analytics | Depends - Gửi dữ liệu cho Knowledge Map |
+| Learning → Gamification | Depends - Trigger rewards |
 
 ---
 
-# Learning - API Endpoints
+## API & Integration
 
-Các giao diện lập trình cho tiến trình học tập và kiểm tra.
+### Endpoints
 
-## Endpoints Summary
+| Method | Endpoint | Mô tả | Auth | Rate Limit |
+| ------ | -------- | ----- | ---- | ---------- |
+| GET | `/progress` | Tiến độ tổng quan | ✅ | 200/min |
+| GET | `/lessons/:id/content` | Nội dung bài học | ✅ | 200/min |
+| POST | `/lessons/:id/complete` | Đánh dấu hoàn thành | ✅ | 100/min |
+| GET | `/lessons/:id/exercise` | Lấy bài tập | ✅ | 100/min |
+| POST | `/exercises/:id/submit` | Nộp câu trả lời | ✅ | 100/min |
+| GET | `/recommendations` | Gợi ý bài học tiếp theo | ✅ | 50/min |
 
-| Method | Endpoint                | Description             | Auth Required | Rate Limit |
-| ------ | ----------------------- | ----------------------- | ------------- | ---------- |
-| GET    | `/progress`             | Tiến độ tổng quan       | ✅            | 200/min    |
-| GET    | `/lessons/:id/content`  | Nội dung bài học        | ✅            | 200/min    |
-| POST   | `/lessons/:id/complete` | Đánh dấu hoàn thành     | ✅            | 100/min    |
-| GET    | `/lessons/:id/exercise` | Lấy bài tập             | ✅            | 100/min    |
-| POST   | `/exercises/:id/submit` | Nộp câu trả lời         | ✅            | 100/min    |
-| GET    | `/recommendations`      | Gợi ý bài học tiếp theo | ✅            | 50/min     |
+### Events & Webhooks
+
+| Event | Trigger | Payload |
+| ----- | ------- | ------- |
+| `lesson.completed` | Hoàn thành bài học | `{ userId, lessonId, score }` |
+| `exercise.submitted` | Nộp bài tập | `{ userId, exerciseId, results }` |
+| `path.updated` | Lộ trình được cập nhật | `{ userId, pathId, lessons }` |
 
 ---
 
-# Learning - Data Model
+## Acceptance Criteria
 
-Cấu trúc dữ liệu theo dõi tiến độ và kết quả học tập.
+### Functional Requirements
 
-config: themeVariables: fontFamily: "EB Garamond"
+| ID | Requirement | Điều kiện |
+| -- | ----------- | --------- |
+| FR-LEARN-01 | Personalized path generation | Dựa trên lịch sử và điểm yếu |
+| FR-LEARN-02 | Chấm điểm chính xác | Trả về is_correct đúng |
+| FR-LEARN-03 | Progress tracking real-time | Cập nhật ngay sau submit |
 
-## References
+### Edge Cases
 
--
--
-- ***
-
-# Learning & Personalization - Test Cases
-
-Kịch bản kiểm thử hệ thống học tập và cá nhân hóa.
-
-## Test Categories
-
-### 1. Kiểm thử chức năng
-
-#### Kiểm thử logic nghiệp vụ
-
-| Test ID          | Description                      | Preconditions       | Test Steps               | Expected Result                       | Priority |
-| ---------------- | -------------------------------- | ------------------- | ------------------------ | ------------------------------------- | -------- |
-| TC-LEARN-FUN-001 | Xác minh logic Personalized Path | User có lịch sử     | 1. Gọi Get Path          | Trả về danh sách phù hợp với điểm yếu | P0       |
-| TC-LEARN-FUN-002 | Tính điểm Quiz                   | Session đang active | 1. Submit Correct Answer | Điểm tăng, trả về is_correct=true     | P0       |
-
-#### Kiểm thử API
-
-| Test ID          | Endpoint           | Method | Test Data        | Expected Result | Status Code |
-| ---------------- | ------------------ | ------ | ---------------- | --------------- | ----------- |
-| TC-LEARN-API-001 | `/path`            | GET    | Token hợp lệ     | JSON với path   | 200         |
-| TC-LEARN-API-002 | `/practice/submit` | POST   | Câu trả lời đúng | JSON result     | 200         |
-| TC-LEARN-API-003 | `/practice/submit` | POST   | Session hết hạn  | Error JSON      | 400         |
-
-### 2. Kiểm thử tích hợp
-
-| Test ID          | Description                    | Components          | Test Scenario                           | Expected Result                     |
-| ---------------- | ------------------------------ | ------------------- | --------------------------------------- | ----------------------------------- |
-| TC-LEARN-INT-001 | Tiến độ cập nhật Knowledge Map | Learning, Analytics | Submit Answer -> Kiểm tra Knowledge Map | Knowledge Map mastery được cập nhật |
-
-### 3. Kiểm thử hiệu năng
-
-| Test ID           | Scenario                | Load Profile | Tiêu chí thành công |
-| ----------------- | ----------------------- | ------------ | ------------------- |
-| TC-LEARN-PERF-001 | Submit Answer High Load | 2000 RPS     | P95 < 200ms         |
-
-### 4. Kiểm thử bảo mật
-
-| Test ID          | Security Aspect  | Test Method            | Expected Result |
-| ---------------- | ---------------- | ---------------------- | --------------- |
-| TC-LEARN-SEC-001 | IDOR on Progress | Get path của user khác | 403 Forbidden   |
-
-## Test Automation
-
-### Framework
-
-- **API Tests**: Jest / Supertest
-- **Performance Tests**: k6
-
-## Validation Checklist
-
-- ✅ Test coverage matrix hoàn chỉnh
-- ✅ Security tests được bao gồm
-
-## Scalability Requirements
-
-### Mở rộng theo chiều dọc
-
-- **CPU**: Tối ưu cho single-core logic (Node.js) nhưng tính toán nặng trên AI
-  Service.
-- **Memory**: Sử dụng cache nhiều (Redis).
-
-### Mở rộng theo chiều ngang
-
-- **Learning Service**: Stateless, scale auto (min 2, max 20).
-- **AI Service**: Scale consumer workers dựa trên queue lag.
-
-## Load Testing Scenarios
-
-### Scenario 1: Mass Examination
-
-**Description**: 20,000 students nộp bài thi đồng thời trong 15 phút. **Test
-Parameters**:
-
-- Duration: 15 phút
-- Ramp-up: 5000 users/phút
-- Peak: 20000 concurrent users
-
-**Tiêu chí thành công**:
-
-- ✅ P95 response time < 300ms
-- ✅ Error rate < 0.1%
-- ✅ Không mất dữ liệu (progress saves)
-
-## Validation Checklist
-
-- ✅ Tất cả performance targets được định lượng
-- ✅ Các load testing scenarios được tạo cho Peak Load
+| Case | Xử lý |
+| ---- | ----- |
+| AI Model timeout (> 2s) | Trả về Default Path theo Curriculum |
+| DB Write fail | Trả lỗi cho client, retry client-side |
+| Session hết hạn | Trả lỗi 400, yêu cầu tạo session mới |
+| IDOR attempt | Trả về 403 Forbidden |
 
 ---

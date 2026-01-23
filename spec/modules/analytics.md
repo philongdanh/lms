@@ -1,136 +1,95 @@
-# Analytics Module Specification
+---
+id: analytics
+title: Analytics
+sidebar_label: Analytics
+sidebar_position: 5
+---
 
-# Analytics - Business Logic
+# Analytics
 
-Quy tắc nghiệp vụ tính toán báo cáo và phân tích dữ liệu.
-
-## Dependencies
-
-### Phụ thuộc nội bộ
-
-- ✅ Learning Module - Nguồn dữ liệu bài tập/tiến độ.
-- ✅ Auth Module - Thông tin người dùng/vai trò.
-
-### Phụ thuộc bên ngoài
-
-- ✅ PostgreSQL - Lưu trữ time-series (thông qua partitioning).
-- ✅ Redis - Caching báo cáo.
-
-## Validation Criteria
-
-- ✅ Dữ liệu báo cáo khớp với dữ liệu gốc (Tính chính xác dữ liệu).
-- ✅ Tính năng phân quyền hoạt động đúng (Giáo viên lớp A không thể xem lớp B).
-- ✅ Hiệu suất ổn định với dữ liệu lớn.
-
-# Workflows
-
-## Workflow Summary
-
-| Workflow ID | Workflow Name   | Trigger           | Actors       | Status         |
-| ----------- | --------------- | ----------------- | ------------ | -------------- |
-| WF-ANA-001  | ETL Pipeline    | User Action Event | System       | Đang hoạt động |
-| WF-ANA-002  | Generate Report | UI Request        | User, System | Đang hoạt động |
-
-config: themeVariables: fontFamily: "EB Garamond" config: themeVariables:
-fontFamily: "EB Garamond"
-
-## Events
-
-### Sự kiện hệ thống
-
-| Event Name                   | Description                    | Payload            | Emitted By    |
-| ---------------------------- | ------------------------------ | ------------------ | ------------- |
-| `analytics.report.generated` | Báo cáo lớn hoàn thành (async) | `{report_id, url}` | Analytics Svc |
-
-## Performance Requirements
-
-- **ETL Latency**: Cập nhật thời gian thực (Knowledge Map) < 5s độ trễ từ event.
-
-## References
+Module phân tích dữ liệu học tập và báo cáo thống kê.
 
 ---
 
-# Analytics - API Endpoints
+## Business Logic
 
-Các giao diện lập trình cho hệ thống báo cáo và thống kê.
+### Workflow chính
 
-## Endpoints Summary
+| Workflow | Mô tả | Actor | Kết quả |
+| -------- | ----- | ----- | ------- |
+| ETL Pipeline | Xử lý sự kiện từ Learning module | System | Knowledge Map cập nhật |
+| Generate Report | Tạo báo cáo theo yêu cầu | Teacher/Admin | Báo cáo PDF/JSON |
+| Daily Aggregation | Tổng hợp dữ liệu hàng ngày | System | Daily stats sẵn sàng |
 
-| Method | Endpoint                | Description                | Auth Required | Rate Limit |
-| ------ | ----------------------- | -------------------------- | ------------- | ---------- |
-| GET    | `/progress/overview`    | Tổng quan tiến độ          | ✅            | 100/min    |
-| GET    | `/progress/subject/:id` | Tiến độ theo môn học       | ✅            | 100/min    |
-| GET    | `/knowledge-map`        | Bản đồ kiến thức           | ✅            | 50/min     |
-| GET    | `/daily-stats`          | Thống kê học tập hàng ngày | ✅            | 100/min    |
-| GET    | `/reports/class/:id`    | Báo cáo lớp học            | ✅ Teacher    | 50/min     |
+### Rules & Constraints
+
+- ✅ ETL latency < 5s từ event
+- ✅ Phân quyền: Teacher chỉ xem lớp được gán
+- ✅ Cache báo cáo trong Redis (TTL 5 phút)
+- ✅ Retention: Raw logs 90 ngày, Daily stats 5 năm
+
+### State Machine
+
+N/A - Analytics là module read-only, không có state machine.
 
 ---
 
-# Analytics - Data Model
+## Data Model
 
-Cấu trúc dữ liệu cho phân tích và theo dõi tiến độ.
+### Schema & Entities
 
-config: themeVariables: fontFamily: "EB Garamond"
+| Entity | Fields chính | Mô tả |
+| ------ | ------------ | ----- |
+| KnowledgeMap | user_id, topic_id, mastery_score | Mức độ nắm vững kiến thức |
+| DailyStats | user_id, date, lessons_completed, time_spent | Thống kê hàng ngày |
+| ReportCache | report_id, params_hash, data, expires_at | Cache báo cáo |
 
-## References
+### Relations
 
--
--
-- ***
+| Relation | Mô tả |
+| -------- | ----- |
+| User → KnowledgeMap | 1:N - Mỗi user có map cho nhiều topics |
+| Analytics ← Learning | Consumes - Nhận events từ Learning |
+| Analytics ← Auth | Consumes - Lấy thông tin user/role |
 
-# Analytics - Test Cases
+---
 
-Kịch bản kiểm thử hệ thống báo cáo và thống kê.
+## API & Integration
 
-## Test Categories
+### Endpoints
 
-### 1. Kiểm thử chức năng
+| Method | Endpoint | Mô tả | Auth | Rate Limit |
+| ------ | -------- | ----- | ---- | ---------- |
+| GET | `/progress/overview` | Tổng quan tiến độ | ✅ | 100/min |
+| GET | `/progress/subject/:id` | Tiến độ theo môn học | ✅ | 100/min |
+| GET | `/knowledge-map` | Bản đồ kiến thức | ✅ | 50/min |
+| GET | `/daily-stats` | Thống kê học tập hàng ngày | ✅ | 100/min |
+| GET | `/reports/class/:id` | Báo cáo lớp học | ✅ Teacher | 50/min |
 
-#### Business Logic
+### Events & Webhooks
 
-| Test ID        | Description        | Rules            | Expected Result     | Priority |
-| -------------- | ------------------ | ---------------- | ------------------- | -------- |
-| TC-ANA-FUN-001 | Tính toán Mastery  | BR-ANALYTICS-001 | Công thức chính xác | P0       |
-| TC-ANA-FUN-002 | Tổng hợp hàng ngày | BR-ANALYTICS-002 | Tổng khớp với logs  | P0       |
+| Event | Trigger | Payload |
+| ----- | ------- | ------- |
+| `analytics.report.generated` | Báo cáo lớn hoàn thành (async) | `{ reportId, url }` |
 
-### 2. Kiểm thử tích hợp
+---
 
-| Test ID        | Description      | Components          | Result                                    |
-| -------------- | ---------------- | ------------------- | ----------------------------------------- |
-| TC-ANA-INT-001 | Event đến Report | Learning, Analytics | Bài học hoàn thành hiển thị trong báo cáo |
+## Acceptance Criteria
 
-### 3. Kiểm thử hiệu năng
+### Functional Requirements
 
-| Test ID         | Scenario     | Load         | Result |
-| --------------- | ------------ | ------------ | ------ |
-| TC-ANA-PERF-001 | Báo cáo nặng | Khoảng 1 năm | < 2s   |
+| ID | Requirement | Điều kiện |
+| -- | ----------- | --------- |
+| FR-ANA-01 | Mastery calculation chính xác | Công thức đúng |
+| FR-ANA-02 | Daily aggregation đúng | Tổng khớp với logs |
+| FR-ANA-03 | Phân quyền hoạt động | Teacher không xem được lớp khác |
 
-# Performance Requirements
+### Edge Cases
 
-## Performance Targets
-
-### Thời gian phản hồi
-
-| Operation                   | P50   | P95   | P99   | Max | Measurement   |
-| --------------------------- | ----- | ----- | ----- | --- | ------------- |
-| Knowledge Map Load          | 50ms  | 100ms | 300ms | 1s  | DB/Cache Read |
-| Report Generation (30 ngày) | 200ms | 500ms | 1s    | 3s  | Agg Query     |
-| Admin Overview (Trường)     | 1s    | 3s    | 5s    | 10s | Heavy Query   |
-
-### Yêu cầu thông lượng
-
-| Scenario        | Requests/sec | Concurrent Users | Data Volume |
-| --------------- | ------------ | ---------------- | ----------- |
-| Event Ingestion | 5000         | N/A              | 1GB/giờ     |
-
-## Storage
-
-- **Retention Policy**:
-  - Raw Logs: 90 ngày.
-  - Daily Stats: 5 năm.
-
-## Validation Checklist
-
-- ✅ Đã bật nén PostgreSQL
+| Case | Xử lý |
+| ---- | ----- |
+| Báo cáo quá lớn (> 1 năm data) | Async processing, trả về report ID |
+| Cache miss | Query DB, cache result |
+| No data for period | Trả về empty result với metadata |
 
 ---

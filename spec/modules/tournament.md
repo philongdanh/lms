@@ -1,140 +1,114 @@
-# Tournament Module Specification
+---
+id: tournament
+title: Tournament
+sidebar_label: Tournament
+sidebar_position: 4
+---
 
-# Tournament & Competition - Business Logic
+# Tournament
 
-Quy tắc nghiệp vụ tổ chức và điều hành giải đấu.
-
-## Dependencies
-
-### Phụ thuộc nội bộ
-
-- ✅ Realtime Module - Hạ tầng WebSocket.
-- ✅ Content Module - Nguồn câu hỏi.
-- ✅ Gamification Module - Phần thưởng sau thi đấu.
-
-### Phụ thuộc bên ngoài
-
-- ✅ Redis - Leaderboard (ZSET).
-
-## Validation Criteria
-
-- ✅ Tính điểm chính xác theo thời gian.
-- ✅ Leaderboard cập nhật đúng thứ tự.
-- ✅ Load balancing giữa các room thi đấu hoạt động tốt.
-
-# Workflows
-
-## Workflow Summary
-
-| Workflow ID | Tên Workflow     | Trigger        | Actors       | Status |
-| ----------- | ---------------- | -------------- | ------------ | ------ |
-| WF-TOUR-001 | Join Competition | User nhấn Join | User, System | Active |
-| WF-TOUR-002 | Realtime Scoring | User trả lời   | User, System | Active |
-
-config: themeVariables: fontFamily: "EB Garamond" config: themeVariables:
-fontFamily: "EB Garamond"
-
-## Events
-
-### Sự kiện hệ thống
-
-| Event Name      | Description    | Payload      | Emitted By |
-| --------------- | -------------- | ------------ | ---------- |
-| `round.started` | Round bắt đầu  | `{round_id}` | Scheduler  |
-| `round.ended`   | Round kết thúc | `{round_id}` | Scheduler  |
-
-## Performance Requirements
-
-- **Broadcast**: < 500ms latency đến 10k users.
-
-## References
+Module tổ chức giải đấu và thi đấu real-time.
 
 ---
 
-# Tournament - API Endpoints
+## Business Logic
 
-Các giao diện lập trình cho quản lý giải đấu và bảng xếp hạng.
+### Workflow chính
 
-## Endpoints Summary
+| Workflow | Mô tả | Actor | Kết quả |
+| -------- | ----- | ----- | ------- |
+| Create Tournament | Tạo giải đấu mới | Admin/Teacher | Tournament được tạo |
+| Join Competition | User đăng ký tham gia | Student | User join room thi đấu |
+| Realtime Scoring | Chấm điểm real-time | System | Leaderboard cập nhật |
+| End Round | Kết thúc round thi đấu | System | Kết quả được finalize |
 
-| Method | Endpoint              | Description              | Auth Required | Rate Limit |
-| ------ | --------------------- | ------------------------ | ------------- | ---------- |
-| GET    | `/`                   | Danh sách giải đấu       | ✅            | 100/min    |
-| GET    | `/:id`                | Chi tiết giải đấu        | ✅            | 100/min    |
-| POST   | `/:id/join`           | Đăng ký tham gia         | ✅            | 20/min     |
-| GET    | `/:id/matches`        | Danh sách trận đấu       | ✅            | 100/min    |
-| POST   | `/matches/:id/submit` | Nộp câu trả lời trận đấu | ✅            | 50/min     |
-| GET    | `/:id/leaderboard`    | Bảng xếp hạng giải đấu   | ✅            | 100/min    |
-| POST   | `/`                   | Tạo giải đấu mới         | ✅ Admin      | 10/min     |
+### Rules & Constraints
+
+- ✅ Chỉ join được trước khi round bắt đầu
+- ✅ Điểm = accuracy × speed bonus
+- ✅ Leaderboard dùng Redis ZSET cho performance
+- ✅ Latency broadcast < 500ms cho 10k users
+- ✅ Max 100k concurrent users per event
+
+### State Machine
+
+```d2
+direction: right
+[*] --> SCHEDULED : create
+SCHEDULED --> REGISTRATION : open_registration
+REGISTRATION --> IN_PROGRESS : start_time
+IN_PROGRESS --> COMPLETED : end_time
+COMPLETED --> [*] : archive
+```
 
 ---
 
-# Tournament - Data Model
+## Data Model
 
-Cấu trúc dữ liệu cho các cuộc thi và kết quả thi đấu.
+### Schema & Entities
 
-config: themeVariables: fontFamily: "EB Garamond"
+| Entity | Fields chính | Mô tả |
+| ------ | ------------ | ----- |
+| Tournament | id, name, type, status, start_time, end_time | Thông tin giải đấu |
+| Round | id, tournament_id, order, start_time, questions[] | Các round thi đấu |
+| Participant | id, tournament_id, user_id, score, rank | Người tham gia |
+| MatchResult | id, round_id, user_id, answers[], score, time_ms | Kết quả chi tiết |
 
-## References
+### Relations
 
--
--
-- ***
+| Relation | Mô tả |
+| -------- | ----- |
+| Tournament → Round | 1:N - Giải đấu có nhiều rounds |
+| Tournament → Participant | 1:N - Nhiều người tham gia |
+| Round → MatchResult | 1:N - Kết quả từng round |
+| Tournament → Realtime | Depends - WebSocket gateway |
+| Tournament → Gamification | Depends - Trigger rewards |
+| Tournament → Content | Depends - Lấy câu hỏi |
 
-# Tournament & Competition - Test Cases
+---
 
-Kịch bản kiểm thử hệ thống thi đấu và xếp hạng.
+## API & Integration
 
-## Test Categories
+### Endpoints
 
-### 1. Kiểm thử chức năng
+| Method | Endpoint | Mô tả | Auth | Rate Limit |
+| ------ | -------- | ----- | ---- | ---------- |
+| GET | `/` | Danh sách giải đấu | ✅ | 100/min |
+| GET | `/:id` | Chi tiết giải đấu | ✅ | 100/min |
+| POST | `/:id/join` | Đăng ký tham gia | ✅ | 20/min |
+| GET | `/:id/matches` | Danh sách trận đấu | ✅ | 100/min |
+| POST | `/matches/:id/submit` | Nộp câu trả lời | ✅ | 50/min |
+| GET | `/:id/leaderboard` | Bảng xếp hạng | ✅ | 100/min |
+| POST | `/` | Tạo giải đấu mới | ✅ Admin | 10/min |
 
-#### Business Logic
+### Events & Webhooks
 
-| Test ID         | Description            | Rules       | Expected Result     | Priority |
-| --------------- | ---------------------- | ----------- | ------------------- | -------- |
-| TC-TOUR-FUN-001 | Join trước khi bắt đầu | BR-TOUR-001 | Cho phép (Waiting)  | P0       |
-| TC-TOUR-FUN-002 | Join muộn              | BR-TOUR-001 | Bị chặn             | P1       |
-| TC-TOUR-FUN-003 | Điểm chính xác         | BR-TOUR-003 | Điểm khớp công thức | P0       |
+| Event | Trigger | Payload |
+| ----- | ------- | ------- |
+| `round.started` | Round bắt đầu | `{ tournamentId, roundId }` |
+| `round.ended` | Round kết thúc | `{ tournamentId, roundId, results }` |
+| `leaderboard.updated` | Điểm thay đổi | `{ tournamentId, top10 }` |
+| `tournament.completed` | Giải đấu kết thúc | `{ tournamentId, winners }` |
 
-### 2. Kiểm thử tích hợp
+---
 
-| Test ID         | Description           | Components | Result         |
-| --------------- | --------------------- | ---------- | -------------- |
-| TC-TOUR-INT-001 | User thắng nhận Badge | Tour, Game | Badge được gán |
+## Acceptance Criteria
 
-### 3. Kiểm thử hiệu năng
+### Functional Requirements
 
-| Test ID          | Scenario        | Load        | Result          |
-| ---------------- | --------------- | ----------- | --------------- |
-| TC-TOUR-PERF-001 | 100k Concurrent | Start Event | Latency < 200ms |
+| ID | Requirement | Điều kiện |
+| -- | ----------- | --------- |
+| FR-TOUR-01 | Join trước khi bắt đầu | Status = REGISTRATION |
+| FR-TOUR-02 | Điểm chính xác | Khớp công thức tính |
+| FR-TOUR-03 | Leaderboard real-time | Update < 500ms |
 
-# Performance Requirements
+### Edge Cases
 
-## Performance Targets
-
-### Thời gian phản hồi
-
-| Operation           | P50   | P95   | P99   | Max   | Đo lường         |
-| ------------------- | ----- | ----- | ----- | ----- | ---------------- |
-| Join Round          | 200ms | 500ms | 1s    | 3s    | DB Write + Logic |
-| Submit Answer (WS)  | 50ms  | 100ms | 200ms | 500ms | Server Ack       |
-| Leaderboard Refresh | 100ms | 200ms | 500ms | 1s    | Broadcast        |
-
-### Yêu cầu thông lượng
-
-| Scenario    | Requests/sec       | Concurrent Users |
-| ----------- | ------------------ | ---------------- |
-| Sự kiện lớn | 50,000 Answers/sec | 100,000          |
-
-## Resource Utilization Limits
-
-| Resource  | Warning Threshold | Critical Threshold |
-| --------- | ----------------- | ------------------ |
-| Redis CPU | 60%               | 85%                |
-
-## Validation Checklist
-
-- ✅ Đã xác minh Redis Cluster failover
+| Case | Xử lý |
+| ---- | ----- |
+| Join muộn (sau start) | Bị chặn, trả lỗi |
+| Disconnect giữa chừng | Auto-reconnect, giữ session |
+| Redis failover | Cluster tự động switch |
+| 100k concurrent users | Load balance qua rooms |
 
 ---
