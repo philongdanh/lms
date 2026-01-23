@@ -62,11 +62,58 @@ Feature: Complete Auth Flow
     Then redirect to onboarding dashboard
 ```
 
+### TC-INT-AUTH-004: Multi-device session
+
+> **Validates**: [FR-AUTH-03](../../spec/modules/auth.md#acceptance-criteria)
+
+```gherkin
+Feature: Multi-Device Session
+
+  Scenario: User logs in from multiple devices
+    Given a user is logged in on device A
+    When the user logs in on device B
+    Then both sessions should remain active
+    And user should see 2 active sessions in session list
+    And each device should have separate refresh token
+```
+
+### TC-INT-AUTH-005: Logout invalidate token
+
+> **Validates**: [FR-AUTH-04](../../spec/modules/auth.md#acceptance-criteria)
+
+```gherkin
+Feature: Token Invalidation on Logout
+
+  Scenario: Logout revokes refresh token
+    Given a user is logged in with valid session
+    When the user calls POST /logout
+    Then refresh token should be revoked in database
+    And subsequent requests with that token should return 401
+    And user should be redirected to login page
+```
+
 ---
 
 ## Learning Module
 
+### TC-INT-LEARN-000: AI learning path generation
+
+> **Validates**: [FR-LEARN-01](../../spec/modules/learning.md#acceptance-criteria)
+
+```gherkin
+Feature: AI Learning Path
+
+  Scenario: Generate personalized learning path
+    Given a student has completed 5 lessons
+    And has weakness in "algebra" based on quiz history
+    When the student requests learning recommendations
+    Then AI should generate personalized path
+    And path should prioritize algebra-related lessons
+    And response should return within 2 seconds
+```
+
 ### TC-INT-LEARN-001: Get subjects list
+
 
 ```gherkin
 Feature: Subject Listing
@@ -134,6 +181,86 @@ Feature: Tournament Registration
     Then registration should be confirmed
     And student should appear in participants list
     And confirmation notification should be sent
+```
+
+### TC-INT-TOUR-002: Tournament scoring
+
+> **Validates**: [FR-TOUR-02](../../spec/modules/tournament.md#acceptance-criteria)
+
+```gherkin
+Feature: Tournament Scoring
+
+  Scenario: Score calculated correctly
+    Given a student is participating in active round
+    And student answers 8/10 questions correctly
+    And student finishes in 45 seconds
+    When the round ends
+    Then score should be calculated as accuracy × speed_bonus
+    And score should be saved to participant record
+```
+
+### TC-INT-TOUR-003: Leaderboard real-time
+
+> **Validates**: [FR-TOUR-03](../../spec/modules/tournament.md#acceptance-criteria)
+
+```gherkin
+Feature: Leaderboard Updates
+
+  Scenario: Leaderboard updates in real-time
+    Given 50 students are in active tournament round
+    When a student submits an answer
+    Then leaderboard should update within 500ms
+    And all connected clients should receive update
+    And ranking should reflect new scores
+```
+
+---
+
+## Gamification Module
+
+### TC-INT-GAME-001: Level up
+
+> **Validates**: [FR-GAME-01](../../spec/modules/gamification.md#acceptance-criteria)
+
+```gherkin
+Feature: Level Up System
+
+  Scenario: User levels up when EXP threshold reached
+    Given a student has 95 EXP (threshold is 100)
+    When the student earns 10 EXP from completing a lesson
+    Then student level should increase by 1
+    And level up notification should be displayed
+    And new level threshold should be set
+```
+
+### TC-INT-GAME-002: Reward redemption
+
+> **Validates**: [FR-GAME-02](../../spec/modules/gamification.md#acceptance-criteria)
+
+```gherkin
+Feature: Reward Redemption
+
+  Scenario: Transactional reward purchase
+    Given a student has 500 coins
+    And reward "Avatar Frame" costs 200 coins
+    When the student redeems the reward
+    Then coins should be deducted atomically
+    And reward should be granted
+    And if either fails, transaction should rollback
+```
+
+### TC-INT-GAME-003: Gamification leaderboard
+
+> **Validates**: [FR-GAME-03](../../spec/modules/gamification.md#acceptance-criteria)
+
+```gherkin
+Feature: Gamification Leaderboard
+
+  Scenario: Leaderboard updates in real-time
+    Given a global EXP leaderboard exists
+    When a student earns EXP
+    Then leaderboard should update within 50ms
+    And student's new rank should be reflected
 ```
 
 ---
