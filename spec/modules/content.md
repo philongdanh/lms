@@ -7,22 +7,22 @@ sidebar_position: 6
 
 # Content
 
-Module quản lý nội dung học tập và ngân hàng câu hỏi.
+Learning content management and question bank module.
 
 ---
 
 ## Business Logic
 
-### Workflow chính
+### Main Workflows
 
-| Workflow         | Mô tả                    | Actor         | Kết quả                       |
+| Workflow         | Description              | Actor         | Result                        |
 | ---------------- | ------------------------ | ------------- | ----------------------------- |
-| Create Structure | Tạo cây cấu trúc môn học | Admin/Teacher | `Topic`/`Lesson` được tạo     |
-| Bulk Import      | Import câu hỏi từ file   | Teacher       | Câu hỏi được import           |
-| Publish Content  | Phê duyệt và publish     | `Admin`       | Nội dung visible cho students |
-| Upload `Media`   | Upload video/image       | Teacher       | `Media` được lưu trữ          |
+| Create Structure | Create subject tree      | `Admin`/`Teacher` | `Topic`/`Lesson` created      |
+| Bulk Import      | Import questions from file | `Teacher`   | Questions imported            |
+| Publish Content  | Review and publish       | `Admin`       | Content visible to students   |
+| Upload `Media`   | Upload video/image       | `Teacher`     | `Media` stored                |
 
-####Detailed Flows
+#### Detailed Flows
 
 ##### Create Structure
 
@@ -93,11 +93,11 @@ S3 -> "Content Service": webhook_upload_complete
 
 ### Rules & Constraints
 
-- `Lesson` phải thuộc về một `Topic` (hierarchy)
-- Teacher tạo draft, Admin publish
-- File upload được scan malware (ClamAV)
-- Hỗ trợ format: `xlsx`, `docx`, `pdf` cho import
-- Max file size: 500MB cho video
+- `Lesson` must belong to a `Topic` (hierarchy)
+- `Teacher` creates draft, `Admin` publishes
+- File upload scanned for malware (ClamAV)
+- Supported formats: `xlsx`, `docx`, `pdf` for import
+- Max file size: 500MB for video
 
 ### Lifecycle Sequence
 
@@ -135,22 +135,22 @@ Admin -> "Content Service": archive()
 
 ### Schema & Entities
 
-| Entity     | Fields chính                                    | Mô tả      |
+| Entity     | Main Fields                                    | Description |
 | ---------- | ----------------------------------------------- | ---------- |
-| `Subject`  | `id`, `name`, `grade`, `curriculum`             | Môn học    |
-| `Topic`    | `id`, `subject_id`, `name`, `order`             | Chủ đề     |
-| `Lesson`   | `id`, `topic_id`, `title`, `content`, `status`  | Bài học    |
-| `Question` | `id`, `lesson_id`, `type`, `content`, `answers` | Câu hỏi    |
-| `Media`    | `id`, `type`, `url`, `size`, `metadata`         | File media |
+| `Subject`  | `id`, `name`, `grade`, `curriculum`             | Subject    |
+| `Topic`    | `id`, `subject_id`, `name`, `order`             | Topic      |
+| `Lesson`   | `id`, `topic_id`, `title`, `content`, `status`  | Lesson     |
+| `Question` | `id`, `lesson_id`, `type`, `content`, `answers` | Question   |
+| `Media`    | `id`, `type`, `url`, `size`, `metadata`         | Media file |
 
 ### Relations
 
-| `Relation`            | Mô tả                            |
-| --------------------- | -------------------------------- |
-| `Subject` → `Topic`   | `1:N` - Môn học có nhiều chủ đề  |
-| `Topic` → `Lesson`    | `1:N` - Chủ đề có nhiều bài học  |
-| `Lesson` → `Question` | `1:N` - Bài học có nhiều câu hỏi |
-| `Lesson` → `Media`    | `N:M` - Bài học dùng nhiều media |
+| `Relation`            | Description                          |
+| --------------------- | ------------------------------------ |
+| `Subject` → `Topic`   | `1:N` - Subject has many topics      |
+| `Topic` → `Lesson`    | `1:N` - Topic has many lessons       |
+| `Lesson` → `Question` | `1:N` - Lesson has many questions    |
+| `Lesson` → `Media`    | `N:M` - Lesson uses multiple media   |
 
 ---
 
@@ -158,28 +158,28 @@ Admin -> "Content Service": archive()
 
 ### GraphQL Operations
 
-| Type       | Operation         | Mô tả             | Auth       | Rate Limit |
+| Type       | Operation         | Description       | Auth       | Rate Limit |
 | ---------- | ----------------- | ----------------- | ---------- | ---------- |
-| `Query`    | `subjects`        | Danh sách môn học | ❌         | 200/min    |
-| `Query`    | `topics`          | Danh sách chủ đề  | ❌         | 200/min    |
-| `Query`    | `lesson`          | Chi tiết bài học  | ✅         | 200/min    |
-| `Mutation` | `importQuestions` | Import câu hỏi    | ✅ Teacher | 10/min     |
-| `Query`    | `searchQuestions` | Tìm kiếm câu hỏi  | ✅ Teacher | 100/min    |
-| `Mutation` | `createLesson`    | Tạo bài học mới   | ✅ Teacher | 50/min     |
-| `Mutation` | `publishLesson`   | Publish bài học   | ✅ `Admin` | 50/min     |
+| `Query`    | `subjects`        | Subject list      | ❌         | 200/min    |
+| `Query`    | `topics`          | Topic list        | ❌         | 200/min    |
+| `Query`    | `lesson`          | Lesson details    | ✅         | 200/min    |
+| `Mutation` | `importQuestions` | Import questions  | ✅ `Teacher` | 10/min     |
+| `Query`    | `searchQuestions` | Search questions  | ✅ `Teacher` | 100/min    |
+| `Mutation` | `createLesson`    | Create new lesson | ✅ `Teacher` | 50/min     |
+| `Mutation` | `publishLesson`   | Publish lesson    | ✅ `Admin` | 50/min     |
 
 ### REST Endpoints
 
-| Method | Endpoint      | Mô tả       | Auth       |
+| Method | Endpoint      | Description | Auth       |
 | ------ | ------------- | ----------- | ---------- |
-| `POST` | `/api/upload` | Upload file | ✅ Teacher |
+| `POST` | `/api/upload` | Upload file | ✅ `Teacher` |
 
 ### Events & Webhooks
 
-| Event               | Trigger              | Payload                       |
-| ------------------- | -------------------- | ----------------------------- |
-| `content.published` | Bài học được publish | `{ lessonId, publishedBy }`   |
-| `import.completed`  | Import hoàn tất      | `{ success, failed, report }` |
+| Event               | Trigger           | Payload                       |
+| ------------------- | ----------------- | ----------------------------- |
+| `content.published` | Lesson published  | `{ lessonId, publishedBy }`   |
+| `import.completed`  | Import completed  | `{ success, failed, report }` |
 
 ---
 
@@ -187,19 +187,19 @@ Admin -> "Content Service": archive()
 
 ### Functional Requirements
 
-| ID           | Requirement         | Điều kiện                        |
+| ID           | Requirement         | Condition                        |
 | ------------ | ------------------- | -------------------------------- |
-| `FR-CONT-01` | Validate hierarchy  | Không tạo `Lesson` thiếu `Topic` |
-| `FR-CONT-02` | Import format check | Từ chối file không hỗ trợ        |
-| `FR-CONT-03` | `Media` playback    | Video chạy trên mọi device       |
+| `FR-CONT-01` | Validate hierarchy  | Cannot create `Lesson` without `Topic` |
+| `FR-CONT-02` | Import format check | Reject unsupported files         |
+| `FR-CONT-03` | `Media` playback    | Video plays on all devices       |
 
 ### Edge Cases
 
-| Case                         | Xử lý                              |
+| Case                         | Handling                           |
 | ---------------------------- | ---------------------------------- |
-| Import file corrupt          | Trả về `Invalid File Format`       |
-| Partial import failure       | Bỏ qua dòng lỗi, ghi log, tiếp tục |
+| Import corrupt file          | Return `Invalid File Format`       |
+| Partial import failure       | Skip error rows, log, continue     |
 | Malware detected             | Reject upload, alert admin         |
-| Chỉnh sửa content người khác | 403 Forbidden                      |
+| Edit others' content         | 403 Forbidden                      |
 
 ---

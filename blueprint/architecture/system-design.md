@@ -7,23 +7,23 @@ sidebar_position: 1
 
 # System Design
 
-Thiết kế kiến trúc hệ thống và các thành phần chính.
+System architecture design and main components.
 
 ---
 
 ## Architecture Style
 
-### Pattern áp dụng
+### Applied Patterns
 
-| Aspect        | Pattern             | Mô tả                                  |
+| Aspect        | Pattern             | Description                            |
 | ------------- | ------------------- | -------------------------------------- |
-| Tổng quan     | Modular Monolith    | Module hóa rõ ràng, dễ bảo trì         |
-| Multi-tenancy | Data Isolation      | Mỗi tenant có không gian dữ liệu riêng |
-| Communication | Event-Driven        | Các module giao tiếp qua event         |
-| Realtime      | WebSocket + Pub/Sub | Redis adapter cho scaling              |
-| Security      | RBAC                | 5 vai trò với quyền hạn kiểm soát      |
+| Overview      | Modular Monolith    | Clear modularization, easy maintenance |
+| Multi-tenancy | Data Isolation      | Each tenant has separate data space    |
+| Communication | Event-Driven        | Modules communicate via events         |
+| Realtime      | `WebSocket` + Pub/Sub | Redis adapter for scaling            |
+| Security      | RBAC                | 5 roles with controlled permissions    |
 
-### Diagram tổng quan
+### Overview Diagram
 
 ```d2
 direction: right
@@ -72,65 +72,65 @@ App -> Data Layer.Redis
 
 ## Components
 
-### Giao tiếp hệ thống
+### System Communication
 
-| Loại     | Pattern       | Mô tả                           |
+| Type     | Pattern       | Description                     |
 | -------- | ------------- | ------------------------------- |
-| Sync     | GraphQL       | API chính cho queries/mutations |
-| Sync     | REST          | Webhooks, file uploads          |
+| Sync     | `GraphQL`     | Primary API for queries/mutations |
+| Sync     | `REST`        | Webhooks, file uploads          |
 | Async    | Redis Pub/Sub | Event broadcasting              |
-| Realtime | WebSocket     | Socket.IO với rooms             |
+| Realtime | `WebSocket`   | Socket.IO with rooms            |
 
 ### Data Flow
 
-**Luồng học tập:**
+**Learning Flow:**
 
 ```d2
 shape: sequence_diagram
 direction: right
 
-Student -> App: Truy cập Dashboard
-App -> Learning: `GET` `/learning/path`
-Learning -> Cache: Kiểm tra cache
-Learning -> AI: Gửi dữ liệu phân tích
-AI -> Learning: Đề xuất lộ trình
-Learning -> App: Trả về lộ trình
-App -> Student: Hiển thị
+Student -> App: Access Dashboard
+App -> Learning: query learningPath
+Learning -> Cache: Check cache
+Learning -> AI: Send analytics data
+AI -> Learning: Recommend path
+Learning -> App: Return learning path
+App -> Student: Display
 ```
 
-**Luồng thi đấu:**
+**Tournament Flow:**
 
 ```d2
 shape: sequence_diagram
 direction: right
 
-Student -> WS: Kết nối WebSocket
-WS -> Tournament: Xác thực
-Tournament -> WS: Duyệt kết nối
-Student -> WS: Gửi câu trả lời
-WS -> Tournament: Xử lý
-Tournament -> Redis: Cập nhật leaderboard
-Redis -> WS: Broadcast tới room
+Student -> WS: Connect WebSocket
+WS -> Tournament: Authenticate
+Tournament -> WS: Approve connection
+Student -> WS: Submit answer
+WS -> Tournament: Process
+Tournament -> Redis: Update leaderboard
+Redis -> WS: Broadcast to room
 ```
 
 ### API Design
 
-| Endpoint          | Method | Mô tả             | Auth     |
+| Endpoint          | Method | Description       | Auth     |
 | ----------------- | ------ | ----------------- | -------- |
-| `/graphql`        | `POST` | `GraphQL` `API`   | Optional |
+| `/graphql`        | `POST` | `GraphQL` API     | Optional |
 | `/api/upload`     | `POST` | File upload       | Required |
 | `/api/webhooks/*` | `POST` | External webhooks | API Key  |
 | `/health`         | `GET`  | Health check      | No       |
 
 ### Core Principles
 
-| Category | Principle             | Mô tả                  |
-| -------- | --------------------- | ---------------------- |
-| Dev      | Single Responsibility | Mỗi module một phạm vi |
-| Dev      | Dependency Injection  | Dễ testing             |
-| Security | Least Privilege       | Quyền tối thiểu        |
-| Security | Tenant Isolation      | Dữ liệu độc lập        |
-| Realtime | Room-based            | Tổ chức phòng ảo       |
-| Data     | Selective Soft Delete | Chỉ cho entities chính |
+| Category | Principle             | Description                     |
+| -------- | --------------------- | ------------------------------- |
+| Dev      | Single Responsibility | Each module one scope           |
+| Dev      | Dependency Injection  | Easy testing                    |
+| Security | Least Privilege       | Minimum permissions             |
+| Security | Tenant Isolation      | Independent data                |
+| Realtime | Room-based            | Virtual room organization       |
+| Data     | Selective Soft Delete | Only for main entities          |
 
 ---

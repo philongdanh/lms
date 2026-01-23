@@ -7,20 +7,20 @@ sidebar_position: 4
 
 # Tournament
 
-Module tổ chức giải đấu và thi đấu real-time.
+Real-time tournament and competition module.
 
 ---
 
 ## Business Logic
 
-### Workflow chính
+### Main Workflows
 
-| Workflow          | Mô tả                  | Actor         | Kết quả                |
-| ----------------- | ---------------------- | ------------- | ---------------------- |
-| Create Tournament | Tạo giải đấu mới       | Admin/Teacher | `Tournament` được tạo  |
-| Join Competition  | User đăng ký tham gia  | Student       | User join room thi đấu |
-| Realtime Scoring  | Chấm điểm real-time    | System        | Leaderboard cập nhật   |
-| End Round         | Kết thúc round thi đấu | System        | Kết quả được finalize  |
+| Workflow          | Description              | Actor         | Result                    |
+| ----------------- | ------------------------ | ------------- | ------------------------- |
+| Create Tournament | Create new tournament    | `Admin`/`Teacher` | `Tournament` created      |
+| Join Competition  | User registration        | `Student`     | User joins tournament room |
+| Realtime Scoring  | Real-time scoring        | `System`      | Leaderboard updated       |
+| End Round         | End tournament round     | `System`      | Results finalized         |
 
 #### Detailed Flows
 
@@ -101,10 +101,10 @@ Scheduler -> "Tournament Service": end_round_trigger
 
 ### Rules & Constraints
 
-- Chỉ join được trước khi round bắt đầu
-- Điểm = accuracy × speed bonus
-- Leaderboard dùng Redis ZSET cho performance
-- Latency broadcast < 500ms cho 10k users
+- Can only join before round starts
+- Score = accuracy × speed bonus
+- Leaderboard uses Redis ZSET for performance
+- Broadcast latency < 500ms for 10k users
 - Max 100k concurrent users per event
 
 ### Lifecycle Sequence
@@ -150,23 +150,23 @@ Scheduler -> "Tournament Service": check_end_time()
 
 ### Schema & Entities
 
-| Entity        | Fields chính                                                 | Mô tả              |
+| Entity        | Main Fields                                                 | Description        |
 | ------------- | ------------------------------------------------------------ | ------------------ |
-| `Tournament`  | `id`, `name`, `type`, `status`, `start_time`, `end_time`     | Thông tin giải đấu |
-| `Round`       | `id`, `tournament_id`, `order`, `start_time`, `questions[]`  | Các round thi đấu  |
-| `Participant` | `id`, `tournament_id`, `user_id`, `score`, `rank`            | Người tham gia     |
-| `MatchResult` | `id`, `round_id`, `user_id`, `answers[]`, `score`, `time_ms` | Kết quả chi tiết   |
+| `Tournament`  | `id`, `name`, `type`, `status`, `start_time`, `end_time`     | Tournament info    |
+| `Round`       | `id`, `tournament_id`, `order`, `start_time`, `questions[]`  | Tournament rounds  |
+| `Participant` | `id`, `tournament_id`, `user_id`, `score`, `rank`            | Participants       |
+| `MatchResult` | `id`, `round_id`, `user_id`, `answers[]`, `score`, `time_ms` | Detailed results   |
 
 ### Relations
 
-| `Relation`                   | Mô tả                            |
-| ---------------------------- | -------------------------------- |
-| `Tournament` → `Round`       | `1:N` - Giải đấu có nhiều rounds |
-| `Tournament` → `Participant` | `1:N` - Nhiều người tham gia     |
-| `Round` → `MatchResult`      | `1:N` - Kết quả từng round       |
-| `Tournament` → Realtime      | Depends - `WebSocket` gateway    |
-| `Tournament` → Gamification  | Depends - Trigger rewards        |
-| `Tournament` → Content       | Depends - Lấy câu hỏi            |
+| `Relation`                   | Description                          |
+| ---------------------------- | ------------------------------------ |
+| `Tournament` → `Round`       | `1:N` - Tournament has many rounds   |
+| `Tournament` → `Participant` | `1:N` - Many participants            |
+| `Round` → `MatchResult`      | `1:N` - Results per round            |
+| `Tournament` → `Realtime`    | Depends - `WebSocket` gateway        |
+| `Tournament` → `Gamification`| Depends - Trigger rewards            |
+| `Tournament` → `Content`     | Depends - Fetch questions            |
 
 ---
 
@@ -174,24 +174,24 @@ Scheduler -> "Tournament Service": check_end_time()
 
 ### GraphQL Operations
 
-| Type       | Operation               | Mô tả              | Auth       | Rate Limit |
-| ---------- | ----------------------- | ------------------ | ---------- | ---------- |
-| `Query`    | `tournaments`           | Danh sách giải đấu | ✅         | 100/min    |
-| `Query`    | `tournament`            | Chi tiết giải đấu  | ✅         | 100/min    |
-| `Mutation` | `joinTournament`        | Đăng ký tham gia   | ✅         | 20/min     |
-| `Query`    | `matches`               | Danh sách trận đấu | ✅         | 100/min    |
-| `Mutation` | `submitMatch`           | Nộp câu trả lời    | ✅         | 50/min     |
-| `Query`    | `tournamentLeaderboard` | Bảng xếp hạng      | ✅         | 100/min    |
-| `Mutation` | `createTournament`      | Tạo giải đấu mới   | ✅ `Admin` | 10/min     |
+| Type       | Operation               | Description           | Auth       | Rate Limit |
+| ---------- | ----------------------- | --------------------- | ---------- | ---------- |
+| `Query`    | `tournaments`           | Tournament list       | ✅         | 100/min    |
+| `Query`    | `tournament`            | Tournament details    | ✅         | 100/min    |
+| `Mutation` | `joinTournament`        | Join tournament       | ✅         | 20/min     |
+| `Query`    | `matches`               | Match list            | ✅         | 100/min    |
+| `Mutation` | `submitMatch`           | Submit answer         | ✅         | 50/min     |
+| `Query`    | `tournamentLeaderboard` | Leaderboard           | ✅         | 100/min    |
+| `Mutation` | `createTournament`      | Create new tournament | ✅ `Admin` | 10/min     |
 
 ### Events & Webhooks
 
-| Event                  | Trigger           | Payload                              |
-| ---------------------- | ----------------- | ------------------------------------ |
-| `round.started`        | `Round` bắt đầu   | `{ tournamentId, roundId }`          |
-| `round.ended`          | `Round` kết thúc  | `{ tournamentId, roundId, results }` |
-| `leaderboard.updated`  | Điểm thay đổi     | `{ tournamentId, top10 }`            |
-| `tournament.completed` | Giải đấu kết thúc | `{ tournamentId, winners }`          |
+| Event                  | Trigger        | Payload                              |
+| ---------------------- | -------------- | ------------------------------------ |
+| `round.started`        | Round starts   | `{ tournamentId, roundId }`          |
+| `round.ended`          | Round ends     | `{ tournamentId, roundId, results }` |
+| `leaderboard.updated`  | Score changes  | `{ tournamentId, top10 }`            |
+| `tournament.completed` | Tournament ends| `{ tournamentId, winners }`          |
 
 ---
 
@@ -199,19 +199,19 @@ Scheduler -> "Tournament Service": check_end_time()
 
 ### Functional Requirements
 
-| ID           | Requirement            | Điều kiện               |
+| ID           | Requirement            | Condition               |
 | ------------ | ---------------------- | ----------------------- |
-| `FR-TOUR-01` | Join trước khi bắt đầu | Status = `REGISTRATION` |
-| `FR-TOUR-02` | Điểm chính xác         | Khớp công thức tính     |
-| `FR-TOUR-03` | Leaderboard real-time  | Update < 500ms          |
+| `FR-TOUR-01` | Join before start only | Status = `REGISTRATION` |
+| `FR-TOUR-02` | Accurate scoring       | Matches formula         |
+| `FR-TOUR-03` | Real-time leaderboard  | Update < 500ms          |
 
 ### Edge Cases
 
-| Case                  | Xử lý                       |
+| Case                  | Handling                    |
 | --------------------- | --------------------------- |
-| Join muộn (sau start) | Bị chặn, trả lỗi            |
-| Disconnect giữa chừng | Auto-reconnect, giữ session |
-| Redis failover        | Cluster tự động switch      |
-| 100k concurrent users | Load balance qua rooms      |
+| Join late (after start)| Blocked, return error      |
+| Disconnect mid-match  | Auto-reconnect, keep session|
+| Redis failover        | Cluster auto-switch         |
+| 100k concurrent users | Load balance via rooms      |
 
 ---

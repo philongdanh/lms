@@ -7,7 +7,7 @@ sidebar_position: 1
 
 # Auth
 
-Module xác thực và phân quyền người dùng trong hệ thống multi-tenant.
+Authentication and authorization module for users in multi-tenant system.
 
 ---
 
@@ -15,14 +15,14 @@ Module xác thực và phân quyền người dùng trong hệ thống multi-ten
 
 ### Workflow chính
 
-| Workflow            | Mô tả                                    | Actor    | Kết quả                        |
-| ------------------- | ---------------------------------------- | -------- | ------------------------------ |
-| School Registration | Đăng ký tenant mới cho trường học        | `Admin`  | `Tenant` được tạo và kích hoạt |
-| User Registration   | Đăng ký người dùng mới (Student/Parent)  | `User`   | Account được tạo và verify     |
-| Multi-Device Login  | Đăng nhập và kiểm soát thiết bị          | `User`   | Session được tạo               |
-| Parent-Student Link | Liên kết tài khoản phụ huynh và học sinh | `Parent` | Accounts được liên kết         |
-| Token Refresh       | Cấp lại access token                     | `System` | Token mới được cấp             |
-| Logout & Revoke     | Đăng xuất và thu hồi session             | `User`   | Session bị hủy                 |
+| Workflow            | Description                                | Actor    | Result                         |
+| ------------------- | ------------------------------------------ | -------- | ------------------------------ |
+| School Registration | Register new tenant for school             | `Admin`  | `Tenant` created and activated |
+| User Registration   | Register new user (`Student`/`Parent`)     | `User`   | Account created and verified   |
+| Multi-Device Login  | Login and device control                   | `User`   | Session created                |
+| Parent-Student Link | Link parent and student accounts           | `Parent` | Accounts linked                |
+| Token Refresh       | Issue new access token                     | `System` | New token issued               |
+| Logout & Revoke     | Logout and revoke session                  | `User`   | Session revoked                |
 
 #### Detailed Flows
 
@@ -132,11 +132,11 @@ User -> "Auth Service": logout(session_id)
 
 ### Rules & Constraints
 
-- Audit logging cho tất cả sự kiện registration/login
+- Audit logging for all registration/login events
 - Input sanitization
-- Rate limiting theo IP
+- Rate limiting by IP
 - Maximum 3 devices per user
-- JWT expiry: 15 phút, Refresh token: 7 ngày
+- JWT expiry: 15 minutes, Refresh token: 7 days
 
 ### Lifecycle Sequence
 
@@ -188,20 +188,20 @@ User -> UserRole: has
 User -> UserSession: has
 ```
 
-| Entity        | Fields chính                                  | Mô tả                |
+| Entity        | Fields chính                                  | Description          |
 | ------------- | --------------------------------------------- | -------------------- |
-| `Tenant`      | `id`, `name`, `status`, `domain`              | Thông tin trường học |
-| `User`        | `id`, `email`, `password_hash`, `tenant_id`   | Người dùng hệ thống  |
-| `UserRole`    | `id`, `user_id`, `role`                       | Vai trò người dùng   |
-| `UserSession` | `id`, `user_id`, `device_id`, `refresh_token` | Session đăng nhập    |
+| `Tenant`      | `id`, `name`, `status`, `domain`              | School information   |
+| `User`        | `id`, `email`, `password_hash`, `tenant_id`   | System user          |
+| `UserRole`    | `id`, `user_id`, `role`                       | User role            |
+| `UserSession` | `id`, `user_id`, `device_id`, `refresh_token` | Login session        |
 
 ### Relations
 
-| `Relation`             | Mô tả                              |
+| `Relation`             | Description                        |
 | ---------------------- | ---------------------------------- |
-| `Tenant` → `User`      | `1:N` - Một tenant có nhiều users  |
-| `User` → `UserRole`    | `1:N` - Một user có nhiều roles    |
-| `User` → `UserSession` | `1:N` - Một user có nhiều sessions |
+| `Tenant` → `User`      | `1:N` - One tenant has many users  |
+| `User` → `UserRole`    | `1:N` - One user has many roles    |
+| `User` → `UserSession` | `1:N` - One user has many sessions |
 
 ---
 
@@ -209,24 +209,24 @@ User -> UserSession: has
 
 ### GraphQL Operations
 
-| Type       | Operation       | Mô tả              | Auth | Rate Limit |
+| Type       | Operation       | Description        | Auth | Rate Limit |
 | ---------- | --------------- | ------------------ | ---- | ---------- |
-| `Mutation` | `login`         | Đăng nhập          | ❌   | 10/min     |
-| `Mutation` | `register`      | Đăng ký            | ❌   | 5/min      |
+| `Mutation` | `login`         | Login              | ❌   | 10/min     |
+| `Mutation` | `register`      | Register           | ❌   | 5/min      |
 | `Mutation` | `refreshToken`  | Refresh Token      | ✅   | 20/min     |
-| `Mutation` | `logout`        | Đăng xuất          | ✅   | 50/min     |
-| `Query`    | `sessions`      | Danh sách sessions | ✅   | 100/min    |
-| `Mutation` | `revokeSession` | Thu hồi session    | ✅   | 50/min     |
-| `Mutation` | `linkParent`    | Liên kết phụ huynh | ✅   | 10/min     |
+| `Mutation` | `logout`        | Logout             | ✅   | 50/min     |
+| `Query`    | `sessions`      | List sessions      | ✅   | 100/min    |
+| `Mutation` | `revokeSession` | Revoke session     | ✅   | 50/min     |
+| `Mutation` | `linkParent`    | Link parent        | ✅   | 10/min     |
 
 ### Events & Webhooks
 
-| Event             | Trigger                      | Payload                           |
-| ----------------- | ---------------------------- | --------------------------------- |
-| `user.registered` | Sau khi đăng ký thành công   | `{ userId, email, role }`         |
-| `user.logged_in`  | Sau khi đăng nhập thành công | `{ userId, deviceId, sessionId }` |
-| `user.logged_out` | Sau khi đăng xuất            | `{ userId, sessionId }`           |
-| `session.revoked` | Khi session bị thu hồi       | `{ userId, sessionId }`           |
+| Event             | Trigger                  | Payload                           |
+| ----------------- | ------------------------ | --------------------------------- |
+| `user.registered` | After successful signup  | `{ userId, email, role }`         |
+| `user.logged_in`  | After successful login   | `{ userId, deviceId, sessionId }` |
+| `user.logged_out` | After logout             | `{ userId, sessionId }`           |
+| `session.revoked` | When session is revoked  | `{ userId, sessionId }`           |
 
 ---
 
@@ -234,20 +234,20 @@ User -> UserSession: has
 
 ### Functional Requirements
 
-| ID           | Requirement             | Điều kiện                          |
+| ID           | Requirement             | Condition                          |
 | ------------ | ----------------------- | ---------------------------------- |
-| `FR-AUTH-01` | Đăng ký email hợp lệ    | Email chưa tồn tại, format đúng    |
-| `FR-AUTH-02` | Đăng nhập thành công    | Credentials đúng, account verified |
-| `FR-AUTH-03` | Multi-device session    | Cả 2 sessions đều active           |
-| `FR-AUTH-04` | Logout invalidate token | refreshToken bị revoke             |
+| `FR-AUTH-01` | Valid email registration | Email doesn't exist, correct format |
+| `FR-AUTH-02` | Successful login        | Correct credentials, verified account |
+| `FR-AUTH-03` | Multi-device session    | Both sessions are active           |
+| `FR-AUTH-04` | Logout invalidate token | `refreshToken` is revoked          |
 
 ### Edge Cases
 
-| Case                | Xử lý                             |
+| Case                | Handling                          |
 | ------------------- | --------------------------------- |
-| Email đã tồn tại    | Trả về lỗi `CONFLICT`             |
-| Password sai        | Trả về lỗi `UNAUTHORIZED`         |
-| Rate limit exceeded | Trả về `429 Too Many Requests`    |
+| Email already exists | Return `CONFLICT` error          |
+| Wrong password      | Return `UNAUTHORIZED` error       |
+| Rate limit exceeded | Return `429 Too Many Requests`    |
 | Redis down          | Fallback to DB (slow) + Alert Ops |
 | Email service fail  | Retry 3x, then Queue + Alert Ops  |
 

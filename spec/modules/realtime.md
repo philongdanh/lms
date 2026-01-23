@@ -7,19 +7,19 @@ sidebar_position: 8
 
 # Realtime
 
-Module giao tiếp real-time qua WebSocket.
+Real-time communication module via `WebSocket`.
 
 ---
 
 ## Business Logic
 
-### Workflow chính
+### Main Workflows
 
-| Workflow            | Mô tả                   | Actor  | Kết quả                   |
+| Workflow            | Description             | Actor  | Result                    |
 | ------------------- | ----------------------- | ------ | ------------------------- |
-| WebSocket Handshake | Client kết nối với JWT  | Client | Connection established    |
-| Broadcast Event     | Gửi message tới room    | System | Clients nhận message      |
-| `Presence` Tracking | Theo dõi online/offline | System | `Presence` store updated  |
+| `WebSocket` Handshake | Client connects with JWT | Client | Connection established    |
+| Broadcast Event     | Send message to room    | `System` | Clients receive message   |
+| `Presence` Tracking | Track online/offline    | `System` | `Presence` store updated  |
 | `Room` Management   | Join/leave rooms        | Client | `Room` membership updated |
 
 #### Detailed Flows
@@ -91,8 +91,8 @@ Client -> "Realtime Service": join_room(room_id)
 
 ### Rules & Constraints
 
-- JWT required cho connection
-- Redis Pub/Sub adapter cho multi-node
+- JWT required for connection
+- Redis Pub/Sub adapter for multi-node
 - Max 10k connections per node
 - Handshake time < 100ms
 - Message delivery < 50ms P50
@@ -130,20 +130,20 @@ Client -> "Realtime Service": disconnect()
 
 ### Schema & Entities
 
-| Entity         | Fields chính                                  | Mô tả                  |
+| Entity         | Main Fields                                  | Description            |
 | -------------- | --------------------------------------------- | ---------------------- |
-| `Notification` | `id`, `user_id`, `type`, `content`, `read_at` | Thông báo              |
-| `Presence`     | `user_id`, `socket_id`, `last_seen`           | Trạng thái online      |
-| `Room`         | `room_id`, `type`, `members[]`                | Phòng chat/competition |
+| `Notification` | `id`, `user_id`, `type`, `content`, `read_at` | Notification           |
+| `Presence`     | `user_id`, `socket_id`, `last_seen`           | Online status          |
+| `Room`         | `room_id`, `type`, `members[]`                | Chat/competition room  |
 
 ### Relations
 
-| `Relation`              | Mô tả                                 |
-| ----------------------- | ------------------------------------- |
-| `User` → `Notification` | `1:N` - User có nhiều notifications   |
-| `User` → `Presence`     | `1:1` - Mỗi user có trạng thái online |
-| `Realtime ← Auth`       | Depends - Xác thực JWT                |
-| `Realtime → Redis`      | Uses - `Pub/Sub`, `Presence` store    |
+| `Relation`              | Description                        |
+| ----------------------- | ---------------------------------- |
+| `User` → `Notification` | `1:N` - User has many notifications |
+| `User` → `Presence`     | `1:1` - Each user has online status |
+| `Realtime` ← `Auth`     | Depends - JWT authentication       |
+| `Realtime` → Redis      | Uses - Pub/Sub, `Presence` store   |
 
 ---
 
@@ -151,11 +151,11 @@ Client -> "Realtime Service": disconnect()
 
 ### GraphQL Operations
 
-| Type       | Operation              | Mô tả               | Auth | Rate Limit |
+| Type       | Operation              | Description         | Auth | Rate Limit |
 | ---------- | ---------------------- | ------------------- | ---- | ---------- |
-| `Query`    | `notifications`        | Danh sách thông báo | ✅   | 100/min    |
-| `Mutation` | `markNotificationRead` | Đánh dấu đã đọc     | ✅   | 200/min    |
-| `Mutation` | `deleteNotification`   | Xóa thông báo       | ✅   | 100/min    |
+| `Query`    | `notifications`        | Notification list   | ✅   | 100/min    |
+| `Mutation` | `markNotificationRead` | Mark as read        | ✅   | 200/min    |
+| `Mutation` | `deleteNotification`   | Delete notification | ✅   | 100/min    |
 
 ### WebSocket
 
@@ -179,19 +179,19 @@ Client -> "Realtime Service": disconnect()
 
 ### Functional Requirements
 
-| ID         | Requirement                | Điều kiện                |
+| ID         | Requirement                | Condition                |
 | ---------- | -------------------------- | ------------------------ |
-| `FR-RT-01` | Connect với valid token    | `JWT` hợp lệ             |
-| `FR-RT-02` | Broadcast hoạt động        | Redis adapter configured |
+| `FR-RT-01` | Connect with valid token   | Valid JWT                |
+| `FR-RT-02` | Broadcast works            | Redis adapter configured |
 | `FR-RT-03` | 10k concurrent connections | Load test passed         |
 
 ### Edge Cases
 
-| Case                        | Xử lý                               |
+| Case                        | Handling                            |
 | --------------------------- | ----------------------------------- |
-| Token hết hạn khi connected | Force disconnect, require reconnect |
+| Token expires when connected| Force disconnect, require reconnect |
 | Redis failover              | Auto-reconnect to new master        |
-| `Room` đầy                  | Reject join với error               |
-| Network hiccup              | Auto-reconnect với backoff          |
+| `Room` full                 | Reject join with error              |
+| Network hiccup              | Auto-reconnect with backoff         |
 
 ---

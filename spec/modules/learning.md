@@ -7,20 +7,20 @@ sidebar_position: 3
 
 # Learning
 
-Module học tập và cá nhân hóa lộ trình dựa trên AI.
+Learning module with AI-powered personalized learning paths.
 
 ---
 
 ## Business Logic
 
-### Workflow chính
+### Main Workflows
 
-| Workflow               | Mô tả                      | Actor          | Kết quả                        |
-| ---------------------- | -------------------------- | -------------- | ------------------------------ |
-| Submit Exercise        | Nộp câu trả lời bài tập    | Student        | Chấm điểm, cập nhật tiến độ    |
-| Generate Learning Path | Tạo lộ trình học thích ứng | System         | Danh sách bài học được đề xuất |
-| Complete Lesson        | Hoàn thành bài học         | Student        | Tiến độ cập nhật, rewards gửi  |
-| Track Progress         | Theo dõi tiến độ học tập   | Student/Parent | Dashboard hiển thị             |
+| Workflow               | Description                    | Actor          | Result                              |
+| ---------------------- | ------------------------------ | -------------- | ----------------------------------- |
+| Submit Exercise        | Submit exercise answers        | `Student`      | Graded, progress updated            |
+| Generate Learning Path | Create adaptive learning path  | `System`       | Recommended lesson list             |
+| Complete Lesson        | Complete lesson                | `Student`      | Progress updated, rewards triggered |
+| Track Progress         | Track learning progress        | `Student`/`Parent` | Dashboard displayed             |
 
 #### Detailed Flows
 
@@ -95,11 +95,11 @@ Database -> "Learning Service": stats
 
 ### Rules & Constraints
 
-- Điểm tối thiểu để pass: configurable per lesson (default 70%)
-- Anti-cheat: kiểm tra thời gian làm bài hợp lý
-- Chỉ trigger rewards nếu là lần hoàn thành đầu tiên
-- Session timeout: 30 phút không hoạt động
-- Rate limiting theo user
+- Minimum score to pass: configurable per lesson (default 70%)
+- Anti-cheat: check reasonable completion time
+- Only trigger rewards if first-time completion
+- Session timeout: 30 minutes of inactivity
+- Rate limiting per user
 
 ### Lifecycle Sequence
 
@@ -142,23 +142,23 @@ Student -> "Learning Service": re_learn()
 
 ### Schema & Entities
 
-| Entity              | Fields chính                                              | Mô tả                 |
+| Entity              | Main Fields                                               | Description           |
 | ------------------- | --------------------------------------------------------- | --------------------- |
-| `LearningPath`      | `id`, `user_id`, `subject_id`, `lessons[]`                | Lộ trình học của user |
-| `LessonProgress`    | `id`, `user_id`, `lesson_id`, `status`, `score`           | Tiến độ từng bài      |
-| `ExerciseSession`   | `id`, `user_id`, `lesson_id`, `started_at`, `answers[]`   | Session làm bài       |
-| `SubmissionHistory` | `id`, `session_id`, `question_id`, `answer`, `is_correct` | Lịch sử trả lời       |
+| `LearningPath`      | `id`, `user_id`, `subject_id`, `lessons[]`                | User learning path    |
+| `LessonProgress`    | `id`, `user_id`, `lesson_id`, `status`, `score`           | Individual lesson progress |
+| `ExerciseSession`   | `id`, `user_id`, `lesson_id`, `started_at`, `answers[]`   | Exercise session      |
+| `SubmissionHistory` | `id`, `session_id`, `question_id`, `answer`, `is_correct` | Answer history        |
 
 ### Relations
 
-| `Relation`                           | Mô tả                                    |
-| ------------------------------------ | ---------------------------------------- |
-| `User` → `LearningPath`              | `1:N` - User có nhiều learning paths     |
-| `User` → `LessonProgress`            | `1:N` - Tiến độ từng bài                 |
-| `LessonProgress` → `ExerciseSession` | `1:N` - Nhiều lần làm bài                |
-| `Learning → Content`                 | Depends - Lấy nội dung từ Content module |
-| `Learning → Analytics`               | Depends - Gửi dữ liệu cho Knowledge Map  |
-| `Learning → Gamification`            | Depends - Trigger rewards                |
+| `Relation`                           | Description                                  |
+| ------------------------------------ | -------------------------------------------- |
+| `User` → `LearningPath`              | `1:N` - User has multiple learning paths     |
+| `User` → `LessonProgress`            | `1:N` - Progress for each lesson             |
+| `LessonProgress` → `ExerciseSession` | `1:N` - Multiple attempts per lesson         |
+| `Learning` → `Content`               | Depends - Fetch content from Content module  |
+| `Learning` → `Analytics`             | Depends - Send data for Knowledge Map        |
+| `Learning` → `Gamification`          | Depends - Trigger rewards                    |
 
 ---
 
@@ -166,22 +166,22 @@ Student -> "Learning Service": re_learn()
 
 ### GraphQL Operations
 
-| Type       | Operation          | Mô tả                   | Auth | Rate Limit |
+| Type       | Operation          | Description             | Auth | Rate Limit |
 | ---------- | ------------------ | ----------------------- | ---- | ---------- |
-| `Query`    | `learningProgress` | Tiến độ tổng quan       | ✅   | 200/min    |
-| `Query`    | `lessonContent`    | Nội dung bài học        | ✅   | 200/min    |
-| `Mutation` | `completeLesson`   | Đánh dấu hoàn thành     | ✅   | 100/min    |
-| `Query`    | `lessonExercise`   | Lấy bài tập             | ✅   | 100/min    |
-| `Mutation` | `submitExercise`   | Nộp câu trả lời         | ✅   | 100/min    |
-| `Query`    | `recommendations`  | Gợi ý bài học tiếp theo | ✅   | 50/min     |
+| `Query`    | `learningProgress` | Overall progress        | ✅   | 200/min    |
+| `Query`    | `lessonContent`    | Lesson content          | ✅   | 200/min    |
+| `Mutation` | `completeLesson`   | Mark as completed       | ✅   | 100/min    |
+| `Query`    | `lessonExercise`   | Get exercise            | ✅   | 100/min    |
+| `Mutation` | `submitExercise`   | Submit answers          | ✅   | 100/min    |
+| `Query`    | `recommendations`  | Get next lesson suggestions | ✅   | 50/min     |
 
 ### Events & Webhooks
 
 | Event                | Trigger                | Payload                           |
 | -------------------- | ---------------------- | --------------------------------- |
-| `lesson.completed`   | Hoàn thành bài học     | `{ userId, lessonId, score }`     |
-| `exercise.submitted` | Nộp bài tập            | `{ userId, exerciseId, results }` |
-| `path.updated`       | Lộ trình được cập nhật | `{ userId, pathId, lessons }`     |
+| `lesson.completed`   | Lesson completed       | `{ userId, lessonId, score }`     |
+| `exercise.submitted` | Exercise submitted     | `{ userId, exerciseId, results }` |
+| `path.updated`       | Learning path updated  | `{ userId, pathId, lessons }`     |
 
 ---
 
@@ -189,19 +189,19 @@ Student -> "Learning Service": re_learn()
 
 ### Functional Requirements
 
-| ID            | Requirement                  | Điều kiện                    |
-| ------------- | ---------------------------- | ---------------------------- |
-| `FR-LEARN-01` | Personalized path generation | Dựa trên lịch sử và điểm yếu |
-| `FR-LEARN-02` | Chấm điểm chính xác          | Trả về `is_correct` đúng     |
-| `FR-LEARN-03` | Progress tracking real-time  | Cập nhật ngay sau submit     |
+| ID            | Requirement                  | Condition                        |
+| ------------- | ---------------------------- | -------------------------------- |
+| `FR-LEARN-01` | Personalized path generation | Based on history and weaknesses  |
+| `FR-LEARN-02` | Accurate grading             | Return correct `is_correct`      |
+| `FR-LEARN-03` | Real-time progress tracking  | Update immediately after submit  |
 
 ### Edge Cases
 
-| Case                    | Xử lý                                 |
+| Case                    | Handling                              |
 | ----------------------- | ------------------------------------- |
-| AI Model timeout (> 2s) | Trả về Default Path theo Curriculum   |
-| DB Write fail           | Trả lỗi cho client, retry client-side |
-| Session hết hạn         | Trả lỗi 400, yêu cầu tạo session mới  |
-| IDOR attempt            | Trả về 403 Forbidden                  |
+| AI Model timeout (>2s)  | Return default path per curriculum    |
+| DB Write fail           | Return error to client, retry client-side |
+| Session expired         | Return 400 error, request new session |
+| IDOR attempt            | Return 403 Forbidden                  |
 
 ---
