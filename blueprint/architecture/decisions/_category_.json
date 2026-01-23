@@ -3,6 +3,7 @@
   "position": 3,
   "link": {
     "type": "generated-index",
+    "slug": "/blueprint/architecture/decisions",
     "description": "Lịch sử các quyết định kiến trúc và kỹ thuật quan trọng."
   }
 }

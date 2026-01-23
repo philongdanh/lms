@@ -28,14 +28,14 @@ qa/                 ← VERIFY: Đảm bảo chất lượng (Strategy + Cases)
 docs/               ← GUIDE: Hướng dẫn (Onboarding + Handbook)
 ```
 
-### 1. [Blueprint](./blueprint/) — Định nghĩa sản phẩm
+### 1. [Blueprint](./blueprint) — Định nghĩa sản phẩm
 
 | Folder          | Nội dung                                                                                                                                                                                                      |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `product/`      | [Vision](./blueprint/product/vision.md) · [Roadmap](./blueprint/product/roadmap.md) · [Backlog](./blueprint/product/backlog.md)                                                                               |
-| `architecture/` | [System Design](./blueprint/architecture/system-design.md) · [Tech Stack](./blueprint/architecture/stack.md) · [Database](./blueprint/architecture/database.md) · [ADRs](./blueprint/architecture/decisions/) |
+| `architecture/` | [System Design](./blueprint/architecture/system-design.md) · [Tech Stack](./blueprint/architecture/stack.md) · [Database](./blueprint/architecture/database.md) · [ADRs](/blueprint/architecture/decisions) |
 
-### 2. [Spec](./spec/) — Đặc tả kỹ thuật
+### 2. [Spec](./spec) — Đặc tả kỹ thuật
 
 | Folder       | Nội dung                                                                                                                           |
 | ------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
