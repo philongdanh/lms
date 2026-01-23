@@ -34,11 +34,30 @@ Module học tập và cá nhân hóa lộ trình dựa trên AI.
 
 ```d2
 direction: right
-LOCKED --> AVAILABLE : prerequisite_met
-AVAILABLE --> IN_PROGRESS : started
-IN_PROGRESS --> COMPLETED : score >= threshold
-IN_PROGRESS --> IN_PROGRESS : score < threshold
-COMPLETED --> REVIEW : re_learning
+
+Start: {
+  shape: circle
+  style.fill: black
+  label: ""
+  width: 20
+  height: 20
+}
+
+End: {
+  shape: circle
+  style.fill: black
+  label: ""
+  width: 20
+  height: 20
+}
+
+Start -> LOCKED
+LOCKED -> AVAILABLE: prerequisite_met
+AVAILABLE -> IN_PROGRESS: started
+IN_PROGRESS -> COMPLETED: score >= threshold
+IN_PROGRESS -> IN_PROGRESS: score < threshold
+COMPLETED -> REVIEW: re_learning
+REVIEW -> End
 ```
 
 ---

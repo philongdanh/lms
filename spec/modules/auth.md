@@ -36,12 +36,29 @@ Module xác thực và phân quyền người dùng trong hệ thống multi-ten
 
 ```d2
 direction: right
-[*] --> PENDING
-PENDING --> ACTIVE : verify_email
-ACTIVE --> SUSPENDED : violation
-SUSPENDED --> ACTIVE : resolve
-ACTIVE --> PENDING_DEACTIVATION : request_delete
-PENDING_DEACTIVATION --> [*] : hard_delete_30d
+
+Start: {
+  shape: circle
+  style.fill: black
+  label: ""
+  width: 20
+  height: 20
+}
+
+End: {
+  shape: circle
+  style.fill: black
+  label: ""
+  width: 20
+  height: 20
+}
+
+Start -> PENDING
+PENDING -> ACTIVE: verify_email
+ACTIVE -> SUSPENDED: violation
+SUSPENDED -> ACTIVE: resolve
+ACTIVE -> PENDING_DEACTIVATION: request_delete
+PENDING_DEACTIVATION -> End: hard_delete_30d
 ```
 
 ---

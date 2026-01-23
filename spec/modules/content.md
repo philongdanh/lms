@@ -34,11 +34,29 @@ Module quản lý nội dung học tập và ngân hàng câu hỏi.
 
 ```d2
 direction: right
-[*] --> DRAFT : create
-DRAFT --> PENDING_REVIEW : submit
-PENDING_REVIEW --> PUBLISHED : approve
-PENDING_REVIEW --> DRAFT : reject
-PUBLISHED --> ARCHIVED : archive
+
+Start: {
+  shape: circle
+  style.fill: black
+  label: ""
+  width: 20
+  height: 20
+}
+
+End: {
+  shape: circle
+  style.fill: black
+  label: ""
+  width: 20
+  height: 20
+}
+
+Start -> DRAFT: create
+DRAFT -> PENDING_REVIEW: submit
+PENDING_REVIEW -> PUBLISHED: approve
+PENDING_REVIEW -> DRAFT: reject
+PUBLISHED -> ARCHIVED: archive
+ARCHIVED -> End
 ```
 
 ---

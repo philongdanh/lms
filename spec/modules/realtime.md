@@ -34,12 +34,29 @@ Module giao tiếp real-time qua WebSocket.
 
 ```d2
 direction: right
-[*] --> CONNECTING : connect
-CONNECTING --> AUTHENTICATED : jwt_valid
-CONNECTING --> REJECTED : jwt_invalid
-AUTHENTICATED --> CONNECTED : handshake_complete
-CONNECTED --> DISCONNECTED : disconnect
-DISCONNECTED --> [*]
+
+Start: {
+  shape: circle
+  style.fill: black
+  label: ""
+  width: 20
+  height: 20
+}
+
+End: {
+  shape: circle
+  style.fill: black
+  label: ""
+  width: 20
+  height: 20
+}
+
+Start -> CONNECTING: connect
+CONNECTING -> AUTHENTICATED: jwt_valid
+CONNECTING -> REJECTED: jwt_invalid
+AUTHENTICATED -> CONNECTED: handshake_complete
+CONNECTED -> DISCONNECTED: disconnect
+DISCONNECTED -> End
 ```
 
 ---

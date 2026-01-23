@@ -34,12 +34,29 @@ Module quản trị hệ thống multi-tenant và quản lý người dùng.
 
 ```d2
 direction: right
-[*] --> PENDING : create
-PENDING --> ACTIVE : activate
-ACTIVE --> SUSPENDED : suspend
-SUSPENDED --> ACTIVE : reactivate
-ACTIVE --> DELETED : soft_delete
-DELETED --> [*] : hard_delete_30d
+
+Start: {
+  shape: circle
+  style.fill: black
+  label: ""
+  width: 20
+  height: 20
+}
+
+End: {
+  shape: circle
+  style.fill: black
+  label: ""
+  width: 20
+  height: 20
+}
+
+Start -> PENDING: create
+PENDING -> ACTIVE: activate
+ACTIVE -> SUSPENDED: suspend
+SUSPENDED -> ACTIVE: reactivate
+ACTIVE -> DELETED: soft_delete
+DELETED -> End: hard_delete_30d
 ```
 
 ---

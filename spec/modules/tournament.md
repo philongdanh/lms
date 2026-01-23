@@ -34,11 +34,28 @@ Module tổ chức giải đấu và thi đấu real-time.
 
 ```d2
 direction: right
-[*] --> SCHEDULED : create
-SCHEDULED --> REGISTRATION : open_registration
-REGISTRATION --> IN_PROGRESS : start_time
-IN_PROGRESS --> COMPLETED : end_time
-COMPLETED --> [*] : archive
+
+Start: {
+  shape: circle
+  style.fill: black
+  label: ""
+  width: 20
+  height: 20
+}
+
+End: {
+  shape: circle
+  style.fill: black
+  label: ""
+  width: 20
+  height: 20
+}
+
+Start -> SCHEDULED: create
+SCHEDULED -> REGISTRATION: open_registration
+REGISTRATION -> IN_PROGRESS: start_time
+IN_PROGRESS -> COMPLETED: end_time
+COMPLETED -> End: archive
 ```
 
 ---
