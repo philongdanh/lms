@@ -119,8 +119,8 @@ DELETED -> End: hard_delete_30d
 
 | Case                     | Xử lý                       |
 | ------------------------ | --------------------------- |
-| Tenant code trùng        | Trả về lỗi "Code Exists"    |
-| Import > 500 users       | Trả về lỗi "Limit Exceeded" |
+| Tenant code trùng        | Trả về lỗi `Code Exists`    |
+| Import > 500 users       | Trả về lỗi `Limit Exceeded` |
 | Email trùng trong import | Bỏ qua dòng, ghi log lỗi    |
 | Email service down       | Queue lại, retry sau        |
 

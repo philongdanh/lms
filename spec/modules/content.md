@@ -121,7 +121,7 @@ ARCHIVED -> End
 
 | Case                         | Xử lý                              |
 | ---------------------------- | ---------------------------------- |
-| Import file corrupt          | Trả về "Invalid File Format"       |
+| Import file corrupt          | Trả về `Invalid File Format`       |
 | Partial import failure       | Bỏ qua dòng lỗi, ghi log, tiếp tục |
 | Malware detected             | Reject upload, alert admin         |
 | Chỉnh sửa content người khác | 403 Forbidden                      |

@@ -55,22 +55,22 @@ Lựa chọn công nghệ và tiêu chuẩn kỹ thuật cho hệ thống.
 
 ### Lý do chọn lựa
 
-| Quyết định        | Lựa chọn khả thi           | Đã chọn          | Lý do                             |
-| ----------------- | -------------------------- | ---------------- | --------------------------------- |
-| Backend Framework | Express, Fastify, NestJS   | NestJS           | Module hóa tốt, TypeScript first  |
-| ORM               | TypeORM, Prisma, Sequelize | Prisma           | Type-safe, DX tốt                 |
-| Frontend          | React SPA, Vue, Angular    | Next.js          | SSR, SEO tốt                      |
-| Realtime          | Socket.IO, ws, Pusher      | Socket.IO        | Fallback tự động, room support    |
-| Database          | PostgreSQL, MySQL, MongoDB | PostgreSQL       | ACID, `JSONB`, structured data    |
-| Cache             | `Redis`, `Memcached`       | `Redis`          | All-in-one: cache, pub/sub, queue |
-| Orchestration     | `Docker Compose`, `K8s`    | `Docker Compose` | Đơn giản, phù hợp on-premise      |
+| Quyết định        | Lựa chọn khả thi           | Đã chọn        | Lý do                             |
+| ----------------- | -------------------------- | -------------- | --------------------------------- |
+| Backend Framework | Express, Fastify, NestJS   | NestJS         | Module hóa tốt, TypeScript first  |
+| ORM               | TypeORM, Prisma, Sequelize | Prisma         | Type-safe, DX tốt                 |
+| Frontend          | React SPA, Vue, Angular    | Next.js        | SSR, SEO tốt                      |
+| Realtime          | Socket.IO, ws, Pusher      | Socket.IO      | Fallback tự động, room support    |
+| Database          | PostgreSQL, MySQL, MongoDB | PostgreSQL     | ACID, `JSONB`, structured data    |
+| Cache             | Redis, Memcached           | Redis          | All-in-one: cache, pub/sub, queue |
+| Orchestration     | Docker Compose, K8s        | Docker Compose | Đơn giản, phù hợp on-premise      |
 
 ### Technology Adoption Roadmap
 
-| Giai đoạn | Timeline      | Focus                                                   |
-| --------- | ------------- | ------------------------------------------------------- |
-| Phase 1   | 25/01 - 15/02 | Core stack: `Next.js`, `NestJS`, `PostgreSQL`, `Prisma` |
-| Phase 2   | 16/02 - 01/03 | Gamification, Python AI, `Winston` logging              |
-| Phase 3   | 02/03 - 15/03 | AI personalization, `Redis` cluster, 2FA                |
+| Giai đoạn | Timeline      | Focus                                           |
+| --------- | ------------- | ----------------------------------------------- |
+| Phase 1   | 25/01 - 15/02 | Core stack: Next.js, NestJS, PostgreSQL, Prisma |
+| Phase 2   | 16/02 - 01/03 | Gamification, Python AI, Winston logging        |
+| Phase 3   | 02/03 - 15/03 | AI personalization, Redis cluster, 2FA          |
 
 ---
