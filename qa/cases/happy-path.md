@@ -86,9 +86,9 @@ Feature: Token Invalidation on Logout
 
   Scenario: Logout revokes refresh token
     Given a user is logged in with valid session
-    When the user calls POST /logout
+    When the user requests logout
     Then refresh token should be revoked in database
-    And subsequent requests with that token should return 401
+    And subsequent requests with that token should return unauthorized error
     And user should be redirected to login page
 ```
 
@@ -121,10 +121,10 @@ Feature: Subject Listing
   Scenario: Get subjects list for tenant
     Given the user is authenticated
     And belongs to tenant "SCHOOL001"
-    When the user requests GET /subjects
+    When the user requests the subjects list
     Then response should contain array of subjects
     And each subject should have id, name, grade fields
-    And response status should be 200
+    And request should be successful
 ```
 
 ### TC-E2E-LEARN-001: Complete a lesson

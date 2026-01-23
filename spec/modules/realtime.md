@@ -84,14 +84,18 @@ DISCONNECTED -> End
 
 ## API & Integration
 
-### Endpoints
+### GraphQL Operations
 
-| Method   | Endpoint                  | Mô tả                | Auth | Rate Limit |
-| -------- | ------------------------- | -------------------- | ---- | ---------- |
-| `GET`    | `/notifications`          | Danh sách thông báo  | ✅   | 100/min    |
-| `PUT`    | `/notifications/:id/read` | Đánh dấu đã đọc      | ✅   | 200/min    |
-| `DELETE` | `/notifications/:id`      | Xóa thông báo        | ✅   | 100/min    |
-| `WS`     | `/ws`                     | WebSocket connection | ✅   | -          |
+| Type       | Operation              | Mô tả               | Auth | Rate Limit |
+| ---------- | ---------------------- | ------------------- | ---- | ---------- |
+| `Query`    | `notifications`        | Danh sách thông báo | ✅   | 100/min    |
+| `Mutation` | `markNotificationRead` | Đánh dấu đã đọc     | ✅   | 200/min    |
+| `Mutation` | `deleteNotification`   | Xóa thông báo       | ✅   | 100/min    |
+
+### WebSocket
+
+- Endpoint: `/ws`
+- Auth: JWT in Query Param or Header
 
 ### Events & Webhooks
 

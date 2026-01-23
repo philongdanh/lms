@@ -83,16 +83,17 @@ DELETED -> End: hard_delete_30d
 
 ## API & Integration
 
-### Endpoints
+### GraphQL Operations
 
-| Method   | Endpoint                 | Mô tả               | Auth          | Rate Limit |
-| -------- | ------------------------ | ------------------- | ------------- | ---------- |
-| `POST`   | `/tenants`               | Tạo tenant mới      | ✅ Root Admin | 10/min     |
-| `GET`    | `/tenants`               | Danh sách tenants   | ✅ Root Admin | 100/min    |
-| `PUT`    | `/tenants/:id`           | Cập nhật tenant     | ✅ Root Admin | 50/min     |
-| `DELETE` | `/tenants/:id`           | Xóa tenant (soft)   | ✅ Root Admin | 10/min     |
-| `POST`   | `/users/import`          | Import users từ CSV | ✅ Admin      | 5/min      |
-| `POST`   | `/users/:id/impersonate` | Đăng nhập thay user | ✅ Admin      | 10/min     |
+| Type       | Operation         | Mô tả               | Auth          | Rate Limit |
+| ---------- | ----------------- | ------------------- | ------------- | ---------- |
+| `Mutation` | `createTenant`    | Tạo tenant mới      | ✅ Root Admin | 10/min     |
+| `Query`    | `tenants`         | Danh sách tenants   | ✅ Root Admin | 100/min    |
+| `Query`    | `tenant`          | Chi tiết tenant     | ✅ Root Admin | 100/min    |
+| `Mutation` | `updateTenant`    | Cập nhật tenant     | ✅ Root Admin | 50/min     |
+| `Mutation` | `deleteTenant`    | Xóa tenant (soft)   | ✅ Root Admin | 10/min     |
+| `Mutation` | `importUsers`     | Import users từ CSV | ✅ Admin      | 5/min      |
+| `Mutation` | `impersonateUser` | Đăng nhập thay user | ✅ Admin      | 10/min     |
 
 ### Events & Webhooks
 

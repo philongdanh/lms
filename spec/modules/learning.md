@@ -88,16 +88,16 @@ REVIEW -> End
 
 ## API & Integration
 
-### Endpoints
+### GraphQL Operations
 
-| Method | Endpoint                | Mô tả                   | Auth | Rate Limit |
-| ------ | ----------------------- | ----------------------- | ---- | ---------- |
-| `GET`  | `/progress`             | Tiến độ tổng quan       | ✅   | 200/min    |
-| `GET`  | `/lessons/:id/content`  | Nội dung bài học        | ✅   | 200/min    |
-| `POST` | `/lessons/:id/complete` | Đánh dấu hoàn thành     | ✅   | 100/min    |
-| `GET`  | `/lessons/:id/exercise` | Lấy bài tập             | ✅   | 100/min    |
-| `POST` | `/exercises/:id/submit` | Nộp câu trả lời         | ✅   | 100/min    |
-| `GET`  | `/recommendations`      | Gợi ý bài học tiếp theo | ✅   | 50/min     |
+| Type       | Operation          | Mô tả                   | Auth | Rate Limit |
+| ---------- | ------------------ | ----------------------- | ---- | ---------- |
+| `Query`    | `learningProgress` | Tiến độ tổng quan       | ✅   | 200/min    |
+| `Query`    | `lessonContent`    | Nội dung bài học        | ✅   | 200/min    |
+| `Mutation` | `completeLesson`   | Đánh dấu hoàn thành     | ✅   | 100/min    |
+| `Query`    | `lessonExercise`   | Lấy bài tập             | ✅   | 100/min    |
+| `Mutation` | `submitExercise`   | Nộp câu trả lời         | ✅   | 100/min    |
+| `Query`    | `recommendations`  | Gợi ý bài học tiếp theo | ✅   | 50/min     |
 
 ### Events & Webhooks
 

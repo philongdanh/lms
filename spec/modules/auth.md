@@ -93,17 +93,17 @@ User -> UserSession: has
 
 ## API & Integration
 
-### Endpoints
+### GraphQL Operations
 
-| Method   | Endpoint        | Mô tả              | Auth | Rate Limit |
-| -------- | --------------- | ------------------ | ---- | ---------- |
-| `POST`   | `/login`        | Đăng nhập          | ❌   | 10/min     |
-| `POST`   | `/register`     | Đăng ký            | ❌   | 5/min      |
-| `POST`   | `/refresh`      | Refresh Token      | ✅   | 20/min     |
-| `POST`   | `/logout`       | Đăng xuất          | ✅   | 50/min     |
-| `GET`    | `/sessions`     | Danh sách sessions | ✅   | 100/min    |
-| `DELETE` | `/sessions/:id` | Thu hồi session    | ✅   | 50/min     |
-| `POST`   | `/parents/link` | Liên kết phụ huynh | ✅   | 10/min     |
+| Type       | Operation       | Mô tả              | Auth | Rate Limit |
+| ---------- | --------------- | ------------------ | ---- | ---------- |
+| `Mutation` | `login`         | Đăng nhập          | ❌   | 10/min     |
+| `Mutation` | `register`      | Đăng ký            | ❌   | 5/min      |
+| `Mutation` | `refreshToken`  | Refresh Token      | ✅   | 20/min     |
+| `Mutation` | `logout`        | Đăng xuất          | ✅   | 50/min     |
+| `Query`    | `sessions`      | Danh sách sessions | ✅   | 100/min    |
+| `Mutation` | `revokeSession` | Thu hồi session    | ✅   | 50/min     |
+| `Mutation` | `linkParent`    | Liên kết phụ huynh | ✅   | 10/min     |
 
 ### Events & Webhooks
 

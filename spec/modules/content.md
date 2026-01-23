@@ -86,17 +86,23 @@ ARCHIVED -> End
 
 ## API & Integration
 
-### Endpoints
+### GraphQL Operations
 
-| Method | Endpoint               | Mô tả             | Auth       | Rate Limit |
-| ------ | ---------------------- | ----------------- | ---------- | ---------- |
-| `GET`  | `/subjects`            | Danh sách môn học | ❌         | 200/min    |
-| `GET`  | `/topics`              | Danh sách chủ đề  | ❌         | 200/min    |
-| `GET`  | `/lessons/:id`         | Chi tiết bài học  | ✅         | 200/min    |
-| `POST` | `/questions/import`    | Import câu hỏi    | ✅ Teacher | 10/min     |
-| `GET`  | `/questions/search`    | Tìm kiếm câu hỏi  | ✅ Teacher | 100/min    |
-| `POST` | `/lessons`             | Tạo bài học mới   | ✅ Teacher | 50/min     |
-| `PUT`  | `/lessons/:id/publish` | Publish bài học   | ✅ Admin   | 50/min     |
+| Type       | Operation         | Mô tả             | Auth       | Rate Limit |
+| ---------- | ----------------- | ----------------- | ---------- | ---------- |
+| `Query`    | `subjects`        | Danh sách môn học | ❌         | 200/min    |
+| `Query`    | `topics`          | Danh sách chủ đề  | ❌         | 200/min    |
+| `Query`    | `lesson`          | Chi tiết bài học  | ✅         | 200/min    |
+| `Mutation` | `importQuestions` | Import câu hỏi    | ✅ Teacher | 10/min     |
+| `Query`    | `searchQuestions` | Tìm kiếm câu hỏi  | ✅ Teacher | 100/min    |
+| `Mutation` | `createLesson`    | Tạo bài học mới   | ✅ Teacher | 50/min     |
+| `Mutation` | `publishLesson`   | Publish bài học   | ✅ Admin   | 50/min     |
+
+### REST Endpoints
+
+| Method | Endpoint      | Mô tả       | Auth       |
+| ------ | ------------- | ----------- | ---------- |
+| `POST` | `/api/upload` | Upload file | ✅ Teacher |
 
 ### Events & Webhooks
 

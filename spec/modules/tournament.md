@@ -86,17 +86,17 @@ COMPLETED -> End: archive
 
 ## API & Integration
 
-### Endpoints
+### GraphQL Operations
 
-| Method | Endpoint              | Mô tả              | Auth     | Rate Limit |
-| ------ | --------------------- | ------------------ | -------- | ---------- |
-| `GET`  | `/`                   | Danh sách giải đấu | ✅       | 100/min    |
-| `GET`  | `/:id`                | Chi tiết giải đấu  | ✅       | 100/min    |
-| `POST` | `/:id/join`           | Đăng ký tham gia   | ✅       | 20/min     |
-| `GET`  | `/:id/matches`        | Danh sách trận đấu | ✅       | 100/min    |
-| `POST` | `/matches/:id/submit` | Nộp câu trả lời    | ✅       | 50/min     |
-| `GET`  | `/:id/leaderboard`    | Bảng xếp hạng      | ✅       | 100/min    |
-| `POST` | `/`                   | Tạo giải đấu mới   | ✅ Admin | 10/min     |
+| Type       | Operation               | Mô tả              | Auth     | Rate Limit |
+| ---------- | ----------------------- | ------------------ | -------- | ---------- |
+| `Query`    | `tournaments`           | Danh sách giải đấu | ✅       | 100/min    |
+| `Query`    | `tournament`            | Chi tiết giải đấu  | ✅       | 100/min    |
+| `Mutation` | `joinTournament`        | Đăng ký tham gia   | ✅       | 20/min     |
+| `Query`    | `matches`               | Danh sách trận đấu | ✅       | 100/min    |
+| `Mutation` | `submitMatch`           | Nộp câu trả lời    | ✅       | 50/min     |
+| `Query`    | `tournamentLeaderboard` | Bảng xếp hạng      | ✅       | 100/min    |
+| `Mutation` | `createTournament`      | Tạo giải đấu mới   | ✅ Admin | 10/min     |
 
 ### Events & Webhooks
 

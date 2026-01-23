@@ -62,16 +62,16 @@ N/A - Gamification events are transactional, no persistent state machine.
 
 ## API & Integration
 
-### Endpoints
+### GraphQL Operations
 
-| Method | Endpoint              | Mô tả                 | Auth | Rate Limit |
-| ------ | --------------------- | --------------------- | ---- | ---------- |
-| `GET`  | `/profile`            | Thông tin EXP/Level   | ✅   | 200/min    |
-| `GET`  | `/badges`             | Danh sách badges      | ✅   | 100/min    |
-| `GET`  | `/leaderboard`        | Bảng xếp hạng         | ✅   | 100/min    |
-| `GET`  | `/rewards`            | Danh sách phần thưởng | ✅   | 100/min    |
-| `POST` | `/rewards/:id/redeem` | Đổi phần thưởng       | ✅   | 20/min     |
-| `GET`  | `/streaks`            | Thông tin streak      | ✅   | 200/min    |
+| Type       | Operation      | Mô tả                 | Auth | Rate Limit |
+| ---------- | -------------- | --------------------- | ---- | ---------- |
+| `Query`    | `userProfile`  | Thông tin EXP/Level   | ✅   | 200/min    |
+| `Query`    | `badges`       | Danh sách badges      | ✅   | 100/min    |
+| `Query`    | `leaderboard`  | Bảng xếp hạng         | ✅   | 100/min    |
+| `Query`    | `rewards`      | Danh sách phần thưởng | ✅   | 100/min    |
+| `Mutation` | `redeemReward` | Đổi phần thưởng       | ✅   | 20/min     |
+| `Query`    | `streaks`      | Thông tin streak      | ✅   | 200/min    |
 
 ### Events & Webhooks
 
