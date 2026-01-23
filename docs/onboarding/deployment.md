@@ -15,7 +15,7 @@ Hướng dẫn triển khai hệ thống.
 
 | Component     | Tech              | Description         |
 | ------------- | ----------------- | ------------------- |
-| Application   | NestJS (Node 18+) | Stateless container |
+| Application   | NestJS (Node 20+) | Stateless container |
 | Database      | PostgreSQL 14+    | Multi-tenant data   |
 | Cache         | Redis 6+          | Session, Pub/Sub    |
 | Load Balancer | Nginx             | SSL, WebSocket      |
@@ -38,7 +38,7 @@ Hướng dẫn triển khai hệ thống.
 
 | Service  | Image                | Port |
 | -------- | -------------------- | ---- |
-| app      | `node:18-alpine`     | 3000 |
+| app      | `node:20-alpine`     | 3000 |
 | postgres | `postgres:14-alpine` | 5432 |
 | redis    | `redis:6-alpine`     | 6379 |
 

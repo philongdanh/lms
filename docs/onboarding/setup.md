@@ -17,7 +17,7 @@ Hướng dẫn cài đặt và thiết lập môi trường phát triển.
 
 | Software       | Version | Purpose           |
 | -------------- | ------- | ----------------- |
-| Node.js        | 18.x+   | Runtime           |
+| Node.js        | 20.x+   | Runtime           |
 | Docker         | 20.10+  | Container         |
 | Docker Compose | v2.0+   | Orchestration     |
 | Git            | 2.30+   | Version control   |
