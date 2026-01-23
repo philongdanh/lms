@@ -15,17 +15,17 @@ Module quản trị hệ thống multi-tenant và quản lý người dùng.
 
 ### Workflow chính
 
-| Workflow      | Mô tả                              | Actor        | Kết quả                                   |
-| ------------- | ---------------------------------- | ------------ | ----------------------------------------- |
-| Create Tenant | Khởi tạo tenant mới cho trường học | Root Admin   | Tenant được tạo, email kích hoạt được gửi |
-| Import Users  | Import users hàng loạt từ CSV      | Tenant Admin | Users được tạo, báo cáo lỗi nếu có        |
-| Impersonate   | Đăng nhập thay user để hỗ trợ      | Admin        | Session impersonation được tạo            |
-| Delete Tenant | Xóa mềm và xóa cứng tenant         | Root Admin   | Tenant bị xóa sau 30 ngày                 |
+| Workflow        | Mô tả                              | Actor          | Kết quả                                     |
+| --------------- | ---------------------------------- | -------------- | ------------------------------------------- |
+| Create `Tenant` | Khởi tạo tenant mới cho trường học | Root Admin     | `Tenant` được tạo, email kích hoạt được gửi |
+| Import Users    | Import users hàng loạt từ CSV      | `Tenant` Admin | Users được tạo, báo cáo lỗi nếu có          |
+| Impersonate     | Đăng nhập thay user để hỗ trợ      | `Admin`        | Session impersonation được tạo              |
+| Delete `Tenant` | Xóa mềm và xóa cứng tenant         | Root Admin     | `Tenant` bị xóa sau 30 ngày                 |
 
 ### Rules & Constraints
 
-- Tenant code phải là duy nhất trong toàn hệ thống
-- Chỉ Root Admin mới có thể tạo/xóa Tenant
+- `Tenant` code phải là duy nhất trong toàn hệ thống
+- Chỉ Root Admin mới có thể tạo/xóa `Tenant`
 - Giới hạn import tối đa 500 users/lần
 - Soft delete → Hard delete sau 30 ngày
 - Audit log cho tất cả Impersonation
@@ -65,19 +65,19 @@ DELETED -> End: hard_delete_30d
 
 ### Schema & Entities
 
-| Entity         | Fields chính                                      | Mô tả                 |
-| -------------- | ------------------------------------------------- | --------------------- |
-| Tenant         | `id`, `code`, `name`, `status`, `settings`        | Thông tin trường học  |
-| TenantSettings | `id`, `tenant_id`, `config_json`                  | Cấu hình riêng tenant |
-| AuditLog       | `id`, `actor_id`, `action`, `target`, `timestamp` | Log hành động admin   |
+| Entity           | Fields chính                                      | Mô tả                 |
+| ---------------- | ------------------------------------------------- | --------------------- |
+| `Tenant`         | `id`, `code`, `name`, `status`, `settings`        | Thông tin trường học  |
+| `TenantSettings` | `id`, `tenant_id`, `config_json`                  | Cấu hình riêng tenant |
+| `AuditLog`       | `id`, `actor_id`, `action`, `target`, `timestamp` | Log hành động admin   |
 
 ### Relations
 
-| Relation                | Mô tả                             |
-| ----------------------- | --------------------------------- |
-| Tenant → User           | `1:N` - Tenant sở hữu nhiều users |
-| Tenant → TenantSettings | `1:1` - Mỗi tenant có 1 cấu hình  |
-| Admin → AuditLog        | `1:N` - Log hành động của admin   |
+| `Relation`                  | Mô tả                               |
+| --------------------------- | ----------------------------------- |
+| `Tenant` → `User`           | `1:N` - `Tenant` sở hữu nhiều users |
+| `Tenant` → `TenantSettings` | `1:1` - Mỗi tenant có 1 cấu hình    |
+| `Admin` → `AuditLog`        | `1:N` - Log hành động của admin     |
 
 ---
 
@@ -92,8 +92,8 @@ DELETED -> End: hard_delete_30d
 | `Query`    | `tenant`          | Chi tiết tenant     | ✅ Root Admin | 100/min    |
 | `Mutation` | `updateTenant`    | Cập nhật tenant     | ✅ Root Admin | 50/min     |
 | `Mutation` | `deleteTenant`    | Xóa tenant (soft)   | ✅ Root Admin | 10/min     |
-| `Mutation` | `importUsers`     | Import users từ CSV | ✅ Admin      | 5/min      |
-| `Mutation` | `impersonateUser` | Đăng nhập thay user | ✅ Admin      | 10/min     |
+| `Mutation` | `importUsers`     | Import users từ CSV | ✅ `Admin`    | 5/min      |
+| `Mutation` | `impersonateUser` | Đăng nhập thay user | ✅ `Admin`    | 10/min     |
 
 ### Events & Webhooks
 
@@ -110,17 +110,17 @@ DELETED -> End: hard_delete_30d
 
 ### Functional Requirements
 
-| ID        | Requirement            | Điều kiện                     |
-| --------- | ---------------------- | ----------------------------- |
-| FR-ADM-01 | Tạo Tenant thành công  | Code duy nhất, dữ liệu hợp lệ |
-| FR-ADM-02 | Import users hàng loạt | CSV format đúng, ≤500 rows    |
-| FR-ADM-03 | Impersonate hoạt động  | Audit log được ghi            |
+| ID          | Requirement             | Điều kiện                     |
+| ----------- | ----------------------- | ----------------------------- |
+| `FR-ADM-01` | Tạo `Tenant` thành công | Code duy nhất, dữ liệu hợp lệ |
+| `FR-ADM-02` | Import users hàng loạt  | CSV format đúng, ≤500 rows    |
+| `FR-ADM-03` | Impersonate hoạt động   | Audit log được ghi            |
 
 ### Edge Cases
 
 | Case                     | Xử lý                       |
 | ------------------------ | --------------------------- |
-| Tenant code trùng        | Trả về lỗi `Code Exists`    |
+| `Tenant` code trùng      | Trả về lỗi `Code Exists`    |
 | Import > 500 users       | Trả về lỗi `Limit Exceeded` |
 | Email trùng trong import | Bỏ qua dòng, ghi log lỗi    |
 | Email service down       | Queue lại, retry sau        |

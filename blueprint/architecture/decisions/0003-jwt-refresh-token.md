@@ -7,14 +7,16 @@ sidebar_position: 3
 
 # ADR-003: JWT with Refresh Token Blacklisting
 
-## Context
-
 Cần stateless auth cho multi-device support.
+
+---
 
 ## Decision
 
 **JWT** (15-30min) + **Refresh token** (7 ngày, hash trong DB) + **Redis
 blacklist**.
+
+---
 
 ## Rationale
 

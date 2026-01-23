@@ -66,23 +66,23 @@ REVIEW -> End
 
 ### Schema & Entities
 
-| Entity            | Fields chính                                              | Mô tả                 |
-| ----------------- | --------------------------------------------------------- | --------------------- |
-| LearningPath      | `id`, `user_id`, `subject_id`, `lessons[]`                | Lộ trình học của user |
-| LessonProgress    | `id`, `user_id`, `lesson_id`, `status`, `score`           | Tiến độ từng bài      |
-| ExerciseSession   | `id`, `user_id`, `lesson_id`, `started_at`, `answers[]`   | Session làm bài       |
-| SubmissionHistory | `id`, `session_id`, `question_id`, `answer`, `is_correct` | Lịch sử trả lời       |
+| Entity              | Fields chính                                              | Mô tả                 |
+| ------------------- | --------------------------------------------------------- | --------------------- |
+| `LearningPath`      | `id`, `user_id`, `subject_id`, `lessons[]`                | Lộ trình học của user |
+| `LessonProgress`    | `id`, `user_id`, `lesson_id`, `status`, `score`           | Tiến độ từng bài      |
+| `ExerciseSession`   | `id`, `user_id`, `lesson_id`, `started_at`, `answers[]`   | Session làm bài       |
+| `SubmissionHistory` | `id`, `session_id`, `question_id`, `answer`, `is_correct` | Lịch sử trả lời       |
 
 ### Relations
 
-| Relation                         | Mô tả                                    |
-| -------------------------------- | ---------------------------------------- |
-| User → LearningPath              | `1:N` - User có nhiều learning paths     |
-| User → LessonProgress            | `1:N` - Tiến độ từng bài                 |
-| LessonProgress → ExerciseSession | `1:N` - Nhiều lần làm bài                |
-| Learning → Content               | Depends - Lấy nội dung từ Content module |
-| Learning → Analytics             | Depends - Gửi dữ liệu cho Knowledge Map  |
-| Learning → Gamification          | Depends - Trigger rewards                |
+| `Relation`                           | Mô tả                                    |
+| ------------------------------------ | ---------------------------------------- |
+| `User` → `LearningPath`              | `1:N` - User có nhiều learning paths     |
+| `User` → `LessonProgress`            | `1:N` - Tiến độ từng bài                 |
+| `LessonProgress` → `ExerciseSession` | `1:N` - Nhiều lần làm bài                |
+| `Learning → Content`                 | Depends - Lấy nội dung từ Content module |
+| `Learning → Analytics`               | Depends - Gửi dữ liệu cho Knowledge Map  |
+| `Learning → Gamification`            | Depends - Trigger rewards                |
 
 ---
 
@@ -113,11 +113,11 @@ REVIEW -> End
 
 ### Functional Requirements
 
-| ID          | Requirement                  | Điều kiện                    |
-| ----------- | ---------------------------- | ---------------------------- |
-| FR-LEARN-01 | Personalized path generation | Dựa trên lịch sử và điểm yếu |
-| FR-LEARN-02 | Chấm điểm chính xác          | Trả về `is_correct` đúng     |
-| FR-LEARN-03 | Progress tracking real-time  | Cập nhật ngay sau submit     |
+| ID            | Requirement                  | Điều kiện                    |
+| ------------- | ---------------------------- | ---------------------------- |
+| `FR-LEARN-01` | Personalized path generation | Dựa trên lịch sử và điểm yếu |
+| `FR-LEARN-02` | Chấm điểm chính xác          | Trả về `is_correct` đúng     |
+| `FR-LEARN-03` | Progress tracking real-time  | Cập nhật ngay sau submit     |
 
 ### Edge Cases
 

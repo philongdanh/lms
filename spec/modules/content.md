@@ -17,14 +17,14 @@ Module quản lý nội dung học tập và ngân hàng câu hỏi.
 
 | Workflow         | Mô tả                    | Actor         | Kết quả                       |
 | ---------------- | ------------------------ | ------------- | ----------------------------- |
-| Create Structure | Tạo cây cấu trúc môn học | Admin/Teacher | Topic/Lesson được tạo         |
+| Create Structure | Tạo cây cấu trúc môn học | Admin/Teacher | `Topic`/`Lesson` được tạo     |
 | Bulk Import      | Import câu hỏi từ file   | Teacher       | Câu hỏi được import           |
-| Publish Content  | Phê duyệt và publish     | Admin         | Nội dung visible cho students |
-| Upload Media     | Upload video/image       | Teacher       | Media được lưu trữ            |
+| Publish Content  | Phê duyệt và publish     | `Admin`       | Nội dung visible cho students |
+| Upload `Media`   | Upload video/image       | Teacher       | `Media` được lưu trữ          |
 
 ### Rules & Constraints
 
-- Lesson phải thuộc về một Topic (hierarchy)
+- `Lesson` phải thuộc về một `Topic` (hierarchy)
 - Teacher tạo draft, Admin publish
 - File upload được scan malware (ClamAV)
 - Hỗ trợ format: `xlsx`, `docx`, `pdf` cho import
@@ -65,22 +65,22 @@ ARCHIVED -> End
 
 ### Schema & Entities
 
-| Entity   | Fields chính                                    | Mô tả      |
-| -------- | ----------------------------------------------- | ---------- |
-| Subject  | `id`, `name`, `grade`, `curriculum`             | Môn học    |
-| Topic    | `id`, `subject_id`, `name`, `order`             | Chủ đề     |
-| Lesson   | `id`, `topic_id`, `title`, `content`, `status`  | Bài học    |
-| Question | `id`, `lesson_id`, `type`, `content`, `answers` | Câu hỏi    |
-| Media    | `id`, `type`, `url`, `size`, `metadata`         | File media |
+| Entity     | Fields chính                                    | Mô tả      |
+| ---------- | ----------------------------------------------- | ---------- |
+| `Subject`  | `id`, `name`, `grade`, `curriculum`             | Môn học    |
+| `Topic`    | `id`, `subject_id`, `name`, `order`             | Chủ đề     |
+| `Lesson`   | `id`, `topic_id`, `title`, `content`, `status`  | Bài học    |
+| `Question` | `id`, `lesson_id`, `type`, `content`, `answers` | Câu hỏi    |
+| `Media`    | `id`, `type`, `url`, `size`, `metadata`         | File media |
 
 ### Relations
 
-| Relation          | Mô tả                            |
-| ----------------- | -------------------------------- |
-| Subject → Topic   | `1:N` - Môn học có nhiều chủ đề  |
-| Topic → Lesson    | `1:N` - Chủ đề có nhiều bài học  |
-| Lesson → Question | `1:N` - Bài học có nhiều câu hỏi |
-| Lesson → Media    | `N:M` - Bài học dùng nhiều media |
+| `Relation`            | Mô tả                            |
+| --------------------- | -------------------------------- |
+| `Subject` → `Topic`   | `1:N` - Môn học có nhiều chủ đề  |
+| `Topic` → `Lesson`    | `1:N` - Chủ đề có nhiều bài học  |
+| `Lesson` → `Question` | `1:N` - Bài học có nhiều câu hỏi |
+| `Lesson` → `Media`    | `N:M` - Bài học dùng nhiều media |
 
 ---
 
@@ -96,7 +96,7 @@ ARCHIVED -> End
 | `Mutation` | `importQuestions` | Import câu hỏi    | ✅ Teacher | 10/min     |
 | `Query`    | `searchQuestions` | Tìm kiếm câu hỏi  | ✅ Teacher | 100/min    |
 | `Mutation` | `createLesson`    | Tạo bài học mới   | ✅ Teacher | 50/min     |
-| `Mutation` | `publishLesson`   | Publish bài học   | ✅ Admin   | 50/min     |
+| `Mutation` | `publishLesson`   | Publish bài học   | ✅ `Admin` | 50/min     |
 
 ### REST Endpoints
 
@@ -117,11 +117,11 @@ ARCHIVED -> End
 
 ### Functional Requirements
 
-| ID         | Requirement         | Điều kiện                    |
-| ---------- | ------------------- | ---------------------------- |
-| FR-CONT-01 | Validate hierarchy  | Không tạo Lesson thiếu Topic |
-| FR-CONT-02 | Import format check | Từ chối file không hỗ trợ    |
-| FR-CONT-03 | Media playback      | Video chạy trên mọi device   |
+| ID           | Requirement         | Điều kiện                        |
+| ------------ | ------------------- | -------------------------------- |
+| `FR-CONT-01` | Validate hierarchy  | Không tạo `Lesson` thiếu `Topic` |
+| `FR-CONT-02` | Import format check | Từ chối file không hỗ trợ        |
+| `FR-CONT-03` | `Media` playback    | Video chạy trên mọi device       |
 
 ### Edge Cases
 

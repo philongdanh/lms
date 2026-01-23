@@ -7,13 +7,15 @@ sidebar_position: 5
 
 # ADR-005: Socket.IO with Redis Adapter
 
-## Context
-
 Cần WebSocket cho real-time tournament và notifications.
+
+---
 
 ## Decision
 
 **Socket.IO** với **Redis Adapter** để sync đa instance.
+
+---
 
 ## Rationale
 

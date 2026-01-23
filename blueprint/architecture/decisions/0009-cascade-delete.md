@@ -7,14 +7,16 @@ sidebar_position: 9
 
 # ADR-009: Cascade Delete Strategy
 
-## Context
-
 Cần data deletion strategy cho tenant/user lifecycle.
+
+---
 
 ## Decision
 
 **Soft Delete** (User, Topic, Exam...) + **Hard Delete** `CASCADE` (Sessions,
 Answers...).
+
+---
 
 ## Rationale
 

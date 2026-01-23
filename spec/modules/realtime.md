@@ -15,12 +15,12 @@ Module giao tiếp real-time qua WebSocket.
 
 ### Workflow chính
 
-| Workflow            | Mô tả                   | Actor  | Kết quả                 |
-| ------------------- | ----------------------- | ------ | ----------------------- |
-| WebSocket Handshake | Client kết nối với JWT  | Client | Connection established  |
-| Broadcast Event     | Gửi message tới room    | System | Clients nhận message    |
-| Presence Tracking   | Theo dõi online/offline | System | Presence store updated  |
-| Room Management     | Join/leave rooms        | Client | Room membership updated |
+| Workflow            | Mô tả                   | Actor  | Kết quả                   |
+| ------------------- | ----------------------- | ------ | ------------------------- |
+| WebSocket Handshake | Client kết nối với JWT  | Client | Connection established    |
+| Broadcast Event     | Gửi message tới room    | System | Clients nhận message      |
+| `Presence` Tracking | Theo dõi online/offline | System | `Presence` store updated  |
+| `Room` Management   | Join/leave rooms        | Client | `Room` membership updated |
 
 ### Rules & Constraints
 
@@ -65,20 +65,20 @@ DISCONNECTED -> End
 
 ### Schema & Entities
 
-| Entity       | Fields chính                                  | Mô tả                  |
-| ------------ | --------------------------------------------- | ---------------------- |
-| Notification | `id`, `user_id`, `type`, `content`, `read_at` | Thông báo              |
-| Presence     | `user_id`, `socket_id`, `last_seen`           | Trạng thái online      |
-| Room         | `room_id`, `type`, `members[]`                | Phòng chat/competition |
+| Entity         | Fields chính                                  | Mô tả                  |
+| -------------- | --------------------------------------------- | ---------------------- |
+| `Notification` | `id`, `user_id`, `type`, `content`, `read_at` | Thông báo              |
+| `Presence`     | `user_id`, `socket_id`, `last_seen`           | Trạng thái online      |
+| `Room`         | `room_id`, `type`, `members[]`                | Phòng chat/competition |
 
 ### Relations
 
-| Relation            | Mô tả                                 |
-| ------------------- | ------------------------------------- |
-| User → Notification | `1:N` - User có nhiều notifications   |
-| User → Presence     | `1:1` - Mỗi user có trạng thái online |
-| Realtime ← Auth     | Depends - Xác thực JWT                |
-| Realtime → Redis    | Uses - `Pub/Sub`, Presence store      |
+| `Relation`              | Mô tả                                 |
+| ----------------------- | ------------------------------------- |
+| `User` → `Notification` | `1:N` - User có nhiều notifications   |
+| `User` → `Presence`     | `1:1` - Mỗi user có trạng thái online |
+| `Realtime ← Auth`       | Depends - Xác thực JWT                |
+| `Realtime → Redis`      | Uses - `Pub/Sub`, `Presence` store    |
 
 ---
 
@@ -114,11 +114,11 @@ DISCONNECTED -> End
 
 ### Functional Requirements
 
-| ID       | Requirement                | Điều kiện                |
-| -------- | -------------------------- | ------------------------ |
-| FR-RT-01 | Connect với valid token    | `JWT` hợp lệ             |
-| FR-RT-02 | Broadcast hoạt động        | Redis adapter configured |
-| FR-RT-03 | 10k concurrent connections | Load test passed         |
+| ID         | Requirement                | Điều kiện                |
+| ---------- | -------------------------- | ------------------------ |
+| `FR-RT-01` | Connect với valid token    | `JWT` hợp lệ             |
+| `FR-RT-02` | Broadcast hoạt động        | Redis adapter configured |
+| `FR-RT-03` | 10k concurrent connections | Load test passed         |
 
 ### Edge Cases
 
@@ -126,7 +126,7 @@ DISCONNECTED -> End
 | --------------------------- | ----------------------------------- |
 | Token hết hạn khi connected | Force disconnect, require reconnect |
 | Redis failover              | Auto-reconnect to new master        |
-| Room đầy                    | Reject join với error               |
+| `Room` đầy                  | Reject join với error               |
 | Network hiccup              | Auto-reconnect với backoff          |
 
 ---

@@ -7,17 +7,21 @@ sidebar_position: 1
 
 # ADR-001: Modular Monolith
 
-## Context
-
 Cần một kiến trúc phù hợp với team nhỏ nhưng có khả năng mở rộng.
+
+---
 
 ## Decision
 
 Xây dựng **Modular Monolith** (các module Auth, Tournament, Learning).
 
+---
+
 ## Rationale
 
 Triển khai đơn giản, debug dễ dàng, độ phức tạp vận hành thấp.
+
+---
 
 ## Consequences
 

@@ -7,13 +7,15 @@ sidebar_position: 6
 
 # ADR-006: Prisma ORM
 
-## Context
-
 Cần type-safe ORM cho NestJS.
+
+---
 
 ## Decision
 
 **Prisma 7** làm ORM chính.
+
+---
 
 ## Rationale
 

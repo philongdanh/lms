@@ -7,13 +7,15 @@ sidebar_position: 4
 
 # ADR-004: Redis for Cache and Pub/Sub
 
-## Context
-
 Cần caching và real-time messaging.
+
+---
 
 ## Decision
 
 **Redis** cho session storage, token blacklist, cache, và Pub/Sub events.
+
+---
 
 ## Rationale
 

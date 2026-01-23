@@ -7,13 +7,15 @@ sidebar_position: 7
 
 # ADR-007: Multi-tenant via tenant_id
 
-## Context
-
 Cần multi-tenant strategy cho nhiều trường.
+
+---
 
 ## Decision
 
 **Shared Database với `tenant_id` column**.
+
+---
 
 ## Rationale
 

@@ -38,19 +38,19 @@ N/A - Analytics là module read-only, không có state machine.
 
 ### Schema & Entities
 
-| Entity       | Fields chính                                         | Mô tả                     |
-| ------------ | ---------------------------------------------------- | ------------------------- |
-| KnowledgeMap | `user_id`, `topic_id`, `mastery_score`               | Mức độ nắm vững kiến thức |
-| DailyStats   | `user_id`, `date`, `lessons_completed`, `time_spent` | Thống kê hàng ngày        |
-| ReportCache  | `report_id`, `params_hash`, `data`, `expires_at`     | Cache báo cáo             |
+| Entity         | Fields chính                                         | Mô tả                     |
+| -------------- | ---------------------------------------------------- | ------------------------- |
+| `KnowledgeMap` | `user_id`, `topic_id`, `mastery_score`               | Mức độ nắm vững kiến thức |
+| `DailyStats`   | `user_id`, `date`, `lessons_completed`, `time_spent` | Thống kê hàng ngày        |
+| `ReportCache`  | `report_id`, `params_hash`, `data`, `expires_at`     | Cache báo cáo             |
 
 ### Relations
 
-| Relation             | Mô tả                                    |
-| -------------------- | ---------------------------------------- |
-| User → KnowledgeMap  | `1:N` - Mỗi user có map cho nhiều topics |
-| Analytics ← Learning | Consumes - Nhận events từ Learning       |
-| Analytics ← Auth     | Consumes - Lấy thông tin user/role       |
+| `Relation`              | Mô tả                                    |
+| ----------------------- | ---------------------------------------- |
+| `User` → `KnowledgeMap` | `1:N` - Mỗi user có map cho nhiều topics |
+| `Analytics ← Learning`  | Consumes - Nhận events từ Learning       |
+| `Analytics ← Auth`      | Consumes - Lấy thông tin user/role       |
 
 ---
 
@@ -78,11 +78,11 @@ N/A - Analytics là module read-only, không có state machine.
 
 ### Functional Requirements
 
-| ID        | Requirement                   | Điều kiện                       |
-| --------- | ----------------------------- | ------------------------------- |
-| FR-ANA-01 | Mastery calculation chính xác | Công thức đúng                  |
-| FR-ANA-02 | Daily aggregation đúng        | Tổng khớp với logs              |
-| FR-ANA-03 | Phân quyền hoạt động          | Teacher không xem được lớp khác |
+| ID          | Requirement                   | Điều kiện                       |
+| ----------- | ----------------------------- | ------------------------------- |
+| `FR-ANA-01` | Mastery calculation chính xác | Công thức đúng                  |
+| `FR-ANA-02` | Daily aggregation đúng        | Tổng khớp với logs              |
+| `FR-ANA-03` | Phân quyền hoạt động          | Teacher không xem được lớp khác |
 
 ### Edge Cases
 
