@@ -7,54 +7,32 @@ sidebar_position: 5
 
 # Team
 
-Vai trò, onboarding và giao tiếp trong dự án.
+Vai trò, onboarding và giao tiếp.
 
 ---
 
 ## Team Structure
 
-```
-┌─────────────────────────────────────────────┐
-│                Product Owner                 │
-└──────────────────────┬──────────────────────┘
-                       │
-┌──────────────────────┴──────────────────────┐
-│                Scrum Master                  │
-└──────────────────────┬──────────────────────┘
-                       │
-    ┌─────────────┬────┴────┬─────────────┐
-    │             │         │             │
-┌───┴───┐   ┌─────┴────┐ ┌──┴──┐   ┌──────┴─────┐
-│Frontend│   │ Backend  │ │ QA  │   │ UI/UX      │
-│  Team  │   │   Team   │ │Team │   │ Designer   │
-└────────┘   └──────────┘ └─────┘   └────────────┘
-```
-
----
-
-## Roles & Responsibilities
-
-| Role               | Focus                   | Key Responsibilities                                             |
-| ------------------ | ----------------------- | ---------------------------------------------------------------- |
-| **Product Owner**  | Product vision, backlog | Định nghĩa user stories, prioritize backlog, accept deliverables |
-| **Scrum Master**   | Process, productivity   | Facilitate ceremonies, remove blockers, coach Agile              |
-| **Frontend Dev**   | UI/UX implementation    | React components, state, API integration                         |
-| **Backend Dev**    | APIs, business logic    | GraphQL, database, authentication, performance                   |
-| **QA Engineer**    | Quality assurance       | Test planning, E2E automation, regression                        |
-| **UI/UX Designer** | User experience         | Wireframes, design system, accessibility                         |
+| Role | Focus | Key Responsibilities |
+| ---- | ----- | -------------------- |
+| Product Owner | Product vision | Define stories, prioritize backlog |
+| Scrum Master | Process | Facilitate ceremonies, remove blockers |
+| Frontend Dev | UI/UX | React components, state |
+| Backend Dev | APIs | GraphQL, database, auth |
+| QA Engineer | Quality | Test planning, automation |
+| UI/UX Designer | Experience | Wireframes, design system |
 
 ---
 
 ## RACI Matrix
 
-| Activity        | PO  | SM  | Dev | QA  | Design |
-| --------------- | --- | --- | --- | --- | ------ |
-| Sprint Planning | A   | R   | C   | C   | I      |
-| Story Writing   | R   | C   | C   | C   | C      |
-| Development     | I   | I   | R   | I   | C      |
-| Code Review     | I   | I   | R   | I   | I      |
-| Testing         | I   | I   | C   | R   | I      |
-| Deployment      | I   | R   | A   | C   | I      |
+| Activity | PO | SM | Dev | QA |
+| -------- | -- | -- | --- | -- |
+| Sprint Planning | A | R | C | C |
+| Development | I | I | R | I |
+| Code Review | I | I | R | I |
+| Testing | I | I | C | R |
+| Deployment | I | R | A | C |
 
 **R** = Responsible, **A** = Accountable, **C** = Consulted, **I** = Informed
 
@@ -69,46 +47,34 @@ Vai trò, onboarding và giao tiếp trong dự án.
 - ✅ Jira/Linear project
 - ✅ Dev environment setup
 
-### Kỳ vọng tuần đầu
+### Timeline
 
-| Week   | Expectation                |
-| ------ | -------------------------- |
+| Week | Expectation |
+| ---- | ----------- |
 | Week 1 | Complete 1-2 starter tasks |
-| Week 2 | Contribute to sprint items |
-| Week 3 | Pick up regular stories    |
-| Week 4 | Independent contributor    |
+| Week 2 | Contribute to sprint |
+| Week 3 | Pick up regular stories |
+| Week 4 | Independent contributor |
 
 ---
 
 ## Communication
 
-### Các kênh liên lạc
+### Channels
 
-| Channel      | Purpose               | Response Time |
-| ------------ | --------------------- | ------------- |
-| #lms-general | Announcements         | < 4 hours     |
-| #lms-dev     | Technical discussions | < 2 hours     |
-| #lms-urgent  | Critical issues       | < 30 mins     |
+| Channel | Purpose | Response Time |
+| ------- | ------- | ------------- |
+| #lms-general | Announcements | < 4 hours |
+| #lms-dev | Technical | < 2 hours |
+| #lms-urgent | Critical | < 30 mins |
 
-### Lịch họp
+### Meetings
 
-| Meeting            | When          | Duration |
-| ------------------ | ------------- | -------- |
-| Daily Standup      | 9:00 AM daily | 15 min   |
-| Sprint Planning    | Mon (start)   | 2 hours  |
-| Backlog Refinement | Wed           | 1 hour   |
-| Sprint Review      | Fri (end)     | 1 hour   |
-| Retrospective      | Fri (end)     | 1 hour   |
-
-### Định dạng Standup
-
-1. **Hôm qua** làm được gì?
-2. **Hôm nay** sẽ làm gì?
-3. **Blockers** nào cần giải quyết?
+| Meeting | When | Duration |
+| ------- | ---- | -------- |
+| Daily Standup | 9:00 AM | 15 min |
+| Sprint Planning | Mon | 2 hours |
+| Sprint Review | Fri | 1 hour |
+| Retrospective | Fri | 1 hour |
 
 ---
-
-## References
-
-- [Setup](./setup.md)
-- [Contributing](./contributing.md)
