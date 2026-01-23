@@ -1,9 +1,9 @@
 /**
  * LMS Mock Server
- * 
+ *
  * Serves both GraphQL (/graphql) and REST API (/api) endpoints
  * Based on Single Source of Truth: schema.graphql and api-v1.yaml
- * 
+ *
  * Port: 5000
  */
 
@@ -15,7 +15,11 @@ import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-import { queryResolvers, mutationResolvers, typeResolvers } from './graphql-resolvers.js';
+import {
+  queryResolvers,
+  mutationResolvers,
+  typeResolvers,
+} from './graphql-resolvers.js';
 import restHandlers from './rest-handlers.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -26,7 +30,10 @@ const PORT = process.env.PORT || 5000;
 // -----------------------------------------------------------------------------
 let typeDefs;
 try {
-  typeDefs = readFileSync(join(__dirname, '../../spec/interface/schema.graphql'), 'utf-8');
+  typeDefs = readFileSync(
+    join(__dirname, '../../spec/interface/schema.graphql'),
+    'utf-8',
+  );
 } catch (e) {
   console.warn('⚠️  Could not load schema.graphql, using inline schema');
   typeDefs = `

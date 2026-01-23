@@ -56,7 +56,13 @@ export const generateUserSession = (userId) => ({
 // -----------------------------------------------------------------------------
 export const generateSubject = (overrides = {}) => ({
   id: uuid(),
-  name: faker.helpers.arrayElement(['Toán học', 'Tiếng Việt', 'Tiếng Anh', 'Khoa học', 'Lịch sử']),
+  name: faker.helpers.arrayElement([
+    'Toán học',
+    'Tiếng Việt',
+    'Tiếng Anh',
+    'Khoa học',
+    'Lịch sử',
+  ]),
   grade: faker.number.int({ min: 1, max: 12 }),
   curriculum: 'Chương trình GDPT 2018',
   ...overrides,
@@ -84,7 +90,11 @@ export const generateLesson = (topicId, overrides = {}) => ({
 export const generateQuestion = (lessonId, overrides = {}) => ({
   id: uuid(),
   lessonId,
-  type: faker.helpers.arrayElement(['MULTIPLE_CHOICE', 'TRUE_FALSE', 'FILL_BLANK']),
+  type: faker.helpers.arrayElement([
+    'MULTIPLE_CHOICE',
+    'TRUE_FALSE',
+    'FILL_BLANK',
+  ]),
   content: faker.lorem.sentence() + '?',
   ...overrides,
 });
@@ -120,14 +130,24 @@ export const generateUserProfile = (userId) => ({
 
 export const generateBadge = () => ({
   id: uuid(),
-  name: faker.helpers.arrayElement(['First Steps', 'Speed Demon', 'Perfect Score', 'Streak Master']),
+  name: faker.helpers.arrayElement([
+    'First Steps',
+    'Speed Demon',
+    'Perfect Score',
+    'Streak Master',
+  ]),
   criteria: faker.lorem.sentence(),
   icon: '🏆',
 });
 
 export const generateReward = () => ({
   id: uuid(),
-  name: faker.helpers.arrayElement(['Avatar Frame', 'Profile Theme', 'XP Boost', 'Coin Pack']),
+  name: faker.helpers.arrayElement([
+    'Avatar Frame',
+    'Profile Theme',
+    'XP Boost',
+    'Coin Pack',
+  ]),
   cost: faker.number.int({ min: 100, max: 5000 }),
   type: 'VIRTUAL_ITEM',
   description: faker.lorem.sentence(),
@@ -164,7 +184,12 @@ export const generateTournament = (overrides = {}) => ({
   id: uuid(),
   name: faker.lorem.words(3) + ' Championship',
   type: faker.helpers.arrayElement(['SOLO', 'TEAM', 'CLASS']),
-  status: faker.helpers.arrayElement(['SCHEDULED', 'REGISTRATION', 'IN_PROGRESS', 'COMPLETED']),
+  status: faker.helpers.arrayElement([
+    'SCHEDULED',
+    'REGISTRATION',
+    'IN_PROGRESS',
+    'COMPLETED',
+  ]),
   startTime: faker.date.soon().toISOString(),
   endTime: faker.date.future().toISOString(),
   createdAt: faker.date.past().toISOString(),
@@ -185,7 +210,12 @@ export const generateParticipant = (tournamentId, userId) => ({
 export const generateNotification = (userId) => ({
   id: uuid(),
   userId,
-  type: faker.helpers.arrayElement(['BADGE_EARNED', 'LEVEL_UP', 'TOURNAMENT_START', 'LESSON_REMINDER']),
+  type: faker.helpers.arrayElement([
+    'BADGE_EARNED',
+    'LEVEL_UP',
+    'TOURNAMENT_START',
+    'LESSON_REMINDER',
+  ]),
   content: faker.lorem.sentence(),
   readAt: faker.datatype.boolean() ? faker.date.recent().toISOString() : null,
   createdAt: faker.date.recent().toISOString(),
@@ -196,18 +226,20 @@ export const generateNotification = (userId) => ({
 // -----------------------------------------------------------------------------
 export const generateMockDatabase = () => {
   const tenant = generateTenant();
-  const users = Array.from({ length: 10 }, () => generateUser({ tenantId: tenant.id }));
+  const users = Array.from({ length: 10 }, () =>
+    generateUser({ tenantId: tenant.id }),
+  );
   const subjects = Array.from({ length: 5 }, () => generateSubject());
-  
-  const topics = subjects.flatMap(s => 
-    Array.from({ length: 4 }, () => generateTopic(s.id))
+
+  const topics = subjects.flatMap((s) =>
+    Array.from({ length: 4 }, () => generateTopic(s.id)),
   );
-  
-  const lessons = topics.flatMap(t =>
-    Array.from({ length: 5 }, () => generateLesson(t.id))
+
+  const lessons = topics.flatMap((t) =>
+    Array.from({ length: 5 }, () => generateLesson(t.id)),
   );
-  
-  const questions = lessons.flatMap(l =>
+
+  const questions = lessons.flatMap((l) =>
     Array.from({ length: 3 }, () => ({
       ...generateQuestion(l.id),
       answers: [
@@ -216,13 +248,13 @@ export const generateMockDatabase = () => {
         generateAnswer(false),
         generateAnswer(false),
       ],
-    }))
+    })),
   );
-  
+
   const badges = Array.from({ length: 10 }, () => generateBadge());
   const rewards = Array.from({ length: 8 }, () => generateReward());
   const tournaments = Array.from({ length: 5 }, () => generateTournament());
-  
+
   return {
     tenant,
     users,
