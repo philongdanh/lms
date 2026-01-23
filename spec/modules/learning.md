@@ -24,11 +24,11 @@ Module học tập và cá nhân hóa lộ trình dựa trên AI.
 
 ### Rules & Constraints
 
-- ✅ Điểm tối thiểu để pass: configurable per lesson (default 70%)
-- ✅ Anti-cheat: kiểm tra thời gian làm bài hợp lý
-- ✅ Chỉ trigger rewards nếu là lần hoàn thành đầu tiên
-- ✅ Session timeout: 30 phút không hoạt động
-- ✅ Rate limiting theo user
+- Điểm tối thiểu để pass: configurable per lesson (default 70%)
+- Anti-cheat: kiểm tra thời gian làm bài hợp lý
+- Chỉ trigger rewards nếu là lần hoàn thành đầu tiên
+- Session timeout: 30 phút không hoạt động
+- Rate limiting theo user
 
 ### State Machine
 

@@ -24,11 +24,11 @@ Module tổ chức giải đấu và thi đấu real-time.
 
 ### Rules & Constraints
 
-- ✅ Chỉ join được trước khi round bắt đầu
-- ✅ Điểm = accuracy × speed bonus
-- ✅ Leaderboard dùng Redis ZSET cho performance
-- ✅ Latency broadcast < 500ms cho 10k users
-- ✅ Max 100k concurrent users per event
+- Chỉ join được trước khi round bắt đầu
+- Điểm = accuracy × speed bonus
+- Leaderboard dùng Redis ZSET cho performance
+- Latency broadcast < 500ms cho 10k users
+- Max 100k concurrent users per event
 
 ### State Machine
 

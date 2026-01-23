@@ -23,10 +23,10 @@ Module phân tích dữ liệu học tập và báo cáo thống kê.
 
 ### Rules & Constraints
 
-- ✅ ETL latency < 5s từ event
-- ✅ Phân quyền: Teacher chỉ xem lớp được gán
-- ✅ Cache báo cáo trong Redis (TTL 5 phút)
-- ✅ Retention: Raw logs 90 ngày, Daily stats 5 năm
+- ETL latency < 5s từ event
+- Phân quyền: Teacher chỉ xem lớp được gán
+- Cache báo cáo trong Redis (TTL 5 phút)
+- Retention: Raw logs 90 ngày, Daily stats 5 năm
 
 ### State Machine
 

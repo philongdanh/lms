@@ -24,11 +24,11 @@ Module trò chơi hóa, quản lý điểm thưởng và bảng xếp hạng.
 
 ### Rules & Constraints
 
-- ✅ Công thức Level: EXP thresholds configurable
-- ✅ Transaction atomic: không trừ xu mà không có reward
-- ✅ Leaderboard dùng Redis Sorted Sets
-- ✅ Chỉ trigger EXP nếu là lần hoàn thành đầu tiên
-- ✅ Async processing: queue lag < 1s
+- Công thức Level: EXP thresholds configurable
+- Transaction atomic: không trừ xu mà không có reward
+- Leaderboard dùng Redis Sorted Sets
+- Chỉ trigger EXP nếu là lần hoàn thành đầu tiên
+- Async processing: queue lag < 1s
 
 ### State Machine
 

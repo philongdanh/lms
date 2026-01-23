@@ -26,11 +26,11 @@ Module xác thực và phân quyền người dùng trong hệ thống multi-ten
 
 ### Rules & Constraints
 
-- ✅ Audit logging cho tất cả sự kiện registration/login
-- ✅ Input sanitization
-- ✅ Rate limiting theo IP
-- ✅ Maximum 3 devices per user
-- ✅ JWT expiry: 15 phút, Refresh token: 7 ngày
+- Audit logging cho tất cả sự kiện registration/login
+- Input sanitization
+- Rate limiting theo IP
+- Maximum 3 devices per user
+- JWT expiry: 15 phút, Refresh token: 7 ngày
 
 ### State Machine
 

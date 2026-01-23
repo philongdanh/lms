@@ -24,11 +24,11 @@ Module giao tiếp real-time qua WebSocket.
 
 ### Rules & Constraints
 
-- ✅ JWT required cho connection
-- ✅ Redis Pub/Sub adapter cho multi-node
-- ✅ Max 10k connections per node
-- ✅ Handshake time < 100ms
-- ✅ Message delivery < 50ms P50
+- JWT required cho connection
+- Redis Pub/Sub adapter cho multi-node
+- Max 10k connections per node
+- Handshake time < 100ms
+- Message delivery < 50ms P50
 
 ### State Machine
 

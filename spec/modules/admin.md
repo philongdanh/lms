@@ -24,11 +24,11 @@ Module quản trị hệ thống multi-tenant và quản lý người dùng.
 
 ### Rules & Constraints
 
-- ✅ Tenant code phải là duy nhất trong toàn hệ thống
-- ✅ Chỉ Root Admin mới có thể tạo/xóa Tenant
-- ✅ Giới hạn import tối đa 500 users/lần
-- ✅ Soft delete → Hard delete sau 30 ngày
-- ✅ Audit log cho tất cả Impersonation
+- Tenant code phải là duy nhất trong toàn hệ thống
+- Chỉ Root Admin mới có thể tạo/xóa Tenant
+- Giới hạn import tối đa 500 users/lần
+- Soft delete → Hard delete sau 30 ngày
+- Audit log cho tất cả Impersonation
 
 ### State Machine
 

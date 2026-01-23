@@ -61,10 +61,10 @@ Format: `<type>(<scope>): <subject>`
 
 ### Definition of Done
 
-- ✅ Code tuân thủ standards
-- ✅ Unit tests pass (≥ 70% coverage)
-- ✅ Code reviewed & approved
-- ✅ CI pipeline pass
-- ✅ Deployed to staging
+- [x] Code tuân thủ standards
+- [x] Unit tests pass (≥ 70% coverage)
+- [x] Code reviewed & approved
+- [x] CI pipeline pass
+- [x] Deployed to staging
 
 ---

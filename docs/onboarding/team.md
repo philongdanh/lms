@@ -42,10 +42,10 @@ Vai trò, onboarding và giao tiếp.
 
 ### Checklist ngày đầu
 
-- ✅ GitHub organization access
-- ✅ Slack workspace
-- ✅ Jira/Linear project
-- ✅ Dev environment setup
+- [x] GitHub organization access
+- [x] Slack workspace
+- [x] Jira/Linear project
+- [x] Dev environment setup
 
 ### Timeline
 

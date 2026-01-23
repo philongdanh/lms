@@ -24,11 +24,11 @@ Module quản lý nội dung học tập và ngân hàng câu hỏi.
 
 ### Rules & Constraints
 
-- ✅ Lesson phải thuộc về một Topic (hierarchy)
-- ✅ Teacher tạo draft, Admin publish
-- ✅ File upload được scan malware (ClamAV)
-- ✅ Hỗ trợ format: xlsx, docx, pdf cho import
-- ✅ Max file size: 500MB cho video
+- Lesson phải thuộc về một Topic (hierarchy)
+- Teacher tạo draft, Admin publish
+- File upload được scan malware (ClamAV)
+- Hỗ trợ format: xlsx, docx, pdf cho import
+- Max file size: 500MB cho video
 
 ### State Machine
 

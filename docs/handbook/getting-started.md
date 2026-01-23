@@ -19,9 +19,9 @@ LMS Platform là hệ thống quản lý học tập thông minh với **AI Lear
 
 ## Prerequisites
 
-- ✅ Tài khoản được cấp bởi trường học
-- ✅ Trình duyệt web hiện đại (Chrome, Firefox, Safari, Edge)
-- ✅ Kết nối internet ổn định
+- Tài khoản được cấp bởi trường học
+- Trình duyệt web hiện đại (Chrome, Firefox, Safari, Edge)
+- Kết nối internet ổn định
 
 ---
 

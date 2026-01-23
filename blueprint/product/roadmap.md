@@ -23,11 +23,11 @@ Kế hoạch phát triển và các cột mốc quan trọng.
 | S4 | Week 7-8 | Learning Core | Quiz, Progress, Points, Levels |
 
 **MVP Scope:**
-- ✅ Authentication & Authorization
-- ✅ Content browsing
-- ✅ Basic learning flow
-- ✅ Progress tracking
-- ✅ Points & levels
+- Authentication & Authorization
+- Content browsing
+- Basic learning flow
+- Progress tracking
+- Points & levels
 
 ### Phase 2: Expansion
 
@@ -37,10 +37,10 @@ Kế hoạch phát triển và các cột mốc quan trọng.
 | S7 | Week 13-14 | Polish | Bug fixes, Performance, Docs |
 
 **Expansion Scope:**
-- ✅ Tournament system
-- ✅ Real-time competitions
-- ✅ Badges & achievements
-- ✅ Beta release
+- Tournament system
+- Real-time competitions
+- Badges & achievements
+- Beta release
 
 ---
 
