@@ -1,0 +1,552 @@
+# =============================================================================
+# LMS GraphQL Schema - Single Source of Truth
+# =============================================================================
+# This schema defines all types for the LMS platform.
+# Both FE and BE should use this schema as the source of truth.
+# FE: Use graphql-codegen to generate TypeScript types
+# BE: Implement resolvers matching this schema
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# SCALARS
+# -----------------------------------------------------------------------------
+scalar DateTime
+scalar UUID
+scalar JSON
+
+# -----------------------------------------------------------------------------
+# ENUMS (from module specs)
+# -----------------------------------------------------------------------------
+
+# Auth Module - User status (SSoT: auth.md)
+enum UserStatus {
+  PENDING
+  ACTIVE
+  SUSPENDED
+  PENDING_DEACTIVATION
+}
+
+# Admin Module - Tenant status (SSoT: admin.md)
+enum TenantStatus {
+  PENDING
+  ACTIVE
+  SUSPENDED
+  DELETED
+}
+
+# Auth Module - User roles (SSoT: auth.md)
+enum Role {
+  ROOT_ADMIN
+  TENANT_ADMIN
+  TEACHER
+  STUDENT
+  PARENT
+}
+
+# Content Module - Lesson status (SSoT: content.md)
+enum LessonStatus {
+  DRAFT
+  PENDING_REVIEW
+  PUBLISHED
+  ARCHIVED
+}
+
+# Learning Module - Progress status (SSoT: learning.md)
+enum ProgressStatus {
+  LOCKED
+  AVAILABLE
+  IN_PROGRESS
+  COMPLETED
+  REVIEW
+}
+
+# Tournament Module - Tournament status (SSoT: tournament.md)
+enum TournamentStatus {
+  SCHEDULED
+  REGISTRATION
+  IN_PROGRESS
+  COMPLETED
+}
+
+# Content Module - Question types (SSoT: content.md)
+enum QuestionType {
+  MULTIPLE_CHOICE
+  TRUE_FALSE
+  FILL_BLANK
+  ESSAY
+}
+
+# -----------------------------------------------------------------------------
+# AUTH MODULE TYPES (SSoT: auth.md)
+# -----------------------------------------------------------------------------
+
+type Tenant {
+  id: UUID!
+  code: String!
+  name: String!
+  status: TenantStatus!
+  domain: String
+  settings: TenantSettings
+  users: [User!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type TenantSettings {
+  id: UUID!
+  tenantId: UUID!
+  configJson: JSON
+}
+
+type User {
+  id: UUID!
+  email: String!
+  tenantId: UUID!
+  tenant: Tenant!
+  status: UserStatus!
+  roles: [UserRole!]!
+  sessions: [UserSession!]!
+  profile: UserProfile
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type UserRole {
+  id: UUID!
+  userId: UUID!
+  role: Role!
+}
+
+type UserSession {
+  id: UUID!
+  userId: UUID!
+  deviceId: String!
+  lastActivity: DateTime!
+  createdAt: DateTime!
+}
+
+type AuthPayload {
+  accessToken: String!
+  refreshToken: String!
+  user: User!
+}
+
+# -----------------------------------------------------------------------------
+# CONTENT MODULE TYPES (SSoT: content.md)
+# -----------------------------------------------------------------------------
+
+type Subject {
+  id: UUID!
+  name: String!
+  grade: Int!
+  curriculum: String
+  topics: [Topic!]!
+}
+
+type Topic {
+  id: UUID!
+  subjectId: UUID!
+  subject: Subject!
+  name: String!
+  order: Int!
+  lessons: [Lesson!]!
+}
+
+type Lesson {
+  id: UUID!
+  topicId: UUID!
+  topic: Topic!
+  title: String!
+  content: String
+  status: LessonStatus!
+  questions: [Question!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  media: [Media!]
+}
+
+type Media {
+  id: UUID!
+  type: String! # IMAGE, VIDEO, DOCUMENT
+  url: String!
+  size: Int!
+  metadata: JSON
+}
+
+type Question {
+  id: UUID!
+  lessonId: UUID!
+  type: QuestionType!
+  content: String!
+  answers: [Answer!]!
+}
+
+type Answer {
+  id: UUID!
+  text: String!
+  isCorrect: Boolean!
+}
+
+# -----------------------------------------------------------------------------
+# LEARNING MODULE TYPES (SSoT: learning.md)
+# -----------------------------------------------------------------------------
+
+type LearningPath {
+  id: UUID!
+  userId: UUID!
+  subjectId: UUID!
+  lessons: [Lesson!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type LessonProgress {
+  id: UUID!
+  userId: UUID!
+  lessonId: UUID!
+  lesson: Lesson!
+  status: ProgressStatus!
+  score: Float
+  completedAt: DateTime
+}
+
+type ExerciseSession {
+  id: UUID!
+  userId: UUID!
+  lessonId: UUID!
+  startedAt: DateTime!
+  completedAt: DateTime
+  answers: [SubmissionAnswer!]!
+}
+
+type SubmissionAnswer {
+  questionId: UUID!
+  answer: String!
+  isCorrect: Boolean!
+}
+
+type ExerciseResult {
+  sessionId: UUID!
+  score: Float!
+  correctCount: Int!
+  totalCount: Int!
+  results: [SubmissionAnswer!]!
+}
+
+# -----------------------------------------------------------------------------
+# GAMIFICATION MODULE TYPES (SSoT: gamification.md)
+# -----------------------------------------------------------------------------
+
+type UserProfile {
+  userId: UUID!
+  exp: Int!
+  level: Int!
+  coins: Int!
+  badges: [UserBadge!]!
+  streak: Streak
+}
+
+type Badge {
+  id: UUID!
+  name: String!
+  criteria: String!
+  icon: String!
+}
+
+type UserBadge {
+  userId: UUID!
+  badgeId: UUID!
+  badge: Badge!
+  earnedAt: DateTime!
+}
+
+type Reward {
+  id: UUID!
+  name: String!
+  cost: Int!
+  type: String!
+  description: String
+}
+
+type RewardRedemption {
+  id: UUID!
+  userId: UUID!
+  rewardId: UUID!
+  reward: Reward!
+  status: String! # PENDING, COMPLETED
+  redeemedAt: DateTime!
+}
+
+type Streak {
+  userId: UUID!
+  currentStreak: Int!
+  longestStreak: Int!
+  lastActiveDate: DateTime
+}
+
+type LeaderboardEntry {
+  rank: Int!
+  userId: UUID!
+  user: User!
+  score: Int!
+}
+
+# -----------------------------------------------------------------------------
+# ANALYTICS MODULE TYPES (SSoT: analytics.md)
+# -----------------------------------------------------------------------------
+
+type KnowledgeMap {
+  userId: UUID!
+  topicId: UUID!
+  topic: Topic!
+  masteryScore: Float!
+}
+
+type DailyStats {
+  userId: UUID!
+  date: DateTime!
+  lessonsCompleted: Int!
+  timeSpent: Int! # minutes
+  expEarned: Int!
+}
+
+type ProgressOverview {
+  totalLessons: Int!
+  completedLessons: Int!
+  averageScore: Float!
+  totalTimeSpent: Int!
+  currentStreak: Int!
+}
+
+type ClassReport {
+  classId: UUID!
+  totalStudents: Int!
+  averageProgress: Float!
+  averageScore: Float!
+  topPerformers: [User!]!
+  needsAttention: [User!]!
+}
+
+# -----------------------------------------------------------------------------
+# TOURNAMENT MODULE TYPES (SSoT: tournament.md)
+# -----------------------------------------------------------------------------
+
+type Tournament {
+  id: UUID!
+  name: String!
+  type: String!
+  status: TournamentStatus!
+  startTime: DateTime!
+  endTime: DateTime!
+  rounds: [Round!]!
+  participants: [Participant!]!
+  createdAt: DateTime!
+}
+
+type Round {
+  id: UUID!
+  tournamentId: UUID!
+  order: Int!
+  startTime: DateTime!
+  questions: [Question!]!
+}
+
+type Participant {
+  id: UUID!
+  tournamentId: UUID!
+  userId: UUID!
+  user: User!
+  score: Float!
+  rank: Int
+}
+
+type MatchResult {
+  id: UUID!
+  roundId: UUID!
+  userId: UUID!
+  answers: [SubmissionAnswer!]!
+  score: Float!
+  timeMs: Int!
+}
+
+# -----------------------------------------------------------------------------
+# REALTIME MODULE TYPES (SSoT: realtime.md)
+# -----------------------------------------------------------------------------
+
+type Notification {
+  id: UUID!
+  userId: UUID!
+  type: String!
+  content: String!
+  readAt: DateTime
+  createdAt: DateTime!
+}
+
+# -----------------------------------------------------------------------------
+# INPUTS
+# -----------------------------------------------------------------------------
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+input RegisterInput {
+  email: String!
+  password: String!
+  role: Role!
+}
+
+input CreateTenantInput {
+  code: String!
+  name: String!
+  domain: String
+}
+
+input UpdateTenantInput {
+  name: String
+  domain: String
+  status: TenantStatus
+}
+
+input CreateLessonInput {
+  topicId: UUID!
+  title: String!
+  content: String
+}
+
+input UpdateLessonInput {
+  title: String
+  content: String
+}
+
+input SubmitAnswersInput {
+  answers: [AnswerInput!]!
+}
+
+input AnswerInput {
+  questionId: UUID!
+  answer: String!
+}
+
+input CreateTournamentInput {
+  name: String!
+  type: String!
+  startTime: DateTime!
+  endTime: DateTime!
+}
+
+# -----------------------------------------------------------------------------
+# QUERIES
+# -----------------------------------------------------------------------------
+
+type Query {
+  # --- Health ---
+  health: Boolean!
+
+  # --- Auth ---
+  me: User!
+  sessions: [UserSession!]!
+
+  # --- Admin ---
+  tenants: [Tenant!]!
+  tenant(id: UUID!): Tenant
+
+  # --- Content ---
+  subjects: [Subject!]!
+  topics(subjectId: UUID): [Topic!]!
+  lessons(topicId: UUID): [Lesson!]!
+  lesson(id: UUID!): Lesson
+  searchQuestions(query: String!, type: QuestionType): [Question!]!
+
+  # --- Learning ---
+  progress: [LessonProgress!]!
+  learningPath(subjectId: UUID!): LearningPath
+  lessonContent(id: UUID!): Lesson
+  lessonExercises(id: UUID!): [Question!]!
+  recommendations: [Lesson!]!
+
+  # --- Gamification ---
+  profile: UserProfile!
+  badges: [UserBadge!]!
+  leaderboard(limit: Int): [LeaderboardEntry!]!
+  rewards: [Reward!]!
+  myRedemptions: [RewardRedemption!]!
+  streaks: Streak
+
+  # --- Analytics ---
+  progressOverview: ProgressOverview!
+  subjectProgress(subjectId: UUID!): [LessonProgress!]!
+  knowledgeMap: [KnowledgeMap!]!
+  dailyStats(startDate: DateTime, endDate: DateTime): [DailyStats!]!
+  classReport(classId: UUID!): ClassReport!
+
+  # --- Tournament ---
+  tournaments(status: TournamentStatus): [Tournament!]!
+  tournament(id: UUID!): Tournament
+  tournamentMatches(tournamentId: UUID!): [Round!]!
+  tournamentLeaderboard(tournamentId: UUID!): [Participant!]!
+
+  # --- Realtime ---
+  notifications: [Notification!]!
+}
+
+# -----------------------------------------------------------------------------
+# MUTATIONS
+# -----------------------------------------------------------------------------
+
+type Mutation {
+  # --- Auth ---
+  login(input: LoginInput!): AuthPayload!
+  register(input: RegisterInput!): User!
+  refreshToken: AuthPayload!
+  logout: Boolean!
+  revokeSession(id: UUID!): Boolean!
+  linkParent(studentEmail: String!): Boolean!
+
+  # --- Admin ---
+  createTenant(input: CreateTenantInput!): Tenant!
+  updateTenant(id: UUID!, input: UpdateTenantInput!): Tenant!
+  deleteTenant(id: UUID!): Boolean!
+  importUsers(file: String!): Boolean! # Returns job ID in practice
+  impersonateUser(userId: UUID!): AuthPayload!
+
+  # --- Content ---
+  createLesson(input: CreateLessonInput!): Lesson!
+  updateLesson(id: UUID!, input: UpdateLessonInput!): Lesson!
+  publishLesson(id: UUID!): Lesson!
+  importQuestions(file: String!): Boolean!
+
+  # --- Learning ---
+  completeLesson(id: UUID!): LessonProgress!
+  submitExercise(lessonId: UUID!, input: SubmitAnswersInput!): ExerciseResult!
+
+  # --- Gamification ---
+  redeemReward(rewardId: UUID!): RewardRedemption!
+
+  # --- Tournament ---
+  createTournament(input: CreateTournamentInput!): Tournament!
+  joinTournament(tournamentId: UUID!): Participant!
+  submitMatchAnswer(matchId: UUID!, input: SubmitAnswersInput!): MatchResult!
+
+  # --- Realtime ---
+  markNotificationRead(id: UUID!): Notification!
+  deleteNotification(id: UUID!): Boolean!
+}
+
+# -----------------------------------------------------------------------------
+# SUBSCRIPTIONS (for realtime via WebSocket)
+# -----------------------------------------------------------------------------
+
+type Subscription {
+  # --- Realtime notifications ---
+  notificationReceived: Notification!
+  
+  # --- Learning updates ---
+  progressUpdated: LessonProgress!
+  
+  # --- Tournament updates ---
+  tournamentStarted(tournamentId: UUID!): Tournament!
+  leaderboardUpdated(tournamentId: UUID!): [Participant!]!
+  matchUpdate(matchId: UUID!): MatchResult!
+}

@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: LMS API
   version: 1.0.0
-  description: "API for the LMS platform, serving as the interface for multi-tenant educational management. This API provides endpoints for authentication, administration, learning management, content creation, gamification, analytics, tournaments, and real-time communication."
+  description: "API for the LMS platform. According to System Design SSoT, this REST API is reserved for Health Checks, File Uploads, and Webhooks. All business logic queries and mutations are handled via GraphQL."
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
@@ -12,22 +12,12 @@ servers:
     description: v1 API Server
 
 tags:
-  - name: Auth
-    description: "Module xác thực và phân quyền người dùng trong hệ thống multi-tenant. Bao gôm đăng ký, đăng nhập, quản lý session và liên kết tài khoản."
-  - name: Admin
-    description: "Module quản trị hệ thống multi-tenant và quản lý người dùng. Bao gồm tạo tenant, import user và chức năng impersonation."
-  - name: Learning
-    description: "Module học tập và cá nhân hóa lộ trình dựa trên AI. Quản lý tiến độ học tập, nội dung bài học và làm bài tập."
-  - name: Content
-    description: "Module quản lý nội dung học tập và ngân hàng câu hỏi. Hỗ trợ tạo cấu trúc môn học, import câu hỏi và quản lý media."
-  - name: Gamification
-    description: "Module trò chơi hóa, quản lý điểm thưởng (EXP), xu (Coins), badge và bảng xếp hạng (Leaderboard)."
-  - name: Analytics
-    description: "Module phân tích dữ liệu học tập và báo cáo thống kê. Cung cấp kiến thức map, thống kê hàng ngày và báo cáo lớp học."
-  - name: Tournament
-    description: "Module tổ chức giải đấu và thi đấu real-time. Quản lý vòng đấu, người tham gia và bảng xếp hạng realtime của giải đấu."
-  - name: Realtime
-    description: "Module giao tiếp real-time qua WebSocket và quản lý thông báo (Notifications)."
+  - name: System
+    description: "System utilities like Health Check."
+  - name: Media
+    description: "File upload and media management."
+  - name: Webhooks
+    description: "External system integrations."
 
 components:
   securitySchemes:
@@ -35,816 +25,108 @@ components:
       type: http
       scheme: bearer
       bearerFormat: JWT
+    webhookSignature:
+      type: apiKey
+      in: header
+      name: X-LMS-Signature
 
   schemas:
+    # --- Common ---
     Error:
       type: object
       properties:
         code:
           type: string
-          description: "Mã lỗi định danh (e.g., CONFLICT, UNAUTHORIZED)"
+          description: "Error code (e.g., BAD_REQUEST, UNAUTHORIZED)"
         message:
           type: string
-          description: "Mô tả chi tiết về lỗi"
+          description: "Detailed error message"
 
-    Tenant:
+    # --- Media Module Entities (SSoT: content.md) ---
+    FileUploadResponse:
       type: object
       properties:
         id:
           type: string
           format: uuid
-          description: "ID duy nhất của tenant"
-        code:
+        url:
           type: string
-          description: "Mã định danh duy nhất của tenant (e.g., school-code)"
-        name:
+        filename:
           type: string
-          description: "Tên trường học hoặc tổ chức"
-        status:
+        mimetype:
           type: string
-          enum: [PENDING, ACTIVE, SUSPENDED, DELETED]
-          description: "Trạng thái hiện tại của tenant"
-        domain:
-          type: string
-          description: "Tên miền tùy chỉnh của tenant"
+        size:
+          type: integer
 
-    User:
+    # --- Webhook Payloads ---
+    PaymentWebhookType:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-          description: "ID duy nhất của người dùng"
-        email:
-          type: string
-          format: email
-          description: "Email đăng nhập của người dùng"
-        tenant_id:
-          type: string
-          format: uuid
-          description: "ID của tenant mà người dùng thuộc về"
-        status:
-          type: string
-          enum: [PENDING, ACTIVE, SUSPENDED]
-          description: "Trạng thái tài khoản người dùng"
-
-    Lesson:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        topic_id:
-          type: string
-          format: uuid
-        title:
-          type: string
-        content:
-          type: string
-        status:
-          type: string
-          enum: [DRAFT, PENDING_REVIEW, PUBLISHED, ARCHIVED]
-
-    Tournament:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        status:
-          type: string
-          enum: [SCHEDULED, REGISTRATION, IN_PROGRESS, COMPLETED]
-        start_time:
-          type: string
-          format: date-time
-        end_time:
-          type: string
-          format: date-time
+        transaction_id: { type: string }
+        status: { type: string, enum: [success, failed, pending] }
+        amount: { type: integer }
+        currency: { type: string }
 
 paths:
   /health:
     get:
+      operationId: healthCheck
       summary: Health Check
-      description: "Kiểm tra trạng thái hoạt động của hệ thống API."
+      description: "Quick check to verify API availability."
+      tags: [System]
       security: []
       responses:
         '200':
-          description: "Hệ thống hoạt động bình thường."
-
-  # --- Auth Module ---
-  /login:
-    post:
-      summary: Đăng nhập
-      description: "Đăng nhập vào hệ thống và khởi tạo session. Yêu cầu email và password."
-      tags: [Auth]
-      security: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required: [email, password]
-              properties:
-                email: { type: string, format: email }
-                password: { type: string }
-      responses:
-        '200':
-          description: "Đăng nhập thành công, trả về tokens và thông tin user."
+          description: "System is operational."
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  access_token: { type: string }
-                  user: { $ref: '#/components/schemas/User' }
-        '401':
-          description: "Sai thông tin đăng nhập."
-          content:
-            application/json:
-              schema: { $ref: '#/components/schemas/Error' }
-        '429':
-          description: "Vượt quá giới hạn đăng nhập (10/min)."
+                  status: { type: string, example: "ok" }
+                  timestamp: { type: string, format: date-time }
 
-  /register:
+  /upload:
     post:
-      summary: Đăng ký người dùng mới
-      description: "Đăng ký tài khoản mới cho Student hoặc Parent."
-      tags: [Auth]
-      security: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required: [email, password, role]
-              properties:
-                email: { type: string, format: email }
-                password: { type: string }
-                role: { type: string, enum: [student, parent] }
-      responses:
-        '201':
-          description: "Tài khoản được tạo thành công và đang chờ verify."
-          content:
-            application/json:
-              schema: { $ref: '#/components/schemas/User' }
-        '409':
-          description: "Email đã tồn tại."
-          content:
-            application/json:
-              schema: { $ref: '#/components/schemas/Error' }
-
-  /refresh:
-    post:
-      summary: Refresh Token
-      description: "Cấp lại access token mới dựa trên refresh token lưu trong session."
-      tags: [Auth]
-      security: [{ bearerAuth: [] }]
-      responses:
-        '200':
-          description: "Access token mới được cấp thành công."
-        '401':
-          description: "Refresh token không hợp lệ hoặc hết hạn."
-
-  /logout:
-    post:
-      summary: Đăng xuất
-      description: "Đăng xuất và thu hồi session hiện tại. Hủy refresh token."
-      tags: [Auth]
-      security: [{ bearerAuth: [] }]
-      responses:
-        '204':
-          description: "Đăng xuất thành công."
-
-  /sessions:
-    get:
-      summary: Danh sách sessions
-      description: "Lấy danh sách các session đang hoạt động của người dùng (tối đa 3 thiết bị)."
-      tags: [Auth]
-      security: [{ bearerAuth: [] }]
-      responses:
-        '200':
-          description: "Danh sách sessions của user."
-  /sessions/{id}:
-    delete:
-      summary: Thu hồi session
-      description: "Thu hồi (logout) một session cụ thể dựa trên ID."
-      tags: [Auth]
-      security: [{ bearerAuth: [] }]
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: "ID của session cần thu hồi."
-          schema: { type: string }
-      responses:
-        '204':
-          description: "Session đã bị thu hồi."
-
-  /parents/link:
-    post:
-      summary: Liên kết phụ huynh
-      description: "Liên kết tài khoản phụ huynh với tài khoản học sinh để theo dõi tiến độ."
-      tags: [Auth]
+      operationId: uploadFile
+      summary: Upload File
+      description: "Upload media files (images, videos, documents). Max size 500MB."
+      tags: [Media]
       security: [{ bearerAuth: [] }]
       requestBody:
-        required: true
         content:
-          application/json:
-            schema:
-              type: object
-              required: [student_email]
-              properties:
-                student_email: { type: string, format: email }
-      responses:
-        '200':
-          description: "Liên kết thành công."
-
-  # --- Admin Module ---
-  /tenants:
-    get:
-      summary: Danh sách tenants
-      description: "Lấy danh sách tất cả các trường học/tổ chức trong hệ thống. Chỉ dành cho Root Admin."
-      tags: [Admin]
-      security: [{ bearerAuth: [] }]
-      responses:
-        '200':
-          description: "Danh sách tenants."
-          content:
-            application/json:
-              schema:
-                type: array
-                items: { $ref: '#/components/schemas/Tenant' }
-    post:
-      summary: Tạo tenant mới
-      description: "Khởi tạo một tenant mới cho trường học. Chỉ dành cho Root Admin."
-      tags: [Admin]
-      security: [{ bearerAuth: [] }]
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema: { $ref: '#/components/schemas/Tenant' }
-      responses:
-        '201':
-          description: "Tenant được tạo thành công."
-          content:
-            application/json:
-              schema: { $ref: '#/components/schemas/Tenant' }
-        '409':
-          description: "Tenant code đã tồn tại."
-
-  /tenants/{id}:
-    put:
-      summary: Cập nhật tenant
-      description: "Cập nhật thông tin hoặc cấu hình của một tenant."
-      tags: [Admin]
-      security: [{ bearerAuth: [] }]
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema: { type: string }
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema: { $ref: '#/components/schemas/Tenant' }
-      responses:
-        '200':
-          description: "Thông tin đã được cập nhật."
-    delete:
-      summary: Xóa tenant (soft delete)
-      description: "Xóa mềm tenant. Dữ liệu sẽ bị xóa vĩnh viễn sau 30 ngày."
-      tags: [Admin]
-      security: [{ bearerAuth: [] }]
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema: { type: string }
-      responses:
-        '204':
-          description: "Tenant đã được đưa vào hàng đợi xóa."
-
-  /users/import:
-    post:
-      summary: Import users từ CSV
-      description: "Import hàng loạt người dùng từ file CSV (tối đa 500 users/lần). Chỉ dành cho Admin."
-      tags: [Admin]
-      security: [{ bearerAuth: [] }]
-      responses:
-        '202':
-          description: "File đã được nhận và đang xử lý async."
-
-  /users/{id}/impersonate:
-    post:
-      summary: Đăng nhập thay user
-      description: "Admin đăng nhập with vai trò của user để hỗ trợ kỹ thuật. Sẽ ghi audit log."
-      tags: [Admin]
-      security: [{ bearerAuth: [] }]
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema: { type: string }
-      responses:
-        '200':
-          description: "Session impersonation được tạo."
-
-  # --- Learning Module ---
-  /progress:
-    get:
-      summary: Tiến độ tổng quan
-      description: "Lấy dữ liệu tổng quan về tiến độ học tập của người dùng."
-      tags: [Learning]
-      security: [{ bearerAuth: [] }]
-      responses:
-        '200':
-          description: "Dữ liệu tiến độ."
-
-  /lessons/{id}/content:
-    get:
-      summary: Nội dung bài học
-      description: "Lấy nội dung chi tiết của một bài học."
-      tags: [Learning]
-      security: [{ bearerAuth: [] }]
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema: { type: string }
-      responses:
-        '200':
-          description: "Nội dung bài học (HTML/Markdown/Video URL)."
-          content:
-            application/json:
-              schema: { $ref: '#/components/schemas/Lesson' }
-
-  /lessons/{id}/complete:
-    post:
-      summary: Đánh dấu hoàn thành
-      description: "Cập nhật trạng thái hoàn thành bài học và trigger rewards nếu là lần đầu."
-      tags: [Learning]
-      security: [{ bearerAuth: [] }]
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema: { type: string }
-      responses:
-        '200':
-          description: "Trạng thái đã được cập nhật."
-
-  /lessons/{id}/exercise:
-    get:
-      summary: Lấy bài tập
-      description: "Lấy danh sách các câu hỏi/bài tập thuộc bài học này."
-      tags: [Learning]
-      security: [{ bearerAuth: [] }]
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema: { type: string }
-      responses:
-        '200':
-          description: "Danh sách bài tập."
-
-  /exercises/{id}/submit:
-    post:
-      summary: Nộp câu trả lời
-      description: "Nộp kết quả làm bài tập để hệ thống chấm điểm và ghi lại lịch sử."
-      tags: [Learning]
-      security: [{ bearerAuth: [] }]
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema: { type: string }
-      requestBody:
-        required: true
-        content:
-          application/json:
+          multipart/form-data:
             schema:
               type: object
               properties:
-                answers:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      question_id: { type: string }
-                      answer: { type: string }
-      responses:
-        '200':
-          description: "Kết quả chấm điểm."
-
-  /recommendations:
-    get:
-      summary: Gợi ý bài học
-      description: "Lấy danh sách các bài học gợi ý dựa trên lộ trình cá nhân hóa do AI tạo ra."
-      tags: [Learning]
-      security: [{ bearerAuth: [] }]
-      responses:
-        '200':
-          description: "Danh sách gợi ý."
-          content:
-            application/json:
-              schema:
-                type: array
-                items: { $ref: '#/components/schemas/Lesson' }
-
-  # --- Content Module ---
-  /subjects:
-    get:
-      summary: Danh sách môn học
-      description: "Lấy danh sách các môn học có sẵn trong hệ thống."
-      tags: [Content]
-      security: []
-      responses:
-        '200':
-          description: "Danh sách môn học."
-
-  /topics:
-    get:
-      summary: Danh sách chủ đề
-      description: "Lấy danh sách các chủ đề (Topics) của môn học."
-      tags: [Content]
-      security: []
-      responses:
-        '200':
-          description: "Danh sách chủ đề."
-
-  /lessons:
-    get:
-      summary: Danh sách bài học
-      description: "Lấy danh sách các bài học."
-      tags: [Content]
-      security: []
-      responses:
-        '200':
-          description: "Danh sách bài học."
-          content:
-            application/json:
-              schema:
-                type: array
-                items: { $ref: '#/components/schemas/Lesson' }
-    post:
-      summary: Tạo bài học mới
-      description: "Tạo một bài học mới (Draft). Chỉ dành cho Teacher."
-      tags: [Content]
-      security: [{ bearerAuth: [] }]
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema: { $ref: '#/components/schemas/Lesson' }
+                file:
+                  type: string
+                  format: binary
       responses:
         '201':
-          description: "Bài học đã được tạo."
+          description: "File uploaded successfully."
           content:
             application/json:
-              schema: { $ref: '#/components/schemas/Lesson' }
-  /lessons/{id}:
-    get:
-      summary: Chi tiết bài học
-      description: "Lấy thông tin chi tiết cấu trúc bài học cho giáo viên quản lý."
-      tags: [Content]
-      security: [{ bearerAuth: [] }]
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema: { type: string }
-      responses:
-        '200':
-          description: "Thông tin chi tiết."
-          content:
-            application/json:
-              schema: { $ref: '#/components/schemas/Lesson' }
-
-  /lessons/{id}/publish:
-    put:
-      summary: Publish bài học
-      description: "Phê duyệt và công khai bài học cho học sinh. Chỉ dành cho Admin."
-      tags: [Content]
-      security: [{ bearerAuth: [] }]
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema: { type: string }
-      responses:
-        '200':
-          description: "Bài học đã được publish."
-
-  /questions/import:
-    post:
-      summary: Import câu hỏi
-      description: "Import hàng loạt câu hỏi từ file (xlsx, docx, pdf)."
-      tags: [Content]
-      security: [{ bearerAuth: [] }]
-      responses:
-        '202':
-          description: "Đang xử lý import."
-
-  /questions/search:
-    get:
-      summary: Tìm kiếm câu hỏi
-      description: "Tìm kiếm trong ngân hàng câu hỏi dựa trên từ khóa hoặc loại câu hỏi."
-      tags: [Content]
-      security: [{ bearerAuth: [] }]
-      responses:
-        '200':
-          description: "Kết quả tìm kiếm."
-
-  # --- Gamification Module ---
-  /profile:
-    get:
-      summary: Thông tin EXP/Level
-      description: "Lấy thông tin về điểm kinh nghiệm (EXP), cấp độ (Level) và số xu (Coins) của người dùng."
-      tags: [Gamification]
-      security: [{ bearerAuth: [] }]
-      responses:
-        '200':
-          description: "Dữ liệu hồ sơ game."
-
-  /badges:
-    get:
-      summary: Danh sách badges
-      description: "Lấy danh sách các huy hiệu mà người dùng đã đạt được."
-      tags: [Gamification]
-      security: [{ bearerAuth: [] }]
-      responses:
-        '200':
-          description: "Danh sách huy hiệu."
-
-  /leaderboard:
-    get:
-      summary: Bảng xếp hạng
-      description: "Lấy bảng xếp hạng điểm số (thường dùng Redis Sorted Set để cập nhật realtime)."
-      tags: [Gamification]
-      security: [{ bearerAuth: [] }]
-      responses:
-        '200':
-          description: "Dữ liệu bảng xếp hạng."
-
-  /rewards:
-    get:
-      summary: Danh sách phần thưởng
-      description: "Lấy danh sách các vật phẩm hoặc phần thưởng có thể đổi bằng xu."
-      tags: [Gamification]
-      security: [{ bearerAuth: [] }]
-      responses:
-        '200':
-          description: "Danh sách phần thưởng."
-  /rewards/{id}/redeem:
-    post:
-      summary: Đổi phần thưởng
-      description: "Sử dụng xu để đổi lấy một phần thưởng cụ thể. Thực hiện qua một transaction atomic."
-      tags: [Gamification]
-      security: [{ bearerAuth: [] }]
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema: { type: string }
-      responses:
-        '200':
-          description: "Đổi thưởng thành công."
+              schema: { $ref: '#/components/schemas/FileUploadResponse' }
         '400':
-          description: "Không đủ xu để đổi."
-
-  /streaks:
-    get:
-      summary: Thông tin streak
-      description: "Lấy thông tin về chuỗi ngày học liên tục của người dùng."
-      tags: [Gamification]
-      security: [{ bearerAuth: [] }]
-      responses:
-        '200':
-          description: "Dữ liệu streak."
-
-  # --- Analytics Module ---
-  /progress/overview:
-    get:
-      summary: Tổng quan tiến độ
-      description: "Thống kê tổng quan dữ liệu học tập cho Dashboard."
-      tags: [Analytics]
-      security: [{ bearerAuth: [] }]
-      responses:
-        '200':
-          description: "Dữ liệu thống kê."
-
-  /progress/subject/{id}:
-    get:
-      summary: Tiến độ theo môn học
-      description: "Phân tích chi tiết tiến độ học tập cho một môn học cụ thể."
-      tags: [Analytics]
-      security: [{ bearerAuth: [] }]
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema: { type: string }
-      responses:
-        '200':
-          description: "Dữ liệu tiến độ môn học."
-
-  /knowledge-map:
-    get:
-      summary: Bản đồ kiến thức
-      description: "Lấy bản đồ mức độ nắm vững kiến thức (Mastery Map) của người dùng."
-      tags: [Analytics]
-      security: [{ bearerAuth: [] }]
-      responses:
-        '200':
-          description: "Mastery score theo từng topic."
-
-  /daily-stats:
-    get:
-      summary: Thống kê hàng ngày
-      description: "Lấy các chỉ số học tập (thời gian học, bài hoàn thành) theo từng ngày."
-      tags: [Analytics]
-      security: [{ bearerAuth: [] }]
-      responses:
-        '200':
-          description: "Danh sách thống kê theo ngày."
-
-  /reports/class/{id}:
-    get:
-      summary: Báo cáo lớp học
-      description: "Tạo báo cáo tổng hợp cho toàn bộ lớp học. Chỉ dành cho Teacher."
-      tags: [Analytics]
-      security: [{ bearerAuth: [] }]
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema: { type: string }
-      responses:
-        '200':
-          description: "Dữ liệu báo cáo hoặc URL tải file."
-
-  # --- Tournament Module ---
-  /tournaments:
-    get:
-      summary: Danh sách giải đấu
-      description: "Lấy danh sách các cuộc thi sắp diễn ra hoặc đang diễn ra."
-      tags: [Tournament]
-      security: [{ bearerAuth: [] }]
-      responses:
-        '200':
-          description: "Danh sách giải đấu."
+          description: "Invalid file or size limit exceeded."
           content:
             application/json:
-              schema:
-                 type: array
-                 items: { $ref: '#/components/schemas/Tournament' }
+              schema: { $ref: '#/components/schemas/Error' }
+
+  /webhooks/payment:
     post:
-      summary: Tạo giải đấu mới
-      description: "Khởi tạo một giải đấu realtime mới. Chỉ dành cho Admin/Teacher."
-      tags: [Tournament]
-      security: [{ bearerAuth: [] }]
+      operationId: handlePaymentWebhook
+      summary: Payment Webhook
+      description: "Receive payment status updates from external payment gateway."
+      tags: [Webhooks]
+      security: [{ webhookSignature: [] }]
       requestBody:
-        required: true
         content:
           application/json:
-            schema: { $ref: '#/components/schemas/Tournament' }
-      responses:
-        '201':
-          description: "Giải đấu đã được tạo thành công."
-  /tournaments/{id}:
-    get:
-      summary: Chi tiết giải đấu
-      description: "Lấy thông tin chi tiết và trạng thái hiện tại của một giải đấu."
-      tags: [Tournament]
-      security: [{ bearerAuth: [] }]
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema: { type: string }
+            schema: { $ref: '#/components/schemas/PaymentWebhookType' }
       responses:
         '200':
-          description: "Thông tin chi tiết giải đấu."
-          content:
-            application/json:
-              schema: { $ref: '#/components/schemas/Tournament' }
-
-  /tournaments/{id}/join:
-    post:
-      summary: Đăng ký tham gia
-      description: "Học sinh đăng ký tham gia vào giải đấu (phải thực hiện trước khi round bắt đầu)."
-      tags: [Tournament]
-      security: [{ bearerAuth: [] }]
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema: { type: string }
-      responses:
-        '200':
-          description: "Đã tham gia thành công."
-        '403':
-          description: "Không thể tham gia (vd: đã bắt đầu)."
-
-  /tournaments/{id}/matches:
-    get:
-      summary: Danh sách trận đấu
-      description: "Lấy danh sách các trận đấu/vòng đấu trong giải đấu."
-      tags: [Tournament]
-      security: [{ bearerAuth: [] }]
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema: { type: string }
-      responses:
-        '200':
-          description: "Danh sách trận đấu."
-
-  /tournaments/matches/{id}/submit:
-    post:
-      summary: Nộp câu trả lời
-      description: "Nộp đáp án trong quá trình thi đấu realtime. Điểm số dựa trên độ chính xác và tốc độ."
-      tags: [Tournament]
-      security: [{ bearerAuth: [] }]
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema: { type: string }
-      responses:
-        '200':
-          description: "Kết quả đã được ghi nhận."
-
-  /tournaments/{id}/leaderboard:
-    get:
-      summary: Bảng xếp hạng thi đấu
-      description: "Lấy bảng xếp hạng realtime của giải đấu đang diễn ra."
-      tags: [Tournament]
-      security: [{ bearerAuth: [] }]
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema: { type: string }
-      responses:
-        '200':
-          description: "Xếp hạng hiện tại."
-
-  # --- Realtime Module ---
-  /notifications:
-    get:
-      summary: Danh sách thông báo
-      description: "Lấy danh sách các thông báo của người dùng."
-      tags: [Realtime]
-      security: [{ bearerAuth: [] }]
-      responses:
-        '200':
-          description: "Danh sách thông báo."
-  /notifications/{id}/read:
-    put:
-      summary: Đánh dấu đã đọc
-      description: "Cập nhật trạng thái đã đọc cho một thông báo."
-      tags: [Realtime]
-      security: [{ bearerAuth: [] }]
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema: { type: string }
-      responses:
-        '200':
-          description: "Trạng thái đã được cập nhật."
-  /notifications/{id}:
-    delete:
-      summary: Xóa thông báo
-      description: "Xóa một thông báo khỏi danh sách."
-      tags: [Realtime]
-      security: [{ bearerAuth: [] }]
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema: { type: string }
-      responses:
-        '204':
-          description: "Thông báo đã bị xóa."
-
-  /ws:
-    get:
-      summary: WebSocket Connection Upgrade
-      tags: [Realtime]
-      description: "Endpoint để thực hiện WebSocket handshake bằng JWT. Hỗ trợ multi-node qua Redis Pub/Sub."
-      security: []
-      responses:
-        '101':
-          description: "Đang chuyển đổi sang giao thức WebSocket."
-        '200':
-          description: "Dấu hiệu kết nối WebSocket đã hoàn tất (cho linter)."
+          description: "Webhook received and processed."
+        '400':
+          description: "Invalid signature or payload."
