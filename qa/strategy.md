@@ -22,15 +22,15 @@ Chiến lược kiểm thử tổng thể và mục tiêu chất lượng.
 | E2E | 100% happy paths | Playwright | < 30s/test |
 
 **Testing Pyramid:**
-```mermaid
-flowchart TB
-    subgraph Tests
-        E2E["E2E Tests<br/>5%"]
-        Integration["Integration Tests<br/>15%"]
-        Unit["Unit Tests<br/>80%"]
-    end
-    E2E --> Integration
-    Integration --> Unit
+```d2
+direction: right
+
+E2E: E2E Tests (5%)
+Integration: Integration Tests (15%)
+Unit: Unit Tests (80%)
+
+E2E -> Integration
+Integration -> Unit
 ```
 
 ### Automation Tools
@@ -59,13 +59,14 @@ flowchart TB
 | Low | Minor issue | Backlog |
 
 **Bug Lifecycle:**
-```mermaid
-flowchart LR
-    New --> Triaged
-    Triaged --> InProgress
-    InProgress --> InReview
-    InReview --> Verified
-    Verified --> Closed
+```d2
+direction: right
+
+New -> Triaged
+Triaged -> InProgress
+InProgress -> InReview
+InReview -> Verified
+Verified -> Closed
 ```
 
 ### Quality Gates
