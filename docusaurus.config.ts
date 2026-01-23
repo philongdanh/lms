@@ -61,12 +61,15 @@ const config: Config = {
     ],
   ],
   themeConfig: {
-    image: 'img/favicon.svg',
     colorMode: {
       respectPrefersColorScheme: true,
     },
     navbar: {
       title: 'LMS',
+      logo: {
+        alt: 'LMS Logo',
+        src: 'img/favicon.svg',
+      },
       items: [
         {
           type: 'docSidebar',
