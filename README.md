@@ -17,40 +17,6 @@ Tài liệu chính thức cho hệ thống Learning Management System (LMS).
 
 ---
 
-## Documentation Structure (SDD)
-
-Cấu trúc theo **Spec-Driven Development** — minimal cho Scrum team.
-
-```
-blueprint/          ← WHAT: Định nghĩa sản phẩm (Product + Architecture)
-spec/               ← HOW: Đặc tả kỹ thuật (Modules + Interfaces)
-qa/                 ← VERIFY: Đảm bảo chất lượng (Strategy + Cases)
-docs/               ← GUIDE: Hướng dẫn (Onboarding + Handbook)
-```
-
-### 1. [Blueprint](./blueprint) — Định nghĩa sản phẩm
-
-| Folder          | Nội dung                                                                                                                                                                                                    |
-| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `product/`      | [Vision](./blueprint/product/vision.md) · [Roadmap](./blueprint/product/roadmap.md) · [Backlog](./blueprint/product/backlog.md)                                                                             |
-| `architecture/` | [System Design](./blueprint/architecture/system-design.md) · [Tech Stack](./blueprint/architecture/stack.md) · [Database](./blueprint/architecture/database.md) · [ADRs](/blueprint/architecture/decisions) |
-
-### 2. [Spec](./spec) — Đặc tả kỹ thuật
-
-| Folder       | Nội dung                                                                                                                           |
-| ------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `modules/`   | [Auth](./spec/modules/auth.md) · [Learning](./spec/modules/learning.md) · [Admin](./spec/modules/admin.md) · ...                   |
-| `interface/` | [UI System](./spec/interface/ui-system.md) · [Gateway](./spec/interface/gateway.md) · [GraphQL Schema](./spec/interface/schema.md) |
-
-### 3. [QA](./qa/) — Đảm bảo chất lượng
-
-[Strategy](./qa/strategy.md) · [Test Cases](./qa/cases/happy-path.md) ·
-[Benchmarks](./qa/benchmarks.md)
-
-### 4. Docs
-
----
-
 ## Project Constraints
 
 | Constraint      | Value                                        |
@@ -58,9 +24,6 @@ docs/               ← GUIDE: Hướng dẫn (Onboarding + Handbook)
 | **Timeline**    | MVP: 8 weeks (S1-S4), Production: 22/03/2026 |
 | **Tech Stack**  | NestJS, Next.js, PostgreSQL, GraphQL, Redis  |
 | **Methodology** | Scrum + Spec-Driven Development              |
-
-Chi tiết: [Roadmap](./blueprint/product/roadmap.md) ·
-[Tech Stack](./blueprint/architecture/stack.md)
 
 ---
 
