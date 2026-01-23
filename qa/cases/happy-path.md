@@ -15,6 +15,8 @@ Kịch bản kiểm thử thành công theo module.
 
 ### TC-INT-AUTH-001: Register with valid email
 
+> **Validates**: [FR-AUTH-01](../../spec/modules/auth.md#acceptance-criteria)
+
 ```gherkin
 Feature: User Registration
   
@@ -29,6 +31,8 @@ Feature: User Registration
 ```
 
 ### TC-INT-AUTH-003: Login with valid credentials
+
+> **Validates**: [FR-AUTH-02](../../spec/modules/auth.md#acceptance-criteria)
 
 ```gherkin
 Feature: User Login
@@ -78,6 +82,8 @@ Feature: Subject Listing
 
 ### TC-E2E-LEARN-001: Complete a lesson
 
+> **Validates**: [FR-LEARN-03](../../spec/modules/learning.md#acceptance-criteria)
+
 ```gherkin
 Feature: Lesson Completion
 
@@ -93,6 +99,8 @@ Feature: Lesson Completion
 ```
 
 ### TC-E2E-LEARN-002: Complete quiz
+
+> **Validates**: [FR-LEARN-02](../../spec/modules/learning.md#acceptance-criteria)
 
 ```gherkin
 Feature: Quiz Completion
@@ -112,6 +120,8 @@ Feature: Quiz Completion
 ## Tournament Module
 
 ### TC-E2E-TOUR-001: Join tournament
+
+> **Validates**: [FR-TOUR-01](../../spec/modules/tournament.md#acceptance-criteria)
 
 ```gherkin
 Feature: Tournament Registration
