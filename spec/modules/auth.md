@@ -15,14 +15,120 @@ Module xác thực và phân quyền người dùng trong hệ thống multi-ten
 
 ### Workflow chính
 
-| Workflow            | Mô tả                                    | Actor   | Kết quả                        |
-| ------------------- | ---------------------------------------- | ------- | ------------------------------ |
-| School Registration | Đăng ký tenant mới cho trường học        | `Admin` | `Tenant` được tạo và kích hoạt |
-| `User` Registration | Đăng ký người dùng mới (Student/Parent)  | `User`  | Account được tạo và verify     |
-| Multi-Device Login  | Đăng nhập và kiểm soát thiết bị          | `User`  | Session được tạo               |
-| Parent-Student Link | Liên kết tài khoản phụ huynh và học sinh | Parent  | Accounts được liên kết         |
-| Token Refresh       | Cấp lại access token                     | System  | Token mới được cấp             |
-| Logout & Revoke     | Đăng xuất và thu hồi session             | `User`  | Session bị hủy                 |
+| Workflow            | Mô tả                                    | Actor    | Kết quả                        |
+| ------------------- | ---------------------------------------- | -------- | ------------------------------ |
+| School Registration | Đăng ký tenant mới cho trường học        | `Admin`  | `Tenant` được tạo và kích hoạt |
+| User Registration   | Đăng ký người dùng mới (Student/Parent)  | `User`   | Account được tạo và verify     |
+| Multi-Device Login  | Đăng nhập và kiểm soát thiết bị          | `User`   | Session được tạo               |
+| Parent-Student Link | Liên kết tài khoản phụ huynh và học sinh | `Parent` | Accounts được liên kết         |
+| Token Refresh       | Cấp lại access token                     | `System` | Token mới được cấp             |
+| Logout & Revoke     | Đăng xuất và thu hồi session             | `User`   | Session bị hủy                 |
+
+#### Detailed Flows
+
+##### School Registration
+
+```d2
+shape: sequence_diagram
+Admin
+"SaaS Platform"
+Database
+"Email Service"
+
+Admin -> "SaaS Platform": register_tenant(school_info)
+"SaaS Platform" -> Database: create_tenant(pending)
+"SaaS Platform" -> "Email Service": send_activation_link()
+"Email Service" -> Admin: activation_email
+Admin -> "SaaS Platform": activate_tenant(token)
+"SaaS Platform" -> Database: update_tenant(active)
+"SaaS Platform" -> Admin: success
+```
+
+##### User Registration
+
+```d2
+shape: sequence_diagram
+User
+"Auth Service"
+Database
+"Email Service"
+
+User -> "Auth Service": register(email, password)
+"Auth Service" -> Database: check_email_exists
+Database -> "Auth Service": not_found
+"Auth Service" -> Database: create_user(pending)
+"Auth Service" -> "Email Service": send_otp()
+User -> "Auth Service": verify_otp(code)
+"Auth Service" -> Database: update_user(verified)
+"Auth Service" -> User: success
+```
+
+##### Multi-Device Login
+
+```d2
+shape: sequence_diagram
+User
+"Auth Service"
+Database
+Redis
+
+User -> "Auth Service": login(credentials)
+"Auth Service" -> Database: validate_user
+Database -> "Auth Service": ok
+"Auth Service" -> Redis: check_active_sessions(user_id)
+Redis -> "Auth Service": session_count
+"Auth Service" -> Database: create_session(device_info)
+"Auth Service" -> User: return (access_token, refresh_token)
+```
+
+##### Parent-Student Link
+
+```d2
+shape: sequence_diagram
+Parent
+"Auth Service"
+Database
+"Email Service"
+Student
+
+Parent -> "Auth Service": link_student(student_email)
+"Auth Service" -> Database: find_student
+Database -> "Auth Service": student_record
+"Auth Service" -> "Email Service": send_consent_request(student)
+Student -> "Auth Service": approve_link(token)
+"Auth Service" -> Database: create_relation(parent, student)
+"Auth Service" -> Parent: notification_success
+```
+
+##### Token Refresh
+
+```d2
+shape: sequence_diagram
+Client
+"Auth Service"
+Database
+
+Client -> "Auth Service": refresh_token(token)
+"Auth Service" -> Database: validate_refresh_token
+Database -> "Auth Service": valid
+"Auth Service" -> "Auth Service": generate_new_access_token
+"Auth Service" -> Client: new_access_token
+```
+
+##### Logout & Revoke
+
+```d2
+shape: sequence_diagram
+User
+"Auth Service"
+Redis
+Database
+
+User -> "Auth Service": logout(session_id)
+"Auth Service" -> Redis: delete_session(session_id)
+"Auth Service" -> Database: mark_session_revoked
+"Auth Service" -> User: success
+```
 
 ### Rules & Constraints
 
@@ -32,33 +138,41 @@ Module xác thực và phân quyền người dùng trong hệ thống multi-ten
 - Maximum 3 devices per user
 - JWT expiry: 15 phút, Refresh token: 7 ngày
 
-### State Machine
+### Lifecycle Sequence
 
 ```d2
-direction: right
+shape: sequence_diagram
 
-Start: {
-  shape: circle
-  style.fill: black
-  label: ""
-  width: 20
-  height: 20
-}
+User
+"Auth Service"
+Database
+"Email Service"
+System
+Notification
+Admin
+Queue
+Scheduler
 
-End: {
-  shape: circle
-  style.fill: black
-  label: ""
-  width: 20
-  height: 20
-}
+User -> "Auth Service": register()
+"Auth Service" -> Database: create_user(status=PENDING)
+"Auth Service" -> "Email Service": send_verification()
 
-Start -> PENDING
-PENDING -> ACTIVE: verify_email
-ACTIVE -> SUSPENDED: violation
-SUSPENDED -> ACTIVE: resolve
-ACTIVE -> PENDING_DEACTIVATION: request_delete
-PENDING_DEACTIVATION -> End: hard_delete_30d
+User -> "Auth Service": verify_email(token)
+"Auth Service" -> Database: update(status=ACTIVE)
+
+System -> "Auth Service": detect_violation()
+"Auth Service" -> Database: update(status=SUSPENDED)
+"Auth Service" -> Notification: notify_user()
+
+Admin -> "Auth Service": resolve_violation()
+"Auth Service" -> Database: update(status=ACTIVE)
+
+User -> "Auth Service": request_delete()
+"Auth Service" -> Database: update(status=PENDING_DEACTIVATION)
+"Auth Service" -> Queue: schedule_hard_delete(30_days)
+
+Scheduler -> "Auth Service": execute_hard_delete()
+"Auth Service" -> Database: delete_user_data()
 ```
 
 ---
@@ -69,9 +183,9 @@ PENDING_DEACTIVATION -> End: hard_delete_30d
 
 ```d2
 direction: right
-`Tenant` -> `User`: has
-`User` -> `UserRole`: has
-`User` -> `UserSession`: has
+Tenant -> User: has
+User -> UserRole: has
+User -> UserSession: has
 ```
 
 | Entity        | Fields chính                                  | Mô tả                |

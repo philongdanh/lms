@@ -22,6 +22,79 @@ Module trò chơi hóa, quản lý điểm thưởng và bảng xếp hạng.
 | `Reward` Redemption | Đổi xu lấy phần thưởng | Student | Xu trừ, reward được cấp        |
 | Update Leaderboard  | Cập nhật bảng xếp hạng | System  | Leaderboard realtime           |
 
+#### Detailed Flows
+
+##### Process EXP
+
+```d2
+shape: sequence_diagram
+"Learning Service"
+"Gamification Service"
+Database
+Engine
+"Event Bus"
+
+"Learning Service" -> "Gamification Service": event(lesson_complete)
+"Gamification Service" -> Database: get_user_profile
+"Gamification Service" -> Engine: calculate_exp_gain
+Engine -> "Gamification Service": exp_amount
+"Gamification Service" -> Database: update_exp_coins
+"Gamification Service" -> Engine: check_level_up
+Engine -> "Gamification Service": new_level
+"Gamification Service" -> Database: update_level
+"Gamification Service" -> "Event Bus": publish(level.up)
+```
+
+##### Award Badge
+
+```d2
+shape: sequence_diagram
+"Event Worker"
+"Gamification Service"
+Database
+"Notification Service"
+
+"Event Worker" -> "Gamification Service": check_badge_criteria(user_activity)
+"Gamification Service" -> Database: find_applicable_badges
+Database -> "Gamification Service": new_badges
+"Gamification Service" -> Database: insert_user_badge
+"Gamification Service" -> "Notification Service": notify_user(badge_earned)
+```
+
+##### Reward Redemption
+
+```d2
+shape: sequence_diagram
+Student
+"Gamification Service"
+Database
+
+Student -> "Gamification Service": redeem(reward_id)
+"Gamification Service" -> Database: transaction_start
+"Gamification Service" -> Database: check_balance
+Database -> "Gamification Service": sufficient
+"Gamification Service" -> Database: deduct_coins
+"Gamification Service" -> Database: create_redemption_record
+"Gamification Service" -> Database: transaction_commit
+"Gamification Service" -> Student: success
+```
+
+##### Update Leaderboard
+
+```d2
+shape: sequence_diagram
+Scheduler
+"Gamification Service"
+Database
+Redis
+"Realtime Service"
+
+Scheduler -> "Gamification Service": refresh_leaderboards
+"Gamification Service" -> Database: aggregate_top_users
+"Gamification Service" -> Redis: zadd_batch
+"Gamification Service" -> "Realtime Service": broadcast(leaderboard_refresh)
+```
+
 ### Rules & Constraints
 
 - Công thức Level: EXP thresholds configurable

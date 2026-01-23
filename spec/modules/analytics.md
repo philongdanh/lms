@@ -21,6 +21,64 @@ Module phân tích dữ liệu học tập và báo cáo thống kê.
 | Generate Report   | Tạo báo cáo theo yêu cầu         | Teacher/Admin | Báo cáo PDF/JSON       |
 | Daily Aggregation | Tổng hợp dữ liệu hàng ngày       | System        | Daily stats sẵn sàng   |
 
+#### Detailed Flows
+
+##### ETL Pipeline
+
+```d2
+shape: sequence_diagram
+"Learning Service"
+"Event Bus"
+"ETL Worker"
+Database
+"Analysis Engine"
+
+"Learning Service" -> "Event Bus": publish(lesson_completed)
+"Event Bus" -> "ETL Worker": consume_event
+"ETL Worker" -> Database: raw_event_log
+"ETL Worker" -> "Analysis Engine": calculate_mastery
+"Analysis Engine" -> Database: update_knowledge_map
+```
+
+##### Generate Report
+
+```d2
+shape: sequence_diagram
+Teacher
+"Analytics Service"
+Redis
+Database
+"PDF Engine"
+Storage
+
+Teacher -> "Analytics Service": request_report(class_id)
+"Analytics Service" -> Redis: check_cache
+Redis -> "Analytics Service": miss
+"Analytics Service" -> Database: aggregate_data
+Database -> "Analytics Service": heavy_result_set
+"Analytics Service" -> "PDF Engine": render_pdf
+"PDF Engine" -> Storage: save_file
+"Analytics Service" -> Redis: set_cache
+"Analytics Service" -> Teacher: report_url
+```
+
+##### Daily Aggregation
+
+```d2
+shape: sequence_diagram
+Scheduler
+"Analytics Service"
+Database
+Aggregator
+Storage
+
+Scheduler -> "Analytics Service": trigger_daily_job
+"Analytics Service" -> Database: fetch_raw_logs(yesterday)
+"Analytics Service" -> Aggregator: summarize_by_user
+Aggregator -> Database: insert_daily_stats
+"Analytics Service" -> Storage: flush_old_logs_to_s3
+```
+
 ### Rules & Constraints
 
 - ETL latency < 5s từ event

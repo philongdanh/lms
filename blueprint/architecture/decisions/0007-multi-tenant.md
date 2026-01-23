@@ -13,7 +13,7 @@ Cần multi-tenant strategy cho nhiều trường.
 
 ## Decision
 
-**Shared Database với `tenant_id` column**.
+Shared Database với `tenant_id` column.
 
 ---
 

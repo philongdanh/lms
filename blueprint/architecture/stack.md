@@ -15,15 +15,15 @@ Lựa chọn công nghệ và tiêu chuẩn kỹ thuật cho hệ thống.
 
 ### Frontend Tech
 
-| Component  | Technology                   | Lý do lựa chọn                    |
-| ---------- | ---------------------------- | --------------------------------- |
-| Framework  | Next.js 14+ với `App Router` | SSR/SSG tốt, SEO friendly         |
-| UI Library | React 18+ với TypeScript     | Type-safe, ecosystem lớn          |
-| State      | Zustand + `React Context`    | Đơn giản, nhẹ                     |
-| Styling    | TailwindCSS 3.x              | Utility-first, nhất quán          |
-| Components | HeroUI                       | Tái sử dụng, phù hợp giáo dục     |
-| Realtime   | Socket.IO Client 4.x         | WebSocket ổn định, auto reconnect |
-| Charts     | Recharts                     | Nhẹ, tương thích React            |
+| Component  | Technology                 | Lý do lựa chọn                    |
+| ---------- | -------------------------- | --------------------------------- |
+| Framework  | Next.js 14+ với App Router | SSR/SSG tốt, SEO friendly         |
+| UI Library | React 18+ với TypeScript   | Type-safe, ecosystem lớn          |
+| State      | Zustand + React Context    | Đơn giản, nhẹ                     |
+| Styling    | TailwindCSS 3.x            | Utility-first, nhất quán          |
+| Components | HeroUI                     | Tái sử dụng, phù hợp giáo dục     |
+| Realtime   | Socket.IO Client 4.x       | WebSocket ổn định, auto reconnect |
+| Charts     | Recharts                   | Nhẹ, tương thích React            |
 
 ### Backend Tech
 
@@ -32,7 +32,7 @@ Lựa chọn công nghệ và tiêu chuẩn kỹ thuật cho hệ thống.
 | Runtime   | Node.js 20+ LTS           | Non-blocking I/O, TypeScript native |
 | Framework | NestJS 10+                | Module hóa, DI, enterprise-ready    |
 | ORM       | Prisma 5+                 | Type-safe, migration tốt            |
-| Database  | PostgreSQL 15+            | ACID, `JSONB`, row-level security   |
+| Database  | PostgreSQL 15+            | ACID, JSONB, row-level security     |
 | Cache     | Redis 7+                  | Cache, session, pub/sub             |
 | Realtime  | Socket.IO + Redis adapter | Room-based, scaling                 |
 | Auth      | Passport.js + JWT         | Multi-tenant, RBAC                  |
@@ -61,7 +61,7 @@ Lựa chọn công nghệ và tiêu chuẩn kỹ thuật cho hệ thống.
 | ORM               | TypeORM, Prisma, Sequelize | Prisma         | Type-safe, DX tốt                 |
 | Frontend          | React SPA, Vue, Angular    | Next.js        | SSR, SEO tốt                      |
 | Realtime          | Socket.IO, ws, Pusher      | Socket.IO      | Fallback tự động, room support    |
-| Database          | PostgreSQL, MySQL, MongoDB | PostgreSQL     | ACID, `JSONB`, structured data    |
+| Database          | PostgreSQL, MySQL, MongoDB | PostgreSQL     | ACID, JSONB, structured data      |
 | Cache             | Redis, Memcached           | Redis          | All-in-one: cache, pub/sub, queue |
 | Orchestration     | Docker Compose, K8s        | Docker Compose | Đơn giản, phù hợp on-premise      |
 

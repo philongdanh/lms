@@ -13,13 +13,13 @@ Tiêu chuẩn và quy trình phát triển.
 
 ## Tech Stack
 
-| Layer     | Tech                 | Purpose             |
-| --------- | -------------------- | ------------------- |
-| Backend   | NestJS + TypeScript  | Business logic, API |
-| Frontend  | Next.js + TypeScript | UI, SSR/SSG         |
-| Database  | PostgreSQL + Prisma  | Data, ORM           |
-| Cache     | Redis                | Session, caching    |
-| Real-time | Socket.IO            | WebSocket           |
+| Layer     | Tech                     | Purpose             |
+| --------- | ------------------------ | ------------------- |
+| Backend   | `NestJS` + `TypeScript`  | Business logic, API |
+| Frontend  | `Next.js` + `TypeScript` | UI, SSR/SSG         |
+| Database  | `PostgreSQL` + `Prisma`  | Data, ORM           |
+| Cache     | `Redis`                  | Session, caching    |
+| Real-time | `Socket.IO`              | WebSocket           |
 
 ---
 
@@ -27,11 +27,11 @@ Tiêu chuẩn và quy trình phát triển.
 
 ### Quality Tools
 
-| Tool     | Purpose         | Config         |
-| -------- | --------------- | -------------- |
-| ESLint   | Static analysis | `.eslintrc.js` |
-| Prettier | Formatting      | `.prettierrc`  |
-| Husky    | Git hooks       | `.husky/`      |
+| Tool       | Purpose         | Config         |
+| ---------- | --------------- | -------------- |
+| `ESLint`   | Static analysis | `.eslintrc.js` |
+| `Prettier` | Formatting      | `.prettierrc`  |
+| `Husky`    | Git hooks       | `.husky/`      |
 
 ### Naming Conventions
 

@@ -22,6 +22,77 @@ Module học tập và cá nhân hóa lộ trình dựa trên AI.
 | Complete Lesson        | Hoàn thành bài học         | Student        | Tiến độ cập nhật, rewards gửi  |
 | Track Progress         | Theo dõi tiến độ học tập   | Student/Parent | Dashboard hiển thị             |
 
+#### Detailed Flows
+
+##### Submit Exercise
+
+```d2
+shape: sequence_diagram
+Student
+"Learning Service"
+Database
+"Grading Engine"
+"Event Bus"
+
+Student -> "Learning Service": submit_answers(session_id, answers)
+"Learning Service" -> Database: get_correct_answers
+"Learning Service" -> "Grading Engine": calculate_score
+"Grading Engine" -> "Learning Service": score, result
+"Learning Service" -> Database: save_submission
+"Learning Service" -> "Learning Service": check_pass_condition
+"Learning Service" -> "Event Bus": publish(exercise.submitted)
+"Learning Service" -> Student: result_feedback
+```
+
+##### Generate Learning Path
+
+```d2
+shape: sequence_diagram
+System
+"AI Service"
+Database
+"AI Model"
+
+System -> "AI Service": generate_path(user_profile)
+"AI Service" -> Database: fetch_history_and_gaps
+Database -> "AI Service": user_data
+"AI Service" -> "AI Model": predict_next_modules
+"AI Model" -> "AI Service": recommended_modules
+"AI Service" -> Database: create_learning_path
+"AI Service" -> System: path_ready
+```
+
+##### Complete Lesson
+
+```d2
+shape: sequence_diagram
+Student
+"Learning Service"
+Database
+"Event Bus"
+Gamification
+
+Student -> "Learning Service": finish_lesson(lesson_id)
+"Learning Service" -> Database: update_progress(COMPLETED)
+"Learning Service" -> "Event Bus": publish(lesson.completed)
+"Learning Service" -> Gamification: trigger_reward_check
+"Learning Service" -> Student: success
+```
+
+##### Track Progress
+
+```d2
+shape: sequence_diagram
+Parent
+"Learning Service"
+Database
+
+Parent -> "Learning Service": get_child_progress(child_id)
+"Learning Service" -> Database: aggregate_stats
+Database -> "Learning Service": stats
+"Learning Service" -> Parent: dashboard_data
+```
+
 ### Rules & Constraints
 
 - Điểm tối thiểu để pass: configurable per lesson (default 70%)
@@ -30,34 +101,39 @@ Module học tập và cá nhân hóa lộ trình dựa trên AI.
 - Session timeout: 30 phút không hoạt động
 - Rate limiting theo user
 
-### State Machine
+### Lifecycle Sequence
 
 ```d2
-direction: right
+shape: sequence_diagram
+System
+"Learning Service"
+Database
+Student
+Analytics
+Gamification
 
-Start: {
-  shape: circle
-  style.fill: black
-  label: ""
-  width: 20
-  height: 20
-}
+System -> "Learning Service": new_lesson_available()
+"Learning Service" -> Database: create_progress(status=LOCKED)
 
-End: {
-  shape: circle
-  style.fill: black
-  label: ""
-  width: 20
-  height: 20
-}
+System -> "Learning Service": check_prerequisites()
+"Learning Service" -> Database: update(status=AVAILABLE)
+"Learning Service" -> Student: notify_new_lesson()
 
-Start -> LOCKED
-LOCKED -> AVAILABLE: prerequisite_met
-AVAILABLE -> IN_PROGRESS: started
-IN_PROGRESS -> COMPLETED: score >= threshold
-IN_PROGRESS -> IN_PROGRESS: score < threshold
-COMPLETED -> REVIEW: re_learning
-REVIEW -> End
+Student -> "Learning Service": start_lesson()
+"Learning Service" -> Database: update(status=IN_PROGRESS)
+"Learning Service" -> Analytics: track_start()
+
+Student -> "Learning Service": submit_exercise(score)
+"Learning Service" -> "Learning Service": check_threshold()
+
+"Learning Service" -> Database: update(status=COMPLETED)
+"Learning Service" -> Gamification: trigger_rewards()
+
+"Learning Service" -> Database: keep(status=IN_PROGRESS)
+"Learning Service" -> Student: retry_feedback()
+
+Student -> "Learning Service": re_learn()
+"Learning Service" -> Database: update(status=REVIEW)
 ```
 
 ---

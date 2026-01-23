@@ -13,7 +13,7 @@ Cần một kiến trúc phù hợp với team nhỏ nhưng có khả năng mở
 
 ## Decision
 
-Xây dựng **Modular Monolith** (các module Auth, Tournament, Learning).
+Xây dựng **Modular Monolith** (các module `Auth`, `Tournament`, `Learning`).
 
 ---
 

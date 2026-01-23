@@ -13,13 +13,13 @@ Hướng dẫn triển khai hệ thống.
 
 ## Infrastructure
 
-| Component     | Tech              | Description         |
-| ------------- | ----------------- | ------------------- |
-| Application   | NestJS (Node 20+) | Stateless container |
-| Database      | PostgreSQL 14+    | Multi-tenant data   |
-| Cache         | Redis 6+          | Session, Pub/Sub    |
-| Load Balancer | Nginx             | SSL, WebSocket      |
-| File Storage  | Local/S3          | Video, images       |
+| Component     | Tech                  | Description         |
+| ------------- | --------------------- | ------------------- |
+| Application   | `NestJS` (`Node` 20+) | Stateless container |
+| Database      | `PostgreSQL` 14+      | Multi-tenant data   |
+| Cache         | `Redis` 6+            | Session, Pub/Sub    |
+| Load Balancer | `Nginx`               | SSL, WebSocket      |
+| File Storage  | Local/S3              | Video, images       |
 
 ---
 

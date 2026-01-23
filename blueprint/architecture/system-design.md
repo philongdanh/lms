@@ -117,7 +117,7 @@ Redis -> WS: Broadcast tới room
 
 | Endpoint          | Method | Mô tả             | Auth     |
 | ----------------- | ------ | ----------------- | -------- |
-| `/graphql`        | `POST` | `GraphQL` API     | Optional |
+| `/graphql`        | `POST` | `GraphQL` `API`   | Optional |
 | `/api/upload`     | `POST` | File upload       | Required |
 | `/api/webhooks/*` | `POST` | External webhooks | API Key  |
 | `/health`         | `GET`  | Health check      | No       |

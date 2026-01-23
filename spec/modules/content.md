@@ -22,6 +22,75 @@ Module quản lý nội dung học tập và ngân hàng câu hỏi.
 | Publish Content  | Phê duyệt và publish     | `Admin`       | Nội dung visible cho students |
 | Upload `Media`   | Upload video/image       | Teacher       | `Media` được lưu trữ          |
 
+####Detailed Flows
+
+##### Create Structure
+
+```d2
+shape: sequence_diagram
+Teacher
+"Content Service"
+Database
+
+Teacher -> "Content Service": create_structure(subject_id, structure)
+"Content Service" -> Database: validate_hierarchy
+Database -> "Content Service": valid
+"Content Service" -> Database: batch_insert_topics_lessons
+"Content Service" -> Teacher: success
+```
+
+##### Bulk Import
+
+```d2
+shape: sequence_diagram
+Teacher
+"Content Service"
+"Parser Service"
+Database
+
+Teacher -> "Content Service": import_questions(file, lesson_id)
+"Content Service" -> "Parser Service": parse_file(xlsx/docx)
+"Parser Service" -> "Content Service": list_of_questions
+"Content Service" -> Database: batch_insert_questions
+"Content Service" -> Teacher: report(success_count, errors)
+```
+
+##### Publish Content
+
+```d2
+shape: sequence_diagram
+Admin
+"Content Service"
+Database
+"Event Bus"
+
+Admin -> "Content Service": publish_lesson(lesson_id)
+"Content Service" -> Database: update_status(PUBLISHED)
+"Content Service" -> "Event Bus": publish(content.published)
+"Content Service" -> Admin: success
+```
+
+##### Upload Media
+
+```d2
+shape: sequence_diagram
+Teacher
+"Content Service"
+S3
+"AV Scanner"
+Database
+
+Teacher -> "Content Service": get_upload_url(filename)
+"Content Service" -> S3: generate_presigned_url
+S3 -> "Content Service": url
+"Content Service" -> Teacher: url
+Teacher -> S3: upload_file_binary
+S3 -> "Content Service": webhook_upload_complete
+"Content Service" -> "AV Scanner": scan_file
+"AV Scanner" -> "Content Service": safe
+"Content Service" -> Database: create_media_record
+```
+
 ### Rules & Constraints
 
 - `Lesson` phải thuộc về một `Topic` (hierarchy)
@@ -30,33 +99,34 @@ Module quản lý nội dung học tập và ngân hàng câu hỏi.
 - Hỗ trợ format: `xlsx`, `docx`, `pdf` cho import
 - Max file size: 500MB cho video
 
-### State Machine
+### Lifecycle Sequence
 
 ```d2
-direction: right
+shape: sequence_diagram
+Teacher
+"Content Service"
+Database
+Notification
+Admin
+"Event Bus"
 
-Start: {
-  shape: circle
-  style.fill: black
-  label: ""
-  width: 20
-  height: 20
-}
+Teacher -> "Content Service": create_lesson()
+"Content Service" -> Database: insert(status=DRAFT)
 
-End: {
-  shape: circle
-  style.fill: black
-  label: ""
-  width: 20
-  height: 20
-}
+Teacher -> "Content Service": submit_for_review()
+"Content Service" -> Database: update(status=PENDING_REVIEW)
+"Content Service" -> Notification: notify_admin()
 
-Start -> DRAFT: create
-DRAFT -> PENDING_REVIEW: submit
-PENDING_REVIEW -> PUBLISHED: approve
-PENDING_REVIEW -> DRAFT: reject
-PUBLISHED -> ARCHIVED: archive
-ARCHIVED -> End
+Admin -> "Content Service": approve()
+"Content Service" -> Database: update(status=PUBLISHED)
+"Content Service" -> "Event Bus": publish(content.published)
+
+Admin -> "Content Service": reject()
+"Content Service" -> Database: update(status=DRAFT)
+"Content Service" -> Notification: notify_teacher(feedback)
+
+Admin -> "Content Service": archive()
+"Content Service" -> Database: update(status=ARCHIVED)
 ```
 
 ---

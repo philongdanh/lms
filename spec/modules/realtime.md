@@ -22,6 +22,73 @@ Module giao tiếp real-time qua WebSocket.
 | `Presence` Tracking | Theo dõi online/offline | System | `Presence` store updated  |
 | `Room` Management   | Join/leave rooms        | Client | `Room` membership updated |
 
+#### Detailed Flows
+
+##### WebSocket Handshake
+
+```d2
+shape: sequence_diagram
+Client
+"Realtime Service"
+"Auth Service"
+Redis
+
+Client -> "Realtime Service": connect(jwt_token)
+"Realtime Service" -> "Auth Service": validate_token(jwt)
+"Auth Service" -> "Realtime Service": valid
+"Realtime Service" -> Redis: store_socket_mapping(user_id, socket_id)
+"Realtime Service" -> Client: connected
+```
+
+##### Broadcast Event
+
+```d2
+shape: sequence_diagram
+"Internal System"
+"Realtime Service"
+Redis
+"Realtime Service Nodes"
+Clients
+
+"Internal System" -> "Realtime Service": publish(channel, message)
+"Realtime Service" -> Redis: publish_to_channel
+Redis -> "Realtime Service Nodes": distribute_message
+"Realtime Service Nodes" -> Clients: push_message
+```
+
+##### Presence Tracking
+
+```d2
+shape: sequence_diagram
+Client
+"Realtime Service"
+Redis
+Scheduler
+"Event Bus"
+
+Client -> "Realtime Service": heartbeat
+"Realtime Service" -> Redis: update_presence_ttl(user_id)
+
+Scheduler -> "Realtime Service": check_offline_users
+"Realtime Service" -> Redis: get_expired_presence
+"Realtime Service" -> "Event Bus": publish(user.offline)
+```
+
+##### Room Management
+
+```d2
+shape: sequence_diagram
+Client
+"Realtime Service"
+Redis
+"Other Clients"
+
+Client -> "Realtime Service": join_room(room_id)
+"Realtime Service" -> Redis: sadd_room_members(room_id, user_id)
+"Realtime Service" -> Redis: publish(room_user_joined)
+"Realtime Service" -> "Other Clients": notify_join
+```
+
 ### Rules & Constraints
 
 - JWT required cho connection
@@ -30,33 +97,31 @@ Module giao tiếp real-time qua WebSocket.
 - Handshake time < 100ms
 - Message delivery < 50ms P50
 
-### State Machine
+### Lifecycle Sequence
 
 ```d2
-direction: right
+shape: sequence_diagram
+Client
+"Realtime Service"
+"Auth Service"
+Redis
 
-Start: {
-  shape: circle
-  style.fill: black
-  label: ""
-  width: 20
-  height: 20
-}
+Client -> "Realtime Service": connect()
+"Realtime Service" -> "Realtime Service": transition(CONNECTING)
 
-End: {
-  shape: circle
-  style.fill: black
-  label: ""
-  width: 20
-  height: 20
-}
+"Realtime Service" -> "Auth Service": validate_jwt(token)
+"Auth Service" -> "Realtime Service": valid
+"Realtime Service" -> "Realtime Service": transition(AUTHENTICATED)
 
-Start -> CONNECTING: connect
-CONNECTING -> AUTHENTICATED: jwt_valid
-CONNECTING -> REJECTED: jwt_invalid
-AUTHENTICATED -> CONNECTED: handshake_complete
-CONNECTED -> DISCONNECTED: disconnect
-DISCONNECTED -> End
+"Auth Service" -> "Realtime Service": invalid_token
+"Realtime Service" -> Client: reject(REJECTED)
+
+"Realtime Service" -> Redis: register_socket()
+"Realtime Service" -> Client: handshake_complete(CONNECTED)
+
+Client -> "Realtime Service": disconnect()
+"Realtime Service" -> Redis: cleanup_socket()
+"Realtime Service" -> "Realtime Service": transition(DISCONNECTED)
 ```
 
 ---

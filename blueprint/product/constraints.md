@@ -53,7 +53,7 @@ Các ràng buộc kỹ thuật và nghiệp vụ.
 | ID         | Constraint                  | Rationale                |
 | ---------- | --------------------------- | ------------------------ |
 | TC-ARCH-01 | Modular Monolith            | Đội nhỏ, deploy đơn giản |
-| TC-ARCH-02 | PostgreSQL 14+ / Prisma     | `JSONB`, transactions    |
+| TC-ARCH-02 | PostgreSQL 14+ / Prisma     | JSONB, transactions      |
 | TC-ARCH-03 | Redis 6+                    | Cache, Pub/Sub           |
 | TC-ARCH-04 | Docker containerization     | Consistent deployment    |
 | TC-ARCH-05 | Socket.IO + Redis adapter   | WebSocket scaling        |

@@ -64,17 +64,17 @@ Badge -> UserBadge: has
 
 ### Key Entities
 
-| Entity          | Mô tả                 | Columns chính                                        |
-| --------------- | --------------------- | ---------------------------------------------------- |
-| Tenant          | Trường học/khách hàng | `id`, `name`, `code`, `status`, `settings`           |
-| User            | Tài khoản người dùng  | `id`, `tenant_id`, `email`, `password_hash`          |
-| UserRole        | Vai trò trong tenant  | `user_id`, `role_id`, `tenant_id`                    |
-| Topic           | Chủ đề học tập        | `id`, `tenant_id`, `subject_id`, `grade_id`          |
-| Lesson          | Bài học               | `id`, `topic_id`, `title`, `content`                 |
-| Question        | Câu hỏi               | `id`, `type`, `content`, `options`, `correct_answer` |
-| StudentProgress | Tiến độ học           | `student_id`, `lesson_id`, `completion_percentage`   |
-| Tournament      | Giải đấu              | `id`, `tenant_id`, `name`, `status`, `starts_at`     |
-| UserExp         | EXP và Level          | `user_id`, `exp_points`, `level`                     |
+| Entity            | Mô tả                 | Columns chính                                        |
+| ----------------- | --------------------- | ---------------------------------------------------- |
+| `Tenant`          | Trường học/khách hàng | `id`, `name`, `code`, `status`, `settings`           |
+| `User`            | Tài khoản người dùng  | `id`, `tenant_id`, `email`, `password_hash`          |
+| `UserRole`        | Vai trò trong tenant  | `user_id`, `role_id`, `tenant_id`                    |
+| `Topic`           | Chủ đề học tập        | `id`, `tenant_id`, `subject_id`, `grade_id`          |
+| `Lesson`          | Bài học               | `id`, `topic_id`, `title`, `content`                 |
+| `Question`        | Câu hỏi               | `id`, `type`, `content`, `options`, `correct_answer` |
+| `StudentProgress` | Tiến độ học           | `student_id`, `lesson_id`, `completion_percentage`   |
+| `Tournament`      | Giải đấu              | `id`, `tenant_id`, `name`, `status`, `starts_at`     |
+| `UserExp`         | EXP và Level          | `user_id`, `exp_points`, `level`                     |
 
 ### Indexing Strategy
 
@@ -93,12 +93,12 @@ Badge -> UserBadge: has
 
 ### Caching Layer
 
-| Cache Type    | Storage      | TTL      | Purpose                     |
-| ------------- | ------------ | -------- | --------------------------- |
-| Session       | Redis        | 7 days   | Refresh token, user session |
-| Learning Path | Redis        | 5 min    | AI recommendations          |
-| Leaderboard   | Redis `ZSET` | Realtime | Tournament scores           |
-| Report        | Redis        | 5 min    | Generated reports           |
+| Cache Type    | Storage    | TTL      | Purpose                     |
+| ------------- | ---------- | -------- | --------------------------- |
+| Session       | Redis      | 7 days   | Refresh token, user session |
+| Learning Path | Redis      | 5 min    | AI recommendations          |
+| Leaderboard   | Redis ZSET | Realtime | Tournament scores           |
+| Report        | Redis      | 5 min    | Generated reports           |
 
 ### Backup & Replication
 

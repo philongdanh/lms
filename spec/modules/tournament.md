@@ -1,11 +1,11 @@
 ---
 id: tournament
-title: `Tournament`
-sidebar_label: `Tournament`
+title: Tournament
+sidebar_label: Tournament
 sidebar_position: 4
 ---
 
-# `Tournament`
+# Tournament
 
 Module tổ chức giải đấu và thi đấu real-time.
 
@@ -15,12 +15,89 @@ Module tổ chức giải đấu và thi đấu real-time.
 
 ### Workflow chính
 
-| Workflow            | Mô tả                  | Actor         | Kết quả                |
-| ------------------- | ---------------------- | ------------- | ---------------------- |
-| Create `Tournament` | Tạo giải đấu mới       | Admin/Teacher | `Tournament` được tạo  |
-| Join Competition    | User đăng ký tham gia  | Student       | User join room thi đấu |
-| Realtime Scoring    | Chấm điểm real-time    | System        | Leaderboard cập nhật   |
-| End `Round`         | Kết thúc round thi đấu | System        | Kết quả được finalize  |
+| Workflow          | Mô tả                  | Actor         | Kết quả                |
+| ----------------- | ---------------------- | ------------- | ---------------------- |
+| Create Tournament | Tạo giải đấu mới       | Admin/Teacher | `Tournament` được tạo  |
+| Join Competition  | User đăng ký tham gia  | Student       | User join room thi đấu |
+| Realtime Scoring  | Chấm điểm real-time    | System        | Leaderboard cập nhật   |
+| End Round         | Kết thúc round thi đấu | System        | Kết quả được finalize  |
+
+#### Detailed Flows
+
+##### Create Tournament
+
+```d2
+shape: sequence_diagram
+Admin
+"Tournament Service"
+Database
+Redis
+
+Admin -> "Tournament Service": create(config)
+"Tournament Service" -> Database: insert_tournament
+"Tournament Service" -> Database: create_rounds
+"Tournament Service" -> Redis: init_leaderboard
+"Tournament Service" -> Admin: tournament_id
+```
+
+##### Join Competition
+
+```d2
+shape: sequence_diagram
+Student
+"Tournament Service"
+Redis
+Database
+
+Student -> "Tournament Service": join(tournamentId)
+"Tournament Service" -> Redis: check_status(REGISTRATION)
+Redis -> "Tournament Service": OPEN
+"Tournament Service" -> Database: check_eligibility
+Database -> "Tournament Service": ok
+"Tournament Service" -> Database: create_participant
+"Tournament Service" -> Redis: pub(user.joined)
+"Tournament Service" -> Student: success
+```
+
+##### Realtime Scoring
+
+```d2
+shape: sequence_diagram
+Student
+"Tournament Service"
+"Scoring Engine"
+Redis
+Database
+"Realtime Service"
+Students
+
+Student -> "Tournament Service": submit_answer(q_id, ans)
+"Tournament Service" -> "Scoring Engine": calculate(ans, time)
+"Scoring Engine" -> "Tournament Service": score
+"Tournament Service" -> Redis: zadd_leaderboard(score)
+"Tournament Service" -> Database: save_match_result
+"Tournament Service" -> "Realtime Service": broadcast(leaderboard_update)
+"Realtime Service" -> Students: updated_scores
+```
+
+##### End Round
+
+```d2
+shape: sequence_diagram
+Scheduler
+"Tournament Service"
+Redis
+Database
+"Realtime Service"
+Gamification
+
+Scheduler -> "Tournament Service": end_round_trigger
+"Tournament Service" -> Redis: lock_submissions
+"Tournament Service" -> Database: finalize_scores
+"Tournament Service" -> Database: advance_qualifiers
+"Tournament Service" -> "Realtime Service": broadcast(round_ended)
+"Tournament Service" -> Gamification: award_points
+```
 
 ### Rules & Constraints
 
@@ -30,32 +107,41 @@ Module tổ chức giải đấu và thi đấu real-time.
 - Latency broadcast < 500ms cho 10k users
 - Max 100k concurrent users per event
 
-### State Machine
+### Lifecycle Sequence
 
 ```d2
-direction: right
+shape: sequence_diagram
+Admin
+"Tournament Service"
+Database
+"Event Bus"
+Scheduler
+Student
+Realtime
+Gamification
 
-Start: {
-  shape: circle
-  style.fill: black
-  label: ""
-  width: 20
-  height: 20
-}
+Admin -> "Tournament Service": create_tournament()
+"Tournament Service" -> Database: insert(status=SCHEDULED)
+"Tournament Service" -> Admin: tournament_id
 
-End: {
-  shape: circle
-  style.fill: black
-  label: ""
-  width: 20
-  height: 20
-}
+Scheduler -> "Tournament Service": trigger_open_registration()
+"Tournament Service" -> Database: update(status=REGISTRATION)
+"Tournament Service" -> "Event Bus": publish(registration.opened)
 
-Start -> SCHEDULED: create
-SCHEDULED -> REGISTRATION: open_registration
-REGISTRATION -> IN_PROGRESS: start_time
-IN_PROGRESS -> COMPLETED: end_time
-COMPLETED -> End: archive
+Student -> "Tournament Service": join_tournament()
+"Tournament Service" -> Database: create_participant()
+
+Scheduler -> "Tournament Service": check_start_time()
+"Tournament Service" -> Database: update(status=IN_PROGRESS)
+"Tournament Service" -> Realtime: broadcast(tournament.started)
+
+Student -> "Tournament Service": submit_answer()
+"Tournament Service" -> Realtime: update_leaderboard()
+
+Scheduler -> "Tournament Service": check_end_time()
+"Tournament Service" -> Database: update(status=COMPLETED)
+"Tournament Service" -> Database: finalize_results()
+"Tournament Service" -> Gamification: award_winners()
 ```
 
 ---
