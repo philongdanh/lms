@@ -1,0 +1,16 @@
+get:
+  operationId: healthCheck
+  summary: Health Check
+  description: "Quick check to verify API availability."
+  tags: [System]
+  security: []
+  responses:
+    '200':
+      description: "System is operational."
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status: { type: string, example: "ok" }
+              timestamp: { type: string, format: date-time }

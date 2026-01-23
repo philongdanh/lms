@@ -1,0 +1,35 @@
+openapi: 3.0.0
+info:
+  title: LMS API
+  version: 1.0.0
+  description: "API for the LMS platform. According to System Design SSoT, this REST API is reserved for Health Checks, File Uploads, and Webhooks. All business logic queries and mutations are handled via GraphQL."
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+
+servers:
+  - url: /api/v1
+    description: v1 API Server
+
+tags:
+  - name: System
+    description: "System utilities like Health Check."
+  - name: Media
+    description: "File upload and media management."
+  - name: Webhooks
+    description: "External system integrations."
+
+components:
+  securitySchemes:
+    $ref: './components/security.yaml'
+
+  schemas:
+    $ref: './components/schemas.yaml'
+
+paths:
+  /health:
+    $ref: './paths/system.yaml'
+  /upload:
+    $ref: './paths/media.yaml'
+  /webhooks/payment:
+    $ref: './paths/webhooks.yaml'

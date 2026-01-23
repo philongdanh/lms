@@ -1,0 +1,26 @@
+post:
+  operationId: uploadFile
+  summary: Upload File
+  description: "Upload media files (images, videos, documents). Max size 500MB."
+  tags: [Media]
+  security: [{ bearerAuth: [] }]
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          type: object
+          properties:
+            file:
+              type: string
+              format: binary
+  responses:
+    '201':
+      description: "File uploaded successfully."
+      content:
+        application/json:
+          schema: { $ref: '../components/schemas.yaml#/FileUploadResponse' }
+    '400':
+      description: "Invalid file or size limit exceeded."
+      content:
+        application/json:
+          schema: { $ref: '../components/schemas.yaml#/Error' }

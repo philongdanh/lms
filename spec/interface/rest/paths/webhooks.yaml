@@ -1,0 +1,15 @@
+post:
+  operationId: handlePaymentWebhook
+  summary: Payment Webhook
+  description: "Receive payment status updates from external payment gateway."
+  tags: [Webhooks]
+  security: [{ webhookSignature: [] }]
+  requestBody:
+    content:
+      application/json:
+        schema: { $ref: '../components/schemas.yaml#/PaymentWebhookType' }
+  responses:
+    '200':
+      description: "Webhook received and processed."
+    '400':
+      description: "Invalid signature or payload."

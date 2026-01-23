@@ -1,0 +1,35 @@
+# --- Common ---
+Error:
+  type: object
+  properties:
+    code:
+      type: string
+      description: "Error code (e.g., BAD_REQUEST, UNAUTHORIZED)"
+    message:
+      type: string
+      description: "Detailed error message"
+
+# --- Media Module Entities (SSoT: content.md) ---
+FileUploadResponse:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+    url:
+      type: string
+    filename:
+      type: string
+    mimetype:
+      type: string
+    size:
+      type: integer
+
+# --- Webhook Payloads ---
+PaymentWebhookType:
+  type: object
+  properties:
+    transaction_id: { type: string }
+    status: { type: string, enum: [success, failed, pending] }
+    amount: { type: integer }
+    currency: { type: string }
