@@ -189,36 +189,60 @@ Admin -> AuditLog: 1:N
 
 ### GraphQL Operations
 
-> **SSoT**: [schema.graphql](../interface/graphql/admin/schema.graphql) | [operations.graphql](../interface/graphql/admin/operations.graphql)
+> **SSoT**: [schema.graphql](../interface/graphql/admin/schema.graphql)
 
 ```graphql
 type Query {
-  """Danh sách tenant"""
-  tenants(status: TenantStatus): [Tenant!]! @auth(role: SUPER_ADMIN) @rateLimit(limit: 100, window: "1m")
+  """
+  Danh sách tenant
+  """
+  tenants(status: TenantStatus): [Tenant!]!
+    @auth(role: SUPER_ADMIN)
+    @rateLimit(limit: 100, window: "1m")
 
-  """Chi tiết tenant"""
-  tenant(id: ID!): Tenant! @auth(role: SUPER_ADMIN) @rateLimit(limit: 100, window: "1m")
+  """
+  Chi tiết tenant
+  """
+  tenant(id: ID!): Tenant!
+    @auth(role: SUPER_ADMIN)
+    @rateLimit(limit: 100, window: "1m")
 }
 
 type Mutation {
-  """Tạo tenant mới"""
+  """
+  Tạo tenant mới
+  """
   createTenant(input: CreateTenantInput!): Tenant!
     @auth(role: SUPER_ADMIN)
     @rateLimit(limit: 10, window: "1m")
 
-  """Cập nhật tenant"""
+  """
+  Cập nhật tenant
+  """
   updateTenant(id: ID!, input: UpdateTenantInput!): Tenant!
     @auth(role: SUPER_ADMIN)
     @rateLimit(limit: 50, window: "1m")
 
-  """Xóa tenant (soft delete)"""
-  deleteTenant(id: ID!): Boolean! @auth(role: SUPER_ADMIN) @rateLimit(limit: 10, window: "1m")
+  """
+  Xóa tenant (soft delete)
+  """
+  deleteTenant(id: ID!): Boolean!
+    @auth(role: SUPER_ADMIN)
+    @rateLimit(limit: 10, window: "1m")
 
-  """Import users từ CSV"""
-  importUsers(file: Upload!): ImportJob! @auth(role: ADMIN) @rateLimit(limit: 5, window: "1m")
+  """
+  Import users từ CSV
+  """
+  importUsers(file: Upload!): ImportJob!
+    @auth(role: ADMIN)
+    @rateLimit(limit: 5, window: "1m")
 
-  """Đăng nhập với tư cách user khác"""
-  impersonateUser(userId: ID!): AuthPayload! @auth(role: ADMIN) @rateLimit(limit: 10, window: "1m")
+  """
+  Đăng nhập với tư cách user khác
+  """
+  impersonateUser(userId: ID!): AuthPayload!
+    @auth(role: ADMIN)
+    @rateLimit(limit: 10, window: "1m")
 }
 
 input CreateTenantInput {
@@ -242,12 +266,12 @@ enum TenantStatus {
 
 ### Events & Webhooks
 
-| Event               | Trigger                   | Payload                       |
-| ------------------- | ------------------------- | ----------------------------- |
-| `tenant.created`    | Sau khi tạo tenant        | `{ tenantId, code, name }`    |
-| `tenant.activated`  | Sau khi kích hoạt         | `{ tenantId }`                |
-| `users.imported`    | Sau khi import hoàn tất   | `{ tenantId, count, errors }` |
-| `user.impersonated` | Khi admin impersonate     | `{ adminId, targetUserId }`   |
+| Event               | Trigger                 | Payload                       |
+| ------------------- | ----------------------- | ----------------------------- |
+| `tenant.created`    | Sau khi tạo tenant      | `{ tenantId, code, name }`    |
+| `tenant.activated`  | Sau khi kích hoạt       | `{ tenantId }`                |
+| `users.imported`    | Sau khi import hoàn tất | `{ tenantId, count, errors }` |
+| `user.impersonated` | Khi admin impersonate   | `{ adminId, targetUserId }`   |
 
 ---
 
@@ -255,19 +279,19 @@ enum TenantStatus {
 
 ### Functional Requirements
 
-| ID          | Yêu cầu                        | Điều kiện                           |
-| ----------- | ------------------------------ | ----------------------------------- |
-| `FR-ADM-01` | Tạo `Tenant` thành công        | Mã unique, dữ liệu hợp lệ           |
-| `FR-ADM-02` | Import users hàng loạt         | CSV đúng định dạng, ≤500 dòng       |
-| `FR-ADM-03` | Impersonate hoạt động          | Ghi audit log                       |
+| ID          | Yêu cầu                 | Điều kiện                     |
+| ----------- | ----------------------- | ----------------------------- |
+| `FR-ADM-01` | Tạo `Tenant` thành công | Mã unique, dữ liệu hợp lệ     |
+| `FR-ADM-02` | Import users hàng loạt  | CSV đúng định dạng, ≤500 dòng |
+| `FR-ADM-03` | Impersonate hoạt động   | Ghi audit log                 |
 
 ### Edge Cases
 
-| Case                          | Xử lý                                   |
-| ----------------------------- | --------------------------------------- |
-| Mã `Tenant` trùng             | Trả về lỗi `Code Exists`                |
-| Import > 500 users            | Trả về lỗi `Limit Exceeded`             |
-| Email trùng trong import      | Bỏ qua dòng, ghi log lỗi                |
-| Email service không hoạt động | Đưa vào queue, retry sau                |
+| Case                          | Xử lý                       |
+| ----------------------------- | --------------------------- |
+| Mã `Tenant` trùng             | Trả về lỗi `Code Exists`    |
+| Import > 500 users            | Trả về lỗi `Limit Exceeded` |
+| Email trùng trong import      | Bỏ qua dòng, ghi log lỗi    |
+| Email service không hoạt động | Đưa vào queue, retry sau    |
 
 ---

@@ -13,7 +13,8 @@ Hướng dẫn duy trì Single Source of Truth (SSoT) trong dự án.
 
 ## Tổng quan
 
-SSoT (Single Source of Truth) là nguyên tắc mà mỗi đơn vị thông tin chỉ có **một nguồn duy nhất** làm chuẩn. Tất cả các nơi khác đều **tham chiếu** tới nguồn đó.
+SSoT (Single Source of Truth) là nguyên tắc mà mỗi đơn vị thông tin chỉ có **một
+nguồn duy nhất** làm chuẩn. Tất cả các nơi khác đều **tham chiếu** tới nguồn đó.
 
 ### Lợi ích
 
@@ -36,14 +37,14 @@ blueprint: "blueprint/" {
 
 spec: "spec/" {
   label: "Spec\n(SSoT Definitions)"
-  
+
   interface: "interface/ (SSoT)" {
     graphql: "GraphQL Schemas ★"
     rest: "REST OpenAPI ★"
     types: "TypeScript Types"
     schema: "Prisma Schema ★"
   }
-  
+
   modules: "modules/" {
     label: "Module Specs\n(References SSoT)"
   }
@@ -97,7 +98,8 @@ qa/cases/*.md (validates against module FRs)
 
 **Source**: `spec/interface/rest/openapi.yaml`
 
-> REST API chỉ dùng cho **Health Check**, **File Upload**, và **Webhooks**. Business logic sử dụng GraphQL.
+> REST API chỉ dùng cho **Health Check**, **File Upload**, và **Webhooks**.
+> Business logic sử dụng GraphQL.
 
 ---
 
@@ -165,7 +167,8 @@ lms/
 
 ## Tham khảo
 
-- [System Design](../../blueprint/architecture/system-design.md) - Kiến trúc tổng thể
+- [System Design](../../blueprint/architecture/system-design.md) - Kiến trúc
+  tổng thể
 - [Gateway Standards](../../spec/interface/gateway.md) - API standards
 - [TypeScript Types](../../spec/interface/types.md) - Type definitions
 

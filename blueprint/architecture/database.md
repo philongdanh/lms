@@ -18,63 +18,230 @@ ERD và quy định dữ liệu cho hệ thống multi-tenant.
 ```d2
 direction: right
 
-# Core entities
-Tenant: { shape: sql_table }
-User: { shape: sql_table }
-Role: { shape: sql_table }
-UserRole: { shape: sql_table }
+# === Core Domain ===
 
-# Content
-Subject: { shape: sql_table }
-Topic: { shape: sql_table }
-Lesson: { shape: sql_table }
-Question: { shape: sql_table }
+Tenant: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  name: string
+  code: string {constraint: unique}
+  domain: string
+  status: enum {constraint: "PENDING|ACTIVE|SUSPENDED"}
+  settings: json
+  created_at: timestamp
+  updated_at: timestamp
+}
 
-# Learning
-StudentProgress: { shape: sql_table }
-StudentAnswer: { shape: sql_table }
-KnowledgeMap: { shape: sql_table }
+User: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  tenant_id: string {constraint: foreign_key}
+  email: string
+  password: string
+  name: string
+  status: enum {constraint: "PENDING|ACTIVE|SUSPENDED"}
+  email_verified_at: timestamp
+  created_at: timestamp
+  deleted_at: timestamp
+}
 
-# Tournament
-Tournament: { shape: sql_table }
-CompetitionRound: { shape: sql_table }
-CompetitionParticipant: { shape: sql_table }
+UserRole: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  user_id: string {constraint: foreign_key}
+  role: enum {constraint: "SUPER_ADMIN|ADMIN|TEACHER|STUDENT|PARENT"}
+  tenant_id: string {constraint: foreign_key}
+  assigned_at: timestamp
+}
 
-# Gamification
-UserExp: { shape: sql_table }
-Badge: { shape: sql_table }
-UserBadge: { shape: sql_table }
+UserSession: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  user_id: string {constraint: foreign_key}
+  device_id: string
+  device_name: string
+  refresh_token: string {constraint: unique}
+  is_active: boolean
+  last_active_at: timestamp
+  expires_at: timestamp
+}
 
-# Relationships
-Tenant -> User: has
-User -> UserRole: has
-Role -> UserRole: has
-Subject -> Topic: has
-Topic -> Lesson: has
-Lesson -> Question: has
-User -> StudentProgress: has
-User -> StudentAnswer: has
-User -> KnowledgeMap: has
-Tournament -> CompetitionRound: has
-CompetitionRound -> CompetitionParticipant: has
-User -> UserExp: has
-User -> UserBadge: has
-Badge -> UserBadge: has
+# === Content Domain ===
+
+Subject: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  tenant_id: string {constraint: foreign_key}
+  name: string
+  grade: int
+  curriculum: string
+  order: int
+}
+
+Topic: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  subject_id: string {constraint: foreign_key}
+  name: string
+  order: int
+  created_at: timestamp
+}
+
+Lesson: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  topic_id: string {constraint: foreign_key}
+  title: string
+  content: text
+  status: enum {constraint: "DRAFT|PENDING_REVIEW|PUBLISHED|ARCHIVED"}
+  passing_score: int
+  estimated_minutes: int
+  created_by: string {constraint: foreign_key}
+  published_at: timestamp
+}
+
+Question: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  lesson_id: string {constraint: foreign_key}
+  type: enum {constraint: "SINGLE_CHOICE|MULTIPLE_CHOICE|TRUE_FALSE|FILL_BLANK|ESSAY"}
+  content: text
+  options: json
+  correct_answer: json
+  explanation: text
+  order: int
+}
+
+# === Learning Domain ===
+
+LearningPath: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  user_id: string {constraint: foreign_key}
+  subject_id: string {constraint: foreign_key}
+  lessons: json
+  generated_at: timestamp
+  valid_until: timestamp
+}
+
+LessonProgress: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  user_id: string {constraint: foreign_key}
+  lesson_id: string {constraint: foreign_key}
+  status: enum {constraint: "LOCKED|AVAILABLE|IN_PROGRESS|COMPLETED|REVIEW"}
+  best_score: int
+  attempts: int
+  completed_at: timestamp
+}
+
+ExerciseSession: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  user_id: string {constraint: foreign_key}
+  lesson_id: string {constraint: foreign_key}
+  started_at: timestamp
+  submitted_at: timestamp
+  score: int
+  time_spent_seconds: int
+  answers: json
+}
+
+KnowledgeMap: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  user_id: string {constraint: foreign_key}
+  topic_id: string {constraint: foreign_key}
+  mastery_score: float
+  updated_at: timestamp
+}
+
+# === Tournament Domain ===
+
+Tournament: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  tenant_id: string {constraint: foreign_key}
+  name: string
+  status: enum {constraint: "DRAFT|REGISTRATION|IN_PROGRESS|COMPLETED|CANCELLED"}
+  max_participants: int
+  starts_at: timestamp
+  ends_at: timestamp
+  created_by: string {constraint: foreign_key}
+}
+
+CompetitionRound: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  tournament_id: string {constraint: foreign_key}
+  round_number: int
+  starts_at: timestamp
+  ends_at: timestamp
+  questions: json
+}
+
+Participant: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  round_id: string {constraint: foreign_key}
+  user_id: string {constraint: foreign_key}
+  score: int
+  rank: int
+  finished_at: timestamp
+  joined_at: timestamp
+}
+
+# === Gamification Domain ===
+
+UserExp: {
+  shape: sql_table
+  user_id: string {constraint: primary_key}
+  total_exp: int
+  level: int
+  current_level_exp: int
+  next_level_exp: int
+}
+
+Badge: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  code: string {constraint: unique}
+  name: string
+  description: string
+  icon_url: string
+  criteria: json
+}
+
+UserBadge: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  user_id: string {constraint: foreign_key}
+  badge_id: string {constraint: foreign_key}
+  awarded_at: timestamp
+}
+
+# === Relationships ===
+
+Tenant -> User: 1:N
+User -> UserRole: 1:N
+User -> UserSession: 1:N
+
+Subject -> Topic: 1:N
+Topic -> Lesson: 1:N
+Lesson -> Question: 1:N
+
+User -> LearningPath: 1:N
+User -> LessonProgress: 1:N
+User -> ExerciseSession: 1:N
+User -> KnowledgeMap: 1:N
+
+Tournament -> CompetitionRound: 1:N
+CompetitionRound -> Participant: 1:N
+
+User -> UserExp: 1:1
+User -> UserBadge: 1:N
+Badge -> UserBadge: 1:N
 ```
-
-### Key Entities
-
-| Entity            | Mô tả                 | Columns chính                                        |
-| ----------------- | --------------------- | ---------------------------------------------------- |
-| `Tenant`          | Trường học/khách hàng | `id`, `name`, `code`, `status`, `settings`           |
-| `User`            | Tài khoản người dùng  | `id`, `tenant_id`, `email`, `password_hash`          |
-| `UserRole`        | Vai trò trong tenant  | `user_id`, `role_id`, `tenant_id`                    |
-| `Topic`           | Chủ đề học tập        | `id`, `tenant_id`, `subject_id`, `grade_id`          |
-| `Lesson`          | Bài học               | `id`, `topic_id`, `title`, `content`                 |
-| `Question`        | Câu hỏi               | `id`, `type`, `content`, `options`, `correct_answer` |
-| `StudentProgress` | Tiến độ học           | `student_id`, `lesson_id`, `completion_percentage`   |
-| `Tournament`      | Giải đấu              | `id`, `tenant_id`, `name`, `status`, `starts_at`     |
-| `UserExp`         | EXP và Level          | `user_id`, `exp_points`, `level`                     |
 
 ### Indexing Strategy
 

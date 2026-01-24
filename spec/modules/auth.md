@@ -201,7 +201,7 @@ User: {
   id: string {constraint: primary_key}
   tenant_id: string {constraint: foreign_key}
   email: string
-  password_hash: string
+  password: string
   status: enum
   created_at: timestamp
 }
@@ -236,32 +236,52 @@ User -> UserSession: 1:N
 
 ### GraphQL Operations
 
-> **SSoT**: [schema.graphql](../interface/graphql/auth/schema.graphql) | [operations.graphql](../interface/graphql/auth/operations.graphql)
+> **SSoT**: [schema.graphql](../interface/graphql/auth/schema.graphql) |
+> [operations.graphql](../interface/graphql/auth/operations.graphql)
 
 ```graphql
 type Query {
-  """Danh sách session đang hoạt động"""
+  """
+  Danh sách session đang hoạt động
+  """
   sessions: [Session!]! @auth @rateLimit(limit: 100, window: "1m")
 }
 
 type Mutation {
-  """Đăng nhập - không cần auth"""
+  """
+  Đăng nhập - không cần auth
+  """
   login(input: LoginInput!): AuthPayload! @rateLimit(limit: 10, window: "1m")
 
-  """Đăng ký tài khoản mới"""
-  register(input: RegisterInput!): AuthPayload! @rateLimit(limit: 5, window: "1m")
+  """
+  Đăng ký tài khoản mới
+  """
+  register(input: RegisterInput!): AuthPayload!
+    @rateLimit(limit: 5, window: "1m")
 
-  """Làm mới access token"""
-  refreshToken(token: String!): AuthPayload! @auth @rateLimit(limit: 20, window: "1m")
+  """
+  Làm mới access token
+  """
+  refreshToken(token: String!): AuthPayload!
+    @auth
+    @rateLimit(limit: 20, window: "1m")
 
-  """Đăng xuất"""
+  """
+  Đăng xuất
+  """
   logout: Boolean! @auth @rateLimit(limit: 50, window: "1m")
 
-  """Thu hồi session cụ thể"""
+  """
+  Thu hồi session cụ thể
+  """
   revokeSession(id: ID!): Boolean! @auth @rateLimit(limit: 50, window: "1m")
 
-  """Liên kết tài khoản phụ huynh với học sinh"""
-  linkParent(studentEmail: String!): Boolean! @auth @rateLimit(limit: 10, window: "1m")
+  """
+  Liên kết tài khoản phụ huynh với học sinh
+  """
+  linkParent(studentEmail: String!): Boolean!
+    @auth
+    @rateLimit(limit: 10, window: "1m")
 }
 
 input LoginInput {
@@ -285,12 +305,12 @@ type AuthPayload {
 
 ### Events & Webhooks
 
-| Event             | Trigger                       | Payload                           |
-| ----------------- | ----------------------------- | --------------------------------- |
-| `user.registered` | Sau khi đăng ký thành công    | `{ userId, email, role }`         |
-| `user.logged_in`  | Sau khi đăng nhập thành công  | `{ userId, deviceId, sessionId }` |
-| `user.logged_out` | Sau khi đăng xuất             | `{ userId, sessionId }`           |
-| `session.revoked` | Khi session bị thu hồi        | `{ userId, sessionId }`           |
+| Event             | Trigger                      | Payload                           |
+| ----------------- | ---------------------------- | --------------------------------- |
+| `user.registered` | Sau khi đăng ký thành công   | `{ userId, email, role }`         |
+| `user.logged_in`  | Sau khi đăng nhập thành công | `{ userId, deviceId, sessionId }` |
+| `user.logged_out` | Sau khi đăng xuất            | `{ userId, sessionId }`           |
+| `session.revoked` | Khi session bị thu hồi       | `{ userId, sessionId }`           |
 
 ---
 
@@ -298,21 +318,21 @@ type AuthPayload {
 
 ### Functional Requirements
 
-| ID           | Yêu cầu                  | Điều kiện                                   |
-| ------------ | ------------------------ | ------------------------------------------- |
-| `FR-AUTH-01` | Đăng ký email hợp lệ     | Email chưa tồn tại, định dạng đúng          |
-| `FR-AUTH-02` | Đăng nhập thành công     | Thông tin đúng, tài khoản đã xác thực       |
-| `FR-AUTH-03` | Session đa thiết bị      | Cả hai session đều active                   |
-| `FR-AUTH-04` | Logout vô hiệu hóa token | `refreshToken` bị thu hồi                   |
+| ID           | Yêu cầu                  | Điều kiện                             |
+| ------------ | ------------------------ | ------------------------------------- |
+| `FR-AUTH-01` | Đăng ký email hợp lệ     | Email chưa tồn tại, định dạng đúng    |
+| `FR-AUTH-02` | Đăng nhập thành công     | Thông tin đúng, tài khoản đã xác thực |
+| `FR-AUTH-03` | Session đa thiết bị      | Cả hai session đều active             |
+| `FR-AUTH-04` | Logout vô hiệu hóa token | `refreshToken` bị thu hồi             |
 
 ### Edge Cases
 
-| Case                 | Xử lý                                      |
-| -------------------- | ------------------------------------------ |
-| Email đã tồn tại     | Trả về lỗi `CONFLICT`                      |
-| Sai mật khẩu         | Trả về lỗi `UNAUTHORIZED`                  |
-| Vượt quá rate limit  | Trả về `429 Too Many Requests`             |
-| Redis không hoạt động| Fallback sang DB (chậm hơn) + Alert Ops    |
-| Email service lỗi    | Retry 3 lần, sau đó đưa vào Queue + Alert  |
+| Case                  | Xử lý                                     |
+| --------------------- | ----------------------------------------- |
+| Email đã tồn tại      | Trả về lỗi `CONFLICT`                     |
+| Sai mật khẩu          | Trả về lỗi `UNAUTHORIZED`                 |
+| Vượt quá rate limit   | Trả về `429 Too Many Requests`            |
+| Redis không hoạt động | Fallback sang DB (chậm hơn) + Alert Ops   |
+| Email service lỗi     | Retry 3 lần, sau đó đưa vào Queue + Alert |
 
 ---
