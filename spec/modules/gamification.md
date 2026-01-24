@@ -7,24 +7,15 @@ sidebar_position: 7
 
 # Gamification
 
-Gamification module managing rewards, points, and leaderboards.
+Module quản lý phần thưởng, điểm số và bảng xếp hạng.
 
 ---
 
 ## Business Logic
 
-### Main Workflows
+### Process EXP
 
-| Workflow            | Description             | Actor     | Result                         |
-| ------------------- | ----------------------- | --------- | ------------------------------ |
-| Process EXP         | Process EXP gain event  | `System`  | User gains EXP, may level up   |
-| Award `Badge`       | Award badge to user     | `System`  | `Badge` awarded                |
-| `Reward` Redemption | Redeem coins for reward | `Student` | Coins deducted, reward granted |
-| Update Leaderboard  | Update leaderboard      | `System`  | Realtime leaderboard           |
-
-#### Detailed Flows
-
-##### Process EXP
+Xử lý sự kiện nhận EXP và tăng cấp.
 
 ```d2
 shape: sequence_diagram
@@ -45,7 +36,9 @@ Engine -> "Gamification Service": new_level
 "Gamification Service" -> "Event Bus": publish(level.up)
 ```
 
-##### Award Badge
+### Award Badge
+
+Trao huy hiệu khi đạt đủ điều kiện.
 
 ```d2
 shape: sequence_diagram
@@ -61,7 +54,9 @@ Database -> "Gamification Service": new_badges
 "Gamification Service" -> "Notification Service": notify_user(badge_earned)
 ```
 
-##### Reward Redemption
+### Reward Redemption
+
+Đổi coin lấy phần thưởng.
 
 ```d2
 shape: sequence_diagram
@@ -79,7 +74,9 @@ Database -> "Gamification Service": sufficient
 "Gamification Service" -> Student: success
 ```
 
-##### Update Leaderboard
+### Update Leaderboard
+
+Làm mới bảng xếp hạng định kỳ.
 
 ```d2
 shape: sequence_diagram
@@ -97,15 +94,11 @@ Scheduler -> "Gamification Service": refresh_leaderboards
 
 ### Rules & Constraints
 
-- Level formula: EXP thresholds configurable
-- Atomic transactions: no coin deduction without reward
-- Leaderboard uses Redis Sorted Sets
-- Only trigger EXP if first-time completion
-- Async processing: queue lag < 1s
-
-### State Machine
-
-N/A - Gamification events are transactional, no persistent state machine.
+- Công thức level: ngưỡng EXP có thể cấu hình
+- Transaction atomic: không trừ coin nếu không có reward
+- Bảng xếp hạng dùng Redis Sorted Sets
+- Chỉ trigger EXP khi hoàn thành lần đầu
+- Async processing: độ trễ queue < 1s
 
 ---
 
@@ -113,23 +106,68 @@ N/A - Gamification events are transactional, no persistent state machine.
 
 ### Schema & Entities
 
-| Entity             | Main Fields                                   | Description             |
-| ------------------ | --------------------------------------------- | ----------------------- |
-| `UserProfile`      | `user_id`, `exp`, `level`, `coins`            | User game info          |
-| `Badge`            | `id`, `name`, `criteria`, `icon`              | Badge definition        |
-| `UserBadge`        | `user_id`, `badge_id`, `earned_at`            | Earned `Badge`          |
-| `Reward`           | `id`, `name`, `cost`, `type`                  | Redeemable reward       |
-| `RewardRedemption` | `id`, `user_id`, `reward_id`, `status`        | Redemption history      |
-| `Streak`           | `user_id`, `current_streak`, `longest_streak` | Consecutive days streak |
+```d2
+direction: right
 
-### Relations
+UserProfile: {
+  shape: sql_table
+  user_id: string {constraint: primary_key}
+  exp: int
+  level: int
+  coins: int
+  updated_at: timestamp
+}
 
-| `Relation`                    | Description                           |
-| ----------------------------- | ------------------------------------- |
-| `User` → `UserProfile`        | `1:1` - Each user has 1 profile       |
-| `User` → `UserBadge`          | `1:N` - User has many badges          |
-| `Gamification` ← `Learning`   | Consumes - Receives completion events |
-| `Gamification` ← `Tournament` | Consumes - Receives win/loss events   |
+Badge: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  name: string
+  criteria: json
+  icon: string
+  created_at: timestamp
+}
+
+UserBadge: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  user_id: string {constraint: foreign_key}
+  badge_id: string {constraint: foreign_key}
+  earned_at: timestamp
+}
+
+Reward: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  name: string
+  cost: int
+  type: enum
+  is_active: boolean
+}
+
+RewardRedemption: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  user_id: string {constraint: foreign_key}
+  reward_id: string {constraint: foreign_key}
+  status: enum
+  redeemed_at: timestamp
+}
+
+Streak: {
+  shape: sql_table
+  user_id: string {constraint: primary_key}
+  current_streak: int
+  longest_streak: int
+  last_active: date
+}
+
+User -> UserProfile: 1:1
+User -> UserBadge: 1:N
+Badge -> UserBadge: 1:N
+User -> RewardRedemption: 1:N
+Reward -> RewardRedemption: 1:N
+User -> Streak: 1:1
+```
 
 ---
 
@@ -137,22 +175,61 @@ N/A - Gamification events are transactional, no persistent state machine.
 
 ### GraphQL Operations
 
-| Type       | Operation      | Description    | Auth | Rate Limit |
-| ---------- | -------------- | -------------- | ---- | ---------- |
-| `Query`    | `userProfile`  | EXP/Level info | ✅   | 200/min    |
-| `Query`    | `badges`       | Badge list     | ✅   | 100/min    |
-| `Query`    | `leaderboard`  | Leaderboard    | ✅   | 100/min    |
-| `Query`    | `rewards`      | Reward list    | ✅   | 100/min    |
-| `Mutation` | `redeemReward` | Redeem reward  | ✅   | 20/min     |
-| `Query`    | `streaks`      | Streak info    | ✅   | 200/min    |
+```graphql
+type Query {
+  """Thông tin EXP và Level"""
+  userProfile: UserProfile! @auth @rateLimit(limit: 200, window: "1m")
+
+  """Danh sách huy hiệu"""
+  badges: [Badge!]! @auth @rateLimit(limit: 100, window: "1m")
+
+  """Bảng xếp hạng"""
+  leaderboard(type: LeaderboardType!, limit: Int): [LeaderboardEntry!]!
+    @auth
+    @rateLimit(limit: 100, window: "1m")
+
+  """Danh sách phần thưởng"""
+  rewards: [Reward!]! @auth @rateLimit(limit: 100, window: "1m")
+
+  """Thông tin streak"""
+  streaks: StreakInfo! @auth @rateLimit(limit: 200, window: "1m")
+}
+
+type Mutation {
+  """Đổi coin lấy phần thưởng"""
+  redeemReward(rewardId: ID!): RewardRedemption! @auth @rateLimit(limit: 20, window: "1m")
+}
+
+type UserProfile {
+  userId: ID!
+  exp: Int!
+  level: Int!
+  coins: Int!
+  expToNextLevel: Int!
+}
+
+type LeaderboardEntry {
+  rank: Int!
+  userId: ID!
+  username: String!
+  score: Int!
+  avatarUrl: String
+}
+
+enum LeaderboardType {
+  WEEKLY
+  MONTHLY
+  ALL_TIME
+}
+```
 
 ### Events & Webhooks
 
-| Event            | Trigger          | Payload                        |
-| ---------------- | ---------------- | ------------------------------ |
-| `level.up`       | User levels up   | `{ userId, newLevel, reward }` |
-| `badge.earned`   | User earns badge | `{ userId, badgeId }`          |
-| `streak.updated` | `Streak` changes | `{ userId, currentStreak }`    |
+| Event            | Trigger                | Payload                        |
+| ---------------- | ---------------------- | ------------------------------ |
+| `level.up`       | User tăng cấp          | `{ userId, newLevel, reward }` |
+| `badge.earned`   | User nhận huy hiệu     | `{ userId, badgeId }`          |
+| `streak.updated` | Streak thay đổi        | `{ userId, currentStreak }`    |
 
 ---
 
@@ -160,18 +237,18 @@ N/A - Gamification events are transactional, no persistent state machine.
 
 ### Functional Requirements
 
-| ID           | Requirement          | Condition                   |
-| ------------ | -------------------- | --------------------------- |
-| `FR-GAME-01` | Accurate level up    | EXP exceeds threshold       |
-| `FR-GAME-02` | Transactional redeem | Atomic coin deduct + reward |
-| `FR-GAME-03` | Realtime leaderboard | Update < 50ms               |
+| ID           | Yêu cầu                          | Điều kiện                           |
+| ------------ | -------------------------------- | ----------------------------------- |
+| `FR-GAME-01` | Tăng cấp chính xác               | EXP vượt ngưỡng                     |
+| `FR-GAME-02` | Đổi thưởng transactional         | Trừ coin atomic + trao thưởng       |
+| `FR-GAME-03` | Bảng xếp hạng real-time          | Cập nhật < 50ms                     |
 
 ### Edge Cases
 
-| Case                | Handling                   |
-| ------------------- | -------------------------- |
-| Insufficient coins  | Return error, no deduction |
-| High Redis memory   | Delete old keys, alert ops |
-| Duplicate EXP event | Idempotent processing      |
+| Case                     | Xử lý                            |
+| ------------------------ | -------------------------------- |
+| Không đủ coin            | Trả lỗi, không trừ coin          |
+| Redis memory cao         | Xóa keys cũ, alert ops           |
+| EXP event trùng lặp      | Xử lý idempotent                 |
 
 ---

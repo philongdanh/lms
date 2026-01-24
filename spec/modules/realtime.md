@@ -7,24 +7,15 @@ sidebar_position: 8
 
 # Realtime
 
-Real-time communication module via `WebSocket`.
+Module giao tiếp real-time qua WebSocket.
 
 ---
 
 ## Business Logic
 
-### Main Workflows
+### WebSocket Handshake
 
-| Workflow              | Description              | Actor    | Result                    |
-| --------------------- | ------------------------ | -------- | ------------------------- |
-| `WebSocket` Handshake | Client connects with JWT | Client   | Connection established    |
-| Broadcast Event       | Send message to room     | `System` | Clients receive message   |
-| `Presence` Tracking   | Track online/offline     | `System` | `Presence` store updated  |
-| `Room` Management     | Join/leave rooms         | Client   | `Room` membership updated |
-
-#### Detailed Flows
-
-##### WebSocket Handshake
+Client kết nối với JWT authentication.
 
 ```d2
 shape: sequence_diagram
@@ -40,7 +31,9 @@ Client -> "Realtime Service": connect(jwt_token)
 "Realtime Service" -> Client: connected
 ```
 
-##### Broadcast Event
+### Broadcast Event
+
+Gửi message đến room/channel.
 
 ```d2
 shape: sequence_diagram
@@ -56,7 +49,9 @@ Redis -> "Realtime Service Nodes": distribute_message
 "Realtime Service Nodes" -> Clients: push_message
 ```
 
-##### Presence Tracking
+### Presence Tracking
+
+Theo dõi trạng thái online/offline.
 
 ```d2
 shape: sequence_diagram
@@ -74,7 +69,9 @@ Scheduler -> "Realtime Service": check_offline_users
 "Realtime Service" -> "Event Bus": publish(user.offline)
 ```
 
-##### Room Management
+### Room Management
+
+Quản lý tham gia/rời khỏi room.
 
 ```d2
 shape: sequence_diagram
@@ -91,13 +88,15 @@ Client -> "Realtime Service": join_room(room_id)
 
 ### Rules & Constraints
 
-- JWT required for connection
-- Redis Pub/Sub adapter for multi-node
-- Max 10k connections per node
-- Handshake time < 100ms
+- JWT bắt buộc để kết nối
+- Redis Pub/Sub adapter cho multi-node
+- Tối đa 10k connections mỗi node
+- Thời gian handshake < 100ms
 - Message delivery < 50ms P50
 
 ### Lifecycle Sequence
+
+Vòng đời kết nối WebSocket.
 
 ```d2
 shape: sequence_diagram
@@ -130,20 +129,38 @@ Client -> "Realtime Service": disconnect()
 
 ### Schema & Entities
 
-| Entity         | Main Fields                                   | Description           |
-| -------------- | --------------------------------------------- | --------------------- |
-| `Notification` | `id`, `user_id`, `type`, `content`, `read_at` | Notification          |
-| `Presence`     | `user_id`, `socket_id`, `last_seen`           | Online status         |
-| `Room`         | `room_id`, `type`, `members[]`                | Chat/competition room |
+```d2
+direction: right
 
-### Relations
+Notification: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  user_id: string {constraint: foreign_key}
+  type: enum
+  content: json
+  read_at: timestamp
+  created_at: timestamp
+}
 
-| `Relation`              | Description                         |
-| ----------------------- | ----------------------------------- |
-| `User` → `Notification` | `1:N` - User has many notifications |
-| `User` → `Presence`     | `1:1` - Each user has online status |
-| `Realtime` ← `Auth`     | Depends - JWT authentication        |
-| `Realtime` → Redis      | Uses - Pub/Sub, `Presence` store    |
+Presence: {
+  shape: sql_table
+  user_id: string {constraint: primary_key}
+  socket_id: string
+  last_seen: timestamp
+  status: enum
+}
+
+Room: {
+  shape: sql_table
+  room_id: string {constraint: primary_key}
+  type: enum
+  members: json
+  created_at: timestamp
+}
+
+User -> Notification: 1:N
+User -> Presence: 1:1
+```
 
 ---
 
@@ -151,16 +168,52 @@ Client -> "Realtime Service": disconnect()
 
 ### GraphQL Operations
 
-| Type       | Operation              | Description         | Auth | Rate Limit |
-| ---------- | ---------------------- | ------------------- | ---- | ---------- |
-| `Query`    | `notifications`        | Notification list   | ✅   | 100/min    |
-| `Mutation` | `markNotificationRead` | Mark as read        | ✅   | 200/min    |
-| `Mutation` | `deleteNotification`   | Delete notification | ✅   | 100/min    |
+```graphql
+type Query {
+  """Danh sách thông báo"""
+  notifications(unreadOnly: Boolean): [Notification!]! @auth @rateLimit(limit: 100, window: "1m")
+}
 
-### WebSocket
+type Mutation {
+  """Đánh dấu đã đọc"""
+  markNotificationRead(id: ID!): Notification! @auth @rateLimit(limit: 200, window: "1m")
 
-- Endpoint: `/ws`
-- Auth: JWT in Query Param or Header
+  """Xóa thông báo"""
+  deleteNotification(id: ID!): Boolean! @auth @rateLimit(limit: 100, window: "1m")
+}
+
+type Notification {
+  id: ID!
+  type: NotificationType!
+  content: JSON!
+  readAt: DateTime
+  createdAt: DateTime!
+}
+
+enum NotificationType {
+  LESSON_COMPLETE
+  BADGE_EARNED
+  TOURNAMENT_START
+  SYSTEM
+}
+```
+
+### WebSocket Events
+
+```
+Endpoint: /ws
+Auth: JWT trong Query Param hoặc Header
+
+# Server → Client
+notification.new    { type, content }
+progress.updated    { lessonId, status }
+tournament.start    { tournamentId }
+match.update        { matchId, scores }
+
+# Internal Events
+socket.connect      { userId, socketId }
+socket.disconnect   { userId, reason }
+```
 
 ### Events & Webhooks
 
@@ -170,8 +223,6 @@ Client -> "Realtime Service": disconnect()
 | `progress.updated`  | Server→Client | `{ lessonId, status }` |
 | `tournament.start`  | Server→Client | `{ tournamentId }`     |
 | `match.update`      | Server→Client | `{ matchId, scores }`  |
-| `socket.connect`    | Internal      | `{ userId, socketId }` |
-| `socket.disconnect` | Internal      | `{ userId, reason }`   |
 
 ---
 
@@ -179,19 +230,19 @@ Client -> "Realtime Service": disconnect()
 
 ### Functional Requirements
 
-| ID         | Requirement                | Condition                |
-| ---------- | -------------------------- | ------------------------ |
-| `FR-RT-01` | Connect with valid token   | Valid JWT                |
-| `FR-RT-02` | Broadcast works            | Redis adapter configured |
-| `FR-RT-03` | 10k concurrent connections | Load test passed         |
+| ID         | Yêu cầu                          | Điều kiện                         |
+| ---------- | -------------------------------- | --------------------------------- |
+| `FR-RT-01` | Kết nối với token hợp lệ         | JWT valid                         |
+| `FR-RT-02` | Broadcast hoạt động              | Redis adapter đã cấu hình         |
+| `FR-RT-03` | 10k concurrent connections       | Load test passed                  |
 
 ### Edge Cases
 
-| Case                         | Handling                            |
-| ---------------------------- | ----------------------------------- |
-| Token expires when connected | Force disconnect, require reconnect |
-| Redis failover               | Auto-reconnect to new master        |
-| `Room` full                  | Reject join with error              |
-| Network hiccup               | Auto-reconnect with backoff         |
+| Case                             | Xử lý                                       |
+| -------------------------------- | ------------------------------------------- |
+| Token hết hạn khi đang kết nối   | Force disconnect, yêu cầu reconnect         |
+| Redis failover                   | Tự động reconnect đến master mới            |
+| Room đầy                         | Từ chối join với lỗi                        |
+| Network hiccup                   | Auto-reconnect với backoff                  |
 
 ---

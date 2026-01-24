@@ -7,24 +7,15 @@ sidebar_position: 6
 
 # Content
 
-Learning content management and question bank module.
+Module quản lý nội dung học tập và ngân hàng câu hỏi.
 
 ---
 
 ## Business Logic
 
-### Main Workflows
+### Create Structure
 
-| Workflow         | Description                | Actor             | Result                      |
-| ---------------- | -------------------------- | ----------------- | --------------------------- |
-| Create Structure | Create subject tree        | `Admin`/`Teacher` | `Topic`/`Lesson` created    |
-| Bulk Import      | Import questions from file | `Teacher`         | Questions imported          |
-| Publish Content  | Review and publish         | `Admin`           | Content visible to students |
-| Upload `Media`   | Upload video/image         | `Teacher`         | `Media` stored              |
-
-#### Detailed Flows
-
-##### Create Structure
+Tạo cấu trúc môn học với chủ đề và bài học.
 
 ```d2
 shape: sequence_diagram
@@ -39,7 +30,9 @@ Database -> "Content Service": valid
 "Content Service" -> Teacher: success
 ```
 
-##### Bulk Import
+### Bulk Import
+
+Import câu hỏi từ file Excel/Word.
 
 ```d2
 shape: sequence_diagram
@@ -55,7 +48,9 @@ Teacher -> "Content Service": import_questions(file, lesson_id)
 "Content Service" -> Teacher: report(success_count, errors)
 ```
 
-##### Publish Content
+### Publish Content
+
+Duyệt và xuất bản nội dung cho học sinh.
 
 ```d2
 shape: sequence_diagram
@@ -70,7 +65,9 @@ Admin -> "Content Service": publish_lesson(lesson_id)
 "Content Service" -> Admin: success
 ```
 
-##### Upload Media
+### Upload Media
+
+Upload video/hình ảnh với kiểm tra malware.
 
 ```d2
 shape: sequence_diagram
@@ -93,13 +90,15 @@ S3 -> "Content Service": webhook_upload_complete
 
 ### Rules & Constraints
 
-- `Lesson` must belong to a `Topic` (hierarchy)
-- `Teacher` creates draft, `Admin` publishes
-- File upload scanned for malware (ClamAV)
-- Supported formats: `xlsx`, `docx`, `pdf` for import
-- Max file size: 500MB for video
+- `Lesson` phải thuộc một `Topic` (phân cấp)
+- `Teacher` tạo draft, `Admin` xuất bản
+- File upload được quét malware (ClamAV)
+- Định dạng hỗ trợ: `xlsx`, `docx`, `pdf`
+- Dung lượng tối đa: 500MB cho video
 
 ### Lifecycle Sequence
+
+Vòng đời nội dung từ draft đến xuất bản.
 
 ```d2
 shape: sequence_diagram
@@ -135,22 +134,60 @@ Admin -> "Content Service": archive()
 
 ### Schema & Entities
 
-| Entity     | Main Fields                                     | Description |
-| ---------- | ----------------------------------------------- | ----------- |
-| `Subject`  | `id`, `name`, `grade`, `curriculum`             | Subject     |
-| `Topic`    | `id`, `subject_id`, `name`, `order`             | Topic       |
-| `Lesson`   | `id`, `topic_id`, `title`, `content`, `status`  | Lesson      |
-| `Question` | `id`, `lesson_id`, `type`, `content`, `answers` | Question    |
-| `Media`    | `id`, `type`, `url`, `size`, `metadata`         | Media file  |
+```d2
+direction: right
 
-### Relations
+Subject: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  tenant_id: string {constraint: foreign_key}
+  name: string
+  grade: int
+  curriculum: string
+}
 
-| `Relation`            | Description                        |
-| --------------------- | ---------------------------------- |
-| `Subject` → `Topic`   | `1:N` - Subject has many topics    |
-| `Topic` → `Lesson`    | `1:N` - Topic has many lessons     |
-| `Lesson` → `Question` | `1:N` - Lesson has many questions  |
-| `Lesson` → `Media`    | `N:M` - Lesson uses multiple media |
+Topic: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  subject_id: string {constraint: foreign_key}
+  name: string
+  order: int
+}
+
+Lesson: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  topic_id: string {constraint: foreign_key}
+  title: string
+  content: text
+  status: enum
+  created_by: string
+}
+
+Question: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  lesson_id: string {constraint: foreign_key}
+  type: enum
+  content: text
+  answers: json
+  correct_answer: string
+}
+
+Media: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  type: enum
+  url: string
+  size: int
+  metadata: json
+}
+
+Subject -> Topic: 1:N
+Topic -> Lesson: 1:N
+Lesson -> Question: 1:N
+Lesson -> Media: N:M
+```
 
 ---
 
@@ -158,28 +195,65 @@ Admin -> "Content Service": archive()
 
 ### GraphQL Operations
 
-| Type       | Operation         | Description       | Auth         | Rate Limit |
-| ---------- | ----------------- | ----------------- | ------------ | ---------- |
-| `Query`    | `subjects`        | Subject list      | ❌           | 200/min    |
-| `Query`    | `topics`          | Topic list        | ❌           | 200/min    |
-| `Query`    | `lesson`          | Lesson details    | ✅           | 200/min    |
-| `Mutation` | `importQuestions` | Import questions  | ✅ `Teacher` | 10/min     |
-| `Query`    | `searchQuestions` | Search questions  | ✅ `Teacher` | 100/min    |
-| `Mutation` | `createLesson`    | Create new lesson | ✅ `Teacher` | 50/min     |
-| `Mutation` | `publishLesson`   | Publish lesson    | ✅ `Admin`   | 50/min     |
+```graphql
+type Query {
+  """Danh sách môn học"""
+  subjects(grade: Int): [Subject!]! @rateLimit(limit: 200, window: "1m")
+
+  """Danh sách chủ đề"""
+  topics(subjectId: ID!): [Topic!]! @rateLimit(limit: 200, window: "1m")
+
+  """Chi tiết bài học"""
+  lesson(id: ID!): Lesson! @auth @rateLimit(limit: 200, window: "1m")
+
+  """Tìm kiếm câu hỏi"""
+  searchQuestions(query: String!, lessonId: ID): [Question!]!
+    @auth(role: TEACHER)
+    @rateLimit(limit: 100, window: "1m")
+}
+
+type Mutation {
+  """Import câu hỏi từ file"""
+  importQuestions(file: Upload!, lessonId: ID!): ImportResult!
+    @auth(role: TEACHER)
+    @rateLimit(limit: 10, window: "1m")
+
+  """Tạo bài học mới"""
+  createLesson(input: CreateLessonInput!): Lesson!
+    @auth(role: TEACHER)
+    @rateLimit(limit: 50, window: "1m")
+
+  """Xuất bản bài học"""
+  publishLesson(lessonId: ID!): Lesson! @auth(role: ADMIN) @rateLimit(limit: 50, window: "1m")
+}
+
+type ImportResult {
+  successCount: Int!
+  errorCount: Int!
+  errors: [ImportError!]!
+}
+
+type ImportError {
+  row: Int!
+  message: String!
+}
+```
 
 ### REST Endpoints
 
-| Method | Endpoint      | Description | Auth         |
-| ------ | ------------- | ----------- | ------------ |
-| `POST` | `/api/upload` | Upload file | ✅ `Teacher` |
+```
+POST /api/upload
+  - Auth: Teacher
+  - Body: multipart/form-data
+  - Response: { uploadUrl, mediaId }
+```
 
 ### Events & Webhooks
 
-| Event               | Trigger          | Payload                       |
-| ------------------- | ---------------- | ----------------------------- |
-| `content.published` | Lesson published | `{ lessonId, publishedBy }`   |
-| `import.completed`  | Import completed | `{ success, failed, report }` |
+| Event               | Trigger                 | Payload                       |
+| ------------------- | ----------------------- | ----------------------------- |
+| `content.published` | Bài học được xuất bản   | `{ lessonId, publishedBy }`   |
+| `import.completed`  | Import hoàn tất         | `{ success, failed, report }` |
 
 ---
 
@@ -187,19 +261,19 @@ Admin -> "Content Service": archive()
 
 ### Functional Requirements
 
-| ID           | Requirement         | Condition                              |
-| ------------ | ------------------- | -------------------------------------- |
-| `FR-CONT-01` | Validate hierarchy  | Cannot create `Lesson` without `Topic` |
-| `FR-CONT-02` | Import format check | Reject unsupported files               |
-| `FR-CONT-03` | `Media` playback    | Video plays on all devices             |
+| ID           | Yêu cầu                        | Điều kiện                                  |
+| ------------ | ------------------------------ | ------------------------------------------ |
+| `FR-CONT-01` | Validate phân cấp              | Không thể tạo `Lesson` không có `Topic`    |
+| `FR-CONT-02` | Kiểm tra định dạng import      | Từ chối file không hỗ trợ                  |
+| `FR-CONT-03` | Phát video media               | Video chơi được trên mọi thiết bị          |
 
 ### Edge Cases
 
-| Case                   | Handling                       |
-| ---------------------- | ------------------------------ |
-| Import corrupt file    | Return `Invalid File Format`   |
-| Partial import failure | Skip error rows, log, continue |
-| Malware detected       | Reject upload, alert admin     |
-| Edit others' content   | 403 Forbidden                  |
+| Case                          | Xử lý                                 |
+| ----------------------------- | ------------------------------------- |
+| Import file lỗi               | Trả về `Invalid File Format`          |
+| Import lỗi một phần           | Bỏ qua dòng lỗi, log, tiếp tục        |
+| Phát hiện malware             | Từ chối upload, alert admin           |
+| Sửa nội dung người khác       | 403 Forbidden                         |
 
 ---

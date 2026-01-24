@@ -7,24 +7,15 @@ sidebar_position: 2
 
 # Admin
 
-Multi-tenant system administration and user management module.
+Module quản trị hệ thống multi-tenant và quản lý người dùng.
 
 ---
 
 ## Business Logic
 
-### Main Workflows
+### Create Tenant
 
-| Workflow        | Description                        | Actor          | Result                                  |
-| --------------- | ---------------------------------- | -------------- | --------------------------------------- |
-| Create `Tenant` | Initialize new tenant for school   | `Root Admin`   | `Tenant` created, activation email sent |
-| Import Users    | Bulk import users from CSV         | `Tenant Admin` | Users created, error report if any      |
-| Impersonate     | Login as user for support          | `Admin`        | Impersonation session created           |
-| Delete `Tenant` | Soft delete and hard delete tenant | `Root Admin`   | `Tenant` deleted after 30 days          |
-
-#### Detailed Flows
-
-##### Create Tenant
+Khởi tạo tenant mới cho trường học.
 
 ```d2
 shape: sequence_diagram
@@ -43,7 +34,9 @@ Database -> "Admin Service": unique
 "Admin Service" -> "Root Admin": success_response
 ```
 
-##### Import Users
+### Import Users
+
+Nhập người dùng hàng loạt từ file CSV.
 
 ```d2
 shape: sequence_diagram
@@ -68,7 +61,9 @@ Worker -> Database: save_import_log
 Worker -> "Notification Service": notify_admin(result)
 ```
 
-##### Impersonate
+### Impersonate
+
+Đăng nhập với tư cách user khác để hỗ trợ.
 
 ```d2
 shape: sequence_diagram
@@ -85,7 +80,9 @@ Admin -> "Admin Service": request_impersonation(target_user_id)
 "Auth Service" -> Admin: return_temp_token
 ```
 
-##### Delete Tenant
+### Delete Tenant
+
+Soft delete và hard delete tenant sau 30 ngày.
 
 ```d2
 shape: sequence_diagram
@@ -102,13 +99,15 @@ Queue
 
 ### Rules & Constraints
 
-- `Tenant` code must be unique system-wide
-- Only `Root Admin` can create/delete `Tenant`
-- Import limit: max 500 users per batch
-- Soft delete → Hard delete after 30 days
-- Audit log for all impersonation
+- Mã `Tenant` phải unique toàn hệ thống
+- Chỉ `Root Admin` có thể tạo/xóa `Tenant`
+- Giới hạn import: tối đa 500 users mỗi batch
+- Soft delete → Hard delete sau 30 ngày
+- Ghi audit log cho tất cả impersonation
 
 ### Lifecycle Sequence
+
+Vòng đời tenant từ tạo đến xóa.
 
 ```d2
 shape: sequence_diagram
@@ -149,19 +148,40 @@ Scheduler -> "Admin Service": execute_hard_delete()
 
 ### Schema & Entities
 
-| Entity           | Main Fields                                       | Description            |
-| ---------------- | ------------------------------------------------- | ---------------------- |
-| `Tenant`         | `id`, `code`, `name`, `status`, `settings`        | School information     |
-| `TenantSettings` | `id`, `tenant_id`, `config_json`                  | Tenant-specific config |
-| `AuditLog`       | `id`, `actor_id`, `action`, `target`, `timestamp` | Admin action log       |
+```d2
+direction: right
 
-### Relations
+Tenant: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  code: string
+  name: string
+  status: enum
+  settings: json
+  created_at: timestamp
+}
 
-| `Relation`                  | Description                      |
-| --------------------------- | -------------------------------- |
-| `Tenant` → `User`           | `1:N` - `Tenant` owns many users |
-| `Tenant` → `TenantSettings` | `1:1` - Each tenant has 1 config |
-| `Admin` → `AuditLog`        | `1:N` - Admin action logs        |
+TenantSettings: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  tenant_id: string {constraint: foreign_key}
+  config_json: json
+}
+
+AuditLog: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  actor_id: string {constraint: foreign_key}
+  action: string
+  target: string
+  metadata: json
+  timestamp: timestamp
+}
+
+Tenant -> TenantSettings: 1:1
+Tenant -> User: 1:N
+Admin -> AuditLog: 1:N
+```
 
 ---
 
@@ -169,24 +189,63 @@ Scheduler -> "Admin Service": execute_hard_delete()
 
 ### GraphQL Operations
 
-| Type       | Operation         | Description           | Auth            | Rate Limit |
-| ---------- | ----------------- | --------------------- | --------------- | ---------- |
-| `Mutation` | `createTenant`    | Create new tenant     | ✅ `Root Admin` | 10/min     |
-| `Query`    | `tenants`         | Tenant list           | ✅ `Root Admin` | 100/min    |
-| `Query`    | `tenant`          | Tenant details        | ✅ `Root Admin` | 100/min    |
-| `Mutation` | `updateTenant`    | Update tenant         | ✅ `Root Admin` | 50/min     |
-| `Mutation` | `deleteTenant`    | Delete tenant (soft)  | ✅ `Root Admin` | 10/min     |
-| `Mutation` | `importUsers`     | Import users from CSV | ✅ `Admin`      | 5/min      |
-| `Mutation` | `impersonateUser` | Login as user         | ✅ `Admin`      | 10/min     |
+```graphql
+type Query {
+  """Danh sách tenant"""
+  tenants(status: TenantStatus): [Tenant!]! @auth(role: ROOT_ADMIN) @rateLimit(limit: 100, window: "1m")
+
+  """Chi tiết tenant"""
+  tenant(id: ID!): Tenant! @auth(role: ROOT_ADMIN) @rateLimit(limit: 100, window: "1m")
+}
+
+type Mutation {
+  """Tạo tenant mới"""
+  createTenant(input: CreateTenantInput!): Tenant!
+    @auth(role: ROOT_ADMIN)
+    @rateLimit(limit: 10, window: "1m")
+
+  """Cập nhật tenant"""
+  updateTenant(id: ID!, input: UpdateTenantInput!): Tenant!
+    @auth(role: ROOT_ADMIN)
+    @rateLimit(limit: 50, window: "1m")
+
+  """Xóa tenant (soft delete)"""
+  deleteTenant(id: ID!): Boolean! @auth(role: ROOT_ADMIN) @rateLimit(limit: 10, window: "1m")
+
+  """Import users từ CSV"""
+  importUsers(file: Upload!): ImportJob! @auth(role: ADMIN) @rateLimit(limit: 5, window: "1m")
+
+  """Đăng nhập với tư cách user khác"""
+  impersonateUser(userId: ID!): AuthPayload! @auth(role: ADMIN) @rateLimit(limit: 10, window: "1m")
+}
+
+input CreateTenantInput {
+  code: String!
+  name: String!
+  adminEmail: String!
+}
+
+type ImportJob {
+  jobId: ID!
+  status: JobStatus!
+}
+
+enum TenantStatus {
+  PENDING
+  ACTIVE
+  SUSPENDED
+  DELETED
+}
+```
 
 ### Events & Webhooks
 
-| Event               | Trigger                 | Payload                       |
-| ------------------- | ----------------------- | ----------------------------- |
-| `tenant.created`    | After tenant creation   | `{ tenantId, code, name }`    |
-| `tenant.activated`  | After activation        | `{ tenantId }`                |
-| `users.imported`    | After import complete   | `{ tenantId, count, errors }` |
-| `user.impersonated` | When admin impersonates | `{ adminId, targetUserId }`   |
+| Event               | Trigger                   | Payload                       |
+| ------------------- | ------------------------- | ----------------------------- |
+| `tenant.created`    | Sau khi tạo tenant        | `{ tenantId, code, name }`    |
+| `tenant.activated`  | Sau khi kích hoạt         | `{ tenantId }`                |
+| `users.imported`    | Sau khi import hoàn tất   | `{ tenantId, count, errors }` |
+| `user.impersonated` | Khi admin impersonate     | `{ adminId, targetUserId }`   |
 
 ---
 
@@ -194,19 +253,19 @@ Scheduler -> "Admin Service": execute_hard_delete()
 
 ### Functional Requirements
 
-| ID          | Requirement                  | Condition                     |
-| ----------- | ---------------------------- | ----------------------------- |
-| `FR-ADM-01` | Create `Tenant` successfully | Unique code, valid data       |
-| `FR-ADM-02` | Bulk import users            | Correct CSV format, ≤500 rows |
-| `FR-ADM-03` | Impersonate works            | Audit log recorded            |
+| ID          | Yêu cầu                        | Điều kiện                           |
+| ----------- | ------------------------------ | ----------------------------------- |
+| `FR-ADM-01` | Tạo `Tenant` thành công        | Mã unique, dữ liệu hợp lệ           |
+| `FR-ADM-02` | Import users hàng loạt         | CSV đúng định dạng, ≤500 dòng       |
+| `FR-ADM-03` | Impersonate hoạt động          | Ghi audit log                       |
 
 ### Edge Cases
 
-| Case                      | Handling                      |
-| ------------------------- | ----------------------------- |
-| Duplicate `Tenant` code   | Return `Code Exists` error    |
-| Import > 500 users        | Return `Limit Exceeded` error |
-| Duplicate email in import | Skip row, log error           |
-| Email service down        | Queue, retry later            |
+| Case                          | Xử lý                                   |
+| ----------------------------- | --------------------------------------- |
+| Mã `Tenant` trùng             | Trả về lỗi `Code Exists`                |
+| Import > 500 users            | Trả về lỗi `Limit Exceeded`             |
+| Email trùng trong import      | Bỏ qua dòng, ghi log lỗi                |
+| Email service không hoạt động | Đưa vào queue, retry sau                |
 
 ---

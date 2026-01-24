@@ -7,23 +7,15 @@ sidebar_position: 5
 
 # Analytics
 
-Learning data analysis and statistical reporting module.
+Module phân tích dữ liệu học tập và báo cáo thống kê.
 
 ---
 
 ## Business Logic
 
-### Main Workflows
+### ETL Pipeline
 
-| Workflow          | Description                         | Actor             | Result                |
-| ----------------- | ----------------------------------- | ----------------- | --------------------- |
-| ETL Pipeline      | Process events from Learning module | `System`          | Knowledge Map updated |
-| Generate Report   | Create report on demand             | `Teacher`/`Admin` | Report PDF/JSON       |
-| Daily Aggregation | Aggregate daily data                | `System`          | Daily stats ready     |
-
-#### Detailed Flows
-
-##### ETL Pipeline
+Xử lý events từ module Learning để cập nhật Knowledge Map.
 
 ```d2
 shape: sequence_diagram
@@ -40,7 +32,9 @@ Database
 "Analysis Engine" -> Database: update_knowledge_map
 ```
 
-##### Generate Report
+### Generate Report
+
+Tạo báo cáo theo yêu cầu với caching.
 
 ```d2
 shape: sequence_diagram
@@ -62,7 +56,9 @@ Database -> "Analytics Service": heavy_result_set
 "Analytics Service" -> Teacher: report_url
 ```
 
-##### Daily Aggregation
+### Daily Aggregation
+
+Tổng hợp dữ liệu hàng ngày tự động.
 
 ```d2
 shape: sequence_diagram
@@ -81,14 +77,10 @@ Aggregator -> Database: insert_daily_stats
 
 ### Rules & Constraints
 
-- ETL latency < 5s from event
-- Authorization: `Teacher` can only view assigned classes
-- Cache reports in Redis (TTL 5 minutes)
-- Retention: Raw logs 90 days, Daily stats 5 years
-
-### State Machine
-
-N/A - Analytics is a read-only module, no state machine.
+- ETL latency < 5s từ event
+- Authorization: `Teacher` chỉ xem được lớp được gán
+- Cache báo cáo trong Redis (TTL 5 phút)
+- Lưu trữ: Raw logs 90 ngày, Daily stats 5 năm
 
 ---
 
@@ -96,19 +88,39 @@ N/A - Analytics is a read-only module, no state machine.
 
 ### Schema & Entities
 
-| Entity         | Main Fields                                          | Description             |
-| -------------- | ---------------------------------------------------- | ----------------------- |
-| `KnowledgeMap` | `user_id`, `topic_id`, `mastery_score`               | Knowledge mastery level |
-| `DailyStats`   | `user_id`, `date`, `lessons_completed`, `time_spent` | Daily statistics        |
-| `ReportCache`  | `report_id`, `params_hash`, `data`, `expires_at`     | Report cache            |
+```d2
+direction: right
 
-### Relations
+KnowledgeMap: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  user_id: string {constraint: foreign_key}
+  topic_id: string {constraint: foreign_key}
+  mastery_score: float
+  updated_at: timestamp
+}
 
-| `Relation`               | Description                               |
-| ------------------------ | ----------------------------------------- |
-| `User` → `KnowledgeMap`  | `1:N` - Each user has map for many topics |
-| `Analytics` ← `Learning` | Consumes - Receives events from Learning  |
-| `Analytics` ← `Auth`     | Consumes - Fetches user/role info         |
+DailyStats: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  user_id: string {constraint: foreign_key}
+  date: date
+  lessons_completed: int
+  time_spent: int
+  exp_earned: int
+}
+
+ReportCache: {
+  shape: sql_table
+  report_id: string {constraint: primary_key}
+  params_hash: string
+  data: json
+  expires_at: timestamp
+}
+
+User -> KnowledgeMap: 1:N
+User -> DailyStats: 1:N
+```
 
 ---
 
@@ -116,19 +128,52 @@ N/A - Analytics is a read-only module, no state machine.
 
 ### GraphQL Operations
 
-| Type    | Operation          | Description          | Auth         | Rate Limit |
-| ------- | ------------------ | -------------------- | ------------ | ---------- |
-| `Query` | `progressOverview` | Progress overview    | ✅           | 100/min    |
-| `Query` | `subjectProgress`  | Progress by subject  | ✅           | 100/min    |
-| `Query` | `knowledgeMap`     | Knowledge map        | ✅           | 50/min     |
-| `Query` | `dailyStats`       | Daily learning stats | ✅           | 100/min    |
-| `Query` | `classReport`      | Class report         | ✅ `Teacher` | 50/min     |
+```graphql
+type Query {
+  """Tổng quan tiến độ học tập"""
+  progressOverview: ProgressOverview! @auth @rateLimit(limit: 100, window: "1m")
+
+  """Tiến độ theo môn học"""
+  subjectProgress(subjectId: ID!): SubjectProgress! @auth @rateLimit(limit: 100, window: "1m")
+
+  """Bản đồ kiến thức"""
+  knowledgeMap(subjectId: ID): [KnowledgeMapEntry!]! @auth @rateLimit(limit: 50, window: "1m")
+
+  """Thống kê học tập hàng ngày"""
+  dailyStats(from: Date!, to: Date!): [DailyStat!]! @auth @rateLimit(limit: 100, window: "1m")
+
+  """Báo cáo lớp học (dành cho Teacher)"""
+  classReport(classId: ID!, period: ReportPeriod!): ClassReport!
+    @auth(role: TEACHER)
+    @rateLimit(limit: 50, window: "1m")
+}
+
+type ProgressOverview {
+  totalLessons: Int!
+  completedLessons: Int!
+  averageScore: Float!
+  streakDays: Int!
+}
+
+type KnowledgeMapEntry {
+  topicId: ID!
+  topicName: String!
+  masteryScore: Float!
+  lastUpdated: DateTime!
+}
+
+enum ReportPeriod {
+  WEEKLY
+  MONTHLY
+  SEMESTER
+}
+```
 
 ### Events & Webhooks
 
-| Event                        | Trigger                       | Payload             |
-| ---------------------------- | ----------------------------- | ------------------- |
-| `analytics.report.generated` | Large report complete (async) | `{ reportId, url }` |
+| Event                        | Trigger                             | Payload             |
+| ---------------------------- | ----------------------------------- | ------------------- |
+| `analytics.report.generated` | Báo cáo lớn hoàn thành (async)      | `{ reportId, url }` |
 
 ---
 
@@ -136,18 +181,18 @@ N/A - Analytics is a read-only module, no state machine.
 
 ### Functional Requirements
 
-| ID          | Requirement                  | Condition                           |
-| ----------- | ---------------------------- | ----------------------------------- |
-| `FR-ANA-01` | Accurate mastery calculation | Correct formula                     |
-| `FR-ANA-02` | Accurate daily aggregation   | Sum matches logs                    |
-| `FR-ANA-03` | Authorization works          | `Teacher` cannot view other classes |
+| ID          | Yêu cầu                          | Điều kiện                                   |
+| ----------- | -------------------------------- | ------------------------------------------- |
+| `FR-ANA-01` | Tính mastery chính xác           | Đúng công thức                              |
+| `FR-ANA-02` | Tổng hợp daily chính xác         | Tổng khớp với logs                          |
+| `FR-ANA-03` | Authorization hoạt động          | `Teacher` không thể xem lớp khác            |
 
 ### Edge Cases
 
-| Case                            | Handling                           |
-| ------------------------------- | ---------------------------------- |
-| Report too large (>1 year data) | Async processing, return report ID |
-| Cache miss                      | Query DB, cache result             |
-| No data for period              | Return empty result with metadata  |
+| Case                                  | Xử lý                                       |
+| ------------------------------------- | ------------------------------------------- |
+| Báo cáo quá lớn (>1 năm data)         | Xử lý async, trả về report ID               |
+| Cache miss                            | Query DB, cache kết quả                     |
+| Không có dữ liệu cho khoảng thời gian | Trả về kết quả trống với metadata           |
 
 ---

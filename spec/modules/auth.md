@@ -7,26 +7,15 @@ sidebar_position: 1
 
 # Auth
 
-Authentication and authorization module for users in multi-tenant system.
+Module xác thực và phân quyền người dùng trong hệ thống multi-tenant.
 
 ---
 
 ## Business Logic
 
-### Workflow chính
+### School Registration
 
-| Workflow            | Description                            | Actor    | Result                         |
-| ------------------- | -------------------------------------- | -------- | ------------------------------ |
-| School Registration | Register new tenant for school         | `Admin`  | `Tenant` created and activated |
-| User Registration   | Register new user (`Student`/`Parent`) | `User`   | Account created and verified   |
-| Multi-Device Login  | Login and device control               | `User`   | Session created                |
-| Parent-Student Link | Link parent and student accounts       | `Parent` | Accounts linked                |
-| Token Refresh       | Issue new access token                 | `System` | New token issued               |
-| Logout & Revoke     | Logout and revoke session              | `User`   | Session revoked                |
-
-#### Detailed Flows
-
-##### School Registration
+Đăng ký tenant mới cho trường học.
 
 ```d2
 shape: sequence_diagram
@@ -44,7 +33,9 @@ Admin -> "SaaS Platform": activate_tenant(token)
 "SaaS Platform" -> Admin: success
 ```
 
-##### User Registration
+### User Registration
+
+Đăng ký tài khoản mới cho `Student` hoặc `Parent`.
 
 ```d2
 shape: sequence_diagram
@@ -63,7 +54,9 @@ User -> "Auth Service": verify_otp(code)
 "Auth Service" -> User: success
 ```
 
-##### Multi-Device Login
+### Multi-Device Login
+
+Đăng nhập và kiểm soát thiết bị.
 
 ```d2
 shape: sequence_diagram
@@ -81,7 +74,9 @@ Redis -> "Auth Service": session_count
 "Auth Service" -> User: return (access_token, refresh_token)
 ```
 
-##### Parent-Student Link
+### Parent-Student Link
+
+Liên kết tài khoản phụ huynh với học sinh.
 
 ```d2
 shape: sequence_diagram
@@ -100,7 +95,9 @@ Student -> "Auth Service": approve_link(token)
 "Auth Service" -> Parent: notification_success
 ```
 
-##### Token Refresh
+### Token Refresh
+
+Làm mới access token khi hết hạn.
 
 ```d2
 shape: sequence_diagram
@@ -115,7 +112,9 @@ Database -> "Auth Service": valid
 "Auth Service" -> Client: new_access_token
 ```
 
-##### Logout & Revoke
+### Logout & Revoke
+
+Đăng xuất và thu hồi session.
 
 ```d2
 shape: sequence_diagram
@@ -132,13 +131,15 @@ User -> "Auth Service": logout(session_id)
 
 ### Rules & Constraints
 
-- Audit logging for all registration/login events
-- Input sanitization
-- Rate limiting by IP
-- Maximum 3 devices per user
-- JWT expiry: 15 minutes, Refresh token: 7 days
+- Ghi log tất cả sự kiện đăng ký/đăng nhập
+- Sanitize input đầu vào
+- Rate limiting theo IP
+- Tối đa 3 thiết bị mỗi user
+- JWT hết hạn: 15 phút, Refresh token: 7 ngày
 
 ### Lifecycle Sequence
+
+Vòng đời trạng thái user từ đăng ký đến xóa.
 
 ```d2
 shape: sequence_diagram
@@ -183,25 +184,51 @@ Scheduler -> "Auth Service": execute_hard_delete()
 
 ```d2
 direction: right
-Tenant -> User: has
-User -> UserRole: has
-User -> UserSession: has
+
+Tenant: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  name: string
+  code: string
+  domain: string
+  status: enum
+  settings: json
+  created_at: timestamp
+}
+
+User: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  tenant_id: string {constraint: foreign_key}
+  email: string
+  password_hash: string
+  status: enum
+  created_at: timestamp
+}
+
+UserRole: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  user_id: string {constraint: foreign_key}
+  role: enum
+  created_at: timestamp
+}
+
+UserSession: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  user_id: string {constraint: foreign_key}
+  device_id: string
+  refresh_token: string
+  is_active: boolean
+  created_at: timestamp
+  expires_at: timestamp
+}
+
+Tenant -> User: 1:N
+User -> UserRole: 1:N
+User -> UserSession: 1:N
 ```
-
-| Entity        | Fields chính                                  | Description        |
-| ------------- | --------------------------------------------- | ------------------ |
-| `Tenant`      | `id`, `name`, `status`, `domain`              | School information |
-| `User`        | `id`, `email`, `password_hash`, `tenant_id`   | System user        |
-| `UserRole`    | `id`, `user_id`, `role`                       | User role          |
-| `UserSession` | `id`, `user_id`, `device_id`, `refresh_token` | Login session      |
-
-### Relations
-
-| `Relation`             | Description                        |
-| ---------------------- | ---------------------------------- |
-| `Tenant` → `User`      | `1:N` - One tenant has many users  |
-| `User` → `UserRole`    | `1:N` - One user has many roles    |
-| `User` → `UserSession` | `1:N` - One user has many sessions |
 
 ---
 
@@ -209,24 +236,59 @@ User -> UserSession: has
 
 ### GraphQL Operations
 
-| Type       | Operation       | Description    | Auth | Rate Limit |
-| ---------- | --------------- | -------------- | ---- | ---------- |
-| `Mutation` | `login`         | Login          | ❌   | 10/min     |
-| `Mutation` | `register`      | Register       | ❌   | 5/min      |
-| `Mutation` | `refreshToken`  | Refresh Token  | ✅   | 20/min     |
-| `Mutation` | `logout`        | Logout         | ✅   | 50/min     |
-| `Query`    | `sessions`      | List sessions  | ✅   | 100/min    |
-| `Mutation` | `revokeSession` | Revoke session | ✅   | 50/min     |
-| `Mutation` | `linkParent`    | Link parent    | ✅   | 10/min     |
+```graphql
+type Query {
+  """Danh sách session đang hoạt động"""
+  sessions: [Session!]! @auth @rateLimit(limit: 100, window: "1m")
+}
+
+type Mutation {
+  """Đăng nhập - không cần auth"""
+  login(input: LoginInput!): AuthPayload! @rateLimit(limit: 10, window: "1m")
+
+  """Đăng ký tài khoản mới"""
+  register(input: RegisterInput!): AuthPayload! @rateLimit(limit: 5, window: "1m")
+
+  """Làm mới access token"""
+  refreshToken(token: String!): AuthPayload! @auth @rateLimit(limit: 20, window: "1m")
+
+  """Đăng xuất"""
+  logout: Boolean! @auth @rateLimit(limit: 50, window: "1m")
+
+  """Thu hồi session cụ thể"""
+  revokeSession(id: ID!): Boolean! @auth @rateLimit(limit: 50, window: "1m")
+
+  """Liên kết tài khoản phụ huynh với học sinh"""
+  linkParent(studentEmail: String!): Boolean! @auth @rateLimit(limit: 10, window: "1m")
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+  deviceInfo: DeviceInfoInput
+}
+
+input RegisterInput {
+  email: String!
+  password: String!
+  role: UserRole!
+}
+
+type AuthPayload {
+  accessToken: String!
+  refreshToken: String!
+  user: User!
+}
+```
 
 ### Events & Webhooks
 
-| Event             | Trigger                 | Payload                           |
-| ----------------- | ----------------------- | --------------------------------- |
-| `user.registered` | After successful signup | `{ userId, email, role }`         |
-| `user.logged_in`  | After successful login  | `{ userId, deviceId, sessionId }` |
-| `user.logged_out` | After logout            | `{ userId, sessionId }`           |
-| `session.revoked` | When session is revoked | `{ userId, sessionId }`           |
+| Event             | Trigger                       | Payload                           |
+| ----------------- | ----------------------------- | --------------------------------- |
+| `user.registered` | Sau khi đăng ký thành công    | `{ userId, email, role }`         |
+| `user.logged_in`  | Sau khi đăng nhập thành công  | `{ userId, deviceId, sessionId }` |
+| `user.logged_out` | Sau khi đăng xuất             | `{ userId, sessionId }`           |
+| `session.revoked` | Khi session bị thu hồi        | `{ userId, sessionId }`           |
 
 ---
 
@@ -234,21 +296,21 @@ User -> UserSession: has
 
 ### Functional Requirements
 
-| ID           | Requirement              | Condition                             |
-| ------------ | ------------------------ | ------------------------------------- |
-| `FR-AUTH-01` | Valid email registration | Email doesn't exist, correct format   |
-| `FR-AUTH-02` | Successful login         | Correct credentials, verified account |
-| `FR-AUTH-03` | Multi-device session     | Both sessions are active              |
-| `FR-AUTH-04` | Logout invalidate token  | `refreshToken` is revoked             |
+| ID           | Yêu cầu                  | Điều kiện                                   |
+| ------------ | ------------------------ | ------------------------------------------- |
+| `FR-AUTH-01` | Đăng ký email hợp lệ     | Email chưa tồn tại, định dạng đúng          |
+| `FR-AUTH-02` | Đăng nhập thành công     | Thông tin đúng, tài khoản đã xác thực       |
+| `FR-AUTH-03` | Session đa thiết bị      | Cả hai session đều active                   |
+| `FR-AUTH-04` | Logout vô hiệu hóa token | `refreshToken` bị thu hồi                   |
 
 ### Edge Cases
 
-| Case                 | Handling                          |
-| -------------------- | --------------------------------- |
-| Email already exists | Return `CONFLICT` error           |
-| Wrong password       | Return `UNAUTHORIZED` error       |
-| Rate limit exceeded  | Return `429 Too Many Requests`    |
-| Redis down           | Fallback to DB (slow) + Alert Ops |
-| Email service fail   | Retry 3x, then Queue + Alert Ops  |
+| Case                 | Xử lý                                      |
+| -------------------- | ------------------------------------------ |
+| Email đã tồn tại     | Trả về lỗi `CONFLICT`                      |
+| Sai mật khẩu         | Trả về lỗi `UNAUTHORIZED`                  |
+| Vượt quá rate limit  | Trả về `429 Too Many Requests`             |
+| Redis không hoạt động| Fallback sang DB (chậm hơn) + Alert Ops    |
+| Email service lỗi    | Retry 3 lần, sau đó đưa vào Queue + Alert  |
 
 ---
