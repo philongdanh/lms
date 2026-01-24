@@ -15,12 +15,12 @@ Learning content management and question bank module.
 
 ### Main Workflows
 
-| Workflow         | Description              | Actor         | Result                        |
-| ---------------- | ------------------------ | ------------- | ----------------------------- |
-| Create Structure | Create subject tree      | `Admin`/`Teacher` | `Topic`/`Lesson` created      |
-| Bulk Import      | Import questions from file | `Teacher`   | Questions imported            |
-| Publish Content  | Review and publish       | `Admin`       | Content visible to students   |
-| Upload `Media`   | Upload video/image       | `Teacher`     | `Media` stored                |
+| Workflow         | Description                | Actor             | Result                      |
+| ---------------- | -------------------------- | ----------------- | --------------------------- |
+| Create Structure | Create subject tree        | `Admin`/`Teacher` | `Topic`/`Lesson` created    |
+| Bulk Import      | Import questions from file | `Teacher`         | Questions imported          |
+| Publish Content  | Review and publish         | `Admin`           | Content visible to students |
+| Upload `Media`   | Upload video/image         | `Teacher`         | `Media` stored              |
 
 #### Detailed Flows
 
@@ -135,22 +135,22 @@ Admin -> "Content Service": archive()
 
 ### Schema & Entities
 
-| Entity     | Main Fields                                    | Description |
-| ---------- | ----------------------------------------------- | ---------- |
-| `Subject`  | `id`, `name`, `grade`, `curriculum`             | Subject    |
-| `Topic`    | `id`, `subject_id`, `name`, `order`             | Topic      |
-| `Lesson`   | `id`, `topic_id`, `title`, `content`, `status`  | Lesson     |
-| `Question` | `id`, `lesson_id`, `type`, `content`, `answers` | Question   |
-| `Media`    | `id`, `type`, `url`, `size`, `metadata`         | Media file |
+| Entity     | Main Fields                                     | Description |
+| ---------- | ----------------------------------------------- | ----------- |
+| `Subject`  | `id`, `name`, `grade`, `curriculum`             | Subject     |
+| `Topic`    | `id`, `subject_id`, `name`, `order`             | Topic       |
+| `Lesson`   | `id`, `topic_id`, `title`, `content`, `status`  | Lesson      |
+| `Question` | `id`, `lesson_id`, `type`, `content`, `answers` | Question    |
+| `Media`    | `id`, `type`, `url`, `size`, `metadata`         | Media file  |
 
 ### Relations
 
-| `Relation`            | Description                          |
-| --------------------- | ------------------------------------ |
-| `Subject` → `Topic`   | `1:N` - Subject has many topics      |
-| `Topic` → `Lesson`    | `1:N` - Topic has many lessons       |
-| `Lesson` → `Question` | `1:N` - Lesson has many questions    |
-| `Lesson` → `Media`    | `N:M` - Lesson uses multiple media   |
+| `Relation`            | Description                        |
+| --------------------- | ---------------------------------- |
+| `Subject` → `Topic`   | `1:N` - Subject has many topics    |
+| `Topic` → `Lesson`    | `1:N` - Topic has many lessons     |
+| `Lesson` → `Question` | `1:N` - Lesson has many questions  |
+| `Lesson` → `Media`    | `N:M` - Lesson uses multiple media |
 
 ---
 
@@ -158,28 +158,28 @@ Admin -> "Content Service": archive()
 
 ### GraphQL Operations
 
-| Type       | Operation         | Description       | Auth       | Rate Limit |
-| ---------- | ----------------- | ----------------- | ---------- | ---------- |
-| `Query`    | `subjects`        | Subject list      | ❌         | 200/min    |
-| `Query`    | `topics`          | Topic list        | ❌         | 200/min    |
-| `Query`    | `lesson`          | Lesson details    | ✅         | 200/min    |
+| Type       | Operation         | Description       | Auth         | Rate Limit |
+| ---------- | ----------------- | ----------------- | ------------ | ---------- |
+| `Query`    | `subjects`        | Subject list      | ❌           | 200/min    |
+| `Query`    | `topics`          | Topic list        | ❌           | 200/min    |
+| `Query`    | `lesson`          | Lesson details    | ✅           | 200/min    |
 | `Mutation` | `importQuestions` | Import questions  | ✅ `Teacher` | 10/min     |
 | `Query`    | `searchQuestions` | Search questions  | ✅ `Teacher` | 100/min    |
 | `Mutation` | `createLesson`    | Create new lesson | ✅ `Teacher` | 50/min     |
-| `Mutation` | `publishLesson`   | Publish lesson    | ✅ `Admin` | 50/min     |
+| `Mutation` | `publishLesson`   | Publish lesson    | ✅ `Admin`   | 50/min     |
 
 ### REST Endpoints
 
-| Method | Endpoint      | Description | Auth       |
-| ------ | ------------- | ----------- | ---------- |
+| Method | Endpoint      | Description | Auth         |
+| ------ | ------------- | ----------- | ------------ |
 | `POST` | `/api/upload` | Upload file | ✅ `Teacher` |
 
 ### Events & Webhooks
 
-| Event               | Trigger           | Payload                       |
-| ------------------- | ----------------- | ----------------------------- |
-| `content.published` | Lesson published  | `{ lessonId, publishedBy }`   |
-| `import.completed`  | Import completed  | `{ success, failed, report }` |
+| Event               | Trigger          | Payload                       |
+| ------------------- | ---------------- | ----------------------------- |
+| `content.published` | Lesson published | `{ lessonId, publishedBy }`   |
+| `import.completed`  | Import completed | `{ success, failed, report }` |
 
 ---
 
@@ -187,19 +187,19 @@ Admin -> "Content Service": archive()
 
 ### Functional Requirements
 
-| ID           | Requirement         | Condition                        |
-| ------------ | ------------------- | -------------------------------- |
+| ID           | Requirement         | Condition                              |
+| ------------ | ------------------- | -------------------------------------- |
 | `FR-CONT-01` | Validate hierarchy  | Cannot create `Lesson` without `Topic` |
-| `FR-CONT-02` | Import format check | Reject unsupported files         |
-| `FR-CONT-03` | `Media` playback    | Video plays on all devices       |
+| `FR-CONT-02` | Import format check | Reject unsupported files               |
+| `FR-CONT-03` | `Media` playback    | Video plays on all devices             |
 
 ### Edge Cases
 
-| Case                         | Handling                           |
-| ---------------------------- | ---------------------------------- |
-| Import corrupt file          | Return `Invalid File Format`       |
-| Partial import failure       | Skip error rows, log, continue     |
-| Malware detected             | Reject upload, alert admin         |
-| Edit others' content         | 403 Forbidden                      |
+| Case                   | Handling                       |
+| ---------------------- | ------------------------------ |
+| Import corrupt file    | Return `Invalid File Format`   |
+| Partial import failure | Skip error rows, log, continue |
+| Malware detected       | Reject upload, alert admin     |
+| Edit others' content   | 403 Forbidden                  |
 
 ---

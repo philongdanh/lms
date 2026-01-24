@@ -15,12 +15,12 @@ Multi-tenant system administration and user management module.
 
 ### Main Workflows
 
-| Workflow        | Description                   | Actor          | Result                                |
-| --------------- | ----------------------------- | -------------- | ------------------------------------- |
-| Create `Tenant` | Initialize new tenant for school | `Root Admin` | `Tenant` created, activation email sent |
-| Import Users    | Bulk import users from CSV    | `Tenant Admin` | Users created, error report if any    |
-| Impersonate     | Login as user for support     | `Admin`        | Impersonation session created         |
-| Delete `Tenant` | Soft delete and hard delete tenant | `Root Admin` | `Tenant` deleted after 30 days        |
+| Workflow        | Description                        | Actor          | Result                                  |
+| --------------- | ---------------------------------- | -------------- | --------------------------------------- |
+| Create `Tenant` | Initialize new tenant for school   | `Root Admin`   | `Tenant` created, activation email sent |
+| Import Users    | Bulk import users from CSV         | `Tenant Admin` | Users created, error report if any      |
+| Impersonate     | Login as user for support          | `Admin`        | Impersonation session created           |
+| Delete `Tenant` | Soft delete and hard delete tenant | `Root Admin`   | `Tenant` deleted after 30 days          |
 
 #### Detailed Flows
 
@@ -149,19 +149,19 @@ Scheduler -> "Admin Service": execute_hard_delete()
 
 ### Schema & Entities
 
-| Entity           | Main Fields                                      | Description           |
-| ---------------- | ------------------------------------------------- | --------------------- |
-| `Tenant`         | `id`, `code`, `name`, `status`, `settings`        | School information    |
-| `TenantSettings` | `id`, `tenant_id`, `config_json`                  | Tenant-specific config|
-| `AuditLog`       | `id`, `actor_id`, `action`, `target`, `timestamp` | Admin action log      |
+| Entity           | Main Fields                                       | Description            |
+| ---------------- | ------------------------------------------------- | ---------------------- |
+| `Tenant`         | `id`, `code`, `name`, `status`, `settings`        | School information     |
+| `TenantSettings` | `id`, `tenant_id`, `config_json`                  | Tenant-specific config |
+| `AuditLog`       | `id`, `actor_id`, `action`, `target`, `timestamp` | Admin action log       |
 
 ### Relations
 
-| `Relation`                  | Description                        |
-| --------------------------- | ----------------------------------- |
-| `Tenant` → `User`           | `1:N` - `Tenant` owns many users    |
-| `Tenant` → `TenantSettings` | `1:1` - Each tenant has 1 config    |
-| `Admin` → `AuditLog`        | `1:N` - Admin action logs           |
+| `Relation`                  | Description                      |
+| --------------------------- | -------------------------------- |
+| `Tenant` → `User`           | `1:N` - `Tenant` owns many users |
+| `Tenant` → `TenantSettings` | `1:1` - Each tenant has 1 config |
+| `Admin` → `AuditLog`        | `1:N` - Admin action logs        |
 
 ---
 
@@ -169,24 +169,24 @@ Scheduler -> "Admin Service": execute_hard_delete()
 
 ### GraphQL Operations
 
-| Type       | Operation         | Description         | Auth          | Rate Limit |
-| ---------- | ----------------- | ------------------- | ------------- | ---------- |
-| `Mutation` | `createTenant`    | Create new tenant   | ✅ `Root Admin` | 10/min     |
-| `Query`    | `tenants`         | Tenant list         | ✅ `Root Admin` | 100/min    |
-| `Query`    | `tenant`          | Tenant details      | ✅ `Root Admin` | 100/min    |
-| `Mutation` | `updateTenant`    | Update tenant       | ✅ `Root Admin` | 50/min     |
-| `Mutation` | `deleteTenant`    | Delete tenant (soft)| ✅ `Root Admin` | 10/min     |
-| `Mutation` | `importUsers`     | Import users from CSV| ✅ `Admin`    | 5/min      |
-| `Mutation` | `impersonateUser` | Login as user       | ✅ `Admin`    | 10/min     |
+| Type       | Operation         | Description           | Auth            | Rate Limit |
+| ---------- | ----------------- | --------------------- | --------------- | ---------- |
+| `Mutation` | `createTenant`    | Create new tenant     | ✅ `Root Admin` | 10/min     |
+| `Query`    | `tenants`         | Tenant list           | ✅ `Root Admin` | 100/min    |
+| `Query`    | `tenant`          | Tenant details        | ✅ `Root Admin` | 100/min    |
+| `Mutation` | `updateTenant`    | Update tenant         | ✅ `Root Admin` | 50/min     |
+| `Mutation` | `deleteTenant`    | Delete tenant (soft)  | ✅ `Root Admin` | 10/min     |
+| `Mutation` | `importUsers`     | Import users from CSV | ✅ `Admin`      | 5/min      |
+| `Mutation` | `impersonateUser` | Login as user         | ✅ `Admin`      | 10/min     |
 
 ### Events & Webhooks
 
-| Event               | Trigger           | Payload                       |
-| ------------------- | ----------------- | ----------------------------- |
-| `tenant.created`    | After tenant creation | `{ tenantId, code, name }` |
-| `tenant.activated`  | After activation  | `{ tenantId }`                |
-| `users.imported`    | After import complete | `{ tenantId, count, errors }` |
-| `user.impersonated` | When admin impersonates | `{ adminId, targetUserId }` |
+| Event               | Trigger                 | Payload                       |
+| ------------------- | ----------------------- | ----------------------------- |
+| `tenant.created`    | After tenant creation   | `{ tenantId, code, name }`    |
+| `tenant.activated`  | After activation        | `{ tenantId }`                |
+| `users.imported`    | After import complete   | `{ tenantId, count, errors }` |
+| `user.impersonated` | When admin impersonates | `{ adminId, targetUserId }`   |
 
 ---
 
@@ -194,19 +194,19 @@ Scheduler -> "Admin Service": execute_hard_delete()
 
 ### Functional Requirements
 
-| ID          | Requirement             | Condition                     |
-| ----------- | ----------------------- | ----------------------------- |
-| `FR-ADM-01` | Create `Tenant` successfully | Unique code, valid data     |
-| `FR-ADM-02` | Bulk import users       | Correct CSV format, ≤500 rows |
-| `FR-ADM-03` | Impersonate works       | Audit log recorded            |
+| ID          | Requirement                  | Condition                     |
+| ----------- | ---------------------------- | ----------------------------- |
+| `FR-ADM-01` | Create `Tenant` successfully | Unique code, valid data       |
+| `FR-ADM-02` | Bulk import users            | Correct CSV format, ≤500 rows |
+| `FR-ADM-03` | Impersonate works            | Audit log recorded            |
 
 ### Edge Cases
 
-| Case                     | Handling                    |
-| ------------------------ | --------------------------- |
-| Duplicate `Tenant` code  | Return `Code Exists` error  |
-| Import > 500 users       | Return `Limit Exceeded` error |
-| Duplicate email in import| Skip row, log error         |
-| Email service down       | Queue, retry later          |
+| Case                      | Handling                      |
+| ------------------------- | ----------------------------- |
+| Duplicate `Tenant` code   | Return `Code Exists` error    |
+| Import > 500 users        | Return `Limit Exceeded` error |
+| Duplicate email in import | Skip row, log error           |
+| Email service down        | Queue, retry later            |
 
 ---

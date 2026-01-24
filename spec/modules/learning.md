@@ -15,12 +15,12 @@ Learning module with AI-powered personalized learning paths.
 
 ### Main Workflows
 
-| Workflow               | Description                    | Actor          | Result                              |
-| ---------------------- | ------------------------------ | -------------- | ----------------------------------- |
-| Submit Exercise        | Submit exercise answers        | `Student`      | Graded, progress updated            |
-| Generate Learning Path | Create adaptive learning path  | `System`       | Recommended lesson list             |
-| Complete Lesson        | Complete lesson                | `Student`      | Progress updated, rewards triggered |
-| Track Progress         | Track learning progress        | `Student`/`Parent` | Dashboard displayed             |
+| Workflow               | Description                   | Actor              | Result                              |
+| ---------------------- | ----------------------------- | ------------------ | ----------------------------------- |
+| Submit Exercise        | Submit exercise answers       | `Student`          | Graded, progress updated            |
+| Generate Learning Path | Create adaptive learning path | `System`           | Recommended lesson list             |
+| Complete Lesson        | Complete lesson               | `Student`          | Progress updated, rewards triggered |
+| Track Progress         | Track learning progress       | `Student`/`Parent` | Dashboard displayed                 |
 
 #### Detailed Flows
 
@@ -142,23 +142,23 @@ Student -> "Learning Service": re_learn()
 
 ### Schema & Entities
 
-| Entity              | Main Fields                                               | Description           |
-| ------------------- | --------------------------------------------------------- | --------------------- |
-| `LearningPath`      | `id`, `user_id`, `subject_id`, `lessons[]`                | User learning path    |
+| Entity              | Main Fields                                               | Description                |
+| ------------------- | --------------------------------------------------------- | -------------------------- |
+| `LearningPath`      | `id`, `user_id`, `subject_id`, `lessons[]`                | User learning path         |
 | `LessonProgress`    | `id`, `user_id`, `lesson_id`, `status`, `score`           | Individual lesson progress |
-| `ExerciseSession`   | `id`, `user_id`, `lesson_id`, `started_at`, `answers[]`   | Exercise session      |
-| `SubmissionHistory` | `id`, `session_id`, `question_id`, `answer`, `is_correct` | Answer history        |
+| `ExerciseSession`   | `id`, `user_id`, `lesson_id`, `started_at`, `answers[]`   | Exercise session           |
+| `SubmissionHistory` | `id`, `session_id`, `question_id`, `answer`, `is_correct` | Answer history             |
 
 ### Relations
 
-| `Relation`                           | Description                                  |
-| ------------------------------------ | -------------------------------------------- |
-| `User` → `LearningPath`              | `1:N` - User has multiple learning paths     |
-| `User` → `LessonProgress`            | `1:N` - Progress for each lesson             |
-| `LessonProgress` → `ExerciseSession` | `1:N` - Multiple attempts per lesson         |
-| `Learning` → `Content`               | Depends - Fetch content from Content module  |
-| `Learning` → `Analytics`             | Depends - Send data for Knowledge Map        |
-| `Learning` → `Gamification`          | Depends - Trigger rewards                    |
+| `Relation`                           | Description                                 |
+| ------------------------------------ | ------------------------------------------- |
+| `User` → `LearningPath`              | `1:N` - User has multiple learning paths    |
+| `User` → `LessonProgress`            | `1:N` - Progress for each lesson            |
+| `LessonProgress` → `ExerciseSession` | `1:N` - Multiple attempts per lesson        |
+| `Learning` → `Content`               | Depends - Fetch content from Content module |
+| `Learning` → `Analytics`             | Depends - Send data for Knowledge Map       |
+| `Learning` → `Gamification`          | Depends - Trigger rewards                   |
 
 ---
 
@@ -166,22 +166,22 @@ Student -> "Learning Service": re_learn()
 
 ### GraphQL Operations
 
-| Type       | Operation          | Description             | Auth | Rate Limit |
-| ---------- | ------------------ | ----------------------- | ---- | ---------- |
-| `Query`    | `learningProgress` | Overall progress        | ✅   | 200/min    |
-| `Query`    | `lessonContent`    | Lesson content          | ✅   | 200/min    |
-| `Mutation` | `completeLesson`   | Mark as completed       | ✅   | 100/min    |
-| `Query`    | `lessonExercise`   | Get exercise            | ✅   | 100/min    |
-| `Mutation` | `submitExercise`   | Submit answers          | ✅   | 100/min    |
+| Type       | Operation          | Description                 | Auth | Rate Limit |
+| ---------- | ------------------ | --------------------------- | ---- | ---------- |
+| `Query`    | `learningProgress` | Overall progress            | ✅   | 200/min    |
+| `Query`    | `lessonContent`    | Lesson content              | ✅   | 200/min    |
+| `Mutation` | `completeLesson`   | Mark as completed           | ✅   | 100/min    |
+| `Query`    | `lessonExercise`   | Get exercise                | ✅   | 100/min    |
+| `Mutation` | `submitExercise`   | Submit answers              | ✅   | 100/min    |
 | `Query`    | `recommendations`  | Get next lesson suggestions | ✅   | 50/min     |
 
 ### Events & Webhooks
 
-| Event                | Trigger                | Payload                           |
-| -------------------- | ---------------------- | --------------------------------- |
-| `lesson.completed`   | Lesson completed       | `{ userId, lessonId, score }`     |
-| `exercise.submitted` | Exercise submitted     | `{ userId, exerciseId, results }` |
-| `path.updated`       | Learning path updated  | `{ userId, pathId, lessons }`     |
+| Event                | Trigger               | Payload                           |
+| -------------------- | --------------------- | --------------------------------- |
+| `lesson.completed`   | Lesson completed      | `{ userId, lessonId, score }`     |
+| `exercise.submitted` | Exercise submitted    | `{ userId, exerciseId, results }` |
+| `path.updated`       | Learning path updated | `{ userId, pathId, lessons }`     |
 
 ---
 
@@ -189,19 +189,19 @@ Student -> "Learning Service": re_learn()
 
 ### Functional Requirements
 
-| ID            | Requirement                  | Condition                        |
-| ------------- | ---------------------------- | -------------------------------- |
-| `FR-LEARN-01` | Personalized path generation | Based on history and weaknesses  |
-| `FR-LEARN-02` | Accurate grading             | Return correct `is_correct`      |
-| `FR-LEARN-03` | Real-time progress tracking  | Update immediately after submit  |
+| ID            | Requirement                  | Condition                       |
+| ------------- | ---------------------------- | ------------------------------- |
+| `FR-LEARN-01` | Personalized path generation | Based on history and weaknesses |
+| `FR-LEARN-02` | Accurate grading             | Return correct `is_correct`     |
+| `FR-LEARN-03` | Real-time progress tracking  | Update immediately after submit |
 
 ### Edge Cases
 
-| Case                    | Handling                              |
-| ----------------------- | ------------------------------------- |
-| AI Model timeout (>2s)  | Return default path per curriculum    |
-| DB Write fail           | Return error to client, retry client-side |
-| Session expired         | Return 400 error, request new session |
-| IDOR attempt            | Return 403 Forbidden                  |
+| Case                   | Handling                                  |
+| ---------------------- | ----------------------------------------- |
+| AI Model timeout (>2s) | Return default path per curriculum        |
+| DB Write fail          | Return error to client, retry client-side |
+| Session expired        | Return 400 error, request new session     |
+| IDOR attempt           | Return 403 Forbidden                      |
 
 ---

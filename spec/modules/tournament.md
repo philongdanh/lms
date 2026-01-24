@@ -15,12 +15,12 @@ Real-time tournament and competition module.
 
 ### Main Workflows
 
-| Workflow          | Description              | Actor         | Result                    |
-| ----------------- | ------------------------ | ------------- | ------------------------- |
-| Create Tournament | Create new tournament    | `Admin`/`Teacher` | `Tournament` created      |
-| Join Competition  | User registration        | `Student`     | User joins tournament room |
-| Realtime Scoring  | Real-time scoring        | `System`      | Leaderboard updated       |
-| End Round         | End tournament round     | `System`      | Results finalized         |
+| Workflow          | Description           | Actor             | Result                     |
+| ----------------- | --------------------- | ----------------- | -------------------------- |
+| Create Tournament | Create new tournament | `Admin`/`Teacher` | `Tournament` created       |
+| Join Competition  | User registration     | `Student`         | User joins tournament room |
+| Realtime Scoring  | Real-time scoring     | `System`          | Leaderboard updated        |
+| End Round         | End tournament round  | `System`          | Results finalized          |
 
 #### Detailed Flows
 
@@ -150,23 +150,23 @@ Scheduler -> "Tournament Service": check_end_time()
 
 ### Schema & Entities
 
-| Entity        | Main Fields                                                 | Description        |
-| ------------- | ------------------------------------------------------------ | ------------------ |
-| `Tournament`  | `id`, `name`, `type`, `status`, `start_time`, `end_time`     | Tournament info    |
-| `Round`       | `id`, `tournament_id`, `order`, `start_time`, `questions[]`  | Tournament rounds  |
-| `Participant` | `id`, `tournament_id`, `user_id`, `score`, `rank`            | Participants       |
-| `MatchResult` | `id`, `round_id`, `user_id`, `answers[]`, `score`, `time_ms` | Detailed results   |
+| Entity        | Main Fields                                                  | Description       |
+| ------------- | ------------------------------------------------------------ | ----------------- |
+| `Tournament`  | `id`, `name`, `type`, `status`, `start_time`, `end_time`     | Tournament info   |
+| `Round`       | `id`, `tournament_id`, `order`, `start_time`, `questions[]`  | Tournament rounds |
+| `Participant` | `id`, `tournament_id`, `user_id`, `score`, `rank`            | Participants      |
+| `MatchResult` | `id`, `round_id`, `user_id`, `answers[]`, `score`, `time_ms` | Detailed results  |
 
 ### Relations
 
-| `Relation`                   | Description                          |
-| ---------------------------- | ------------------------------------ |
-| `Tournament` → `Round`       | `1:N` - Tournament has many rounds   |
-| `Tournament` → `Participant` | `1:N` - Many participants            |
-| `Round` → `MatchResult`      | `1:N` - Results per round            |
-| `Tournament` → `Realtime`    | Depends - `WebSocket` gateway        |
-| `Tournament` → `Gamification`| Depends - Trigger rewards            |
-| `Tournament` → `Content`     | Depends - Fetch questions            |
+| `Relation`                    | Description                        |
+| ----------------------------- | ---------------------------------- |
+| `Tournament` → `Round`        | `1:N` - Tournament has many rounds |
+| `Tournament` → `Participant`  | `1:N` - Many participants          |
+| `Round` → `MatchResult`       | `1:N` - Results per round          |
+| `Tournament` → `Realtime`     | Depends - `WebSocket` gateway      |
+| `Tournament` → `Gamification` | Depends - Trigger rewards          |
+| `Tournament` → `Content`      | Depends - Fetch questions          |
 
 ---
 
@@ -186,12 +186,12 @@ Scheduler -> "Tournament Service": check_end_time()
 
 ### Events & Webhooks
 
-| Event                  | Trigger        | Payload                              |
-| ---------------------- | -------------- | ------------------------------------ |
-| `round.started`        | Round starts   | `{ tournamentId, roundId }`          |
-| `round.ended`          | Round ends     | `{ tournamentId, roundId, results }` |
-| `leaderboard.updated`  | Score changes  | `{ tournamentId, top10 }`            |
-| `tournament.completed` | Tournament ends| `{ tournamentId, winners }`          |
+| Event                  | Trigger         | Payload                              |
+| ---------------------- | --------------- | ------------------------------------ |
+| `round.started`        | Round starts    | `{ tournamentId, roundId }`          |
+| `round.ended`          | Round ends      | `{ tournamentId, roundId, results }` |
+| `leaderboard.updated`  | Score changes   | `{ tournamentId, top10 }`            |
+| `tournament.completed` | Tournament ends | `{ tournamentId, winners }`          |
 
 ---
 
@@ -207,11 +207,11 @@ Scheduler -> "Tournament Service": check_end_time()
 
 ### Edge Cases
 
-| Case                  | Handling                    |
-| --------------------- | --------------------------- |
-| Join late (after start)| Blocked, return error      |
-| Disconnect mid-match  | Auto-reconnect, keep session|
-| Redis failover        | Cluster auto-switch         |
-| 100k concurrent users | Load balance via rooms      |
+| Case                    | Handling                     |
+| ----------------------- | ---------------------------- |
+| Join late (after start) | Blocked, return error        |
+| Disconnect mid-match    | Auto-reconnect, keep session |
+| Redis failover          | Cluster auto-switch          |
+| 100k concurrent users   | Load balance via rooms       |
 
 ---

@@ -1,5 +1,5 @@
 ---
-id: data
+id: database
 title: Database
 sidebar_label: Database
 sidebar_position: 3

@@ -61,9 +61,9 @@ LMS Platform là hệ thống quản lý học tập thông minh với **AI Lear
 
 ## Tips for Success
 
-- 📅 Đặt mục tiêu hàng ngày để duy trì streak
-- 🏆 Tham gia Tournament để tăng động lực
-- 🔔 Kiểm tra thông báo thường xuyên
+- Đặt mục tiêu hàng ngày để duy trì streak
+- Tham gia Tournament để tăng động lực
+- Kiểm tra thông báo thường xuyên
 
 ---
 

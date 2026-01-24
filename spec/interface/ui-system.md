@@ -1,5 +1,5 @@
 ---
-id: interfaces
+id: ui-system
 title: UI System
 sidebar_label: UI System
 sidebar_position: 2

@@ -15,13 +15,13 @@ System architecture design and main components.
 
 ### Applied Patterns
 
-| Aspect        | Pattern             | Description                            |
-| ------------- | ------------------- | -------------------------------------- |
-| Overview      | Modular Monolith    | Clear modularization, easy maintenance |
-| Multi-tenancy | Data Isolation      | Each tenant has separate data space    |
-| Communication | Event-Driven        | Modules communicate via events         |
-| Realtime      | `WebSocket` + Pub/Sub | Redis adapter for scaling            |
-| Security      | RBAC                | 5 roles with controlled permissions    |
+| Aspect        | Pattern               | Description                            |
+| ------------- | --------------------- | -------------------------------------- |
+| Overview      | Modular Monolith      | Clear modularization, easy maintenance |
+| Multi-tenancy | Data Isolation        | Each tenant has separate data space    |
+| Communication | Event-Driven          | Modules communicate via events         |
+| Realtime      | `WebSocket` + Pub/Sub | Redis adapter for scaling              |
+| Security      | RBAC                  | 5 roles with controlled permissions    |
 
 ### Overview Diagram
 
@@ -74,12 +74,12 @@ App -> Data Layer.Redis
 
 ### System Communication
 
-| Type     | Pattern       | Description                     |
-| -------- | ------------- | ------------------------------- |
+| Type     | Pattern       | Description                       |
+| -------- | ------------- | --------------------------------- |
 | Sync     | `GraphQL`     | Primary API for queries/mutations |
-| Sync     | `REST`        | Webhooks, file uploads          |
-| Async    | Redis Pub/Sub | Event broadcasting              |
-| Realtime | `WebSocket`   | Socket.IO with rooms            |
+| Sync     | `REST`        | Webhooks, file uploads            |
+| Async    | Redis Pub/Sub | Event broadcasting                |
+| Realtime | `WebSocket`   | Socket.IO with rooms              |
 
 ### Data Flow
 
@@ -124,13 +124,13 @@ Redis -> WS: Broadcast to room
 
 ### Core Principles
 
-| Category | Principle             | Description                     |
-| -------- | --------------------- | ------------------------------- |
-| Dev      | Single Responsibility | Each module one scope           |
-| Dev      | Dependency Injection  | Easy testing                    |
-| Security | Least Privilege       | Minimum permissions             |
-| Security | Tenant Isolation      | Independent data                |
-| Realtime | Room-based            | Virtual room organization       |
-| Data     | Selective Soft Delete | Only for main entities          |
+| Category | Principle             | Description               |
+| -------- | --------------------- | ------------------------- |
+| Dev      | Single Responsibility | Each module one scope     |
+| Dev      | Dependency Injection  | Easy testing              |
+| Security | Least Privilege       | Minimum permissions       |
+| Security | Tenant Isolation      | Independent data          |
+| Realtime | Room-based            | Virtual room organization |
+| Data     | Selective Soft Delete | Only for main entities    |
 
 ---

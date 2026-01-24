@@ -15,11 +15,11 @@ Learning data analysis and statistical reporting module.
 
 ### Main Workflows
 
-| Workflow          | Description                        | Actor         | Result                |
-| ----------------- | ---------------------------------- | ------------- | --------------------- |
-| ETL Pipeline      | Process events from Learning module| `System`      | Knowledge Map updated |
-| Generate Report   | Create report on demand            | `Teacher`/`Admin` | Report PDF/JSON       |
-| Daily Aggregation | Aggregate daily data               | `System`      | Daily stats ready     |
+| Workflow          | Description                         | Actor             | Result                |
+| ----------------- | ----------------------------------- | ----------------- | --------------------- |
+| ETL Pipeline      | Process events from Learning module | `System`          | Knowledge Map updated |
+| Generate Report   | Create report on demand             | `Teacher`/`Admin` | Report PDF/JSON       |
+| Daily Aggregation | Aggregate daily data                | `System`          | Daily stats ready     |
 
 #### Detailed Flows
 
@@ -96,19 +96,19 @@ N/A - Analytics is a read-only module, no state machine.
 
 ### Schema & Entities
 
-| Entity         | Main Fields                                         | Description           |
-| -------------- | ---------------------------------------------------- | --------------------- |
+| Entity         | Main Fields                                          | Description             |
+| -------------- | ---------------------------------------------------- | ----------------------- |
 | `KnowledgeMap` | `user_id`, `topic_id`, `mastery_score`               | Knowledge mastery level |
-| `DailyStats`   | `user_id`, `date`, `lessons_completed`, `time_spent` | Daily statistics      |
-| `ReportCache`  | `report_id`, `params_hash`, `data`, `expires_at`     | Report cache          |
+| `DailyStats`   | `user_id`, `date`, `lessons_completed`, `time_spent` | Daily statistics        |
+| `ReportCache`  | `report_id`, `params_hash`, `data`, `expires_at`     | Report cache            |
 
 ### Relations
 
-| `Relation`              | Description                             |
-| ----------------------- | --------------------------------------- |
-| `User` → `KnowledgeMap` | `1:N` - Each user has map for many topics |
-| `Analytics` ← `Learning`| Consumes - Receives events from Learning |
-| `Analytics` ← `Auth`    | Consumes - Fetches user/role info        |
+| `Relation`               | Description                               |
+| ------------------------ | ----------------------------------------- |
+| `User` → `KnowledgeMap`  | `1:N` - Each user has map for many topics |
+| `Analytics` ← `Learning` | Consumes - Receives events from Learning  |
+| `Analytics` ← `Auth`     | Consumes - Fetches user/role info         |
 
 ---
 
@@ -116,19 +116,19 @@ N/A - Analytics is a read-only module, no state machine.
 
 ### GraphQL Operations
 
-| Type    | Operation          | Description                | Auth       | Rate Limit |
-| ------- | ------------------ | -------------------------- | ---------- | ---------- |
-| `Query` | `progressOverview` | Progress overview          | ✅         | 100/min    |
-| `Query` | `subjectProgress`  | Progress by subject        | ✅         | 100/min    |
-| `Query` | `knowledgeMap`     | Knowledge map              | ✅         | 50/min     |
-| `Query` | `dailyStats`       | Daily learning stats       | ✅         | 100/min    |
-| `Query` | `classReport`      | Class report               | ✅ `Teacher` | 50/min     |
+| Type    | Operation          | Description          | Auth         | Rate Limit |
+| ------- | ------------------ | -------------------- | ------------ | ---------- |
+| `Query` | `progressOverview` | Progress overview    | ✅           | 100/min    |
+| `Query` | `subjectProgress`  | Progress by subject  | ✅           | 100/min    |
+| `Query` | `knowledgeMap`     | Knowledge map        | ✅           | 50/min     |
+| `Query` | `dailyStats`       | Daily learning stats | ✅           | 100/min    |
+| `Query` | `classReport`      | Class report         | ✅ `Teacher` | 50/min     |
 
 ### Events & Webhooks
 
-| Event                        | Trigger                     | Payload             |
-| ---------------------------- | --------------------------- | ------------------- |
-| `analytics.report.generated` | Large report complete (async)| `{ reportId, url }` |
+| Event                        | Trigger                       | Payload             |
+| ---------------------------- | ----------------------------- | ------------------- |
+| `analytics.report.generated` | Large report complete (async) | `{ reportId, url }` |
 
 ---
 
@@ -136,18 +136,18 @@ N/A - Analytics is a read-only module, no state machine.
 
 ### Functional Requirements
 
-| ID          | Requirement                   | Condition                       |
-| ----------- | ----------------------------- | ------------------------------- |
-| `FR-ANA-01` | Accurate mastery calculation  | Correct formula                 |
-| `FR-ANA-02` | Accurate daily aggregation    | Sum matches logs                |
-| `FR-ANA-03` | Authorization works           | `Teacher` cannot view other classes |
+| ID          | Requirement                  | Condition                           |
+| ----------- | ---------------------------- | ----------------------------------- |
+| `FR-ANA-01` | Accurate mastery calculation | Correct formula                     |
+| `FR-ANA-02` | Accurate daily aggregation   | Sum matches logs                    |
+| `FR-ANA-03` | Authorization works          | `Teacher` cannot view other classes |
 
 ### Edge Cases
 
-| Case                           | Handling                           |
-| ------------------------------ | ---------------------------------- |
-| Report too large (>1 year data)| Async processing, return report ID |
-| Cache miss                     | Query DB, cache result             |
-| No data for period             | Return empty result with metadata  |
+| Case                            | Handling                           |
+| ------------------------------- | ---------------------------------- |
+| Report too large (>1 year data) | Async processing, return report ID |
+| Cache miss                      | Query DB, cache result             |
+| No data for period              | Return empty result with metadata  |
 
 ---

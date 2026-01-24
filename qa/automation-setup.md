@@ -1,5 +1,5 @@
 ---
-id: automation
+id: automation-setup
 title: Test Automation
 sidebar_label: Automation
 sidebar_position: 3

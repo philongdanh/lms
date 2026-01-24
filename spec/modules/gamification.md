@@ -15,12 +15,12 @@ Gamification module managing rewards, points, and leaderboards.
 
 ### Main Workflows
 
-| Workflow            | Description            | Actor   | Result                           |
-| ------------------- | ---------------------- | ------- | -------------------------------- |
-| Process EXP         | Process EXP gain event | `System`| User gains EXP, may level up     |
-| Award `Badge`       | Award badge to user    | `System`| `Badge` awarded                  |
-| `Reward` Redemption | Redeem coins for reward| `Student`| Coins deducted, reward granted  |
-| Update Leaderboard  | Update leaderboard     | `System`| Realtime leaderboard             |
+| Workflow            | Description             | Actor     | Result                         |
+| ------------------- | ----------------------- | --------- | ------------------------------ |
+| Process EXP         | Process EXP gain event  | `System`  | User gains EXP, may level up   |
+| Award `Badge`       | Award badge to user     | `System`  | `Badge` awarded                |
+| `Reward` Redemption | Redeem coins for reward | `Student` | Coins deducted, reward granted |
+| Update Leaderboard  | Update leaderboard      | `System`  | Realtime leaderboard           |
 
 #### Detailed Flows
 
@@ -113,7 +113,7 @@ N/A - Gamification events are transactional, no persistent state machine.
 
 ### Schema & Entities
 
-| Entity             | Main Fields                                  | Description            |
+| Entity             | Main Fields                                   | Description             |
 | ------------------ | --------------------------------------------- | ----------------------- |
 | `UserProfile`      | `user_id`, `exp`, `level`, `coins`            | User game info          |
 | `Badge`            | `id`, `name`, `criteria`, `icon`              | Badge definition        |
@@ -124,12 +124,12 @@ N/A - Gamification events are transactional, no persistent state machine.
 
 ### Relations
 
-| `Relation`                  | Description                        |
-| --------------------------- | ----------------------------------- |
-| `User` → `UserProfile`      | `1:1` - Each user has 1 profile     |
-| `User` → `UserBadge`        | `1:N` - User has many badges        |
+| `Relation`                    | Description                           |
+| ----------------------------- | ------------------------------------- |
+| `User` → `UserProfile`        | `1:1` - Each user has 1 profile       |
+| `User` → `UserBadge`          | `1:N` - User has many badges          |
 | `Gamification` ← `Learning`   | Consumes - Receives completion events |
-| `Gamification` ← `Tournament` | Consumes - Receives win/loss events |
+| `Gamification` ← `Tournament` | Consumes - Receives win/loss events   |
 
 ---
 
@@ -137,14 +137,14 @@ N/A - Gamification events are transactional, no persistent state machine.
 
 ### GraphQL Operations
 
-| Type       | Operation      | Description       | Auth | Rate Limit |
-| ---------- | -------------- | ----------------- | ---- | ---------- |
-| `Query`    | `userProfile`  | EXP/Level info    | ✅   | 200/min    |
-| `Query`    | `badges`       | Badge list        | ✅   | 100/min    |
-| `Query`    | `leaderboard`  | Leaderboard       | ✅   | 100/min    |
-| `Query`    | `rewards`      | Reward list       | ✅   | 100/min    |
-| `Mutation` | `redeemReward` | Redeem reward     | ✅   | 20/min     |
-| `Query`    | `streaks`      | Streak info       | ✅   | 200/min    |
+| Type       | Operation      | Description    | Auth | Rate Limit |
+| ---------- | -------------- | -------------- | ---- | ---------- |
+| `Query`    | `userProfile`  | EXP/Level info | ✅   | 200/min    |
+| `Query`    | `badges`       | Badge list     | ✅   | 100/min    |
+| `Query`    | `leaderboard`  | Leaderboard    | ✅   | 100/min    |
+| `Query`    | `rewards`      | Reward list    | ✅   | 100/min    |
+| `Mutation` | `redeemReward` | Redeem reward  | ✅   | 20/min     |
+| `Query`    | `streaks`      | Streak info    | ✅   | 200/min    |
 
 ### Events & Webhooks
 

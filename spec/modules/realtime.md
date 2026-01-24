@@ -15,12 +15,12 @@ Real-time communication module via `WebSocket`.
 
 ### Main Workflows
 
-| Workflow            | Description             | Actor  | Result                    |
-| ------------------- | ----------------------- | ------ | ------------------------- |
-| `WebSocket` Handshake | Client connects with JWT | Client | Connection established    |
-| Broadcast Event     | Send message to room    | `System` | Clients receive message   |
-| `Presence` Tracking | Track online/offline    | `System` | `Presence` store updated  |
-| `Room` Management   | Join/leave rooms        | Client | `Room` membership updated |
+| Workflow              | Description              | Actor    | Result                    |
+| --------------------- | ------------------------ | -------- | ------------------------- |
+| `WebSocket` Handshake | Client connects with JWT | Client   | Connection established    |
+| Broadcast Event       | Send message to room     | `System` | Clients receive message   |
+| `Presence` Tracking   | Track online/offline     | `System` | `Presence` store updated  |
+| `Room` Management     | Join/leave rooms         | Client   | `Room` membership updated |
 
 #### Detailed Flows
 
@@ -130,20 +130,20 @@ Client -> "Realtime Service": disconnect()
 
 ### Schema & Entities
 
-| Entity         | Main Fields                                  | Description            |
-| -------------- | --------------------------------------------- | ---------------------- |
-| `Notification` | `id`, `user_id`, `type`, `content`, `read_at` | Notification           |
-| `Presence`     | `user_id`, `socket_id`, `last_seen`           | Online status          |
-| `Room`         | `room_id`, `type`, `members[]`                | Chat/competition room  |
+| Entity         | Main Fields                                   | Description           |
+| -------------- | --------------------------------------------- | --------------------- |
+| `Notification` | `id`, `user_id`, `type`, `content`, `read_at` | Notification          |
+| `Presence`     | `user_id`, `socket_id`, `last_seen`           | Online status         |
+| `Room`         | `room_id`, `type`, `members[]`                | Chat/competition room |
 
 ### Relations
 
-| `Relation`              | Description                        |
-| ----------------------- | ---------------------------------- |
+| `Relation`              | Description                         |
+| ----------------------- | ----------------------------------- |
 | `User` → `Notification` | `1:N` - User has many notifications |
 | `User` → `Presence`     | `1:1` - Each user has online status |
-| `Realtime` ← `Auth`     | Depends - JWT authentication       |
-| `Realtime` → Redis      | Uses - Pub/Sub, `Presence` store   |
+| `Realtime` ← `Auth`     | Depends - JWT authentication        |
+| `Realtime` → Redis      | Uses - Pub/Sub, `Presence` store    |
 
 ---
 
@@ -187,11 +187,11 @@ Client -> "Realtime Service": disconnect()
 
 ### Edge Cases
 
-| Case                        | Handling                            |
-| --------------------------- | ----------------------------------- |
-| Token expires when connected| Force disconnect, require reconnect |
-| Redis failover              | Auto-reconnect to new master        |
-| `Room` full                 | Reject join with error              |
-| Network hiccup              | Auto-reconnect with backoff         |
+| Case                         | Handling                            |
+| ---------------------------- | ----------------------------------- |
+| Token expires when connected | Force disconnect, require reconnect |
+| Redis failover               | Auto-reconnect to new master        |
+| `Room` full                  | Reject join with error              |
+| Network hiccup               | Auto-reconnect with backoff         |
 
 ---

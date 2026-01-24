@@ -15,14 +15,14 @@ Authentication and authorization module for users in multi-tenant system.
 
 ### Workflow chính
 
-| Workflow            | Description                                | Actor    | Result                         |
-| ------------------- | ------------------------------------------ | -------- | ------------------------------ |
-| School Registration | Register new tenant for school             | `Admin`  | `Tenant` created and activated |
-| User Registration   | Register new user (`Student`/`Parent`)     | `User`   | Account created and verified   |
-| Multi-Device Login  | Login and device control                   | `User`   | Session created                |
-| Parent-Student Link | Link parent and student accounts           | `Parent` | Accounts linked                |
-| Token Refresh       | Issue new access token                     | `System` | New token issued               |
-| Logout & Revoke     | Logout and revoke session                  | `User`   | Session revoked                |
+| Workflow            | Description                            | Actor    | Result                         |
+| ------------------- | -------------------------------------- | -------- | ------------------------------ |
+| School Registration | Register new tenant for school         | `Admin`  | `Tenant` created and activated |
+| User Registration   | Register new user (`Student`/`Parent`) | `User`   | Account created and verified   |
+| Multi-Device Login  | Login and device control               | `User`   | Session created                |
+| Parent-Student Link | Link parent and student accounts       | `Parent` | Accounts linked                |
+| Token Refresh       | Issue new access token                 | `System` | New token issued               |
+| Logout & Revoke     | Logout and revoke session              | `User`   | Session revoked                |
 
 #### Detailed Flows
 
@@ -188,12 +188,12 @@ User -> UserRole: has
 User -> UserSession: has
 ```
 
-| Entity        | Fields chính                                  | Description          |
-| ------------- | --------------------------------------------- | -------------------- |
-| `Tenant`      | `id`, `name`, `status`, `domain`              | School information   |
-| `User`        | `id`, `email`, `password_hash`, `tenant_id`   | System user          |
-| `UserRole`    | `id`, `user_id`, `role`                       | User role            |
-| `UserSession` | `id`, `user_id`, `device_id`, `refresh_token` | Login session        |
+| Entity        | Fields chính                                  | Description        |
+| ------------- | --------------------------------------------- | ------------------ |
+| `Tenant`      | `id`, `name`, `status`, `domain`              | School information |
+| `User`        | `id`, `email`, `password_hash`, `tenant_id`   | System user        |
+| `UserRole`    | `id`, `user_id`, `role`                       | User role          |
+| `UserSession` | `id`, `user_id`, `device_id`, `refresh_token` | Login session      |
 
 ### Relations
 
@@ -209,24 +209,24 @@ User -> UserSession: has
 
 ### GraphQL Operations
 
-| Type       | Operation       | Description        | Auth | Rate Limit |
-| ---------- | --------------- | ------------------ | ---- | ---------- |
-| `Mutation` | `login`         | Login              | ❌   | 10/min     |
-| `Mutation` | `register`      | Register           | ❌   | 5/min      |
-| `Mutation` | `refreshToken`  | Refresh Token      | ✅   | 20/min     |
-| `Mutation` | `logout`        | Logout             | ✅   | 50/min     |
-| `Query`    | `sessions`      | List sessions      | ✅   | 100/min    |
-| `Mutation` | `revokeSession` | Revoke session     | ✅   | 50/min     |
-| `Mutation` | `linkParent`    | Link parent        | ✅   | 10/min     |
+| Type       | Operation       | Description    | Auth | Rate Limit |
+| ---------- | --------------- | -------------- | ---- | ---------- |
+| `Mutation` | `login`         | Login          | ❌   | 10/min     |
+| `Mutation` | `register`      | Register       | ❌   | 5/min      |
+| `Mutation` | `refreshToken`  | Refresh Token  | ✅   | 20/min     |
+| `Mutation` | `logout`        | Logout         | ✅   | 50/min     |
+| `Query`    | `sessions`      | List sessions  | ✅   | 100/min    |
+| `Mutation` | `revokeSession` | Revoke session | ✅   | 50/min     |
+| `Mutation` | `linkParent`    | Link parent    | ✅   | 10/min     |
 
 ### Events & Webhooks
 
-| Event             | Trigger                  | Payload                           |
-| ----------------- | ------------------------ | --------------------------------- |
-| `user.registered` | After successful signup  | `{ userId, email, role }`         |
-| `user.logged_in`  | After successful login   | `{ userId, deviceId, sessionId }` |
-| `user.logged_out` | After logout             | `{ userId, sessionId }`           |
-| `session.revoked` | When session is revoked  | `{ userId, sessionId }`           |
+| Event             | Trigger                 | Payload                           |
+| ----------------- | ----------------------- | --------------------------------- |
+| `user.registered` | After successful signup | `{ userId, email, role }`         |
+| `user.logged_in`  | After successful login  | `{ userId, deviceId, sessionId }` |
+| `user.logged_out` | After logout            | `{ userId, sessionId }`           |
+| `session.revoked` | When session is revoked | `{ userId, sessionId }`           |
 
 ---
 
@@ -234,21 +234,21 @@ User -> UserSession: has
 
 ### Functional Requirements
 
-| ID           | Requirement             | Condition                          |
-| ------------ | ----------------------- | ---------------------------------- |
-| `FR-AUTH-01` | Valid email registration | Email doesn't exist, correct format |
-| `FR-AUTH-02` | Successful login        | Correct credentials, verified account |
-| `FR-AUTH-03` | Multi-device session    | Both sessions are active           |
-| `FR-AUTH-04` | Logout invalidate token | `refreshToken` is revoked          |
+| ID           | Requirement              | Condition                             |
+| ------------ | ------------------------ | ------------------------------------- |
+| `FR-AUTH-01` | Valid email registration | Email doesn't exist, correct format   |
+| `FR-AUTH-02` | Successful login         | Correct credentials, verified account |
+| `FR-AUTH-03` | Multi-device session     | Both sessions are active              |
+| `FR-AUTH-04` | Logout invalidate token  | `refreshToken` is revoked             |
 
 ### Edge Cases
 
-| Case                | Handling                          |
-| ------------------- | --------------------------------- |
-| Email already exists | Return `CONFLICT` error          |
-| Wrong password      | Return `UNAUTHORIZED` error       |
-| Rate limit exceeded | Return `429 Too Many Requests`    |
-| Redis down          | Fallback to DB (slow) + Alert Ops |
-| Email service fail  | Retry 3x, then Queue + Alert Ops  |
+| Case                 | Handling                          |
+| -------------------- | --------------------------------- |
+| Email already exists | Return `CONFLICT` error           |
+| Wrong password       | Return `UNAUTHORIZED` error       |
+| Rate limit exceeded  | Return `429 Too Many Requests`    |
+| Redis down           | Fallback to DB (slow) + Alert Ops |
+| Email service fail   | Retry 3x, then Queue + Alert Ops  |
 
 ---
