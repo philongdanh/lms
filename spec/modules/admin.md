@@ -189,28 +189,30 @@ Admin -> AuditLog: 1:N
 
 ### GraphQL Operations
 
+> **SSoT**: [schema.graphql](../interface/graphql/admin/schema.graphql) | [operations.graphql](../interface/graphql/admin/operations.graphql)
+
 ```graphql
 type Query {
   """Danh sách tenant"""
-  tenants(status: TenantStatus): [Tenant!]! @auth(role: ROOT_ADMIN) @rateLimit(limit: 100, window: "1m")
+  tenants(status: TenantStatus): [Tenant!]! @auth(role: SUPER_ADMIN) @rateLimit(limit: 100, window: "1m")
 
   """Chi tiết tenant"""
-  tenant(id: ID!): Tenant! @auth(role: ROOT_ADMIN) @rateLimit(limit: 100, window: "1m")
+  tenant(id: ID!): Tenant! @auth(role: SUPER_ADMIN) @rateLimit(limit: 100, window: "1m")
 }
 
 type Mutation {
   """Tạo tenant mới"""
   createTenant(input: CreateTenantInput!): Tenant!
-    @auth(role: ROOT_ADMIN)
+    @auth(role: SUPER_ADMIN)
     @rateLimit(limit: 10, window: "1m")
 
   """Cập nhật tenant"""
   updateTenant(id: ID!, input: UpdateTenantInput!): Tenant!
-    @auth(role: ROOT_ADMIN)
+    @auth(role: SUPER_ADMIN)
     @rateLimit(limit: 50, window: "1m")
 
   """Xóa tenant (soft delete)"""
-  deleteTenant(id: ID!): Boolean! @auth(role: ROOT_ADMIN) @rateLimit(limit: 10, window: "1m")
+  deleteTenant(id: ID!): Boolean! @auth(role: SUPER_ADMIN) @rateLimit(limit: 10, window: "1m")
 
   """Import users từ CSV"""
   importUsers(file: Upload!): ImportJob! @auth(role: ADMIN) @rateLimit(limit: 5, window: "1m")

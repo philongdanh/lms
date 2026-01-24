@@ -236,6 +236,8 @@ User -> UserSession: 1:N
 
 ### GraphQL Operations
 
+> **SSoT**: [schema.graphql](../interface/graphql/auth/schema.graphql) | [operations.graphql](../interface/graphql/auth/operations.graphql)
+
 ```graphql
 type Query {
   """Danh sách session đang hoạt động"""

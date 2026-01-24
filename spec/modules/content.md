@@ -195,6 +195,8 @@ Lesson -> Media: N:M
 
 ### GraphQL Operations
 
+> **SSoT**: [schema.graphql](../interface/graphql/content/schema.graphql) | [operations.graphql](../interface/graphql/content/operations.graphql)
+
 ```graphql
 type Query {
   """Danh sách môn học"""

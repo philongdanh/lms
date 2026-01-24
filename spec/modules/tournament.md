@@ -205,6 +205,8 @@ Round -> MatchResult: 1:N
 
 ### GraphQL Operations
 
+> **SSoT**: [schema.graphql](../interface/graphql/tournament/schema.graphql) | [operations.graphql](../interface/graphql/tournament/operations.graphql)
+
 ```graphql
 type Query {
   """Danh sách giải đấu"""

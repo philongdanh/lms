@@ -128,6 +128,8 @@ User -> DailyStats: 1:N
 
 ### GraphQL Operations
 
+> **SSoT**: [schema.graphql](../interface/graphql/analytics/schema.graphql) | [operations.graphql](../interface/graphql/analytics/operations.graphql)
+
 ```graphql
 type Query {
   """Tổng quan tiến độ học tập"""

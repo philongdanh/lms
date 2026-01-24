@@ -195,6 +195,8 @@ ExerciseSession -> SubmissionHistory: 1:N
 
 ### GraphQL Operations
 
+> **SSoT**: [schema.graphql](../interface/graphql/learning/schema.graphql) | [operations.graphql](../interface/graphql/learning/operations.graphql)
+
 ```graphql
 type Query {
   """Tiến độ học tập tổng quan"""

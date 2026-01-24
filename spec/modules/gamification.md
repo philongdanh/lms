@@ -175,6 +175,8 @@ User -> Streak: 1:1
 
 ### GraphQL Operations
 
+> **SSoT**: [schema.graphql](../interface/graphql/gamification/schema.graphql) | [operations.graphql](../interface/graphql/gamification/operations.graphql)
+
 ```graphql
 type Query {
   """Thông tin EXP và Level"""

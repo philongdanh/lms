@@ -168,6 +168,8 @@ User -> Presence: 1:1
 
 ### GraphQL Operations
 
+> **SSoT**: [schema.graphql](../interface/graphql/realtime/schema.graphql) | [operations.graphql](../interface/graphql/realtime/operations.graphql)
+
 ```graphql
 type Query {
   """Danh sách thông báo"""
