@@ -195,38 +195,55 @@ Lesson -> Media: N:M
 
 ### GraphQL Operations
 
-> **SSoT**: [schema.graphql](../interface/graphql/content/schema.graphql) | [operations.graphql](../interface/graphql/content/operations.graphql)
+> **SSoT**: [schema.graphql](../interface/graphql/content/schema.graphql) |
+> [operations.graphql](../interface/graphql/content/operations.graphql)
 
 ```graphql
 type Query {
-  """Danh sách môn học"""
+  """
+  Danh sách môn học
+  """
   subjects(grade: Int): [Subject!]! @rateLimit(limit: 200, window: "1m")
 
-  """Danh sách chủ đề"""
+  """
+  Danh sách chủ đề
+  """
   topics(subjectId: ID!): [Topic!]! @rateLimit(limit: 200, window: "1m")
 
-  """Chi tiết bài học"""
+  """
+  Chi tiết bài học
+  """
   lesson(id: ID!): Lesson! @auth @rateLimit(limit: 200, window: "1m")
 
-  """Tìm kiếm câu hỏi"""
+  """
+  Tìm kiếm câu hỏi
+  """
   searchQuestions(query: String!, lessonId: ID): [Question!]!
     @auth(role: TEACHER)
     @rateLimit(limit: 100, window: "1m")
 }
 
 type Mutation {
-  """Import câu hỏi từ file"""
+  """
+  Import câu hỏi từ file
+  """
   importQuestions(file: Upload!, lessonId: ID!): ImportResult!
     @auth(role: TEACHER)
     @rateLimit(limit: 10, window: "1m")
 
-  """Tạo bài học mới"""
+  """
+  Tạo bài học mới
+  """
   createLesson(input: CreateLessonInput!): Lesson!
     @auth(role: TEACHER)
     @rateLimit(limit: 50, window: "1m")
 
-  """Xuất bản bài học"""
-  publishLesson(lessonId: ID!): Lesson! @auth(role: ADMIN) @rateLimit(limit: 50, window: "1m")
+  """
+  Xuất bản bài học
+  """
+  publishLesson(lessonId: ID!): Lesson!
+    @auth(role: ADMIN)
+    @rateLimit(limit: 50, window: "1m")
 }
 
 type ImportResult {
@@ -252,10 +269,10 @@ POST /api/upload
 
 ### Events & Webhooks
 
-| Event               | Trigger                 | Payload                       |
-| ------------------- | ----------------------- | ----------------------------- |
-| `content.published` | Bài học được xuất bản   | `{ lessonId, publishedBy }`   |
-| `import.completed`  | Import hoàn tất         | `{ success, failed, report }` |
+| Event               | Trigger               | Payload                       |
+| ------------------- | --------------------- | ----------------------------- |
+| `content.published` | Bài học được xuất bản | `{ lessonId, publishedBy }`   |
+| `import.completed`  | Import hoàn tất       | `{ success, failed, report }` |
 
 ---
 
@@ -263,19 +280,19 @@ POST /api/upload
 
 ### Functional Requirements
 
-| ID           | Yêu cầu                        | Điều kiện                                  |
-| ------------ | ------------------------------ | ------------------------------------------ |
-| `FR-CONT-01` | Validate phân cấp              | Không thể tạo `Lesson` không có `Topic`    |
-| `FR-CONT-02` | Kiểm tra định dạng import      | Từ chối file không hỗ trợ                  |
-| `FR-CONT-03` | Phát video media               | Video chơi được trên mọi thiết bị          |
+| ID           | Yêu cầu                   | Điều kiện                               |
+| ------------ | ------------------------- | --------------------------------------- |
+| `FR-CONT-01` | Validate phân cấp         | Không thể tạo `Lesson` không có `Topic` |
+| `FR-CONT-02` | Kiểm tra định dạng import | Từ chối file không hỗ trợ               |
+| `FR-CONT-03` | Phát video media          | Video chơi được trên mọi thiết bị       |
 
 ### Edge Cases
 
-| Case                          | Xử lý                                 |
-| ----------------------------- | ------------------------------------- |
-| Import file lỗi               | Trả về `Invalid File Format`          |
-| Import lỗi một phần           | Bỏ qua dòng lỗi, log, tiếp tục        |
-| Phát hiện malware             | Từ chối upload, alert admin           |
-| Sửa nội dung người khác       | 403 Forbidden                         |
+| Case                    | Xử lý                          |
+| ----------------------- | ------------------------------ |
+| Import file lỗi         | Trả về `Invalid File Format`   |
+| Import lỗi một phần     | Bỏ qua dòng lỗi, log, tiếp tục |
+| Phát hiện malware       | Từ chối upload, alert admin    |
+| Sửa nội dung người khác | 403 Forbidden                  |
 
 ---

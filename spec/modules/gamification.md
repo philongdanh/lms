@@ -175,31 +175,46 @@ User -> Streak: 1:1
 
 ### GraphQL Operations
 
-> **SSoT**: [schema.graphql](../interface/graphql/gamification/schema.graphql) | [operations.graphql](../interface/graphql/gamification/operations.graphql)
+> **SSoT**: [schema.graphql](../interface/graphql/gamification/schema.graphql) |
+> [operations.graphql](../interface/graphql/gamification/operations.graphql)
 
 ```graphql
 type Query {
-  """Thông tin EXP và Level"""
+  """
+  Thông tin EXP và Level
+  """
   userProfile: UserProfile! @auth @rateLimit(limit: 200, window: "1m")
 
-  """Danh sách huy hiệu"""
+  """
+  Danh sách huy hiệu
+  """
   badges: [Badge!]! @auth @rateLimit(limit: 100, window: "1m")
 
-  """Bảng xếp hạng"""
+  """
+  Bảng xếp hạng
+  """
   leaderboard(type: LeaderboardType!, limit: Int): [LeaderboardEntry!]!
     @auth
     @rateLimit(limit: 100, window: "1m")
 
-  """Danh sách phần thưởng"""
+  """
+  Danh sách phần thưởng
+  """
   rewards: [Reward!]! @auth @rateLimit(limit: 100, window: "1m")
 
-  """Thông tin streak"""
+  """
+  Thông tin streak
+  """
   streaks: StreakInfo! @auth @rateLimit(limit: 200, window: "1m")
 }
 
 type Mutation {
-  """Đổi coin lấy phần thưởng"""
-  redeemReward(rewardId: ID!): RewardRedemption! @auth @rateLimit(limit: 20, window: "1m")
+  """
+  Đổi coin lấy phần thưởng
+  """
+  redeemReward(rewardId: ID!): RewardRedemption!
+    @auth
+    @rateLimit(limit: 20, window: "1m")
 }
 
 type UserProfile {
@@ -227,11 +242,11 @@ enum LeaderboardType {
 
 ### Events & Webhooks
 
-| Event            | Trigger                | Payload                        |
-| ---------------- | ---------------------- | ------------------------------ |
-| `level.up`       | User tăng cấp          | `{ userId, newLevel, reward }` |
-| `badge.earned`   | User nhận huy hiệu     | `{ userId, badgeId }`          |
-| `streak.updated` | Streak thay đổi        | `{ userId, currentStreak }`    |
+| Event            | Trigger            | Payload                        |
+| ---------------- | ------------------ | ------------------------------ |
+| `level.up`       | User tăng cấp      | `{ userId, newLevel, reward }` |
+| `badge.earned`   | User nhận huy hiệu | `{ userId, badgeId }`          |
+| `streak.updated` | Streak thay đổi    | `{ userId, currentStreak }`    |
 
 ---
 
@@ -239,18 +254,18 @@ enum LeaderboardType {
 
 ### Functional Requirements
 
-| ID           | Yêu cầu                          | Điều kiện                           |
-| ------------ | -------------------------------- | ----------------------------------- |
-| `FR-GAME-01` | Tăng cấp chính xác               | EXP vượt ngưỡng                     |
-| `FR-GAME-02` | Đổi thưởng transactional         | Trừ coin atomic + trao thưởng       |
-| `FR-GAME-03` | Bảng xếp hạng real-time          | Cập nhật < 50ms                     |
+| ID           | Yêu cầu                  | Điều kiện                     |
+| ------------ | ------------------------ | ----------------------------- |
+| `FR-GAME-01` | Tăng cấp chính xác       | EXP vượt ngưỡng               |
+| `FR-GAME-02` | Đổi thưởng transactional | Trừ coin atomic + trao thưởng |
+| `FR-GAME-03` | Bảng xếp hạng real-time  | Cập nhật < 50ms               |
 
 ### Edge Cases
 
-| Case                     | Xử lý                            |
-| ------------------------ | -------------------------------- |
-| Không đủ coin            | Trả lỗi, không trừ coin          |
-| Redis memory cao         | Xóa keys cũ, alert ops           |
-| EXP event trùng lặp      | Xử lý idempotent                 |
+| Case                | Xử lý                   |
+| ------------------- | ----------------------- |
+| Không đủ coin       | Trả lỗi, không trừ coin |
+| Redis memory cao    | Xóa keys cũ, alert ops  |
+| EXP event trùng lặp | Xử lý idempotent        |
 
 ---

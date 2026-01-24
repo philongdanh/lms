@@ -128,23 +128,40 @@ User -> DailyStats: 1:N
 
 ### GraphQL Operations
 
-> **SSoT**: [schema.graphql](../interface/graphql/analytics/schema.graphql) | [operations.graphql](../interface/graphql/analytics/operations.graphql)
+> **SSoT**: [schema.graphql](../interface/graphql/analytics/schema.graphql) |
+> [operations.graphql](../interface/graphql/analytics/operations.graphql)
 
 ```graphql
 type Query {
-  """Tổng quan tiến độ học tập"""
+  """
+  Tổng quan tiến độ học tập
+  """
   progressOverview: ProgressOverview! @auth @rateLimit(limit: 100, window: "1m")
 
-  """Tiến độ theo môn học"""
-  subjectProgress(subjectId: ID!): SubjectProgress! @auth @rateLimit(limit: 100, window: "1m")
+  """
+  Tiến độ theo môn học
+  """
+  subjectProgress(subjectId: ID!): SubjectProgress!
+    @auth
+    @rateLimit(limit: 100, window: "1m")
 
-  """Bản đồ kiến thức"""
-  knowledgeMap(subjectId: ID): [KnowledgeMapEntry!]! @auth @rateLimit(limit: 50, window: "1m")
+  """
+  Bản đồ kiến thức
+  """
+  knowledgeMap(subjectId: ID): [KnowledgeMapEntry!]!
+    @auth
+    @rateLimit(limit: 50, window: "1m")
 
-  """Thống kê học tập hàng ngày"""
-  dailyStats(from: Date!, to: Date!): [DailyStat!]! @auth @rateLimit(limit: 100, window: "1m")
+  """
+  Thống kê học tập hàng ngày
+  """
+  dailyStats(from: Date!, to: Date!): [DailyStat!]!
+    @auth
+    @rateLimit(limit: 100, window: "1m")
 
-  """Báo cáo lớp học (dành cho Teacher)"""
+  """
+  Báo cáo lớp học (dành cho Teacher)
+  """
   classReport(classId: ID!, period: ReportPeriod!): ClassReport!
     @auth(role: TEACHER)
     @rateLimit(limit: 50, window: "1m")
@@ -173,9 +190,9 @@ enum ReportPeriod {
 
 ### Events & Webhooks
 
-| Event                        | Trigger                             | Payload             |
-| ---------------------------- | ----------------------------------- | ------------------- |
-| `analytics.report.generated` | Báo cáo lớn hoàn thành (async)      | `{ reportId, url }` |
+| Event                        | Trigger                        | Payload             |
+| ---------------------------- | ------------------------------ | ------------------- |
+| `analytics.report.generated` | Báo cáo lớn hoàn thành (async) | `{ reportId, url }` |
 
 ---
 
@@ -183,18 +200,18 @@ enum ReportPeriod {
 
 ### Functional Requirements
 
-| ID          | Yêu cầu                          | Điều kiện                                   |
-| ----------- | -------------------------------- | ------------------------------------------- |
-| `FR-ANA-01` | Tính mastery chính xác           | Đúng công thức                              |
-| `FR-ANA-02` | Tổng hợp daily chính xác         | Tổng khớp với logs                          |
-| `FR-ANA-03` | Authorization hoạt động          | `Teacher` không thể xem lớp khác            |
+| ID          | Yêu cầu                  | Điều kiện                        |
+| ----------- | ------------------------ | -------------------------------- |
+| `FR-ANA-01` | Tính mastery chính xác   | Đúng công thức                   |
+| `FR-ANA-02` | Tổng hợp daily chính xác | Tổng khớp với logs               |
+| `FR-ANA-03` | Authorization hoạt động  | `Teacher` không thể xem lớp khác |
 
 ### Edge Cases
 
-| Case                                  | Xử lý                                       |
-| ------------------------------------- | ------------------------------------------- |
-| Báo cáo quá lớn (>1 năm data)         | Xử lý async, trả về report ID               |
-| Cache miss                            | Query DB, cache kết quả                     |
-| Không có dữ liệu cho khoảng thời gian | Trả về kết quả trống với metadata           |
+| Case                                  | Xử lý                             |
+| ------------------------------------- | --------------------------------- |
+| Báo cáo quá lớn (>1 năm data)         | Xử lý async, trả về report ID     |
+| Cache miss                            | Query DB, cache kết quả           |
+| Không có dữ liệu cho khoảng thời gian | Trả về kết quả trống với metadata |
 
 ---

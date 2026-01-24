@@ -168,20 +168,33 @@ User -> Presence: 1:1
 
 ### GraphQL Operations
 
-> **SSoT**: [schema.graphql](../interface/graphql/realtime/schema.graphql) | [operations.graphql](../interface/graphql/realtime/operations.graphql)
+> **SSoT**: [schema.graphql](../interface/graphql/realtime/schema.graphql) |
+> [operations.graphql](../interface/graphql/realtime/operations.graphql)
 
 ```graphql
 type Query {
-  """Danh sách thông báo"""
-  notifications(unreadOnly: Boolean): [Notification!]! @auth @rateLimit(limit: 100, window: "1m")
+  """
+  Danh sách thông báo
+  """
+  notifications(unreadOnly: Boolean): [Notification!]!
+    @auth
+    @rateLimit(limit: 100, window: "1m")
 }
 
 type Mutation {
-  """Đánh dấu đã đọc"""
-  markNotificationRead(id: ID!): Notification! @auth @rateLimit(limit: 200, window: "1m")
+  """
+  Đánh dấu đã đọc
+  """
+  markNotificationRead(id: ID!): Notification!
+    @auth
+    @rateLimit(limit: 200, window: "1m")
 
-  """Xóa thông báo"""
-  deleteNotification(id: ID!): Boolean! @auth @rateLimit(limit: 100, window: "1m")
+  """
+  Xóa thông báo
+  """
+  deleteNotification(id: ID!): Boolean!
+    @auth
+    @rateLimit(limit: 100, window: "1m")
 }
 
 type Notification {
@@ -219,12 +232,12 @@ socket.disconnect   { userId, reason }
 
 ### Events & Webhooks
 
-| Event               | Direction     | Payload                |
-| ------------------- | ------------- | ---------------------- |
-| `notification.new`  | Server→Client | `{ type, content }`    |
-| `progress.updated`  | Server→Client | `{ lessonId, status }` |
-| `tournament.start`  | Server→Client | `{ tournamentId }`     |
-| `match.update`      | Server→Client | `{ matchId, scores }`  |
+| Event              | Direction     | Payload                |
+| ------------------ | ------------- | ---------------------- |
+| `notification.new` | Server→Client | `{ type, content }`    |
+| `progress.updated` | Server→Client | `{ lessonId, status }` |
+| `tournament.start` | Server→Client | `{ tournamentId }`     |
+| `match.update`     | Server→Client | `{ matchId, scores }`  |
 
 ---
 
@@ -232,19 +245,19 @@ socket.disconnect   { userId, reason }
 
 ### Functional Requirements
 
-| ID         | Yêu cầu                          | Điều kiện                         |
-| ---------- | -------------------------------- | --------------------------------- |
-| `FR-RT-01` | Kết nối với token hợp lệ         | JWT valid                         |
-| `FR-RT-02` | Broadcast hoạt động              | Redis adapter đã cấu hình         |
-| `FR-RT-03` | 10k concurrent connections       | Load test passed                  |
+| ID         | Yêu cầu                    | Điều kiện                 |
+| ---------- | -------------------------- | ------------------------- |
+| `FR-RT-01` | Kết nối với token hợp lệ   | JWT valid                 |
+| `FR-RT-02` | Broadcast hoạt động        | Redis adapter đã cấu hình |
+| `FR-RT-03` | 10k concurrent connections | Load test passed          |
 
 ### Edge Cases
 
-| Case                             | Xử lý                                       |
-| -------------------------------- | ------------------------------------------- |
-| Token hết hạn khi đang kết nối   | Force disconnect, yêu cầu reconnect         |
-| Redis failover                   | Tự động reconnect đến master mới            |
-| Room đầy                         | Từ chối join với lỗi                        |
-| Network hiccup                   | Auto-reconnect với backoff                  |
+| Case                           | Xử lý                               |
+| ------------------------------ | ----------------------------------- |
+| Token hết hạn khi đang kết nối | Force disconnect, yêu cầu reconnect |
+| Redis failover                 | Tự động reconnect đến master mới    |
+| Room đầy                       | Từ chối join với lỗi                |
+| Network hiccup                 | Auto-reconnect với backoff          |
 
 ---

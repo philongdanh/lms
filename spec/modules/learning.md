@@ -195,29 +195,50 @@ ExerciseSession -> SubmissionHistory: 1:N
 
 ### GraphQL Operations
 
-> **SSoT**: [schema.graphql](../interface/graphql/learning/schema.graphql) | [operations.graphql](../interface/graphql/learning/operations.graphql)
+> **SSoT**: [schema.graphql](../interface/graphql/learning/schema.graphql) |
+> [operations.graphql](../interface/graphql/learning/operations.graphql)
 
 ```graphql
 type Query {
-  """Tiến độ học tập tổng quan"""
+  """
+  Tiến độ học tập tổng quan
+  """
   learningProgress: LearningProgress! @auth @rateLimit(limit: 200, window: "1m")
 
-  """Nội dung bài học"""
+  """
+  Nội dung bài học
+  """
   lessonContent(id: ID!): Lesson! @auth @rateLimit(limit: 200, window: "1m")
 
-  """Lấy bài tập"""
-  lessonExercise(lessonId: ID!): Exercise! @auth @rateLimit(limit: 100, window: "1m")
+  """
+  Lấy bài tập
+  """
+  lessonExercise(lessonId: ID!): Exercise!
+    @auth
+    @rateLimit(limit: 100, window: "1m")
 
-  """Gợi ý bài học tiếp theo"""
-  recommendations: [LessonRecommendation!]! @auth @rateLimit(limit: 50, window: "1m")
+  """
+  Gợi ý bài học tiếp theo
+  """
+  recommendations: [LessonRecommendation!]!
+    @auth
+    @rateLimit(limit: 50, window: "1m")
 }
 
 type Mutation {
-  """Hoàn thành bài học"""
-  completeLesson(lessonId: ID!): LessonProgress! @auth @rateLimit(limit: 100, window: "1m")
+  """
+  Hoàn thành bài học
+  """
+  completeLesson(lessonId: ID!): LessonProgress!
+    @auth
+    @rateLimit(limit: 100, window: "1m")
 
-  """Nộp bài tập"""
-  submitExercise(input: SubmitExerciseInput!): ExerciseResult! @auth @rateLimit(limit: 100, window: "1m")
+  """
+  Nộp bài tập
+  """
+  submitExercise(input: SubmitExerciseInput!): ExerciseResult!
+    @auth
+    @rateLimit(limit: 100, window: "1m")
 }
 
 input SubmitExerciseInput {
@@ -234,11 +255,11 @@ type ExerciseResult {
 
 ### Events & Webhooks
 
-| Event                | Trigger                 | Payload                           |
-| -------------------- | ----------------------- | --------------------------------- |
-| `lesson.completed`   | Hoàn thành bài học      | `{ userId, lessonId, score }`     |
-| `exercise.submitted` | Nộp bài tập             | `{ userId, exerciseId, results }` |
-| `path.updated`       | Cập nhật lộ trình học   | `{ userId, pathId, lessons }`     |
+| Event                | Trigger               | Payload                           |
+| -------------------- | --------------------- | --------------------------------- |
+| `lesson.completed`   | Hoàn thành bài học    | `{ userId, lessonId, score }`     |
+| `exercise.submitted` | Nộp bài tập           | `{ userId, exerciseId, results }` |
+| `path.updated`       | Cập nhật lộ trình học | `{ userId, pathId, lessons }`     |
 
 ---
 
@@ -246,19 +267,19 @@ type ExerciseResult {
 
 ### Functional Requirements
 
-| ID            | Yêu cầu                      | Điều kiện                                |
-| ------------- | ---------------------------- | ---------------------------------------- |
-| `FR-LEARN-01` | Tạo lộ trình cá nhân hóa     | Dựa trên lịch sử và điểm yếu             |
-| `FR-LEARN-02` | Chấm điểm chính xác          | Trả về `is_correct` đúng                 |
-| `FR-LEARN-03` | Theo dõi tiến độ real-time   | Cập nhật ngay sau khi nộp bài            |
+| ID            | Yêu cầu                    | Điều kiện                     |
+| ------------- | -------------------------- | ----------------------------- |
+| `FR-LEARN-01` | Tạo lộ trình cá nhân hóa   | Dựa trên lịch sử và điểm yếu  |
+| `FR-LEARN-02` | Chấm điểm chính xác        | Trả về `is_correct` đúng      |
+| `FR-LEARN-03` | Theo dõi tiến độ real-time | Cập nhật ngay sau khi nộp bài |
 
 ### Edge Cases
 
-| Case                     | Xử lý                                      |
-| ------------------------ | ------------------------------------------ |
-| AI Model timeout (>2s)   | Trả về lộ trình mặc định theo chương trình |
-| DB Write fail            | Trả lỗi cho client, retry phía client      |
-| Session hết hạn          | Trả lỗi 400, yêu cầu tạo session mới       |
-| IDOR attempt             | Trả về 403 Forbidden                       |
+| Case                   | Xử lý                                      |
+| ---------------------- | ------------------------------------------ |
+| AI Model timeout (>2s) | Trả về lộ trình mặc định theo chương trình |
+| DB Write fail          | Trả lỗi cho client, retry phía client      |
+| Session hết hạn        | Trả lỗi 400, yêu cầu tạo session mới       |
+| IDOR attempt           | Trả về 403 Forbidden                       |
 
 ---

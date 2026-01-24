@@ -205,33 +205,56 @@ Round -> MatchResult: 1:N
 
 ### GraphQL Operations
 
-> **SSoT**: [schema.graphql](../interface/graphql/tournament/schema.graphql) | [operations.graphql](../interface/graphql/tournament/operations.graphql)
+> **SSoT**: [schema.graphql](../interface/graphql/tournament/schema.graphql) |
+> [operations.graphql](../interface/graphql/tournament/operations.graphql)
 
 ```graphql
 type Query {
-  """Danh sách giải đấu"""
-  tournaments(status: TournamentStatus): [Tournament!]! @auth @rateLimit(limit: 100, window: "1m")
+  """
+  Danh sách giải đấu
+  """
+  tournaments(status: TournamentStatus): [Tournament!]!
+    @auth
+    @rateLimit(limit: 100, window: "1m")
 
-  """Chi tiết giải đấu"""
+  """
+  Chi tiết giải đấu
+  """
   tournament(id: ID!): Tournament! @auth @rateLimit(limit: 100, window: "1m")
 
-  """Danh sách trận đấu"""
-  matches(tournamentId: ID!): [Match!]! @auth @rateLimit(limit: 100, window: "1m")
+  """
+  Danh sách trận đấu
+  """
+  matches(tournamentId: ID!): [Match!]!
+    @auth
+    @rateLimit(limit: 100, window: "1m")
 
-  """Bảng xếp hạng"""
+  """
+  Bảng xếp hạng
+  """
   tournamentLeaderboard(tournamentId: ID!, limit: Int): [LeaderboardEntry!]!
     @auth
     @rateLimit(limit: 100, window: "1m")
 }
 
 type Mutation {
-  """Tham gia giải đấu"""
-  joinTournament(tournamentId: ID!): Participant! @auth @rateLimit(limit: 20, window: "1m")
+  """
+  Tham gia giải đấu
+  """
+  joinTournament(tournamentId: ID!): Participant!
+    @auth
+    @rateLimit(limit: 20, window: "1m")
 
-  """Nộp câu trả lời"""
-  submitMatch(input: SubmitMatchInput!): MatchResult! @auth @rateLimit(limit: 50, window: "1m")
+  """
+  Nộp câu trả lời
+  """
+  submitMatch(input: SubmitMatchInput!): MatchResult!
+    @auth
+    @rateLimit(limit: 50, window: "1m")
 
-  """Tạo giải đấu mới (Admin)"""
+  """
+  Tạo giải đấu mới (Admin)
+  """
   createTournament(input: CreateTournamentInput!): Tournament!
     @auth(role: ADMIN)
     @rateLimit(limit: 10, window: "1m")
@@ -253,12 +276,12 @@ type LeaderboardEntry {
 
 ### Events & Webhooks
 
-| Event                  | Trigger             | Payload                              |
-| ---------------------- | ------------------- | ------------------------------------ |
-| `round.started`        | Round bắt đầu       | `{ tournamentId, roundId }`          |
-| `round.ended`          | Round kết thúc      | `{ tournamentId, roundId, results }` |
-| `leaderboard.updated`  | Điểm thay đổi       | `{ tournamentId, top10 }`            |
-| `tournament.completed` | Giải đấu kết thúc   | `{ tournamentId, winners }`          |
+| Event                  | Trigger           | Payload                              |
+| ---------------------- | ----------------- | ------------------------------------ |
+| `round.started`        | Round bắt đầu     | `{ tournamentId, roundId }`          |
+| `round.ended`          | Round kết thúc    | `{ tournamentId, roundId, results }` |
+| `leaderboard.updated`  | Điểm thay đổi     | `{ tournamentId, top10 }`            |
+| `tournament.completed` | Giải đấu kết thúc | `{ tournamentId, winners }`          |
 
 ---
 
@@ -266,19 +289,19 @@ type LeaderboardEntry {
 
 ### Functional Requirements
 
-| ID           | Yêu cầu                          | Điều kiện                 |
-| ------------ | -------------------------------- | ------------------------- |
-| `FR-TOUR-01` | Chỉ tham gia trước khi bắt đầu   | Status = `REGISTRATION`   |
-| `FR-TOUR-02` | Tính điểm chính xác              | Khớp với công thức        |
-| `FR-TOUR-03` | Bảng xếp hạng real-time          | Cập nhật < 500ms          |
+| ID           | Yêu cầu                        | Điều kiện               |
+| ------------ | ------------------------------ | ----------------------- |
+| `FR-TOUR-01` | Chỉ tham gia trước khi bắt đầu | Status = `REGISTRATION` |
+| `FR-TOUR-02` | Tính điểm chính xác            | Khớp với công thức      |
+| `FR-TOUR-03` | Bảng xếp hạng real-time        | Cập nhật < 500ms        |
 
 ### Edge Cases
 
-| Case                          | Xử lý                               |
-| ----------------------------- | ----------------------------------- |
-| Tham gia muộn (sau khi start) | Chặn, trả về lỗi                    |
-| Mất kết nối giữa trận         | Tự động reconnect, giữ session      |
-| Redis failover                | Cluster tự động chuyển đổi          |
-| 100k concurrent users         | Load balance qua rooms              |
+| Case                          | Xử lý                          |
+| ----------------------------- | ------------------------------ |
+| Tham gia muộn (sau khi start) | Chặn, trả về lỗi               |
+| Mất kết nối giữa trận         | Tự động reconnect, giữ session |
+| Redis failover                | Cluster tự động chuyển đổi     |
+| 100k concurrent users         | Load balance qua rooms         |
 
 ---
