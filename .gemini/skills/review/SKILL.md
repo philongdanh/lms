@@ -83,6 +83,7 @@ When modifying a source document:
 | D2 diagrams full English     | No Vietnamese in diagrams             |
 | No HTML comments in D2       | Keep diagrams clean                   |
 | Technical terms in backticks | `API`, `GraphQL`, `JWT`               |
+| Content body in Vietnamese   | No full English content               |
 
 ---
 

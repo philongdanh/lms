@@ -3,7 +3,6 @@
   "position": 2,
   "link": {
     "type": "generated-index",
-    "slug": "/qa/cases",
-    "description": "Kịch bản kiểm thử chính theo module."
+    "slug": "/qa/cases"
   }
 }

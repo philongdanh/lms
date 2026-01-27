@@ -11,7 +11,7 @@ Hướng dẫn duy trì Single Source of Truth (SSoT) trong dự án.
 
 ---
 
-## Tổng quan
+## Overview
 
 SSoT (Single Source of Truth) là nguyên tắc mà mỗi đơn vị thông tin chỉ có **một
 nguồn duy nhất** làm chuẩn. Tất cả các nơi khác đều **tham chiếu** tới nguồn đó.
@@ -24,7 +24,7 @@ nguồn duy nhất** làm chuẩn. Tất cả các nơi khác đều **tham chi�
 
 ---
 
-## Cấu trúc SSoT
+## SSoT Structure
 
 ```d2
 direction: down
@@ -103,7 +103,7 @@ qa/cases/*.md (validates against module FRs)
 
 ---
 
-## Quy tắc khi thêm feature mới
+## Rules for New Features
 
 ### ✅ Đúng cách
 
@@ -126,7 +126,7 @@ qa/cases/*.md (validates against module FRs)
 
 ---
 
-## Checklist Review SSoT
+## SSoT Review Checklist
 
 Khi review documentation changes, kiểm tra:
 
@@ -138,7 +138,7 @@ Khi review documentation changes, kiểm tra:
 
 ---
 
-## Cấu trúc thư mục
+## Directory Structure
 
 ```
 lms/
@@ -165,7 +165,7 @@ lms/
 
 ---
 
-## Tham khảo
+## References
 
 - [System Design](../../blueprint/architecture/system-design.md) - Kiến trúc
   tổng thể

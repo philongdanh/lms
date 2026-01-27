@@ -88,3 +88,12 @@ X-Request-ID: {uuid}
 - **Sunset**: 12 months after deprecation
 
 ---
+
+## Core Endpoints
+
+| Endpoint          | Method | Description       | Auth     |
+| ----------------- | ------ | ----------------- | -------- |
+| `/graphql`        | `POST` | `GraphQL` API     | Optional |
+| `/api/upload`     | `POST` | File upload       | Required |
+| `/api/webhooks/*` | `POST` | External webhooks | API Key  |
+| `/health`         | `GET`  | Health check      | No       |

@@ -13,13 +13,7 @@ Tiêu chuẩn và quy trình phát triển.
 
 ## Tech Stack
 
-| Layer     | Tech                     | Purpose             |
-| --------- | ------------------------ | ------------------- |
-| Backend   | `NestJS` + `TypeScript`  | Business logic, API |
-| Frontend  | `Next.js` + `TypeScript` | UI, SSR/SSG         |
-| Database  | `PostgreSQL` + `Prisma`  | Data, ORM           |
-| Cache     | `Redis`                  | Session, caching    |
-| Real-time | `Socket.IO`              | WebSocket           |
+See [Technology Stack](../../blueprint/architecture/stack.md) for full details.
 
 ---
 
@@ -76,18 +70,5 @@ Analyze → Database Design → Migration → Implement → Test → Review → 
 3. **Migration**: `npx prisma migrate dev`
 4. **Implement**: Controller → Service → Repository
 5. **Test**: Unit tests, 80%+ coverage
-
----
-
-## Environment Variables
-
-| Variable       | Description               |
-| -------------- | ------------------------- |
-| `DATABASE_URL` | PostgreSQL connection     |
-| `REDIS_URL`    | Redis connection          |
-| `JWT_SECRET`   | JWT signing secret        |
-| `JWT_EXPIRY`   | Access token expiry (15m) |
-
-> ⚠️ **KHÔNG** commit `.env` file
 
 ---

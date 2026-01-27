@@ -100,7 +100,7 @@ Scheduler -> "Tournament Service": end_round_trigger
 
 - Chỉ có thể tham gia trước khi round bắt đầu
 - Điểm = độ chính xác × bonus tốc độ
-- Bảng xếp hạng dùng Redis ZSET để đảm bảo hiệu suất
+- Bảng xếp hạng dùng `Redis` `ZSET` để đảm bảo hiệu suất
 - Độ trễ broadcast < 500ms cho 10k users
 - Tối đa 100k concurrent users mỗi sự kiện
 
@@ -301,7 +301,7 @@ type LeaderboardEntry {
 | ----------------------------- | ------------------------------ |
 | Tham gia muộn (sau khi start) | Chặn, trả về lỗi               |
 | Mất kết nối giữa trận         | Tự động reconnect, giữ session |
-| Redis failover                | Cluster tự động chuyển đổi     |
+| `Redis` failover              | Cluster tự động chuyển đổi     |
 | 100k concurrent users         | Load balance qua rooms         |
 
 ---

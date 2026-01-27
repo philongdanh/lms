@@ -275,11 +275,11 @@ type ExerciseResult {
 
 ### Edge Cases
 
-| Case                   | Xử lý                                      |
-| ---------------------- | ------------------------------------------ |
-| AI Model timeout (>2s) | Trả về lộ trình mặc định theo chương trình |
-| DB Write fail          | Trả lỗi cho client, retry phía client      |
-| Session hết hạn        | Trả lỗi 400, yêu cầu tạo session mới       |
-| IDOR attempt           | Trả về 403 Forbidden                       |
+| Case                     | Xử lý                                      |
+| ------------------------ | ------------------------------------------ |
+| `AI Model` timeout (>2s) | Trả về lộ trình mặc định theo chương trình |
+| DB Write fail            | Trả lỗi cho client, retry phía client      |
+| Session hết hạn          | Trả lỗi `400`, yêu cầu tạo session mới     |
+| `IDOR` attempt           | Trả về `403 Forbidden`                     |
 
 ---

@@ -36,13 +36,13 @@ Integration -> Unit
 
 ### Automation Tools
 
-| Type        | Tool             | Purpose            |
-| ----------- | ---------------- | ------------------ |
-| Unit        | `Vitest`         | Fast unit testing  |
-| Integration | `Vitest` + `MSW` | API mocking        |
-| E2E         | `Playwright`     | Browser automation |
-| API         | `Supertest`      | HTTP testing       |
-| Performance | `k6`             | Load testing       |
+| Type        | Tool             | Purpose                  |
+| ----------- | ---------------- | ------------------------ |
+| Unit        | `Vitest`         | Kiểm thử đơn vị nhanh    |
+| Integration | `Vitest` + `MSW` | Giả lập API (Mocking)    |
+| E2E         | `Playwright`     | Tự động hóa trình duyệt  |
+| API         | `Supertest`      | Kiểm thử HTTP            |
+| Performance | `k6`             | Kiểm thử tải (Load test) |
 
 ---
 
@@ -52,12 +52,12 @@ Integration -> Unit
 
 **Severity Levels:**
 
-| Severity | Description          | Response Time |
-| -------- | -------------------- | ------------- |
-| Critical | System down          | Immediate     |
-| High     | Major feature broken | 24 hours      |
-| Medium   | Feature degraded     | Sprint        |
-| Low      | Minor issue          | Backlog       |
+| Severity | Description              | Response Time |
+| -------- | ------------------------ | ------------- |
+| Critical | Hệ thống ngừng hoạt động | Ngay lập tức  |
+| High     | Tính năng chính bị lỗi   | 24 giờ        |
+| Medium   | Tính năng bị suy giảm    | Trong Sprint  |
+| Low      | Vấn đề nhỏ               | Backlog       |
 
 **Bug Lifecycle:**
 
@@ -77,18 +77,18 @@ Verified -> Closed
 
 | Check      | Requirement | Blocking |
 | ---------- | ----------- | -------- |
-| Unit Tests | 100% pass   | Yes      |
-| Coverage   | > 80%       | Yes      |
-| Lint       | No errors   | Yes      |
-| Build      | Success     | Yes      |
+| Unit Tests | 100% pass   | Có       |
+| Coverage   | > 80%       | Có       |
+| Lint       | No errors   | Có       |
+| Build      | Success     | Có       |
 
 **Release Checks:**
 
-| Check         | Requirement    | Blocking |
-| ------------- | -------------- | -------- |
-| All Tests     | 100% pass      | Yes      |
-| E2E Tests     | 100% pass      | Yes      |
-| Performance   | Within targets | Yes      |
-| Security Scan | No critical    | Yes      |
+| Check         | Requirement               | Blocking |
+| ------------- | ------------------------- | -------- |
+| All Tests     | 100% pass                 | Có       |
+| E2E Tests     | 100% pass                 | Có       |
+| Performance   | Đạt mục tiêu đề ra        | Có       |
+| Security Scan | Không có lỗi nghiêm trọng | Có       |
 
 ---
