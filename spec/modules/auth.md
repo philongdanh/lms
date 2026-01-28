@@ -178,15 +178,15 @@ Scheduler -> "Auth Service": execute_hard_delete()
 
 ---
 
-## Data model
+## Data Model
 
 > **SSoT**: [Database Blueprint](../../blueprint/architecture/database.md)
 
 ---
 
-## API & integration
+## API & Integration
 
-### GraphQL operations
+### GraphQL Operations
 
 > **SSoT**: [schema.graphql](../api/graphql/auth/schema.graphql) |
 > [operations.graphql](../api/graphql/auth/operations.graphql)
@@ -266,9 +266,9 @@ type AuthPayload {
 
 ---
 
-## Acceptance criteria
+## Acceptance Criteria
 
-### Functional requirements
+### Functional Requirements
 
 | ID        | Yêu cầu                  | Điều kiện                             |
 | --------- | ------------------------ | ------------------------------------- |

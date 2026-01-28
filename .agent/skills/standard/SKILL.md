@@ -1,48 +1,38 @@
+---
+name: standard
+description:
+  Defines documentation standards for formatting, structure, and diagrams.
+---
+
 # Documentation Standard Skill
 
 This skill defines the standards for creating and maintaining documentation in
 the `docs/` directory.
 
----
+## When to use this skill
 
-## 1. Single Source of Truth (SSoT)
+- Use this when creating new documentation files.
+- This is helpful for ensuring consistent formatting and structure.
+- Use when creating or editing D2 diagrams.
 
-- **Principle**: Do not duplicate information. Reference existing definitions.
-- **Reference**:
-  - `blueprint/`: High-level architecture, design decisions, and system flows.
-  - `spec/`: Detailed technical specifications, API contracts, and schema
-    definitions.
-- **Linking**: Use relative links to connect related documents.
+## How to use it
 
-## 2. D2 Diagrams
+### 1. Markdown Formatting
 
-- **Language**: All text within diagrams must be in **English**.
-- **Formatting**:
-  - Use snake_case for IDs.
-  - Use Title Case for Labels.
-  - **Direction**: Prefer horizontal direction (`direction: right`) for better
-    screen utilization.
-- **Automation**: Use `docs/scripts/format-d2.mjs` to format D2 files.
-  ```bash
-  node docs/scripts/format-d2.mjs [path/to/file.d2]
-  ```
-
-## 3. Markdown Formatting
-
-- **Structure**: `Frontmatter` -> `H1` -> `Description` -> `---` -> `H2`.
-  ```yaml
-  ---
-  id: my-doc
-  title: My Document
-  ---
-  ```
-- **Headers**: Use Sentence case for headers.
+- **Structure**: Frontmatter (`id`, `title`) -> H1 -> Description -> `---` ->
+  H2.
+- **Headers**: Use English, Sentence case.
 - **Lists**: Use hyphens `-` for unordered lists.
-- **Code Blocks**: Always specify the language (e.g., \`\`\`typescript).
-- **Callouts**: Use GitHub-style alerts (e.g., `> [!NOTE]`) for important info.
+- **Code Blocks**: Always specify the language (e.g., `typescript`).
 
-## 4. Role-Based Structure
+### 2. D2 Diagrams
+
+- **Language**: Text must be in **English**.
+- **Formatting**: `snake_case` for IDs, Title Case for Labels.
+- **Direction**: Prefer `direction: right`.
+- **Automation**: Use `docs/scripts/format-d2.mjs` if available.
+
+### 3. Role-Based Structure
 
 - Ensure documentation is accessible via the "By Role" navigation if applicable.
-- Use clear, role-specific content where necessary (e.g., specific guides for QA
-  vs Dev).
+- Use clear, role-specific content where necessary.

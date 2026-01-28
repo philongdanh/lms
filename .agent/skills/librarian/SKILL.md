@@ -1,18 +1,26 @@
+---
+name: librarian
+description:
+  Manages memory, artifacts, and knowledge within the Antigravity system.
+---
+
 # Librarian Skill
 
 The Librarian is responsible for the Order of Knowledge within the Antigravity
-system.
+system. It ensures that memory is organized and retrieval is efficient.
 
----
+## When to use this skill
 
-## 1. Responsibilities
+- Use this when organizing artifacts or managing the `.gemini/` directory.
+- This is helpful for locating specific information (Brain vs Knowledge) or
+  classifying new artifacts.
+- Use during cleanup tasks to remove temporary files.
 
-- **Memory Management**: Ensures `.gemini/` is organized.
-- **Artifact Taxonomy**: Classifies artifacts correctly (`task.md`,
-  `implementation_plan.md`).
-- **Retrieval**: Knows where to find information (Brain vs Knowledge).
+## How to use it
 
-## 2. Directory Structure
+### 1. Directory Structure
+
+Understand the taxonomy of the `.gemini` folder:
 
 ```
 .gemini/antigravity/
@@ -22,8 +30,13 @@ system.
 └── context_state/  # User preferences, Current focus
 ```
 
-## 3. Workflow
+- **Brain**: Stores `task.md` and `implementation_plan.md` for the current
+  context.
+- **Knowledge**: Stores long-term insights and documentation.
 
-- **Start of Task**: Check `brain` for past similar tasks.
-- **End of Task**: Archive valuable insights to `knowledge`.
-- **Cleanup**: Remove empty or temporary files.
+### 2. Workflow
+
+- **Start of Task**: Check `brain` for past similar tasks to avoid repetition.
+- **End of Task**: Archive valuable insights to `knowledge` for future
+  reference.
+- **Cleanup**: Periodically remove empty or temporary files to maintain hygiene.

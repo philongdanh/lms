@@ -1,75 +1,59 @@
+---
+name: workflow
+description:
+  Defines the standard engineering workflow for tasks, plans, and walkthroughs.
+---
+
 # Engineering Workflow Standard
 
 This skill defines the standard workflow for executing engineering tasks within
-the project. It ensures consistency, visibility, and quality control.
+the project.
 
----
+## When to use this skill
 
-## 1. Task Management (`task.md`)
+- Use this when starting a new complex task (Task boundary).
+- This is helpful for documenting your plan before execution.
+- Use when summarizing your work after completion.
 
-Every significant task starts with a `task.md` file to track progress.
+## How to use it
 
-**Template:**
+### 1. Task Management (`task.md`)
+
+Use for tracking progress.
 
 ```markdown
 # [Task Name]
 
-- [ ] High-level objective 1 <!-- id: 0 -->
-  - [ ] Sub-task A <!-- id: 1 -->
-  - [ ] Sub-task B <!-- id: 2 -->
-- [ ] High-level objective 2 <!-- id: 3 -->
-- [ ] Verification <!-- id: 4 -->
+- [ ] High-level objective <!-- id: 0 -->
+  - [ ] Sub-task <!-- id: 1 -->
 ```
 
-## 2. Implementation Planning (`implementation_plan.md`)
+### 2. Implementation Planning (`implementation_plan.md`)
 
-Before writing code, create a plan to document proposed changes and risks.
-
-**Template:**
+Use before coding to verify the approach.
 
 ```markdown
 # [Goal Description]
 
-Brief description of the problem and goal.
-
 ## User Review Required
-
-> [!IMPORTANT] Highlight breaking changes or critical decisions here.
 
 ## Proposed Changes
 
-### [Component Name]
+### [Component]
 
-#### [MODIFY] [filename](path/to/file)
-
-- Bullet points of changes.
+#### [MODIFY] [file]
 
 ## Verification Plan
-
-- [ ] Automated Tests: `npm run test`
-- [ ] Manual Verification steps
 ```
 
-## 3. Walkthroughs (`walkthrough.md`)
+### 3. Walkthroughs (`walkthrough.md`)
 
-After completion, document the results.
-
-**Template:**
+Use after completion to prove success.
 
 ```markdown
 # [Task Name] Walkthrough
 
 ## Summary of Changes
 
-Concise summary of what was done.
-
-### Key Changes
-
-- **Feature A**: Description...
-- **Feature B**: Description...
-
 ## Verification
-
-- Proof of build success.
-- Test results.
 ```

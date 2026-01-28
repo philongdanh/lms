@@ -11,15 +11,15 @@ Tiêu chuẩn và quy trình phát triển.
 
 ---
 
-## Tech stack
+## Tech Stack
 
 See [Technology Stack](../../blueprint/architecture/tech.md) for full details.
 
 ---
 
-## Code standards
+## Code Standards
 
-### Quality tools
+### Quality Tools
 
 | Tool       | Purpose         | Config         |
 | ---------- | --------------- | -------------- |
@@ -27,7 +27,7 @@ See [Technology Stack](../../blueprint/architecture/tech.md) for full details.
 | `Prettier` | Formatting      | `.prettierrc`  |
 | `Husky`    | Git hooks       | `.husky/`      |
 
-### Naming conventions
+### Naming Conventions
 
 | Type                 | Convention | Example                   |
 | -------------------- | ---------- | ------------------------- |
@@ -40,7 +40,7 @@ See [Technology Stack](../../blueprint/architecture/tech.md) for full details.
 
 ---
 
-## Project structure
+## Project Structure
 
 ```
 src/
@@ -57,13 +57,13 @@ src/
 
 ---
 
-## Development flow
+## Development Flow
 
 ```
 Analyze → Database Design → Migration → Implement → Test → Review → Merge
 ```
 
-### Key steps
+### Key Steps
 
 1. **Analyze**: Đọc requirements từ specs
 2. **Database**: Cập nhật `schema.prisma`

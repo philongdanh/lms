@@ -1,61 +1,48 @@
+---
+name: review
+description: Reviews and refactors documentation to ensure SSoT and consistency.
+---
+
 # Documentation Review Skill
 
 This skill defines the process for reviewing and refactoring files within the
-`docs/` directory.
+`docs/` directory to maintain high quality and consistency.
 
----
+## When to use this skill
 
-## 1. Principles of Documentation
+- Use this when reviewing documentation (e.g., `spec/modules/auth.md`).
+- This is helpful for validating Single Source of Truth (SSoT) adherence.
+- Use when identifying redundancies or structural issues in markdown files.
 
-- **Single Source of Truth (SSoT)**: Every piece of information should have
-  exactly one authoritative location.
-- **Cross-Referencing**: Documents should link to each other instead of
-  duplicating content.
+## How to use it
 
-## 2. SSoT Matrix
+### 1. SSoT Matrix
 
 Use this table to find the SSoT for any given document type:
 
-| Document Type              | Child Examples                             | SSoT Master (Parent)                                                                       |
-| :------------------------- | :----------------------------------------- | :----------------------------------------------------------------------------------------- |
-| **Module Spec**            | `spec/modules/auth.md`                     | `blueprint/architecture/database.md` (Data)<br/>`blueprint/architecture/design.md` (Flows) |
-| **Frontend Spec**          | `spec/ui/frontend.md`                      | `blueprint/architecture/decisions/frontend/*.md`                                           |
-| **API Interface**          | `spec/api/graphql/**/*.graphql`            | `spec/modules/*.md` (Business Logic)                                                       |
-| **Architecture Decisions** | `blueprint/architecture/decisions/**/*.md` | `blueprint/architecture/tech.md` (Tech Stack)                                              |
+| Document Type              | SSoT Master (Parent)                                                                       |
+| :------------------------- | :----------------------------------------------------------------------------------------- |
+| **Module Spec**            | `blueprint/architecture/database.md` (Data)<br/>`blueprint/architecture/design.md` (Flows) |
+| **Frontend Spec**          | `blueprint/architecture/decisions/frontend/*.md`                                           |
+| **API Interface**          | `spec/modules/*.md` (Business Logic)                                                       |
+| **Architecture Decisions** | `blueprint/architecture/tech.md` (Tech Stack)                                              |
 
-## 3. Review Checklist
+### 2. Review Checklist
 
-When reviewing a document (e.g., `spec/modules/auth.md`), check the following:
+When reviewing a document, check the following:
 
-### 3.1 Structure & Formatting
+- **Structure**: Frontmatter, valid headers, language-tagged code blocks,
+  relative links.
+- **Content Integrity**: No contradictions with Blueprint, no redundancy (use
+  links), proper context.
+- **D2 Diagrams**: Correct rendering and legibility.
 
-- [ ] **Frontmatter**: Does it have a valid header?
-- [ ] **Headers**: Are headers Sentence case?
-- [ ] **Code Blocks**: Do all code blocks have a language specified?
-- [ ] **Links**: Are file links using relative paths (e.g.,
-      `[Auth Spec](../spec/auth.md)`)?
-
-### 3.2 Content Integrity
-
-- [ ] **SSoT Check**: Does this document contradict the Blueprint?
-- [ ] **Redundancy**: Is this content duplicated elsewhere? (If yes, replace
-      with link)
-- [ ] **Context**: Is the document self-contained or does it properly reference
-      dependencies?
-- [ ] **D2 Diagrams**: Are diagrams rendered correctly and text is legible?
-
-## 4. Refactoring Workflow
+### 3. Refactoring Workflow
 
 If issues are found:
 
-1.  **Identify the SSoT**: If there's a conflict, determine which document is
-    the "Master".
+1.  **Identify the SSoT**: Determine the "Master" document.
 2.  **Consolidate**: Remove duplicate information and replace it with a link to
     the Master.
 3.  **Standardize**: Apply standard formatting (headers, lists, code blocks).
 4.  **Verify Links**: Ensure all new links work.
-
-## 5. Role-Specific Views
-
-- Ensure that technical details are in `spec/` (for Devs) and business
-  requirements are in `blueprint/` (for POs/BAs).

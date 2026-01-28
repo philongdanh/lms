@@ -1,14 +1,26 @@
-# SSoT Maintenance Skill
-
-This skill defines the workflow for maintaining consistency across the project's
-layers.
-
+---
+name: ssot
+description:
+  Maintains the Single Source of Truth hierarchy across Blueprint, Spec, Schema,
+  and Code.
 ---
 
-## 1. Hierarchy of Truth
+# SSoT Maintenance Skill
 
-When discrepancies arise, conflicting sources of information should be resolved
-in this order:
+This skill defines the hierarchy of truth and the workflow for maintaining
+consistency across the project's layers.
+
+## When to use this skill
+
+- Use this when resolving discrepancies between documentation and code.
+- This is helpful for understanding which document is authoritative.
+- Use when planning updates to ensure the correct order of operations.
+
+## How to use it
+
+### 1. Hierarchy of Truth
+
+When discrepancies arise, resolve in this order:
 
 1.  **Blueprint** (`docs/blueprint/`): High-level architectural decisions and
     product direction.
@@ -18,29 +30,18 @@ in this order:
     implementation.
 4.  **Code** (`api/src/`, `web/src/`): The application implementation.
 
-## 2. Maintenance Workflow
+### 2. Maintenance Workflow
 
 When a change is requested:
 
-1.  **Update Documentation First**: Never update the code or schema without
-    first verifying/updating the Blueprint and Spec.
-2.  **Update Schema (if needed)**: If the data model changes, update
-    `schema.prisma`.
+1.  **Update Documentation First**: Verify/update Blueprint and Spec first.
+2.  **Update Schema (if needed)**: Update `schema.prisma` if the data model
+    changes.
 3.  **Sync Code**: Update the application code to match the new spec/schema.
 
-## 3. Handling Discrepancies
+### 3. Handling Discrepancies
 
-If you find that the Code does not match the Spec:
-
-- **Assume the Spec is correct** unless the Spec is obviously outdated (e.g.
-  refers to deprecated technologies).
-- If the Spec seems outdated, **ask the user** for clarification before
-  proceeding.
-- **Do not simply update the Spec to match the Code** without verification. The
-  Code is often "in the weeds" and might have drifted from the intended design.
-
-## 4. D2 Diagrams & Database
-
-- Maintain D2 diagrams in `docs/` to visualize the SSoT.
-- Ensure field names in Entity Relationship Diagrams (ERD) match the Prisma
-  schema content exactly.
+- **Assume Spec is Correct**: Unless obviously outdated.
+- **Ask for Clarification**: If uncertain, do not guess.
+- **Do Not Reverse-Engineer**: Do not update Spec to match Code without
+  verification.

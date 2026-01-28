@@ -13,7 +13,7 @@ Hướng dẫn cài đặt và thiết lập môi trường phát triển.
 
 ## Prerequisites
 
-### Yêu cầu môi trường
+### Environment Requirements
 
 | Software       | Version | Purpose           |
 | -------------- | ------- | ----------------- |
@@ -23,7 +23,7 @@ Hướng dẫn cài đặt và thiết lập môi trường phát triển.
 | Git            | 2.30+   | Version control   |
 | VS Code        | Latest  | IDE (khuyên dùng) |
 
-### Access rights
+### Access Rights
 
 | Resource              | Requirement   |
 | --------------------- | ------------- |
@@ -36,7 +36,7 @@ Hướng dẫn cài đặt và thiết lập môi trường phát triển.
 
 ## Installation
 
-### Các bước cài đặt
+### Installation Steps
 
 **1. Clone repo:**
 

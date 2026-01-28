@@ -11,9 +11,9 @@ Module quản trị hệ thống multi-tenant và quản lý người dùng.
 
 ---
 
-## Business logic
+## Business Logic
 
-### Create tenant
+### Create Tenant
 
 Khởi tạo tenant mới cho trường học.
 
@@ -34,7 +34,7 @@ Database -> "Admin Service": unique
 "Admin Service" -> "Root Admin": success_response
 ```
 
-### Import users
+### Import Users
 
 Nhập người dùng hàng loạt từ file CSV.
 
@@ -80,7 +80,7 @@ Admin -> "Admin Service": request_impersonation(target_user_id)
 "Auth Service" -> Admin: return_temp_token
 ```
 
-### Delete tenant
+### Delete Tenant
 
 Soft delete và hard delete tenant sau 30 ngày.
 
@@ -97,7 +97,7 @@ Queue
 "Admin Service" -> "Root Admin": success
 ```
 
-### Rules & constraints
+### Rules & Constraints
 
 - Mã `Tenant` phải unique toàn hệ thống
 - Chỉ `Root Admin` có thể tạo/xóa `Tenant`
@@ -105,7 +105,7 @@ Queue
 - Soft delete → Hard delete sau 30 ngày
 - Ghi audit log cho tất cả impersonation
 
-### Lifecycle sequence
+### Lifecycle Sequence
 
 Vòng đời tenant từ tạo đến xóa.
 
@@ -144,15 +144,15 @@ Scheduler -> "Admin Service": execute_hard_delete()
 
 ---
 
-## Data model
+## Data Model
 
 > **SSoT**: [Database Blueprint](../../blueprint/architecture/database.md)
 
 ---
 
-## API & integration
+## API & Integration
 
-### GraphQL operations
+### GraphQL Operations
 
 > **SSoT**: [schema.graphql](../api/graphql/admin/schema.graphql)
 
@@ -229,7 +229,7 @@ enum TenantStatus {
 }
 ```
 
-### Events & webhooks
+### Events & Webhooks
 
 | Event               | Trigger                 | Payload                       |
 | ------------------- | ----------------------- | ----------------------------- |
@@ -240,9 +240,9 @@ enum TenantStatus {
 
 ---
 
-## Acceptance criteria
+## Acceptance Criteria
 
-### Functional requirements
+### Functional Requirements
 
 | ID          | Yêu cầu                 | Điều kiện                     |
 | ----------- | ----------------------- | ----------------------------- |
@@ -250,7 +250,7 @@ enum TenantStatus {
 | `FR-ADM-02` | Import users hàng loạt  | CSV đúng định dạng, ≤500 dòng |
 | `FR-ADM-03` | Impersonate hoạt động   | Ghi audit log                 |
 
-### Edge cases
+### Edge Cases
 
 | Case                          | Xử lý                       |
 | ----------------------------- | --------------------------- |

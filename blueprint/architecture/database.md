@@ -11,7 +11,7 @@ ERD and data regulations for the multi-tenant system.
 
 ---
 
-## Schema design
+## Schema Design
 
 ### ERD & models
 

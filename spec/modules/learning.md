@@ -11,9 +11,9 @@ Module học tập với lộ trình cá nhân hóa dựa trên AI.
 
 ---
 
-## Business logic
+## Business Logic
 
-### Submit exercise
+### Submit Exercise
 
 Nộp bài tập và nhận kết quả chấm điểm tự động.
 
@@ -35,7 +35,7 @@ Student -> "Learning Service": submit_answers(session_id, answers)
 "Learning Service" -> Student: result_feedback
 ```
 
-### Adaptive path
+### Adaptive Path
 
 Tạo lộ trình học tập thích ứng dựa trên lịch sử và điểm yếu.
 
@@ -55,7 +55,7 @@ Database -> "AI Service": user_data
 "AI Service" -> System: path_ready
 ```
 
-### Resume lesson
+### Resume Lesson
 
 Hoàn thành bài học và kích hoạt phần thưởng.
 
@@ -74,7 +74,7 @@ Student -> "Learning Service": finish_lesson(lesson_id)
 "Learning Service" -> Student: success
 ```
 
-### Track progress
+### Track Progress
 
 Theo dõi tiến độ học tập của học sinh.
 
@@ -90,7 +90,7 @@ Database -> "Learning Service": stats
 "Learning Service" -> Parent: dashboard_data
 ```
 
-### Rules & constraints
+### Rules & Constraints
 
 - Điểm đạt tối thiểu: cấu hình theo bài học (mặc định 70%)
 - Chống gian lận: kiểm tra thời gian hoàn thành hợp lý
@@ -98,7 +98,7 @@ Database -> "Learning Service": stats
 - Timeout session: 30 phút không hoạt động
 - Rate limiting theo user
 
-### Lifecycle sequence
+### Lifecycle Sequence
 
 Vòng đời trạng thái bài học từ mở khóa đến hoàn thành.
 
@@ -137,15 +137,15 @@ Student -> "Learning Service": re_learn()
 
 ---
 
-## Data model
+## Data Model
 
 > **SSoT**: [Database Blueprint](../../blueprint/architecture/database.md)
 
 ---
 
-## API & integration
+## API & Integration
 
-### GraphQL operations
+### GraphQL Operations
 
 > **SSoT**: [schema.graphql](../api/graphql/learning/schema.graphql) |
 > [operations.graphql](../api/graphql/learning/operations.graphql)
@@ -205,7 +205,7 @@ type ExerciseResult {
 }
 ```
 
-### Events & webhooks
+### Events & Webhooks
 
 | Event                | Trigger               | Payload                           |
 | -------------------- | --------------------- | --------------------------------- |
@@ -215,9 +215,9 @@ type ExerciseResult {
 
 ---
 
-## Acceptance criteria
+## Acceptance Criteria
 
-### Functional requirements
+### Functional Requirements
 
 | ID        | Yêu cầu                    | Điều kiện                     |
 | --------- | -------------------------- | ----------------------------- |
@@ -225,7 +225,7 @@ type ExerciseResult {
 | `LMS-015` | Chấm điểm chính xác        | Trả về `is_correct` đúng      |
 | `LMS-014` | Theo dõi tiến độ real-time | Cập nhật ngay sau khi nộp bài |
 
-### Edge cases
+### Edge Cases
 
 | Case                     | Xử lý                                      |
 | ------------------------ | ------------------------------------------ |

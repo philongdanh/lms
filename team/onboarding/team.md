@@ -40,7 +40,7 @@ Vai trò, onboarding và giao tiếp.
 
 ## Onboarding
 
-### Checklist ngày đầu
+### First Day Checklist
 
 - [x] GitHub organization access
 - [x] Slack workspace

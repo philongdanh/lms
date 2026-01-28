@@ -11,7 +11,7 @@ Kế hoạch phát triển và các cột mốc quan trọng.
 
 ---
 
-## Timeline diagram
+## Timeline Diagram
 
 ```d2
 classes: {

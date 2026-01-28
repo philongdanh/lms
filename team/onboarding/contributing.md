@@ -22,7 +22,7 @@ Quy tắc và quy trình cộng tác phát triển.
 
 ---
 
-## Workflow (trunk based)
+## Workflow (Trunk Based)
 
 ### Branching
 
@@ -31,7 +31,7 @@ Quy tắc và quy trình cộng tác phát triển.
 | `main`      | Production, luôn sẵn sàng deploy | Vĩnh viễn |
 | `feature/*` | Tính năng ngắn hạn               | < 1 ngày  |
 
-### Commit convention
+### Commit Convention
 
 Format: `<type>(<scope>): <subject>`
 
@@ -46,7 +46,7 @@ Format: `<type>(<scope>): <subject>`
 
 ---
 
-## Sprint process
+## Sprint Process
 
 | Ceremony      | When         | Duration |
 | ------------- | ------------ | -------- |
@@ -57,9 +57,9 @@ Format: `<type>(<scope>): <subject>`
 
 ---
 
-## Quality gates
+## Quality Gates
 
-### Definition of done
+### Definition of Done
 
 - [x] Code tuân thủ standards
 - [x] Unit tests pass (≥ 70% coverage)

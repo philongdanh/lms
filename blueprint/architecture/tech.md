@@ -11,7 +11,7 @@ Lựa chọn công nghệ và tiêu chuẩn kỹ thuật cho hệ thống.
 
 ---
 
-## BE
+## Backend
 
 | Component | Technology                | Lý do lựa chọn                                                                                                           |
 | --------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
@@ -24,7 +24,7 @@ Lựa chọn công nghệ và tiêu chuẩn kỹ thuật cho hệ thống.
 | Auth      | Passport.js + JWT         | [0008: JWT](decisions/0008-jwt-refresh-token.md), [0002](decisions/0002-multi-tenant.md), [0009](decisions/0009-rbac.md) |
 | Queue     | BullMQ + Redis            | [0011: BullMQ](decisions/0011-bullmq.md), [0007: Redis](decisions/0007-redis.md)                                         |
 
-## FE
+## Frontend
 
 | Component  | Technology                 | Lý do lựa chọn                                  |
 | ---------- | -------------------------- | ----------------------------------------------- |
@@ -36,7 +36,7 @@ Lựa chọn công nghệ và tiêu chuẩn kỹ thuật cho hệ thống.
 | Realtime   | Socket.IO Client 4.x       | [0010: Socket.IO](decisions/0010-socketio.md)   |
 | Charts     | Recharts                   | [0025: Recharts](decisions/0025-recharts.md)    |
 
-## Infra
+## Infrastructure
 
 | Component     | Technology               | Mô tả                                                        |
 | ------------- | ------------------------ | ------------------------------------------------------------ |
@@ -49,7 +49,7 @@ Lựa chọn công nghệ và tiêu chuẩn kỹ thuật cho hệ thống.
 
 ---
 
-## Technology adoption roadmap
+## Technology Adoption Roadmap
 
 | Giai đoạn | Timeline      | Focus                                           |
 | --------- | ------------- | ----------------------------------------------- |

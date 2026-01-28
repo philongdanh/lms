@@ -13,7 +13,7 @@ Quy trình phát triển và tiêu chuẩn chất lượng.
 
 ## Workflow
 
-### Git flow
+### Git Flow
 
 | Branch      | Purpose          | Naming               |
 | ----------- | ---------------- | -------------------- |
@@ -32,7 +32,7 @@ Types: feat, fix, docs, style, refactor, test, chore
 Example: feat(auth): add login with email
 ```
 
-### Code review
+### Code Review
 
 | Criteria  | Requirement     |
 | --------- | --------------- |
@@ -71,7 +71,7 @@ develop  auto    manual   manual + approval
 | Deploy (Staging) | Merge to develop | Auto deploy                   |
 | Deploy (Prod)    | Release tag      | Manual + approval             |
 
-### Release process
+### Release Process
 
 | Type  | Frequency | Scope            |
 | ----- | --------- | ---------------- |

@@ -11,7 +11,7 @@ Module quản lý phần thưởng, điểm số và bảng xếp hạng.
 
 ---
 
-## Business logic
+## Business Logic
 
 ### Process EXP
 
@@ -36,7 +36,7 @@ Engine -> "Gamification Service": new_level
 "Gamification Service" -> "Event Bus": publish(level.up)
 ```
 
-### Award badge
+### Award Badge
 
 Trao huy hiệu khi đạt đủ điều kiện.
 
@@ -54,7 +54,7 @@ Database -> "Gamification Service": new_badges
 "Gamification Service" -> "Notification Service": notify_user(badge_earned)
 ```
 
-### Reward redemption
+### Reward Redemption
 
 Đổi coin lấy phần thưởng.
 
@@ -74,7 +74,7 @@ Database -> "Gamification Service": sufficient
 "Gamification Service" -> Student: success
 ```
 
-### Update leaderboard
+### Update Leaderboard
 
 Làm mới bảng xếp hạng định kỳ.
 
@@ -92,7 +92,7 @@ Scheduler -> "Gamification Service": refresh_leaderboards
 "Gamification Service" -> "Realtime Service": broadcast(leaderboard_refresh)
 ```
 
-### Rules & constraints
+### Rules & Constraints
 
 - Công thức level: ngưỡng EXP có thể cấu hình
 - Transaction atomic: không trừ coin nếu không có reward
@@ -102,15 +102,15 @@ Scheduler -> "Gamification Service": refresh_leaderboards
 
 ---
 
-## Data model
+## Data Model
 
 > **SSoT**: [Database Blueprint](../../blueprint/architecture/database.md)
 
 ---
 
-## API & integration
+## API & Integration
 
-### GraphQL operations
+### GraphQL Operations
 
 > **SSoT**: [schema.graphql](../api/graphql/gamification/schema.graphql) |
 > [operations.graphql](../api/graphql/gamification/operations.graphql)
@@ -177,7 +177,7 @@ enum LeaderboardType {
 }
 ```
 
-### Events & webhooks
+### Events & Webhooks
 
 | Event            | Trigger            | Payload                        |
 | ---------------- | ------------------ | ------------------------------ |
@@ -187,9 +187,9 @@ enum LeaderboardType {
 
 ---
 
-## Acceptance criteria
+## Acceptance Criteria
 
-### Functional requirements
+### Functional Requirements
 
 | ID        | Yêu cầu                  | Điều kiện                     |
 | --------- | ------------------------ | ----------------------------- |
@@ -197,7 +197,7 @@ enum LeaderboardType {
 | `LMS-065` | Đổi thưởng transactional | Trừ coin atomic + trao thưởng |
 | `LMS-024` | Bảng xếp hạng real-time  | Cập nhật < 50ms               |
 
-### Edge cases
+### Edge Cases
 
 | Case                | Xử lý                   |
 | ------------------- | ----------------------- |
