@@ -22,11 +22,9 @@ the `docs/` directory.
 ## 2. D2 Diagrams
 
 - **Language**: All text within diagrams must be in **English**.
-- **Font**: Use `Fantasque Sans Mono` for code-like clarity.
 - **Formatting**:
   - Use snake_case for IDs.
   - Use Title Case for Labels.
-  - Disable italics for better readability.
 
 ## 3. Markdown Formatting
 
