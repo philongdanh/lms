@@ -11,7 +11,7 @@ Các test case cho module Gamification.
 
 ---
 
-## Happy Path
+## Happy path
 
 ### TC-INT-GAME-001: Level up
 

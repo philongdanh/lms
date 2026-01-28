@@ -11,7 +11,7 @@ Các test case cho module Xác thực.
 
 ---
 
-## Happy Path
+## Happy path
 
 ### TC-INT-AUTH-001: Register with valid email
 
@@ -94,12 +94,12 @@ Feature: Token Invalidation on Logout
 
 ---
 
-## Negative Cases
+## Negative cases
 
 ### TC-INT-AUTH-002: Register duplicate email
 
 ```gherkin
-Feature: Registration Error Handling
+Feature: Registration error handling
 
   Scenario: Register with duplicate email
     Given a user already exists with email "existing@example.com"
@@ -137,7 +137,7 @@ Feature: Rate Limiting
 
 ---
 
-## Performance & Boundary
+## Performance & boundary
 
 ### TC-PERF-AUTH-001: Concurrent logins
 

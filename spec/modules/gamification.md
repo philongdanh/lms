@@ -11,7 +11,7 @@ Module quản lý phần thưởng, điểm số và bảng xếp hạng.
 
 ---
 
-## Business Logic
+## Business logic
 
 ### Process EXP
 
@@ -36,7 +36,7 @@ Engine -> "Gamification Service": new_level
 "Gamification Service" -> "Event Bus": publish(level.up)
 ```
 
-### Award Badge
+### Award badge
 
 Trao huy hiệu khi đạt đủ điều kiện.
 
@@ -54,7 +54,7 @@ Database -> "Gamification Service": new_badges
 "Gamification Service" -> "Notification Service": notify_user(badge_earned)
 ```
 
-### Reward Redemption
+### Reward redemption
 
 Đổi coin lấy phần thưởng.
 
@@ -74,7 +74,7 @@ Database -> "Gamification Service": sufficient
 "Gamification Service" -> Student: success
 ```
 
-### Update Leaderboard
+### Update leaderboard
 
 Làm mới bảng xếp hạng định kỳ.
 
@@ -92,7 +92,7 @@ Scheduler -> "Gamification Service": refresh_leaderboards
 "Gamification Service" -> "Realtime Service": broadcast(leaderboard_refresh)
 ```
 
-### Rules & Constraints
+### Rules & constraints
 
 - Công thức level: ngưỡng EXP có thể cấu hình
 - Transaction atomic: không trừ coin nếu không có reward
@@ -177,7 +177,7 @@ enum LeaderboardType {
 }
 ```
 
-### Events & Webhooks
+### Events & webhooks
 
 | Event            | Trigger            | Payload                        |
 | ---------------- | ------------------ | ------------------------------ |

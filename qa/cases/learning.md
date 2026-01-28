@@ -11,7 +11,7 @@ Các test case cho module Học tập.
 
 ---
 
-## Happy Path
+## Happy path
 
 ### TC-INT-LEARN-000: AI learning path generation
 
@@ -80,7 +80,7 @@ Feature: Quiz Completion
 
 ---
 
-## Negative Cases
+## Negative cases
 
 ### TC-INT-LEARN-002: Access locked lesson
 
@@ -98,7 +98,7 @@ Feature: Access Control
 
 ---
 
-## Performance & Boundary
+## Performance & boundary
 
 ### TC-PERF-LEARN-001: Submit answer throughput
 

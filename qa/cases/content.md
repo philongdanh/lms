@@ -11,7 +11,7 @@ Các test case cho module Quản lý nội dung.
 
 ---
 
-## Negative Cases
+## Negative cases
 
 ### TC-INT-CONT-001: Create lesson without topic
 
@@ -40,7 +40,7 @@ Feature: File Upload Validation
 
 ---
 
-## Boundary Testing
+## Boundary testing
 
 ### TC-BOUND-CONT-001: Maximum file upload size
 

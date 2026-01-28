@@ -19,8 +19,8 @@ Use this table to find the SSoT for any given document type:
 | Document Type              | Child Examples                             | SSoT Master (Parent)                                                                       |
 | :------------------------- | :----------------------------------------- | :----------------------------------------------------------------------------------------- |
 | **Module Spec**            | `spec/modules/auth.md`                     | `blueprint/architecture/database.md` (Data)<br/>`blueprint/architecture/design.md` (Flows) |
-| **Frontend Spec**          | `spec/ui/frontend.md`               | `blueprint/architecture/decisions/frontend/*.md`                                           |
-| **API Interface**          | `spec/api/graphql/**/*.graphql`      | `spec/modules/*.md` (Business Logic)                                                       |
+| **Frontend Spec**          | `spec/ui/frontend.md`                      | `blueprint/architecture/decisions/frontend/*.md`                                           |
+| **API Interface**          | `spec/api/graphql/**/*.graphql`            | `spec/modules/*.md` (Business Logic)                                                       |
 | **Architecture Decisions** | `blueprint/architecture/decisions/**/*.md` | `blueprint/architecture/tech.md` (Tech Stack)                                              |
 
 ## 3. Review Checklist

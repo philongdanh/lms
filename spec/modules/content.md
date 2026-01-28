@@ -11,9 +11,9 @@ Module quản lý nội dung học tập và ngân hàng câu hỏi.
 
 ---
 
-## Business Logic
+## Business logic
 
-### Create Structure
+### Create structure
 
 Tạo cấu trúc môn học với chủ đề và bài học.
 
@@ -30,7 +30,7 @@ Database -> "Content Service": valid
 "Content Service" -> Teacher: success
 ```
 
-### Bulk Import
+### Bulk import
 
 Import câu hỏi từ file Excel/Word.
 
@@ -48,7 +48,7 @@ Teacher -> "Content Service": import_questions(file, lesson_id)
 "Content Service" -> Teacher: report(success_count, errors)
 ```
 
-### Publish Content
+### Publish content
 
 Duyệt và xuất bản nội dung cho học sinh.
 
@@ -65,7 +65,7 @@ Admin -> "Content Service": publish_lesson(lesson_id)
 "Content Service" -> Admin: success
 ```
 
-### Upload Media
+### Upload media
 
 Upload video/hình ảnh với kiểm tra malware.
 
@@ -88,7 +88,7 @@ S3 -> "Content Service": webhook_upload_complete
 "Content Service" -> Database: create_media_record
 ```
 
-### Rules & Constraints
+### Rules & constraints
 
 - `Lesson` phải thuộc một `Topic` (phân cấp)
 - `Teacher` tạo draft, `Admin` xuất bản
@@ -96,7 +96,7 @@ S3 -> "Content Service": webhook_upload_complete
 - Định dạng hỗ trợ: `xlsx`, `docx`, `pdf`
 - Dung lượng tối đa: 500MB cho video
 
-### Lifecycle Sequence
+### Lifecycle sequence
 
 Vòng đời nội dung từ draft đến xuất bản.
 
@@ -130,15 +130,15 @@ Admin -> "Content Service": archive()
 
 ---
 
-## Data Model
+## Data model
 
 > **SSoT**: [Database Blueprint](../../blueprint/architecture/database.md)
 
 ---
 
-## API & Integration
+## API & integration
 
-### GraphQL Operations
+### GraphQL operations
 
 > **SSoT**: [schema.graphql](../api/graphql/content/schema.graphql) |
 > [operations.graphql](../api/graphql/content/operations.graphql)
@@ -212,7 +212,7 @@ POST /api/upload
   - Response: { uploadUrl, mediaId }
 ```
 
-### Events & Webhooks
+### Events & webhooks
 
 | Event               | Trigger               | Payload                       |
 | ------------------- | --------------------- | ----------------------------- |
@@ -221,9 +221,9 @@ POST /api/upload
 
 ---
 
-## Acceptance Criteria
+## Acceptance criteria
 
-### Functional Requirements
+### Functional requirements
 
 | ID           | Yêu cầu                   | Điều kiện                               |
 | ------------ | ------------------------- | --------------------------------------- |
@@ -231,7 +231,7 @@ POST /api/upload
 | `FR-CONT-02` | Kiểm tra định dạng import | Từ chối file không hỗ trợ               |
 | `FR-CONT-03` | Phát video media          | Video chơi được trên mọi thiết bị       |
 
-### Edge Cases
+### Edge cases
 
 | Case                    | Xử lý                          |
 | ----------------------- | ------------------------------ |

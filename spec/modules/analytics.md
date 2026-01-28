@@ -11,9 +11,9 @@ Module phân tích dữ liệu học tập và báo cáo thống kê.
 
 ---
 
-## Business Logic
+## Business logic
 
-### ETL Pipeline
+### ETL pipeline
 
 Xử lý events từ module Learning để cập nhật Knowledge Map.
 
@@ -32,7 +32,7 @@ Database
 "Analysis Engine" -> Database: update_knowledge_map
 ```
 
-### Generate Report
+### Generate report
 
 Tạo báo cáo theo yêu cầu với caching.
 
@@ -56,7 +56,7 @@ Database -> "Analytics Service": heavy_result_set
 "Analytics Service" -> Teacher: report_url
 ```
 
-### Daily Aggregation
+### Daily aggregation
 
 Tổng hợp dữ liệu hàng ngày tự động.
 
@@ -75,7 +75,7 @@ Aggregator -> Database: insert_daily_stats
 "Analytics Service" -> Storage: flush_old_logs_to_s3
 ```
 
-### Rules & Constraints
+### Rules & constraints
 
 - ETL latency < 5s từ event
 - Authorization: `Teacher` chỉ xem được lớp được gán
@@ -84,15 +84,15 @@ Aggregator -> Database: insert_daily_stats
 
 ---
 
-## Data Model
+## Data model
 
 > **SSoT**: [Database Blueprint](../../blueprint/architecture/database.md)
 
 ---
 
-## API & Integration
+## API & integration
 
-### GraphQL Operations
+### GraphQL operations
 
 > **SSoT**: [schema.graphql](../api/graphql/analytics/schema.graphql) |
 > [operations.graphql](../api/graphql/analytics/operations.graphql)
@@ -154,7 +154,7 @@ enum ReportPeriod {
 }
 ```
 
-### Events & Webhooks
+### Events & webhooks
 
 | Event                        | Trigger                        | Payload             |
 | ---------------------------- | ------------------------------ | ------------------- |
@@ -162,9 +162,9 @@ enum ReportPeriod {
 
 ---
 
-## Acceptance Criteria
+## Acceptance criteria
 
-### Functional Requirements
+### Functional requirements
 
 | ID          | Yêu cầu                  | Điều kiện                        |
 | ----------- | ------------------------ | -------------------------------- |
@@ -172,7 +172,7 @@ enum ReportPeriod {
 | `FR-ANA-02` | Tổng hợp daily chính xác | Tổng khớp với logs               |
 | `FR-ANA-03` | Authorization hoạt động  | `Teacher` không thể xem lớp khác |
 
-### Edge Cases
+### Edge cases
 
 | Case                                  | Xử lý                             |
 | ------------------------------------- | --------------------------------- |

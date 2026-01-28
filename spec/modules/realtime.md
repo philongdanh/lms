@@ -11,9 +11,9 @@ Module giao tiếp real-time qua WebSocket.
 
 ---
 
-## Business Logic
+## Business logic
 
-### WebSocket Handshake
+### WebSocket handshake
 
 Client kết nối với JWT authentication.
 
@@ -31,7 +31,7 @@ Client -> "Realtime Service": connect(jwt_token)
 "Realtime Service" -> Client: connected
 ```
 
-### Broadcast Event
+### Broadcast event
 
 Gửi message đến room/channel.
 
@@ -49,7 +49,7 @@ Redis -> "Realtime Service Nodes": distribute_message
 "Realtime Service Nodes" -> Clients: push_message
 ```
 
-### Presence Tracking
+### Presence tracking
 
 Theo dõi trạng thái online/offline.
 
@@ -69,7 +69,7 @@ Scheduler -> "Realtime Service": check_offline_users
 "Realtime Service" -> "Event Bus": publish(user.offline)
 ```
 
-### Room Management
+### Room management
 
 Quản lý tham gia/rời khỏi room.
 
@@ -86,7 +86,7 @@ Client -> "Realtime Service": join_room(room_id)
 "Realtime Service" -> "Other Clients": notify_join
 ```
 
-### Rules & Constraints
+### Rules & constraints
 
 - JWT bắt buộc để kết nối
 - Redis Pub/Sub adapter cho multi-node
@@ -94,7 +94,7 @@ Client -> "Realtime Service": join_room(room_id)
 - Thời gian handshake < 100ms
 - Message delivery < 50ms P50
 
-### Lifecycle Sequence
+### Lifecycle sequence
 
 Vòng đời kết nối WebSocket.
 
@@ -125,15 +125,15 @@ Client -> "Realtime Service": disconnect()
 
 ---
 
-## Data Model
+## Data model
 
 > **SSoT**: [Database Blueprint](../../blueprint/architecture/database.md)
 
 ---
 
-## API & Integration
+## API & integration
 
-### GraphQL Operations
+### GraphQL operations
 
 > **SSoT**: [schema.graphql](../api/graphql/realtime/schema.graphql) |
 > [operations.graphql](../api/graphql/realtime/operations.graphql)
@@ -180,7 +180,7 @@ enum NotificationType {
 }
 ```
 
-### WebSocket Events
+### WebSocket events
 
 ```
 Endpoint: /ws
@@ -197,7 +197,7 @@ socket.connect      { userId, socketId }
 socket.disconnect   { userId, reason }
 ```
 
-### Events & Webhooks
+### Events & webhooks
 
 | Event              | Direction     | Payload                |
 | ------------------ | ------------- | ---------------------- |
@@ -208,9 +208,9 @@ socket.disconnect   { userId, reason }
 
 ---
 
-## Acceptance Criteria
+## Acceptance criteria
 
-### Functional Requirements
+### Functional requirements
 
 | ID         | Yêu cầu                    | Điều kiện                 |
 | ---------- | -------------------------- | ------------------------- |
@@ -218,7 +218,7 @@ socket.disconnect   { userId, reason }
 | `FR-RT-02` | Broadcast hoạt động        | Redis adapter đã cấu hình |
 | `FR-RT-03` | 10k concurrent connections | Load test passed          |
 
-### Edge Cases
+### Edge cases
 
 | Case                           | Xử lý                               |
 | ------------------------------ | ----------------------------------- |
@@ -226,5 +226,3 @@ socket.disconnect   { userId, reason }
 | Redis failover                 | Tự động reconnect đến master mới    |
 | Room đầy                       | Từ chối join với lỗi                |
 | Network hiccup                 | Auto-reconnect với backoff          |
-
----

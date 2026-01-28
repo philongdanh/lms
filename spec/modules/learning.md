@@ -11,9 +11,9 @@ Module học tập với lộ trình cá nhân hóa dựa trên AI.
 
 ---
 
-## Business Logic
+## Business logic
 
-### Submit Exercise
+### Submit exercise
 
 Nộp bài tập và nhận kết quả chấm điểm tự động.
 
@@ -35,7 +35,7 @@ Student -> "Learning Service": submit_answers(session_id, answers)
 "Learning Service" -> Student: result_feedback
 ```
 
-### Generate Learning Path
+### Adaptive path
 
 Tạo lộ trình học tập thích ứng dựa trên lịch sử và điểm yếu.
 
@@ -55,7 +55,7 @@ Database -> "AI Service": user_data
 "AI Service" -> System: path_ready
 ```
 
-### Complete Lesson
+### Resume lesson
 
 Hoàn thành bài học và kích hoạt phần thưởng.
 
@@ -74,7 +74,7 @@ Student -> "Learning Service": finish_lesson(lesson_id)
 "Learning Service" -> Student: success
 ```
 
-### Track Progress
+### Track progress
 
 Theo dõi tiến độ học tập của học sinh.
 
@@ -90,7 +90,7 @@ Database -> "Learning Service": stats
 "Learning Service" -> Parent: dashboard_data
 ```
 
-### Rules & Constraints
+### Rules & constraints
 
 - Điểm đạt tối thiểu: cấu hình theo bài học (mặc định 70%)
 - Chống gian lận: kiểm tra thời gian hoàn thành hợp lý
@@ -98,7 +98,7 @@ Database -> "Learning Service": stats
 - Timeout session: 30 phút không hoạt động
 - Rate limiting theo user
 
-### Lifecycle Sequence
+### Lifecycle sequence
 
 Vòng đời trạng thái bài học từ mở khóa đến hoàn thành.
 
@@ -118,7 +118,7 @@ System -> "Learning Service": check_prerequisites()
 "Learning Service" -> Database: update(status=AVAILABLE)
 "Learning Service" -> Student: notify_new_lesson()
 
-Student -> "Learning Service": start_lesson()
+Student -> "Learning Service": Start session()
 "Learning Service" -> Database: update(status=IN_PROGRESS)
 "Learning Service" -> Analytics: track_start()
 
@@ -205,7 +205,7 @@ type ExerciseResult {
 }
 ```
 
-### Events & Webhooks
+### Events & webhooks
 
 | Event                | Trigger               | Payload                           |
 | -------------------- | --------------------- | --------------------------------- |

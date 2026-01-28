@@ -5,13 +5,13 @@ sidebar_label: Tournament
 sidebar_position: 3
 ---
 
-# Tournament Module Tests
+# Tournament module tests
 
 Các test case cho module Giải đấu.
 
 ---
 
-## Happy Path
+## Happy path
 
 ### TC-E2E-TOUR-001: Join tournament
 
@@ -66,7 +66,7 @@ Feature: Leaderboard Updates
 
 ---
 
-## Performance & Boundary
+## Performance & boundary
 
 ### TC-PERF-TOUR-001: High concurrent tournament users
 

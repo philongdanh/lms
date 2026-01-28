@@ -257,7 +257,6 @@ type AuthPayload {
 
 ### Events & Webhooks
 
-
 | Event             | Trigger                      | Payload                           |
 | ----------------- | ---------------------------- | --------------------------------- |
 | `user.registered` | Sau khi đăng ký thành công   | `{ userId, email, role }`         |
