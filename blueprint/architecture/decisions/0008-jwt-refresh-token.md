@@ -1,11 +1,11 @@
 ---
-id: adr-0008
-title: 'ADR-0008: JWT with Refresh Token Blacklisting'
-sidebar_label: '0008: JWT Auth'
+id: 0008-jwt-refresh-token
+title: '0008: JWT Refresh Token'
+sidebar_label: '0008: JWT Refresh Token'
 sidebar_position: 8
 ---
 
-# ADR-0008: JWT with Refresh Token Blacklisting
+# 0008: JWT Refresh Token
 
 Cần stateless auth cho multi-device support.
 

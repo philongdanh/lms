@@ -1,11 +1,11 @@
 ---
-id: adr-0006
-title: 'ADR-0006: Cascade Delete Strategy'
+id: 0006-cascade-delete
+title: '0006: Cascade Delete'
 sidebar_label: '0006: Cascade Delete'
 sidebar_position: 6
 ---
 
-# ADR-0006: Cascade Delete Strategy
+# 0006: Cascade Delete
 
 Cần data deletion strategy cho tenant/user lifecycle.
 

@@ -1,11 +1,11 @@
 ---
-id: adr-0032
-title: 'ADR-0032: Nginx'
+id: 0032-nginx
+title: '0032: Nginx'
 sidebar_label: '0032: Nginx'
 sidebar_position: 32
 ---
 
-# ADR-0032: Nginx
+# 0032: Nginx
 
 Cần Reverse Proxy và Web Server hiệu năng cao.
 

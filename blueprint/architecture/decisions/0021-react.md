@@ -1,11 +1,11 @@
 ---
-id: adr-0021
-title: 'ADR-0021: React 18+'
+id: 0021-react
+title: '0021: React'
 sidebar_label: '0021: React'
 sidebar_position: 21
 ---
 
-# ADR-0021: React 18+
+# 0021: React
 
 Cần thư viện UI Component mạnh mẽ và phổ biến.
 

@@ -1,11 +1,11 @@
 ---
-id: adr-0012
-title: 'ADR-0012: Winston Logging'
+id: 0012-winston
+title: '0012: Winston'
 sidebar_label: '0012: Winston'
 sidebar_position: 12
 ---
 
-# ADR-0012: Winston Logging
+# 0012: Winston
 
 Cần giải pháp ghi log tập trung, có cấu trúc.
 

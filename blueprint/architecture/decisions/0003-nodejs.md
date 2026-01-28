@@ -1,11 +1,11 @@
 ---
-id: adr-0003
-title: 'ADR-0003: Node.js 20+ LTS'
+id: 0003-nodejs
+title: '0003: Node.js'
 sidebar_label: '0003: Node.js'
 sidebar_position: 3
 ---
 
-# ADR-0003: Node.js 20+ LTS
+# 0003: Node.js
 
 Cần môi trường chạy cho Backend đảm bảo hiệu năng và đồng bộ ngôn ngữ với
 Frontend.

@@ -1,11 +1,11 @@
 ---
-id: adr-0002
-title: 'ADR-0002: Multi-tenant via tenant_id'
-sidebar_label: '0002: Multi-tenant'
+id: 0002-multi-tenant
+title: '0002: Multi Tenant'
+sidebar_label: '0002: Multi Tenant'
 sidebar_position: 2
 ---
 
-# ADR-0002: Multi-tenant via tenant_id
+# 0002: Multi Tenant
 
 Cần multi-tenant strategy cho nhiều trường.
 

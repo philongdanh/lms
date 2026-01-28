@@ -1,11 +1,11 @@
 ---
-id: adr-0010
-title: 'ADR-0010: Socket.IO with Redis Adapter'
+id: 0010-socketio
+title: '0010: Socket.IO'
 sidebar_label: '0010: Socket.IO'
 sidebar_position: 10
 ---
 
-# ADR-0010: Socket.IO with Redis Adapter
+# 0010: Socket.IO
 
 Cần WebSocket cho real-time tournament và notifications.
 

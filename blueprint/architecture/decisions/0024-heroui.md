@@ -1,11 +1,11 @@
 ---
-id: adr-0024
-title: 'ADR-0024: HeroUI (NextUI)'
+id: 0024-heroui
+title: '0024: HeroUI'
 sidebar_label: '0024: HeroUI'
 sidebar_position: 24
 ---
 
-# ADR-0024: HeroUI (NextUI)
+# 0024: HeroUI
 
 Cần thư viện UI Component đẹp, hiện đại và accessibility tốt.
 
