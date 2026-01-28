@@ -132,52 +132,7 @@ Admin -> "Content Service": archive()
 
 ## Data Model
 
-### Schema & Entities
-
-```d2
-direction: right
-
-Subject: {
-  shape: sql_table
-  id: string {constraint: primary_key}
-  tenant_id: string {constraint: foreign_key}
-  name: string
-  grade: int
-  curriculum: string
-}
-
-Topic: {
-  shape: sql_table
-  id: string {constraint: primary_key}
-  subject_id: string {constraint: foreign_key}
-  name: string
-  order: int
-}
-
-Lesson: {
-  shape: sql_table
-  id: string {constraint: primary_key}
-  topic_id: string {constraint: foreign_key}
-  title: string
-  content: text
-  status: enum
-  created_by: string
-}
-
-Question: {
-  shape: sql_table
-  id: string {constraint: primary_key}
-  lesson_id: string {constraint: foreign_key}
-  type: enum
-  content: text
-  options: json
-  correct_answer: json
-}
-
-Subject -> Topic: 1:N
-Topic -> Lesson: 1:N
-Lesson -> Question: 1:N
-```
+> **SSoT**: [Database Blueprint](../../blueprint/architecture/database.md)
 
 ---
 

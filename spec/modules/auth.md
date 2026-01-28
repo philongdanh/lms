@@ -180,55 +180,7 @@ Scheduler -> "Auth Service": execute_hard_delete()
 
 ## Data Model
 
-### Schema & Entities
-
-```d2
-direction: right
-
-Tenant: {
-  shape: sql_table
-  id: string {constraint: primary_key}
-  name: string
-  code: string
-  domain: string
-  status: enum
-  settings: json
-  created_at: timestamp
-}
-
-User: {
-  shape: sql_table
-  id: string {constraint: primary_key}
-  tenant_id: string {constraint: foreign_key}
-  email: string
-  password: string
-  status: enum
-  created_at: timestamp
-}
-
-UserRole: {
-  shape: sql_table
-  id: string {constraint: primary_key}
-  user_id: string {constraint: foreign_key}
-  role: enum
-  created_at: timestamp
-}
-
-UserSession: {
-  shape: sql_table
-  id: string {constraint: primary_key}
-  user_id: string {constraint: foreign_key}
-  device_id: string
-  refresh_token: string
-  is_active: boolean
-  created_at: timestamp
-  expires_at: timestamp
-}
-
-Tenant -> User: 1:N
-User -> UserRole: 1:N
-User -> UserSession: 1:N
-```
+> **SSoT**: [Database Blueprint](../../blueprint/architecture/database.md)
 
 ---
 

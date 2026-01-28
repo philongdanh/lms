@@ -86,22 +86,7 @@ Aggregator -> Database: insert_daily_stats
 
 ## Data Model
 
-### Schema & Entities
-
-```d2
-direction: right
-
-KnowledgeMap: {
-  shape: sql_table
-  id: string {constraint: primary_key}
-  user_id: string {constraint: foreign_key}
-  topic_id: string {constraint: foreign_key}
-  mastery_score: float
-  updated_at: timestamp
-}
-
-User -> KnowledgeMap: 1:N
-```
+> **SSoT**: [Database Blueprint](../../blueprint/architecture/database.md)
 
 ---
 

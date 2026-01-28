@@ -146,24 +146,7 @@ Scheduler -> "Admin Service": execute_hard_delete()
 
 ## Data Model
 
-### Schema & Entities
-
-```d2
-direction: right
-
-Tenant: {
-  shape: sql_table
-  id: string {constraint: primary_key}
-  code: string
-  name: string
-  status: enum
-  settings: json
-  created_at: timestamp
-  updated_at: timestamp
-}
-
-Tenant -> User: 1:N
-```
+> **SSoT**: [Database Blueprint](../../blueprint/architecture/database.md)
 
 ---
 

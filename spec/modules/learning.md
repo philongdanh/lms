@@ -139,56 +139,7 @@ Student -> "Learning Service": re_learn()
 
 ## Data Model
 
-### Schema & Entities
-
-```d2
-direction: right
-
-LearningPath: {
-  shape: sql_table
-  id: string {constraint: primary_key}
-  user_id: string {constraint: foreign_key}
-  subject_id: string {constraint: foreign_key}
-  lessons: json
-  status: enum
-  generated_at: timestamp
-  valid_until: timestamp
-}
-
-LessonProgress: {
-  shape: sql_table
-  id: string {constraint: primary_key}
-  user_id: string {constraint: foreign_key}
-  lesson_id: string {constraint: foreign_key}
-  status: enum
-  score: int
-  completed_at: timestamp
-}
-
-ExerciseSession: {
-  shape: sql_table
-  id: string {constraint: primary_key}
-  user_id: string {constraint: foreign_key}
-  lesson_id: string {constraint: foreign_key}
-  started_at: timestamp
-  submitted_at: timestamp
-  answers: json
-}
-
-SubmissionHistory: {
-  shape: sql_table
-  id: string {constraint: primary_key}
-  session_id: string {constraint: foreign_key}
-  question_id: string {constraint: foreign_key}
-  answer: string
-  is_correct: boolean
-}
-
-User -> LearningPath: 1:N
-User -> LessonProgress: 1:N
-LessonProgress -> ExerciseSession: 1:N
-ExerciseSession -> SubmissionHistory: 1:N
-```
+> **SSoT**: [Database Blueprint](../../blueprint/architecture/database.md)
 
 ---
 

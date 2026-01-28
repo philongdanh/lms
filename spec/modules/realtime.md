@@ -127,40 +127,7 @@ Client -> "Realtime Service": disconnect()
 
 ## Data Model
 
-### Schema & Entities
-
-```d2
-direction: right
-
-Notification: {
-  shape: sql_table
-  id: string {constraint: primary_key}
-  user_id: string {constraint: foreign_key}
-  type: enum
-  content: json
-  read_at: timestamp
-  created_at: timestamp
-}
-
-Presence: {
-  shape: sql_table
-  user_id: string {constraint: primary_key}
-  socket_id: string
-  last_seen: timestamp
-  status: enum
-}
-
-Room: {
-  shape: sql_table
-  room_id: string {constraint: primary_key}
-  type: enum
-  members: json
-  created_at: timestamp
-}
-
-User -> Notification: 1:N
-User -> Presence: 1:1
-```
+> **SSoT**: [Database Blueprint](../../blueprint/architecture/database.md)
 
 ---
 

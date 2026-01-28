@@ -147,48 +147,7 @@ Scheduler -> "Tournament Service": check_end_time()
 
 ## Data Model
 
-### Schema & Entities
-
-```d2
-direction: right
-
-Tournament: {
-  shape: sql_table
-  id: string {constraint: primary_key}
-  tenant_id: string {constraint: foreign_key}
-  name: string
-  status: enum
-  max_participants: int
-  starts_at: timestamp
-  ends_at: timestamp
-  created_by: string
-  created_at: timestamp
-}
-
-CompetitionRound: {
-  shape: sql_table
-  id: string {constraint: primary_key}
-  tournament_id: string {constraint: foreign_key}
-  round_number: int
-  starts_at: timestamp
-  ends_at: timestamp
-  questions: json
-}
-
-Participant: {
-  shape: sql_table
-  id: string {constraint: primary_key}
-  round_id: string {constraint: foreign_key}
-  user_id: string {constraint: foreign_key}
-  score: int
-  rank: int
-  finished_at: timestamp
-  joined_at: timestamp
-}
-
-Tournament -> CompetitionRound: 1:N
-CompetitionRound -> Participant: 1:N
-```
+> **SSoT**: [Database Blueprint](../../blueprint/architecture/database.md)
 
 ---
 
