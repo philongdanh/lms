@@ -1,11 +1,11 @@
 ---
-id: adr-006
-title: 'ADR-006: Prisma ORM'
-sidebar_label: '006: Prisma'
-sidebar_position: 6
+id: adr-0005
+title: 'ADR-0005: Prisma ORM'
+sidebar_label: '0005: Prisma'
+sidebar_position: 5
 ---
 
-# ADR-006: Prisma ORM
+# ADR-0005: Prisma ORM
 
 Cần type-safe ORM cho NestJS.
 

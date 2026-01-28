@@ -1,11 +1,11 @@
 ---
-id: adr-002
-title: 'ADR-002: PostgreSQL as Primary Database'
-sidebar_label: '002: PostgreSQL'
-sidebar_position: 2
+id: adr-0004
+title: 'ADR-0004: PostgreSQL as Primary Database'
+sidebar_label: '0004: PostgreSQL'
+sidebar_position: 4
 ---
 
-# ADR-002: PostgreSQL as Primary Database
+# ADR-0004: PostgreSQL as Primary Database
 
 Cần database với **ACID transactions** và schema linh hoạt.
 

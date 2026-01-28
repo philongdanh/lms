@@ -1,11 +1,11 @@
 ---
-id: adr-017
-title: 'ADR-017: Recharts'
-sidebar_label: '017: Recharts'
-sidebar_position: 17
+id: adr-0025
+title: 'ADR-0025: Recharts'
+sidebar_label: '0025: Recharts'
+sidebar_position: 25
 ---
 
-# ADR-017: Recharts
+# ADR-0025: Recharts
 
 Cần thư viện biểu đồ cho Dashboard thống kê (học tập, doanh thu).
 

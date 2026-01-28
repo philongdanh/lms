@@ -1,11 +1,11 @@
 ---
-id: adr-010
-title: 'ADR-010: Next.js 14+ (App Router)'
-sidebar_label: '010: Next.js'
-sidebar_position: 10
+id: adr-0020
+title: 'ADR-0020: Next.js 14+ (App Router)'
+sidebar_label: '0020: Next.js'
+sidebar_position: 20
 ---
 
-# ADR-010: Next.js 14+ (App Router)
+# ADR-0020: Next.js 14+ (App Router)
 
 Cần một Frontend Framework mạnh mẽ, hỗ trợ SEO và performance tốt.
 

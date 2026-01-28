@@ -1,11 +1,11 @@
 ---
-id: adr-012
-title: 'ADR-012: TailwindCSS'
-sidebar_label: '012: TailwindCSS'
-sidebar_position: 12
+id: adr-0023
+title: 'ADR-0023: TailwindCSS'
+sidebar_label: '0023: TailwindCSS'
+sidebar_position: 23
 ---
 
-# ADR-012: TailwindCSS
+# ADR-0023: TailwindCSS
 
 Cần giải pháp styling nhanh, nhất quán và dễ bảo trì.
 

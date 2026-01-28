@@ -1,11 +1,11 @@
 ---
-id: adr-014
-title: 'ADR-014: Docker & Docker Compose'
-sidebar_label: '014: Docker'
-sidebar_position: 14
+id: adr-0030
+title: 'ADR-0030: Docker & Docker Compose'
+sidebar_label: '0030: Docker'
+sidebar_position: 30
 ---
 
-# ADR-014: Docker & Docker Compose
+# ADR-0030: Docker & Docker Compose
 
 Cần giải pháp đóng gói và triển khai ứng dụng nhất quán.
 

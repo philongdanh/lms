@@ -1,11 +1,11 @@
 ---
-id: adr-021
-title: 'ADR-021: BullMQ'
-sidebar_label: '021: BullMQ'
-sidebar_position: 21
+id: adr-0011
+title: 'ADR-0011: BullMQ'
+sidebar_label: '0011: BullMQ'
+sidebar_position: 11
 ---
 
-# ADR-021: BullMQ
+# ADR-0011: BullMQ
 
 Cần thư viện xử lý Background Jobs và Message Queue đáng tin cậy.
 

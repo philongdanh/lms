@@ -1,11 +1,11 @@
 ---
-id: adr-001
-title: 'ADR-001: Modular Monolith'
-sidebar_label: '001: Modular Monolith'
+id: adr-0001
+title: 'ADR-0001: Modular Monolith'
+sidebar_label: '0001: Modular Monolith'
 sidebar_position: 1
 ---
 
-# ADR-001: Modular Monolith
+# ADR-0001: Modular Monolith
 
 Cần một kiến trúc phù hợp với team nhỏ nhưng có khả năng mở rộng.
 

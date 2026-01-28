@@ -1,11 +1,11 @@
 ---
-id: adr-011
-title: 'ADR-011: Zustand for State Management'
-sidebar_label: '011: Zustand'
-sidebar_position: 11
+id: adr-0022
+title: 'ADR-0022: Zustand for State Management'
+sidebar_label: '0022: Zustand'
+sidebar_position: 22
 ---
 
-# ADR-011: Zustand for State Management
+# ADR-0022: Zustand for State Management
 
 Cần giải pháp quản lý state đơn giản, nhẹ và hiệu quả.
 

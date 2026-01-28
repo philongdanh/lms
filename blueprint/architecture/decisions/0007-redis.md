@@ -1,11 +1,11 @@
 ---
-id: adr-004
-title: 'ADR-004: Redis for Cache and Pub/Sub'
-sidebar_label: '004: Redis'
-sidebar_position: 4
+id: adr-0007
+title: 'ADR-0007: Redis for Cache and Pub/Sub'
+sidebar_label: '0007: Redis'
+sidebar_position: 7
 ---
 
-# ADR-004: Redis for Cache and Pub/Sub
+# ADR-0007: Redis for Cache and Pub/Sub
 
 Cần caching và real-time messaging.
 

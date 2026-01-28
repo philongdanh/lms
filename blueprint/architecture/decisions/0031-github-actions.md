@@ -1,11 +1,11 @@
 ---
-id: adr-015
-title: 'ADR-015: GitHub Actions'
-sidebar_label: '015: GitHub Actions'
-sidebar_position: 15
+id: adr-0031
+title: 'ADR-0031: GitHub Actions'
+sidebar_label: '0031: GitHub Actions'
+sidebar_position: 31
 ---
 
-# ADR-015: GitHub Actions
+# ADR-0031: GitHub Actions
 
 Cần giải pháp CI/CD tích hợp chặt chẽ với source code.
 
