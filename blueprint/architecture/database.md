@@ -7,13 +7,13 @@ sidebar_position: 3
 
 # Database
 
-ERD và quy định dữ liệu cho hệ thống multi-tenant.
+ERD and data regulations for the multi-tenant system.
 
 ---
 
-## Schema Design
+## Schema design
 
-### ERD & Models
+### ERD & models
 
 ```d2
 direction: right

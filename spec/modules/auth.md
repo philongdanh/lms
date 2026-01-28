@@ -178,15 +178,15 @@ Scheduler -> "Auth Service": execute_hard_delete()
 
 ---
 
-## Data Model
+## Data model
 
 > **SSoT**: [Database Blueprint](../../blueprint/architecture/database.md)
 
 ---
 
-## API & Integration
+## API & integration
 
-### GraphQL Operations
+### GraphQL operations
 
 > **SSoT**: [schema.graphql](../interface/graphql/auth/schema.graphql) |
 > [operations.graphql](../interface/graphql/auth/operations.graphql)
@@ -257,6 +257,8 @@ type AuthPayload {
 
 ### Events & Webhooks
 
+### Events & webhooks
+
 | Event             | Trigger                      | Payload                           |
 | ----------------- | ---------------------------- | --------------------------------- |
 | `user.registered` | Sau khi đăng ký thành công   | `{ userId, email, role }`         |
@@ -266,16 +268,16 @@ type AuthPayload {
 
 ---
 
-## Acceptance Criteria
+## Acceptance criteria
 
-### Functional Requirements
+### Functional requirements
 
-| ID           | Yêu cầu                  | Điều kiện                             |
-| ------------ | ------------------------ | ------------------------------------- |
-| `FR-AUTH-01` | Đăng ký email hợp lệ     | Email chưa tồn tại, định dạng đúng    |
-| `FR-AUTH-02` | Đăng nhập thành công     | Thông tin đúng, tài khoản đã xác thực |
-| `FR-AUTH-03` | Session đa thiết bị      | Cả hai session đều active             |
-| `FR-AUTH-04` | Logout vô hiệu hóa token | `refreshToken` bị thu hồi             |
+| ID        | Yêu cầu                  | Điều kiện                             |
+| --------- | ------------------------ | ------------------------------------- |
+| `LMS-001` | Đăng ký email hợp lệ     | Email chưa tồn tại, định dạng đúng    |
+| `LMS-004` | Đăng nhập thành công     | Thông tin đúng, tài khoản đã xác thực |
+| `LMS-007` | Session đa thiết bị      | Cả hai session đều active             |
+| `LMS-006` | Logout vô hiệu hóa token | `refreshToken` bị thu hồi             |
 
 ### Edge Cases
 

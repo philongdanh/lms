@@ -15,8 +15,7 @@ Các test case cho module Học tập.
 
 ### TC-INT-LEARN-000: AI learning path generation
 
-> **Validates**:
-> [FR-LEARN-01](../../spec/modules/learning.md#acceptance-criteria)
+> **Validates**: [LMS-011](../../spec/modules/learning.md#acceptance-criteria)
 
 ```gherkin
 Feature: AI Learning Path
@@ -46,8 +45,7 @@ Feature: Subject Listing
 
 ### TC-E2E-LEARN-001: Complete a lesson
 
-> **Validates**:
-> [FR-LEARN-03](../../spec/modules/learning.md#acceptance-criteria)
+> **Validates**: [LMS-014](../../spec/modules/learning.md#acceptance-criteria)
 
 ```gherkin
 Feature: Lesson Completion
@@ -65,8 +63,7 @@ Feature: Lesson Completion
 
 ### TC-E2E-LEARN-002: Complete quiz
 
-> **Validates**:
-> [FR-LEARN-02](../../spec/modules/learning.md#acceptance-criteria)
+> **Validates**: [LMS-015](../../spec/modules/learning.md#acceptance-criteria)
 
 ```gherkin
 Feature: Quiz Completion

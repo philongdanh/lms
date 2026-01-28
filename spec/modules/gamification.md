@@ -102,15 +102,15 @@ Scheduler -> "Gamification Service": refresh_leaderboards
 
 ---
 
-## Data Model
+## Data model
 
 > **SSoT**: [Database Blueprint](../../blueprint/architecture/database.md)
 
 ---
 
-## API & Integration
+## API & integration
 
-### GraphQL Operations
+### GraphQL operations
 
 > **SSoT**: [schema.graphql](../interface/graphql/gamification/schema.graphql) |
 > [operations.graphql](../interface/graphql/gamification/operations.graphql)
@@ -187,17 +187,17 @@ enum LeaderboardType {
 
 ---
 
-## Acceptance Criteria
+## Acceptance criteria
 
-### Functional Requirements
+### Functional requirements
 
-| ID           | Yêu cầu                  | Điều kiện                     |
-| ------------ | ------------------------ | ----------------------------- |
-| `FR-GAME-01` | Tăng cấp chính xác       | EXP vượt ngưỡng               |
-| `FR-GAME-02` | Đổi thưởng transactional | Trừ coin atomic + trao thưởng |
-| `FR-GAME-03` | Bảng xếp hạng real-time  | Cập nhật < 50ms               |
+| ID        | Yêu cầu                  | Điều kiện                     |
+| --------- | ------------------------ | ----------------------------- |
+| `LMS-016` | Tăng cấp chính xác       | EXP vượt ngưỡng               |
+| `LMS-065` | Đổi thưởng transactional | Trừ coin atomic + trao thưởng |
+| `LMS-024` | Bảng xếp hạng real-time  | Cập nhật < 50ms               |
 
-### Edge Cases
+### Edge cases
 
 | Case                | Xử lý                   |
 | ------------------- | ----------------------- |

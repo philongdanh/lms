@@ -13,6 +13,10 @@ sidebar_position: 3
 
 ## Core Entities
 
+> [!NOTE] The TypeScript interfaces below are for high-level reference and
+> should align with the
+> [Database Blueprint](../../blueprint/architecture/database.md).
+
 ### Tenant & User
 
 ```typescript

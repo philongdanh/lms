@@ -137,15 +137,15 @@ Student -> "Learning Service": re_learn()
 
 ---
 
-## Data Model
+## Data model
 
 > **SSoT**: [Database Blueprint](../../blueprint/architecture/database.md)
 
 ---
 
-## API & Integration
+## API & integration
 
-### GraphQL Operations
+### GraphQL operations
 
 > **SSoT**: [schema.graphql](../interface/graphql/learning/schema.graphql) |
 > [operations.graphql](../interface/graphql/learning/operations.graphql)
@@ -215,17 +215,17 @@ type ExerciseResult {
 
 ---
 
-## Acceptance Criteria
+## Acceptance criteria
 
-### Functional Requirements
+### Functional requirements
 
-| ID            | Yêu cầu                    | Điều kiện                     |
-| ------------- | -------------------------- | ----------------------------- |
-| `FR-LEARN-01` | Tạo lộ trình cá nhân hóa   | Dựa trên lịch sử và điểm yếu  |
-| `FR-LEARN-02` | Chấm điểm chính xác        | Trả về `is_correct` đúng      |
-| `FR-LEARN-03` | Theo dõi tiến độ real-time | Cập nhật ngay sau khi nộp bài |
+| ID        | Yêu cầu                    | Điều kiện                     |
+| --------- | -------------------------- | ----------------------------- |
+| `LMS-011` | Tạo lộ trình cá nhân hóa   | Dựa trên lịch sử và điểm yếu  |
+| `LMS-015` | Chấm điểm chính xác        | Trả về `is_correct` đúng      |
+| `LMS-014` | Theo dõi tiến độ real-time | Cập nhật ngay sau khi nộp bài |
 
-### Edge Cases
+### Edge cases
 
 | Case                     | Xử lý                                      |
 | ------------------------ | ------------------------------------------ |

@@ -36,23 +36,16 @@ blueprint: "blueprint/" {
 }
 
 spec: "spec/" {
-  label: "Spec\n(SSoT Definitions)"
+  label: "Spec\n(Technical)"
 
-  interface: "interface/ (SSoT)" {
-    graphql: "GraphQL Schemas ★"
-    rest: "REST OpenAPI ★"
-    types: "TypeScript Types"
-    schema: "Prisma Schema ★"
+  interface: "interface/" {
+    graphql: "GraphQL Schemas"
+    types: "High-level Types"
   }
 
   modules: "modules/" {
-    label: "Module Specs\n(References SSoT)"
+    label: "Module Specs\n(Business Logic)"
   }
-}
-
-qa: "qa/" {
-  label: "QA\n(Validates Specs)"
-  cases: "Test Cases"
 }
 
 docs: "docs/" {
@@ -61,9 +54,7 @@ docs: "docs/" {
   onboarding: "Developer Onboarding"
 }
 
-blueprint -> spec: "informs design"
-spec.interface -> spec.modules: "referenced by"
-spec.modules -> qa.cases: "validated by"
+blueprint -> spec: "informs"
 ```
 
 ---
@@ -72,14 +63,12 @@ spec.modules -> qa.cases: "validated by"
 
 ### 1. Database Schema (SSoT)
 
-**Source**: `spec/interface/schema.md`
+**Source**: `blueprint/architecture/database.md`
 
 ```
-Prisma Schema (SSoT)
+Blueprint (architecture/database.md)
     ↓
-spec/interface/types.md (derives from)
-    ↓
-spec/interface/graphql/_root/schema.graphql (enum values match)
+Spec (references Blueprint)
 ```
 
 ### 2. GraphQL API (SSoT)
