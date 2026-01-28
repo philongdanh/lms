@@ -5,7 +5,7 @@ sidebar_label: Database
 sidebar_position: 3
 ---
 
-# Database Architecture
+# Database
 
 ERD và quy định dữ liệu cho hệ thống multi-tenant.
 
@@ -39,9 +39,10 @@ User: {
   email: string
   password: string
   name: string
-  status: enum {constraint: "PENDING|ACTIVE|SUSPENDED"}
+  status: enum {constraint: "PENDING|ACTIVE|SUSPENDED|PENDING_DEACTIVATION"}
   email_verified_at: timestamp
   created_at: timestamp
+  updated_at: timestamp
   deleted_at: timestamp
 }
 
@@ -63,6 +64,7 @@ UserSession: {
   refresh_token: string {constraint: unique}
   is_active: boolean
   last_active_at: timestamp
+  created_at: timestamp
   expires_at: timestamp
 }
 
@@ -76,6 +78,7 @@ Subject: {
   grade: int
   curriculum: string
   order: int
+  created_at: timestamp
 }
 
 Topic: {
@@ -96,8 +99,11 @@ Lesson: {
   status: enum {constraint: "DRAFT|PENDING_REVIEW|PUBLISHED|ARCHIVED"}
   passing_score: int
   estimated_minutes: int
-  created_by: string {constraint: foreign_key}
+  created_by: string
+  published_by: string
   published_at: timestamp
+  created_at: timestamp
+  updated_at: timestamp
 }
 
 Question: {
@@ -110,6 +116,7 @@ Question: {
   correct_answer: json
   explanation: text
   order: int
+  created_at: timestamp
 }
 
 # === Learning Domain ===
@@ -133,6 +140,7 @@ LessonProgress: {
   best_score: int
   attempts: int
   completed_at: timestamp
+  updated_at: timestamp
 }
 
 ExerciseSession: {
@@ -147,11 +155,20 @@ ExerciseSession: {
   answers: json
 }
 
+SubmissionHistory: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  session_id: string {constraint: foreign_key}
+  question_id: string
+  answer: string
+  is_correct: boolean
+}
+
 KnowledgeMap: {
   shape: sql_table
   id: string {constraint: primary_key}
   user_id: string {constraint: foreign_key}
-  topic_id: string {constraint: foreign_key}
+  topic_id: string
   mastery_score: float
   updated_at: timestamp
 }
@@ -167,7 +184,8 @@ Tournament: {
   max_participants: int
   starts_at: timestamp
   ends_at: timestamp
-  created_by: string {constraint: foreign_key}
+  created_by: string
+  created_at: timestamp
 }
 
 CompetitionRound: {
@@ -193,13 +211,15 @@ Participant: {
 
 # === Gamification Domain ===
 
-UserExp: {
+UserProfile: {
   shape: sql_table
   user_id: string {constraint: primary_key}
-  total_exp: int
+  exp: int
   level: int
+  coins: int
   current_level_exp: int
   next_level_exp: int
+  updated_at: timestamp
 }
 
 Badge: {
@@ -220,6 +240,32 @@ UserBadge: {
   awarded_at: timestamp
 }
 
+Reward: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  name: string
+  cost: int
+  type: enum {constraint: "DIGITAL|PHYSICAL"}
+  is_active: boolean
+}
+
+RewardRedemption: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  user_id: string {constraint: foreign_key}
+  reward_id: string {constraint: foreign_key}
+  status: enum {constraint: "PENDING|FULFILLED"}
+  redeemed_at: timestamp
+}
+
+Streak: {
+  shape: sql_table
+  user_id: string {constraint: primary_key}
+  current_streak: int
+  longest_streak: int
+  last_active: timestamp
+}
+
 # === Relationships ===
 
 Tenant -> User: 1:N
@@ -234,13 +280,17 @@ User -> LearningPath: 1:N
 User -> LessonProgress: 1:N
 User -> ExerciseSession: 1:N
 User -> KnowledgeMap: 1:N
+ExerciseSession -> SubmissionHistory: 1:N
 
 Tournament -> CompetitionRound: 1:N
 CompetitionRound -> Participant: 1:N
 
-User -> UserExp: 1:1
+User -> UserProfile: 1:1
 User -> UserBadge: 1:N
 Badge -> UserBadge: 1:N
+User -> RewardRedemption: 1:N
+Reward -> RewardRedemption: 1:N
+User -> Streak: 1:1
 ```
 
 ### Indexing Strategy

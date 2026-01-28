@@ -157,46 +157,37 @@ Tournament: {
   id: string {constraint: primary_key}
   tenant_id: string {constraint: foreign_key}
   name: string
-  type: enum
   status: enum
-  start_time: timestamp
-  end_time: timestamp
-  config: json
+  max_participants: int
+  starts_at: timestamp
+  ends_at: timestamp
+  created_by: string
+  created_at: timestamp
 }
 
-Round: {
+CompetitionRound: {
   shape: sql_table
   id: string {constraint: primary_key}
   tournament_id: string {constraint: foreign_key}
-  order: int
-  start_time: timestamp
-  end_time: timestamp
+  round_number: int
+  starts_at: timestamp
+  ends_at: timestamp
   questions: json
 }
 
 Participant: {
   shape: sql_table
   id: string {constraint: primary_key}
-  tournament_id: string {constraint: foreign_key}
+  round_id: string {constraint: foreign_key}
   user_id: string {constraint: foreign_key}
   score: int
   rank: int
+  finished_at: timestamp
   joined_at: timestamp
 }
 
-MatchResult: {
-  shape: sql_table
-  id: string {constraint: primary_key}
-  round_id: string {constraint: foreign_key}
-  user_id: string {constraint: foreign_key}
-  answers: json
-  score: int
-  time_ms: int
-}
-
-Tournament -> Round: 1:N
-Tournament -> Participant: 1:N
-Round -> MatchResult: 1:N
+Tournament -> CompetitionRound: 1:N
+CompetitionRound -> Participant: 1:N
 ```
 
 ---

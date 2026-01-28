@@ -151,7 +151,8 @@ LearningPath: {
   subject_id: string {constraint: foreign_key}
   lessons: json
   status: enum
-  created_at: timestamp
+  generated_at: timestamp
+  valid_until: timestamp
 }
 
 LessonProgress: {
@@ -170,7 +171,7 @@ ExerciseSession: {
   user_id: string {constraint: foreign_key}
   lesson_id: string {constraint: foreign_key}
   started_at: timestamp
-  ended_at: timestamp
+  submitted_at: timestamp
   answers: json
 }
 

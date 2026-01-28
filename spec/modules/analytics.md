@@ -100,26 +100,7 @@ KnowledgeMap: {
   updated_at: timestamp
 }
 
-DailyStats: {
-  shape: sql_table
-  id: string {constraint: primary_key}
-  user_id: string {constraint: foreign_key}
-  date: date
-  lessons_completed: int
-  time_spent: int
-  exp_earned: int
-}
-
-ReportCache: {
-  shape: sql_table
-  report_id: string {constraint: primary_key}
-  params_hash: string
-  data: json
-  expires_at: timestamp
-}
-
 User -> KnowledgeMap: 1:N
-User -> DailyStats: 1:N
 ```
 
 ---

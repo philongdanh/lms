@@ -293,7 +293,7 @@ input LoginInput {
 input RegisterInput {
   email: String!
   password: String!
-  role: UserRole!
+  role: Role!
 }
 
 type AuthPayload {

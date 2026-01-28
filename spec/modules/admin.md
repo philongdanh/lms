@@ -159,28 +159,10 @@ Tenant: {
   status: enum
   settings: json
   created_at: timestamp
+  updated_at: timestamp
 }
 
-TenantSettings: {
-  shape: sql_table
-  id: string {constraint: primary_key}
-  tenant_id: string {constraint: foreign_key}
-  config_json: json
-}
-
-AuditLog: {
-  shape: sql_table
-  id: string {constraint: primary_key}
-  actor_id: string {constraint: foreign_key}
-  action: string
-  target: string
-  metadata: json
-  timestamp: timestamp
-}
-
-Tenant -> TenantSettings: 1:1
 Tenant -> User: 1:N
-Admin -> AuditLog: 1:N
 ```
 
 ---

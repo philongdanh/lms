@@ -170,23 +170,13 @@ Question: {
   lesson_id: string {constraint: foreign_key}
   type: enum
   content: text
-  answers: json
-  correct_answer: string
-}
-
-Media: {
-  shape: sql_table
-  id: string {constraint: primary_key}
-  type: enum
-  url: string
-  size: int
-  metadata: json
+  options: json
+  correct_answer: json
 }
 
 Subject -> Topic: 1:N
 Topic -> Lesson: 1:N
 Lesson -> Question: 1:N
-Lesson -> Media: N:M
 ```
 
 ---

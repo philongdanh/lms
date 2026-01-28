@@ -15,7 +15,8 @@
     "typecheck": "tsc",
     "version": "docusaurus docs:version",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,mdx,css}\"",
-    "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,md,mdx,css}\""
+    "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,md,mdx,css}\"",
+    "format:d2": "node scripts/format-d2.mjs"
   },
   "dependencies": {
     "@docusaurus/core": "3.9.2",

@@ -115,6 +115,8 @@ UserProfile: {
   exp: int
   level: int
   coins: int
+  current_level_exp: int
+  next_level_exp: int
   updated_at: timestamp
 }
 
@@ -123,8 +125,9 @@ Badge: {
   id: string {constraint: primary_key}
   name: string
   criteria: json
-  icon: string
-  created_at: timestamp
+  icon_url: string
+  description: string
+  code: string {constraint: unique}
 }
 
 UserBadge: {
@@ -132,7 +135,7 @@ UserBadge: {
   id: string {constraint: primary_key}
   user_id: string {constraint: foreign_key}
   badge_id: string {constraint: foreign_key}
-  earned_at: timestamp
+  awarded_at: timestamp
 }
 
 Reward: {
