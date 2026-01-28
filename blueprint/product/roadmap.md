@@ -7,7 +7,7 @@ sidebar_position: 2
 
 # Roadmap
 
-Kế hoạch phát triển và các cột mốc quan trọng.
+Lộ trình chiến lược và các cột mốc quan trọng để chinh phục mục tiêu sản phẩm.
 
 ---
 
@@ -66,7 +66,7 @@ Phase 2.S7 -> M6
 
 ### Phase 1: MVP
 
-| Sprint | Timeline | Focus           | Bàn giao                            |
+| Sprint | Timeline | Focus           | Deliverables / Bàn giao             |
 | ------ | -------- | --------------- | ----------------------------------- |
 | S1     | Week 1-2 | Foundation      | Monorepo, CI/CD, DB schema, GraphQL |
 | S2     | Week 3-4 | Auth Core       | Registration, OTP, Subject listing  |
@@ -83,7 +83,7 @@ Phase 2.S7 -> M6
 
 ### Phase 2: Expansion
 
-| Sprint | Timeline   | Focus      | Bàn giao                            |
+| Sprint | Timeline   | Focus      | Deliverables / Bàn giao             |
 | ------ | ---------- | ---------- | ----------------------------------- |
 | S5-6   | Week 9-12  | Tournament | Competitions, Leaderboard, Realtime |
 | S7     | Week 13-14 | Polish     | Bug fixes, Performance, Docs        |

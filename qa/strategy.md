@@ -9,6 +9,14 @@ sidebar_position: 1
 
 Chiến lược kiểm thử tổng thể và mục tiêu chất lượng.
 
+## QA Vision
+
+> **"Zero Critical Bugs in Production"**
+
+Chúng ta hướng tới việc xây dựng một hệ thống giáo dục tin cậy tuyệt đối, nơi
+chất lượng được đảm bảo ngay từ khâu thiết kế (Shift-left testing) và mọi luồng
+nghiệp vụ chính đều được bảo vệ bởi test tự động.
+
 ---
 
 ## Approach

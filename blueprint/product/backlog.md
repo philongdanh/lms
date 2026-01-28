@@ -7,7 +7,8 @@ sidebar_position: 3
 
 # Backlog
 
-Danh sách các yêu cầu và tính năng chờ triển khai.
+Kho dự trữ yêu cầu sản phẩm (Product Backlog) và thứ tự ưu tiên triển khai để
+tối ưu hóa giá trị.
 
 ---
 

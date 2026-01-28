@@ -7,7 +7,8 @@ sidebar_position: 3
 
 # Learning
 
-Module học tập với lộ trình cá nhân hóa dựa trên AI.
+Module **Learning** là trái tim của hệ thống LMS, tập trung vào việc **cá nhân
+hóa trải nghiệm học tập** thông qua AI và tạo động lực bền vững cho học sinh.
 
 ---
 

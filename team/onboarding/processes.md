@@ -23,6 +23,9 @@ Quy trình phát triển và tiêu chuẩn chất lượng.
 | `fix/*`     | Bug fixes        | `fix/login-redirect` |
 | `hotfix/*`  | Production fixes | `hotfix/v1.2.1`      |
 
+> **Mục đích (Why):** Đảm bảo tính ổn định của môi trường Production trong khi
+> vẫn duy trì tốc độ phát triển tính năng mới song song.
+
 **Commit Message Format:**
 
 ```
@@ -40,6 +43,9 @@ Example: feat(auth): add login with email
 | CI Status | All checks pass |
 | Coverage  | No decrease     |
 | Comments  | All resolved    |
+
+> **Mục đích (Why):** Chia sẻ kiến thức giữa các thành viên, phát hiện lỗi sớm
+> và đảm bảo Code Quality đồng nhất.
 
 **Definition of Done:**
 
