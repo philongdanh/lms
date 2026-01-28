@@ -1,8 +1,8 @@
 ---
-id: frontend
-title: Frontend Specs
-sidebar_label: UI
-sidebar_position: 3
+id: overview
+title: Frontend Overview
+sidebar_label: Overview
+sidebar_position: 1
 ---
 
 # Frontend Specs

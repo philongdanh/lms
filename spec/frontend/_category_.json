@@ -1,8 +1,8 @@
 {
-  "label": "User Interface",
+  "label": "Frontend",
   "position": 3,
   "link": {
     "type": "generated-index",
-    "slug": "/spec/ui"
+    "slug": "/spec/frontend"
   }
 }

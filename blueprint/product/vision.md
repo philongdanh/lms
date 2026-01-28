@@ -7,22 +7,25 @@ sidebar_position: 1
 
 # Product Vision
 
-Tầm nhìn sản phẩm và các bên liên quan.
+Định hình tương lai giáo dục thông qua công nghệ và sự hứng khởi.
 
 ---
 
 ## Core Value
 
-Nền tảng học tập thông minh tích hợp AI và gamification, hỗ trợ cá nhân hóa trải
-nghiệm học tập và tăng cường động lực thông qua cơ chế thi đấu.
+Kiến tạo một hệ sinh thái học tập toàn diện, nơi **Trí tuệ Nhân tạo (AI)** và
+**Gamification** hội tụ để cá nhân hóa lộ trình phát triển, khơi dậy niềm đam mê
+và biến mỗi giờ học thành một trải nghiệm thi đấu trí tuệ đầy cảm hứng.
 
-**Vấn đề giải quyết**
+**Giải quyết các thách thức cốt lõi:**
 
-- Học sinh thiếu động lực và dễ chán
-- Phụ huynh khó theo dõi tiến độ
-- Giáo viên tốn thời gian soạn đề thủ công
-- Trường học khó tổng hợp báo cáo
-- Hệ thống khó mở rộng
+- **Thiếu động lực:** Biến sự nhàm chán thành hứng thú qua cơ chế "Học mà chơi".
+- **Mù mờ tiến độ:** Cung cấp bức tranh toàn cảnh về năng lực cho Phụ huynh &
+  Học sinh.
+- **Gánh nặng hành chính:** Tự động hóa việc soạn đề và chấm điểm cho Giáo viên.
+- **Quản lý rời rạc:** Hợp nhất mọi hoạt động trường học trên một nền tảng duy
+  nhất.
+- **Khả năng mở rộng:** Kiến trúc sẵn sàng cho hàng triệu người dùng đồng thời.
 
 ## Success Metrics
 

@@ -36,9 +36,9 @@ Hướng dẫn cài đặt và thiết lập môi trường phát triển.
 
 ## Installation
 
-### Installation Steps
+### Quy trình Cài đặt (Step-by-Step)
 
-**1. Clone repo:**
+**1. Clone Source Code:**
 
 ```bash
 git clone <repository_url>
@@ -46,7 +46,7 @@ cd lms-project
 git checkout develop
 ```
 
-**2. Cấu hình biến môi trường:**
+**2. Thiết lập Biến môi trường (Environment Variables):**
 
 ```bash
 cp .env.example .env
@@ -58,34 +58,34 @@ cp .env.example .env
 | `REDIS_URL`    | Redis connection      | `redis://localhost:6379`                                |
 | `JWT_SECRET`   | JWT signing key       | `dev-secret-key`                                        |
 
-**3. Khởi động infrastructure:**
+**3. Khởi chạy Hạ tầng (Infrastructure):**
 
 ```bash
 docker-compose up -d postgres redis
 docker-compose ps
 ```
 
-**4. Cài đặt dependencies:**
+**4. Cài đặt Thư viện phụ thuộc (Dependencies):**
 
 ```bash
 npm install
 npx prisma generate
 ```
 
-**5. Khởi tạo database:**
+**5. Khởi tạo & Seed Database:**
 
 ```bash
 npx prisma migrate dev
 npx prisma db seed
 ```
 
-**6. Chạy development server:**
+**6. Khởi chạy Development Server:**
 
 ```bash
 npm run start:dev
 ```
 
-**7. Xác minh cài đặt:**
+**7. Kiểm tra Trạng thái hệ thống (Health Check):**
 
 ```bash
 curl http://localhost:3000/health
