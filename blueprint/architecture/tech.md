@@ -49,7 +49,7 @@ Lựa chọn công nghệ và tiêu chuẩn kỹ thuật cho hệ thống.
 
 ---
 
-## Technology Adoption Roadmap
+## Technology adoption roadmap
 
 | Giai đoạn | Timeline      | Focus                                           |
 | --------- | ------------- | ----------------------------------------------- |

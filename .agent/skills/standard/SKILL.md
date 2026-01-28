@@ -30,6 +30,12 @@ the `docs/` directory.
 ## 3. Markdown Formatting
 
 - **Structure**: `Frontmatter` -> `H1` -> `Description` -> `---` -> `H2`.
+  ```yaml
+  ---
+  id: my-doc
+  title: My Document
+  ---
+  ```
 - **Headers**: Use Sentence case for headers.
 - **Lists**: Use hyphens `-` for unordered lists.
 - **Code Blocks**: Always specify the language (e.g., \`\`\`typescript).

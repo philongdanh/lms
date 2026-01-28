@@ -293,7 +293,7 @@ Reward -> RewardRedemption: 1:N
 User -> Streak: 1:1
 ```
 
-### Indexing Strategy
+### Indexing strategy
 
 | Table                    | Index                                   | Purpose                  |
 | ------------------------ | --------------------------------------- | ------------------------ |
@@ -308,7 +308,7 @@ User -> Streak: 1:1
 
 ## Storage
 
-### Caching Layer
+### Caching layer
 
 | Cache Type    | Storage    | TTL      | Purpose                     |
 | ------------- | ---------- | -------- | --------------------------- |
@@ -317,7 +317,7 @@ User -> Streak: 1:1
 | Leaderboard   | Redis ZSET | Realtime | Tournament scores           |
 | Report        | Redis      | 5 min    | Generated reports           |
 
-### Backup & Replication
+### Backup & replication
 
 | Aspect      | Strategy   | Frequency |
 | ----------- | ---------- | --------- |
@@ -327,7 +327,7 @@ User -> Streak: 1:1
 | RTO         | < 4 hours  | -         |
 | RPO         | < 1 hour   | -         |
 
-### Data Retention
+### Data retention
 
 | Data Type           | Retention | Action            |
 | ------------------- | --------- | ----------------- |

@@ -26,7 +26,7 @@ LMS Platform là hệ thống quản lý học tập thông minh với **AI Lear
 
 ---
 
-## Quick Start
+## Quick start
 
 ### Bước 1: Login
 
@@ -48,7 +48,7 @@ LMS Platform là hệ thống quản lý học tập thông minh với **AI Lear
 
 ---
 
-## Key Features
+## Key features
 
 | Feature           | Description                   |
 | ----------------- | ----------------------------- |
@@ -59,7 +59,7 @@ LMS Platform là hệ thống quản lý học tập thông minh với **AI Lear
 
 ---
 
-## Tips for Success
+## Tips for success
 
 - Đặt mục tiêu hàng ngày để duy trì streak
 - Tham gia Tournament để tăng động lực
@@ -67,7 +67,7 @@ LMS Platform là hệ thống quản lý học tập thông minh với **AI Lear
 
 ---
 
-## Next Steps
+## Next steps
 
 - [FAQ](./faq.md) - Các câu hỏi thường gặp
 - [Developer Guide](../onboarding/setup.md) - Hướng dẫn phát triển

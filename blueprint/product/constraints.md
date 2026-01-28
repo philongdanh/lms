@@ -11,7 +11,7 @@ Các ràng buộc kỹ thuật và nghiệp vụ.
 
 ---
 
-## Business Constraints
+## Business constraints
 
 | ID     | Constraint                    | Impact              | Rationale              |
 | ------ | ----------------------------- | ------------------- | ---------------------- |
@@ -26,7 +26,7 @@ Các ràng buộc kỹ thuật và nghiệp vụ.
 
 ---
 
-## Technical Constraints
+## Technical constraints
 
 ### Performance
 

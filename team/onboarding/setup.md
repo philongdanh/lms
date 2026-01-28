@@ -23,7 +23,7 @@ Hướng dẫn cài đặt và thiết lập môi trường phát triển.
 | Git            | 2.30+   | Version control   |
 | VS Code        | Latest  | IDE (khuyên dùng) |
 
-### Access Rights
+### Access rights
 
 | Resource              | Requirement   |
 | --------------------- | ------------- |

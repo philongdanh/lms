@@ -12,8 +12,7 @@ When working on a file, "Stitch" the relevant context:
   `docs/blueprint/architecture/database.md`.
 - **Logic Stitch**: Working on `[module].service.ts`? -> Read
   `docs/spec/modules/[module].md`.
-- **UI Stitch**: Working on a Component? -> Read
-  `docs/spec/interface/frontend.md`.
+- **UI Stitch**: Working on a Component? -> Read `docs/spec/ui/frontend.md`.
 
 ## 2. In-Code References
 

@@ -11,7 +11,7 @@ Danh sách các yêu cầu và tính năng chờ triển khai.
 
 ---
 
-## Priority Legend
+## Priority legend
 
 | Priority | Description          | Points Range |
 | -------- | -------------------- | ------------ |
@@ -22,7 +22,7 @@ Danh sách các yêu cầu và tính năng chờ triển khai.
 
 ---
 
-## Backlog Summary
+## Backlog summary
 
 | Priority        | Count | Points | % Total |
 | --------------- | ----- | ------ | ------- |
@@ -33,7 +33,7 @@ Danh sách các yêu cầu và tính năng chờ triển khai.
 
 ---
 
-## Must Have (MVP)
+## Must have (MVP)
 
 > **Note**: Các item dưới đây đã được chi tiết hóa thành User Story để sẵn sàng
 > cho Sprint Planning.
@@ -260,7 +260,7 @@ Danh sách các yêu cầu và tính năng chờ triển khai.
 
 ---
 
-## Should Have (Future Sprints)
+## Should have (future sprints)
 
 #### LMS-030: Video Lessons
 
@@ -326,7 +326,7 @@ Danh sách các yêu cầu và tính năng chờ triển khai.
 
 ---
 
-## Could Have (Backlog)
+## Could have (backlog)
 
 #### LMS-060: Dark Mode
 

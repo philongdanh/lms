@@ -11,7 +11,7 @@ Tầm nhìn sản phẩm và các bên liên quan.
 
 ---
 
-## Core Value
+## Core value
 
 Nền tảng học tập thông minh tích hợp AI và gamification, hỗ trợ cá nhân hóa trải
 nghiệm học tập và tăng cường động lực thông qua cơ chế thi đấu.
@@ -24,7 +24,7 @@ nghiệm học tập và tăng cường động lực thông qua cơ chế thi �
 - Trường học khó tổng hợp báo cáo
 - Hệ thống khó mở rộng
 
-## Success Metrics
+## Success metrics
 
 | Metric               | Goal                  | Strategy                   |
 | :------------------- | :-------------------- | :------------------------- |
@@ -32,7 +32,7 @@ nghiệm học tập và tăng cường động lực thông qua cơ chế thi �
 | **Retention**        | > 60% weekly active   | Gamification & Tournaments |
 | **Engagement**       | > 30 mins / day       | Personalized learning path |
 
-## Target Users
+## Target users
 
 | Đối tượng                     | Nhu cầu cốt lõi                       | Vấn đề gặp phải                     |
 | :---------------------------- | :------------------------------------ | :---------------------------------- |

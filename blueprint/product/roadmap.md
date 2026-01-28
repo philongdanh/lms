@@ -11,7 +11,7 @@ Kế hoạch phát triển và các cột mốc quan trọng.
 
 ---
 
-## Timeline Diagram
+## Timeline diagram
 
 ```d2
 classes: {
@@ -95,7 +95,7 @@ Phase 2.S7 -> M6
 - Badges & achievements
 - Beta release
 
-### Key Dates
+### Key dates
 
 | Cột Mốc             | Ngày       | Sprint   | Tiêu chí                     |
 | ------------------- | ---------- | -------- | ---------------------------- |

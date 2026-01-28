@@ -24,7 +24,7 @@ nguồn duy nhất** làm chuẩn. Tất cả các nơi khác đều **tham chi�
 
 ---
 
-## SSoT Structure
+## SSoT structure
 
 ```d2
 direction: down
@@ -63,9 +63,9 @@ blueprint -> spec: "informs"
 
 ---
 
-## Reference Chain
+## Reference chain
 
-### 1. Database Schema (SSoT)
+### 1. Database schema (SSoT)
 
 **Source**: `blueprint/architecture/database.md`
 
@@ -96,13 +96,13 @@ qa/cases/*.md (validates against module FRs)
 
 ---
 
-## Rules for New Features
+## Rules for new features
 
 ### ✅ Đúng cách
 
 1. **Định nghĩa SSoT trước**
    - Thêm GraphQL schema vào `spec/api/graphql/{module}/schema.graphql`
-   - Thêm Prisma model vào `spec/api/schema.md`
+   - Thêm Prisma model vào `blueprint/architecture/database.md`
 
 2. **Cập nhật Module Spec**
    - Thêm business logic flows với D2 diagrams
@@ -119,7 +119,7 @@ qa/cases/*.md (validates against module FRs)
 
 ---
 
-## SSoT Review Checklist
+## SSoT review checklist
 
 Khi review documentation changes, kiểm tra:
 
@@ -131,7 +131,7 @@ Khi review documentation changes, kiểm tra:
 
 ---
 
-## Directory Structure
+## Directory structure
 
 ```
 lms/
@@ -143,7 +143,6 @@ lms/
 │   ├── api/             # ★ API & Data SSoT
 │   │   ├── graphql/     # GraphQL schemas per module
 │   │   ├── rest/        # OpenAPI for REST endpoints
-│   │   ├── schema.md    # ★ Prisma schema (Database SSoT)
 │   │   └── types.md     # TypeScript interfaces
 │   ├── ui/              # Frontend Specs
 │   │   └── frontend.md  # Frontend detailed specs
