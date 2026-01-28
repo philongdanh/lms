@@ -188,8 +188,8 @@ Scheduler -> "Auth Service": execute_hard_delete()
 
 ### GraphQL operations
 
-> **SSoT**: [schema.graphql](../interface/graphql/auth/schema.graphql) |
-> [operations.graphql](../interface/graphql/auth/operations.graphql)
+> **SSoT**: [schema.graphql](../api/graphql/auth/schema.graphql) |
+> [operations.graphql](../api/graphql/auth/operations.graphql)
 
 ```graphql
 type Query {
@@ -257,7 +257,6 @@ type AuthPayload {
 
 ### Events & Webhooks
 
-### Events & webhooks
 
 | Event             | Trigger                      | Payload                           |
 | ----------------- | ---------------------------- | --------------------------------- |

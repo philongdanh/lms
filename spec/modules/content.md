@@ -140,8 +140,8 @@ Admin -> "Content Service": archive()
 
 ### GraphQL Operations
 
-> **SSoT**: [schema.graphql](../interface/graphql/content/schema.graphql) |
-> [operations.graphql](../interface/graphql/content/operations.graphql)
+> **SSoT**: [schema.graphql](../api/graphql/content/schema.graphql) |
+> [operations.graphql](../api/graphql/content/operations.graphql)
 
 ```graphql
 type Query {

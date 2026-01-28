@@ -38,9 +38,13 @@ blueprint: "blueprint/" {
 spec: "spec/" {
   label: "Spec\n(Technical)"
 
-  interface: "interface/" {
+  api: "api/" {
     graphql: "GraphQL Schemas"
     types: "High-level Types"
+  }
+
+  ui: "ui/" {
+    frontend: "Frontend Specs"
   }
 
   modules: "modules/" {
@@ -48,8 +52,8 @@ spec: "spec/" {
   }
 }
 
-docs: "docs/" {
-  label: "Docs\n(Guides)"
+team: "team/" {
+  label: "Team\n(Guides)"
   handbook: "Team Handbook"
   onboarding: "Developer Onboarding"
 }
@@ -73,7 +77,7 @@ Spec (references Blueprint)
 
 ### 2. GraphQL API (SSoT)
 
-**Source**: `spec/interface/graphql/{module}/schema.graphql`
+**Source**: `spec/api/graphql/{module}/schema.graphql`
 
 ```
 GraphQL Schema (SSoT)
@@ -85,7 +89,7 @@ qa/cases/*.md (validates against module FRs)
 
 ### 3. REST API (SSoT)
 
-**Source**: `spec/interface/rest/openapi.yaml`
+**Source**: `spec/api/rest/openapi.yaml`
 
 > REST API chỉ dùng cho **Health Check**, **File Upload**, và **Webhooks**.
 > Business logic sử dụng GraphQL.
@@ -97,8 +101,8 @@ qa/cases/*.md (validates against module FRs)
 ### ✅ Đúng cách
 
 1. **Định nghĩa SSoT trước**
-   - Thêm GraphQL schema vào `spec/interface/graphql/{module}/schema.graphql`
-   - Thêm Prisma model vào `spec/interface/schema.md`
+   - Thêm GraphQL schema vào `spec/api/graphql/{module}/schema.graphql`
+   - Thêm Prisma model vào `spec/api/schema.md`
 
 2. **Cập nhật Module Spec**
    - Thêm business logic flows với D2 diagrams
@@ -110,7 +114,7 @@ qa/cases/*.md (validates against module FRs)
 ### ❌ Sai cách
 
 - Định nghĩa GraphQL inline trong module spec mà không reference SSoT
-- Tạo types mới trong module spec thay vì `spec/interface/types.md`
+- Tạo types mới trong module spec thay vì `spec/api/types.md`
 - Định nghĩa enums khác giá trị với Prisma schema
 
 ---
@@ -119,7 +123,7 @@ qa/cases/*.md (validates against module FRs)
 
 Khi review documentation changes, kiểm tra:
 
-- [ ] GraphQL schema changes đã update trong `spec/interface/graphql/`?
+- [ ] GraphQL schema changes đã update trong `spec/api/graphql/`?
 - [ ] Module specs có SSoT reference notes?
 - [ ] Enum values match giữa Prisma, TypeScript, và GraphQL?
 - [ ] Test cases reference đúng FR IDs trong module specs?
@@ -136,18 +140,20 @@ lms/
 │   └── product/         # Product vision & roadmap
 │
 ├── spec/                # Specifications (SSoT)
-│   ├── interface/       # ★ API & Data SSoT
+│   ├── api/             # ★ API & Data SSoT
 │   │   ├── graphql/     # GraphQL schemas per module
 │   │   ├── rest/        # OpenAPI for REST endpoints
 │   │   ├── schema.md    # ★ Prisma schema (Database SSoT)
 │   │   └── types.md     # TypeScript interfaces
+│   ├── ui/              # Frontend Specs
+│   │   └── frontend.md  # Frontend detailed specs
 │   └── modules/         # Module specs (reference SSoT)
 │
 ├── qa/                  # Quality Assurance
 │   ├── cases/           # Test cases (validate specs)
 │   └── strategy.md      # QA strategy
 │
-└── docs/                # Guides & Onboarding
+└── team/                # Guides & Onboarding
     ├── handbook/        # Team handbook
     └── onboarding/      # Developer onboarding
 ```
@@ -157,7 +163,7 @@ lms/
 ## References
 
 - [System Design](../../blueprint/architecture/design.md) - Kiến trúc tổng thể
-- [Gateway Standards](../../spec/interface/gateway.md) - API standards
-- [TypeScript Types](../../spec/interface/types.md) - Type definitions
+- [Gateway Standards](../../spec/api/gateway.md) - API standards
+- [TypeScript Types](../../spec/api/types.md) - Type definitions
 
 ---

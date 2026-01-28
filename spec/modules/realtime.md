@@ -135,8 +135,8 @@ Client -> "Realtime Service": disconnect()
 
 ### GraphQL Operations
 
-> **SSoT**: [schema.graphql](../interface/graphql/realtime/schema.graphql) |
-> [operations.graphql](../interface/graphql/realtime/operations.graphql)
+> **SSoT**: [schema.graphql](../api/graphql/realtime/schema.graphql) |
+> [operations.graphql](../api/graphql/realtime/operations.graphql)
 
 ```graphql
 type Query {

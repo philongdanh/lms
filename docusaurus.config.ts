@@ -23,7 +23,7 @@ const config: Config = {
             'blueprint/**/*.md',
             'spec/**/*.md',
             'qa/**/*.md',
-            'docs/**/*.md',
+            'team/**/*.md',
             'README.md',
           ],
           routeBasePath: '/',

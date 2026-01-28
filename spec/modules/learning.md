@@ -147,8 +147,8 @@ Student -> "Learning Service": re_learn()
 
 ### GraphQL operations
 
-> **SSoT**: [schema.graphql](../interface/graphql/learning/schema.graphql) |
-> [operations.graphql](../interface/graphql/learning/operations.graphql)
+> **SSoT**: [schema.graphql](../api/graphql/learning/schema.graphql) |
+> [operations.graphql](../api/graphql/learning/operations.graphql)
 
 ```graphql
 type Query {

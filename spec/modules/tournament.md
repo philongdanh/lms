@@ -155,8 +155,8 @@ Scheduler -> "Tournament Service": check_end_time()
 
 ### GraphQL Operations
 
-> **SSoT**: [schema.graphql](../interface/graphql/tournament/schema.graphql) |
-> [operations.graphql](../interface/graphql/tournament/operations.graphql)
+> **SSoT**: [schema.graphql](../api/graphql/tournament/schema.graphql) |
+> [operations.graphql](../api/graphql/tournament/operations.graphql)
 
 ```graphql
 type Query {

@@ -29,4 +29,4 @@ Tài liệu chính thức cho hệ thống Learning Management System (LMS).
 
 ## Contribution
 
-Xem [Contributing](./docs/onboarding/contributing.md) để biết cách đóng góp.
+Xem [Contributing](./team/onboarding/contributing.md) để biết cách đóng góp.

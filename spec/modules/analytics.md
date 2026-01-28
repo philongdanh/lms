@@ -94,8 +94,8 @@ Aggregator -> Database: insert_daily_stats
 
 ### GraphQL Operations
 
-> **SSoT**: [schema.graphql](../interface/graphql/analytics/schema.graphql) |
-> [operations.graphql](../interface/graphql/analytics/operations.graphql)
+> **SSoT**: [schema.graphql](../api/graphql/analytics/schema.graphql) |
+> [operations.graphql](../api/graphql/analytics/operations.graphql)
 
 ```graphql
 type Query {

@@ -112,8 +112,8 @@ Scheduler -> "Gamification Service": refresh_leaderboards
 
 ### GraphQL operations
 
-> **SSoT**: [schema.graphql](../interface/graphql/gamification/schema.graphql) |
-> [operations.graphql](../interface/graphql/gamification/operations.graphql)
+> **SSoT**: [schema.graphql](../api/graphql/gamification/schema.graphql) |
+> [operations.graphql](../api/graphql/gamification/operations.graphql)
 
 ```graphql
 type Query {

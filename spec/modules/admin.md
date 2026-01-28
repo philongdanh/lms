@@ -154,7 +154,7 @@ Scheduler -> "Admin Service": execute_hard_delete()
 
 ### GraphQL Operations
 
-> **SSoT**: [schema.graphql](../interface/graphql/admin/schema.graphql)
+> **SSoT**: [schema.graphql](../api/graphql/admin/schema.graphql)
 
 ```graphql
 type Query {
