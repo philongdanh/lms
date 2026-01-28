@@ -13,7 +13,7 @@ Tiêu chuẩn và quy trình phát triển.
 
 ## Tech Stack
 
-See [Technology Stack](../../blueprint/architecture/stack.md) for full details.
+See [Technology Stack](../../blueprint/architecture/tech.md) for full details.
 
 ---
 

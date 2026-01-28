@@ -1,13 +1,8 @@
----
-name: Stitch
-description:
-  Techniques for stitching context across repositories (Docs <-> API) to ensure
-  coherence.
----
-
 # Stitch Skill
 
 The Stitch skill connects the Legislative (Docs) with the Executive (API).
+
+---
 
 ## 1. Context Stitching
 

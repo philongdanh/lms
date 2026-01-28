@@ -1,18 +1,14 @@
----
-name: Spec-Driven Development
-description:
-  The core Antigravity workflow: Spec -> Plan -> Code.
----
-
 # Spec-Driven Development Skill
 
 Antigravity follows a strict strict flow to ensuring high-quality, verifiable
 code.
 
+---
+
 ## 1. The Cycle
 
 1.  **Spec (Legislative)**: Define _WHAT_ in `docs/spec/`.
-    - _Output_: Markdown file with D2 diagrams.
+    - _Output_: Markdown file with D2 diagrams (Horizontal direction preferred).
 2.  **Plan (Architect)**: Define _HOW_ in `implementation_plan.md`.
     - _Output_: Plan artifact in `.gemini/brain`.
 3.  **Code (Executive)**: Implement _HOW_ in `api/` or `web/`.
@@ -22,6 +18,8 @@ code.
 
 ## 2. Rules
 
+- **Minimal Scrum**: Adopt a minimal "Spec Driven Development" approach
+  compatible with Scrum. Focus on delivering value in iterations.
 - **No Spec, No Code**: Never write code without a corresponding spec.
 - **Refactor Spec First**: If requirements change, update the Spec _before_ the
   Code.

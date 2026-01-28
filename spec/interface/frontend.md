@@ -95,7 +95,7 @@ RightPanel: {
 Layout chính cho người dùng đã đăng nhập.
 
 ```d2
-direction: down
+direction: right
 
 Header: {
   Logo
@@ -128,7 +128,7 @@ Body: {
 Layout tối giản cho các hoạt động cần tập trung cao (Làm bài học, Thi đấu).
 
 ```d2
-direction: down
+direction: right
 
 Header: {
   direction: right

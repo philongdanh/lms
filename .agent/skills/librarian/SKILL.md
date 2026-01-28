@@ -1,14 +1,9 @@
----
-name: Librarian
-description:
-  Manages the Antigravity memory (.gemini) and ensures organization of artifacts
-  and knowledge.
----
-
 # Librarian Skill
 
 The Librarian is responsible for the Order of Knowledge within the Antigravity
 system.
+
+---
 
 ## 1. Responsibilities
 

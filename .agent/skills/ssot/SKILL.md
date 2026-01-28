@@ -1,14 +1,9 @@
----
-name: SSoT Maintenance
-description:
-  Guidelines for maintaining Single Source of Truth (SSoT) across Blueprint,
-  Spec, Schema, and Code.
----
-
 # SSoT Maintenance Skill
 
 This skill defines the workflow for maintaining consistency across the project's
 layers.
+
+---
 
 ## 1. Hierarchy of Truth
 

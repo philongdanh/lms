@@ -1,19 +1,14 @@
----
-name: Documentation Standard
-description:
-  Guidelines and standards for maintaining project documentation, including SSoT
-  and D2 diagram usage.
----
-
 # Documentation Standard Skill
 
 This skill defines the standards for creating and maintaining documentation in
 the `docs/` directory.
 
+---
+
 ## 1. Single Source of Truth (SSoT)
 
 - **Principle**: Do not duplicate information. Reference existing definitions.
-- **Blueprint vs Spec**:
+- **Reference**:
   - `blueprint/`: High-level architecture, design decisions, and system flows.
   - `spec/`: Detailed technical specifications, API contracts, and schema
     definitions.
@@ -25,9 +20,12 @@ the `docs/` directory.
 - **Formatting**:
   - Use snake_case for IDs.
   - Use Title Case for Labels.
+  - **Direction**: Prefer horizontal direction (`direction: right`) for better
+    screen utilization.
 
 ## 3. Markdown Formatting
 
+- **Structure**: `Frontmatter` -> `H1` -> `Description` -> `---` -> `H2`.
 - **Headers**: Use Sentence case for headers.
 - **Lists**: Use hyphens `-` for unordered lists.
 - **Code Blocks**: Always specify the language (e.g., \`\`\`typescript).

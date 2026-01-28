@@ -1,14 +1,9 @@
----
-name: Engineering Workflow Standard
-description:
-  Standard workflow for engineering tasks, covering Task Tracking,
-  Implementation Planning, and Walkthroughs.
----
-
 # Engineering Workflow Standard
 
 This skill defines the standard workflow for executing engineering tasks within
 the project. It ensures consistency, visibility, and quality control.
+
+---
 
 ## 1. Task Management (`task.md`)
 

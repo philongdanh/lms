@@ -1,14 +1,9 @@
----
-name: Documentation Review
-description:
-  Standards for reviewing and refactoring documentation to ensure consistency,
-  SSoT adherence, and quality.
----
-
 # Documentation Review Skill
 
 This skill defines the process for reviewing and refactoring files within the
 `docs/` directory.
+
+---
 
 ## 1. Principles of Documentation
 

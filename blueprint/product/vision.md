@@ -22,6 +22,15 @@ nghiệm học tập và tăng cường động lực thông qua cơ chế thi �
 - Phụ huynh khó theo dõi tiến độ
 - Giáo viên tốn thời gian soạn đề thủ công
 - Trường học khó tổng hợp báo cáo
+- Hệ thống khó mở rộng
+
+## Success Metrics
+
+| Metric               | Goal                  | Strategy                   |
+| :------------------- | :-------------------- | :------------------------- |
+| **User Acquisition** | 10k users in 3 months | Partnerships with schools  |
+| **Retention**        | > 60% weekly active   | Gamification & Tournaments |
+| **Engagement**       | > 30 mins / day       | Personalized learning path |
 
 ## Target Users
 

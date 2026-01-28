@@ -167,8 +167,7 @@ lms/
 
 ## References
 
-- [System Design](../../blueprint/architecture/system-design.md) - Kiến trúc
-  tổng thể
+- [System Design](../../blueprint/architecture/design.md) - Kiến trúc tổng thể
 - [Gateway Standards](../../spec/interface/gateway.md) - API standards
 - [TypeScript Types](../../spec/interface/types.md) - Type definitions
 
