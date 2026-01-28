@@ -77,10 +77,8 @@ App -> Data Layer.Redis
 
 **Xem flow chi tiết:**
 
-- Learning Flow:
-  [Learning Module Spec](../../spec/modules/learning.md#business-logic)
-- Tournament Flow:
-  [Tournament Module Spec](../../spec/modules/tournament.md#business-logic)
+- [Learning](../../spec/modules/learning.md#business-logic)
+- [Tournament](../../spec/modules/tournament.md#business-logic)
 
 ### Nguyên tắc thiết kế
 
