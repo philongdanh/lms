@@ -39,7 +39,7 @@ If you find that the Code does not match the Spec:
 - **Do not simply update the Spec to match the Code** without verification. The
   Code is often "in the weeds" and might have drifted from the intended design.
 
-## 4. D2 Diagrams
+## 4. D2 Diagrams & Database
 
 - Maintain D2 diagrams in `docs/` to visualize the SSoT.
 - Ensure field names in Entity Relationship Diagrams (ERD) match the Prisma

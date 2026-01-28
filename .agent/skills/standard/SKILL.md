@@ -22,6 +22,10 @@ the `docs/` directory.
   - Use Title Case for Labels.
   - **Direction**: Prefer horizontal direction (`direction: right`) for better
     screen utilization.
+- **Automation**: Use `docs/scripts/format-d2.mjs` to format D2 files.
+  ```bash
+  node docs/scripts/format-d2.mjs [path/to/file.d2]
+  ```
 
 ## 3. Markdown Formatting
 

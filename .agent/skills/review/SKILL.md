@@ -9,6 +9,8 @@ This skill defines the process for reviewing and refactoring files within the
 
 - **Single Source of Truth (SSoT)**: Every piece of information should have
   exactly one authoritative location.
+- **Cross-Referencing**: Documents should link to each other instead of
+  duplicating content.
 
 ## 2. SSoT Matrix
 
@@ -36,6 +38,8 @@ When reviewing a document (e.g., `spec/modules/auth.md`), check the following:
 ### 3.2 Content Integrity
 
 - [ ] **SSoT Check**: Does this document contradict the Blueprint?
+- [ ] **Redundancy**: Is this content duplicated elsewhere? (If yes, replace
+      with link)
 - [ ] **Context**: Is the document self-contained or does it properly reference
       dependencies?
 - [ ] **D2 Diagrams**: Are diagrams rendered correctly and text is legible?

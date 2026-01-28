@@ -26,5 +26,5 @@ async function login() { ... }
 
 ## 3. Validation
 
-- If the Code contradict the Stitched Spec, **Stop**.
+- If the Code contradicts the Stitched Spec, **Stop**.
 - Report the mismatch using the `Review` skill.
