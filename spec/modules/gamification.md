@@ -7,7 +7,7 @@ sidebar_position: 7
 
 # Gamification
 
-Module quản lý phần thưởng, điểm số và bảng xếp hạng.
+Module **Gamification** quản lý phần thưởng, điểm số và bảng xếp hạng.
 
 ---
 

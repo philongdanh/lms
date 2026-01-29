@@ -18,8 +18,6 @@ ERD and data regulations for the multi-tenant system.
 ```d2
 direction: right
 
-
-
 Tenant: {
   shape: sql_table
   id: string {constraint: primary_key}
@@ -67,8 +65,6 @@ UserSession: {
   created_at: timestamp
   expires_at: timestamp
 }
-
-
 
 Subject: {
   shape: sql_table
@@ -118,8 +114,6 @@ Question: {
   order: int
   created_at: timestamp
 }
-
-
 
 LearningPath: {
   shape: sql_table
@@ -173,8 +167,6 @@ KnowledgeMap: {
   updated_at: timestamp
 }
 
-
-
 Tournament: {
   shape: sql_table
   id: string {constraint: primary_key}
@@ -208,8 +200,6 @@ Participant: {
   finished_at: timestamp
   joined_at: timestamp
 }
-
-
 
 UserProfile: {
   shape: sql_table
@@ -265,8 +255,6 @@ Streak: {
   longest_streak: int
   last_active: timestamp
 }
-
-
 
 Tenant -> User: 1:N
 User -> UserRole: 1:N

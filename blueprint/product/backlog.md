@@ -126,7 +126,7 @@ tối ưu hóa giá trị.
   - [ ] Redirect to Login if token missing or expired.
   - [ ] Role-based access control (e.g., Admin vs Student).
 
-### LearningModule
+### Module Học tập
 
 #### LMS-010: List Subjects
 

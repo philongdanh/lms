@@ -50,7 +50,7 @@ LMS Platform là hệ thống quản lý học tập thông minh với **AI Lear
 
 ## Key features
 
-| Feature           | Description                   |
+| Tính năng         | Mô tả                         |
 | ----------------- | ----------------------------- |
 | AI Learning Path  | Lộ trình cá nhân hóa          |
 | Tournament        | Thi đấu với bạn bè            |

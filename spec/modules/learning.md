@@ -7,7 +7,7 @@ sidebar_position: 3
 
 # Learning
 
-Module **Learning** là trái tim của hệ thống LMS, tập trung vào việc **cá nhân
+Module **Học tập** là trái tim của hệ thống LMS, tập trung vào việc **cá nhân
 hóa trải nghiệm học tập** thông qua AI và tạo động lực bền vững cho học sinh.
 
 ---
