@@ -61,12 +61,12 @@ tests/
 
 ### Triggers
 
-| Kích hoạt (Trigger) | Tests Run                |
-| ------------------- | ------------------------ |
-| PR                  | Unit + Integration       |
-| Merge to main       | All tests                |
-| Nightly             | Full suite + Performance |
-| Release             | Full suite + E2E         |
+| Kích hoạt     | Tests Run                |
+| ------------- | ------------------------ |
+| PR            | Unit + Integration       |
+| Merge to main | All tests                |
+| Nightly       | Full suite + Performance |
+| Release       | Full suite + E2E         |
 
 ### Health Metrics
 

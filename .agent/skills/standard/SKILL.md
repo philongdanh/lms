@@ -26,6 +26,7 @@ Use this skill when creating or editing documentation to ensure consistency.
 - **Language**: Text must be in **English**.
 - **Style**: `snake_case` for IDs, Title Case for Labels.
 - **Direction**: Prefer `direction: right`.
+- **Content**: No comments (`# ...`) or headers (`## ...`) inside D2 blocks.
 
 ## 3. Structure
 

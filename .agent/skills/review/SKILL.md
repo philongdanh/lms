@@ -30,6 +30,7 @@ Use this skill to review and refactor documentation.
   - [ ] SSoT References (`> **SSoT**: ...`).
 - [ ] **Integrity**: No contradictions with Blueprint.
 - [ ] **Formatting**: Checklists unchecked `[ ]`.
+- [ ] **D2**: Clean code (No comments/headers inside).
 
 ## 3. Refactoring Steps
 

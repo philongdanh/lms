@@ -18,7 +18,7 @@ ERD and data regulations for the multi-tenant system.
 ```d2
 direction: right
 
-# === Core Domain ===
+
 
 Tenant: {
   shape: sql_table
@@ -68,7 +68,7 @@ UserSession: {
   expires_at: timestamp
 }
 
-# === Content Domain ===
+
 
 Subject: {
   shape: sql_table
@@ -119,7 +119,7 @@ Question: {
   created_at: timestamp
 }
 
-# === Learning Domain ===
+
 
 LearningPath: {
   shape: sql_table
@@ -173,7 +173,7 @@ KnowledgeMap: {
   updated_at: timestamp
 }
 
-# === Tournament Domain ===
+
 
 Tournament: {
   shape: sql_table
@@ -209,7 +209,7 @@ Participant: {
   joined_at: timestamp
 }
 
-# === Gamification Domain ===
+
 
 UserProfile: {
   shape: sql_table
@@ -266,7 +266,7 @@ Streak: {
   last_active: timestamp
 }
 
-# === Relationships ===
+
 
 Tenant -> User: 1:N
 User -> UserRole: 1:N

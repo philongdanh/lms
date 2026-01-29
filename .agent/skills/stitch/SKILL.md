@@ -11,7 +11,7 @@ Aligns Executive (Code) with Legislative (Docs).
 
 Read the right docs before coding.
 
-| Task Scope        | Required Reading (Source)                 |
+| Task Scope        | Required Reading                          |
 | :---------------- | :---------------------------------------- |
 | **Schema/Data**   | `docs/blueprint/architecture/database.md` |
 | **Logic/Service** | `docs/spec/modules/[module].md`           |

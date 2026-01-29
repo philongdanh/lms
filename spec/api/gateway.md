@@ -66,18 +66,18 @@ X-Request-ID: {uuid}
 
 ## Performance
 
-| Phân vị (Percentile) | Thời gian phản hồi tối đa |
-| -------------------- | ------------------------- |
-| P50                  | 100ms                     |
-| P95                  | 500ms                     |
-| P99                  | 1000ms                    |
+| Phân vị | Thời gian phản hồi tối đa |
+| ------- | ------------------------- |
+| P50     | 100ms                     |
+| P95     | 500ms                     |
+| P99     | 1000ms                    |
 
 ### Rate Limits
 
-| Hạng (Tier) | Yêu cầu/phút | Burst |
-| ----------- | ------------ | ----- |
-| Standard    | 100          | 200   |
-| Premium     | 1000         | 2000  |
+| Hạng     | Yêu cầu/phút | Burst |
+| -------- | ------------ | ----- |
+| Standard | 100          | 200   |
+| Premium  | 1000         | 2000  |
 
 ---
 
