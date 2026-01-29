@@ -21,22 +21,22 @@ See [Technology Stack](../../blueprint/architecture/tech.md) for full details.
 
 ### Quality Tools
 
-| Tool       | Purpose         | Config         |
-| ---------- | --------------- | -------------- |
-| `ESLint`   | Static analysis | `.eslintrc.js` |
-| `Prettier` | Formatting      | `.prettierrc`  |
-| `Husky`    | Git hooks       | `.husky/`      |
+| Công cụ    | Mục đích       | Cấu hình       |
+| ---------- | -------------- | -------------- |
+| `ESLint`   | Phân tích tĩnh | `.eslintrc.js` |
+| `Prettier` | Định dạng      | `.prettierrc`  |
+| `Husky`    | Git hooks      | `.husky/`      |
 
 ### Naming Conventions
 
-| Type                 | Convention | Example                   |
-| -------------------- | ---------- | ------------------------- |
-| Variables, Functions | camelCase  | `getUserById`             |
-| Classes, Interfaces  | PascalCase | `UserService`             |
-| DB Tables, Columns   | snake_case | `user_session`            |
-| Constants            | UPPER_CASE | `MAX_DEVICES`             |
-| Files (Backend)      | kebab-case | `user-session.service.ts` |
-| Files (Frontend)     | PascalCase | `UserProfile.tsx`         |
+| Loại                | Quy tắc    | Ví dụ                     |
+| ------------------- | ---------- | ------------------------- |
+| Biến, Hàm           | camelCase  | `getUserById`             |
+| Classes, Interfaces | PascalCase | `UserService`             |
+| Bảng CSDL, Cột      | snake_case | `user_session`            |
+| Hằng số             | UPPER_CASE | `MAX_DEVICES`             |
+| Files (Backend)     | kebab-case | `user-session.service.ts` |
+| Files (Frontend)    | PascalCase | `UserProfile.tsx`         |
 
 ---
 

@@ -15,7 +15,7 @@ Quy trình phát triển và tiêu chuẩn chất lượng.
 
 ### Git Flow
 
-| Branch      | Purpose          | Naming               |
+| Nhánh       | Mục đích         | Đặt tên              |
 | ----------- | ---------------- | -------------------- |
 | `main`      | Production       | -                    |
 | `develop`   | Integration      | -                    |
@@ -37,7 +37,7 @@ Example: feat(auth): add login with email
 
 ### Code Review
 
-| Criteria  | Requirement     |
+| Tiêu chí  | Yêu cầu         |
 | --------- | --------------- |
 | Approvers | 1 minimum       |
 | CI Status | All checks pass |
@@ -49,7 +49,7 @@ Example: feat(auth): add login with email
 
 **Definition of Done:**
 
-| Category | Criteria                            |
+| Danh mục | Tiêu chí                            |
 | -------- | ----------------------------------- |
 | Code     | TypeScript strict, no ESLint errors |
 | Testing  | Unit tests pass (≥ 70% coverage)    |
@@ -70,19 +70,19 @@ develop  auto    manual   manual + approval
 
 **Stages:**
 
-| Stage            | Trigger          | Actions                       |
+| Giai đoạn        | Kích hoạt        | Hành động                     |
 | ---------------- | ---------------- | ----------------------------- |
-| Build            | Every commit     | Install, lint, build          |
-| Test             | Every commit     | Unit tests, integration tests |
+| Build            | Mỗi commit       | Install, lint, build          |
+| Test             | Mỗi commit       | Unit tests, integration tests |
 | Deploy (Staging) | Merge to develop | Auto deploy                   |
 | Deploy (Prod)    | Release tag      | Manual + approval             |
 
 ### Release Process
 
-| Type  | Frequency | Scope            |
-| ----- | --------- | ---------------- |
-| Major | Quarterly | Breaking changes |
-| Minor | Bi-weekly | New features     |
-| Patch | As needed | Bug fixes        |
+| Loại  | Tần suất | Phạm vi          |
+| ----- | -------- | ---------------- |
+| Major | Quý      | Breaking changes |
+| Minor | 2 tuần   | Tính năng mới    |
+| Patch | Khi cần  | Sửa lỗi          |
 
 ---

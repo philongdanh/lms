@@ -29,11 +29,11 @@ và biến mỗi giờ học thành một trải nghiệm thi đấu trí tuệ 
 
 ## Success Metrics
 
-| Chỉ số               | Mục tiêu              | Chiến lược                 |
-| :------------------- | :-------------------- | :------------------------- |
-| **User Acquisition** | 10k users in 3 months | Partnerships with schools  |
-| **Retention**        | > 60% weekly active   | Gamification & Tournaments |
-| **Engagement**       | > 30 mins / day       | Personalized learning path |
+| Chỉ số               | Mục tiêu                     | Chiến lược                 |
+| :------------------- | :--------------------------- | :------------------------- |
+| **User Acquisition** | 10k người dùng trong 3 tháng | Hợp tác với các trường học |
+| **Retention**        | > 60% active hàng tuần       | Gamification & Giải đấu    |
+| **Engagement**       | > 30 phút / ngày             | Lộ trình học cá nhân hóa   |
 
 ## Target Users
 

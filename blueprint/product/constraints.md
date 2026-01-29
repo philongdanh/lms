@@ -13,16 +13,16 @@ Các ràng buộc kỹ thuật và nghiệp vụ.
 
 ## Business Constraints
 
-| ID     | Ràng buộc                     | Tác động            | Lý do                  |
-| ------ | ----------------------------- | ------------------- | ---------------------- |
-| BC-001 | Timeline: 25/01 - 15/03/2026  | Không thể extend    | Cam kết stakeholders   |
-| BC-002 | MVP trước 15/02/2026          | Ảnh hưởng phase 2   | Release plan cố định   |
-| BC-003 | Chỉ web phase 1               | Mobile delay        | Ưu tiên responsive web |
-| BC-004 | Ngân sách giới hạn            | Ưu tiên P0, P1      | Tối ưu chi phí         |
-| BC-005 | Công nghệ open source         | Giảm license cost   | Phù hợp startup        |
-| BC-006 | On-premise deployment         | Giảm cloud cost     | Phù hợp trường học VN  |
-| BC-007 | 3 môn học (Toán, TV, Toán TA) | Giới hạn scope      | Tập trung core         |
-| BC-008 | Tự host video                 | Không YouTube/Vimeo | Bản quyền, tốc độ      |
+| ID     | Ràng buộc                     | Tác động             | Lý do                    |
+| ------ | ----------------------------- | -------------------- | ------------------------ |
+| BC-001 | Timeline: 25/01 - 15/03/2026  | Không thể gia hạn    | Cam kết các bên          |
+| BC-002 | MVP trước 15/02/2026          | Ảnh hưởng phase 2    | Kế hoạch release cố định |
+| BC-003 | Chỉ web phase 1               | Mobile delay         | Ưu tiên responsive web   |
+| BC-004 | Ngân sách giới hạn            | Ưu tiên P0, P1       | Tối ưu chi phí           |
+| BC-005 | Công nghệ open source         | Giảm chi phí license | Phù hợp startup          |
+| BC-006 | On-premise deployment         | Giảm chi phí cloud   | Phù hợp trường học VN    |
+| BC-007 | 3 môn học (Toán, TV, Toán TA) | Giới hạn phạm vi     | Tập trung core           |
+| BC-008 | Tự host video                 | Không YouTube/Vimeo  | Bản quyền, tốc độ        |
 
 ---
 
@@ -55,19 +55,19 @@ Các ràng buộc kỹ thuật và nghiệp vụ.
 | TC-ARCH-01 | Modular Monolith            | Đội nhỏ, deploy đơn giản |
 | TC-ARCH-02 | PostgreSQL 14+ / Prisma     | JSONB, transactions      |
 | TC-ARCH-03 | Redis 6+                    | Cache, Pub/Sub           |
-| TC-ARCH-04 | Docker containerization     | Consistent deployment    |
-| TC-ARCH-05 | Socket.IO + Redis adapter   | WebSocket scaling        |
-| TC-ARCH-06 | Multi-tenant data isolation | Security                 |
+| TC-ARCH-04 | Docker containerization     | Deployment nhất quán     |
+| TC-ARCH-05 | Socket.IO + Redis adapter   | Mở rộng WebSocket        |
+| TC-ARCH-06 | Multi-tenant data isolation | Bảo mật                  |
 
 ---
 
 ## Assumptions
 
-| ID     | Giả định           | Rủi ro nếu sai | Biện pháp giảm thiểu         |
-| ------ | ------------------ | -------------- | ---------------------------- |
-| AS-001 | Mạng ổn định       | Không học/thi  | Caching, progressive loading |
-| AS-002 | Trường có IT admin | Khó vận hành   | Training, 24/7 support       |
-| AS-003 | Email hợp lệ       | Chặn đăng ký   | SMS OTP backup               |
-| AS-004 | Docker có sẵn      | Không deploy   | VM image alternative         |
+| ID     | Giả định           | Rủi ro nếu sai | Biện pháp giảm thiểu      |
+| ------ | ------------------ | -------------- | ------------------------- |
+| AS-001 | Mạng ổn định       | Không học/thi  | Caching, tải dần nội dung |
+| AS-002 | Trường có IT admin | Khó vận hành   | Đào tạo, hỗ trợ 24/7      |
+| AS-003 | Email hợp lệ       | Chặn đăng ký   | SMS OTP dự phòng          |
+| AS-004 | Docker có sẵn      | Không deploy   | Thay thế bằng VM image    |
 
 ---

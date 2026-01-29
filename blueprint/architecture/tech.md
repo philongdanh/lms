@@ -18,9 +18,9 @@ Lựa chọn công nghệ và tiêu chuẩn kỹ thuật cho hệ thống.
 | Runtime    | Node.js 20+ LTS           | [0003: Node.js 20+ LTS](decisions/0003-nodejs.md)                                                                        |
 | Framework  | NestJS 10+                | [0001: Modular Monolith](decisions/0001-modular-monolith.md)                                                             |
 | ORM        | Prisma 5+                 | [0005: Prisma ORM](decisions/0005-prisma.md), [0006: Cascade Delete](decisions/0006-cascade-delete.md)                   |
-| Database   | PostgreSQL 15+            | [0004: PostgreSQL as Primary Database](decisions/0004-postgresql.md)                                                     |
-| Cache      | Redis 7+                  | [0007: Redis for Cache and Pub/Sub](decisions/0007-redis.md)                                                             |
-| Realtime   | Socket.IO + Redis adapter | [0010: Socket.IO with Redis Adapter](decisions/0010-socketio.md)                                                         |
+| Database   | PostgreSQL 15+            | [0004: PostgreSQL làm CSDL chính](decisions/0004-postgresql.md)                                                          |
+| Cache      | Redis 7+                  | [0007: Redis cho Cache và Pub/Sub](decisions/0007-redis.md)                                                              |
+| Realtime   | Socket.IO + Redis adapter | [0010: Socket.IO với Redis Adapter](decisions/0010-socketio.md)                                                          |
 | Auth       | Passport.js + JWT         | [0008: JWT](decisions/0008-jwt-refresh-token.md), [0002](decisions/0002-multi-tenant.md), [0009](decisions/0009-rbac.md) |
 | Queue      | BullMQ + Redis            | [0011: BullMQ](decisions/0011-bullmq.md), [0007: Redis](decisions/0007-redis.md)                                         |
 
@@ -38,23 +38,23 @@ Lựa chọn công nghệ và tiêu chuẩn kỹ thuật cho hệ thống.
 
 ## Infrastructure
 
-| Thành phần    | Công nghệ                | Mô tả                                                        |
-| ------------- | ------------------------ | ------------------------------------------------------------ |
-| Container     | Docker 24+               | [0030: Docker & Docker Compose](decisions/0030-docker.md)    |
-| Orchestration | Docker Compose           | [0030: Docker & Docker Compose](decisions/0030-docker.md)    |
-| Load Balancer | Nginx                    | [0032: Nginx](decisions/0032-nginx.md)                       |
-| CI/CD         | GitHub Actions           | [0031: GitHub Actions](decisions/0031-github-actions.md)     |
-| File Storage  | Local + Nginx            | [0032: Nginx](decisions/0032-nginx.md) (Static File Serving) |
-| Monitoring    | Winston + custom metrics | [0012: Winston](decisions/0012-winston.md)                   |
+| Thành phần    | Công nghệ                | Mô tả                                                      |
+| ------------- | ------------------------ | ---------------------------------------------------------- |
+| Container     | Docker 24+               | [0030: Docker & Docker Compose](decisions/0030-docker.md)  |
+| Orchestration | Docker Compose           | [0030: Docker & Docker Compose](decisions/0030-docker.md)  |
+| Load Balancer | Nginx                    | [0032: Nginx](decisions/0032-nginx.md)                     |
+| CI/CD         | GitHub Actions           | [0031: GitHub Actions](decisions/0031-github-actions.md)   |
+| File Storage  | Local + Nginx            | [0032: Nginx](decisions/0032-nginx.md) (Phục vụ file tĩnh) |
+| Monitoring    | Winston + custom metrics | [0012: Winston](decisions/0012-winston.md)                 |
 
 ---
 
 ## Technology Adoption Roadmap
 
-| Giai đoạn | Thời gian     | Trọng tâm                                       |
-| --------- | ------------- | ----------------------------------------------- |
-| Phase 1   | 25/01 - 15/02 | Core stack: Next.js, NestJS, PostgreSQL, Prisma |
-| Phase 2   | 16/02 - 01/03 | Gamification, Python AI, Winston logging        |
-| Phase 3   | 02/03 - 15/03 | AI personalization, Redis cluster, 2FA          |
+| Giai đoạn | Thời gian     | Trọng tâm                                               |
+| --------- | ------------- | ------------------------------------------------------- |
+| Phase 1   | 25/01 - 15/02 | Core stack: Next.js, NestJS, PostgreSQL, Prisma         |
+| Phase 2   | 16/02 - 01/03 | Gamification, Python AI, Winston logging                |
+| Phase 3   | 02/03 - 15/03 | AI personalization (Cá nhân hóa AI), Redis cluster, 2FA |
 
 ---

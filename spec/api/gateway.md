@@ -21,7 +21,7 @@ https://api.example.com/api/{version}/{module}/{resource}/{id}
 
 ### HTTP Methods
 
-| Method | Purpose           | Idempotent | Safe |
+| Method | Mục đích          | Idempotent | Safe |
 | ------ | ----------------- | ---------- | ---- |
 | GET    | Lấy resource      | ✅         | ✅   |
 | POST   | Tạo resource      | ❌         | ❌   |
@@ -66,18 +66,18 @@ X-Request-ID: {uuid}
 
 ## Performance
 
-| Percentile | Max Response Time |
-| ---------- | ----------------- |
-| P50        | 100ms             |
-| P95        | 500ms             |
-| P99        | 1000ms            |
+| Phân vị (Percentile) | Thời gian phản hồi tối đa |
+| -------------------- | ------------------------- |
+| P50                  | 100ms                     |
+| P95                  | 500ms                     |
+| P99                  | 1000ms                    |
 
 ### Rate Limits
 
-| Tier     | Requests/min | Burst |
-| -------- | ------------ | ----- |
-| Standard | 100          | 200   |
-| Premium  | 1000         | 2000  |
+| Hạng (Tier) | Yêu cầu/phút | Burst |
+| ----------- | ------------ | ----- |
+| Standard    | 100          | 200   |
+| Premium     | 1000         | 2000  |
 
 ---
 
@@ -91,7 +91,7 @@ X-Request-ID: {uuid}
 
 ## Core Endpoints
 
-| Endpoint          | Method | Description       | Auth     |
+| Endpoint          | Method | Mô tả             | Auth     |
 | ----------------- | ------ | ----------------- | -------- |
 | `/graphql`        | `POST` | `GraphQL` API     | Optional |
 | `/api/upload`     | `POST` | File upload       | Required |

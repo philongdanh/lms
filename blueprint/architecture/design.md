@@ -18,8 +18,8 @@ Thiết kế kiến trúc hệ thống và các thành phần chính.
 | Kiến trúc     | Monolith                | Phân module rõ ràng, dễ bảo trì                         |
 | Multi-tenancy | Data Isolation          | Mỗi tenant có không gian dữ liệu riêng                  |
 | Communication | Event-Driven            | Các module giao tiếp qua events                         |
-| Realtime      | `WebSocket` + `Pub/Sub` | Redis adapter để scaling                                |
-| Bảo mật       | RBAC                    | roles động theo tenant và permissions cứng cho hệ thống |
+| Realtime      | `WebSocket` + `Pub/Sub` | Redis adapter để mở rộng (scaling)                      |
+| Bảo mật       | RBAC                    | Roles động theo tenant và permissions cứng cho hệ thống |
 
 ```d2
 direction: right

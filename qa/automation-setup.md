@@ -13,7 +13,7 @@ Cấu trúc và thiết lập hệ thống kiểm thử tự động.
 
 ## Framework Stack
 
-| Test Type   | Framework        | Runner  |
+| Loại Test   | Framework        | Runner  |
 | ----------- | ---------------- | ------- |
 | Unit        | `Vitest`         | `Node`  |
 | Integration | `Vitest` + `MSW` | `Node`  |
@@ -40,7 +40,7 @@ tests/
 
 ### Unit Tests
 
-| Practice          | Description                            |
+| Practice          | Mô tả                                  |
 | ----------------- | -------------------------------------- |
 | AAA Pattern       | Arrange, Act, Assert                   |
 | One assertion     | Một concept mỗi test                   |
@@ -49,11 +49,11 @@ tests/
 
 ### E2E Tests
 
-| Practice            | Description                |
-| ------------------- | -------------------------- |
-| Page Object Pattern | Reusable page interactions |
-| Retry on failure    | `retries: 2`               |
-| Screenshot on fail  | Debug easier               |
+| Practice            | Mô tả                       |
+| ------------------- | --------------------------- |
+| Page Object Pattern | Tương tác trang tái sử dụng |
+| Retry on failure    | `retries: 2`                |
+| Screenshot on fail  | Debug dễ hơn                |
 
 ---
 
@@ -61,16 +61,16 @@ tests/
 
 ### Triggers
 
-| Trigger       | Tests Run                |
-| ------------- | ------------------------ |
-| PR            | Unit + Integration       |
-| Merge to main | All tests                |
-| Nightly       | Full suite + Performance |
-| Release       | Full suite + E2E         |
+| Kích hoạt (Trigger) | Tests Run                |
+| ------------------- | ------------------------ |
+| PR                  | Unit + Integration       |
+| Merge to main       | All tests                |
+| Nightly             | Full suite + Performance |
+| Release             | Full suite + E2E         |
 
 ### Health Metrics
 
-| Metric          | Target    | Alert      |
+| Metric          | Mục tiêu  | Cảnh báo   |
 | --------------- | --------- | ---------- |
 | Flaky test rate | < 1%      | > 5%       |
 | Test duration   | < 10 min  | > 15 min   |

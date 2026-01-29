@@ -13,13 +13,13 @@ Hướng dẫn triển khai hệ thống.
 
 ## Infrastructure
 
-| Component     | Tech                  | Description         |
+| Thành phần    | Công nghệ             | Mô tả               |
 | ------------- | --------------------- | ------------------- |
 | Application   | `NestJS` (`Node` 20+) | Stateless container |
 | Database      | `PostgreSQL` 14+      | Multi-tenant data   |
 | Cache         | `Redis` 6+            | Session, Pub/Sub    |
 | Load Balancer | `Nginx`               | SSL, WebSocket      |
-| File Storage  | Local/S3              | Video, images       |
+| File Storage  | Local/S3              | Video, hình ảnh     |
 
 ---
 
@@ -27,16 +27,16 @@ Hướng dẫn triển khai hệ thống.
 
 ### Requirements
 
-| Requirement    | Min Version |
-| -------------- | ----------- |
-| Docker Engine  | 20.10+      |
-| Docker Compose | v2.0+       |
-| RAM            | 4GB+        |
-| Storage        | 20GB+       |
+| Yêu cầu        | Phiên bản tối thiểu |
+| -------------- | ------------------- |
+| Docker Engine  | 20.10+              |
+| Docker Compose | v2.0+               |
+| RAM            | 4GB+                |
+| Storage        | 20GB+               |
 
 ### Services
 
-| Service  | Image                | Port |
+| Dịch vụ  | Image                | Cổng |
 | -------- | -------------------- | ---- |
 | app      | `node:20-alpine`     | 3000 |
 | postgres | `postgres:14-alpine` | 5432 |
@@ -87,11 +87,11 @@ docker-compose start app
 
 ## Health Checks
 
-| Endpoint        | Purpose               |
-| --------------- | --------------------- |
-| `/health`       | Liveness check        |
-| `/health/ready` | Readiness check       |
-| `/health/db`    | Database connectivity |
-| `/health/redis` | Redis connectivity    |
+| Endpoint        | Mục đích                      |
+| --------------- | ----------------------------- |
+| `/health`       | Kiểm tra sống (Liveness)      |
+| `/health/ready` | Kiểm tra sẵn sàng (Readiness) |
+| `/health/db`    | Kết nối Database              |
+| `/health/redis` | Kết nối Redis                 |
 
 ---

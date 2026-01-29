@@ -23,7 +23,7 @@ nghiệp vụ chính đều được bảo vệ bởi test tự động.
 
 ### Testing Levels
 
-| Level       | Coverage Target    | Tools            | Speed        |
+| Cấp độ      | Mục tiêu bao phủ   | Công cụ          | Tốc độ       |
 | ----------- | ------------------ | ---------------- | ------------ |
 | Unit Tests  | 80%                | `Vitest`         | < 100ms/test |
 | Integration | 70% critical paths | `Vitest` + `MSW` | < 5s/test    |
@@ -44,7 +44,7 @@ Integration -> Unit
 
 ### Automation Tools
 
-| Type        | Tool             | Purpose                  |
+| Loại        | Công cụ          | Mục đích                 |
 | ----------- | ---------------- | ------------------------ |
 | Unit        | `Vitest`         | Kiểm thử đơn vị nhanh    |
 | Integration | `Vitest` + `MSW` | Giả lập API (Mocking)    |
@@ -60,12 +60,12 @@ Integration -> Unit
 
 **Severity Levels:**
 
-| Severity | Description              | Response Time |
-| -------- | ------------------------ | ------------- |
-| Critical | Hệ thống ngừng hoạt động | Ngay lập tức  |
-| High     | Tính năng chính bị lỗi   | 24 giờ        |
-| Medium   | Tính năng bị suy giảm    | Trong Sprint  |
-| Low      | Vấn đề nhỏ               | Backlog       |
+| Mức độ   | Mô tả                    | Thời gian phản hồi |
+| -------- | ------------------------ | ------------------ |
+| Critical | Hệ thống ngừng hoạt động | Ngay lập tức       |
+| High     | Tính năng chính bị lỗi   | 24 giờ             |
+| Medium   | Tính năng bị suy giảm    | Trong Sprint       |
+| Low      | Vấn đề nhỏ               | Backlog            |
 
 **Bug Lifecycle:**
 
@@ -83,20 +83,20 @@ Verified -> Closed
 
 **PR Checks:**
 
-| Check      | Requirement | Blocking |
-| ---------- | ----------- | -------- |
-| Unit Tests | 100% pass   | Có       |
-| Coverage   | > 80%       | Có       |
-| Lint       | No errors   | Có       |
-| Build      | Success     | Có       |
+| Kiểm tra   | Yêu cầu   | Chặn |
+| ---------- | --------- | ---- |
+| Unit Tests | 100% pass | Có   |
+| Coverage   | > 80%     | Có   |
+| Lint       | No errors | Có   |
+| Build      | Success   | Có   |
 
 **Release Checks:**
 
-| Check         | Requirement               | Blocking |
-| ------------- | ------------------------- | -------- |
-| All Tests     | 100% pass                 | Có       |
-| E2E Tests     | 100% pass                 | Có       |
-| Performance   | Đạt mục tiêu đề ra        | Có       |
-| Security Scan | Không có lỗi nghiêm trọng | Có       |
+| Kiểm tra      | Yêu cầu                   | Chặn |
+| ------------- | ------------------------- | ---- |
+| All Tests     | 100% pass                 | Có   |
+| E2E Tests     | 100% pass                 | Có   |
+| Performance   | Đạt mục tiêu đề ra        | Có   |
+| Security Scan | Không có lỗi nghiêm trọng | Có   |
 
 ---

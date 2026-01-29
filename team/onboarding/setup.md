@@ -15,22 +15,22 @@ Hướng dẫn cài đặt và thiết lập môi trường phát triển.
 
 ### Environment Requirements
 
-| Software       | Version | Purpose           |
-| -------------- | ------- | ----------------- |
-| Node.js        | 20.x+   | Runtime           |
-| Docker         | 20.10+  | Container         |
-| Docker Compose | v2.0+   | Orchestration     |
-| Git            | 2.30+   | Version control   |
-| VS Code        | Latest  | IDE (khuyên dùng) |
+| Phần mềm       | Phiên bản | Mục đích          |
+| -------------- | --------- | ----------------- |
+| Node.js        | 20.x+     | Môi trường chạy   |
+| Docker         | 20.10+    | Container         |
+| Docker Compose | v2.0+     | Điều phối         |
+| Git            | 2.30+     | Quản lý phiên bản |
+| VS Code        | Mới nhất  | IDE (khuyên dùng) |
 
 ### Access Rights
 
-| Resource              | Requirement   |
-| --------------------- | ------------- |
-| Git Repository        | Clone access  |
-| NPM Registry          | Read access   |
-| Docker Hub            | Pull access   |
-| Cloud (if applicable) | Deploy access |
+| Tài nguyên     | Yêu cầu               |
+| -------------- | --------------------- |
+| Git Repository | Quyền truy cập Clone  |
+| NPM Registry   | Quyền truy cập Read   |
+| Docker Hub     | Quyền truy cập Pull   |
+| Cloud (nếu có) | Quyền truy cập Deploy |
 
 ---
 
@@ -52,11 +52,11 @@ git checkout develop
 cp .env.example .env
 ```
 
-| Variable       | Description           | Dev Value                                               |
-| -------------- | --------------------- | ------------------------------------------------------- |
-| `DATABASE_URL` | PostgreSQL connection | `postgresql://postgres:postgres@localhost:5432/lms_dev` |
-| `REDIS_URL`    | Redis connection      | `redis://localhost:6379`                                |
-| `JWT_SECRET`   | JWT signing key       | `dev-secret-key`                                        |
+| Biến           | Mô tả              | Giá trị Dev                                             |
+| -------------- | ------------------ | ------------------------------------------------------- |
+| `DATABASE_URL` | Kết nối PostgreSQL | `postgresql://postgres:postgres@localhost:5432/lms_dev` |
+| `REDIS_URL`    | Kết nối Redis      | `redis://localhost:6379`                                |
+| `JWT_SECRET`   | Khóa ký JWT        | `dev-secret-key`                                        |
 
 **3. Khởi chạy Hạ tầng (Infrastructure):**
 

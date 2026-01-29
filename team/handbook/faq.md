@@ -20,7 +20,7 @@ Hệ thống quản lý học tập thông minh, kết hợp **AI Learning Paths
 
 ### Ai là người sử dụng?
 
-| Audience   | Description                  |
+| Đối tượng  | Mô tả                        |
 | ---------- | ---------------------------- |
 | Học sinh   | Lớp 1-12, học tập và thi đấu |
 | Phụ huynh  | Theo dõi tiến độ             |
@@ -86,11 +86,11 @@ Hệ thống quản lý học tập thông minh, kết hợp **AI Learning Paths
 
 ### Trình duyệt được hỗ trợ?
 
-| Browser | Minimum |
-| ------- | ------- |
-| Chrome  | 90+     |
-| Firefox | 88+     |
-| Safari  | 14+     |
-| Edge    | 90+     |
+| Trình duyệt | Phiên bản tối thiểu |
+| ----------- | ------------------- |
+| Chrome      | 90+                 |
+| Firefox     | 88+                 |
+| Safari      | 14+                 |
+| Edge        | 90+                 |
 
 ---
