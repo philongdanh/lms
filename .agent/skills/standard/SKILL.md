@@ -21,8 +21,11 @@ the `docs/` directory.
 
 - **Structure**: Frontmatter (`id`, `title`) -> H1 -> Description -> `---` ->
   H2.
-- **Headers**: Use English, Sentence case.
-- **Lists**: Use hyphens `-` for unordered lists.
+- **Headers**:
+  - H1, H2: English, Sentence case.
+  - H3+: Vietnamese. Preserve English technical terms. Add explicit English IDs
+    if referenced (e.g., `### Bảo mật (Security) {#security}`).
+- **Lists**: Use hyphens `-` for unordered lists. Content in Vietnamese.
 - **Code Blocks**: Always specify the language (e.g., `typescript`).
 - **Table Headers**: Use Vietnamese. English technical terms are allowed.
 

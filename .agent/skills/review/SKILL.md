@@ -33,6 +33,10 @@ When reviewing a document, check the following:
 
 - **Structure**: Frontmatter, valid headers, language-tagged code blocks,
   relative links.
+- **Localization**:
+  - Table headers, H3+ headers, and lists are in Vietnamese.
+  - Technical terms are preserved in English.
+  - References to translated headers use explicit anchor IDs.
 - **Content Integrity**: No contradictions with Blueprint, no redundancy (use
   links), proper context.
 - **D2 Diagrams**: Correct rendering and legibility.
