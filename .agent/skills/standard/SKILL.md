@@ -1,49 +1,32 @@
 ---
 name: standard
-description:
-  Defines documentation standards for formatting, structure, and diagrams.
+description: Defines formatting, structure, and localization standards.
 ---
 
-# Documentation Standard Skill
+# Documentation Standards
 
-This skill defines the standards for creating and maintaining documentation in
-the `docs/` directory.
+Use this skill when creating or editing documentation to ensure consistency.
 
-## When to use this skill
+## 1. Markdown Rules
 
-- Use this when creating new documentation files.
-- This is helpful for ensuring consistent formatting and structure.
-- Use when creating or editing D2 diagrams.
+| Element           | Rule                                | Example                     |
+| :---------------- | :---------------------------------- | :-------------------------- |
+| **H1, H2**        | English, Sentence Case.             | `# System Architecture`     |
+| **H3+**           | Vietnamese mixed with English.      | `### Chiến lược đánh Index` |
+| **Lists**         | Hyphens `-`. Content in Vietnamese. | `- Cấu hình database`       |
+| **Table Headers** | Vietnamese.                         | `\| Tên \| Mô tả \|`        |
+| **Code Blocks**   | Always specify language.            | ` ```typescript `           |
+| **Checklists**    | Unchecked `[ ]` by default.         | `- [ ] Verify API`          |
+| **Links**         | Concise titles (ID: Name).          | `[0004: PostgreSQL](...)`   |
+| **Anchors**       | Explicit English IDs.               | `### Bảo mật {#security}`   |
 
-## How to use it
-
-### 1. Markdown Formatting
-
-- **Structure**: Frontmatter (`id`, `title`) -> H1 -> Description -> `---` ->
-  H2.
-- **Headers**:
-  - H1, H2: English, Sentence case.
-  - H3+: Vietnamese mixed with English technical terms. Avoid `(English)`
-    suffix.
-    - Example: `Chiến lược đánh Index` (instead of
-      `Chiến lược đánh chỉ mục (Indexing strategy)`).
-    - Add explicit English IDs if referenced (e.g., `### Bảo mật {#security}`).
-- **Lists**: Use hyphens `-` for unordered lists. Content in Vietnamese.
-- **Checklists**: Default state must be unchecked `[ ]`. Do not commit checked
-  items `[x]`.
-- **References**: Shorten link titles for readability (e.g.,
-  `[0004: PostgreSQL](...)` instead of full title).
-- **Code Blocks**: Always specify the language (e.g., `typescript`).
-- **Table Headers**: Use Vietnamese. English technical terms are allowed.
-
-### 2. D2 Diagrams
+## 2. D2 Diagrams
 
 - **Language**: Text must be in **English**.
-- **Formatting**: `snake_case` for IDs, Title Case for Labels.
+- **Style**: `snake_case` for IDs, Title Case for Labels.
 - **Direction**: Prefer `direction: right`.
-- **Automation**: Use `docs/scripts/format-d2.mjs` if available.
 
-### 3. Role-Based Structure
+## 3. Structure
 
-- Ensure documentation is accessible via the "By Role" navigation if applicable.
-- Use clear, role-specific content where necessary.
+- **Frontmatter**: Must include `id`, `title`, and `sidebar_label`.
+- **Navigation**: Ensure compatibility with "By Role" or "By Module" sidebars.

@@ -1,47 +1,30 @@
 ---
 name: ssot
-description:
-  Maintains the Single Source of Truth hierarchy across Blueprint, Spec, Schema,
-  and Code.
+description: Maintain Single Source of Truth hierarchy.
 ---
 
-# SSoT Maintenance Skill
+# SSoT Maintenance
 
-This skill defines the hierarchy of truth and the workflow for maintaining
-consistency across the project's layers.
+Defines the hierarchy of truth to resolve discrepancies.
 
-## When to use this skill
+## 1. Hierarchy of Truth
 
-- Use this when resolving discrepancies between documentation and code.
-- This is helpful for understanding which document is authoritative.
-- Use when planning updates to ensure the correct order of operations.
+| Rank  | Layer         | Path              | Purpose                             |
+| :---- | :------------ | :---------------- | :---------------------------------- |
+| **1** | **Blueprint** | `docs/blueprint/` | High-level architectural decisions. |
+| **2** | **Spec**      | `docs/spec/`      | Detailed logical models & flows.    |
+| **3** | **Schema**    | `schema.prisma`   | Physical data persistence.          |
+| **4** | **Code**      | `src/`            | Implementation.                     |
 
-## How to use it
+## 2. Rules
 
-### 1. Hierarchy of Truth
+- **Precedence**: Higher rank overrides lower rank (e.g., Spec overrides Code).
+- **Direction**: Updates flow Down (Blueprint -> Spec -> Code).
+- **Conflict**: If Code != Spec, **Spec is SSoT** (unless Spec is obviously
+  broken).
 
-When discrepancies arise, resolve in this order:
+## 3. Workflow
 
-1.  **Blueprint** (`docs/blueprint/`): High-level architectural decisions and
-    product direction.
-2.  **Spec** (`docs/spec/`): Detailed technical specifications and logical data
-    models.
-3.  **Schema** (`api/prisma/schema.prisma`): The physical database
-    implementation.
-4.  **Code** (`api/src/`, `web/src/`): The application implementation.
-
-### 2. Maintenance Workflow
-
-When a change is requested:
-
-1.  **Update Documentation First**: Verify/update Blueprint and Spec first.
-2.  **Update Schema (if needed)**: Update `schema.prisma` if the data model
-    changes.
-3.  **Sync Code**: Update the application code to match the new spec/schema.
-
-### 3. Handling Discrepancies
-
-- **Assume Spec is Correct**: Unless obviously outdated.
-- **Ask for Clarification**: If uncertain, do not guess.
-- **Do Not Reverse-Engineer**: Do not update Spec to match Code without
-  verification.
+1.  **Update SSoT**: Fix Blueprint/Spec first.
+2.  **Update Schema**: If data model changed.
+3.  **Sync Code**: Refactor code to match.

@@ -1,41 +1,35 @@
 ---
 name: workflow
-description:
-  Defines the standard engineering workflow for tasks, plans, and walkthroughs.
+description: Standard workflow for Tasks, Plans, and Walkthroughs.
 ---
 
-# Engineering Workflow Standard
+# Engineering Workflow
 
-This skill defines the standard workflow for executing engineering tasks within
-the project.
+Standard artifacts and process for task execution.
 
-## When to use this skill
+## 1. Artifacts
 
-- Use this when starting a new complex task (Task boundary).
-- This is helpful for documenting your plan before execution.
-- Use when summarizing your work after completion.
+| Artifact  | File                     | Purpose                        | Timing       |
+| :-------- | :----------------------- | :----------------------------- | :----------- |
+| **Task**  | `task.md`                | Track progress checkbox list.  | Start        |
+| **Plan**  | `implementation_plan.md` | Design & approval before code. | Planning     |
+| **Proof** | `walkthrough.md`         | Evidence of verification.      | Verification |
 
-## How to use it
+## 2. Templates
 
-### 1. Task Management (`task.md`)
-
-Use for tracking progress.
+### Task (`task.md`)
 
 ```markdown
 # [Task Name]
 
-- [ ] High-level objective <!-- id: 0 -->
-  - [ ] Sub-task <!-- id: 1 -->
+- [ ] Task 1 <!-- id: 0 -->
+  - [ ] Subtask <!-- id: 1 -->
 ```
 
-### 2. Implementation Planning (`implementation_plan.md`)
-
-Use before coding to verify the approach.
+### Plan (`implementation_plan.md`)
 
 ```markdown
-# [Goal Description]
-
-## User Review Required
+# Goal
 
 ## Proposed Changes
 
@@ -43,17 +37,15 @@ Use before coding to verify the approach.
 
 #### [MODIFY] [file]
 
-## Verification Plan
+## Verification
 ```
 
-### 3. Walkthroughs (`walkthrough.md`)
-
-Use after completion to prove success.
+### Walkthrough (`walkthrough.md`)
 
 ```markdown
-# [Task Name] Walkthrough
+# [Task] Walkthrough
 
-## Summary of Changes
+## Changes
 
-## Verification
+## Verification Results (Screenshots/Logs)
 ```

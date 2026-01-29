@@ -1,39 +1,23 @@
 ---
 name: spec_driven
-description:
-  Enforces the Spec-Driven Development cycle (Spec -> Plan -> Code -> Verify).
+description: Enforces the Spec -> Plan -> Code -> Verify cycle.
 ---
 
-# Spec-Driven Development Skill
+# Spec-Driven Development
 
-Antigravity follows a strict flow to ensure high-quality, verifiable code. This
-skill governs that lifecycle.
+Strict lifecycle to ensure alignment between requirements and code.
 
-## When to use this skill
+## 1. The Cycle
 
-- Use this when starting work on a new feature or task.
-- This is helpful for ensuring alignment between requirements and
-  implementation.
-- Use when validating that code actually solves the specified problem.
+| Stage         | Role        | Activity         | Output                       |
+| :------------ | :---------- | :--------------- | :--------------------------- |
+| **1. Spec**   | Legislative | Define _WHAT_    | `docs/spec/*.md` (with D2)   |
+| **2. Plan**   | Architect   | Define _HOW_     | `implementation_plan.md`     |
+| **3. Code**   | Executive   | Implement _HOW_  | Source code (`api/`, `web/`) |
+| **4. Verify** | Judicial    | Prove _IT WORKS_ | `walkthrough.md`             |
 
-## How to use it
+## 2. Rules
 
-### 1. The Cycle
-
-Follow these stages in order:
-
-1.  **Spec (Legislative)**: Define _WHAT_ in `docs/spec/`.
-    - _Output_: Markdown file with D2 diagrams (Horizontal direction preferred).
-2.  **Plan (Architect)**: Define _HOW_ in `implementation_plan.md`.
-    - _Output_: Plan artifact in `.gemini/brain`.
-3.  **Code (Executive)**: Implement _HOW_ in `api/` or `web/`.
-    - _Ref_: Reference the Spec in comments ("Stitch Marks").
-4.  **Verify (Judicial)**: Prove it works.
-    - _Output_: `walkthrough.md` with evidence.
-
-### 2. Rules
-
-- **No Spec, No Code**: Never write code without a corresponding spec.
-- **Refactor Spec First**: If requirements change, update the Spec _before_ the
-  Code.
-- **Update Task**: Keep `task.md` in sync with these cycle stages.
+- **No Spec, No Code**: Spec must exist and be current before coding starts.
+- **Spec First**: If requirements change, update Spec -> Plan -> Code.
+- **Traceability**: Every code block should trace back to a Spec requirement.

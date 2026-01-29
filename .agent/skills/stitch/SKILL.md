@@ -1,42 +1,34 @@
 ---
 name: stitch
-description:
-  Connects code to documentation via context stitching and references.
+description: Connects Code to Documentation (Context & References).
 ---
 
-# Stitch Skill
+# Stitching
 
-The Stitch skill connects the Legislative (Docs) with the Executive (API) to
-ensure alignment.
+Aligns Executive (Code) with Legislative (Docs).
 
-## When to use this skill
+## 1. Context Stitching
 
-- Use this when writing implementation code (Services, Resolvers, Components).
-- This is helpful for keeping the codebase aligned with the specifications.
-- Use when you need to understand the "Why" behind a piece of code.
+Read the right docs before coding.
 
-## How to use it
+| Task Scope        | Required Reading (Source)                 |
+| :---------------- | :---------------------------------------- |
+| **Schema/Data**   | `docs/blueprint/architecture/database.md` |
+| **Logic/Service** | `docs/spec/modules/[module].md`           |
+| **UI/Component**  | `docs/spec/ui/frontend.md`                |
+| **API**           | `docs/spec/api/gateway.md`                |
 
-### 1. Context Stitching
+## 2. Stitch Marks
 
-Before coding, "Stitch" the context:
-
-- **Schema Stitch**: Working on `schema.prisma`? -> Read
-  `docs/blueprint/architecture/database.md`.
-- **Logic Stitch**: Working on `[module].service.ts`? -> Read
-  `docs/spec/modules/[module].md`.
-- **UI Stitch**: Working on a Component? -> Read `docs/spec/ui/frontend.md`.
-
-### 2. In-Code References
-
-Leave "Stitch Marks" to link code back to documentation:
+Leave references in code to the specific Spec section.
 
 ```typescript
 // SSoT: docs/spec/modules/auth.md #Authentication-Flow
 async function login() { ... }
 ```
 
-### 3. Validation
+## 3. Rules
 
-- If Code contradicts the Stitched Spec, **Stop**.
-- Report the mismatch using the `review` skill.
+- **Stop on Mismatch**: If code requirement contradicts Spec, STOP.
+- **Report**: Use `review` skill to resolve contradiction.
+- **Trace**: Every major function should have a Stitch Mark.
