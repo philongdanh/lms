@@ -9,6 +9,8 @@ sidebar_position: 2
 
 Cần multi-tenant strategy cho nhiều trường.
 
+Enforces: [`TC-ARCH-06`](../../product/constraints.md#architecture)
+
 ---
 
 ## Decision

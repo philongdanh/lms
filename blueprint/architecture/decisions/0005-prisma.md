@@ -9,6 +9,8 @@ sidebar_position: 5
 
 Cần type-safe ORM cho NestJS.
 
+Enforces: [`TC-ARCH-02`](../../product/constraints.md#architecture)
+
 ---
 
 ## Decision

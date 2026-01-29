@@ -9,6 +9,8 @@ sidebar_position: 8
 
 Cần stateless auth cho multi-device support.
 
+Enforces: [`NFR-SEC-03`](../../product/constraints.md#security)
+
 ---
 
 ## Decision
