@@ -162,7 +162,7 @@ lms/
 ## References
 
 - [System Design](../../blueprint/architecture/design.md) - Kiến trúc tổng thể
-- [Gateway Standards](../../spec/api/gateway.md) - API standards
-- [TypeScript Types](../../spec/api/types.md) - Type definitions
+- [API Gateway](../../spec/api/gateway.md) - API standards
+- [Type Definitions](../../spec/api/types.md) - Type definitions
 
 ---

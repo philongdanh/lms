@@ -70,7 +70,7 @@ LMS Platform là hệ thống quản lý học tập thông minh với **AI Lear
 ## Next steps
 
 - [FAQ](./faq.md) - Các câu hỏi thường gặp
-- [Developer Guide](../onboarding/setup.md) - Hướng dẫn phát triển
+- [Setup Guide](../onboarding/setup.md) - Hướng dẫn phát triển
 - **Hỗ trợ**: Liên hệ quản trị viên trường học
 
 ---

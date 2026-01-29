@@ -14,8 +14,7 @@ sidebar_position: 3
 ## Core Entities
 
 > [!NOTE] Các interface TypeScript dưới đây dùng để tham khảo ở mức high-level
-> và cần đồng nhất với
-> [Database Blueprint](../../blueprint/architecture/database.md).
+> và cần đồng nhất với [Database](../../blueprint/architecture/database.md).
 
 ### Tenant & User
 
