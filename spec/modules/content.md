@@ -91,7 +91,7 @@ S3 -> "Content Service": webhook_upload_complete
 ### Quy tắc & Ràng buộc
 
 - `Lesson` phải thuộc một `Topic` (phân cấp)
-- `Teacher` tạo draft, `Admin` xuất bản
+- Teacher tạo draft, Admin xuất bản
 - File upload được quét malware (ClamAV)
 - Định dạng hỗ trợ: `xlsx`, `docx`, `pdf`
 - Dung lượng tối đa: 500MB cho video

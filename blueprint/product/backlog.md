@@ -41,340 +41,61 @@ tối ưu hóa giá trị.
 
 ### Xác thực
 
-#### LMS-001: Register with Email
-
-- **Sprint**: S2 | **Points**: 5 | **Priority**: P0
-- **Story**: As a **New User**, I want to **register using my email**, so that I
-  can **create an account to access the LMS**.
-- **Acceptance Criteria**:
-  - [ ] User can enter Email, Password, and Confirm Password.
-  - [ ] System validates email format and password strength (min 8 chars, 1
-        special char).
-  - [ ] System checks if email is already registered; returns friendly error if
-        duplicate.
-  - [ ] Verify successful creation in Database (PostgreSQL).
-
-#### LMS-002: Register with Phone
-
-- **Sprint**: S2 | **Points**: 5 | **Priority**: P0
-- **Story**: As a **New User**, I want to **register using my phone number**, so
-  that I can **create an account easily on mobile**.
-- **Acceptance Criteria**:
-  - [ ] User can enter Phone Number.
-  - [ ] System validates phone number format (VN).
-  - [ ] System triggers OTP generation (mock or real).
-  - [ ] Account created only after OTP verification.
-
-#### LMS-003: Verify OTP
-
-- **Sprint**: S2 | **Points**: 5 | **Priority**: P0
-- **Story**: As a **User**, I want to **verify the OTP sent to my device**, so
-  that I can **confirm my identity**.
-- **Acceptance Criteria**:
-  - [ ] Input field accepts 6-digit code.
-  - [ ] Countdown timer (e.g., 60s) for resend.
-  - [ ] Verify logic checks against Redis/DB.
-  - [ ] Fail after 3 incorrect attempts.
-
-#### LMS-004: Login Flow
-
-- **Sprint**: S4 | **Points**: 5 | **Priority**: P0
-- **Story**: As a **Registered User**, I want to **log in**, so that I can
-  **access my personalized dashboard**.
-- **Acceptance Criteria**:
-  - [ ] Support both Email and Phone login.
-  - [ ] Return JWT Access Token and Refresh Token upon success.
-  - [ ] Handle "Account Locked" or "Wrong Password" cases securely.
-
-#### LMS-005: Forgot Password
-
-- **Sprint**: S5 | **Points**: 3 | **Priority**: P1
-- **Story**: As a **User**, I want to **reset my password**, so that I can
-  **regain access if I forget it**.
-- **Acceptance Criteria**:
-  - [ ] Input email/phone to receive reset link/OTP.
-  - [ ] Verify secure token before allowing password change.
-  - [ ] Invalidate old sessions after reset.
-
-#### LMS-006: Logout
-
-- **Sprint**: S4 | **Points**: 2 | **Priority**: P1
-- **Story**: As a **User**, I want to **log out**, so that I can **secure my
-  account on shared devices**.
-- **Acceptance Criteria**:
-  - [ ] Revoke Refresh Token in database/Redis.
-  - [ ] Clear client-side cookies/storage.
-  - [ ] Redirect to Public Homepage.
-
-#### LMS-007: Session Management
-
-- **Sprint**: S4 | **Points**: 8 | **Priority**: P0
-- **Story**: As a **System Admin**, I want to **manage user sessions**, so that
-  I can **ensure security and implement multi-device limits**.
-- **Acceptance Criteria**:
-  - [ ] Store active sessions in Redis.
-  - [ ] Refresh Token rotation implementation.
-  - [ ] Blacklist support for revoked tokens.
-
-#### LMS-008: Protected Routes
-
-- **Sprint**: S4 | **Points**: 5 | **Priority**: P0
-- **Story**: As a **Developer**, I want to **secure frontend routes**, so that
-  **unauthorized users cannot access restricted pages**.
-- **Acceptance Criteria**:
-  - [ ] Middleware checks for valid JWT.
-  - [ ] Redirect to Login if token missing or expired.
-  - [ ] Role-based access control (e.g., Admin vs Student).
+| ID          | Nội dung (User Story)                                                                                                                                | Thông tin                                             | Tiêu chí nghiệm thu                                                                                                                                                                                                                                                                                    |
+| :---------- | :--------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **LMS-001** | **Đăng ký bằng Email**<br/>Là **Người dùng mới**, tôi muốn **đăng ký bằng email**, để **tạo tài khoản truy cập LMS**.                                | **Sprint**: S2<br/>**Points**: 5<br/>**Priority**: P0 | - Người dùng nhập Email, Mật khẩu, và Xác nhận mật khẩu.<br/>- Hệ thống validate định dạng email và độ mạnh mật khẩu (tối thiểu 8 ký tự, 1 ký tự đặc biệt).<br/>- Hệ thống kiểm tra email đã tồn tại chưa; trả về lỗi thân thiện nếu trùng.<br/>- Xác minh tạo thành công trong Database (PostgreSQL). |
+| **LMS-002** | **Đăng ký bằng Số điện thoại**<br/>Là **Người dùng mới**, tôi muốn **đăng ký bằng số điện thoại**, để **tạo tài khoản dễ dàng trên mobile**.         | **Sprint**: S2<br/>**Points**: 5<br/>**Priority**: P0 | - Người dùng nhập Số điện thoại.<br/>- Hệ thống validate định dạng số điện thoại (VN).<br/>- Hệ thống trigger tạo mã OTP (mock hoặc thật).<br/>- Tài khoản chỉ được tạo sau khi xác thực OTP.                                                                                                          |
+| **LMS-003** | **Xác thực OTP**<br/>Là **Người dùng**, tôi muốn **nhập mã OTP gửi về thiết bị**, để **xác minh danh tính**.                                         | **Sprint**: S2<br/>**Points**: 5<br/>**Priority**: P0 | - Input field chấp nhận mã 6 chữ số.<br/>- Countdown timer (ví dụ: 60s) cho việc gửi lại.<br/>- Logic xác thực kiểm tra với Redis/DB.<br/>- Fail sau 3 lần nhập sai.                                                                                                                                   |
+| **LMS-004** | **Luồng Đăng nhập**<br/>Là **Người dùng đã đăng ký**, tôi muốn **đăng nhập**, để **truy cập dashboard cá nhân**.                                     | **Sprint**: S4<br/>**Points**: 5<br/>**Priority**: P0 | - Hỗ trợ đăng nhập bằng cả Email và Số điện thoại.<br/>- Trả về JWT Access Token và Refresh Token khi thành công.<br/>- Xử lý các case "Tài khoản bị khóa" hoặc "Sai mật khẩu" một cách bảo mật.                                                                                                       |
+| **LMS-005** | **Quên mật khẩu**<br/>Là **Người dùng**, tôi muốn **đặt lại mật khẩu**, để **lấy lại quyền truy cập nếu quên**.                                      | **Sprint**: S5<br/>**Points**: 3<br/>**Priority**: P1 | - Nhập email/sđt để nhận link reset/OTP.<br/>- Xác minh token bảo mật trước khi cho phép đổi mật khẩu.<br/>- Vô hiệu hóa các session cũ sau khi reset.                                                                                                                                                 |
+| **LMS-006** | **Đăng xuất**<br/>Là **Người dùng**, tôi muốn **đăng xuất**, để **bảo mật tài khoản trên thiết bị dùng chung**.                                      | **Sprint**: S4<br/>**Points**: 2<br/>**Priority**: P1 | - Thu hồi Refresh Token trong database/Redis.<br/>- Xóa cookies/storage phía client.<br/>- Redirect về trang chủ Public.                                                                                                                                                                               |
+| **LMS-007** | **Quản lý Session**<br/>Là **System Admin**, tôi muốn **quản lý user session**, để **đảm bảo bảo mật và giới hạn thiết bị**.                         | **Sprint**: S4<br/>**Points**: 8<br/>**Priority**: P0 | - Lưu active sessions trong Redis.<br/>- Triển khai xoay vòng (rotation) Refresh Token.<br/>- Hỗ trợ Blacklist cho các token bị thu hồi.                                                                                                                                                               |
+| **LMS-008** | **Protected Routes**<br/>Là **Developer**, tôi muốn **bảo vệ các route frontend**, để **người dùng chưa xác thực không thể truy cập trang hạn chế**. | **Sprint**: S4<br/>**Points**: 5<br/>**Priority**: P0 | - Middleware kiểm tra JWT hợp lệ.<br/>- Redirect về trang Login nếu token thiếu hoặc hết hạn.<br/>- Phân quyền dựa trên Role (ví dụ: Admin vs Student).                                                                                                                                                |
 
 ### Module Học tập
 
-#### LMS-010: List Subjects
-
-- **Sprint**: S2 | **Points**: 3 | **Priority**: P1
-- **Story**: As a **Student**, I want to **view a list of subjects**, so that I
-  can **choose what to study**.
-- **Acceptance Criteria**:
-  - [ ] Display list of subjects with icons/images.
-  - [ ] Filter by Grade/Level.
-  - [ ] Skeleton loading state while fetching.
-
-#### LMS-011: View Learning Path
-
-- **Sprint**: S4 | **Points**: 5 | **Priority**: P0
-- **Story**: As a **Student**, I want to **see the lesson tree (roadmap)**, so
-  that I can **track my progression**.
-- **Acceptance Criteria**:
-  - [ ] Tree view or timeline visualization of lessons.
-  - [ ] Indicate status: Locked, Unlocked, Completed.
-  - [ ] Prevent clicking on Locked lessons.
-
-#### LMS-012: View Lesson Content
-
-- **Sprint**: S4 | **Points**: 5 | **Priority**: P0
-- **Story**: As a **Student**, I want to **view lesson materials**, so that I
-  can **learn the topic**.
-- **Acceptance Criteria**:
-  - [ ] Support Rich Text, Images, and basic Video embed.
-  - [ ] "Next/Previous" navigation between lessons.
-
-#### LMS-013: Quiz/Exercises
-
-- **Sprint**: S4 | **Points**: 8 | **Priority**: P0
-- **Story**: As a **Student**, I want to **do multiple-choice quizzes**, so that
-  I can **test my knowledge**.
-- **Acceptance Criteria**:
-  - [ ] Display question and 4 options.
-  - [ ] Client-side validation for immediate feedback (if practice mode).
-  - [ ] Submit answer to backend API.
-  - [ ] Show score summary after completion.
-
-#### LMS-014: Track Progress
-
-- **Sprint**: S4 | **Points**: 5 | **Priority**: P0
-- **Story**: As a **System**, I want to **record user progress**, so that
-  **features like resuming and scoring work**.
-- **Acceptance Criteria**:
-  - [ ] Save "Last Watched" position.
-  - [ ] Mark lesson as "Completed" when conditions met (e.g., passed quiz).
-  - [ ] Update overall Subject progress %.
-
-#### LMS-015: Scoring System
-
-- **Sprint**: S5 | **Points**: 5 | **Priority**: P1
-- **Story**: As a **System**, I want to **calculate scores**, so that I can
-  **reward students**.
-- **Acceptance Criteria**:
-  - [ ] Define formula: Base score + Bonus (speed/streak).
-  - [ ] Save attempt history.
-  - [ ] Prevent cheating (rate limit submissions).
-
-#### LMS-016: Level Up System
-
-- **Sprint**: S5 | **Points**: 5 | **Priority**: P2
-- **Story**: As a **Student**, I want to **level up based on XP**, so that I
-  feel **a sense of progression**.
-- **Acceptance Criteria**:
-  - [ ] XP Calculation logic based on scores/activities.
-  - [ ] Level thresholds (e.g., Lvl 1: 0-100xp).
-  - [ ] Notification/Animation on Level Up.
+| ID          | Nội dung (User Story)                                                                                                                         | Thông tin                                             | Tiêu chí nghiệm thu                                                                                                                                                                                       |
+| :---------- | :-------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **LMS-010** | **Danh sách môn học**<br/>Là **Học viên**, tôi muốn **xem danh sách môn học**, để **chọn nội dung muốn học**.                                 | **Sprint**: S2<br/>**Points**: 3<br/>**Priority**: P1 | - Hiển thị danh sách môn học với icon/hình ảnh.<br/>- Lọc theo Khối lớp/Cấp độ.<br/>- Trạng thái Skeleton loading trong khi fetch dữ liệu.                                                                |
+| **LMS-011** | **Xem Lộ trình học**<br/>Là **Học viên**, tôi muốn **xem cây bài học (roadmap)**, để **theo dõi tiến độ của mình**.                           | **Sprint**: S4<br/>**Points**: 5<br/>**Priority**: P0 | - Hiển thị dạng cây hoặc timeline các bài học.<br/>- Chỉ thị trạng thái: Đang khóa (Locked), Mở khóa (Unlocked), Hoàn thành (Completed).<br/>- Chặn click vào các bài đang khóa.                          |
+| **LMS-012** | **Xem nội dung bài học**<br/>Là **Học viên**, tôi muốn **xem tài liệu bài học**, để **học kiến thức**.                                        | **Sprint**: S4<br/>**Points**: 5<br/>**Priority**: P0 | - Hỗ trợ Rich Text, Hình ảnh, và embed Video cơ bản.<br/>- Điều hướng "Bài trước/Bài sau".                                                                                                                |
+| **LMS-013** | **Quiz/Bài tập**<br/>Là **Học viên**, tôi muốn **làm bài trắc nghiệm**, để **kiểm tra kiến thức**.                                            | **Sprint**: S4<br/>**Points**: 8<br/>**Priority**: P0 | - Hiển thị câu hỏi và 4 lựa chọn.<br/>- Client-side validation cho phản hồi tức thì (nếu là chế độ luyện tập).<br/>- Submit câu trả lời lên backend API.<br/>- Hiển thị tổng kết điểm sau khi hoàn thành. |
+| **LMS-014** | **Theo dõi tiến độ**<br/>Là **Hệ thống**, tôi muốn **ghi nhận tiến độ người dùng**, để **các tính năng như học tiếp và tính điểm hoạt động**. | **Sprint**: S4<br/>**Points**: 5<br/>**Priority**: P0 | - Lưu vị trí "Học lần cuối" (Last Watched).<br/>- Đánh dấu bài học là "Hoàn thành" khi đủ điều kiện (ví dụ: qua bài quiz).<br/>- Cập nhật % tiến độ tổng của Môn học.                                     |
+| **LMS-015** | **Hệ thống tính điểm**<br/>Là **Hệ thống**, tôi muốn **tính điểm**, để **thưởng cho học viên**.                                               | **Sprint**: S5<br/>**Points**: 5<br/>**Priority**: P1 | - Định nghĩa công thức: Điểm cơ bản + Bonus (tốc độ/streak).<br/>- Lưu lịch sử các lần làm bài.<br/>- Chống gian lận (rate limit submissions).                                                            |
+| **LMS-016** | **Hệ thống Level Up**<br/>Là **Học viên**, tôi muốn **lên cấp dựa trên XP**, để **cảm thấy sự tiến bộ**.                                      | **Sprint**: S5<br/>**Points**: 5<br/>**Priority**: P2 | - Logic tính toán XP dựa trên điểm số/hoạt động.<br/>- Các mốc Level (ví dụ: Lvl 1: 0-100xp).<br/>- Thông báo/Hiệu ứng khi lên cấp.                                                                       |
 
 ### Tournament
 
-#### LMS-020: Tournament List
-
-- **Sprint**: S5 | **Points**: 5 | **Priority**: P1
-- **Story**: As a **Student**, I want to **see available tournaments**, so that
-  I can **join a competition**.
-- **Acceptance Criteria**:
-  - [ ] List Active, Upcoming, and Past tournaments.
-  - [ ] Display metadata: Start time, Prize pool, Participants count.
-
-#### LMS-021: Tournament Details
-
-- **Sprint**: S5 | **Points**: 5 | **Priority**: P1
-- **Story**: As a **Student**, I want to **view tournament rules and prizes**,
-  so that I can **decide whether to participate**.
-- **Acceptance Criteria**:
-  - [ ] Show full description and rules.
-  - [ ] Show leaderboard preview if active.
-
-#### LMS-022: Registration Flow
-
-- **Sprint**: S5 | **Points**: 3 | **Priority**: P1
-- **Story**: As a **Student**, I want to **register for a tournament**, so that
-  I can **participate**.
-- **Acceptance Criteria**:
-  - [ ] Check eligibility (e.g., min Level, Ticket balance).
-  - [ ] Deduct ticket/fee if applicable.
-  - [ ] Add user to participant list.
-
-#### LMS-023: Match Gameplay
-
-- **Sprint**: S6 | **Points**: 13 | **Priority**: P0
-- **Story**: As a **Participant**, I want to **answer questions in real-time**,
-  so that I can **compete against others**.
-- **Acceptance Criteria**:
-  - [ ] WebSocket connection for question syncing.
-  - [ ] Submit answer within time limit (e.g., 10s).
-  - [ ] Real-time feedback (Correct/Wrong) after timer ends.
-  - [ ] Handle disconnection/reconnection.
-
-#### LMS-024: Real-time Leaderboard
-
-- **Sprint**: S6 | **Points**: 8 | **Priority**: P0
-- **Story**: As a **Participant**, I want to **see my rank update live**, so
-  that I know **my standing**.
-- **Acceptance Criteria**:
-  - [ ] Redis Sorted Set (ZSET) for ranking.
-  - [ ] Broadcast top 10 and user's rank after every question.
-  - [ ] Optimized for high concurrency.
-
-#### LMS-025: Results & Calculation
-
-- **Sprint**: S6 | **Points**: 5 | **Priority**: P0
-- **Story**: As a **System**, I want to **finalize results after tournament
-  ends**, so that **prizes can be distributed**.
-- **Acceptance Criteria**:
-  - [ ] Finalize rankings.
-  - [ ] Record match history.
-  - [ ] Trigger reward distribution (async job).
+| ID          | Nội dung (User Story)                                                                                                                  | Thông tin                                              | Tiêu chí nghiệm thu                                                                                                                                                                           |
+| :---------- | :------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **LMS-020** | **Danh sách giải đấu**<br/>Là **Học viên**, tôi muốn **xem các giải đấu khả dụng**, để **tham gia tranh tài**.                         | **Sprint**: S5<br/>**Points**: 5<br/>**Priority**: P1  | - Liệt kê giải Đang diễn ra, Sắp diễn ra, và Đã kết thúc.<br/>- Hiển thị metadata: Thời gian bắt đầu, Giải thưởng, Số lượng tham gia.                                                         |
+| **LMS-021** | **Chi tiết giải đấu**<br/>Là **Học viên**, tôi muốn **xem luật và giải thưởng**, để **quyết định có tham gia hay không**.              | **Sprint**: S5<br/>**Points**: 5<br/>**Priority**: P1  | - Hiển thị đầy đủ mô tả và luật lệ.<br/>- Hiển thị preview bảng xếp hạng nếu đang diễn ra.                                                                                                    |
+| **LMS-022** | **Luồng đăng ký**<br/>Là **Học viên**, tôi muốn **đăng ký giải đấu**, để **được tham gia**.                                            | **Sprint**: S5<br/>**Points**: 3<br/>**Priority**: P1  | - Kiểm tra điều kiện (ví dụ: Level tối thiểu, Số dư vé).<br/>- Trừ vé/phí nếu có.<br/>- Thêm user vào danh sách tham gia.                                                                     |
+| **LMS-023** | **Match Gameplay**<br/>Là **Người tham gia**, tôi muốn **trả lời câu hỏi realtime**, để **thi đấu với người khác**.                    | **Sprint**: S6<br/>**Points**: 13<br/>**Priority**: P0 | - Kết nối WebSocket để đồng bộ câu hỏi.<br/>- Gửi câu trả lời trong giới hạn thời gian (ví dụ: 10s).<br/>- Phản hồi realtime (Đúng/Sai) sau khi hết giờ.<br/>- Xử lý mất kết nối/kết nối lại. |
+| **LMS-024** | **Bảng xếp hạng realtime**<br/>Là **Người tham gia**, tôi muốn **thấy hạng của mình cập nhật trực tiếp**, để **biết vị trí hiện tại**. | **Sprint**: S6<br/>**Points**: 8<br/>**Priority**: P0  | - Redis Sorted Set (ZSET) cho ranking.<br/>- Broadcast top 10 và hạng của user sau mỗi câu hỏi.<br/>- Tối ưu cho lượng truy cập cao (high concurrency).                                       |
+| **LMS-025** | **Kết quả & Tính toán**<br/>Là **Hệ thống**, tôi muốn **chốt kết quả sau khi giải đấu kết thúc**, để **trao thưởng**.                  | **Sprint**: S6<br/>**Points**: 5<br/>**Priority**: P0  | - Chốt bảng xếp hạng cuối cùng.<br/>- Ghi lại lịch sử đấu.<br/>- Trigger phát thưởng (async job).                                                                                             |
 
 ---
 
 ## Should Have (Future Sprints)
 
-#### LMS-030: Video Lessons
-
-- **Sprint**: S7 | **Points**: 8 | **Priority**: P2
-- **Story**: As a **Student**, I want to **watch video lessons**, so that I can
-  **understand complex topics better**.
-- **Acceptance Criteria**:
-  - [ ] Video player integration (e.g., streaming from cloud storage or YouTube
-        embed).
-  - [ ] Play, Pause, Seek controls.
-  - [ ] Save "Last Watched" timestamp.
-
-#### LMS-031: Learning Streak
-
-- **Sprint**: S7 | **Points**: 5 | **Priority**: P2
-- **Story**: As a **Student**, I want to **maintain a daily streak**, so that I
-  am **motivated to study every day**.
-- **Acceptance Criteria**:
-  - [ ] Track consecutive days with at least one completed activity.
-  - [ ] Display streak counter on dashboard.
-  - [ ] Notification/Alert when streak is about to be broken.
-
-#### LMS-040: User Profile
-
-- **Sprint**: S8 | **Points**: 5 | **Priority**: P2
-- **Story**: As a **User**, I want to **edit my profile**, so that I can
-  **personalize my account**.
-- **Acceptance Criteria**:
-  - [ ] Change Avatar (upload image).
-  - [ ] Update Display Name.
-  - [ ] View account stats (Join date, total XP).
-
-#### LMS-041: Badges & Achievements
-
-- **Sprint**: S8 | **Points**: 8 | **Priority**: P2
-- **Story**: As a **Student**, I want to **earn badges**, so that I can
-  **showcase my accomplishments**.
-- **Acceptance Criteria**:
-  - [ ] System awards badges based on criteria (e.g., "First 100% Score", "7 Day
-        Streak").
-  - [ ] "Achievements" tab in Profile to view collected badges.
-  - [ ] Badge popup notification upon unlocking.
-
-#### LMS-050: Link Child Account
-
-- **Sprint**: S8 | **Points**: 5 | **Priority**: P2
-- **Story**: As a **Parent**, I want to **link my child's account**, so that I
-  can **monitor their learning**.
-- **Acceptance Criteria**:
-  - [ ] Generate invitation code from Child account.
-  - [ ] Parent enters code to link.
-  - [ ] Verification method to prevent unauthorized linking.
-
-#### LMS-051: View Child Progress
-
-- **Sprint**: S8 | **Points**: 5 | **Priority**: P2
-- **Story**: As a **Parent**, I want to **see my child's reports**, so that I
-  can **know if they are studying well**.
-- **Acceptance Criteria**:
-  - [ ] Dashboard showing child's recent activities.
-  - [ ] Weekly summary chart (Time spent, XP earned).
-  - [ ] Alert parent if child hasn't studied for X days.
+| ID          | Nội dung (User Story)                                                                                                      | Thông tin                                             | Tiêu chí nghiệm thu                                                                                                                                                                              |
+| :---------- | :------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **LMS-030** | **Video bài học**<br/>Là **Học viên**, tôi muốn **xem video bài giảng**, để **hiểu rõ các chủ đề phức tạp**.               | **Sprint**: S7<br/>**Points**: 8<br/>**Priority**: P2 | - Tích hợp Video player (ví dụ: stream từ cloud storage hoặc YouTube embed).<br/>- Các controls: Play, Pause, Seek.<br/>- Lưu timestamp "Xem lần cuối".                                          |
+| **LMS-031** | **Chuỗi học tập (Streak)**<br/>Là **Học viên**, tôi muốn **duy trì chuỗi học hàng ngày**, để **có động lực học mỗi ngày**. | **Sprint**: S7<br/>**Points**: 5<br/>**Priority**: P2 | - Theo dõi chuỗi ngày liên tiếp có ít nhất một hoạt động hoàn thành.<br/>- Hiển thị bộ đếm streak trên dashboard.<br/>- Thông báo/Cảnh báo khi chuỗi sắp bị ngắt.                                |
+| **LMS-040** | **Hồ sơ người dùng**<br/>Là **Người dùng**, tôi muốn **chỉnh sửa hồ sơ**, để **cá nhân hóa tài khoản**.                    | **Sprint**: S8<br/>**Points**: 5<br/>**Priority**: P2 | - Đổi Avatar (upload ảnh).<br/>- Cập nhật Tên hiển thị.<br/>- Xem thống kê tài khoản (Ngày tham gia, tổng XP).                                                                                   |
+| **LMS-041** | **Huy hiệu & Thành tích**<br/>Là **Học viên**, tôi muốn **đạt được các huy hiệu**, để **khoe thành tích của mình**.        | **Sprint**: S8<br/>**Points**: 8<br/>**Priority**: P2 | - Hệ thống trao huy hiệu dựa trên tiêu chí (ví dụ: "100% Điểm đầu tiên", "Chuỗi 7 ngày").<br/>- Tab "Thành tích" trong Hồ sơ để xem huy hiệu đã đạt.<br/>- Popup thông báo khi mở khóa huy hiệu. |
+| **LMS-050** | **Liên kết tài khoản con**<br/>Là **Phụ huynh**, tôi muốn **liên kết tài khoản của con**, để **giám sát việc học**.        | **Sprint**: S8<br/>**Points**: 5<br/>**Priority**: P2 | - Tạo mã mời từ tài khoản Con.<br/>- Phụ huynh nhập mã để liên kết.<br/>- Phương thức xác thực để ngăn chặn liên kết trái phép.                                                                  |
+| **LMS-051** | **Xem tiến độ của con**<br/>Là **Phụ huynh**, tôi muốn **xem báo cáo về con**, để **biết con có học tốt không**.           | **Sprint**: S8<br/>**Points**: 5<br/>**Priority**: P2 | - Dashboard hiển thị hoạt động gần đây của con.<br/>- Biểu đồ tóm tắt tuần (Thời gian học, XP đạt được).<br/>- Cảnh báo phụ huynh nếu con không học trong X ngày.                                |
 
 ---
 
 ## Could Have (Backlog)
 
-#### LMS-060: Dark Mode
-
-- **Sprint**: Backlog | **Points**: 3 | **Priority**: P3
-- **Story**: As a **User**, I want to **switch to dark mode**, so that I can
-  **reduce eye strain at night**.
-- **Acceptance Criteria**:
-  - [ ] Toggle switch in Settings / Navbar.
-  - [ ] Persist preference in LocalStorage or User Settings DB.
-  - [ ] All UI components support dark theme colors.
-
-#### LMS-061: Offline Mode
-
-- **Sprint**: Backlog | **Points**: 13 | **Priority**: P3
-- **Story**: As a **Student**, I want to **download lessons**, so that I can
-  **study without internet**.
-- **Acceptance Criteria**:
-  - [ ] "Download" button for lessons/quizzes.
-  - [ ] Local caching mechanism (e.g., IndexedDB / PWA Service Worker).
-  - [ ] Sync progress when back online.
-
-#### LMS-062: Push Notifications
-
-- **Sprint**: Backlog | **Points**: 5 | **Priority**: P3
-- **Story**: As a **User**, I want to **receive notifications**, so that I
-  **don't miss important updates**.
-- **Acceptance Criteria**:
-  - [ ] Browser Push Notification permission request.
-  - [ ] Send notifications for: New Tournament, Daily Reminder, Friend Activity.
-  - [ ] Settings to toggle specific notification types.
-
-#### LMS-063: Social Login (Google)
-
-- **Sprint**: Backlog | **Points**: 5 | **Priority**: P3
-- **Story**: As a **User**, I want to **login with Google**, so that I **don't
-  have to remember another password**.
-- **Acceptance Criteria**:
-  - [ ] "Continue with Google" button on Login/Register page.
-  - [ ] Check if email exists; if not, auto-register.
-  - [ ] Link Google account to existing email-based account.
-
-#### LMS-065: Rewards Shop
-
-- **Sprint**: Backlog | **Points**: 8 | **Priority**: P3
-- **Story**: As a **Student**, I want to **spend my coins**, so that I can **buy
-  avatar frames or themes**.
-- **Acceptance Criteria**:
-  - [ ] Shop interface listing items and costs.
-  - [ ] "Buy" transaction logic (deduct balance, add item to inventory).
-  - [ ] "My Inventory" to view and equip items.
+| ID          | Nội dung (User Story)                                                                                                         | Thông tin                                                   | Tiêu chí nghiệm thu                                                                                                                                                                   |
+| :---------- | :---------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **LMS-060** | **Dark Mode**<br/>Là **Người dùng**, tôi muốn **chuyển sang chế độ tối**, để **giảm mỏi mắt vào ban đêm**.                    | **Sprint**: Backlog<br/>**Points**: 3<br/>**Priority**: P3  | - Toggle switch trong Cài đặt / Navbar.<br/>- Lưu preference vào LocalStorage hoặc User Settings DB.<br/>- Tất cả UI components hỗ trợ màu sắc dark theme.                            |
+| **LMS-061** | **Chế độ Offline**<br/>Là **Học viên**, tôi muốn **tải bài học**, để **học khi không có mạng**.                               | **Sprint**: Backlog<br/>**Points**: 13<br/>**Priority**: P3 | - Nút "Tải xuống" cho bài học/quiz.<br/>- Cơ chế caching cục bộ (ví dụ: IndexedDB / PWA Service Worker).<br/>- Đồng bộ tiến độ khi có mạng trở lại.                                   |
+| **LMS-062** | **Thông báo đẩy (Push)**<br/>Là **Người dùng**, tôi muốn **nhận thông báo**, để **không lỡ các cập nhật quan trọng**.         | **Sprint**: Backlog<br/>**Points**: 5<br/>**Priority**: P3  | - Yêu cầu quyền Browser Push Notification.<br/>- Gửi thông báo cho: Giải đấu mới, Nhắc nhở hàng ngày, Hoạt động bạn bè.<br/>- Cài đặt để bật/tắt các loại thông báo cụ thể.           |
+| **LMS-063** | **Đăng nhập Social (Google)**<br/>Là **Người dùng**, tôi muốn **đăng nhập bằng Google**, để **không phải nhớ thêm mật khẩu**. | **Sprint**: Backlog<br/>**Points**: 5<br/>**Priority**: P3  | - Nút "Tiếp tục với Google" trên trang Đăng nhập/Đăng ký.<br/>- Kiểm tra nếu email đã tồn tại; nếu chưa, tự động đăng ký.<br/>- Liên kết tài khoản Google với tài khoản email sẵn có. |
+| **LMS-065** | **Cửa hàng đổi thưởng**<br/>Là **Học viên**, tôi muốn **tiêu xu (coins)**, để **mua khung avatar hoặc giao diện**.            | **Sprint**: Backlog<br/>**Points**: 8<br/>**Priority**: P3  | - Giao diện Shop liệt kê vật phẩm và giá.<br/>- Logic giao dịch "Mua" (trừ số dư, thêm vật phẩm vào kho).<br/>- "Kho đồ" để xem và trang bị vật phẩm.                                 |

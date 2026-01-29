@@ -11,7 +11,7 @@ Lộ trình chiến lược và các cột mốc quan trọng để chinh phục
 
 ---
 
-## Timeline Diagram
+## Timeline
 
 ```d2
 classes: {
@@ -75,11 +75,11 @@ Phase 2.S7 -> M6
 
 **MVP Scope:**
 
-- Authentication & Authorization
-- Content browsing
-- Basic learning flow
-- Progress tracking
-- Points & levels
+- Xác thực & Phân quyền
+- Duyệt nội dung
+- Luồng học tập cơ bản
+- Theo dõi tiến độ
+- Điểm thưởng & Level
 
 ### Giai đoạn 2: Mở rộng
 
@@ -90,10 +90,10 @@ Phase 2.S7 -> M6
 
 **Expansion Scope:**
 
-- Tournament system
-- Real-time competitions
-- Badges & achievements
-- Beta release
+- Hệ thống Tournament
+- Thi đấu Real-time
+- Badges & Thành tích
+- Phát hành Beta
 
 ### Các mốc quan trọng
 
