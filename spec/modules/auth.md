@@ -208,7 +208,12 @@ type Mutation {
   """
   Đăng ký tài khoản mới
   """
-  register(input: RegisterInput!): AuthPayload!
+  register(input: RegisterInput!): Boolean! @rateLimit(limit: 5, window: "1m")
+
+  """
+  Xác thực tài khoản bằng OTP Email
+  """
+  verifyAccount(input: VerifyAccountInput!): AuthPayload!
     @rateLimit(limit: 5, window: "1m")
 
   """
@@ -246,6 +251,12 @@ input RegisterInput {
   email: String!
   password: String!
   role: Role!
+}
+
+input VerifyAccountInput {
+  email: String!
+  code: String!
+  deviceInfo: DeviceInfoInput
 }
 
 type AuthPayload {
