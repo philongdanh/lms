@@ -13,13 +13,13 @@ Thiết kế kiến trúc hệ thống và các thành phần chính.
 
 ## Architecture
 
-| Khía cạnh     | Mẫu                     | Mô tả                                                   |
-| ------------- | ----------------------- | ------------------------------------------------------- |
-| Kiến trúc     | Monolith                | Phân module rõ ràng, dễ bảo trì                         |
-| Multi-tenancy | Data Isolation          | Mỗi tenant có không gian dữ liệu riêng                  |
-| Communication | Event-Driven            | Các module giao tiếp qua events                         |
-| Realtime      | `WebSocket` + `Pub/Sub` | Redis adapter để mở rộng (scaling)                      |
-| Bảo mật       | RBAC                    | Roles động theo tenant và permissions cứng cho hệ thống |
+| Khía cạnh     | Mẫu                 | Mô tả                                                   |
+| ------------- | ------------------- | ------------------------------------------------------- |
+| Kiến trúc     | Monolith            | Phân module rõ ràng, dễ bảo trì                         |
+| Multi-tenancy | Data Isolation      | Mỗi tenant có không gian dữ liệu riêng                  |
+| Communication | Event-Driven        | Các module giao tiếp qua events                         |
+| Realtime      | WebSocket + Pub/Sub | Redis adapter để mở rộng (scaling)                      |
+| Bảo mật       | RBAC                | Roles động theo tenant và permissions cứng cho hệ thống |
 
 ```d2
 direction: right
