@@ -16,7 +16,7 @@ Các test case cho module Gamification.
 ### TC-INT-GAME-001: Level up
 
 > **Validates**:
-> [LMS-016](../../spec/modules/gamification.md#acceptance-criteria)
+> [US-016](../../spec/modules/gamification.md#acceptance-criteria)
 
 ```gherkin
 Feature: Level Up System
@@ -32,7 +32,7 @@ Feature: Level Up System
 ### TC-INT-GAME-002: Reward redemption
 
 > **Validates**:
-> [LMS-065](../../spec/modules/gamification.md#acceptance-criteria)
+> [US-065](../../spec/modules/gamification.md#acceptance-criteria)
 
 ```gherkin
 Feature: Reward Redemption
@@ -49,7 +49,7 @@ Feature: Reward Redemption
 ### TC-INT-GAME-003: Gamification leaderboard
 
 > **Validates**:
-> [LMS-024](../../spec/modules/gamification.md#acceptance-criteria)
+> [US-024](../../spec/modules/gamification.md#acceptance-criteria)
 
 ```gherkin
 Feature: Gamification Leaderboard

@@ -239,11 +239,11 @@ type LeaderboardEntry {
 
 ### Yêu cầu chức năng
 
-| ID        | Yêu cầu                        | Điều kiện                 |
-| --------- | ------------------------------ | ------------------------- |
-| `LMS-022` | Chỉ tham gia trước khi bắt đầu | `Status` = `REGISTRATION` |
-| `LMS-023` | Tính điểm chính xác            | Khớp với công thức        |
-| `LMS-024` | Bảng xếp hạng real-time        | Cập nhật < 500ms          |
+| ID       | Yêu cầu                        | Điều kiện                 |
+| -------- | ------------------------------ | ------------------------- |
+| `US-022` | Chỉ tham gia trước khi bắt đầu | `Status` = `REGISTRATION` |
+| `US-023` | Tính điểm chính xác            | Khớp với công thức        |
+| `US-024` | Bảng xếp hạng real-time        | Cập nhật < 500ms          |
 
 ### Các Edge Cases
 

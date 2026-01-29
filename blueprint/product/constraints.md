@@ -13,16 +13,16 @@ Các ràng buộc kỹ thuật và nghiệp vụ.
 
 ## Business Constraints
 
-| ID     | Ràng buộc                     | Tác động             | Lý do                    |
-| ------ | ----------------------------- | -------------------- | ------------------------ |
-| BC-001 | Timeline: 25/01 - 15/03/2026  | Không thể gia hạn    | Cam kết các bên          |
-| BC-002 | MVP trước 15/02/2026          | Ảnh hưởng phase 2    | Kế hoạch release cố định |
-| BC-003 | Chỉ web phase 1               | Mobile delay         | Ưu tiên responsive web   |
-| BC-004 | Ngân sách giới hạn            | Ưu tiên P0, P1       | Tối ưu chi phí           |
-| BC-005 | Công nghệ open source         | Giảm chi phí license | Phù hợp startup          |
-| BC-006 | On-premise deployment         | Giảm chi phí cloud   | Phù hợp trường học VN    |
-| BC-007 | 3 môn học (Toán, TV, Toán TA) | Giới hạn phạm vi     | Tập trung core           |
-| BC-008 | Tự host video                 | Không YouTube/Vimeo  | Bản quyền, tốc độ        |
+| ID     | Ràng buộc                           | Tác động             | Lý do                    |
+| ------ | ----------------------------------- | -------------------- | ------------------------ |
+| BC-001 | Timeline theo [Roadmap](roadmap.md) | Không thể gia hạn    | Cam kết các bên          |
+| BC-002 | MVP theo Milestone M3               | Ảnh hưởng phase 2    | Kế hoạch release cố định |
+| BC-003 | Chỉ web phase 1                     | Mobile delay         | Ưu tiên responsive web   |
+| BC-004 | Ngân sách giới hạn                  | Ưu tiên P0, P1       | Tối ưu chi phí           |
+| BC-005 | Công nghệ open source               | Giảm chi phí license | Phù hợp startup          |
+| BC-006 | On-premise deployment               | Giảm chi phí cloud   | Phù hợp trường học VN    |
+| BC-007 | 3 môn học (Toán, TV, Toán TA)       | Giới hạn phạm vi     | Tập trung core           |
+| BC-008 | Tự host video                       | Không YouTube/Vimeo  | Bản quyền, tốc độ        |
 
 ---
 

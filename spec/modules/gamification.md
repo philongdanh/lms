@@ -40,7 +40,7 @@ Engine -> "Gamification Service": new_level
 
 Trao huy hiệu khi đạt đủ điều kiện.
 
-> [!NOTE] **Phase 2 Feature**: Tính năng này thuộc **Sprint 8** (LMS-041). Không
+> [!NOTE] **Phase 2 Feature**: Tính năng này thuộc **Sprint 8** (US-041). Không
 > triển khai trong MVP Core.
 
 ```d2
@@ -62,7 +62,7 @@ Database -> "Gamification Service": new_badges
 Đổi coin lấy phần thưởng.
 
 > [!NOTE] **Future / Backlog**: Tính năng này thuộc danh sách **Could Have**
-> (LMS-065). Chưa ưu tiên triển khai.
+> (US-065). Chưa ưu tiên triển khai.
 
 ```d2
 shape: sequence_diagram
@@ -197,11 +197,11 @@ enum LeaderboardType {
 
 ### Yêu cầu chức năng
 
-| ID        | Yêu cầu                  | Điều kiện                     |
-| --------- | ------------------------ | ----------------------------- |
-| `LMS-016` | Tăng cấp chính xác       | EXP vượt ngưỡng               |
-| `LMS-065` | Đổi thưởng transactional | Trừ coin atomic + trao thưởng |
-| `LMS-024` | Bảng xếp hạng real-time  | Cập nhật < 50ms               |
+| ID       | Yêu cầu                  | Điều kiện                     |
+| -------- | ------------------------ | ----------------------------- |
+| `US-016` | Tăng cấp chính xác       | EXP vượt ngưỡng               |
+| `US-065` | Đổi thưởng transactional | Trừ coin atomic + trao thưởng |
+| `US-024` | Bảng xếp hạng real-time  | Cập nhật < 50ms               |
 
 ### Các Edge Cases
 

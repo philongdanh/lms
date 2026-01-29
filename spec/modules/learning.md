@@ -220,11 +220,11 @@ type ExerciseResult {
 
 ### Yêu cầu chức năng
 
-| ID        | Yêu cầu                    | Điều kiện                     |
-| --------- | -------------------------- | ----------------------------- |
-| `LMS-011` | Tạo lộ trình cá nhân hóa   | Dựa trên lịch sử và điểm yếu  |
-| `LMS-015` | Chấm điểm chính xác        | Trả về `is_correct` đúng      |
-| `LMS-014` | Theo dõi tiến độ real-time | Cập nhật ngay sau khi nộp bài |
+| ID       | Yêu cầu                    | Điều kiện                     |
+| -------- | -------------------------- | ----------------------------- |
+| `US-011` | Tạo lộ trình cá nhân hóa   | Dựa trên lịch sử và điểm yếu  |
+| `US-015` | Chấm điểm chính xác        | Trả về `is_correct` đúng      |
+| `US-014` | Theo dõi tiến độ real-time | Cập nhật ngay sau khi nộp bài |
 
 ### Các Edge Cases
 

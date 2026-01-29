@@ -15,7 +15,7 @@ Các test case cho module Xác thực.
 
 ### TC-INT-AUTH-001: Register with valid email
 
-> **Validates**: [LMS-001](../../spec/modules/auth.md#acceptance-criteria)
+> **Validates**: [US-001](../../spec/modules/auth.md#acceptance-criteria)
 
 ```gherkin
 Feature: User Registration
@@ -32,7 +32,7 @@ Feature: User Registration
 
 ### TC-INT-AUTH-003: Login with valid credentials
 
-> **Validates**: [LMS-004](../../spec/modules/auth.md#acceptance-criteria)
+> **Validates**: [US-004](../../spec/modules/auth.md#acceptance-criteria)
 
 ```gherkin
 Feature: User Login
@@ -64,7 +64,7 @@ Feature: Complete Auth Flow
 
 ### TC-INT-AUTH-004: Multi-device session
 
-> **Validates**: [LMS-007](../../spec/modules/auth.md#acceptance-criteria)
+> **Validates**: [US-007](../../spec/modules/auth.md#acceptance-criteria)
 
 ```gherkin
 Feature: Multi-Device Session
@@ -79,7 +79,7 @@ Feature: Multi-Device Session
 
 ### TC-INT-AUTH-005: Logout invalidate token
 
-> **Validates**: [LMS-006](../../spec/modules/auth.md#acceptance-criteria)
+> **Validates**: [US-006](../../spec/modules/auth.md#acceptance-criteria)
 
 ```gherkin
 Feature: Token Invalidation on Logout

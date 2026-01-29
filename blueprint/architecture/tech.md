@@ -46,15 +46,3 @@ Lựa chọn công nghệ và tiêu chuẩn kỹ thuật cho hệ thống.
 | CI/CD         | GitHub Actions           | [0031: GitHub Actions](decisions/0031-github-actions.md)   |
 | File Storage  | Local + Nginx            | [0032: Nginx](decisions/0032-nginx.md) (Phục vụ file tĩnh) |
 | Monitoring    | Winston + custom metrics | [0012: Winston](decisions/0012-winston.md)                 |
-
----
-
-## Technology Adoption Roadmap
-
-| Giai đoạn | Thời gian     | Trọng tâm                                               |
-| --------- | ------------- | ------------------------------------------------------- |
-| Phase 1   | 25/01 - 15/02 | Core stack: Next.js, NestJS, PostgreSQL, Prisma         |
-| Phase 2   | 16/02 - 01/03 | Gamification, Python AI, Winston logging                |
-| Phase 3   | 02/03 - 15/03 | AI personalization (Cá nhân hóa AI), Redis cluster, 2FA |
-
----
