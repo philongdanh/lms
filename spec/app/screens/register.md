@@ -2,7 +2,7 @@
 id: register
 title: Register Screen
 sidebar_label: Register
-sidebar_position: 4
+sidebar_position: 3
 ---
 
 # Register Screen

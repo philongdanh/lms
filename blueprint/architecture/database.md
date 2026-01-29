@@ -18,11 +18,15 @@ ERD and data regulations for the multi-tenant system.
 ```d2
 direction: right
 
+# ═══════════════════════════════════════════════════════════════
+# CORE: Tenant & User
+# ═══════════════════════════════════════════════════════════════
+
 Tenant: {
   shape: sql_table
   id: string {constraint: primary_key}
-  name: string
   code: string {constraint: unique}
+  name: string
   domain: string
   status: enum {constraint: "PENDING|ACTIVE|SUSPENDED"}
   settings: json
@@ -38,19 +42,10 @@ User: {
   password: string
   name: string
   status: enum {constraint: "PENDING|ACTIVE|SUSPENDED|PENDING_DEACTIVATION"}
-  email_verified_at: timestamp
+  email_verified_at: timestamp {constraint: nullable}
   created_at: timestamp
   updated_at: timestamp
-  deleted_at: timestamp
-}
-
-UserRole: {
-  shape: sql_table
-  id: string {constraint: primary_key}
-  user_id: string {constraint: foreign_key}
-  role: enum {constraint: "SUPER_ADMIN|ADMIN|TEACHER|STUDENT|PARENT"}
-  tenant_id: string {constraint: foreign_key}
-  assigned_at: timestamp
+  deleted_at: timestamp {constraint: nullable}
 }
 
 UserSession: {
@@ -65,6 +60,49 @@ UserSession: {
   created_at: timestamp
   expires_at: timestamp
 }
+
+# ═══════════════════════════════════════════════════════════════
+# RBAC: Role-Based Access Control
+# ═══════════════════════════════════════════════════════════════
+
+Role: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  tenant_id: string {constraint: "foreign_key, nullable"}
+  code: string
+  name: string
+  description: string {constraint: nullable}
+  created_at: timestamp
+  updated_at: timestamp
+}
+
+Permission: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  code: string {constraint: unique}
+  name: string
+  description: string {constraint: nullable}
+}
+
+RolePermission: {
+  shape: sql_table
+  role_id: string {constraint: foreign_key}
+  permission_id: string {constraint: foreign_key}
+  assigned_at: timestamp
+}
+
+UserRole: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  user_id: string {constraint: foreign_key}
+  role_id: string {constraint: foreign_key}
+  tenant_id: string {constraint: foreign_key}
+  assigned_at: timestamp
+}
+
+# ═══════════════════════════════════════════════════════════════
+# CONTENT: Curriculum & Questions
+# ═══════════════════════════════════════════════════════════════
 
 Subject: {
   shape: sql_table
@@ -90,14 +128,14 @@ Lesson: {
   shape: sql_table
   id: string {constraint: primary_key}
   topic_id: string {constraint: foreign_key}
+  created_by: string
   title: string
   content: text
-  status: enum {constraint: "DRAFT|PENDING_REVIEW|PUBLISHED|ARCHIVED"}
   passing_score: int
   estimated_minutes: int
-  created_by: string
-  published_by: string
-  published_at: timestamp
+  status: enum {constraint: "DRAFT|PENDING_REVIEW|PUBLISHED|ARCHIVED"}
+  published_by: string {constraint: nullable}
+  published_at: timestamp {constraint: nullable}
   created_at: timestamp
   updated_at: timestamp
 }
@@ -110,10 +148,14 @@ Question: {
   content: text
   options: json
   correct_answer: json
-  explanation: text
+  explanation: text {constraint: nullable}
   order: int
   created_at: timestamp
 }
+
+# ═══════════════════════════════════════════════════════════════
+# LEARNING: Progress & Sessions
+# ═══════════════════════════════════════════════════════════════
 
 LearningPath: {
   shape: sql_table
@@ -131,9 +173,9 @@ LessonProgress: {
   user_id: string {constraint: foreign_key}
   lesson_id: string {constraint: foreign_key}
   status: enum {constraint: "LOCKED|AVAILABLE|IN_PROGRESS|COMPLETED|REVIEW"}
-  best_score: int
+  best_score: int {constraint: nullable}
   attempts: int
-  completed_at: timestamp
+  completed_at: timestamp {constraint: nullable}
   updated_at: timestamp
 }
 
@@ -142,11 +184,11 @@ ExerciseSession: {
   id: string {constraint: primary_key}
   user_id: string {constraint: foreign_key}
   lesson_id: string {constraint: foreign_key}
-  started_at: timestamp
-  submitted_at: timestamp
-  score: int
-  time_spent_seconds: int
   answers: json
+  score: int {constraint: nullable}
+  time_spent_seconds: int {constraint: nullable}
+  started_at: timestamp
+  submitted_at: timestamp {constraint: nullable}
 }
 
 SubmissionHistory: {
@@ -167,16 +209,20 @@ KnowledgeMap: {
   updated_at: timestamp
 }
 
+# ═══════════════════════════════════════════════════════════════
+# TOURNAMENT: Competitions
+# ═══════════════════════════════════════════════════════════════
+
 Tournament: {
   shape: sql_table
   id: string {constraint: primary_key}
   tenant_id: string {constraint: foreign_key}
+  created_by: string
   name: string
-  status: enum {constraint: "DRAFT|REGISTRATION|IN_PROGRESS|COMPLETED|CANCELLED"}
   max_participants: int
+  status: enum {constraint: "DRAFT|REGISTRATION|IN_PROGRESS|COMPLETED|CANCELLED"}
   starts_at: timestamp
   ends_at: timestamp
-  created_by: string
   created_at: timestamp
 }
 
@@ -195,11 +241,15 @@ Participant: {
   id: string {constraint: primary_key}
   round_id: string {constraint: foreign_key}
   user_id: string {constraint: foreign_key}
-  score: int
-  rank: int
-  finished_at: timestamp
+  score: int {constraint: nullable}
+  rank: int {constraint: nullable}
   joined_at: timestamp
+  finished_at: timestamp {constraint: nullable}
 }
+
+# ═══════════════════════════════════════════════════════════════
+# GAMIFICATION: Rewards & Progress
+# ═══════════════════════════════════════════════════════════════
 
 UserProfile: {
   shape: sql_table
@@ -212,12 +262,20 @@ UserProfile: {
   updated_at: timestamp
 }
 
+Streak: {
+  shape: sql_table
+  user_id: string {constraint: primary_key}
+  current_streak: int
+  longest_streak: int
+  last_active: timestamp
+}
+
 Badge: {
   shape: sql_table
   id: string {constraint: primary_key}
   code: string {constraint: unique}
   name: string
-  description: string
+  description: string {constraint: nullable}
   icon_url: string
   criteria: json
 }
@@ -248,38 +306,55 @@ RewardRedemption: {
   redeemed_at: timestamp
 }
 
-Streak: {
-  shape: sql_table
-  user_id: string {constraint: primary_key}
-  current_streak: int
-  longest_streak: int
-  last_active: timestamp
-}
+# ═══════════════════════════════════════════════════════════════
+# RELATIONSHIPS
+# ═══════════════════════════════════════════════════════════════
 
+# Core
 Tenant -> User: 1:N
-User -> UserRole: 1:N
 User -> UserSession: 1:N
 
+# RBAC
+User -> UserRole: 1:N
+Role -> UserRole: 1:N
+Role -> RolePermission: 1:N
+Permission -> RolePermission: 1:N
+
+# Content
 Subject -> Topic: 1:N
 Topic -> Lesson: 1:N
 Lesson -> Question: 1:N
 
+# Learning
 User -> LearningPath: 1:N
 User -> LessonProgress: 1:N
 User -> ExerciseSession: 1:N
 User -> KnowledgeMap: 1:N
 ExerciseSession -> SubmissionHistory: 1:N
 
+# Tournament
 Tournament -> CompetitionRound: 1:N
 CompetitionRound -> Participant: 1:N
 
+# Gamification
 User -> UserProfile: 1:1
+User -> Streak: 1:1
 User -> UserBadge: 1:N
 Badge -> UserBadge: 1:N
 User -> RewardRedemption: 1:N
 Reward -> RewardRedemption: 1:N
-User -> Streak: 1:1
 ```
+
+### Unique Constraints
+
+| Bảng          | Constraint             | Mô tả                                |
+| ------------- | ---------------------- | ------------------------------------ |
+| `Tenant`      | `code`                 | Mã tenant unique toàn hệ thống       |
+| `User`        | (`tenant_id`, `email`) | Email unique trong mỗi tenant        |
+| `UserSession` | `refresh_token`        | Token unique toàn hệ thống           |
+| `Role`        | (`tenant_id`, `code`)  | Role code unique trong mỗi tenant    |
+| `Permission`  | `code`                 | Permission code unique toàn hệ thống |
+| `Badge`       | `code`                 | Badge code unique toàn hệ thống      |
 
 ### Chiến lược đánh Index
 

@@ -2,7 +2,7 @@
 id: landing
 title: Landing Page
 sidebar_label: Landing
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # Landing Page

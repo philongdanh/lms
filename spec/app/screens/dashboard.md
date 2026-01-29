@@ -2,7 +2,7 @@
 id: dashboard
 title: Dashboard Screen
 sidebar_label: Dashboard
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # Dashboard Screen

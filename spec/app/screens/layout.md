@@ -2,7 +2,7 @@
 id: layout
 title: Layout Specs
 sidebar_label: Layout
-sidebar_position: 1
+sidebar_position: 20
 ---
 
 # Layout Specs
