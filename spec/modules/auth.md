@@ -279,12 +279,12 @@ type AuthPayload {
 
 ### Các Edge Cases
 
-| Trường hợp              | Xử lý                                     |
-| ----------------------- | ----------------------------------------- |
-| Email đã tồn tại        | Trả về lỗi `CONFLICT`                     |
-| Sai mật khẩu            | Trả về lỗi `UNAUTHORIZED`                 |
-| Vượt quá rate limit     | Trả về `429 Too Many Requests`            |
-| `Redis` không hoạt động | Fallback sang DB (chậm hơn) + Alert Ops   |
-| Email service lỗi       | Retry 3 lần, sau đó đưa vào Queue + Alert |
+| Trường hợp                | Xử lý                                     |
+| ------------------------- | ----------------------------------------- |
+| Email đã tồn tại          | Trả về lỗi `CONFLICT`                     |
+| Sai mật khẩu              | Trả về lỗi `UNAUTHORIZED`                 |
+| Vượt quá rate limit       | Trả về `429 Too Many Requests`            |
+| **Redis** không hoạt động | Fallback sang DB (chậm hơn) + Alert Ops   |
+| Email service lỗi         | Retry 3 lần, sau đó đưa vào Queue + Alert |
 
 ---

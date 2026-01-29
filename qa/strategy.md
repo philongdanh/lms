@@ -23,11 +23,11 @@ nghiệp vụ chính đều được bảo vệ bởi test tự động.
 
 ### Cấp độ kiểm thử
 
-| Cấp độ      | Mục tiêu bao phủ   | Công cụ          | Tốc độ       |
-| ----------- | ------------------ | ---------------- | ------------ |
-| Unit Tests  | 80%                | `Vitest`         | < 100ms/test |
-| Integration | 70% critical paths | `Vitest` + `MSW` | < 5s/test    |
-| E2E         | 100% happy paths   | `Playwright`     | < 30s/test   |
+| Cấp độ      | Mục tiêu bao phủ   | Công cụ      | Tốc độ       |
+| ----------- | ------------------ | ------------ | ------------ |
+| Unit Tests  | 80%                | Vitest       | < 100ms/test |
+| Integration | 70% critical paths | Vitest + MSW | < 5s/test    |
+| E2E         | 100% happy paths   | Playwright   | < 30s/test   |
 
 **Testing Pyramid:**
 
@@ -44,13 +44,13 @@ Integration -> Unit
 
 ### Công cụ tự động hóa
 
-| Loại        | Công cụ          | Mục đích                 |
-| ----------- | ---------------- | ------------------------ |
-| Unit        | `Vitest`         | Kiểm thử đơn vị nhanh    |
-| Integration | `Vitest` + `MSW` | Giả lập API (Mocking)    |
-| E2E         | `Playwright`     | Tự động hóa trình duyệt  |
-| API         | `Supertest`      | Kiểm thử HTTP            |
-| Performance | `k6`             | Kiểm thử tải (Load test) |
+| Loại        | Công cụ      | Mục đích                 |
+| ----------- | ------------ | ------------------------ |
+| Unit        | Vitest       | Kiểm thử đơn vị nhanh    |
+| Integration | Vitest + MSW | Giả lập API (Mocking)    |
+| E2E         | Playwright   | Tự động hóa trình duyệt  |
+| API         | Supertest    | Kiểm thử HTTP            |
+| Performance | k6           | Kiểm thử tải (Load test) |
 
 ---
 

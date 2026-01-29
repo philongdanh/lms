@@ -13,13 +13,13 @@ Cấu trúc và thiết lập hệ thống kiểm thử tự động.
 
 ## Framework Stack
 
-| Loại Test   | Framework        | Runner  |
-| ----------- | ---------------- | ------- |
-| Unit        | `Vitest`         | `Node`  |
-| Integration | `Vitest` + `MSW` | `Node`  |
-| E2E         | `Playwright`     | Browser |
-| API         | `Supertest`      | `Node`  |
-| Performance | `k6`             | CLI     |
+| Loại Test   | Framework            | Runner  |
+| ----------- | -------------------- | ------- |
+| Unit        | **Vitest**           | `Node`  |
+| Integration | **Vitest** + **MSW** | `Node`  |
+| E2E         | **Playwright**       | Browser |
+| API         | **Supertest**        | `Node`  |
+| Performance | **k6**               | CLI     |
 
 ---
 

@@ -30,6 +30,8 @@ Use this skill to review and refactor documentation.
   - [ ] SSoT References (`> **SSoT**: ...`).
 - [ ] **Integrity**: No contradictions with Blueprint.
 - [ ] **Formatting**: Checklists unchecked `[ ]`.
+- [ ] **Highlights**: Use `` for Entities/Fields/IDs/Error Codes, **Bold** for
+      emphasis.
 - [ ] **D2**: Clean code (No comments/headers inside).
 
 ## 3. Refactoring Steps

@@ -21,11 +21,11 @@ See [Technology Stack](../../blueprint/architecture/tech.md) for full details.
 
 ### Quality Tools
 
-| Công cụ    | Mục đích       | Cấu hình       |
-| ---------- | -------------- | -------------- |
-| `ESLint`   | Phân tích tĩnh | `.eslintrc.js` |
-| `Prettier` | Định dạng      | `.prettierrc`  |
-| `Husky`    | Git hooks      | `.husky/`      |
+| Công cụ      | Mục đích       | Cấu hình       |
+| ------------ | -------------- | -------------- |
+| **ESLint**   | Phân tích tĩnh | `.eslintrc.js` |
+| **Prettier** | Định dạng      | `.prettierrc`  |
+| **Husky**    | Git hooks      | `.husky/`      |
 
 ### Quy tắc đặt tên
 
