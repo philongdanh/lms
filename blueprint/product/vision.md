@@ -39,3 +39,17 @@ và biến mỗi giờ học thành một trải nghiệm thi đấu trí tuệ 
 | Giáo viên                     | Quản lý lớp, tạo đề nhanh             | Soạn đề lâu, khó theo sát           |
 | Trường học                    | Quản lý tổng quan, báo cáo            | Nhập liệu phức tạp                  |
 | Hệ thống                      | Quản trị toàn hệ thống                | Quản lý multi-tenant                |
+
+---
+
+## Success Metrics {#success-metrics}
+
+Các chỉ số đo lường thành công của sản phẩm (Key Performance Indicators).
+
+| Metric                   | Mục tiêu       | Mô tả                                   |
+| :----------------------- | :------------- | :-------------------------------------- |
+| Daily Active Users (DAU) | 60% Registered | Tỷ lệ người dùng hoạt động hàng ngày    |
+| Lesson Completion Rate   | > 80%          | Tỷ lệ hoàn thành bài học                |
+| Average Session Time     | > 15 min       | Thời gian trung bình mỗi phiên truy cập |
+| Tournament Participation | > 40%          | Tỷ lệ tham gia giải đấu                 |
+| Parent Engagement        | > 50% Weekly   | Tỷ lệ phụ huynh tương tác hàng tuần     |
