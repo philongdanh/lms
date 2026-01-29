@@ -32,7 +32,7 @@ Feature: User Registration
 
 ### TC-INT-AUTH-003: Login with valid credentials
 
-> **Validates**: [US-004](../../spec/modules/auth.md#acceptance-criteria)
+> **Validates**: [US-003](../../spec/modules/auth.md#acceptance-criteria)
 
 ```gherkin
 Feature: User Login
@@ -64,7 +64,7 @@ Feature: Complete Auth Flow
 
 ### TC-INT-AUTH-004: Multi-device session
 
-> **Validates**: [US-007](../../spec/modules/auth.md#acceptance-criteria)
+> **Validates**: [US-006](../../spec/modules/auth.md#acceptance-criteria)
 
 ```gherkin
 Feature: Multi-Device Session
@@ -79,7 +79,7 @@ Feature: Multi-Device Session
 
 ### TC-INT-AUTH-005: Logout invalidate token
 
-> **Validates**: [US-006](../../spec/modules/auth.md#acceptance-criteria)
+> **Validates**: [US-005](../../spec/modules/auth.md#acceptance-criteria)
 
 ```gherkin
 Feature: Token Invalidation on Logout

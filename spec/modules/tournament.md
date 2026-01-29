@@ -167,9 +167,9 @@ Scheduler -> "Tournament Service": check_end_time()
 
 | ID       | Yêu cầu                        | Điều kiện                 |
 | -------- | ------------------------------ | ------------------------- |
-| `US-022` | Chỉ tham gia trước khi bắt đầu | `Status` = `REGISTRATION` |
-| `US-023` | Tính điểm chính xác            | Khớp với công thức        |
-| `US-024` | Bảng xếp hạng real-time        | Cập nhật < 500ms          |
+| `US-017` | Chỉ tham gia trước khi bắt đầu | `Status` = `REGISTRATION` |
+| `US-018` | Tính điểm chính xác            | Khớp với công thức        |
+| `US-019` | Bảng xếp hạng real-time        | Cập nhật < 500ms          |
 
 ### Các Edge Cases
 

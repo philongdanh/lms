@@ -78,7 +78,7 @@ Redis -> "Auth Service": session_count
 
 Liên kết tài khoản phụ huynh với học sinh.
 
-> [!NOTE] **Phase 2 Feature**: Tính năng này thuộc **Sprint 8** (US-050). Không
+> [!NOTE] **Phase 2 Feature**: Tính năng này thuộc **Sprint 8** (US-025). Không
 > triển khai trong MVP Core.
 
 ```d2
@@ -204,9 +204,9 @@ Scheduler -> "Auth Service": execute_hard_delete()
 | ID       | Yêu cầu                  | Điều kiện                             |
 | -------- | ------------------------ | ------------------------------------- |
 | `US-001` | Đăng ký email hợp lệ     | Email chưa tồn tại, định dạng đúng    |
-| `US-004` | Đăng nhập thành công     | Thông tin đúng, tài khoản đã xác thực |
-| `US-007` | Session đa thiết bị      | Cả hai session đều active             |
-| `US-006` | Logout vô hiệu hóa token | `refreshToken` bị thu hồi             |
+| `US-003` | Đăng nhập thành công     | Thông tin đúng, tài khoản đã xác thực |
+| `US-006` | Session đa thiết bị      | Cả hai session đều active             |
+| `US-005` | Logout vô hiệu hóa token | `refreshToken` bị thu hồi             |
 
 ### Các Edge Cases
 
