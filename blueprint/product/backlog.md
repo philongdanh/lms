@@ -36,7 +36,7 @@ tối ưu hóa giá trị.
 
 ## Must Have (MVP)
 
-> **Note**: Các item dưới đây đã được chi tiết hóa thành User Story để sẵn sàng
+> **Lưu ý**: Các item dưới đây đã được chi tiết hóa thành User Story để sẵn sàng
 > cho Sprint Planning.
 
 ### Xác thực

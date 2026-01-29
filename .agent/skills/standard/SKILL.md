@@ -9,16 +9,17 @@ Use this skill when creating or editing documentation to ensure consistency.
 
 ## 1. Markdown Rules
 
-| Element           | Rule                                | Example                     |
-| :---------------- | :---------------------------------- | :-------------------------- |
-| **H1, H2**        | English, Sentence Case.             | `# System Architecture`     |
-| **H3+**           | Vietnamese mixed with English.      | `### Chiến lược đánh Index` |
-| **Lists**         | Hyphens `-`. Content in Vietnamese. | `- Cấu hình database`       |
-| **Table Headers** | Vietnamese.                         | `\| Tên \| Mô tả \|`        |
-| **Code Blocks**   | Always specify language.            | ` ```typescript `           |
-| **Checklists**    | Unchecked `[ ]` by default.         | `- [ ] Verify API`          |
-| **Links**         | Concise titles (ID: Name).          | `[0004: PostgreSQL](...)`   |
-| **Anchors**       | Explicit English IDs.               | `### Bảo mật {#security}`   |
+| Element           | Rule                                | Example                        |
+| :---------------- | :---------------------------------- | :----------------------------- |
+| **H1, H2**        | English, Sentence Case.             | `# System Architecture`        |
+| **H3+**           | Vietnamese mixed with English.      | `### Chiến lược đánh Index`    |
+| **Lists**         | Hyphens `-`. Content in Vietnamese. | `- Cấu hình database`          |
+| **Table Headers** | Vietnamese.                         | `\| Tên \| Mô tả \|`           |
+| **Code Blocks**   | Always specify language.            | ` ```typescript `              |
+| **Checklists**    | Unchecked `[ ]` by default.         | `- [ ] Verify API`             |
+| **Links**         | Concise titles (ID: Name).          | `[0004: PostgreSQL](...)`      |
+| **Note/Alerts**   | Mixed VN/EN. No `(English)` suffix. | `> **Lưu ý**: Cấu hình này...` |
+| **Anchors**       | Explicit English IDs.               | `### Bảo mật {#security}`      |
 
 ## 2. D2 Diagrams
 

@@ -22,6 +22,7 @@ Use this skill to review and refactor documentation.
 - [ ] **Structure**: Frontmatter, valid headers, language tags.
 - [ ] **Localization**:
   - [ ] H3+ Mixed Style (`Chiến lược đánh Index`).
+  - [ ] Note/Alerts Mixed Style (`> **Lưu ý**: ...`).
   - [ ] Table Headers/Lists in Vietnamese.
   - [ ] Explicit anchors for translated headers.
 - [ ] **References**:
