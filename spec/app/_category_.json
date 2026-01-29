@@ -1,8 +1,8 @@
 {
-  "label": "Frontend",
+  "label": "App",
   "position": 3,
   "link": {
     "type": "generated-index",
-    "slug": "/spec/frontend"
+    "slug": "/spec/app"
   }
 }
