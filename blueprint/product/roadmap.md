@@ -26,7 +26,7 @@ classes: {
   }
 }
 
-Phase 1: Phase 1: MVP {
+Phase 1: Phase 1: MVP Core {
   S1: S1: Foundation\n(Week 1-2) {class: sprint}
   S2: S2: Auth Core\n(Week 3-4) {class: sprint}
   S3: S3: Auth + Learning\n(Week 5-6) {class: sprint}
@@ -35,7 +35,7 @@ Phase 1: Phase 1: MVP {
   S1 -> S2 -> S3 -> S4
 }
 
-Phase 2: Phase 2: Expansion {
+Phase 2: Phase 2: MVP Expansion {
   S5_6: S5-6: Tournament\n(Week 9-12) {class: sprint}
   S7: S7: Polish\n(Week 13-14) {class: sprint}
 

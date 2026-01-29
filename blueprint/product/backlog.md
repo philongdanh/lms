@@ -34,7 +34,7 @@ tối ưu hóa giá trị.
 
 ---
 
-## Must Have (MVP)
+## Must Have (MVP Core - Phase 1)
 
 > **Lưu ý**: Các item dưới đây đã được chi tiết hóa thành User Story để sẵn sàng
 > cho Sprint Planning.
@@ -51,7 +51,7 @@ tối ưu hóa giá trị.
 | **LMS-007** | **Quản lý Session**<br/>Là **System Admin**, tôi muốn **quản lý user session**, để **đảm bảo bảo mật và giới hạn thiết bị**.                         | **Sprint**: S4<br/>**Points**: 8<br/>**Priority**: P0 | - Lưu active sessions trong Redis.<br/>- Triển khai xoay vòng (rotation) Refresh Token.<br/>- Hỗ trợ Blacklist cho các token bị thu hồi.                                                                                                  |
 | **LMS-008** | **Protected Routes**<br/>Là **Developer**, tôi muốn **bảo vệ các route frontend**, để **người dùng chưa xác thực không thể truy cập trang hạn chế**. | **Sprint**: S4<br/>**Points**: 5<br/>**Priority**: P0 | - Middleware kiểm tra JWT hợp lệ.<br/>- Redirect về trang Login nếu token thiếu hoặc hết hạn.<br/>- Phân quyền dựa trên Role (ví dụ: Admin vs Student).                                                                                   |
 
-### Module Học tập
+### Học tập
 
 | ID          | Nội dung (User Story)                                                                                                                         | Thông tin                                             | Tiêu chí nghiệm thu                                                                                                                                                                                       |
 | :---------- | :-------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -63,7 +63,7 @@ tối ưu hóa giá trị.
 | **LMS-015** | **Hệ thống tính điểm**<br/>Là **Hệ thống**, tôi muốn **tính điểm**, để **thưởng cho học viên**.                                               | **Sprint**: S5<br/>**Points**: 5<br/>**Priority**: P1 | - Định nghĩa công thức: Điểm cơ bản + Bonus (tốc độ/streak).<br/>- Lưu lịch sử các lần làm bài.<br/>- Chống gian lận (rate limit submissions).                                                            |
 | **LMS-016** | **Hệ thống Level Up**<br/>Là **Học viên**, tôi muốn **lên cấp dựa trên XP**, để **cảm thấy sự tiến bộ**.                                      | **Sprint**: S5<br/>**Points**: 5<br/>**Priority**: P2 | - Logic tính toán XP dựa trên điểm số/hoạt động.<br/>- Các mốc Level (ví dụ: Lvl 1: 0-100xp).<br/>- Thông báo/Hiệu ứng khi lên cấp.                                                                       |
 
-### Tournament
+### Giải đấu (Tournament)
 
 | ID          | Nội dung (User Story)                                                                                                                  | Thông tin                                              | Tiêu chí nghiệm thu                                                                                                                                                                           |
 | :---------- | :------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

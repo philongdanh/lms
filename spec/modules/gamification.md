@@ -40,6 +40,9 @@ Engine -> "Gamification Service": new_level
 
 Trao huy hiệu khi đạt đủ điều kiện.
 
+> [!NOTE] **Phase 2 Feature**: Tính năng này thuộc **Sprint 8** (LMS-041). Không
+> triển khai trong MVP Core.
+
 ```d2
 shape: sequence_diagram
 "Event Worker"
@@ -57,6 +60,9 @@ Database -> "Gamification Service": new_badges
 ### Đổi thưởng
 
 Đổi coin lấy phần thưởng.
+
+> [!NOTE] **Future / Backlog**: Tính năng này thuộc danh sách **Could Have**
+> (LMS-065). Chưa ưu tiên triển khai.
 
 ```d2
 shape: sequence_diagram

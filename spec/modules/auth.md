@@ -78,6 +78,9 @@ Redis -> "Auth Service": session_count
 
 Liên kết tài khoản phụ huynh với học sinh.
 
+> [!NOTE] **Phase 2 Feature**: Tính năng này thuộc **Sprint 8** (LMS-050). Không
+> triển khai trong MVP Core.
+
 ```d2
 shape: sequence_diagram
 Parent

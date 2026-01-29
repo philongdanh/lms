@@ -71,9 +71,9 @@ App -> Data Layer.Redis
 ### Giao tiếp hệ thống
 
 - **GraphQL**: API chính cho queries/mutations
-- **`REST`**: Webhooks, file uploads
-- **`Redis Pub/Sub`**: Event broadcasting
-- **`WebSocket`**: Socket.IO với cơ chế rooms
+- **REST**: Webhooks, file uploads
+- **Redis Pub/Sub**: Event broadcasting
+- **WebSocket**: Socket.IO với cơ chế rooms
 
 **Xem flow chi tiết:**
 
