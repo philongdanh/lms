@@ -29,7 +29,7 @@ và biến mỗi giờ học thành một trải nghiệm thi đấu trí tuệ 
 
 ## Success Metrics
 
-| Metric               | Goal                  | Strategy                   |
+| Chỉ số               | Mục tiêu              | Chiến lược                 |
 | :------------------- | :-------------------- | :------------------------- |
 | **User Acquisition** | 10k users in 3 months | Partnerships with schools  |
 | **Retention**        | > 60% weekly active   | Gamification & Tournaments |

@@ -257,7 +257,7 @@ type AuthPayload {
 
 ### Events & Webhooks
 
-| Event             | Trigger                      | Payload                           |
+| Sự kiện           | Kích hoạt                    | Payload                           |
 | ----------------- | ---------------------------- | --------------------------------- |
 | `user.registered` | Sau khi đăng ký thành công   | `{ userId, email, role }`         |
 | `user.logged_in`  | Sau khi đăng nhập thành công | `{ userId, deviceId, sessionId }` |
@@ -279,7 +279,7 @@ type AuthPayload {
 
 ### Edge Cases
 
-| Case                    | Xử lý                                     |
+| Trường hợp              | Xử lý                                     |
 | ----------------------- | ----------------------------------------- |
 | Email đã tồn tại        | Trả về lỗi `CONFLICT`                     |
 | Sai mật khẩu            | Trả về lỗi `UNAUTHORIZED`                 |

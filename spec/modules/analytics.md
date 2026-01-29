@@ -156,7 +156,7 @@ enum ReportPeriod {
 
 ### Events & Webhooks
 
-| Event                        | Trigger                        | Payload             |
+| Sự kiện                      | Kích hoạt                      | Payload             |
 | ---------------------------- | ------------------------------ | ------------------- |
 | `analytics.report.generated` | Báo cáo lớn hoàn thành (async) | `{ reportId, url }` |
 
@@ -174,7 +174,7 @@ enum ReportPeriod {
 
 ### Edge Cases
 
-| Case                                  | Xử lý                             |
+| Trường hợp                            | Xử lý                             |
 | ------------------------------------- | --------------------------------- |
 | Báo cáo quá lớn (>1 năm data)         | Xử lý async, trả về report ID     |
 | Cache miss                            | Query DB, cache kết quả           |

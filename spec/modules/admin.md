@@ -231,7 +231,7 @@ enum TenantStatus {
 
 ### Events & Webhooks
 
-| Event               | Trigger                 | Payload                       |
+| Sự kiện             | Kích hoạt               | Payload                       |
 | ------------------- | ----------------------- | ----------------------------- |
 | `tenant.created`    | Sau khi tạo tenant      | `{ tenantId, code, name }`    |
 | `tenant.activated`  | Sau khi kích hoạt       | `{ tenantId }`                |
@@ -252,7 +252,7 @@ enum TenantStatus {
 
 ### Edge Cases
 
-| Case                          | Xử lý                       |
+| Trường hợp                    | Xử lý                       |
 | ----------------------------- | --------------------------- |
 | Mã `Tenant` trùng             | Trả về lỗi `Code Exists`    |
 | Import > 500 users            | Trả về lỗi `Limit Exceeded` |

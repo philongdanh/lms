@@ -14,23 +14,23 @@ tối ưu hóa giá trị.
 
 ## Priority Legend
 
-| Priority | Description          | Points Range |
-| -------- | -------------------- | ------------ |
-| P0       | Critical - Blocker   | 8-13 pts     |
-| P1       | High - Must have     | 5-8 pts      |
-| P2       | Medium - Should have | 3-5 pts      |
-| P3       | Low - Nice to have   | 1-3 pts      |
+| Độ ưu tiên | Mô tả                | Điểm     |
+| ---------- | -------------------- | -------- |
+| P0         | Critical - Blocker   | 8-13 pts |
+| P1         | High - Must have     | 5-8 pts  |
+| P2         | Medium - Should have | 3-5 pts  |
+| P3         | Low - Nice to have   | 1-3 pts  |
 
 ---
 
 ## Backlog Summary
 
-| Priority        | Count | Points | % Total |
-| --------------- | ----- | ------ | ------- |
-| P0              | 24    | 120    | 48%     |
-| P1              | 18    | 85     | 34%     |
-| P2              | 12    | 45     | 18%     |
-| **Total (MVP)** | 54    | 250    | 100%    |
+| Độ ưu tiên      | Số lượng | Điểm | % Tổng |
+| --------------- | -------- | ---- | ------ |
+| P0              | 24       | 120  | 48%    |
+| P1              | 18       | 85   | 34%    |
+| P2              | 12       | 45   | 18%    |
+| **Total (MVP)** | 54       | 250  | 100%   |
 
 ---
 

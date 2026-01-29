@@ -66,12 +66,12 @@ Phase 2.S7 -> M6
 
 ### Phase 1: MVP
 
-| Sprint | Timeline | Focus           | Deliverables / Bàn giao             |
-| ------ | -------- | --------------- | ----------------------------------- |
-| S1     | Week 1-2 | Foundation      | Monorepo, CI/CD, DB schema, GraphQL |
-| S2     | Week 3-4 | Auth Core       | Registration, OTP, Subject listing  |
-| S3     | Week 5-6 | Auth + Learning | Login, Session, Learning path       |
-| S4     | Week 7-8 | Learning Core   | Quiz, Progress, Points, Levels      |
+| Sprint | Thời gian | Trọng tâm       | Deliverables / Bàn giao             |
+| ------ | --------- | --------------- | ----------------------------------- |
+| S1     | Week 1-2  | Foundation      | Monorepo, CI/CD, DB schema, GraphQL |
+| S2     | Week 3-4  | Auth Core       | Registration, OTP, Subject listing  |
+| S3     | Week 5-6  | Auth + Learning | Login, Session, Learning path       |
+| S4     | Week 7-8  | Learning Core   | Quiz, Progress, Points, Levels      |
 
 **MVP Scope:**
 
@@ -83,7 +83,7 @@ Phase 2.S7 -> M6
 
 ### Phase 2: Expansion
 
-| Sprint | Timeline   | Focus      | Deliverables / Bàn giao             |
+| Sprint | Thời gian  | Trọng tâm  | Deliverables / Bàn giao             |
 | ------ | ---------- | ---------- | ----------------------------------- |
 | S5-6   | Week 9-12  | Tournament | Competitions, Leaderboard, Realtime |
 | S7     | Week 13-14 | Polish     | Bug fixes, Performance, Docs        |

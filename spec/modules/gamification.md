@@ -179,7 +179,7 @@ enum LeaderboardType {
 
 ### Events & Webhooks
 
-| Event            | Trigger            | Payload                        |
+| Sự kiện          | Kích hoạt          | Payload                        |
 | ---------------- | ------------------ | ------------------------------ |
 | `level.up`       | User tăng cấp      | `{ userId, newLevel, reward }` |
 | `badge.earned`   | User nhận huy hiệu | `{ userId, badgeId }`          |
@@ -199,7 +199,7 @@ enum LeaderboardType {
 
 ### Edge Cases
 
-| Case                | Xử lý                   |
+| Trường hợp          | Xử lý                   |
 | ------------------- | ----------------------- |
 | Không đủ coin       | Trả lỗi, không trừ coin |
 | Redis memory cao    | Xóa keys cũ, alert ops  |

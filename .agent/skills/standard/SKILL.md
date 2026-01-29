@@ -24,6 +24,7 @@ the `docs/` directory.
 - **Headers**: Use English, Sentence case.
 - **Lists**: Use hyphens `-` for unordered lists.
 - **Code Blocks**: Always specify the language (e.g., `typescript`).
+- **Table Headers**: Use Vietnamese. English technical terms are allowed.
 
 ### 2. D2 Diagrams
 

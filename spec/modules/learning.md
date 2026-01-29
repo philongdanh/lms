@@ -208,7 +208,7 @@ type ExerciseResult {
 
 ### Events & Webhooks
 
-| Event                | Trigger               | Payload                           |
+| Sự kiện              | Kích hoạt             | Payload                           |
 | -------------------- | --------------------- | --------------------------------- |
 | `lesson.completed`   | Hoàn thành bài học    | `{ userId, lessonId, score }`     |
 | `exercise.submitted` | Nộp bài tập           | `{ userId, exerciseId, results }` |
@@ -228,7 +228,7 @@ type ExerciseResult {
 
 ### Edge Cases
 
-| Case                     | Xử lý                                      |
+| Trường hợp               | Xử lý                                      |
 | ------------------------ | ------------------------------------------ |
 | `AI Model` timeout (>2s) | Trả về lộ trình mặc định theo chương trình |
 | DB Write fail            | Trả lỗi cho client, retry phía client      |

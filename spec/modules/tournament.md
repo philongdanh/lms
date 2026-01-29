@@ -226,7 +226,7 @@ type LeaderboardEntry {
 
 ### Events & Webhooks
 
-| Event                  | Trigger           | Payload                              |
+| Sự kiện                | Kích hoạt         | Payload                              |
 | ---------------------- | ----------------- | ------------------------------------ |
 | `round.started`        | Round bắt đầu     | `{ tournamentId, roundId }`          |
 | `round.ended`          | Round kết thúc    | `{ tournamentId, roundId, results }` |
@@ -247,7 +247,7 @@ type LeaderboardEntry {
 
 ### Edge Cases
 
-| Case                          | Xử lý                          |
+| Trường hợp                    | Xử lý                          |
 | ----------------------------- | ------------------------------ |
 | Tham gia muộn (sau khi start) | Chặn, trả về lỗi               |
 | Mất kết nối giữa trận         | Tự động reconnect, giữ session |

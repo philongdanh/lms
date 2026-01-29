@@ -214,7 +214,7 @@ POST /api/upload
 
 ### Events & Webhooks
 
-| Event               | Trigger               | Payload                       |
+| Sự kiện             | Kích hoạt             | Payload                       |
 | ------------------- | --------------------- | ----------------------------- |
 | `content.published` | Bài học được xuất bản | `{ lessonId, publishedBy }`   |
 | `import.completed`  | Import hoàn tất       | `{ success, failed, report }` |
@@ -233,7 +233,7 @@ POST /api/upload
 
 ### Edge Cases
 
-| Case                    | Xử lý                          |
+| Trường hợp              | Xử lý                          |
 | ----------------------- | ------------------------------ |
 | Import file lỗi         | Trả về `Invalid File Format`   |
 | Import lỗi một phần     | Bỏ qua dòng lỗi, log, tiếp tục |

@@ -199,7 +199,7 @@ socket.disconnect   { userId, reason }
 
 ### Events & Webhooks
 
-| Event              | Direction     | Payload                |
+| Sự kiện            | Chiều         | Payload                |
 | ------------------ | ------------- | ---------------------- |
 | `notification.new` | Server→Client | `{ type, content }`    |
 | `progress.updated` | Server→Client | `{ lessonId, status }` |
@@ -220,7 +220,7 @@ socket.disconnect   { userId, reason }
 
 ### Edge Cases
 
-| Case                           | Xử lý                               |
+| Trường hợp                     | Xử lý                               |
 | ------------------------------ | ----------------------------------- |
 | Token hết hạn khi đang kết nối | Force disconnect, yêu cầu reconnect |
 | Redis failover                 | Tự động reconnect đến master mới    |

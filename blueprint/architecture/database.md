@@ -295,7 +295,7 @@ User -> Streak: 1:1
 
 ### Indexing strategy
 
-| Table                    | Index                                   | Purpose                  |
+| Bảng                     | Index                                   | Mục đích                 |
 | ------------------------ | --------------------------------------- | ------------------------ |
 | `User`                   | (`tenant_id`, `email`, `deleted_at`)    | Login và truy vấn tenant |
 | `Topic`                  | (`tenant_id`, `subject_id`, `grade_id`) | Filter nội dung          |
@@ -310,32 +310,32 @@ User -> Streak: 1:1
 
 ### Caching layer
 
-| Cache Type    | Storage    | TTL      | Purpose                     |
+| Loại Cache    | Lưu trữ    | TTL      | Mục đích                    |
 | ------------- | ---------- | -------- | --------------------------- |
-| Session       | Redis      | 7 days   | Refresh token, user session |
-| Learning Path | Redis      | 5 min    | AI recommendations          |
+| Session       | Redis      | 7 ngày   | Refresh token, user session |
+| Learning Path | Redis      | 5 phút   | AI recommendations          |
 | Leaderboard   | Redis ZSET | Realtime | Tournament scores           |
-| Report        | Redis      | 5 min    | Generated reports           |
+| Report        | Redis      | 5 phút   | Generated reports           |
 
 ### Backup & replication
 
-| Aspect      | Strategy   | Frequency |
+| Khía cạnh   | Chiến lược | Tần suất  |
 | ----------- | ---------- | --------- |
-| Full Backup | `pg_dump`  | Daily     |
+| Full Backup | `pg_dump`  | Hàng ngày |
 | WAL Archive | Continuous | Realtime  |
-| Retention   | 30 days    | -         |
-| RTO         | < 4 hours  | -         |
-| RPO         | < 1 hour   | -         |
+| Retention   | 30 ngày    | -         |
+| RTO         | < 4 giờ    | -         |
+| RPO         | < 1 giờ    | -         |
 
 ### Data retention
 
-| Data Type           | Retention | Action            |
-| ------------------- | --------- | ----------------- |
-| User Sessions       | 30 ngày   | Auto cleanup      |
-| Audit Logs          | 1 năm     | Archive           |
-| Student Answers     | Vĩnh viễn | Phân tích dài hạn |
-| Competition Results | Vĩnh viễn | Lịch sử           |
-| Notifications       | 90 ngày   | Auto cleanup      |
-| Soft Deleted        | 1 năm     | Hard delete       |
+| Loại Dữ liệu        | Thời gian lưu | Hành động         |
+| ------------------- | ------------- | ----------------- |
+| User Sessions       | 30 ngày       | Auto cleanup      |
+| Audit Logs          | 1 năm         | Archive           |
+| Student Answers     | Vĩnh viễn     | Phân tích dài hạn |
+| Competition Results | Vĩnh viễn     | Lịch sử           |
+| Notifications       | 90 ngày       | Auto cleanup      |
+| Soft Deleted        | 1 năm         | Hard delete       |
 
 ---

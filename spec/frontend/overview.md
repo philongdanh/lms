@@ -49,17 +49,17 @@ Cấu trúc điều hướng tổng thể của ứng dụng.
 
 Mapping giữa URL, Page Component và Quyền truy cập.
 
-| URL Route              | Page Component      | Layout            | Access Role |
-| :--------------------- | :------------------ | :---------------- | :---------- |
-| `/`                    | `LandingPage`       | `PublicLayout`    | All         |
-| `/auth/login`          | `LoginPage`         | `AuthLayout`      | Guest       |
-| `/auth/register`       | `RegisterPage`      | `AuthLayout`      | Guest       |
-| `/dashboard`           | `DashboardOverview` | `DashboardLayout` | User        |
-| `/learning`            | `MyLearningPage`    | `DashboardLayout` | User        |
-| `/learning/:id`        | `LessonViewer`      | `FocusLayout`     | User        |
-| `/tournament`          | `TournamentList`    | `DashboardLayout` | User        |
-| `/tournament/live/:id` | `LiveMatch`         | `FocusLayout`     | User        |
-| `/admin`               | `AdminDashboard`    | `AdminLayout`     | Admin       |
+| Đường dẫn              | Component trang     | Layout            | Quyền truy cập |
+| :--------------------- | :------------------ | :---------------- | :------------- |
+| `/`                    | `LandingPage`       | `PublicLayout`    | All            |
+| `/auth/login`          | `LoginPage`         | `AuthLayout`      | Guest          |
+| `/auth/register`       | `RegisterPage`      | `AuthLayout`      | Guest          |
+| `/dashboard`           | `DashboardOverview` | `DashboardLayout` | User           |
+| `/learning`            | `MyLearningPage`    | `DashboardLayout` | User           |
+| `/learning/:id`        | `LessonViewer`      | `FocusLayout`     | User           |
+| `/tournament`          | `TournamentList`    | `DashboardLayout` | User           |
+| `/tournament/live/:id` | `LiveMatch`         | `FocusLayout`     | User           |
+| `/admin`               | `AdminDashboard`    | `AdminLayout`     | Admin          |
 
 ---
 

@@ -13,7 +13,7 @@ Thiết kế kiến trúc hệ thống và các thành phần chính.
 
 ## Architecture
 
-| Aspect        | Pattern                 | Description                                             |
+| Khía cạnh     | Mẫu                     | Mô tả                                                   |
 | ------------- | ----------------------- | ------------------------------------------------------- |
 | Kiến trúc     | Monolith                | Phân module rõ ràng, dễ bảo trì                         |
 | Multi-tenancy | Data Isolation          | Mỗi tenant có không gian dữ liệu riêng                  |
