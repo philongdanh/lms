@@ -15,42 +15,41 @@ Lộ trình chiến lược và các cột mốc quan trọng để chinh phục
 
 ### Giai đoạn 1: MVP
 
-| Sprint | Thời gian | Trọng tâm       | Deliverables / Bàn giao             |
-| ------ | --------- | --------------- | ----------------------------------- |
-| S1     | Tuần 1-2  | Foundation      | Monorepo, CI/CD, DB schema, GraphQL |
-| S2     | Tuần 3-4  | Auth Core       | Đăng ký, OTP, Danh sách môn học     |
-| S3     | Tuần 5-6  | Auth + Learning | Đăng nhập, Session, Lộ trình học    |
-| S4     | Tuần 7-8  | Learning Core   | Quiz, Tiến độ, Điểm thưởng, Cấp độ  |
+| Sprint      | Thời gian     | Trọng tâm             | Deliverables / Bàn giao                  |
+| ----------- | ------------- | --------------------- | ---------------------------------------- |
+| **S1**      | 20/01 - 02/02 | Foundation            | Monorepo, DB schema, CI/CD (In-progress) |
+| **S2**      | 03/02 - 16/02 | Auth & Users          | RBAC, Profile, Multi-device session      |
+| **S3**      | 17/02 - 02/03 | Content & Learning    | Cấu trúc bài học, Quiz engine, Tiến độ   |
+| **S4**      | 03/03 - 15/03 | Gamification & Polish | Badges cơ bản, Sửa lỗi, UAT              |
+| **Release** | 16/03 - 22/03 | **Release**           | Beta Feedback, Cloud Deploy, Go Live     |
 
 **MVP Scope:**
 
-- Xác thực & Phân quyền
-- Duyệt nội dung
-- Luồng học tập cơ bản
-- Theo dõi tiến độ
-- Điểm thưởng & Level
+- Xác thực & Phân quyền (Auth)
+- Học tập: Cấu trúc bài học, Quiz engine
+- Tiến độ: Theo dõi hoàn thành, Lịch sử học
+- Gamification cơ bản: XP, Level, Badges đơn giản
 
 ### Giai đoạn 2: Mở rộng
 
-| Sprint | Thời gian  | Trọng tâm  | Deliverables / Bàn giao           |
-| ------ | ---------- | ---------- | --------------------------------- |
-| S5-6   | Tuần 9-12  | Tournament | Giải đấu, Bảng xếp hạng, Realtime |
-| S7     | Tuần 13-14 | Polish     | Sửa lỗi, Hiệu năng, Tài liệu      |
+| Sprint | Thời gian | Trọng tâm     | Deliverables / Bàn giao          |
+| ------ | --------- | ------------- | -------------------------------- |
+| S5-S6  | Post-MVP  | Tournament    | Giải đấu, Bảng xếp hạng Realtime |
+| S7     | Post-MVP  | Advanced Game | Advanced Badges, Store           |
 
 **Expansion Scope:**
 
-- Hệ thống Tournament
-- Thi đấu Real-time
-- Badges & Thành tích
-- Phát hành Beta
+- Hệ thống Tournament (Giải đấu)
+- Thi đấu & Bảng xếp hạng Real-time
+- Gamification nâng cao: Cửa hàng (Store), Advanced Badges
+- Tính năng Cộng đồng (Social)
 
 ### Các mốc quan trọng
 
-| Cột Mốc             | Ngày       | Sprint   | Tiêu chí                    |
-| ------------------- | ---------- | -------- | --------------------------- |
-| M1 - Foundation     | 07/02/2026 | S1       | Hoàn thành hạ tầng, GraphQL |
-| M2 - Auth MVP       | 21/02/2026 | S2       | Đăng nhập/Đăng ký hoạt động |
-| M3 - Learning MVP   | 07/03/2026 | S3-4     | Luồng học tập hoàn chỉnh    |
-| M4 - Tournament MVP | 15/03/2026 | S5-6     | Giải đấu hoạt động          |
-| M5 - Beta Release   | 15/03/2026 | S6       | Sửa hết lỗi P0              |
-| M6 - Production     | 22/03/2026 | Post-MVP | Go live                     |
+| Cột Mốc             | Thời gian | Sprint  | Tiêu chí                    |
+| ------------------- | --------- | ------- | --------------------------- |
+| M1 - Foundation     | 02/02     | S1      | Hoàn thành hạ tầng, DB      |
+| M2 - Auth MVP       | 16/02     | S2      | Đăng nhập/Đăng ký hoạt động |
+| M3 - Learning MVP   | 02/03     | S3      | Luồng học tập hoàn chỉnh    |
+| M4 - Feature Freeze | 15/03     | S4      | Chốt tính năng, chỉ fix bug |
+| M5 - Release        | 22/03     | Release | Go live Production          |

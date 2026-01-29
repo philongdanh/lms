@@ -27,13 +27,7 @@ và biến mỗi giờ học thành một trải nghiệm thi đấu trí tuệ 
   nhất.
 - **Khả năng mở rộng:** Kiến trúc sẵn sàng cho hàng triệu người dùng đồng thời.
 
-## Success Metrics
-
-| Chỉ số               | Mục tiêu                     | Chiến lược                 |
-| :------------------- | :--------------------------- | :------------------------- |
-| **User Acquisition** | 10k người dùng trong 3 tháng | Hợp tác với các trường học |
-| **Retention**        | > 60% active hàng tuần       | Gamification & Giải đấu    |
-| **Engagement**       | > 30 phút / ngày             | Lộ trình học cá nhân hóa   |
+---
 
 ## Target Users
 

@@ -19,11 +19,11 @@ Tài liệu chính thức cho hệ thống Learning Management System (LMS).
 
 ## Project Constraints
 
-| Ràng buộc       | Chi tiết                                    |
-| :-------------- | :------------------------------------------ |
-| **Timeline**    | MVP: 8 tuần (S1-S4), Production: 22/03/2026 |
-| **Tech**        | NestJS, Next.js, PostgreSQL, GraphQL, Redis |
-| **Methodology** | Scrum + Spec-Driven Development             |
+| Ràng buộc       | Chi tiết                                         |
+| :-------------- | :----------------------------------------------- |
+| **Timeline**    | Start: 20/01/2026 - Release: 22/03/2026 (9 tuần) |
+| **Tech**        | NestJS, Next.js, PostgreSQL, GraphQL, Redis      |
+| **Methodology** | Scrum + Spec-Driven Development                  |
 
 ---
 

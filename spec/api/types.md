@@ -21,7 +21,7 @@ sidebar_position: 3
 ```typescript
 type TenantStatus = 'ACTIVE' | 'SUSPENDED' | 'PENDING';
 type UserStatus = 'PENDING' | 'ACTIVE' | 'SUSPENDED' | 'PENDING_DEACTIVATION';
-type Role = 'SUPER_ADMIN' | 'ADMIN' | 'TEACHER' | 'STUDENT' | 'PARENT';
+type Role = 'root-admin' | 'tenant-admin' | 'teacher' | 'student' | 'parent';
 
 interface Tenant {
   id: string;
@@ -57,8 +57,31 @@ interface User {
 interface UserRole {
   id: string;
   userId: string;
-  role: Role;
+  roleId: string;
   tenantId: string;
+  assignedAt: Date;
+}
+
+interface Role {
+  id: string;
+  tenantId?: string;
+  code: string;
+  name: string;
+  description?: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+interface Permission {
+  id: string;
+  code: string;
+  name: string;
+  description?: string;
+}
+
+interface RolePermission {
+  roleId: string;
+  permissionId: string;
   assignedAt: Date;
 }
 
