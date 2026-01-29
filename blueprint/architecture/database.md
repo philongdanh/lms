@@ -293,7 +293,7 @@ Reward -> RewardRedemption: 1:N
 User -> Streak: 1:1
 ```
 
-### Chiến lược đánh chỉ mục (Indexing strategy)
+### Chiến lược đánh Index
 
 | Bảng                     | Index                                   | Mục đích                 |
 | ------------------------ | --------------------------------------- | ------------------------ |
@@ -308,7 +308,7 @@ User -> Streak: 1:1
 
 ## Storage
 
-### Lớp Cache (Caching layer)
+### Lớp Cache
 
 | Loại Cache    | Lưu trữ    | TTL      | Mục đích                    |
 | ------------- | ---------- | -------- | --------------------------- |
@@ -317,7 +317,7 @@ User -> Streak: 1:1
 | Leaderboard   | Redis ZSET | Realtime | Tournament scores           |
 | Report        | Redis      | 5 phút   | Generated reports           |
 
-### Sao lưu & Nhân bản (Backup & replication)
+### Sao lưu & Replication
 
 | Khía cạnh   | Chiến lược | Tần suất  |
 | ----------- | ---------- | --------- |
@@ -327,7 +327,7 @@ User -> Streak: 1:1
 | RTO         | < 4 giờ    | -         |
 | RPO         | < 1 giờ    | -         |
 
-### Lưu trữ dữ liệu (Data retention)
+### Data Retention
 
 | Loại Dữ liệu        | Thời gian lưu | Hành động         |
 | ------------------- | ------------- | ----------------- |

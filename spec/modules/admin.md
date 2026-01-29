@@ -13,7 +13,7 @@ Module quản trị hệ thống multi-tenant và quản lý người dùng.
 
 ## Business Logic
 
-### Tạo Tenant (Create Tenant)
+### Tạo Tenant
 
 Khởi tạo tenant mới cho trường học.
 
@@ -105,7 +105,7 @@ Queue
 - Soft delete → Hard delete sau 30 ngày
 - Ghi audit log cho tất cả impersonation
 
-### Chu trình vòng đời (Lifecycle Sequence)
+### Lifecycle Sequence
 
 Vòng đời tenant từ tạo đến xóa.
 
@@ -250,7 +250,7 @@ enum TenantStatus {
 | `FR-ADM-02` | Import users hàng loạt  | CSV đúng định dạng, ≤500 dòng |
 | `FR-ADM-03` | Impersonate hoạt động   | Ghi audit log                 |
 
-### Các trường hợp ngoại lệ (Edge Cases)
+### Các Edge Cases
 
 | Trường hợp                    | Xử lý                       |
 | ----------------------------- | --------------------------- |

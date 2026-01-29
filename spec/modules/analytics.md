@@ -32,7 +32,7 @@ Database
 "Analysis Engine" -> Database: update_knowledge_map
 ```
 
-### Tạo báo cáo (Generate Report)
+### Tạo báo cáo
 
 Tạo báo cáo theo yêu cầu với caching.
 
@@ -56,7 +56,7 @@ Database -> "Analytics Service": heavy_result_set
 "Analytics Service" -> Teacher: report_url
 ```
 
-### Tổng hợp hàng ngày (Daily Aggregation)
+### Tổng hợp hàng ngày
 
 Tổng hợp dữ liệu hàng ngày tự động.
 

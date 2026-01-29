@@ -35,8 +35,12 @@ When reviewing a document, check the following:
   relative links.
 - **Localization**:
   - Table headers, H3+ headers, and lists are in Vietnamese.
+  - H3+ headers use mixed Vietnamese-English style (e.g.,
+    `Chiến lược đánh Index`), avoiding `(English)` suffix.
   - Technical terms are preserved in English.
   - References to translated headers use explicit anchor IDs.
+  - Link titles are concise (e.g., `ID: Name`).
+  - Checklists are unchecked `[ ]` by default.
 - **Content Integrity**: No contradictions with Blueprint, no redundancy (use
   links), proper context.
 - **D2 Diagrams**: Correct rendering and legibility.

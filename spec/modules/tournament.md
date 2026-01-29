@@ -13,7 +13,7 @@ Module giải đấu và thi đấu real-time.
 
 ## Business Logic
 
-### Tạo giải đấu (Create Tournament)
+### Tạo Giải đấu
 
 Tạo giải đấu mới với cấu hình rounds và thời gian.
 
@@ -31,7 +31,7 @@ Admin -> "Tournament Service": create(config)
 "Tournament Service" -> Admin: tournament_id
 ```
 
-### Tham gia thi đấu (Join Competition)
+### Tham gia thi đấu
 
 Đăng ký tham gia giải đấu trước khi bắt đầu.
 
@@ -52,7 +52,7 @@ Database -> "Tournament Service": ok
 "Tournament Service" -> Student: success
 ```
 
-### Tính điểm Realtime (Realtime Scoring)
+### Tính điểm Realtime
 
 Tính điểm real-time và cập nhật bảng xếp hạng.
 
@@ -75,7 +75,7 @@ Student -> "Tournament Service": submit_answer(q_id, ans)
 "Realtime Service" -> Students: updated_scores
 ```
 
-### Kết thúc vòng đấu (End Round)
+### Kết thúc vòng đấu
 
 Kết thúc round và phân loại thí sinh đi tiếp.
 
@@ -104,7 +104,7 @@ Scheduler -> "Tournament Service": end_round_trigger
 - Độ trễ broadcast < 500ms cho 10k users
 - Tối đa 100k concurrent users mỗi sự kiện
 
-### Chu trình vòng đời (Lifecycle Sequence)
+### Lifecycle Sequence
 
 Vòng đời giải đấu từ tạo đến hoàn thành.
 
@@ -245,7 +245,7 @@ type LeaderboardEntry {
 | `FR-TOUR-02` | Tính điểm chính xác            | Khớp với công thức      |
 | `FR-TOUR-03` | Bảng xếp hạng real-time        | Cập nhật < 500ms        |
 
-### Các trường hợp ngoại lệ (Edge Cases)
+### Các Edge Cases
 
 | Trường hợp                    | Xử lý                          |
 | ----------------------------- | ------------------------------ |

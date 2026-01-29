@@ -28,7 +28,7 @@ Các ràng buộc kỹ thuật và nghiệp vụ.
 
 ## Technical Constraints
 
-### Hiệu năng (Performance) {#performance}
+### Hiệu năng {#performance}
 
 | ID          | Ràng buộc           | Mục tiêu |
 | ----------- | ------------------- | -------- |
@@ -38,7 +38,7 @@ Các ràng buộc kỹ thuật và nghiệp vụ.
 | NFR-PERF-04 | Page load time      | < 3s     |
 | NFR-PERF-05 | WebSocket connect   | < 500ms  |
 
-### Bảo mật (Security) {#security}
+### Bảo mật {#security}
 
 | ID         | Ràng buộc               | Chỉ số            |
 | ---------- | ----------------------- | ----------------- |
@@ -48,7 +48,7 @@ Các ràng buộc kỹ thuật và nghiệp vụ.
 | NFR-SEC-04 | 2FA for admin (TOTP)    | Admin security    |
 | NFR-SEC-05 | Multi-device management | Session control   |
 
-### Kiến trúc (Architecture) {#architecture}
+### Kiến trúc {#architecture}
 
 | ID         | Ràng buộc                   | Lý do                    |
 | ---------- | --------------------------- | ------------------------ |

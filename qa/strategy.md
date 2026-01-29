@@ -79,7 +79,7 @@ InReview -> Verified
 Verified -> Closed
 ```
 
-### Cổng chất lượng (Quality Gates)
+### Quality Gates
 
 **PR Checks:**
 

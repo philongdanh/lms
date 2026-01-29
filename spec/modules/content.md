@@ -13,7 +13,7 @@ Module quản lý nội dung học tập và ngân hàng câu hỏi.
 
 ## Business Logic
 
-### Tạo cấu trúc (Create Structure)
+### Tạo cấu trúc Content
 
 Tạo cấu trúc môn học với chủ đề và bài học.
 
@@ -30,7 +30,7 @@ Database -> "Content Service": valid
 "Content Service" -> Teacher: success
 ```
 
-### Import hàng loạt (Bulk Import)
+### Bulk Import
 
 Import câu hỏi từ file Excel/Word.
 
@@ -48,7 +48,7 @@ Teacher -> "Content Service": import_questions(file, lesson_id)
 "Content Service" -> Teacher: report(success_count, errors)
 ```
 
-### Xuất bản nội dung (Publish Content)
+### Xuất bản Content
 
 Duyệt và xuất bản nội dung cho học sinh.
 
@@ -65,7 +65,7 @@ Admin -> "Content Service": publish_lesson(lesson_id)
 "Content Service" -> Admin: success
 ```
 
-### Tải lên đa phương tiện (Upload Media)
+### Upload Media
 
 Upload video/hình ảnh với kiểm tra malware.
 
@@ -96,7 +96,7 @@ S3 -> "Content Service": webhook_upload_complete
 - Định dạng hỗ trợ: `xlsx`, `docx`, `pdf`
 - Dung lượng tối đa: 500MB cho video
 
-### Chu trình vòng đời (Lifecycle Sequence)
+### Lifecycle Sequence
 
 Vòng đời nội dung từ draft đến xuất bản.
 
@@ -231,7 +231,7 @@ POST /api/upload
 | `FR-CONT-02` | Kiểm tra định dạng import | Từ chối file không hỗ trợ               |
 | `FR-CONT-03` | Phát video media          | Video chơi được trên mọi thiết bị       |
 
-### Các trường hợp ngoại lệ (Edge Cases)
+### Các Edge Cases
 
 | Trường hợp              | Xử lý                          |
 | ----------------------- | ------------------------------ |

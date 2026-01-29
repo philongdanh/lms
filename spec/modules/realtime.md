@@ -13,7 +13,7 @@ Module giao tiếp real-time qua WebSocket.
 
 ## Business Logic
 
-### Bắt tay WebSocket (WebSocket Handshake)
+### WebSocket Handshake
 
 Client kết nối với JWT authentication.
 
@@ -31,7 +31,7 @@ Client -> "Realtime Service": connect(jwt_token)
 "Realtime Service" -> Client: connected
 ```
 
-### Sự kiện Broadcast (Broadcast Event)
+### Sự kiện Broadcast
 
 Gửi message đến room/channel.
 
@@ -49,7 +49,7 @@ Redis -> "Realtime Service Nodes": distribute_message
 "Realtime Service Nodes" -> Clients: push_message
 ```
 
-### Theo dõi hiện diện (Presence Tracking)
+### Theo dõi Presence
 
 Theo dõi trạng thái online/offline.
 
@@ -94,7 +94,7 @@ Client -> "Realtime Service": join_room(room_id)
 - Thời gian handshake < 100ms
 - Message delivery < 50ms P50
 
-### Chu trình vòng đời (Lifecycle Sequence)
+### Lifecycle Sequence
 
 Vòng đời kết nối WebSocket.
 
@@ -218,7 +218,7 @@ socket.disconnect   { userId, reason }
 | `FR-RT-02` | Broadcast hoạt động        | Redis adapter đã cấu hình |
 | `FR-RT-03` | 10k concurrent connections | Load test passed          |
 
-### Các trường hợp ngoại lệ (Edge Cases)
+### Các Edge Cases
 
 | Trường hợp                     | Xử lý                               |
 | ------------------------------ | ----------------------------------- |

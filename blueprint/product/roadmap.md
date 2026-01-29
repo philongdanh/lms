@@ -95,7 +95,7 @@ Phase 2.S7 -> M6
 - Badges & achievements
 - Beta release
 
-### Các mốc quan trọng (Key dates)
+### Các mốc quan trọng
 
 | Cột Mốc             | Ngày       | Sprint   | Tiêu chí                    |
 | ------------------- | ---------- | -------- | --------------------------- |

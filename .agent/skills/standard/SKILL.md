@@ -23,9 +23,16 @@ the `docs/` directory.
   H2.
 - **Headers**:
   - H1, H2: English, Sentence case.
-  - H3+: Vietnamese. Preserve English technical terms. Add explicit English IDs
-    if referenced (e.g., `### Bảo mật (Security) {#security}`).
+  - H3+: Vietnamese mixed with English technical terms. Avoid `(English)`
+    suffix.
+    - Example: `Chiến lược đánh Index` (instead of
+      `Chiến lược đánh chỉ mục (Indexing strategy)`).
+    - Add explicit English IDs if referenced (e.g., `### Bảo mật {#security}`).
 - **Lists**: Use hyphens `-` for unordered lists. Content in Vietnamese.
+- **Checklists**: Default state must be unchecked `[ ]`. Do not commit checked
+  items `[x]`.
+- **References**: Shorten link titles for readability (e.g.,
+  `[0004: PostgreSQL](...)` instead of full title).
 - **Code Blocks**: Always specify the language (e.g., `typescript`).
 - **Table Headers**: Use Vietnamese. English technical terms are allowed.
 

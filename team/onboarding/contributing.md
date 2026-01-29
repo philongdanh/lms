@@ -24,7 +24,7 @@ Quy tắc và quy trình cộng tác phát triển.
 
 ## Workflow (Trunk Based)
 
-### Phân nhánh (Branching)
+### Branching
 
 | Nhánh       | Mục đích                         | Vòng đời  |
 | ----------- | -------------------------------- | --------- |
@@ -59,12 +59,12 @@ Format: `<type>(<scope>): <subject>`
 
 ## Quality Gates
 
-### Định nghĩa hoàn thành (DoD)
+### DoD (Definition of Done)
 
-- [x] Code tuân thủ standards
-- [x] Unit tests pass (≥ 70% coverage)
-- [x] Code reviewed & approved
-- [x] CI pipeline pass
-- [x] Deployed to staging
+- [ ] Code tuân thủ standards
+- [ ] Unit tests pass (≥ 70% coverage)
+- [ ] Code reviewed & approved
+- [ ] CI pipeline pass
+- [ ] Deployed to staging
 
 ---

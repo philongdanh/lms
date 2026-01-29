@@ -99,7 +99,7 @@ Database -> "Learning Service": stats
 - Timeout session: 30 phút không hoạt động
 - Rate limiting theo user
 
-### Chu trình vòng đời (Lifecycle Sequence)
+### Lifecycle Sequence
 
 Vòng đời trạng thái bài học từ mở khóa đến hoàn thành.
 
@@ -226,7 +226,7 @@ type ExerciseResult {
 | `LMS-015` | Chấm điểm chính xác        | Trả về `is_correct` đúng      |
 | `LMS-014` | Theo dõi tiến độ real-time | Cập nhật ngay sau khi nộp bài |
 
-### Các trường hợp ngoại lệ (Edge Cases)
+### Các Edge Cases
 
 | Trường hợp               | Xử lý                                      |
 | ------------------------ | ------------------------------------------ |

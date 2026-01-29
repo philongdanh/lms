@@ -19,7 +19,7 @@ See [Technology Stack](../../blueprint/architecture/tech.md) for full details.
 
 ## Code Standards
 
-### Công cụ chất lượng (Quality Tools)
+### Quality Tools
 
 | Công cụ    | Mục đích       | Cấu hình       |
 | ---------- | -------------- | -------------- |

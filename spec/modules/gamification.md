@@ -13,7 +13,7 @@ Module quản lý phần thưởng, điểm số và bảng xếp hạng.
 
 ## Business Logic
 
-### Xử lý EXP (Process EXP)
+### Xử lý EXP
 
 Xử lý sự kiện nhận EXP và tăng cấp.
 
@@ -36,7 +36,7 @@ Engine -> "Gamification Service": new_level
 "Gamification Service" -> "Event Bus": publish(level.up)
 ```
 
-### Trao huy hiệu (Award Badge)
+### Trao huy hiệu
 
 Trao huy hiệu khi đạt đủ điều kiện.
 
@@ -54,7 +54,7 @@ Database -> "Gamification Service": new_badges
 "Gamification Service" -> "Notification Service": notify_user(badge_earned)
 ```
 
-### Đổi thưởng (Reward Redemption)
+### Đổi thưởng
 
 Đổi coin lấy phần thưởng.
 
@@ -74,7 +74,7 @@ Database -> "Gamification Service": sufficient
 "Gamification Service" -> Student: success
 ```
 
-### Cập nhật bảng xếp hạng (Update Leaderboard)
+### Cập nhật Leaderboard
 
 Làm mới bảng xếp hạng định kỳ.
 
@@ -197,7 +197,7 @@ enum LeaderboardType {
 | `LMS-065` | Đổi thưởng transactional | Trừ coin atomic + trao thưởng |
 | `LMS-024` | Bảng xếp hạng real-time  | Cập nhật < 50ms               |
 
-### Các trường hợp ngoại lệ (Edge Cases)
+### Các Edge Cases
 
 | Trường hợp          | Xử lý                   |
 | ------------------- | ----------------------- |

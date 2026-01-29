@@ -137,7 +137,7 @@ User -> "Auth Service": logout(session_id)
 - Tối đa 3 thiết bị mỗi user
 - JWT hết hạn: 15 phút, Refresh token: 7 ngày
 
-### Chu trình vòng đời (Lifecycle Sequence)
+### Lifecycle Sequence
 
 Vòng đời trạng thái user từ đăng ký đến xóa.
 
@@ -277,7 +277,7 @@ type AuthPayload {
 | `LMS-007` | Session đa thiết bị      | Cả hai session đều active             |
 | `LMS-006` | Logout vô hiệu hóa token | `refreshToken` bị thu hồi             |
 
-### Các trường hợp ngoạ lệ (Edge Cases)
+### Các Edge Cases
 
 | Trường hợp              | Xử lý                                     |
 | ----------------------- | ----------------------------------------- |

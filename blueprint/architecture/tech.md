@@ -15,12 +15,12 @@ Lựa chọn công nghệ và tiêu chuẩn kỹ thuật cho hệ thống.
 
 | Thành phần | Công nghệ                 | Lý do lựa chọn                                                                                                           |
 | ---------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| Runtime    | Node.js 20+ LTS           | [0003: Node.js 20+ LTS](decisions/0003-nodejs.md)                                                                        |
+| Runtime    | Node.js 20+ LTS           | [0003: Node.js](decisions/0003-nodejs.md)                                                                                |
 | Framework  | NestJS 10+                | [0001: Modular Monolith](decisions/0001-modular-monolith.md)                                                             |
 | ORM        | Prisma 5+                 | [0005: Prisma ORM](decisions/0005-prisma.md), [0006: Cascade Delete](decisions/0006-cascade-delete.md)                   |
-| Database   | PostgreSQL 15+            | [0004: PostgreSQL làm CSDL chính](decisions/0004-postgresql.md)                                                          |
-| Cache      | Redis 7+                  | [0007: Redis cho Cache và Pub/Sub](decisions/0007-redis.md)                                                              |
-| Realtime   | Socket.IO + Redis adapter | [0010: Socket.IO với Redis Adapter](decisions/0010-socketio.md)                                                          |
+| Database   | PostgreSQL 15+            | [0004: PostgreSQL](decisions/0004-postgresql.md)                                                                         |
+| Cache      | Redis 7+                  | [0007: Redis](decisions/0007-redis.md)                                                                                   |
+| Realtime   | Socket.IO + Redis adapter | [0010: Socket.IO](decisions/0010-socketio.md)                                                                            |
 | Auth       | Passport.js + JWT         | [0008: JWT](decisions/0008-jwt-refresh-token.md), [0002](decisions/0002-multi-tenant.md), [0009](decisions/0009-rbac.md) |
 | Queue      | BullMQ + Redis            | [0011: BullMQ](decisions/0011-bullmq.md), [0007: Redis](decisions/0007-redis.md)                                         |
 

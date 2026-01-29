@@ -59,7 +59,7 @@ tests/
 
 ## CI/CD Integration
 
-### Kích hoạt (Triggers)
+### Triggers
 
 | Kích hoạt (Trigger) | Tests Run                |
 | ------------------- | ------------------------ |
@@ -68,7 +68,7 @@ tests/
 | Nightly             | Full suite + Performance |
 | Release             | Full suite + E2E         |
 
-### Chỉ số sức khỏe (Health Metrics)
+### Health Metrics
 
 | Metric          | Mục tiêu  | Cảnh báo   |
 | --------------- | --------- | ---------- |
