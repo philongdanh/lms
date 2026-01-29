@@ -108,80 +108,10 @@ Scheduler -> "Gamification Service": refresh_leaderboards
 
 ---
 
-## Data Model
-
-> **SSoT**: [Database Blueprint](../../blueprint/architecture/database.md)
-
----
-
 ## API & Integration
-
-### Các thao tác GraphQL
 
 > **SSoT**: [schema.graphql](../api/graphql/gamification/schema.graphql) |
 > [operations.graphql](../api/graphql/gamification/operations.graphql)
-
-```graphql
-type Query {
-  """
-  Thông tin EXP và Level
-  """
-  userProfile: UserProfile! @auth @rateLimit(limit: 200, window: "1m")
-
-  """
-  Danh sách huy hiệu
-  """
-  badges: [Badge!]! @auth @rateLimit(limit: 100, window: "1m")
-
-  """
-  Bảng xếp hạng
-  """
-  leaderboard(type: LeaderboardType!, limit: Int): [LeaderboardEntry!]!
-    @auth
-    @rateLimit(limit: 100, window: "1m")
-
-  """
-  Danh sách phần thưởng
-  """
-  rewards: [Reward!]! @auth @rateLimit(limit: 100, window: "1m")
-
-  """
-  Thông tin streak
-  """
-  streaks: StreakInfo! @auth @rateLimit(limit: 200, window: "1m")
-}
-
-type Mutation {
-  """
-  Đổi coin lấy phần thưởng
-  """
-  redeemReward(rewardId: ID!): RewardRedemption!
-    @auth
-    @rateLimit(limit: 20, window: "1m")
-}
-
-type UserProfile {
-  userId: ID!
-  exp: Int!
-  level: Int!
-  coins: Int!
-  expToNextLevel: Int!
-}
-
-type LeaderboardEntry {
-  rank: Int!
-  userId: ID!
-  username: String!
-  score: Int!
-  avatarUrl: String
-}
-
-enum LeaderboardType {
-  WEEKLY
-  MONTHLY
-  ALL_TIME
-}
-```
 
 ### Sự kiện & Webhooks
 
@@ -205,10 +135,10 @@ enum LeaderboardType {
 
 ### Các Edge Cases
 
-| Trường hợp          | Xử lý                   |
-| ------------------- | ----------------------- |
-| Không đủ coin       | Trả lỗi, không trừ coin |
-| Redis memory cao    | Xóa keys cũ, alert ops  |
-| EXP event trùng lặp | Xử lý idempotent        |
+| Trường hợp          | Xử lý                  |
+| ------------------- | ---------------------- |
+| Không đủ coin       | Lỗi, không trừ coin    |
+| Redis memory cao    | Xóa keys cũ, alert ops |
+| EXP event trùng lặp | Xử lý idempotent       |
 
 ---

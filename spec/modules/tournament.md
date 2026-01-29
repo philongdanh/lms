@@ -145,84 +145,10 @@ Scheduler -> "Tournament Service": check_end_time()
 
 ---
 
-## Data Model
-
-> **SSoT**: [Database Blueprint](../../blueprint/architecture/database.md)
-
----
-
 ## API & Integration
-
-### Các thao tác GraphQL
 
 > **SSoT**: [schema.graphql](../api/graphql/tournament/schema.graphql) |
 > [operations.graphql](../api/graphql/tournament/operations.graphql)
-
-```graphql
-type Query {
-  """
-  Danh sách giải đấu
-  """
-  tournaments(status: TournamentStatus): [Tournament!]!
-    @auth
-    @rateLimit(limit: 100, window: "1m")
-
-  """
-  Chi tiết giải đấu
-  """
-  tournament(id: ID!): Tournament! @auth @rateLimit(limit: 100, window: "1m")
-
-  """
-  Danh sách trận đấu
-  """
-  matches(tournamentId: ID!): [Match!]!
-    @auth
-    @rateLimit(limit: 100, window: "1m")
-
-  """
-  Bảng xếp hạng
-  """
-  tournamentLeaderboard(tournamentId: ID!, limit: Int): [LeaderboardEntry!]!
-    @auth
-    @rateLimit(limit: 100, window: "1m")
-}
-
-type Mutation {
-  """
-  Tham gia giải đấu
-  """
-  joinTournament(tournamentId: ID!): Participant!
-    @auth
-    @rateLimit(limit: 20, window: "1m")
-
-  """
-  Nộp câu trả lời
-  """
-  submitMatch(input: SubmitMatchInput!): MatchResult!
-    @auth
-    @rateLimit(limit: 50, window: "1m")
-
-  """
-  Tạo giải đấu mới (Admin)
-  """
-  createTournament(input: CreateTournamentInput!): Tournament!
-    @auth(role: ADMIN)
-    @rateLimit(limit: 10, window: "1m")
-}
-
-input SubmitMatchInput {
-  roundId: ID!
-  questionId: ID!
-  answer: String!
-}
-
-type LeaderboardEntry {
-  userId: ID!
-  username: String!
-  score: Int!
-  rank: Int!
-}
-```
 
 ### Sự kiện & Webhooks
 
@@ -249,7 +175,7 @@ type LeaderboardEntry {
 
 | Trường hợp                    | Xử lý                          |
 | ----------------------------- | ------------------------------ |
-| Tham gia muộn (sau khi start) | Chặn, trả về lỗi               |
+| Tham gia muộn (sau khi start) | Chặn, lỗi                      |
 | Mất kết nối giữa trận         | Tự động reconnect, giữ session |
 | Redis failover                | Cluster tự động chuyển đổi     |
 | 100k concurrent users         | Load balance qua rooms         |

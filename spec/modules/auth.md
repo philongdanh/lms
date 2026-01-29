@@ -181,93 +181,10 @@ Scheduler -> "Auth Service": execute_hard_delete()
 
 ---
 
-## Data Model
-
-> **SSoT**: [Database Blueprint](../../blueprint/architecture/database.md)
-
----
-
 ## API & Integration
-
-### Các thao tác GraphQL
 
 > **SSoT**: [schema.graphql](../api/graphql/auth/schema.graphql) |
 > [operations.graphql](../api/graphql/auth/operations.graphql)
-
-```graphql
-type Query {
-  """
-  Danh sách session đang hoạt động
-  """
-  sessions: [Session!]! @auth @rateLimit(limit: 100, window: "1m")
-}
-
-type Mutation {
-  """
-  Đăng nhập - không cần auth
-  """
-  login(input: LoginInput!): AuthPayload! @rateLimit(limit: 10, window: "1m")
-
-  """
-  Đăng ký tài khoản mới
-  """
-  register(input: RegisterInput!): Boolean! @rateLimit(limit: 5, window: "1m")
-
-  """
-  Xác thực tài khoản bằng OTP Email
-  """
-  verifyAccount(input: VerifyAccountInput!): AuthPayload!
-    @rateLimit(limit: 5, window: "1m")
-
-  """
-  Làm mới access token
-  """
-  refreshToken(token: String!): AuthPayload!
-    @auth
-    @rateLimit(limit: 20, window: "1m")
-
-  """
-  Đăng xuất
-  """
-  logout: Boolean! @auth @rateLimit(limit: 50, window: "1m")
-
-  """
-  Thu hồi session cụ thể
-  """
-  revokeSession(id: ID!): Boolean! @auth @rateLimit(limit: 50, window: "1m")
-
-  """
-  Liên kết tài khoản phụ huynh với học sinh
-  """
-  linkParent(studentEmail: String!): Boolean!
-    @auth
-    @rateLimit(limit: 10, window: "1m")
-}
-
-input LoginInput {
-  email: String!
-  password: String!
-  deviceInfo: DeviceInfoInput
-}
-
-input RegisterInput {
-  email: String!
-  password: String!
-  role: Role!
-}
-
-input VerifyAccountInput {
-  email: String!
-  code: String!
-  deviceInfo: DeviceInfoInput
-}
-
-type AuthPayload {
-  accessToken: String!
-  refreshToken: String!
-  user: User!
-}
-```
 
 ### Sự kiện & Webhooks
 
@@ -293,12 +210,12 @@ type AuthPayload {
 
 ### Các Edge Cases
 
-| Trường hợp                | Xử lý                                     |
-| ------------------------- | ----------------------------------------- |
-| Email đã tồn tại          | Trả về lỗi `409 CONFLICT`                 |
-| Sai mật khẩu              | Trả về lỗi `401 UNAUTHORIZED`             |
-| Vượt quá rate limit       | Trả về `429 TOO_MANY_REQUESTS`            |
-| **Redis** không hoạt động | Fallback sang DB (chậm hơn) + Alert Ops   |
-| Email service lỗi         | Retry 3 lần, sau đó đưa vào Queue + Alert |
+| Trường hợp                | Xử lý                                   |
+| ------------------------- | --------------------------------------- |
+| Email đã tồn tại          | `409 CONFLICT`                          |
+| Sai mật khẩu              | `401 UNAUTHORIZED`                      |
+| Vượt quá rate limit       | `429 TOO_MANY_REQUESTS`                 |
+| **Redis** không hoạt động | Fallback sang DB (chậm hơn) + Alert Ops |
+| Email service lỗi         | Retry 3 lần, đưa vào Queue + Alert      |
 
 ---

@@ -138,73 +138,10 @@ Student -> "Learning Service": re_learn()
 
 ---
 
-## Data Model
-
-> **SSoT**: [Database Blueprint](../../blueprint/architecture/database.md)
-
----
-
 ## API & Integration
-
-### Các thao tác GraphQL
 
 > **SSoT**: [schema.graphql](../api/graphql/learning/schema.graphql) |
 > [operations.graphql](../api/graphql/learning/operations.graphql)
-
-```graphql
-type Query {
-  """
-  Tiến độ học tập tổng quan
-  """
-  learningProgress: LearningProgress! @auth @rateLimit(limit: 200, window: "1m")
-
-  """
-  Nội dung bài học
-  """
-  lessonContent(id: ID!): Lesson! @auth @rateLimit(limit: 200, window: "1m")
-
-  """
-  Lấy bài tập
-  """
-  lessonExercise(lessonId: ID!): Exercise!
-    @auth
-    @rateLimit(limit: 100, window: "1m")
-
-  """
-  Gợi ý bài học tiếp theo
-  """
-  recommendations: [LessonRecommendation!]!
-    @auth
-    @rateLimit(limit: 50, window: "1m")
-}
-
-type Mutation {
-  """
-  Hoàn thành bài học
-  """
-  completeLesson(lessonId: ID!): LessonProgress!
-    @auth
-    @rateLimit(limit: 100, window: "1m")
-
-  """
-  Nộp bài tập
-  """
-  submitExercise(input: SubmitExerciseInput!): ExerciseResult!
-    @auth
-    @rateLimit(limit: 100, window: "1m")
-}
-
-input SubmitExerciseInput {
-  sessionId: ID!
-  answers: [AnswerInput!]!
-}
-
-type ExerciseResult {
-  score: Int!
-  passed: Boolean!
-  feedback: [AnswerFeedback!]!
-}
-```
 
 ### Sự kiện & Webhooks
 
@@ -228,11 +165,11 @@ type ExerciseResult {
 
 ### Các Edge Cases
 
-| Trường hợp               | Xử lý                                      |
-| ------------------------ | ------------------------------------------ |
-| `AI Model` timeout (>2s) | Trả về lộ trình mặc định theo chương trình |
-| DB Write fail            | Trả lỗi cho client, retry phía client      |
-| Session hết hạn          | Trả lỗi `400`, yêu cầu tạo session mới     |
-| `IDOR` attempt           | Trả về `403 Forbidden`                     |
+| Trường hợp               | Xử lý                               |
+| ------------------------ | ----------------------------------- |
+| `AI Model` timeout (>2s) | Lộ trình mặc định theo chương trình |
+| DB Write fail            | Lỗi cho client, retry phía client   |
+| Session hết hạn          | `400`, yêu cầu tạo session mới      |
+| `IDOR` attempt           | `403 Forbidden`                     |
 
 ---

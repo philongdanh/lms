@@ -130,78 +130,10 @@ Admin -> "Content Service": archive()
 
 ---
 
-## Data Model
-
-> **SSoT**: [Database Blueprint](../../blueprint/architecture/database.md)
-
----
-
 ## API & Integration
-
-### Các thao tác GraphQL
 
 > **SSoT**: [schema.graphql](../api/graphql/content/schema.graphql) |
 > [operations.graphql](../api/graphql/content/operations.graphql)
-
-```graphql
-type Query {
-  """
-  Danh sách môn học
-  """
-  subjects(grade: Int): [Subject!]! @rateLimit(limit: 200, window: "1m")
-
-  """
-  Danh sách chủ đề
-  """
-  topics(subjectId: ID!): [Topic!]! @rateLimit(limit: 200, window: "1m")
-
-  """
-  Chi tiết bài học
-  """
-  lesson(id: ID!): Lesson! @auth @rateLimit(limit: 200, window: "1m")
-
-  """
-  Tìm kiếm câu hỏi
-  """
-  searchQuestions(query: String!, lessonId: ID): [Question!]!
-    @auth(role: TEACHER)
-    @rateLimit(limit: 100, window: "1m")
-}
-
-type Mutation {
-  """
-  Import câu hỏi từ file
-  """
-  importQuestions(file: Upload!, lessonId: ID!): ImportResult!
-    @auth(role: TEACHER)
-    @rateLimit(limit: 10, window: "1m")
-
-  """
-  Tạo bài học mới
-  """
-  createLesson(input: CreateLessonInput!): Lesson!
-    @auth(role: TEACHER)
-    @rateLimit(limit: 50, window: "1m")
-
-  """
-  Xuất bản bài học
-  """
-  publishLesson(lessonId: ID!): Lesson!
-    @auth(role: ADMIN)
-    @rateLimit(limit: 50, window: "1m")
-}
-
-type ImportResult {
-  successCount: Int!
-  errorCount: Int!
-  errors: [ImportError!]!
-}
-
-type ImportError {
-  row: Int!
-  message: String!
-}
-```
 
 ### REST Endpoints
 
@@ -235,9 +167,9 @@ POST /api/upload
 
 | Trường hợp              | Xử lý                          |
 | ----------------------- | ------------------------------ |
-| Import file lỗi         | Trả về `Invalid File Format`   |
+| Import file lỗi         | `Invalid File Format`          |
 | Import lỗi một phần     | Bỏ qua dòng lỗi, log, tiếp tục |
 | Phát hiện malware       | Từ chối upload, alert admin    |
-| Sửa nội dung người khác | 403 Forbidden                  |
+| Sửa nội dung người khác | `403 Forbidden`                |
 
 ---

@@ -125,60 +125,10 @@ Client -> "Realtime Service": disconnect()
 
 ---
 
-## Data Model
-
-> **SSoT**: [Database Blueprint](../../blueprint/architecture/database.md)
-
----
-
 ## API & Integration
-
-### Các thao tác GraphQL
 
 > **SSoT**: [schema.graphql](../api/graphql/realtime/schema.graphql) |
 > [operations.graphql](../api/graphql/realtime/operations.graphql)
-
-```graphql
-type Query {
-  """
-  Danh sách thông báo
-  """
-  notifications(unreadOnly: Boolean): [Notification!]!
-    @auth
-    @rateLimit(limit: 100, window: "1m")
-}
-
-type Mutation {
-  """
-  Đánh dấu đã đọc
-  """
-  markNotificationRead(id: ID!): Notification!
-    @auth
-    @rateLimit(limit: 200, window: "1m")
-
-  """
-  Xóa thông báo
-  """
-  deleteNotification(id: ID!): Boolean!
-    @auth
-    @rateLimit(limit: 100, window: "1m")
-}
-
-type Notification {
-  id: ID!
-  type: NotificationType!
-  content: JSON!
-  readAt: DateTime
-  createdAt: DateTime!
-}
-
-enum NotificationType {
-  LESSON_COMPLETE
-  BADGE_EARNED
-  TOURNAMENT_START
-  SYSTEM
-}
-```
 
 ### Các sự kiện WebSocket
 

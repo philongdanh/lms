@@ -84,75 +84,10 @@ Aggregator -> Database: insert_daily_stats
 
 ---
 
-## Data Model
-
-> **SSoT**: [Database Blueprint](../../blueprint/architecture/database.md)
-
----
-
 ## API & Integration
-
-### Các thao tác GraphQL
 
 > **SSoT**: [schema.graphql](../api/graphql/analytics/schema.graphql) |
 > [operations.graphql](../api/graphql/analytics/operations.graphql)
-
-```graphql
-type Query {
-  """
-  Tổng quan tiến độ học tập
-  """
-  progressOverview: ProgressOverview! @auth @rateLimit(limit: 100, window: "1m")
-
-  """
-  Tiến độ theo môn học
-  """
-  subjectProgress(subjectId: ID!): SubjectProgress!
-    @auth
-    @rateLimit(limit: 100, window: "1m")
-
-  """
-  Bản đồ kiến thức
-  """
-  knowledgeMap(subjectId: ID): [KnowledgeMapEntry!]!
-    @auth
-    @rateLimit(limit: 50, window: "1m")
-
-  """
-  Thống kê học tập hàng ngày
-  """
-  dailyStats(from: Date!, to: Date!): [DailyStat!]!
-    @auth
-    @rateLimit(limit: 100, window: "1m")
-
-  """
-  Báo cáo lớp học (dành cho Teacher)
-  """
-  classReport(classId: ID!, period: ReportPeriod!): ClassReport!
-    @auth(role: TEACHER)
-    @rateLimit(limit: 50, window: "1m")
-}
-
-type ProgressOverview {
-  totalLessons: Int!
-  completedLessons: Int!
-  averageScore: Float!
-  streakDays: Int!
-}
-
-type KnowledgeMapEntry {
-  topicId: ID!
-  topicName: String!
-  masteryScore: Float!
-  lastUpdated: DateTime!
-}
-
-enum ReportPeriod {
-  WEEKLY
-  MONTHLY
-  SEMESTER
-}
-```
 
 ### Sự kiện & Webhooks
 
@@ -174,10 +109,10 @@ enum ReportPeriod {
 
 ### Edge Cases
 
-| Trường hợp                            | Xử lý                             |
-| ------------------------------------- | --------------------------------- |
-| Báo cáo quá lớn (>1 năm data)         | Xử lý async, trả về report ID     |
-| Cache miss                            | Query DB, cache kết quả           |
-| Không có dữ liệu cho khoảng thời gian | Trả về kết quả trống với metadata |
+| Trường hợp                            | Xử lý                      |
+| ------------------------------------- | -------------------------- |
+| Báo cáo quá lớn (>1 năm data)         | Xử lý async, report ID     |
+| Cache miss                            | Query DB, cache kết quả    |
+| Không có dữ liệu cho khoảng thời gian | Kết quả trống với metadata |
 
 ---

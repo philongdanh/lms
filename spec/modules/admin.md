@@ -144,90 +144,9 @@ Scheduler -> "Admin Service": execute_hard_delete()
 
 ---
 
-## Data Model
-
-> **SSoT**: [Database Blueprint](../../blueprint/architecture/database.md)
-
----
-
 ## API & Integration
 
-### Các thao tác GraphQL
-
 > **SSoT**: [schema.graphql](../api/graphql/admin/schema.graphql)
-
-```graphql
-type Query {
-  """
-  Danh sách tenant
-  """
-  tenants(status: TenantStatus): [Tenant!]!
-    @auth(role: SUPER_ADMIN)
-    @rateLimit(limit: 100, window: "1m")
-
-  """
-  Chi tiết tenant
-  """
-  tenant(id: ID!): Tenant!
-    @auth(role: SUPER_ADMIN)
-    @rateLimit(limit: 100, window: "1m")
-}
-
-type Mutation {
-  """
-  Tạo tenant mới
-  """
-  createTenant(input: CreateTenantInput!): Tenant!
-    @auth(role: SUPER_ADMIN)
-    @rateLimit(limit: 10, window: "1m")
-
-  """
-  Cập nhật tenant
-  """
-  updateTenant(id: ID!, input: UpdateTenantInput!): Tenant!
-    @auth(role: SUPER_ADMIN)
-    @rateLimit(limit: 50, window: "1m")
-
-  """
-  Xóa tenant (soft delete)
-  """
-  deleteTenant(id: ID!): Boolean!
-    @auth(role: SUPER_ADMIN)
-    @rateLimit(limit: 10, window: "1m")
-
-  """
-  Import users từ CSV
-  """
-  importUsers(file: Upload!): ImportJob!
-    @auth(role: ADMIN)
-    @rateLimit(limit: 5, window: "1m")
-
-  """
-  Đăng nhập với tư cách user khác
-  """
-  impersonateUser(userId: ID!): AuthPayload!
-    @auth(role: ADMIN)
-    @rateLimit(limit: 10, window: "1m")
-}
-
-input CreateTenantInput {
-  code: String!
-  name: String!
-  adminEmail: String!
-}
-
-type ImportJob {
-  jobId: ID!
-  status: JobStatus!
-}
-
-enum TenantStatus {
-  PENDING
-  ACTIVE
-  SUSPENDED
-  DELETED
-}
-```
 
 ### Sự kiện & Webhooks
 
@@ -252,11 +171,11 @@ enum TenantStatus {
 
 ### Các Edge Cases
 
-| Trường hợp                    | Xử lý                       |
-| ----------------------------- | --------------------------- |
-| Mã `Tenant` trùng             | Trả về lỗi `Code Exists`    |
-| Import > 500 users            | Trả về lỗi `Limit Exceeded` |
-| Email trùng trong import      | Bỏ qua dòng, ghi log lỗi    |
-| Email service không hoạt động | Đưa vào queue, retry sau    |
+| Trường hợp                    | Xử lý                    |
+| ----------------------------- | ------------------------ |
+| Mã `Tenant` trùng             | `Code Exists`            |
+| Import > 500 users            | `Limit Exceeded`         |
+| Email trùng trong import      | Bỏ qua dòng, ghi log lỗi |
+| Email service không hoạt động | Đưa vào queue, retry sau |
 
 ---
