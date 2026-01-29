@@ -64,7 +64,7 @@ Phase 2.S7 -> M6
 
 ## Details
 
-### Phase 1: MVP
+### Giai đoạn 1: MVP
 
 | Sprint | Thời gian | Trọng tâm       | Deliverables / Bàn giao             |
 | ------ | --------- | --------------- | ----------------------------------- |
@@ -81,7 +81,7 @@ Phase 2.S7 -> M6
 - Progress tracking
 - Points & levels
 
-### Phase 2: Expansion
+### Giai đoạn 2: Mở rộng
 
 | Sprint | Thời gian  | Trọng tâm  | Deliverables / Bàn giao           |
 | ------ | ---------- | ---------- | --------------------------------- |
@@ -95,7 +95,7 @@ Phase 2.S7 -> M6
 - Badges & achievements
 - Beta release
 
-### Key dates
+### Các mốc quan trọng (Key dates)
 
 | Cột Mốc             | Ngày       | Sprint   | Tiêu chí                    |
 | ------------------- | ---------- | -------- | --------------------------- |

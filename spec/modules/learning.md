@@ -91,7 +91,7 @@ Database -> "Learning Service": stats
 "Learning Service" -> Parent: dashboard_data
 ```
 
-### Rules & Constraints
+### Quy tắc & Ràng buộc
 
 - Điểm đạt tối thiểu: cấu hình theo bài học (mặc định 70%)
 - Chống gian lận: kiểm tra thời gian hoàn thành hợp lý
@@ -99,7 +99,7 @@ Database -> "Learning Service": stats
 - Timeout session: 30 phút không hoạt động
 - Rate limiting theo user
 
-### Lifecycle Sequence
+### Chu trình vòng đời (Lifecycle Sequence)
 
 Vòng đời trạng thái bài học từ mở khóa đến hoàn thành.
 
@@ -146,7 +146,7 @@ Student -> "Learning Service": re_learn()
 
 ## API & Integration
 
-### GraphQL Operations
+### Các thao tác GraphQL
 
 > **SSoT**: [schema.graphql](../api/graphql/learning/schema.graphql) |
 > [operations.graphql](../api/graphql/learning/operations.graphql)
@@ -206,7 +206,7 @@ type ExerciseResult {
 }
 ```
 
-### Events & Webhooks
+### Sự kiện & Webhooks
 
 | Sự kiện              | Kích hoạt             | Payload                           |
 | -------------------- | --------------------- | --------------------------------- |
@@ -218,7 +218,7 @@ type ExerciseResult {
 
 ## Acceptance Criteria
 
-### Functional Requirements
+### Yêu cầu chức năng
 
 | ID        | Yêu cầu                    | Điều kiện                     |
 | --------- | -------------------------- | ----------------------------- |
@@ -226,7 +226,7 @@ type ExerciseResult {
 | `LMS-015` | Chấm điểm chính xác        | Trả về `is_correct` đúng      |
 | `LMS-014` | Theo dõi tiến độ real-time | Cập nhật ngay sau khi nộp bài |
 
-### Edge Cases
+### Các trường hợp ngoại lệ (Edge Cases)
 
 | Trường hợp               | Xử lý                                      |
 | ------------------------ | ------------------------------------------ |

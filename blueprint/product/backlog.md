@@ -39,7 +39,7 @@ tối ưu hóa giá trị.
 > **Note**: Các item dưới đây đã được chi tiết hóa thành User Story để sẵn sàng
 > cho Sprint Planning.
 
-### Authentication
+### Xác thực (Authentication)
 
 #### LMS-001: Register with Email
 

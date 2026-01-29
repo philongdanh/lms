@@ -13,7 +13,7 @@ Module quản lý phần thưởng, điểm số và bảng xếp hạng.
 
 ## Business Logic
 
-### Process EXP
+### Xử lý EXP (Process EXP)
 
 Xử lý sự kiện nhận EXP và tăng cấp.
 
@@ -36,7 +36,7 @@ Engine -> "Gamification Service": new_level
 "Gamification Service" -> "Event Bus": publish(level.up)
 ```
 
-### Award Badge
+### Trao huy hiệu (Award Badge)
 
 Trao huy hiệu khi đạt đủ điều kiện.
 
@@ -54,7 +54,7 @@ Database -> "Gamification Service": new_badges
 "Gamification Service" -> "Notification Service": notify_user(badge_earned)
 ```
 
-### Reward Redemption
+### Đổi thưởng (Reward Redemption)
 
 Đổi coin lấy phần thưởng.
 
@@ -74,7 +74,7 @@ Database -> "Gamification Service": sufficient
 "Gamification Service" -> Student: success
 ```
 
-### Update Leaderboard
+### Cập nhật bảng xếp hạng (Update Leaderboard)
 
 Làm mới bảng xếp hạng định kỳ.
 
@@ -92,7 +92,7 @@ Scheduler -> "Gamification Service": refresh_leaderboards
 "Gamification Service" -> "Realtime Service": broadcast(leaderboard_refresh)
 ```
 
-### Rules & Constraints
+### Quy tắc & Ràng buộc
 
 - Công thức level: ngưỡng EXP có thể cấu hình
 - Transaction atomic: không trừ coin nếu không có reward
@@ -110,7 +110,7 @@ Scheduler -> "Gamification Service": refresh_leaderboards
 
 ## API & Integration
 
-### GraphQL Operations
+### Các thao tác GraphQL
 
 > **SSoT**: [schema.graphql](../api/graphql/gamification/schema.graphql) |
 > [operations.graphql](../api/graphql/gamification/operations.graphql)
@@ -177,7 +177,7 @@ enum LeaderboardType {
 }
 ```
 
-### Events & Webhooks
+### Sự kiện & Webhooks
 
 | Sự kiện          | Kích hoạt          | Payload                        |
 | ---------------- | ------------------ | ------------------------------ |
@@ -189,7 +189,7 @@ enum LeaderboardType {
 
 ## Acceptance Criteria
 
-### Functional Requirements
+### Yêu cầu chức năng
 
 | ID        | Yêu cầu                  | Điều kiện                     |
 | --------- | ------------------------ | ----------------------------- |
@@ -197,7 +197,7 @@ enum LeaderboardType {
 | `LMS-065` | Đổi thưởng transactional | Trừ coin atomic + trao thưởng |
 | `LMS-024` | Bảng xếp hạng real-time  | Cập nhật < 50ms               |
 
-### Edge Cases
+### Các trường hợp ngoại lệ (Edge Cases)
 
 | Trường hợp          | Xử lý                   |
 | ------------------- | ----------------------- |

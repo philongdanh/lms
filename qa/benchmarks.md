@@ -22,7 +22,7 @@ Các chỉ số mục tiêu và phương pháp đo lường hiệu năng.
 | Search               | 200ms | 500ms | 1s    | 2s    |
 | Report               | 500ms | 2s    | 5s    | 10s   |
 
-### Database Operations
+### Thao tác cơ sở dữ liệu
 
 | Thao tác     | Mục tiêu | Ngưỡng |
 | ------------ | -------- | ------ |
@@ -41,7 +41,7 @@ Các chỉ số mục tiêu và phương pháp đo lường hiệu năng.
 | Peak load   | 5,000 RPS  | 2,000  |
 | Burst       | 10,000 RPS | 5,000  |
 
-### Concurrent Users
+### Người dùng đồng thời
 
 | Kịch bản | Mục tiêu | Ngưỡng |
 | -------- | -------- | ------ |

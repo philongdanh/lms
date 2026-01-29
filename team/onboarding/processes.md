@@ -77,7 +77,7 @@ develop  auto    manual   manual + approval
 | Deploy (Staging) | Merge to develop | Auto deploy                   |
 | Deploy (Prod)    | Release tag      | Manual + approval             |
 
-### Release Process
+### Quy trình phát hành
 
 | Loại  | Tần suất | Phạm vi          |
 | ----- | -------- | ---------------- |

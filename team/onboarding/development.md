@@ -19,7 +19,7 @@ See [Technology Stack](../../blueprint/architecture/tech.md) for full details.
 
 ## Code Standards
 
-### Quality Tools
+### Công cụ chất lượng (Quality Tools)
 
 | Công cụ    | Mục đích       | Cấu hình       |
 | ---------- | -------------- | -------------- |
@@ -27,7 +27,7 @@ See [Technology Stack](../../blueprint/architecture/tech.md) for full details.
 | `Prettier` | Định dạng      | `.prettierrc`  |
 | `Husky`    | Git hooks      | `.husky/`      |
 
-### Naming Conventions
+### Quy tắc đặt tên
 
 | Loại                | Quy tắc    | Ví dụ                     |
 | ------------------- | ---------- | ------------------------- |
@@ -63,7 +63,7 @@ src/
 Analyze → Database Design → Migration → Implement → Test → Review → Merge
 ```
 
-### Key Steps
+### Các bước chính
 
 1. **Analyze**: Đọc requirements từ specs
 2. **Database**: Cập nhật `schema.prisma`

@@ -40,14 +40,14 @@ Vai trò, onboarding và giao tiếp.
 
 ## Onboarding
 
-### First Day Checklist
+### Checklist ngày đầu tiên
 
 - [x] GitHub organization access
 - [x] Slack workspace
 - [x] Jira/Linear project
 - [x] Dev environment setup
 
-### Timeline
+### Mốc thời gian
 
 | Tuần   | Kỳ vọng                    |
 | ------ | -------------------------- |
@@ -60,7 +60,7 @@ Vai trò, onboarding và giao tiếp.
 
 ## Communication
 
-### Channels
+### Kênh giao tiếp
 
 | Kênh         | Mục đích  | Thời gian phản hồi |
 | ------------ | --------- | ------------------ |
@@ -68,7 +68,7 @@ Vai trò, onboarding và giao tiếp.
 | #lms-dev     | Kỹ thuật  | < 2 giờ            |
 | #lms-urgent  | Khẩn cấp  | < 30 phút          |
 
-### Meetings
+### Các cuộc họp
 
 | Cuộc họp        | Thời điểm | Thời lượng |
 | --------------- | --------- | ---------- |

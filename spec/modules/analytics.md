@@ -32,7 +32,7 @@ Database
 "Analysis Engine" -> Database: update_knowledge_map
 ```
 
-### Generate Report
+### Tạo báo cáo (Generate Report)
 
 Tạo báo cáo theo yêu cầu với caching.
 
@@ -56,7 +56,7 @@ Database -> "Analytics Service": heavy_result_set
 "Analytics Service" -> Teacher: report_url
 ```
 
-### Daily Aggregation
+### Tổng hợp hàng ngày (Daily Aggregation)
 
 Tổng hợp dữ liệu hàng ngày tự động.
 
@@ -75,7 +75,7 @@ Aggregator -> Database: insert_daily_stats
 "Analytics Service" -> Storage: flush_old_logs_to_s3
 ```
 
-### Rules & Constraints
+### Quy tắc & Ràng buộc
 
 - ETL latency < 5s từ event
 - Authorization: `Teacher` chỉ xem được lớp được gán
@@ -92,7 +92,7 @@ Aggregator -> Database: insert_daily_stats
 
 ## API & Integration
 
-### GraphQL Operations
+### Các thao tác GraphQL
 
 > **SSoT**: [schema.graphql](../api/graphql/analytics/schema.graphql) |
 > [operations.graphql](../api/graphql/analytics/operations.graphql)
@@ -154,7 +154,7 @@ enum ReportPeriod {
 }
 ```
 
-### Events & Webhooks
+### Sự kiện & Webhooks
 
 | Sự kiện                      | Kích hoạt                      | Payload             |
 | ---------------------------- | ------------------------------ | ------------------- |
@@ -164,7 +164,7 @@ enum ReportPeriod {
 
 ## Acceptance Criteria
 
-### Functional Requirements
+### Yêu cầu chức năng
 
 | ID          | Yêu cầu                  | Điều kiện                        |
 | ----------- | ------------------------ | -------------------------------- |

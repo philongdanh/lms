@@ -129,7 +129,7 @@ User -> "Auth Service": logout(session_id)
 "Auth Service" -> User: success
 ```
 
-### Rules & Constraints
+### Quy tắc & Ràng buộc
 
 - Ghi log tất cả sự kiện đăng ký/đăng nhập
 - Sanitize input đầu vào
@@ -137,7 +137,7 @@ User -> "Auth Service": logout(session_id)
 - Tối đa 3 thiết bị mỗi user
 - JWT hết hạn: 15 phút, Refresh token: 7 ngày
 
-### Lifecycle Sequence
+### Chu trình vòng đời (Lifecycle Sequence)
 
 Vòng đời trạng thái user từ đăng ký đến xóa.
 
@@ -186,7 +186,7 @@ Scheduler -> "Auth Service": execute_hard_delete()
 
 ## API & Integration
 
-### GraphQL Operations
+### Các thao tác GraphQL
 
 > **SSoT**: [schema.graphql](../api/graphql/auth/schema.graphql) |
 > [operations.graphql](../api/graphql/auth/operations.graphql)
@@ -255,7 +255,7 @@ type AuthPayload {
 }
 ```
 
-### Events & Webhooks
+### Sự kiện & Webhooks
 
 | Sự kiện           | Kích hoạt                    | Payload                           |
 | ----------------- | ---------------------------- | --------------------------------- |
@@ -268,7 +268,7 @@ type AuthPayload {
 
 ## Acceptance Criteria
 
-### Functional Requirements
+### Yêu cầu chức năng
 
 | ID        | Yêu cầu                  | Điều kiện                             |
 | --------- | ------------------------ | ------------------------------------- |
@@ -277,7 +277,7 @@ type AuthPayload {
 | `LMS-007` | Session đa thiết bị      | Cả hai session đều active             |
 | `LMS-006` | Logout vô hiệu hóa token | `refreshToken` bị thu hồi             |
 
-### Edge Cases
+### Các trường hợp ngoạ lệ (Edge Cases)
 
 | Trường hợp              | Xử lý                                     |
 | ----------------------- | ----------------------------------------- |

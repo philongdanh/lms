@@ -123,10 +123,10 @@ qa/cases/*.md (validates against module FRs)
 
 Khi review documentation changes, kiểm tra:
 
-- [ ] GraphQL schema changes đã update trong `spec/api/graphql/`?
-- [ ] Module specs có SSoT reference notes?
-- [ ] Enum values match giữa Prisma, TypeScript, và GraphQL?
-- [ ] Test cases reference đúng FR IDs trong module specs?
+- [ ] Các thay đổi GraphQL schema đã được cập nhật trong `spec/api/graphql/`?
+- [ ] Module specs đã có ghi chú tham chiếu SSoT?
+- [ ] Các giá trị Enum khớp giữa Prisma, TypeScript, và GraphQL?
+- [ ] Test cases có tham chiếu đúng FR IDs trong module specs?
 - [ ] REST endpoints chỉ dùng cho Health/Upload/Webhooks?
 
 ---

@@ -21,7 +21,7 @@ nghiệp vụ chính đều được bảo vệ bởi test tự động.
 
 ## Approach
 
-### Testing Levels
+### Cấp độ kiểm thử
 
 | Cấp độ      | Mục tiêu bao phủ   | Công cụ          | Tốc độ       |
 | ----------- | ------------------ | ---------------- | ------------ |
@@ -42,7 +42,7 @@ E2E -> Integration
 Integration -> Unit
 ```
 
-### Automation Tools
+### Công cụ tự động hóa
 
 | Loại        | Công cụ          | Mục đích                 |
 | ----------- | ---------------- | ------------------------ |
@@ -56,7 +56,7 @@ Integration -> Unit
 
 ## Standards
 
-### Defect Management
+### Quản lý lỗi
 
 **Severity Levels:**
 
@@ -79,7 +79,7 @@ InReview -> Verified
 Verified -> Closed
 ```
 
-### Quality Gates
+### Cổng chất lượng (Quality Gates)
 
 **PR Checks:**
 

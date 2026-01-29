@@ -24,14 +24,14 @@ Quy tắc và quy trình cộng tác phát triển.
 
 ## Workflow (Trunk Based)
 
-### Branching
+### Phân nhánh (Branching)
 
 | Nhánh       | Mục đích                         | Vòng đời  |
 | ----------- | -------------------------------- | --------- |
 | `main`      | Production, luôn sẵn sàng deploy | Vĩnh viễn |
 | `feature/*` | Tính năng ngắn hạn               | < 1 ngày  |
 
-### Commit Convention
+### Quy tắc Commit
 
 Format: `<type>(<scope>): <subject>`
 
@@ -59,7 +59,7 @@ Format: `<type>(<scope>): <subject>`
 
 ## Quality Gates
 
-### Definition of Done
+### Định nghĩa hoàn thành (DoD)
 
 - [x] Code tuân thủ standards
 - [x] Unit tests pass (≥ 70% coverage)

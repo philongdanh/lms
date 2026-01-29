@@ -13,7 +13,7 @@ Module giải đấu và thi đấu real-time.
 
 ## Business Logic
 
-### Create Tournament
+### Tạo giải đấu (Create Tournament)
 
 Tạo giải đấu mới với cấu hình rounds và thời gian.
 
@@ -31,7 +31,7 @@ Admin -> "Tournament Service": create(config)
 "Tournament Service" -> Admin: tournament_id
 ```
 
-### Join Competition
+### Tham gia thi đấu (Join Competition)
 
 Đăng ký tham gia giải đấu trước khi bắt đầu.
 
@@ -52,7 +52,7 @@ Database -> "Tournament Service": ok
 "Tournament Service" -> Student: success
 ```
 
-### Realtime Scoring
+### Tính điểm Realtime (Realtime Scoring)
 
 Tính điểm real-time và cập nhật bảng xếp hạng.
 
@@ -75,7 +75,7 @@ Student -> "Tournament Service": submit_answer(q_id, ans)
 "Realtime Service" -> Students: updated_scores
 ```
 
-### End Round
+### Kết thúc vòng đấu (End Round)
 
 Kết thúc round và phân loại thí sinh đi tiếp.
 
@@ -96,7 +96,7 @@ Scheduler -> "Tournament Service": end_round_trigger
 "Tournament Service" -> Gamification: award_points
 ```
 
-### Rules & Constraints
+### Quy tắc & Ràng buộc
 
 - Chỉ có thể tham gia trước khi round bắt đầu
 - Điểm = độ chính xác × bonus tốc độ
@@ -104,7 +104,7 @@ Scheduler -> "Tournament Service": end_round_trigger
 - Độ trễ broadcast < 500ms cho 10k users
 - Tối đa 100k concurrent users mỗi sự kiện
 
-### Lifecycle Sequence
+### Chu trình vòng đời (Lifecycle Sequence)
 
 Vòng đời giải đấu từ tạo đến hoàn thành.
 
@@ -153,7 +153,7 @@ Scheduler -> "Tournament Service": check_end_time()
 
 ## API & Integration
 
-### GraphQL Operations
+### Các thao tác GraphQL
 
 > **SSoT**: [schema.graphql](../api/graphql/tournament/schema.graphql) |
 > [operations.graphql](../api/graphql/tournament/operations.graphql)
@@ -224,7 +224,7 @@ type LeaderboardEntry {
 }
 ```
 
-### Events & Webhooks
+### Sự kiện & Webhooks
 
 | Sự kiện                | Kích hoạt         | Payload                              |
 | ---------------------- | ----------------- | ------------------------------------ |
@@ -237,7 +237,7 @@ type LeaderboardEntry {
 
 ## Acceptance Criteria
 
-### Functional Requirements
+### Yêu cầu chức năng
 
 | ID           | Yêu cầu                        | Điều kiện               |
 | ------------ | ------------------------------ | ----------------------- |
@@ -245,7 +245,7 @@ type LeaderboardEntry {
 | `FR-TOUR-02` | Tính điểm chính xác            | Khớp với công thức      |
 | `FR-TOUR-03` | Bảng xếp hạng real-time        | Cập nhật < 500ms        |
 
-### Edge Cases
+### Các trường hợp ngoại lệ (Edge Cases)
 
 | Trường hợp                    | Xử lý                          |
 | ----------------------------- | ------------------------------ |

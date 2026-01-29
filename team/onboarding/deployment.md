@@ -25,7 +25,7 @@ Hướng dẫn triển khai hệ thống.
 
 ## Docker Compose
 
-### Requirements
+### Yêu cầu
 
 | Yêu cầu        | Phiên bản tối thiểu |
 | -------------- | ------------------- |
@@ -34,7 +34,7 @@ Hướng dẫn triển khai hệ thống.
 | RAM            | 4GB+                |
 | Storage        | 20GB+               |
 
-### Services
+### Dịch vụ
 
 | Dịch vụ  | Image                | Cổng |
 | -------- | -------------------- | ---- |
@@ -46,7 +46,7 @@ Hướng dẫn triển khai hệ thống.
 
 ## Deployment Process
 
-### Zero-Downtime
+### Triển khai Zero-Downtime
 
 ```bash
 # 1. Pull code
@@ -68,14 +68,14 @@ docker-compose up -d --no-deps --scale app=1 app
 
 ## Backup & Recovery
 
-### Database Backup
+### Sao lưu Database
 
 ```bash
 # Daily automated backup
 docker-compose exec -T postgres pg_dump -U postgres lms_db | gzip > backup.sql.gz
 ```
 
-### Restore
+### Khôi phục
 
 ```bash
 docker-compose stop app

@@ -13,7 +13,7 @@ Module quản trị hệ thống multi-tenant và quản lý người dùng.
 
 ## Business Logic
 
-### Create Tenant
+### Tạo Tenant (Create Tenant)
 
 Khởi tạo tenant mới cho trường học.
 
@@ -97,7 +97,7 @@ Queue
 "Admin Service" -> "Root Admin": success
 ```
 
-### Rules & Constraints
+### Quy tắc & Ràng buộc
 
 - Mã `Tenant` phải unique toàn hệ thống
 - Chỉ `Root Admin` có thể tạo/xóa `Tenant`
@@ -105,7 +105,7 @@ Queue
 - Soft delete → Hard delete sau 30 ngày
 - Ghi audit log cho tất cả impersonation
 
-### Lifecycle Sequence
+### Chu trình vòng đời (Lifecycle Sequence)
 
 Vòng đời tenant từ tạo đến xóa.
 
@@ -152,7 +152,7 @@ Scheduler -> "Admin Service": execute_hard_delete()
 
 ## API & Integration
 
-### GraphQL Operations
+### Các thao tác GraphQL
 
 > **SSoT**: [schema.graphql](../api/graphql/admin/schema.graphql)
 
@@ -229,7 +229,7 @@ enum TenantStatus {
 }
 ```
 
-### Events & Webhooks
+### Sự kiện & Webhooks
 
 | Sự kiện             | Kích hoạt               | Payload                       |
 | ------------------- | ----------------------- | ----------------------------- |
@@ -242,7 +242,7 @@ enum TenantStatus {
 
 ## Acceptance Criteria
 
-### Functional Requirements
+### Yêu cầu chức năng
 
 | ID          | Yêu cầu                 | Điều kiện                     |
 | ----------- | ----------------------- | ----------------------------- |
@@ -250,7 +250,7 @@ enum TenantStatus {
 | `FR-ADM-02` | Import users hàng loạt  | CSV đúng định dạng, ≤500 dòng |
 | `FR-ADM-03` | Impersonate hoạt động   | Ghi audit log                 |
 
-### Edge Cases
+### Các trường hợp ngoại lệ (Edge Cases)
 
 | Trường hợp                    | Xử lý                       |
 | ----------------------------- | --------------------------- |
