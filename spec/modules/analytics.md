@@ -9,7 +9,7 @@ sidebar_position: 7
 
 Module phân tích dữ liệu học tập và báo cáo thống kê.
 
-> **SSoT**: [Backlog](../../blueprint/product/backlog.md) |
+> **SSoT**: [Backlog](../../blueprint/product/plan.md) |
 > [Database](../../blueprint/architecture/database.md)
 
 ---

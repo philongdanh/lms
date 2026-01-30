@@ -9,7 +9,7 @@ sidebar_position: 8
 
 Module giao tiếp real-time qua WebSocket.
 
-> **SSoT**: [Backlog](../../blueprint/product/backlog.md) |
+> **SSoT**: [Backlog](../../blueprint/product/plan.md) |
 > [Database](../../blueprint/architecture/database.md) |
 > [Tech](../../blueprint/architecture/tech.md)
 

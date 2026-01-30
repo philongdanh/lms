@@ -10,7 +10,7 @@ sidebar_position: 4
 Module **Học tập** là trái tim của hệ thống LMS, tập trung vào việc **cá nhân
 hóa trải nghiệm học tập** thông qua AI và tạo động lực bền vững cho học sinh.
 
-> **SSoT**: [Backlog](../../blueprint/product/backlog.md) |
+> **SSoT**: [Backlog](../../blueprint/product/plan.md) |
 > [Database](../../blueprint/architecture/database.md) | [Content](content.md)
 
 ---

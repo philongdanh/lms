@@ -9,7 +9,7 @@ sidebar_position: 2
 
 Module quản trị hệ thống multi-tenant và quản lý người dùng.
 
-> **SSoT**: [Backlog](../../blueprint/product/backlog.md) |
+> **SSoT**: [Backlog](../../blueprint/product/plan.md) |
 > [Database](../../blueprint/architecture/database.md) |
 > [Permissions](../../blueprint/architecture/permissions.md)
 

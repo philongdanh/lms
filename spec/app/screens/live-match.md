@@ -9,7 +9,7 @@ sidebar_position: 10
 
 Đặc tả màn hình thi đấu trực tiếp.
 
-> **SSoT**: [Backlog](../../../blueprint/product/backlog.md)
+> **SSoT**: [Backlog](../../../blueprint/product/plan.md)
 
 ---
 

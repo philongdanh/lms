@@ -9,7 +9,7 @@ sidebar_position: 5
 
 Module **Gamification** quản lý phần thưởng, điểm số và bảng xếp hạng.
 
-> **SSoT**: [Backlog](../../blueprint/product/backlog.md) |
+> **SSoT**: [Backlog](../../blueprint/product/plan.md) |
 > [Database](../../blueprint/architecture/database.md)
 
 ---

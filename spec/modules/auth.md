@@ -9,7 +9,7 @@ sidebar_position: 1
 
 Module xác thực và phân quyền người dùng trong hệ thống multi-tenant.
 
-> **SSoT**: [Backlog](../../blueprint/product/backlog.md) |
+> **SSoT**: [Backlog](../../blueprint/product/plan.md) |
 > [Database](../../blueprint/architecture/database.md) |
 > [Permissions](../../blueprint/architecture/permissions.md)
 

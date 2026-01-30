@@ -28,37 +28,37 @@ Khi review/update một file, cần đảm bảo nhất quán với các file SS
 | `product/vision.md`           | _Gốc_                                       |
 | `product/constraints.md`      | `vision.md`                                 |
 | `product/roadmap.md`          | `vision.md`, `constraints.md`               |
-| `product/backlog.md`          | `vision.md`, `roadmap.md`, `constraints.md` |
+| `product/plan.md`             | `vision.md`, `roadmap.md`, `constraints.md` |
 | `architecture/design.md`      | `vision.md`, `roadmap.md`                   |
 | `architecture/tech.md`        | `design.md`, `vision.md`                    |
-| `architecture/database.md`    | `design.md`, `tech.md`, `backlog.md`        |
-| `architecture/permissions.md` | `design.md`, `backlog.md`                   |
+| `architecture/database.md`    | `design.md`, `tech.md`, `plan.md`           |
+| `architecture/permissions.md` | `design.md`, `plan.md`                      |
 | `architecture/decisions/*.md` | `design.md`, `tech.md`                      |
 
 ### Layer 2: Spec (Rank 2)
 
-| File                      | SSoT Dependencies                              |
-| :------------------------ | :--------------------------------------------- |
-| `modules/auth.md`         | `backlog.md`, `database.md`, `permissions.md`  |
-| `modules/content.md`      | `backlog.md`, `database.md`                    |
-| `modules/learning.md`     | `backlog.md`, `database.md`, `content.md`      |
-| `modules/gamification.md` | `backlog.md`, `database.md`                    |
-| `modules/tournament.md`   | `backlog.md`, `database.md`, `gamification.md` |
-| `modules/realtime.md`     | `backlog.md`, `database.md`, `tech.md`         |
-| `modules/analytics.md`    | `backlog.md`, `database.md`                    |
-| `modules/admin.md`        | `backlog.md`, `database.md`, `permissions.md`  |
-| `api/types.md`            | `database.md`, `modules/*.md`                  |
-| `api/gateway.md`          | `tech.md`, `design.md`                         |
-| `api/graphql/*.md`        | `types.md`, `modules/*.md` tương ứng           |
-| `api/rest/*.md`           | `types.md`, `modules/*.md` tương ứng           |
-| `app/site-map/*.md`       | `roadmap.md`, `backlog.md`                     |
-| `app/screens/*.md`        | `backlog.md`, `site-map/*.md`, `modules/*.md`  |
+| File                      | SSoT Dependencies                           |
+| :------------------------ | :------------------------------------------ |
+| `modules/auth.md`         | `plan.md`, `database.md`, `permissions.md`  |
+| `modules/content.md`      | `plan.md`, `database.md`                    |
+| `modules/learning.md`     | `plan.md`, `database.md`, `content.md`      |
+| `modules/gamification.md` | `plan.md`, `database.md`                    |
+| `modules/tournament.md`   | `plan.md`, `database.md`, `gamification.md` |
+| `modules/realtime.md`     | `plan.md`, `database.md`, `tech.md`         |
+| `modules/analytics.md`    | `plan.md`, `database.md`                    |
+| `modules/admin.md`        | `plan.md`, `database.md`, `permissions.md`  |
+| `api/types.md`            | `database.md`, `modules/*.md`               |
+| `api/gateway.md`          | `tech.md`, `design.md`                      |
+| `api/graphql/*.md`        | `types.md`, `modules/*.md` tương ứng        |
+| `api/rest/*.md`           | `types.md`, `modules/*.md` tương ứng        |
+| `app/site-map/*.md`       | `roadmap.md`, `plan.md`                     |
+| `app/screens/*.md`        | `plan.md`, `site-map/*.md`, `modules/*.md`  |
 
 ### Layer 3: QA (Verify Spec)
 
 | File                     | SSoT Dependencies             |
 | :----------------------- | :---------------------------- |
-| `qa/strategy.md`         | `roadmap.md`, `backlog.md`    |
+| `qa/strategy.md`         | `roadmap.md`, `plan.md`       |
 | `qa/benchmarks.md`       | `tech.md`, `design.md`        |
 | `qa/automation-setup.md` | `tech.md`, `strategy.md`      |
 | `qa/cases/*.md`          | `spec/modules/*.md` tương ứng |

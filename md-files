@@ -30,7 +30,7 @@ blueprint/
 │   └── tech.md
 └── product
     ├── _category_.json
-    ├── backlog.md
+    ├── plan.md
     ├── constraints.md
     ├── roadmap.md
     └── vision.md

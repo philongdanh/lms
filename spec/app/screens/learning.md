@@ -9,7 +9,7 @@ sidebar_position: 6
 
 Đặc tả màn hình học tập (Lesson Viewer).
 
-> **SSoT**: [Backlog](../../../blueprint/product/backlog.md)
+> **SSoT**: [Backlog](../../../blueprint/product/plan.md)
 
 ---
 

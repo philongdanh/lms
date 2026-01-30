@@ -9,7 +9,7 @@ sidebar_position: 7
 
 Đặc tả màn hình danh sách khóa học của người dùng.
 
-> **SSoT**: [Backlog](../../../blueprint/product/backlog.md)
+> **SSoT**: [Backlog](../../../blueprint/product/plan.md)
 
 ---
 

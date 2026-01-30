@@ -9,7 +9,7 @@ sidebar_position: 14
 
 Đặc tả màn hình quản lý nội dung.
 
-> **SSoT**: [Backlog](../../../blueprint/product/backlog.md)
+> **SSoT**: [Backlog](../../../blueprint/product/plan.md)
 
 ---
 

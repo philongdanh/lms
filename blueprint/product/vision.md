@@ -14,15 +14,15 @@ sidebar_position: 1
 ## Core Value
 
 Hệ sinh thái **AI + Gamification**: Cá nhân hóa lộ trình, biến giờ học thành thi
-đấu trí tuệ.
+đấu trí tuệ
 
 **Giải pháp:**
 
-- **Động lực:** Cơ chế "Học mà chơi" gây hứng thú.
-- **Tiến độ:** Minh bạch hóa năng lực cho Học sinh & Phụ huynh.
-- **Hành chính:** Tự động hóa soạn đề, chấm điểm cho Giáo viên.
-- **Quản lý:** Hợp nhất hoạt động trên một nền tảng.
-- **Mở rộng:** Kiến trúc sẵn sàng cho triệu người dùng.
+- **Động lực:** Cơ chế "Học mà chơi" gây hứng thú
+- **Tiến độ:** Minh bạch hóa năng lực cho Học sinh & Phụ huynh
+- **Hành chính:** Tự động hóa soạn đề, chấm điểm cho Giáo viên
+- **Quản lý:** Hợp nhất hoạt động trên một nền tảng
+- **Mở rộng:** Kiến trúc sẵn sàng cho triệu người dùng
 
 ---
 

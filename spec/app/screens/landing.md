@@ -9,7 +9,7 @@ sidebar_position: 1
 
 Trang chủ công khai của ứng dụng.
 
-> **SSoT**: [Backlog](../../../blueprint/product/backlog.md)
+> **SSoT**: [Backlog](../../../blueprint/product/plan.md)
 
 ---
 

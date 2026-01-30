@@ -10,7 +10,7 @@ sidebar_position: 1
 Chiến lược kiểm thử tổng thể và mục tiêu chất lượng.
 
 > **SSoT**: [Roadmap](../blueprint/product/roadmap.md) |
-> [Backlog](../blueprint/product/backlog.md)
+> [Backlog](../blueprint/product/plan.md)
 
 ## QA Vision
 

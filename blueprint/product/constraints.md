@@ -7,7 +7,7 @@ sidebar_position: 2
 
 # Constraints
 
-Các ràng buộc dự án và tiêu chuẩn chất lượng.
+Các ràng buộc dự án và tiêu chuẩn chất lượng
 
 ---
 

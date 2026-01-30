@@ -9,7 +9,7 @@ sidebar_position: 1
 
 Mô tả các trang trong hệ thống.
 
-> **SSoT**: [Backlog](../../../blueprint/product/backlog.md)
+> **SSoT**: [Backlog](../../../blueprint/product/plan.md)
 
 ---
 
