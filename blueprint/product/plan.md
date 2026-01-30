@@ -87,11 +87,11 @@ Kế hoạch triển khai chi tiết theo Sprint
 
 ## Backlog (Future)
 
-| ID       | User Story                       | Points | Acceptance Criteria                                                     |
-| :------- | :------------------------------- | :----- | :---------------------------------------------------------------------- |
-| `US-027` | **Đăng ký SĐT**: Mobile phone    | 3      | - Input Phone (VN). OTP SMS<br/>- Create Account                        |
-| `US-028` | **Dark Mode**: Theme toggle      | 3      | - Switch Light/Dark<br/>- Save Pref (Local/DB)<br/>- Adaptive UI        |
-| `US-029` | **Offline Mode**: Học không mạng | 3      | - Download Lesson/Quiz<br/>- Cache IndexedDB<br/>- Sync online          |
-| `US-030` | **Push Notify**: Browser Noti    | 3      | - Request Perm<br/>- Types: Tourney, Reminder<br/>- Toggle settings     |
-| `US-031` | **Social Login**: Google         | 3      | - Google OAuth Button<br/>- Auto-register/Link email                    |
-| `US-032` | **Shop**: Đổi vật phẩm           | 3      | - List Items + Price<br/>- Buy: Deduct Coin, Add Inv<br/>- Inventory UI |
+| ID       | User Story                       | Points | Acceptance Criteria                                                                                                                                                                                                                                                   |
+| :------- | :------------------------------- | :----- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `US-027` | **Đăng ký SĐT**: Mobile phone    | 3      | - Nhập số điện thoại Việt Nam (+84/0...). Validate format<br/>- Gửi OTP qua SMS (tích hợp mock hoặc provider thật)<br/>- Countdown 60s cho phép gửi lại<br/>- Tự động tạo tài khoản nếu SĐT chưa tồn tại<br/>- Yêu cầu thiết lập mật khẩu sau khi xác thực thành công |
+| `US-028` | **Dark Mode**: Theme toggle      | 3      | - Toggle Switch chuyển đổi Light/Dark trong Header hoặc Settings<br/>- Lưu preference vào localStorage (cho guest) và DB (cho user)<br/>- Tự động detect system preference (OS theme) lần đầu<br/>- UI components phải có dark variant tương phản tốt                 |
+| `US-029` | **Offline Mode**: Học không mạng | 3      | - Cho phép người dùng chọn "Tải về" bài học/quiz cụ thể<br/>- Lưu trữ dữ liệu (Video/Text/Quiz) vào IndexedDB<br/>- Service Worker cache assets (JS/CSS/Images)<br/>- Tự động đồng bộ tiến độ (Sync) lên server khi có mạng trở lại                                   |
+| `US-030` | **Push Notify**: Browser Noti    | 3      | - Xin quyền (Request Permission) từ trình duyệt<br/>- Cài đặt bật/tắt nhận thông báo cho từng loại: Giải đấu, Nhắc học tập<br/>- Gửi thông báo kể cả khi App đang tắt (Background sync/Push)<br/>- Deep link vào đúng màn hình khi click thông báo                    |
+| `US-031` | **Social Login**: Google         | 3      | - Nút "Đăng nhập bằng Google"<br/>- Sử dụng OAuth 2.0 flow<br/>- Tự động lấy Email + Avatar + Name từ Google Profile<br/>- Nếu Email đã tồn tại: Link account. Nếu chưa: Tạo mới<br/>- Xử lý lỗi khi user từ chối quyền truy cập                                      |
+| `US-032` | **Shop**: Đổi vật phẩm           | 3      | - Hiển thị danh sách vật phẩm (Rate grid: Icon, Tên, Giá Coin)<br/>- Phân loại: Avatar, Khung viền, Giao diện (Theme)<br/>- Mua vật phẩm: Kiểm tra số dư Coin > Trừ Coin > Thêm vào Inventory<br/>- Hiển thị dialog xác nhận trước khi mua                            |
