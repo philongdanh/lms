@@ -2,7 +2,7 @@
 id: content
 title: Content Module Tests
 sidebar_label: Content
-sidebar_position: 5
+sidebar_position: 2
 ---
 
 # Content Module Tests

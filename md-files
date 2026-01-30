@@ -1,0 +1,140 @@
+blueprint/
+├── architecture
+│   ├── _category_.json
+│   ├── database.md
+│   ├── decisions
+│   │   ├── 0001-modular-monolith.md
+│   │   ├── 0002-multi-tenant.md
+│   │   ├── 0003-nodejs.md
+│   │   ├── 0004-postgresql.md
+│   │   ├── 0005-prisma.md
+│   │   ├── 0006-cascade-delete.md
+│   │   ├── 0007-redis.md
+│   │   ├── 0008-jwt-refresh-token.md
+│   │   ├── 0009-rbac.md
+│   │   ├── 0010-socketio.md
+│   │   ├── 0011-bullmq.md
+│   │   ├── 0012-winston.md
+│   │   ├── 0020-nextjs.md
+│   │   ├── 0021-react.md
+│   │   ├── 0022-zustand.md
+│   │   ├── 0023-tailwind.md
+│   │   ├── 0024-heroui.md
+│   │   ├── 0025-recharts.md
+│   │   ├── 0030-docker.md
+│   │   ├── 0031-github-actions.md
+│   │   ├── 0032-nginx.md
+│   │   └── _category_.json
+│   ├── design.md
+│   ├── permissions.md
+│   └── tech.md
+└── product
+    ├── _category_.json
+    ├── backlog.md
+    ├── constraints.md
+    ├── roadmap.md
+    └── vision.md
+spec/
+├── api
+│   ├── _category_.json
+│   ├── gateway.md
+│   ├── graphql
+│   │   ├── _root
+│   │   │   └── schema.graphql
+│   │   ├── admin
+│   │   │   ├── operations.graphql
+│   │   │   └── schema.graphql
+│   │   ├── analytics
+│   │   │   ├── operations.graphql
+│   │   │   └── schema.graphql
+│   │   ├── auth
+│   │   │   ├── operations.graphql
+│   │   │   └── schema.graphql
+│   │   ├── content
+│   │   │   ├── operations.graphql
+│   │   │   └── schema.graphql
+│   │   ├── gamification
+│   │   │   ├── operations.graphql
+│   │   │   └── schema.graphql
+│   │   ├── learning
+│   │   │   ├── operations.graphql
+│   │   │   └── schema.graphql
+│   │   ├── realtime
+│   │   │   ├── operations.graphql
+│   │   │   └── schema.graphql
+│   │   └── tournament
+│   │       ├── operations.graphql
+│   │       └── schema.graphql
+│   ├── rest
+│   │   ├── components
+│   │   │   ├── schemas.yaml
+│   │   │   └── security.yaml
+│   │   ├── openapi.yaml
+│   │   └── paths
+│   │       ├── media.yaml
+│   │       ├── system.yaml
+│   │       └── webhooks.yaml
+│   └── types.md
+├── app
+│   ├── _category_.json
+│   ├── resources
+│   │   ├── _category_.json
+│   │   └── index.md
+│   ├── screens
+│   │   ├── _category_.json
+│   │   ├── admin-content.md
+│   │   ├── admin-settings.md
+│   │   ├── admin-users.md
+│   │   ├── admin.md
+│   │   ├── dashboard.md
+│   │   ├── forgot-password.md
+│   │   ├── landing.md
+│   │   ├── layout.md
+│   │   ├── learning.md
+│   │   ├── live-match.md
+│   │   ├── login.md
+│   │   ├── my-learning.md
+│   │   ├── profile.md
+│   │   ├── register.md
+│   │   └── tournament.md
+│   └── site-map
+│       ├── _category_.json
+│       └── index.md
+└── modules
+    ├── _category_.json
+    ├── admin.md
+    ├── analytics.md
+    ├── auth.md
+    ├── content.md
+    ├── gamification.md
+    ├── learning.md
+    ├── realtime.md
+    └── tournament.md
+team/
+├── handbook
+│   ├── _category_.json
+│   ├── faq.md
+│   ├── getting-started.md
+│   └── ssot-guide.md
+└── onboarding
+    ├── _category_.json
+    ├── contributing.md
+    ├── deployment.md
+    ├── development.md
+    ├── processes.md
+    ├── setup.md
+    └── team.md
+qa/
+├── _category_.json
+├── automation-setup.md
+├── benchmarks.md
+├── cases
+│   ├── _category_.json
+│   ├── auth.md
+│   ├── content.md
+│   ├── gamification.md
+│   ├── learning.md
+│   └── tournament.md
+└── strategy.md
+
+29 directories, 109 files

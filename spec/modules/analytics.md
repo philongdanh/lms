@@ -2,12 +2,15 @@
 id: analytics
 title: Analytics
 sidebar_label: Analytics
-sidebar_position: 5
+sidebar_position: 7
 ---
 
 # Analytics
 
 Module phân tích dữ liệu học tập và báo cáo thống kê.
+
+> **SSoT**: [Backlog](../../blueprint/product/backlog.md) |
+> [Database](../../blueprint/architecture/database.md)
 
 ---
 

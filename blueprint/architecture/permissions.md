@@ -14,8 +14,7 @@ Ma trận phân quyền cứng cho hệ thống LMS multi-tenant.
 ## Roles
 
 > SSoT: [`NFR-SEC-01`](../product/constraints.md#security) (Constraints) |
-> [0009: RBAC](decisions/0009-rbac.md) (Decision) | [System Design](design.md)
-> (Design)
+> [0009: RBAC](decisions/0009-rbac.md) (Decision)
 
 | Role           | Phạm vi  | Mô tả                                                |
 | -------------- | -------- | ---------------------------------------------------- |

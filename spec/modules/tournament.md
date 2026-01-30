@@ -2,12 +2,16 @@
 id: tournament
 title: Tournament
 sidebar_label: Tournament
-sidebar_position: 4
+sidebar_position: 6
 ---
 
 # Tournament
 
 Module **Tournament** tổ chức giải đấu và thi đấu real-time.
+
+> **SSoT**: [Backlog](../../blueprint/product/backlog.md) |
+> [Database](../../blueprint/architecture/database.md) |
+> [Gamification](gamification.md)
 
 ---
 

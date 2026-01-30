@@ -26,23 +26,23 @@ Lựa chọn công nghệ và tiêu chuẩn kỹ thuật cho hệ thống.
 
 ## Frontend
 
-| Thành phần | Công nghệ                  | Lý do lựa chọn                                | SSoT                                                   |
-| ---------- | -------------------------- | --------------------------------------------- | ------------------------------------------------------ |
-| Framework  | Next.js 14+ với App Router | [0020: Next.js](decisions/0020-nextjs.md)     | [`NFR-PERF-04`](../product/constraints.md#performance) |
-| UI Library | React 18+ với TypeScript   | [0021: React](decisions/0021-react.md)        | [`BC-005`](../product/constraints.md#business)         |
-| State      | Zustand + React Context    | [0022: Zustand](decisions/0022-zustand.md)    | [`BC-005`](../product/constraints.md#business)         |
-| Styling    | TailwindCSS 3.x            | [0023: Tailwind](decisions/0023-tailwind.md)  | [`NFR-PERF-04`](../product/constraints.md#performance) |
-| Components | HeroUI                     | [0024: HeroUI](decisions/0024-heroui.md)      | [`BC-005`](../product/constraints.md#business)         |
-| Realtime   | Socket.IO Client 4.x       | [0010: Socket.IO](decisions/0010-socketio.md) | [`TC-ARCH-05`](../product/constraints.md#architecture) |
-| Charts     | Recharts                   | [0025: Recharts](decisions/0025-recharts.md)  | [`BC-005`](../product/constraints.md#business)         |
+| Thành phần | Công nghệ                  | Lý do lựa chọn                                | SSoT                                                       |
+| ---------- | -------------------------- | --------------------------------------------- | ---------------------------------------------------------- |
+| Framework  | Next.js 14+ với App Router | [0020: Next.js](decisions/0020-nextjs.md)     | [`NFR-PERF-04`](../product/constraints.md#performance)     |
+| UI Library | React 18+ với TypeScript   | [0021: React](decisions/0021-react.md)        | [`BC-005`](../product/constraints.md#business-constraints) |
+| State      | Zustand + React Context    | [0022: Zustand](decisions/0022-zustand.md)    | [`BC-005`](../product/constraints.md#business-constraints) |
+| Styling    | TailwindCSS 3.x            | [0023: Tailwind](decisions/0023-tailwind.md)  | [`NFR-PERF-04`](../product/constraints.md#performance)     |
+| Components | HeroUI                     | [0024: HeroUI](decisions/0024-heroui.md)      | [`BC-005`](../product/constraints.md#business-constraints) |
+| Realtime   | Socket.IO Client 4.x       | [0010: Socket.IO](decisions/0010-socketio.md) | [`TC-ARCH-05`](../product/constraints.md#architecture)     |
+| Charts     | Recharts                   | [0025: Recharts](decisions/0025-recharts.md)  | [`BC-005`](../product/constraints.md#business-constraints) |
 
 ## Infrastructure
 
-| Thành phần    | Công nghệ                | Mô tả                                                      | SSoT                                                   |
-| ------------- | ------------------------ | ---------------------------------------------------------- | ------------------------------------------------------ |
-| Container     | Docker 24+               | [0030: Docker](decisions/0030-docker.md)                   | [`TC-ARCH-04`](../product/constraints.md#architecture) |
-| Orchestration | Docker Compose           | [0030: Docker](decisions/0030-docker.md)                   | [`TC-ARCH-04`](../product/constraints.md#architecture) |
-| Load Balancer | Nginx                    | [0032: Nginx](decisions/0032-nginx.md)                     | [`NFR-PERF-01`](../product/constraints.md#performance) |
-| CI/CD         | GitHub Actions           | [0031: Github Actions](decisions/0031-github-actions.md)   | [`BC-005`](../product/constraints.md#business)         |
-| File Storage  | Local + Nginx            | [0032: Nginx](decisions/0032-nginx.md) (Phục vụ file tĩnh) | [`BC-006`](../product/constraints.md#business)         |
-| Monitoring    | Winston + custom metrics | [0012: Winston](decisions/0012-winston.md)                 | [`BC-005`](../product/constraints.md#business)         |
+| Thành phần    | Công nghệ                | Mô tả                                                      | SSoT                                                       |
+| ------------- | ------------------------ | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| Container     | Docker 24+               | [0030: Docker](decisions/0030-docker.md)                   | [`TC-ARCH-04`](../product/constraints.md#architecture)     |
+| Orchestration | Docker Compose           | [0030: Docker](decisions/0030-docker.md)                   | [`TC-ARCH-04`](../product/constraints.md#architecture)     |
+| Load Balancer | Nginx                    | [0032: Nginx](decisions/0032-nginx.md)                     | [`NFR-PERF-01`](../product/constraints.md#performance)     |
+| CI/CD         | GitHub Actions           | [0031: Github Actions](decisions/0031-github-actions.md)   | [`BC-005`](../product/constraints.md#business-constraints) |
+| File Storage  | Local + Nginx            | [0032: Nginx](decisions/0032-nginx.md) (Phục vụ file tĩnh) | [`BC-006`](../product/constraints.md#business-constraints) |
+| Monitoring    | Winston + custom metrics | [0012: Winston](decisions/0012-winston.md)                 | [`BC-005`](../product/constraints.md#business-constraints) |

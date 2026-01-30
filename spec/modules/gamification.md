@@ -2,12 +2,15 @@
 id: gamification
 title: Gamification
 sidebar_label: Gamification
-sidebar_position: 7
+sidebar_position: 5
 ---
 
 # Gamification
 
 Module **Gamification** quản lý phần thưởng, điểm số và bảng xếp hạng.
+
+> **SSoT**: [Backlog](../../blueprint/product/backlog.md) |
+> [Database](../../blueprint/architecture/database.md)
 
 ---
 

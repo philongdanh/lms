@@ -2,7 +2,7 @@
 id: learning
 title: Learning Module Tests
 sidebar_label: Learning
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Learning Module Tests

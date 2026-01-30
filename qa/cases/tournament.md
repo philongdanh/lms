@@ -2,7 +2,7 @@
 id: tournament
 title: Tournament Module Tests
 sidebar_label: Tournament
-sidebar_position: 3
+sidebar_position: 5
 ---
 
 # Tournament module tests
