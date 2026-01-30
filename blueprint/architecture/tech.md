@@ -22,7 +22,6 @@ Lựa chọn công nghệ và tiêu chuẩn kỹ thuật cho hệ thống.
 | Cache      | Redis 7+                  | [0007: Redis](decisions/0007-redis.md)                                                                                                                     | [`TC-ARCH-03`](../product/constraints.md#architecture) |
 | Realtime   | Socket.IO + Redis adapter | [0010: Socket.IO](decisions/0010-socketio.md)                                                                                                              | [`TC-ARCH-05`](../product/constraints.md#architecture) |
 | Auth       | Passport.js + JWT         | [0008: JWT Refresh Token](decisions/0008-jwt-refresh-token.md), [0002: Multi Tenant](decisions/0002-multi-tenant.md), [0009: RBAC](decisions/0009-rbac.md) | [`NFR-SEC-03`](../product/constraints.md#security)     |
-| Queue      | BullMQ + Redis            | [0011: BullMQ](decisions/0011-bullmq.md), [0007: Redis](decisions/0007-redis.md)                                                                           | [`TC-ARCH-03`](../product/constraints.md#architecture) |
 
 ## Frontend
 
@@ -32,9 +31,8 @@ Lựa chọn công nghệ và tiêu chuẩn kỹ thuật cho hệ thống.
 | UI Library | React 18+ với TypeScript   | [0021: React](decisions/0021-react.md)        | [`BC-005`](../product/constraints.md#business-constraints) |
 | State      | Zustand + React Context    | [0022: Zustand](decisions/0022-zustand.md)    | [`BC-005`](../product/constraints.md#business-constraints) |
 | Styling    | TailwindCSS 3.x            | [0023: Tailwind](decisions/0023-tailwind.md)  | [`NFR-PERF-04`](../product/constraints.md#performance)     |
-| Components | HeroUI                     | [0024: HeroUI](decisions/0024-heroui.md)      | [`BC-005`](../product/constraints.md#business-constraints) |
+| Components | RetroUI                    | [0024: RetroUI](decisions/0024-retroui.md)    | [`BC-005`](../product/constraints.md#business-constraints) |
 | Realtime   | Socket.IO Client 4.x       | [0010: Socket.IO](decisions/0010-socketio.md) | [`TC-ARCH-05`](../product/constraints.md#architecture)     |
-| Charts     | Recharts                   | [0025: Recharts](decisions/0025-recharts.md)  | [`BC-005`](../product/constraints.md#business-constraints) |
 
 ## Infrastructure
 
