@@ -70,32 +70,15 @@ Admin -> "Content Service": publish_lesson(lesson_id)
 
 ### Upload Media
 
-Upload video/hình ảnh với kiểm tra malware.
+Upload video/hình ảnh sử dụng Presigned URL.
 
-```d2
-shape: sequence_diagram
-Teacher
-"Content Service"
-S3
-"AV Scanner"
-Database
-
-Teacher -> "Content Service": get_upload_url(filename)
-"Content Service" -> S3: generate_presigned_url
-S3 -> "Content Service": url
-"Content Service" -> Teacher: url
-Teacher -> S3: upload_file_binary
-S3 -> "Content Service": webhook_upload_complete
-"Content Service" -> "AV Scanner": scan_file
-"AV Scanner" -> "Content Service": safe
-"Content Service" -> Database: create_media_record
-```
+> **SSoT**:
+> [0033: SeaweedFS - Upload Flow](../../blueprint/architecture/decisions/0033-seaweedfs.md#upload-flow)
 
 ### Quy tắc & Ràng buộc
 
 - `Lesson` phải thuộc một `Topic` (phân cấp)
 - Teacher tạo draft, Admin xuất bản
-- File upload được quét malware (ClamAV)
 - Định dạng hỗ trợ: `xlsx`, `docx`, `pdf`
 - Dung lượng tối đa: 500MB cho video
 
@@ -140,11 +123,8 @@ Admin -> "Content Service": archive()
 
 ### File Upload (Presigned URL)
 
-Client upload trực tiếp lên Storage sử dụng Presigned URL:
-
-1. Client gọi `getUploadUrl` mutation → nhận Presigned URL
-2. Client upload file trực tiếp lên Storage (SeaweedFS)
-3. Storage callback hoặc client confirm → Backend lưu `Media` record
+> **SSoT**:
+> [0033: SeaweedFS - Upload Flow](../../blueprint/architecture/decisions/0033-seaweedfs.md#upload-flow)
 
 ### Sự kiện & Webhooks
 
@@ -171,5 +151,4 @@ Client upload trực tiếp lên Storage sử dụng Presigned URL:
 | ----------------------- | ------------------------------ |
 | Import file lỗi         | `Invalid File Format`          |
 | Import lỗi một phần     | Bỏ qua dòng lỗi, log, tiếp tục |
-| Phát hiện malware       | Từ chối upload, alert admin    |
 | Sửa nội dung người khác | `403 Forbidden`                |

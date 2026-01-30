@@ -9,6 +9,8 @@ sidebar_position: 9
 
 Đặc tả màn hình danh sách giải đấu.
 
+> **SSoT**: [Backlog](../../../blueprint/product/backlog.md)
+
 ---
 
 ## Overview

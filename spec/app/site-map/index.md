@@ -9,6 +9,8 @@ sidebar_position: 1
 
 Mô tả các trang trong hệ thống.
 
+> **SSoT**: [Backlog](../../../blueprint/product/backlog.md)
+
 ---
 
 | Đường dẫn               | Screen Spec                                       | Layout    | Quyền truy cập |

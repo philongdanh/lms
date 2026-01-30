@@ -9,6 +9,8 @@ sidebar_position: 20
 
 Đặc tả các layout chính của ứng dụng.
 
+> **SSoT**: [Backlog](../../../blueprint/product/backlog.md)
+
 ---
 
 ## PublicLayout

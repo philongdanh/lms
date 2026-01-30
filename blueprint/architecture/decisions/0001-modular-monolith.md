@@ -9,7 +9,7 @@ sidebar_position: 1
 
 Cần một kiến trúc phù hợp với team nhỏ nhưng có khả năng mở rộng.
 
-> SSoT: [`TC-ARCH-01`](../../product/constraints.md#architecture)
+> SSoT: [`TC-ARCH-001`](../design.md#architecture)
 
 ---
 

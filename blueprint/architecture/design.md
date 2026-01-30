@@ -13,17 +13,20 @@ Thiết kế kiến trúc hệ thống và các thành phần chính.
 
 ## Architecture
 
-| Khía cạnh     | Mẫu                       | Mô tả                                                   | SSoT                                                   |
-| ------------- | ------------------------- | ------------------------------------------------------- | ------------------------------------------------------ |
-| Kiến trúc     | Modular Monolith          | Phân module rõ ràng, dễ bảo trì                         | [`TC-ARCH-01`](../product/constraints.md#architecture) |
-| Multi-tenancy | Data Isolation            | Mỗi tenant có không gian dữ liệu riêng                  | [`TC-ARCH-06`](../product/constraints.md#architecture) |
-| Communication | Event-Driven              | Các module giao tiếp qua events (Redis Pub/Sub)         | [`TC-ARCH-03`](../product/constraints.md#architecture) |
-| Realtime      | Socket.IO + Redis Adapter | Redis adapter để mở rộng (scaling)                      | [`TC-ARCH-05`](../product/constraints.md#architecture) |
-| Bảo mật       | RBAC                      | Roles động theo tenant và permissions cứng cho hệ thống | [`NFR-SEC-01`](../product/constraints.md#security)     |
+| Khía cạnh     | Mẫu                       | Mô tả                                                   | SSoT                                           |
+| ------------- | ------------------------- | ------------------------------------------------------- | ---------------------------------------------- |
+| Kiến trúc     | Modular Monolith          | Phân module rõ ràng, dễ bảo trì                         | `TC-ARCH-001`                                  |
+| Database      | PostgreSQL / Prisma       | ACID transactions, JSONB support                        | `TC-ARCH-002`                                  |
+| Communication | Event-Driven              | Các module giao tiếp qua events (Redis Pub/Sub)         | `TC-ARCH-003`                                  |
+| Container     | Docker                    | Deployment nhất quán                                    | `TC-ARCH-004`                                  |
+| Realtime      | Socket.IO + Redis Adapter | Redis adapter để mở rộng (scaling)                      | `TC-ARCH-005`                                  |
+| Multi-tenancy | Data Isolation            | Mỗi tenant có không gian dữ liệu riêng                  | `TC-ARCH-006`                                  |
+| Background    | Async Jobs                | Queue processing for heavier tasks                      | `TC-ARCH-007`                                  |
+| Bảo mật       | RBAC                      | Roles động theo tenant và permissions cứng cho hệ thống | [`TC-006`](../product/constraints.md#security) |
 
 ```d2
 direction: right
-# SSoT: TC-ARCH-01 (Modular Monolith) | TC-ARCH-06 (Data Isolation)
+# SSoT: TC-ARCH-001 (Modular Monolith) | TC-ARCH-006 (Data Isolation)
 
 Web: Web Application
 App: Application

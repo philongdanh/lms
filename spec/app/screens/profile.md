@@ -9,6 +9,8 @@ sidebar_position: 11
 
 Đặc tả màn hình hồ sơ người dùng.
 
+> **SSoT**: [Backlog](../../../blueprint/product/backlog.md)
+
 ---
 
 ## Overview

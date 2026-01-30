@@ -9,7 +9,7 @@ sidebar_position: 2
 
 Cần multi-tenant strategy cho nhiều trường.
 
-> SSoT: [`TC-ARCH-06`](../../product/constraints.md#architecture)
+> SSoT: [`TC-ARCH-006`](../design.md#architecture)
 
 ---
 

@@ -75,8 +75,7 @@ Các chỉ số mục tiêu và phương pháp đo lường hiệu năng.
 
 ## Security Tests
 
-> **Validates**:
-> [NFR-SEC-01 to NFR-SEC-05](../blueprint/product/constraints.md#security)
+> **Validates**: [C-015 to C-019](../blueprint/product/constraints.md#security)
 
 | ID     | Test               | Mục tiêu      | Phương pháp          |
 | ------ | ------------------ | ------------- | -------------------- |

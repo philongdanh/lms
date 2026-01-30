@@ -42,24 +42,34 @@ Database -> "Admin Service": unique
 
 Nhập người dùng hàng loạt từ file CSV.
 
+> **SSoT**:
+> [0033: SeaweedFS - Upload Flow](../../blueprint/architecture/decisions/0033-seaweedfs.md#upload-flow)
+
 ```d2
 shape: sequence_diagram
 "Tenant Admin"
 "Admin Service"
-Storage
+SeaweedFS
 Queue
 Worker
 "Auth Service"
 Database
 "Notification Service"
 
-"Tenant Admin" -> "Admin Service": upload_csv(file)
-"Admin Service" -> Storage: save_temp_file
-"Admin Service" -> Queue: push_job(import_users)
+"Tenant Admin" -> "Admin Service": get_upload_url(filename)
+"Admin Service" -> SeaweedFS: generate_presigned_url
+SeaweedFS -> "Admin Service": signed_url
+"Admin Service" -> "Tenant Admin": return_url
+
+"Tenant Admin" -> SeaweedFS: upload_file(csv)
+SeaweedFS -> "Tenant Admin": 200 OK
+
+"Tenant Admin" -> "Admin Service": import_users(file_id)
+"Admin Service" -> Queue: push_job(import_users, file_id)
 "Admin Service" -> "Tenant Admin": job_id
 
 Worker -> Queue: pop_job
-Worker -> Storage: read_file
+Worker -> SeaweedFS: read_file(file_id)
 Worker -> "Auth Service": batch_create_users
 Worker -> Database: save_import_log
 Worker -> "Notification Service": notify_admin(result)

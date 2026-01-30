@@ -9,6 +9,8 @@ sidebar_position: 3
 
 Đặc tả màn hình đăng ký tài khoản.
 
+> **SSoT**: [Backlog](../../../blueprint/product/backlog.md)
+
 ---
 
 ## Overview

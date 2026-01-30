@@ -9,7 +9,7 @@ sidebar_position: 8
 
 Cần stateless auth cho multi-device support.
 
-> SSoT: [`NFR-SEC-03`](../../product/constraints.md#security)
+> SSoT: [`TC-008`](../../product/constraints.md#security)
 
 ---
 

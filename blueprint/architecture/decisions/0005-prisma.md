@@ -9,7 +9,7 @@ sidebar_position: 5
 
 Cần type-safe ORM cho NestJS.
 
-> SSoT: [`TC-ARCH-02`](../../product/constraints.md#architecture)
+> SSoT: [`TC-ARCH-002`](../design.md#architecture)
 
 ---
 

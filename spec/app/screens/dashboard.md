@@ -9,6 +9,8 @@ sidebar_position: 4
 
 Đặc tả màn hình Dashboard chính.
 
+> **SSoT**: [Backlog](../../../blueprint/product/backlog.md)
+
 ---
 
 ## Overview

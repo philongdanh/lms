@@ -22,6 +22,9 @@ Defines the hierarchy of truth to resolve discrepancies.
 - **Direction**: Updates flow Down (Blueprint -> Spec -> Code).
 - **Conflict**: If Code != Spec, **Spec is SSoT** (unless Spec is obviously
   broken).
+- **Synchronization**: Product Constraints (`constraints.md`) must be
+  synchronized with Architectural Decisions (`decisions/*.md`). Decisions take
+  precedence for technical specifics.
 
 ## 3. Workflow
 
