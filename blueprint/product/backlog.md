@@ -1,92 +1,97 @@
 ---
 id: backlog
-title: Backlog
-sidebar_label: Backlog
+title: Plan
+sidebar_label: Plan
 sidebar_position: 4
 ---
 
-# Backlog
+# Plan
 
-Kho dự trữ yêu cầu sản phẩm (Product Backlog) và thứ tự ưu tiên triển khai để
-tối ưu hóa giá trị.
-
----
-
-## Priority Legend
-
-> SSoT: [Constraints](constraints.md)
-
-| Độ ưu tiên | Mô tả                             | Điểm     |
-| ---------- | --------------------------------- | -------- |
-| P0         | Nghiêm trọng - Chặn (Blocker)     | 8-13 pts |
-| P1         | Cao - Phải có (Must have)         | 5-8 pts  |
-| P2         | Trung bình - Nên có (Should have) | 3-5 pts  |
-| P3         | Thấp - Có thì tốt (Nice to have)  | 1-3 pts  |
+Kế hoạch triển khai chi tiết theo Sprint.
 
 ---
 
-## Must Have (MVP Core - Phase 1)
+## Point System
 
-> **Lưu ý**: Các item dưới đây đã được chi tiết hóa thành User Story để sẵn sàng
-> cho Sprint Planning.
-
-### Xác thực
-
-| ID       | User Story                                                                                                                                                       | Thông tin                                             | Tiêu chí nghiệm thu                                                                                                                                                                                                                       |
-| :------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `US-001` | **Đăng ký bằng Email**<br/>- Là **Người dùng mới**<br/>- Tôi muốn **đăng ký bằng email**<br/>- Để **tạo tài khoản truy cập LMS**.                                | **Sprint**: S2<br/>**Points**: 5<br/>**Priority**: P0 | - Người dùng nhập Email, Mật khẩu, và Xác nhận mật khẩu.<br/>- Hệ thống validate định dạng email và độ mạnh mật khẩu.<br/>- Hệ thống gửi mã OTP về email để xác thực.<br/>- Tài khoản chỉ được kích hoạt sau khi xác thực OTP thành công. |
-| `US-002` | **Xác thực OTP Email**<br/>- Là **Người dùng**<br/>- Tôi muốn **nhập mã OTP gửi về email**<br/>- Để **xác minh danh tính**.                                      | **Sprint**: S2<br/>**Points**: 5<br/>**Priority**: P0 | - Input field chấp nhận mã 6 chữ số.<br/>- Countdown timer (ví dụ: 60s) cho việc gửi lại.<br/>- Logic xác thực kiểm tra với Redis/DB.<br/>- Fail sau 3 lần nhập sai.                                                                      |
-| `US-003` | **Luồng Đăng nhập**<br/>- Là **Người dùng đã đăng ký**<br/>- Tôi muốn **đăng nhập**<br/>- Để **truy cập dashboard cá nhân**.                                     | **Sprint**: S2<br/>**Points**: 5<br/>**Priority**: P0 | - Hỗ trợ đăng nhập bằng Email và Mật khẩu.<br/>- Trả về JWT Access Token và Refresh Token khi thành công.<br/>- Xử lý các case "Tài khoản bị khóa" hoặc "Sai mật khẩu" một cách bảo mật.                                                  |
-| `US-004` | **Quên mật khẩu**<br/>- Là **Người dùng**<br/>- Tôi muốn **đặt lại mật khẩu**<br/>- Để **lấy lại quyền truy cập nếu quên**.                                      | **Sprint**: S2<br/>**Points**: 3<br/>**Priority**: P1 | - Nhập email để nhận link reset/OTP.<br/>- Xác minh token bảo mật trước khi cho phép đổi mật khẩu.<br/>- Vô hiệu hóa các session cũ sau khi reset.                                                                                        |
-| `US-005` | **Đăng xuất**<br/>- Là **Người dùng**<br/>- Tôi muốn **đăng xuất**<br/>- Để **bảo mật tài khoản trên thiết bị dùng chung**.                                      | **Sprint**: S2<br/>**Points**: 2<br/>**Priority**: P1 | - Thu hồi Refresh Token trong database/Redis.<br/>- Xóa cookies/storage phía client.<br/>- Redirect về trang chủ Public.                                                                                                                  |
-| `US-006` | **Quản lý Session**<br/>- Là **System Admin**<br/>- Tôi muốn **quản lý user session**<br/>- Để **đảm bảo bảo mật và giới hạn thiết bị**.                         | **Sprint**: S2<br/>**Points**: 8<br/>**Priority**: P0 | - Lưu active sessions trong Redis.<br/>- Triển khai xoay vòng (rotation) Refresh Token.<br/>- Hỗ trợ Blacklist cho các token bị thu hồi.                                                                                                  |
-| `US-007` | **Protected Routes**<br/>- Là **Developer**<br/>- Tôi muốn **bảo vệ các route frontend**<br/>- Để **người dùng chưa xác thực không thể truy cập trang hạn chế**. | **Sprint**: S2<br/>**Points**: 5<br/>**Priority**: P0 | - Middleware kiểm tra JWT hợp lệ.<br/>- Redirect về trang Login nếu token thiếu hoặc hết hạn.<br/>- Phân quyền dựa trên Role (ví dụ: Admin vs Student).                                                                                   |
-
-### Học tập
-
-| ID       | User Story                                                                                                                                                | Thông tin                                             | Tiêu chí nghiệm thu                                                                                                                                                                                       |
-| :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `US-008` | **Danh sách môn học**<br/>- Là **Học viên**<br/>- Tôi muốn **xem danh sách môn học**<br/>- Để **chọn nội dung muốn học**.                                 | **Sprint**: S3<br/>**Points**: 3<br/>**Priority**: P1 | - Hiển thị danh sách môn học với icon/hình ảnh.<br/>- Lọc theo Khối lớp/Cấp độ.<br/>- Trạng thái Skeleton loading trong khi fetch dữ liệu.                                                                |
-| `US-009` | **Xem Lộ trình học**<br/>- Là **Học viên**<br/>- Tôi muốn **xem cây bài học (roadmap)**<br/>- Để **theo dõi tiến độ của mình**.                           | **Sprint**: S3<br/>**Points**: 5<br/>**Priority**: P0 | - Hiển thị dạng cây hoặc timeline các bài học.<br/>- Chỉ thị trạng thái: Đang khóa (Locked), Mở khóa (Unlocked), Hoàn thành (Completed).<br/>- Chặn click vào các bài đang khóa.                          |
-| `US-010` | **Xem nội dung bài học**<br/>- Là **Học viên**<br/>- Tôi muốn **xem tài liệu bài học**<br/>- Để **học kiến thức**.                                        | **Sprint**: S3<br/>**Points**: 5<br/>**Priority**: P0 | - Hỗ trợ Rich Text, Hình ảnh, và embed Video cơ bản.<br/>- Điều hướng "Bài trước/Bài sau".                                                                                                                |
-| `US-011` | **Quiz/Bài tập**<br/>- Là **Học viên**<br/>- Tôi muốn **làm bài trắc nghiệm**<br/>- Để **kiểm tra kiến thức**.                                            | **Sprint**: S3<br/>**Points**: 8<br/>**Priority**: P0 | - Hiển thị câu hỏi và 4 lựa chọn.<br/>- Client-side validation cho phản hồi tức thì (nếu là chế độ luyện tập).<br/>- Submit câu trả lời lên backend API.<br/>- Hiển thị tổng kết điểm sau khi hoàn thành. |
-| `US-012` | **Theo dõi tiến độ**<br/>- Là **Hệ thống**<br/>- Tôi muốn **ghi nhận tiến độ người dùng**<br/>- Để **các tính năng như học tiếp và tính điểm hoạt động**. | **Sprint**: S3<br/>**Points**: 5<br/>**Priority**: P0 | - Lưu vị trí "Học lần cuối" (Last Watched).<br/>- Đánh dấu bài học là "Hoàn thành" khi đủ điều kiện (ví dụ: qua bài quiz).<br/>- Cập nhật % tiến độ tổng của Môn học.                                     |
-| `US-013` | **Hệ thống tính điểm**<br/>- Là **Hệ thống**<br/>- Tôi muốn **tính điểm**<br/>- Để **thưởng cho học viên**.                                               | **Sprint**: S4<br/>**Points**: 5<br/>**Priority**: P1 | - Định nghĩa công thức: Điểm cơ bản + Bonus (tốc độ/streak).<br/>- Lưu lịch sử các lần làm bài.<br/>- Chống gian lận (rate limit submissions).                                                            |
-| `US-014` | **Hệ thống Level Up**<br/>- Là **Học viên**<br/>- Tôi muốn **lên cấp dựa trên XP**<br/>- Để **cảm thấy sự tiến bộ**.                                      | **Sprint**: S4<br/>**Points**: 5<br/>**Priority**: P2 | - Logic tính toán XP dựa trên điểm số/hoạt động.<br/>- Các mốc Level (ví dụ: Lvl 1: 0-100xp).<br/>- Thông báo/Hiệu ứng khi lên cấp.                                                                       |
-
-### Giải đấu (Tournament)
-
-| ID       | User Story                                                                                                                                         | Thông tin                                              | Tiêu chí nghiệm thu                                                                                                                                                                           |
-| :------- | :------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `US-015` | **Danh sách giải đấu**<br/>- Là **Học viên**<br/>- Tôi muốn **xem các giải đấu khả dụng**<br/>- Để **tham gia tranh tài**.                         | **Sprint**: S5<br/>**Points**: 5<br/>**Priority**: P1  | - Liệt kê giải Đang diễn ra, Sắp diễn ra, và Đã kết thúc.<br/>- Hiển thị metadata: Thời gian bắt đầu, Giải thưởng, Số lượng tham gia.                                                         |
-| `US-016` | **Chi tiết giải đấu**<br/>- Là **Học viên**<br/>- Tôi muốn **xem luật và giải thưởng**<br/>- Để **quyết định có tham gia hay không**.              | **Sprint**: S5<br/>**Points**: 5<br/>**Priority**: P1  | - Hiển thị đầy đủ mô tả và luật lệ.<br/>- Hiển thị preview bảng xếp hạng nếu đang diễn ra.                                                                                                    |
-| `US-017` | **Luồng đăng ký**<br/>- Là **Học viên**<br/>- Tôi muốn **đăng ký giải đấu**<br/>- Để **được tham gia**.                                            | **Sprint**: S5<br/>**Points**: 3<br/>**Priority**: P1  | - Kiểm tra điều kiện (ví dụ: Level tối thiểu, Số dư vé).<br/>- Trừ vé/phí nếu có.<br/>- Thêm user vào danh sách tham gia.                                                                     |
-| `US-018` | **Match Gameplay**<br/>- Là **Người tham gia**<br/>- Tôi muốn **trả lời câu hỏi realtime**<br/>- Để **thi đấu với người khác**.                    | **Sprint**: S6<br/>**Points**: 13<br/>**Priority**: P0 | - Kết nối WebSocket để đồng bộ câu hỏi.<br/>- Gửi câu trả lời trong giới hạn thời gian (ví dụ: 10s).<br/>- Phản hồi realtime (Đúng/Sai) sau khi hết giờ.<br/>- Xử lý mất kết nối/kết nối lại. |
-| `US-019` | **Bảng xếp hạng realtime**<br/>- Là **Người tham gia**<br/>- Tôi muốn **thấy hạng của mình cập nhật trực tiếp**<br/>- Để **biết vị trí hiện tại**. | **Sprint**: S6<br/>**Points**: 8<br/>**Priority**: P0  | - Redis Sorted Set (ZSET) cho ranking.<br/>- Broadcast top 10 và hạng của user sau mỗi câu hỏi.<br/>- Tối ưu cho lượng truy cập cao (high concurrency).                                       |
-| `US-020` | **Kết quả & Tính toán**<br/>- Là **Hệ thống**<br/>- Tôi muốn **chốt kết quả sau khi giải đấu kết thúc**<br/>- Để **trao thưởng**.                  | **Sprint**: S6<br/>**Points**: 5<br/>**Priority**: P0  | - Chốt bảng xếp hạng cuối cùng.<br/>- Ghi lại lịch sử đấu.<br/>- Trigger phát thưởng (async job).                                                                                             |
+| Points   | Description                                                                    |
+| :------- | :----------------------------------------------------------------------------- |
+| **8-13** | Nghiêm trọng - Chặn (Blocker). Phải làm ngay (Priority P0).                    |
+| **5-8**  | Cao - Phải có (Must have). Cần thiết cho Release (Priority P1).                |
+| **3-5**  | Trung bình - Nên có (Should have). Quan trọng nhưng có thể hoãn (Priority P2). |
+| **1-3**  | Thấp - Có thì tốt (Nice to have). Làm khi rảnh (Priority P3).                  |
 
 ---
 
-## Should Have (Future Sprints)
+## Sprint 2: Auth & Users
 
-| ID       | User Story                                                                                                                             | Thông tin                                             | Tiêu chí nghiệm thu                                                                                                                                                                              |
-| :------- | :------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `US-021` | **Video bài học**<br/>- Là **Học viên**<br/>- Tôi muốn **xem video bài giảng**<br/>- Để **hiểu rõ các chủ đề phức tạp**.               | **Sprint**: S7<br/>**Points**: 8<br/>**Priority**: P2 | - Tích hợp Video player (ví dụ: stream từ cloud storage).<br/>- Các controls: Play, Pause, Seek.<br/>- Lưu timestamp "Xem lần cuối".                                                             |
-| `US-022` | **Chuỗi học tập (Streak)**<br/>- Là **Học viên**<br/>- Tôi muốn **duy trì chuỗi học hàng ngày**<br/>- Để **có động lực học mỗi ngày**. | **Sprint**: S7<br/>**Points**: 5<br/>**Priority**: P2 | - Theo dõi chuỗi ngày liên tiếp có ít nhất một hoạt động hoàn thành.<br/>- Hiển thị bộ đếm streak trên dashboard.<br/>- Thông báo/Cảnh báo khi chuỗi sắp bị ngắt.                                |
-| `US-023` | **Hồ sơ người dùng**<br/>- Là **Người dùng**<br/>- Tôi muốn **chỉnh sửa hồ sơ**<br/>- Để **cá nhân hóa tài khoản**.                    | **Sprint**: S8<br/>**Points**: 5<br/>**Priority**: P2 | - Đổi Avatar (upload ảnh).<br/>- Cập nhật Tên hiển thị.<br/>- Xem thống kê tài khoản (Ngày tham gia, tổng XP).                                                                                   |
-| `US-024` | **Huy hiệu & Thành tích**<br/>- Là **Học viên**<br/>- Tôi muốn **đạt được các huy hiệu**<br/>- Để **khoe thành tích của mình**.        | **Sprint**: S8<br/>**Points**: 8<br/>**Priority**: P2 | - Hệ thống trao huy hiệu dựa trên tiêu chí (ví dụ: "100% Điểm đầu tiên", "Chuỗi 7 ngày").<br/>- Tab "Thành tích" trong Hồ sơ để xem huy hiệu đã đạt.<br/>- Popup thông báo khi mở khóa huy hiệu. |
-| `US-025` | **Liên kết tài khoản con**<br/>- Là **Phụ huynh**<br/>- Tôi muốn **liên kết tài khoản của con**<br/>- Để **giám sát việc học**.        | **Sprint**: S8<br/>**Points**: 5<br/>**Priority**: P2 | - Tạo mã mời từ tài khoản Con.<br/>- Phụ huynh nhập mã để liên kết.<br/>- Phương thức xác thực để ngăn chặn liên kết trái phép.                                                                  |
-| `US-026` | **Xem tiến độ của con**<br/>- Là **Phụ huynh**<br/>- Tôi muốn **xem báo cáo về con**<br/>- Để **biết con có học tốt không**.           | **Sprint**: S8<br/>**Points**: 5<br/>**Priority**: P2 | - Dashboard hiển thị hoạt động gần đây của con.<br/>- Biểu đồ tóm tắt tuần (Thời gian học, XP đạt được).<br/>- Cảnh báo phụ huynh nếu con không học trong X ngày.                                |
+> **Focus**: Foundation of Identity, Security, and Sessions.
+
+| ID       | User Story (Role - Action - Benefit)                             | Points | Acceptance Criteria                                                                                                                                                                                                                             |
+| :------- | :--------------------------------------------------------------- | :----- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `US-001` | **Đăng ký**: Người dùng mới đăng ký bằng email để tạo tài khoản. | 8      | - Nhập Email, Mật khẩu, Xác nhận mật khẩu.<br/>- Validate định dạng email và độ mạnh mật khẩu.<br/>- Gửi OTP về email. Tài khoản chỉ kích hoạt sau khi xác thực xong.<br/>- **Constraint**: Chỉ hỗ trợ đăng ký bằng Email (chưa có Social/SĐT). |
+| `US-002` | **Xác thực OTP**: Nhập mã OTP từ email để xác minh danh tính.    | 8      | - Input 6 chữ số. Countdown timer (60s) gửi lại.<br/>- Logic kiểm tra mã với Redis/DB.<br/>- Khóa tạm thời sau 3 lần nhập sai liên tiếp.                                                                                                        |
+| `US-003` | **Đăng nhập**: Đăng nhập bằng Email/Pass để vào dashboard.       | 8      | - Hỗ trợ đăng nhập Email/Password.<br/>- Trả về JWT Access Token & Refresh Token.<br/>- Xử lý bảo mật các case "Tài khoản bị khóa" hoặc "Sai mật khẩu".                                                                                         |
+| `US-004` | **Quên mật khẩu**: Reset mật khẩu qua email.                     | 5      | - Nhập email nhận link reset hoặc OTP.<br/>- Xác minh token bảo mật hợp lệ trước khi cho đổi pass.<br/>- Vô hiệu hóa session cũ ngay sau khi đổi thành công.                                                                                    |
+| `US-005` | **Đăng xuất**: Thoát tài khoản an toàn trên thiết bị.            | 5      | - Thu hồi Refresh Token trong Database/Redis.<br/>- Xóa Cookies / LocalStorage phía client.<br/>- Redirect về trang chủ Public.                                                                                                                 |
+| `US-006` | **Quản lý Session**: Admin quản lý user session để bảo mật.      | 8      | - Danh sách active sessions lưu trong Redis.<br/>- Cơ chế xoay vòng (rotation) Refresh Token.<br/>- Giới hạn tối đa 3 thiết bị đồng thời.                                                                                                       |
+| `US-007` | **Protected Routes**: Chặn truy cập chưa xác thực ở Frontend.    | 8      | - Middleware kiểm tra JWT hợp lệ mỗi request.<br/>- Redirect về trang Login nếu token thiếu/hết hạn.<br/>- Phân quyền access dựa trên Role (Admin/Student).                                                                                     |
+
+## Sprint 3: Learning Core
+
+> **Focus**: Core LMS features - Subjects, Lessons, Quizzes.
+
+| ID       | User Story (Role - Action - Benefit)                     | Points | Acceptance Criteria                                                                                                                                     |
+| :------- | :------------------------------------------------------- | :----- | :------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `US-008` | **Danh sách môn**: Học viên xem môn học (Toán, TV, TA).  | 5      | - Hiển thị danh sách 3 môn: Toán, Tiếng Việt, Tiếng Anh.<br/>- Bộ lọc theo Khối lớp và Cấp độ.<br/>- Skeleton loading khi đang fetch dữ liệu.           |
+| `US-009` | **Xem Lộ trình**: Xem cây bài học để theo dõi tiến độ.   | 8      | - Hiển thị bài học dạng cây (Tree) hoặc Timeline.<br/>- Trạng thái rõ ràng: Locked, Unlocked, Completed.<br/>- Chặn click vào các bài đang bị khóa.     |
+| `US-010` | **Xem bài học**: Xem nội dung (Rich text, Video, Image). | 8      | - Hỗ trợ nội dung Rich Text, Hình ảnh, Embed Video.<br/>- Điều hướng bài trước/sau thuận tiện.<br/>- Tối ưu load time &lt;3s (FCP).                     |
+| `US-011` | **Quiz**: Làm trắc nghiệm để kiểm tra kiến thức.         | 8      | - Hiển thị câu hỏi + 4 lựa chọn trả lời.<br/>- Client-side validation (chế độ luyện tập) cho phản hồi nhanh.<br/>- Submit kết quả lên API để tính điểm. |
+| `US-012` | **Tiến độ**: Hệ thống ghi nhận tiến độ để học tiếp.      | 8      | - Lưu vị trí "Học lần cuối" (Last Watched).<br/>- Đánh dấu "Hoàn thành" khi đủ điều kiện (ví dụ: pass quiz).<br/>- Cập nhật % tiến độ tổng của môn học. |
+
+## Sprint 4: Polish & Gamification
+
+> **Focus**: Scoring system, Leveling, and Polish for MVP Release.
+
+| ID       | User Story (Role - Action - Benefit)                    | Points | Acceptance Criteria                                                                                                                        |
+| :------- | :------------------------------------------------------ | :----- | :----------------------------------------------------------------------------------------------------------------------------------------- |
+| `US-013` | **Tính điểm**: Tính điểm thưởng hoạt động cho học viên. | 5      | - Công thức: Điểm cơ bản + Bonus (tốc độ/streak).<br/>- Lưu lịch sử làm bài chi tiết.<br/>- Rate limit submissions để chống spam/gian lận. |
+| `US-014` | **Level Up**: Lên cấp dựa trên XP tích lũy.             | 5      | - Logic tính XP và các mốc Level (ví dụ: Lvl 1 = 100xp).<br/>- Hiệu ứng/Thông báo chúc mừng khi lên cấp.                                   |
+
+## Sprint 5-6: Tournament
+
+> **Focus**: Realtime features, WebSockets, Leaderboards (Post-MVP Expansion).
+
+| ID       | User Story (Role - Action - Benefit)                        | Points | Acceptance Criteria                                                                                                                                                                           |
+| :------- | :---------------------------------------------------------- | :----- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `US-015` | **Danh sách giải**: Xem giải đấu (Đang/Sắp/Đã) để tham gia. | 5      | - Phân loại: Đang diễn ra, Sắp diễn ra, Đã kết thúc.<br/>- Metadata: Thời gian, Giải thưởng, Số lượng user.<br/>- Hỗ trợ hiển thị tốt với lượng truy cập cao.                                 |
+| `US-016` | **Chi tiết giải**: Xem luật và giải thưởng.                 | 5      | - Hiển thị mô tả chi tiết, luật lệ thi đấu.<br/>- Preview bảng xếp hạng tạm thời (nếu đang diễn ra).                                                                                          |
+| `US-017` | **Đăng ký giải**: Tham gia vào danh sách thi đấu.           | 5      | - Kiểm tra điều kiện: Level tối thiểu, Vé tham dự.<br/>- Trừ vé/phí (nếu có) và thêm user vào danh sách.<br/>- Chặn đăng ký nếu đã full slot hoặc quá hạn.                                    |
+| `US-018` | **Gameplay**: Trả lời câu hỏi realtime để thi đấu.          | 13     | - WebSocket đồng bộ câu hỏi cho tất cả người chơi.<br/>- Giới hạn thời gian trả lời (ví dụ: 10s). Feedback Đúng/Sai ngay lập tức.<br/>- Độ trễ thấp (&lt;100ms), xử lý mất kết nối/reconnect. |
+| `US-019` | **Rank Realtime**: Thấy thứ hạng cập nhật trực tiếp.        | 8      | - Ranking bằng Redis Sorted Set (ZSET).<br/>- Broadcast Top 10 + Hạng cá nhân sau mỗi câu hỏi.<br/>- Chịu tải cao (10,000 CCU).                                                               |
+| `US-020` | **Kết quả**: Chốt bảng xếp hạng và trao thưởng.             | 8      | - Chốt bảng xếp hạng final khi giải kết thúc.<br/>- Lưu lịch sử thi đấu vào DB chính.<br/>- Trigger job trả thưởng (async).                                                                   |
+
+## Sprint 7: Advanced Features
+
+> **Focus**: Advanced retention features and Parent tools.
+
+| ID       | User Story                                          | Points | Acceptance Criteria                                                                                                                                          |
+| :------- | :-------------------------------------------------- | :----- | :----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `US-021` | **Video bài học**: Streaming video player.          | 5      | - Tích hợp Video Player (stream từ cloud storage).<br/>- Controls: Play, Pause, Seek, Volume.<br/>- Lưu timestamp đang xem dở.                               |
+| `US-022` | **Streak**: Chuỗi học tập hàng ngày.                | 5      | - Đếm số ngày liên tiếp có hoạt động học.<br/>- Hiển thị bộ đếm Streak nổi bật trên Dashboard.<br/>- Cảnh báo/Nhắc nhở khi chuỗi sắp bị ngắt.                |
+| `US-023` | **Hồ sơ**: Chỉnh sửa Avatar, Tên, xem Stats.        | 5      | - Upload ảnh Avatar cá nhân.<br/>- Cập nhật Tên hiển thị.<br/>- Xem thống kê: Ngày tham gia, Tổng XP, Rank.                                                  |
+| `US-024` | **Huy hiệu**: Hệ thống thành tích (Badges).         | 5      | - Trao huy hiệu theo tiêu chí (ví dụ: "7 ngày liên tiếp", "100 điểm").<br/>- Tab "Thành tích" trong profile.<br/>- Popup chúc mừng khi mở khóa huy hiệu mới. |
+| `US-025` | **Liên kết con**: Phụ huynh liên kết tài khoản con. | 5      | - Tạo mã mời (Invite Code) từ tài khoản Con.<br/>- Phụ huynh nhập mã để gửi yêu cầu liên kết.<br/>- Xác thực 2 chiều để tránh liên kết trái phép.            |
+| `US-026` | **Báo cáo con**: Phụ huynh xem tiến độ của con.     | 5      | - Dashboard phụ huynh hiển thị hoạt động của con.<br/>- Biểu đồ thời gian học, XP tuần.<br/>- Cảnh báo nếu con không hoạt động trong X ngày.                 |
 
 ---
 
-## Could Have (Backlog)
+## Backlog (Future)
 
-| ID       | User Story                                                                                                                                               | Thông tin                                                   | Tiêu chí nghiệm thu                                                                                                                                                                   |
-| :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `US-027` | **Đăng ký bằng Số điện thoại**<br/>- Là **Người dùng mới**<br/>- Tôi muốn **đăng ký bằng số điện thoại**<br/>- Để **tạo tài khoản dễ dàng trên mobile**. | **Sprint**: Backlog<br/>**Points**: 5<br/>**Priority**: P3  | - Người dùng nhập Số điện thoại.<br/>- Hệ thống validate định dạng số điện thoại (VN).<br/>- Hệ thống trigger tạo mã OTP.<br/>- Tài khoản chỉ được tạo sau khi xác thực OTP.          |
-| `US-028` | **Dark Mode**<br/>- Là **Người dùng**<br/>- Tôi muốn **chuyển sang chế độ tối**<br/>- Để **giảm mỏi mắt vào ban đêm**.                                   | **Sprint**: Backlog<br/>**Points**: 3<br/>**Priority**: P3  | - Toggle switch trong Cài đặt / Navbar.<br/>- Lưu preference vào LocalStorage hoặc User Settings DB.<br/>- Tất cả UI components hỗ trợ màu sắc dark theme.                            |
-| `US-029` | **Chế độ Offline**<br/>- Là **Học viên**<br/>- Tôi muốn **tải bài học**<br/>- Để **học khi không có mạng**.                                              | **Sprint**: Backlog<br/>**Points**: 13<br/>**Priority**: P3 | - Nút "Tải xuống" cho bài học/quiz.<br/>- Cơ chế caching cục bộ (ví dụ: IndexedDB / PWA Service Worker).<br/>- Đồng bộ tiến độ khi có mạng trở lại.                                   |
-| `US-030` | **Thông báo đẩy (Push)**<br/>- Là **Người dùng**<br/>- Tôi muốn **nhận thông báo**<br/>- Để **không lỡ các cập nhật quan trọng**.                        | **Sprint**: Backlog<br/>**Points**: 5<br/>**Priority**: P3  | - Yêu cầu quyền Browser Push Notification.<br/>- Gửi thông báo cho: Giải đấu mới, Nhắc nhở hàng ngày, Hoạt động bạn bè.<br/>- Cài đặt để bật/tắt các loại thông báo cụ thể.           |
-| `US-031` | **Đăng nhập Social (Google)**<br/>- Là **Người dùng**<br/>- Tôi muốn **đăng nhập bằng Google**<br/>- Để **không phải nhớ thêm mật khẩu**.                | **Sprint**: Backlog<br/>**Points**: 5<br/>**Priority**: P3  | - Nút "Tiếp tục với Google" trên trang Đăng nhập/Đăng ký.<br/>- Kiểm tra nếu email đã tồn tại; nếu chưa, tự động đăng ký.<br/>- Liên kết tài khoản Google với tài khoản email sẵn có. |
-| `US-032` | **Cửa hàng đổi thưởng**<br/>- Là **Học viên**<br/>- Tôi muốn **tiêu xu (coins)**<br/>- Để **mua khung avatar hoặc giao diện**.                           | **Sprint**: Backlog<br/>**Points**: 8<br/>**Priority**: P3  | - Giao diện Shop liệt kê vật phẩm và giá.<br/>- Logic giao dịch "Mua" (trừ số dư, thêm vật phẩm vào kho).<br/>- "Kho đồ" để xem và trang bị vật phẩm.                                 |
+| ID       | User Story                                    | Points | Acceptance Criteria                                                                                                            |
+| :------- | :-------------------------------------------- | :----- | :----------------------------------------------------------------------------------------------------------------------------- |
+| `US-027` | **Đăng ký SĐT**: Đăng ký qua mobile phone.    | 3      | - Nhập SĐT, Validate đầu số VN.<br/>- Gửi OTP qua SMS.<br/>- Tạo tài khoản sau khi verify OTP.                                 |
+| `US-028` | **Dark Mode**: Giao diện tối.                 | 3      | - Toggle Switch chuyển đổi Light/Dark theme.<br/>- Lưu preference vào LocalStorage/DB.<br/>- UI Component thích ứng màu sắc.   |
+| `US-029` | **Offline Mode**: Tải bài học để học offline. | 3      | - Nút "Tải xuống" bài học/quiz.<br/>- Cache local (IndexedDB / Service Worker).<br/>- Sync tiến độ lên server khi có mạng lại. |
+| `US-030` | **Push Notify**: Thông báo trình duyệt.       | 3      | - Xin quyền Browser Notification.<br/>- Gửi noti: Có giải đấu mới, Nhắc học bài.<br/>- Cài đặt Bật/Tắt từng loại thông báo.    |
+| `US-031` | **Social Login**: Login Google.               | 3      | - Nút "Tiếp tục với Google" (OAuth2).<br/>- Auto-register nếu email chưa tồn tại.<br/>- Link với tài khoản email cũ nếu trùng. |
+| `US-032` | **Shop**: Đổi xu lấy vật phẩm/avatar.         | 3      | - Danh sách vật phẩm + Giá (Coins).<br/>- Logic mua: Trừ tiền, Thêm item vào kho.<br/>- Giao diện "Kho đồ" để trang bị item.   |
