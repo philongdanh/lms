@@ -24,7 +24,7 @@ Kế hoạch triển khai chi tiết theo Sprint
 
 ## Sprint 2: Auth & Users
 
-> **Focus**: Foundation of Identity, Security, and Sessions
+> **Focus**: Xây dựng nền tảng Identity, Security và quản lý Sessions
 
 | ID       | User Story                                    | Points | Acceptance Criteria                                                                                                                                                                                                                         |
 | :------- | :-------------------------------------------- | :----- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -38,7 +38,7 @@ Kế hoạch triển khai chi tiết theo Sprint
 
 ## Sprint 3: Learning Core
 
-> **Focus**: Core LMS features - Subjects, Lessons, Quizzes
+> **Focus**: Tính năng LMS cốt lõi - Subjects, Lessons và Quizzes
 
 | ID       | User Story                             | Points | Acceptance Criteria                                                                                                                                  |
 | :------- | :------------------------------------- | :----- | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -50,7 +50,7 @@ Kế hoạch triển khai chi tiết theo Sprint
 
 ## Sprint 4: Polish & Gamification
 
-> **Focus**: Scoring system, Leveling, and Polish for MVP Release
+> **Focus**: Hệ thống Scoring, Leveling và Polish cho bản phát hành MVP
 
 | ID       | User Story                      | Points | Acceptance Criteria                                                                                                                     |
 | :------- | :------------------------------ | :----- | :-------------------------------------------------------------------------------------------------------------------------------------- |
@@ -59,7 +59,7 @@ Kế hoạch triển khai chi tiết theo Sprint
 
 ## Sprint 5-6: Tournament
 
-> **Focus**: Realtime features, WebSockets, Leaderboards (Post-MVP Expansion)
+> **Focus**: Tính năng Realtime, WebSockets, Leaderboards (Mở rộng Post-MVP)
 
 | ID       | User Story                              | Points | Acceptance Criteria                                                                                                                                                                        |
 | :------- | :-------------------------------------- | :----- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -72,7 +72,7 @@ Kế hoạch triển khai chi tiết theo Sprint
 
 ## Sprint 7: Advanced Features
 
-> **Focus**: Advanced retention features and Parent tools
+> **Focus**: Các tính năng Retention nâng cao và công cụ cho Parent
 
 | ID       | User Story                        | Points | Acceptance Criteria                                                                                                                                       |
 | :------- | :-------------------------------- | :----- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
