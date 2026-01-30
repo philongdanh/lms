@@ -23,6 +23,7 @@ Thiết kế kiến trúc hệ thống và các thành phần chính.
 
 ```d2
 direction: right
+# SSoT: TC-ARCH-01 (Modular Monolith) | TC-ARCH-06 (Data Isolation)
 
 Web: Web Application
 App: Application

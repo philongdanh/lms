@@ -13,7 +13,9 @@ Ma trận phân quyền cứng cho hệ thống LMS multi-tenant.
 
 ## Roles
 
-> **SSoT**: [0009: RBAC](decisions/0009-rbac.md)
+> SSoT: [`NFR-SEC-01`](../product/constraints.md#security) (Constraints) |
+> [0009: RBAC](decisions/0009-rbac.md) (Decision) | [System Design](design.md)
+> (Design)
 
 | Role           | Phạm vi  | Mô tả                                                |
 | -------------- | -------- | ---------------------------------------------------- |
@@ -116,6 +118,8 @@ Danh sách permission codes được seed cứng trong Entity `Permission`. Form
 
 ### 1. Tenant Isolation
 
+> SSoT: [`TC-ARCH-06`](../product/constraints.md#architecture)
+
 - Tất cả data được cách ly theo `tenant_id`
 - User chỉ có thể truy cập data trong tenant được gán
 - `root-admin` có thể truy cập cross-tenant
@@ -131,6 +135,7 @@ Danh sách permission codes được seed cứng trong Entity `Permission`. Form
 
 ```d2
 direction: down
+# SSoT: NFR-SEC-01 (RBAC)
 
 root_admin: {
   label: "root-admin"

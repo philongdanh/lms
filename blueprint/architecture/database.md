@@ -15,8 +15,13 @@ ERD and data regulations for the multi-tenant system.
 
 ### ERD & models
 
+> SSoT: [`TC-ARCH-02`](../product/constraints.md#architecture) |
+> [0004: PostgreSQL](decisions/0004-postgresql.md) |
+> [0005: Prisma](decisions/0005-prisma.md)
+
 ```d2
 direction: right
+# SSoT: TC-ARCH-02 (Schema) | TC-ARCH-06 (Multi-tenancy)
 
 # ═══════════════════════════════════════════════════════════════
 # CORE: Tenant & User
@@ -347,6 +352,8 @@ Reward -> RewardRedemption: 1:N
 
 ### Unique Constraints
 
+> SSoT: [`TC-ARCH-06`](../product/constraints.md#architecture) (Multi-tenancy)
+
 | Bảng          | Constraint             | Mô tả                                |
 | ------------- | ---------------------- | ------------------------------------ |
 | `Tenant`      | `code`                 | Mã tenant unique toàn hệ thống       |
@@ -372,6 +379,9 @@ Reward -> RewardRedemption: 1:N
 ## Storage
 
 ### Lớp Cache
+
+> SSoT: [`TC-ARCH-03`](../product/constraints.md#architecture) |
+> [0007: Redis](decisions/0007-redis.md)
 
 | Loại Cache    | Lưu trữ    | TTL      | Mục đích                    |
 | ------------- | ---------- | -------- | --------------------------- |
