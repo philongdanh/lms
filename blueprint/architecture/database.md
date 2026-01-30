@@ -33,7 +33,8 @@ Tenant: {
   code: string {constraint: unique}
   name: string
   domain: string
-  status: enum {constraint: "PENDING|ACTIVE|SUSPENDED"}
+  logo_url: string {constraint: nullable}
+  status: PENDING|ACTIVE|SUSPENDED
   settings: json
   created_at: timestamp
   updated_at: timestamp
@@ -46,7 +47,8 @@ User: {
   email: string
   password: string
   name: string
-  status: enum {constraint: "PENDING|ACTIVE|SUSPENDED|PENDING_DEACTIVATION"}
+  avatar_url: string {constraint: nullable}
+  status: PENDING|ACTIVE|SUSPENDED|PENDING_DEACTIVATION
   email_verified_at: timestamp {constraint: nullable}
   created_at: timestamp
   updated_at: timestamp
@@ -73,9 +75,10 @@ UserSession: {
 Role: {
   shape: sql_table
   id: string {constraint: primary_key}
-  tenant_id: string {constraint: "foreign_key, nullable"}
+  tenant_id: string {constraint: [foreign_key; nullable]}
   code: string
   name: string
+  color: string {constraint: nullable}
   description: string {constraint: nullable}
   created_at: timestamp
   updated_at: timestamp
@@ -114,6 +117,7 @@ Subject: {
   id: string {constraint: primary_key}
   tenant_id: string {constraint: foreign_key}
   name: string
+  icon_url: string {constraint: nullable}
   grade: int
   curriculum: string
   order: int
@@ -135,10 +139,11 @@ Lesson: {
   topic_id: string {constraint: foreign_key}
   created_by: string
   title: string
+  thumbnail_url: string {constraint: nullable}
   content: text
   passing_score: int
   estimated_minutes: int
-  status: enum {constraint: "DRAFT|PENDING_REVIEW|PUBLISHED|ARCHIVED"}
+  status: DRAFT|PENDING_REVIEW|PUBLISHED|ARCHIVED
   published_by: string {constraint: nullable}
   published_at: timestamp {constraint: nullable}
   created_at: timestamp
@@ -149,7 +154,7 @@ Question: {
   shape: sql_table
   id: string {constraint: primary_key}
   lesson_id: string {constraint: foreign_key}
-  type: enum {constraint: "SINGLE_CHOICE|MULTIPLE_CHOICE|TRUE_FALSE|FILL_BLANK|ESSAY"}
+  type: SINGLE_CHOICE|MULTIPLE_CHOICE|TRUE_FALSE|FILL_BLANK|ESSAY
   content: text
   options: json
   correct_answer: json
@@ -177,7 +182,7 @@ LessonProgress: {
   id: string {constraint: primary_key}
   user_id: string {constraint: foreign_key}
   lesson_id: string {constraint: foreign_key}
-  status: enum {constraint: "LOCKED|AVAILABLE|IN_PROGRESS|COMPLETED|REVIEW"}
+  status: LOCKED|AVAILABLE|IN_PROGRESS|COMPLETED|REVIEW
   best_score: int {constraint: nullable}
   attempts: int
   completed_at: timestamp {constraint: nullable}
@@ -224,8 +229,9 @@ Tournament: {
   tenant_id: string {constraint: foreign_key}
   created_by: string
   name: string
+  banner_url: string {constraint: nullable}
   max_participants: int
-  status: enum {constraint: "DRAFT|REGISTRATION|IN_PROGRESS|COMPLETED|CANCELLED"}
+  status: DRAFT|REGISTRATION|IN_PROGRESS|COMPLETED|CANCELLED
   starts_at: timestamp
   ends_at: timestamp
   created_at: timestamp
@@ -297,8 +303,9 @@ Reward: {
   shape: sql_table
   id: string {constraint: primary_key}
   name: string
+  image_url: string {constraint: nullable}
   cost: int
-  type: enum {constraint: "DIGITAL|PHYSICAL"}
+  type: DIGITAL|PHYSICAL
   is_active: boolean
 }
 
@@ -307,7 +314,7 @@ RewardRedemption: {
   id: string {constraint: primary_key}
   user_id: string {constraint: foreign_key}
   reward_id: string {constraint: foreign_key}
-  status: enum {constraint: "PENDING|FULFILLED"}
+  status: PENDING|FULFILLED
   redeemed_at: timestamp
 }
 
