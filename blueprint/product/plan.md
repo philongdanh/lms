@@ -26,62 +26,62 @@ Kế hoạch triển khai chi tiết theo Sprint
 
 > **Focus**: Foundation of Identity, Security, and Sessions
 
-| ID       | User Story                                    | Points | Acceptance Criteria                                                                                                   |
-| :------- | :-------------------------------------------- | :----- | :-------------------------------------------------------------------------------------------------------------------- |
-| `US-001` | **Đăng ký**: Tạo tài khoản mới bằng Email     | 8      | - Input: Email, Pass, Confirm<br/>- Validate format. Gửi OTP email<br/>- **Constraint**: Email only (no Social/Phone) |
-| `US-002` | **Xác thực OTP**: Verify danh tính            | 8      | - Input 6 số. Timer 60s<br/>- Check Redis/DB<br/>- Lock sau 3 lần sai                                                 |
-| `US-003` | **Đăng nhập**: Email/Pass vào dashboard       | 8      | - Trả về JWT Access & Refresh Token<br/>- Handle: Lock account, Wrong pass                                            |
-| `US-004` | **Quên mật khẩu**: Reset qua email            | 5      | - Input Email -> Link/OTP<br/>- Verify token -> Đổi pass<br/>- Hủy session cũ                                         |
-| `US-005` | **Đăng xuất**: Thoát an toàn                  | 5      | - Revoke Refresh Token (DB)<br/>- Clear Cookies/Local<br/>- Redirect Public                                           |
-| `US-006` | **Session**: Admin quản lý user session       | 8      | - List active sessions (Redis)<br/>- Rotate Refresh Token<br/>- Max 3 devices                                         |
-| `US-007` | **Protected Routes**: Chặn truy cập chưa auth | 8      | - Middleware check JWT<br/>- Redirect Login nếu invalid<br/>- Check Role (Admin/Student)                              |
+| ID       | User Story                                    | Points | Acceptance Criteria                                                                                                                                                                                                                         |
+| :------- | :-------------------------------------------- | :----- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `US-001` | **Đăng ký**: Tạo tài khoản mới bằng Email     | 8      | - Nhập Email, Mật khẩu, Xác nhận mật khẩu<br/>- Validate định dạng email và độ mạnh mật khẩu<br/>- Gửi OTP về email. Tài khoản chỉ kích hoạt sau khi xác thực xong<br/>- **Constraint**: Chỉ hỗ trợ đăng ký bằng Email (chưa có Social/SĐT) |
+| `US-002` | **Xác thực OTP**: Verify danh tính            | 8      | - Nhập 6 chữ số. Countdown timer (60s) gửi lại<br/>- Logic kiểm tra mã với Redis/DB<br/>- Khóa tạm thời sau 3 lần nhập sai liên tiếp                                                                                                        |
+| `US-003` | **Đăng nhập**: Email/Pass vào dashboard       | 8      | - Hỗ trợ đăng nhập Email/Password<br/>- Trả về JWT Access Token & Refresh Token<br/>- Xử lý bảo mật các case "Tài khoản bị khóa" hoặc "Sai mật khẩu"                                                                                        |
+| `US-004` | **Quên mật khẩu**: Reset qua email            | 5      | - Nhập email nhận link reset hoặc OTP<br/>- Xác minh token bảo mật hợp lệ trước khi cho đổi pass<br/>- Vô hiệu hóa session cũ ngay sau khi đổi thành công                                                                                   |
+| `US-005` | **Đăng xuất**: Thoát an toàn                  | 5      | - Thu hồi Refresh Token trong Database/Redis<br/>- Xóa Cookies / LocalStorage phía client<br/>- Redirect về trang chủ Public                                                                                                                |
+| `US-006` | **Session**: Admin quản lý user session       | 8      | - Danh sách active sessions lưu trong Redis<br/>- Cơ chế xoay vòng (rotation) Refresh Token<br/>- Giới hạn tối đa 3 thiết bị đồng thời                                                                                                      |
+| `US-007` | **Protected Routes**: Chặn truy cập chưa auth | 8      | - Middleware kiểm tra JWT hợp lệ mỗi request<br/>- Redirect về trang Login nếu token thiếu/hết hạn<br/>- Phân quyền access dựa trên Role (Admin/Student)                                                                                    |
 
 ## Sprint 3: Learning Core
 
 > **Focus**: Core LMS features - Subjects, Lessons, Quizzes
 
-| ID       | User Story                             | Points | Acceptance Criteria                                                                         |
-| :------- | :------------------------------------- | :----- | :------------------------------------------------------------------------------------------ |
-| `US-008` | **Danh sách môn**: Xem môn học         | 5      | - List: Toán, TV, TA<br/>- Filter: Khối, Cấp độ<br/>- Skeleton loading                      |
-| `US-009` | **Lộ trình**: Xem cây bài học          | 8      | - View: Tree / Timeline<br/>- State: Locked, Unlocked, Completed<br/>- Prevent click locked |
-| `US-010` | **Bài học**: Xem nội dung (Text/Video) | 8      | - Content: Rich Text, Image, Video Embed<br/>- Nav: Next/Prev<br/>- Load &lt;3s             |
-| `US-011` | **Quiz**: Trắc nghiệm                  | 8      | - UI: Câu hỏi + 4 đáp án<br/>- Client validation (luyện tập)<br/>- Submit -> Score          |
-| `US-012` | **Tiến độ**: Ghi nhận kết quả          | 8      | - Save "Last Watched"<br/>- Mark Done (if condition met)<br/>- Update % môn học             |
+| ID       | User Story                             | Points | Acceptance Criteria                                                                                                                                  |
+| :------- | :------------------------------------- | :----- | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `US-008` | **Danh sách môn**: Xem môn học         | 5      | - Hiển thị danh sách 3 môn: Toán, Tiếng Việt, Tiếng Anh<br/>- Bộ lọc theo Khối lớp và Cấp độ<br/>- Skeleton loading khi đang fetch dữ liệu           |
+| `US-009` | **Lộ trình**: Xem cây bài học          | 8      | - Hiển thị bài học dạng cây (Tree) hoặc Timeline<br/>- Trạng thái rõ ràng: Locked, Unlocked, Completed<br/>- Chặn click vào các bài đang bị khóa     |
+| `US-010` | **Bài học**: Xem nội dung (Text/Video) | 8      | - Hỗ trợ nội dung Rich Text, Hình ảnh, Embed Video<br/>- Điều hướng bài trước/sau thuận tiện<br/>- Tối ưu load time &lt;3s (FCP)                     |
+| `US-011` | **Quiz**: Trắc nghiệm                  | 8      | - Hiển thị câu hỏi + 4 lựa chọn trả lời<br/>- Client-side validation (chế độ luyện tập) cho phản hồi nhanh<br/>- Submit kết quả lên API để tính điểm |
+| `US-012` | **Tiến độ**: Ghi nhận kết quả          | 8      | - Lưu vị trí "Học lần cuối" (Last Watched)<br/>- Đánh dấu "Hoàn thành" khi đủ điều kiện (ví dụ: pass quiz)<br/>- Cập nhật % tiến độ tổng của môn học |
 
 ## Sprint 4: Polish & Gamification
 
 > **Focus**: Scoring system, Leveling, and Polish for MVP Release
 
-| ID       | User Story                      | Points | Acceptance Criteria                                                                    |
-| :------- | :------------------------------ | :----- | :------------------------------------------------------------------------------------- |
-| `US-013` | **Tính điểm**: Thưởng hoạt động | 5      | - Formula: Base + Bonus (speed/streak)<br/>- Save history<br/>- Rate limit submissions |
-| `US-014` | **Level Up**: Lên cấp theo XP   | 5      | - Calc XP -> Level items<br/>- Effect/Noti level up                                    |
+| ID       | User Story                      | Points | Acceptance Criteria                                                                                                                     |
+| :------- | :------------------------------ | :----- | :-------------------------------------------------------------------------------------------------------------------------------------- |
+| `US-013` | **Tính điểm**: Thưởng hoạt động | 5      | - Công thức: Điểm cơ bản + Bonus (tốc độ/streak)<br/>- Lưu lịch sử làm bài chi tiết<br/>- Rate limit submissions để chống spam/gian lận |
+| `US-014` | **Level Up**: Lên cấp theo XP   | 5      | - Logic tính XP và các mốc Level (ví dụ: Lvl 1 = 100xp)<br/>- Hiệu ứng/Thông báo chúc mừng khi lên cấp                                  |
 
 ## Sprint 5-6: Tournament
 
 > **Focus**: Realtime features, WebSockets, Leaderboards (Post-MVP Expansion)
 
-| ID       | User Story                              | Points | Acceptance Criteria                                                                       |
-| :------- | :-------------------------------------- | :----- | :---------------------------------------------------------------------------------------- |
-| `US-015` | **Danh sách giải**: Live/Upcoming/Ended | 5      | - Tabs: Đang, Sắp, Đã diễn ra<br/>- Info: Time, Prize, Users count                        |
-| `US-016` | **Chi tiết giải**: Luật & Thưởng        | 5      | - Desc, Rules<br/>- Preview Leaderboard                                                   |
-| `US-017` | **Đăng ký**: Join giải đấu              | 5      | - Check: Min Level, Ticket<br/>- Deduct fee. Add user<br/>- Limit slots                   |
-| `US-018` | **Gameplay**: Thi đấu realtime          | 13     | - WS sync questions<br/>- Timer 10s. Instant Feedback<br/>- Low latency, handle reconnect |
-| `US-019` | **Rank Realtime**: BXH trực tiếp        | 8      | - Redis ZSET<br/>- Broadcast Top 10 + User Rank<br/>- Scale 10k CCU                       |
-| `US-020` | **Kết quả**: Chốt giải                  | 8      | - Finalize Rank<br/>- Save History DB<br/>- Async Reward Job                              |
+| ID       | User Story                              | Points | Acceptance Criteria                                                                                                                                                                        |
+| :------- | :-------------------------------------- | :----- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `US-015` | **Danh sách giải**: Live/Upcoming/Ended | 5      | - Phân loại: Đang diễn ra, Sắp diễn ra, Đã kết thúc<br/>- Metadata: Thời gian, Giải thưởng, Số lượng user<br/>- Hỗ trợ hiển thị tốt với lượng truy cập cao                                 |
+| `US-016` | **Chi tiết giải**: Luật & Thưởng        | 5      | - Hiển thị mô tả chi tiết, luật lệ thi đấu<br/>- Preview bảng xếp hạng tạm thời (nếu đang diễn ra)                                                                                         |
+| `US-017` | **Đăng ký**: Join giải đấu              | 5      | - Kiểm tra điều kiện: Level tối thiểu, Vé tham dự<br/>- Trừ vé/phí (nếu có) và thêm user vào danh sách<br/>- Chặn đăng ký nếu đã full slot hoặc quá hạn                                    |
+| `US-018` | **Gameplay**: Thi đấu realtime          | 13     | - WebSocket đồng bộ câu hỏi cho tất cả người chơi<br/>- Giới hạn thời gian trả lời (ví dụ: 10s). Feedback Đúng/Sai ngay lập tức<br/>- Độ trễ thấp (&lt;100ms), xử lý mất kết nối/reconnect |
+| `US-019` | **Rank Realtime**: BXH trực tiếp        | 8      | - Ranking bằng Redis Sorted Set (ZSET)<br/>- Broadcast Top 10 + Hạng cá nhân sau mỗi câu hỏi<br/>- Chịu tải cao (10,000 CCU)                                                               |
+| `US-020` | **Kết quả**: Chốt giải                  | 8      | - Chốt bảng xếp hạng final khi giải kết thúc<br/>- Lưu lịch sử thi đấu vào DB chính<br/>- Trigger job trả thưởng (async)                                                                   |
 
 ## Sprint 7: Advanced Features
 
 > **Focus**: Advanced retention features and Parent tools
 
-| ID       | User Story                        | Points | Acceptance Criteria                                                           |
-| :------- | :-------------------------------- | :----- | :---------------------------------------------------------------------------- |
-| `US-021` | **Video Player**: Streaming       | 5      | - Cloud Stream Player<br/>- Play, Pause, Seek, Vol<br/>- Save timestamp       |
-| `US-022` | **Streak**: Chuỗi học tập         | 5      | - Count consecutive days<br/>- Dashboard counter<br/>- Break warning          |
-| `US-023` | **Hồ sơ**: Edit Profile           | 5      | - Upload Avatar, Edit Name<br/>- View Stats: Join Date, XP, Rank              |
-| `US-024` | **Huy hiệu**: Badges              | 5      | - Criteria (7-day streak, 100pts)<br/>- Profile Tab<br/>- Unlock Popup        |
-| `US-025` | **Liên kết con**: Parent Link     | 5      | - Kid: Gen Invite Code<br/>- Parent: Input Code -> Request<br/>- 2-way Verify |
-| `US-026` | **Báo cáo con**: Parent Dashboard | 5      | - Kid Activity view<br/>- Charts: Time, XP<br/>- Inactivity Alert             |
+| ID       | User Story                        | Points | Acceptance Criteria                                                                                                                                       |
+| :------- | :-------------------------------- | :----- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `US-021` | **Video Player**: Streaming       | 5      | - Tích hợp Video Player (stream từ cloud storage)<br/>- Controls: Play, Pause, Seek, Volume<br/>- Lưu timestamp đang xem dở                               |
+| `US-022` | **Streak**: Chuỗi học tập         | 5      | - Đếm số ngày liên tiếp có hoạt động học<br/>- Hiển thị bộ đếm Streak nổi bật trên Dashboard<br/>- Cảnh báo/Nhắc nhở khi chuỗi sắp bị ngắt                |
+| `US-023` | **Hồ sơ**: Edit Profile           | 5      | - Upload ảnh Avatar cá nhân<br/>- Cập nhật Tên hiển thị<br/>- Xem thống kê: Ngày tham gia, Tổng XP, Rank                                                  |
+| `US-024` | **Huy hiệu**: Badges              | 5      | - Trao huy hiệu theo tiêu chí (ví dụ: "7 ngày liên tiếp", "100 điểm")<br/>- Tab "Thành tích" trong profile<br/>- Popup chúc mừng khi mở khóa huy hiệu mới |
+| `US-025` | **Liên kết con**: Parent Link     | 5      | - Tạo mã mời (Invite Code) từ tài khoản Con<br/>- Phụ huynh nhập mã để gửi yêu cầu liên kết<br/>- Xác thực 2 chiều để tránh liên kết trái phép            |
+| `US-026` | **Báo cáo con**: Parent Dashboard | 5      | - Dashboard phụ huynh hiển thị hoạt động của con<br/>- Biểu đồ thời gian học, XP tuần<br/>- Cảnh báo nếu con không hoạt động trong X ngày                 |
 
 ---
 
