@@ -9,7 +9,7 @@ sidebar_position: 7
 
 Cần caching và real-time messaging.
 
-Enforces: [`TC-ARCH-03`](../../product/constraints.md#architecture)
+> SSoT: [`TC-ARCH-03`](../../product/constraints.md#architecture)
 
 ---
 

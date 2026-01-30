@@ -9,7 +9,7 @@ sidebar_position: 10
 
 Cần WebSocket cho real-time tournament và notifications.
 
-Enforces: [`TC-ARCH-05`](../../product/constraints.md#architecture)
+> SSoT: [`TC-ARCH-05`](../../product/constraints.md#architecture)
 
 ---
 

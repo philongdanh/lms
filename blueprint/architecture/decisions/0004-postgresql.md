@@ -9,7 +9,7 @@ sidebar_position: 4
 
 Cần database với **ACID transactions** và schema linh hoạt.
 
-Enforces: [`TC-ARCH-02`](../../product/constraints.md#architecture)
+> SSoT: [`TC-ARCH-02`](../../product/constraints.md#architecture)
 
 ---
 

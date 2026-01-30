@@ -9,7 +9,7 @@ sidebar_position: 30
 
 Cần giải pháp đóng gói và triển khai ứng dụng nhất quán.
 
-Enforces: [`TC-ARCH-04`](../../product/constraints.md#architecture)
+> SSoT: [`TC-ARCH-04`](../../product/constraints.md#architecture)
 
 ---
 

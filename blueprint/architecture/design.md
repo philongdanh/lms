@@ -13,13 +13,13 @@ Thiết kế kiến trúc hệ thống và các thành phần chính.
 
 ## Architecture
 
-| Khía cạnh     | Mẫu                       | Mô tả                                                   | Ref ID       |
-| ------------- | ------------------------- | ------------------------------------------------------- | ------------ |
-| Kiến trúc     | Modular Monolith          | Phân module rõ ràng, dễ bảo trì                         | `TC-ARCH-01` |
-| Multi-tenancy | Data Isolation            | Mỗi tenant có không gian dữ liệu riêng                  | `TC-ARCH-06` |
-| Communication | Event-Driven              | Các module giao tiếp qua events (Redis Pub/Sub)         | `TC-ARCH-03` |
-| Realtime      | Socket.IO + Redis Adapter | Redis adapter để mở rộng (scaling)                      | `TC-ARCH-05` |
-| Bảo mật       | RBAC                      | Roles động theo tenant và permissions cứng cho hệ thống | `NFR-SEC-01` |
+| Khía cạnh     | Mẫu                       | Mô tả                                                   | SSoT                                                   |
+| ------------- | ------------------------- | ------------------------------------------------------- | ------------------------------------------------------ |
+| Kiến trúc     | Modular Monolith          | Phân module rõ ràng, dễ bảo trì                         | [`TC-ARCH-01`](../product/constraints.md#architecture) |
+| Multi-tenancy | Data Isolation            | Mỗi tenant có không gian dữ liệu riêng                  | [`TC-ARCH-06`](../product/constraints.md#architecture) |
+| Communication | Event-Driven              | Các module giao tiếp qua events (Redis Pub/Sub)         | [`TC-ARCH-03`](../product/constraints.md#architecture) |
+| Realtime      | Socket.IO + Redis Adapter | Redis adapter để mở rộng (scaling)                      | [`TC-ARCH-05`](../product/constraints.md#architecture) |
+| Bảo mật       | RBAC                      | Roles động theo tenant và permissions cứng cho hệ thống | [`NFR-SEC-01`](../product/constraints.md#security)     |
 
 ```d2
 direction: right
