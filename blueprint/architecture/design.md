@@ -13,44 +13,45 @@ Thiết kế kiến trúc hệ thống và các thành phần chính
 
 ## Architecture
 
-```mermaid
-graph LR
-    Web[Web Application]
-    App[Application]
+```d2
+direction: right
 
-    Auth[Auth & RBAC Module]
-    Tournament[Tournament Module]
-    OtherModules[... other modules]
+Web: Web Application
+App: Application
 
-    WSGateway[WebSocket Gateway]
-    Realtime[Real-time Service]
-    MsgQueue[Message Queue]
+Auth: Auth & RBAC Module
+Tournament: Tournament Module
+OtherModules: ... other modules
 
-    subgraph DataLayer [Data Layer]
-        DB[(Database)]
-        Redis[(Redis Cache & Pub/Sub)]
-        SeaweedFS[(SeaweedFS Storage)]
-    end
+WSGateway: WebSocket Gateway
+Realtime: Real-time Service
+MsgQueue: Message Queue
 
-    Web --> App
-    Web -.-> WSGateway
-    Web -.->|Presigned URL Upload| SeaweedFS
+DataLayer: Data Layer {
+  DB: Database { shape: cylinder }
+  Redis: Redis Cache & Pub/Sub { shape: cylinder }
+  SeaweedFS: SeaweedFS Storage { shape: cylinder }
+}
 
-    App --> Auth
-    App --> Tournament
-    App --> OtherModules
+Web -> App
+Web -> WSGateway { style.stroke-dash: 3 }
+Web -> DataLayer.SeaweedFS: Presigned URL Upload { style.stroke-dash: 3 }
 
-    Auth --> DB
-    Tournament --> DB
-    OtherModules --> DB
+App -> Auth
+App -> Tournament
+App -> OtherModules
 
-    Tournament --> Realtime
-    WSGateway --> Realtime
-    Realtime --> MsgQueue
-    MsgQueue --> Redis
+Auth -> DataLayer.DB
+Tournament -> DataLayer.DB
+OtherModules -> DataLayer.DB
 
-    App --> Redis
-    App -->|Generate Presigned URL| SeaweedFS
+Tournament -> Realtime
+WSGateway -> Realtime
+Realtime -> MsgQueue
+MsgQueue -> DataLayer.Redis
+
+App -> DataLayer.Redis
+App -> DataLayer.SeaweedFS: Generate Presigned URL
 ```
 
 ---

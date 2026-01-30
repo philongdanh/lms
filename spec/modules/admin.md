@@ -11,7 +11,7 @@ Module quản trị hệ thống multi-tenant và quản lý người dùng.
 
 > **SSoT**: [Backlog](../../blueprint/product/plan.md) |
 > [Database](../../blueprint/architecture/database.md) |
-> [Permissions](../../blueprint/architecture/permissions.md)
+> [Permissions](../../blueprint/architecture/decisions/03-rbac.md)
 
 ---
 

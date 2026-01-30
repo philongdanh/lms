@@ -38,20 +38,21 @@ Giải pháp lưu trữ file phân tán, hỗ trợ presigned url để client u
 
 ## Upload Flow
 
-```mermaid
-sequenceDiagram
-    participant Client
-    participant Backend
-    participant SeaweedFS
+```d2
+shape: sequence_diagram
 
-    Client->>Backend: GraphQL: getUploadUrl(filename)
-    Backend->>SeaweedFS: Generate Presigned URL
-    SeaweedFS-->>Backend: Signed URL
-    Backend-->>Client: Return Presigned URL
-    Client->>SeaweedFS: HTTP PUT (upload file)
-    SeaweedFS-->>Client: 200 OK
-    Client->>Backend: GraphQL: confirmUpload(fileId)
-    Backend->>Backend: Create Media record
+Client
+Backend
+SeaweedFS
+
+Client -> Backend: GraphQL: getUploadUrl(filename)
+Backend -> SeaweedFS: Generate Presigned URL
+SeaweedFS -> Backend: Signed URL { style.stroke-dash: 3 }
+Backend -> Client: Return Presigned URL { style.stroke-dash: 3 }
+Client -> SeaweedFS: HTTP PUT (upload file)
+SeaweedFS -> Client: 200 OK { style.stroke-dash: 3 }
+Client -> Backend: GraphQL: confirmUpload(fileId)
+Backend -> Backend: Create Media record
 ```
 
 ---

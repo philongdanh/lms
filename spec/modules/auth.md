@@ -11,7 +11,7 @@ Module xác thực và phân quyền người dùng trong hệ thống multi-ten
 
 > **SSoT**: [Backlog](../../blueprint/product/plan.md) |
 > [Database](../../blueprint/architecture/database.md) |
-> [Permissions](../../blueprint/architecture/permissions.md)
+> [Permissions](../../blueprint/architecture/decisions/03-rbac.md)
 
 ---
 

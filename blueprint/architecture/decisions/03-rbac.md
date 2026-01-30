@@ -13,11 +13,157 @@ Authorization model linh hoạt
 
 ## Decision
 
-**RBAC** với 5 roles: `root-admin`, `tenant-admin`, `teacher`, `parent`,
-`student`
+**RBAC** với 5 roles
+
+| Role           | Phạm vi  | Mô tả                   |
+| -------------- | -------- | ----------------------- |
+| `root-admin`   | Hệ thống | Admin hệ thống          |
+| `tenant-admin` | Tenant   | Admin tenant            |
+| `teacher`      | Tenant   | Quản lý học liệu        |
+| `student`      | Tenant   | Học viên                |
+| `parent`       | Tenant   | Phụ huynh (xem báo cáo) |
 
 ---
 
-## Rationale
+## Permission Codes
 
-Permission-based, hierarchy rõ ràng, dễ mở rộng
+Seed cứng trong Entity `Permission`
+
+### Admin Module
+
+| Code               | Mô tả           |
+| ------------------ | --------------- |
+| `tenant:create`    | Tạo mới         |
+| `tenant:read`      | Xem chi tiết    |
+| `tenant:update`    | Cập nhật        |
+| `tenant:delete`    | Xóa (soft/hard) |
+| `tenant:suspend`   | Đình chỉ        |
+| `user:create`      | Tạo mới         |
+| `user:read`        | Xem chi tiết    |
+| `user:update`      | Cập nhật        |
+| `user:delete`      | Xóa             |
+| `user:import`      | Import CSV      |
+| `user:impersonate` | Đăng nhập thay  |
+| `role:assign`      | Gán role        |
+
+### Content Module
+
+| Code              | Mô tả        |
+| ----------------- | ------------ |
+| `subject:create`  | Tạo mới      |
+| `subject:read`    | Xem chi tiết |
+| `subject:update`  | Cập nhật     |
+| `subject:delete`  | Xóa          |
+| `topic:create`    | Tạo mới      |
+| `topic:read`      | Xem chi tiết |
+| `topic:update`    | Cập nhật     |
+| `topic:delete`    | Xóa          |
+| `lesson:create`   | Tạo mới      |
+| `lesson:read`     | Xem chi tiết |
+| `lesson:update`   | Cập nhật     |
+| `lesson:delete`   | Xóa          |
+| `lesson:publish`  | Xuất bản     |
+| `question:create` | Tạo mới      |
+| `question:read`   | Xem chi tiết |
+| `question:update` | Cập nhật     |
+| `question:delete` | Xóa          |
+| `question:import` | Import CSV   |
+| `media:upload`    | Upload file  |
+| `media:delete`    | Xóa file     |
+
+### Learning Module
+
+| Code                  | Mô tả           |
+| --------------------- | --------------- |
+| `progress:read`       | Xem mọi tiến độ |
+| `progress:read_own`   | Xem của mình    |
+| `progress:read_child` | Xem của con     |
+| `exercise:submit`     | Nộp bài         |
+| `learning_path:read`  | Xem lộ trình    |
+
+### Tournament Module
+
+| Code                | Mô tả        |
+| ------------------- | ------------ |
+| `tournament:create` | Tạo mới      |
+| `tournament:read`   | Xem chi tiết |
+| `tournament:update` | Cập nhật     |
+| `tournament:delete` | Xóa          |
+| `tournament:join`   | Tham gia     |
+| `tournament:submit` | Nộp bài      |
+
+### Gamification Module
+
+| Code               | Mô tả        |
+| ------------------ | ------------ |
+| `leaderboard:read` | Xem BXH      |
+| `reward:redeem`    | Đổi thưởng   |
+| `badge:read`       | Xem huy hiệu |
+
+### Analytics Module
+
+| Code                  | Mô tả           |
+| --------------------- | --------------- |
+| `report:read`         | Xem báo cáo     |
+| `report:read_own`     | Báo cáo cá nhân |
+| `report:export`       | Xuất file       |
+| `analytics:dashboard` | Truy cập dash   |
+
+---
+
+## Special Rules
+
+### 1. Isolation
+
+> SSoT: [`TC-ARCH-006`](../design.md#architecture)
+
+- Data cách ly theo `tenant_id`
+- User chỉ thấy data thuộc tenant gán
+- `root-admin` thấy cross-tenant
+
+### 2. Ownership
+
+- **Own data only**: Chỉ sửa data mình tạo/liên kết
+- `teacher`: Chỉ sửa `Topic`, `Lesson` chính chủ
+- `parent`: Chỉ xem data `student` liên kết
+
+### 3. Role Assignment
+
+```d2
+direction: down
+# SSoT: C-015 (RBAC)
+
+root_admin: {
+  label: "root-admin"
+  style.fill: "#e74c3c"
+}
+tenant_admin: {
+  label: "tenant-admin"
+  style.fill: "#3498db"
+}
+teacher: {
+  style.fill: "#2ecc71"
+}
+student: {
+  style.fill: "#f39c12"
+}
+parent: {
+  style.fill: "#9b59b6"
+}
+
+root_admin -> tenant_admin: assign
+tenant_admin -> teacher: assign
+tenant_admin -> student: assign
+tenant_admin -> parent: assign
+```
+
+| Assigner       | Can Assign Roles                               |
+| -------------- | ---------------------------------------------- |
+| `root-admin`   | `tenant-admin`, `teacher`, `student`, `parent` |
+| `tenant-admin` | `teacher`, `student`, `parent`                 |
+
+### 4. Publishing Flow
+
+- `teacher`: Tạo `Lesson` (`DRAFT`)
+- `tenant-admin`: Review -> `Publish` (`PUBLISHED`)
+- `student`: Chỉ thấy `PUBLISHED`
