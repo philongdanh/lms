@@ -87,12 +87,10 @@ spec/modules/{module}.md (references with SSoT note)
 qa/cases/*.md (validates against module FRs)
 ```
 
-### 3. REST API (SSoT)
+### 3. File Upload (Presigned URL)
 
-**Source**: `spec/api/rest/openapi.yaml`
-
-> REST API chỉ dùng cho **Health Check**, **File Upload**, và **Webhooks**.
-> Business logic sử dụng GraphQL.
+> File upload sử dụng **Presigned URL** - client upload trực tiếp lên Storage.
+> Backend chỉ cung cấp signed URL qua GraphQL mutation.
 
 ---
 
@@ -127,7 +125,7 @@ Khi review documentation changes, kiểm tra:
 - [ ] Module specs đã có ghi chú tham chiếu SSoT?
 - [ ] Các giá trị Enum khớp giữa Prisma, TypeScript, và GraphQL?
 - [ ] Test cases có tham chiếu đúng FR IDs trong module specs?
-- [ ] REST endpoints chỉ dùng cho Health/Upload/Webhooks?
+- [ ] File upload sử dụng Presigned URL pattern?
 
 ---
 
@@ -142,7 +140,6 @@ lms/
 ├── spec/                # Specifications (SSoT)
 │   ├── api/             # ★ API & Data SSoT
 │   │   ├── graphql/     # GraphQL schemas per module
-│   │   ├── rest/        # OpenAPI for REST endpoints
 │   │   └── types.md     # TypeScript interfaces
 │   ├── ui/              # Frontend Specs
 │   │   └── frontend.md  # Frontend detailed specs

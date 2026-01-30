@@ -15,7 +15,7 @@ Cần database với **ACID transactions** và schema linh hoạt.
 
 ## Decision
 
-Sử dụng **PostgreSQL 14+**.
+Sử dụng **PostgreSQL 15+**.
 
 ---
 

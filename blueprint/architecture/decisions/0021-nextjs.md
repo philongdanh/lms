@@ -1,13 +1,15 @@
 ---
-id: 0020-nextjs
-title: '0020: Next.js'
-sidebar_label: '0020: Next.js'
-sidebar_position: 20
+id: 0021-nextjs
+title: '0021: Next.js'
+sidebar_label: '0021: Next.js'
+sidebar_position: 21
 ---
 
-# 0020: Next.js
+# 0021: Next.js
 
 Cần một Frontend Framework mạnh mẽ, hỗ trợ SEO và performance tốt.
+
+> Dựa trên [0020: React](0020-react.md).
 
 ---
 

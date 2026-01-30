@@ -1,11 +1,11 @@
 ---
-id: 0012-winston
-title: '0012: Winston'
-sidebar_label: '0012: Winston'
-sidebar_position: 12
+id: 0011-winston
+title: '0011: Winston'
+sidebar_label: '0011: Winston'
+sidebar_position: 11
 ---
 
-# 0012: Winston
+# 0011: Winston
 
 Cần giải pháp ghi log tập trung, có cấu trúc.
 

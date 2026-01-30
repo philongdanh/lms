@@ -15,7 +15,7 @@ Cần caching và real-time messaging.
 
 ## Decision
 
-**Redis** cho session storage, token blacklist, cache, và Pub/Sub events.
+**Redis 7+** cho session storage, token blacklist, cache, và Pub/Sub events.
 
 ---
 

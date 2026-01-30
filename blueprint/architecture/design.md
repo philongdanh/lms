@@ -43,11 +43,14 @@ Data Layer: {
   Redis: Redis Cache & Pub/Sub {
     shape: cylinder
   }
-  Storage: File Storage
+  SeaweedFS: SeaweedFS Storage {
+    shape: cylinder
+  }
 }
 
 Web -> App
 Web -> WSGateway: {style.stroke-dash: 5}
+Web -> Data Layer.SeaweedFS: Presigned URL Upload {style.stroke-dash: 5}
 
 App -> Auth
 App -> Tournament
@@ -63,6 +66,7 @@ Realtime -> MsgQueue
 MsgQueue -> Data Layer.Redis
 
 App -> Data Layer.Redis
+App -> Data Layer.SeaweedFS: Generate Presigned URL
 ```
 
 ---
@@ -72,9 +76,9 @@ App -> Data Layer.Redis
 ### Giao tiếp hệ thống
 
 - **GraphQL**: API chính cho queries/mutations
-- **REST**: Webhooks, file uploads
 - **Redis Pub/Sub**: Event broadcasting
 - **WebSocket**: Socket.IO với cơ chế rooms
+- **Presigned URL**: Upload file trực tiếp lên Storage
 
 ### Nguyên tắc thiết kế
 

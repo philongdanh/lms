@@ -15,7 +15,7 @@ Cần giải pháp đóng gói và triển khai ứng dụng nhất quán.
 
 ## Decision
 
-Sử dụng **Docker** và **Docker Compose**.
+Sử dụng **Docker 24+** và **Docker Compose**.
 
 ---
 

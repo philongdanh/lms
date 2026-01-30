@@ -138,14 +138,13 @@ Admin -> "Content Service": archive()
 > **SSoT**: [schema.graphql](../api/graphql/content/schema.graphql) |
 > [operations.graphql](../api/graphql/content/operations.graphql)
 
-### REST Endpoints
+### File Upload (Presigned URL)
 
-```
-POST /api/upload
-  - Auth: Teacher
-  - Body: multipart/form-data
-  - Response: { uploadUrl, mediaId }
-```
+Client upload trực tiếp lên Storage sử dụng Presigned URL:
+
+1. Client gọi `getUploadUrl` mutation → nhận Presigned URL
+2. Client upload file trực tiếp lên Storage (SeaweedFS)
+3. Storage callback hoặc client confirm → Backend lưu `Media` record
 
 ### Sự kiện & Webhooks
 
@@ -174,5 +173,3 @@ POST /api/upload
 | Import lỗi một phần     | Bỏ qua dòng lỗi, log, tiếp tục |
 | Phát hiện malware       | Từ chối upload, alert admin    |
 | Sửa nội dung người khác | `403 Forbidden`                |
-
----
