@@ -13,6 +13,9 @@ Lộ trình chiến lược và các cột mốc quan trọng để chinh phục
 
 ## Timeline
 
+> SSoT: [`BC-001`](constraints.md#business-constraints) (Timeline) |
+> [`BC-002`](constraints.md#business-constraints) (MVP)
+
 ### Giai đoạn 1: MVP
 
 | Sprint      | Thời gian     | Trọng tâm             | Deliverables / Bàn giao                  |

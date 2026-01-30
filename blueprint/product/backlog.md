@@ -14,6 +14,8 @@ tối ưu hóa giá trị.
 
 ## Priority Legend
 
+> SSoT: [Constraints](constraints.md)
+
 | Độ ưu tiên | Mô tả                             | Điểm     |
 | ---------- | --------------------------------- | -------- |
 | P0         | Nghiêm trọng - Chặn (Blocker)     | 8-13 pts |
