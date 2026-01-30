@@ -9,7 +9,7 @@ sidebar_position: 1
 
 Tiêu chuẩn thiết kế và quản lý API tập trung.
 
-> **SSoT**: [Tech](../../blueprint/architecture/tech.md) |
+> **SSoT**: [Tech](../../blueprint/architecture/design.md#technology-stack) |
 > [Design](../../blueprint/architecture/design.md)
 
 ---

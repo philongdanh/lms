@@ -11,7 +11,7 @@ Module giao tiếp real-time qua WebSocket.
 
 > **SSoT**: [Backlog](../../blueprint/product/plan.md) |
 > [Database](../../blueprint/architecture/database.md) |
-> [Tech](../../blueprint/architecture/tech.md)
+> [Tech](../../blueprint/architecture/design.md#technology-stack)
 
 ---
 
