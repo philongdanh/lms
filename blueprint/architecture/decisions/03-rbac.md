@@ -5,7 +5,7 @@ sidebar_label: '03: RBAC'
 sidebar_position: 3
 ---
 
-# 09: RBAC
+# 03: RBAC
 
 Authorization model linh hoạt
 
@@ -25,11 +25,11 @@ Authorization model linh hoạt
 
 ---
 
-## Permission Codes
+## Permissions
 
 Seed cứng trong Entity `Permission`
 
-### Admin Module
+### Admin
 
 | Code               | Mô tả           |
 | ------------------ | --------------- |
@@ -46,7 +46,7 @@ Seed cứng trong Entity `Permission`
 | `user:impersonate` | Đăng nhập thay  |
 | `role:assign`      | Gán role        |
 
-### Content Module
+### Content
 
 | Code              | Mô tả        |
 | ----------------- | ------------ |
@@ -71,7 +71,7 @@ Seed cứng trong Entity `Permission`
 | `media:upload`    | Upload file  |
 | `media:delete`    | Xóa file     |
 
-### Learning Module
+### Learning
 
 | Code                  | Mô tả           |
 | --------------------- | --------------- |
@@ -81,7 +81,7 @@ Seed cứng trong Entity `Permission`
 | `exercise:submit`     | Nộp bài         |
 | `learning_path:read`  | Xem lộ trình    |
 
-### Tournament Module
+### Tournament
 
 | Code                | Mô tả        |
 | ------------------- | ------------ |
@@ -92,7 +92,7 @@ Seed cứng trong Entity `Permission`
 | `tournament:join`   | Tham gia     |
 | `tournament:submit` | Nộp bài      |
 
-### Gamification Module
+### Gamification
 
 | Code               | Mô tả        |
 | ------------------ | ------------ |
@@ -100,7 +100,7 @@ Seed cứng trong Entity `Permission`
 | `reward:redeem`    | Đổi thưởng   |
 | `badge:read`       | Xem huy hiệu |
 
-### Analytics Module
+### Analytics
 
 | Code                  | Mô tả           |
 | --------------------- | --------------- |
@@ -111,7 +111,7 @@ Seed cứng trong Entity `Permission`
 
 ---
 
-## Special Rules
+## Rules
 
 ### 1. Isolation
 
@@ -127,7 +127,7 @@ Seed cứng trong Entity `Permission`
 - `teacher`: Chỉ sửa `Topic`, `Lesson` chính chủ
 - `parent`: Chỉ xem data `student` liên kết
 
-### 3. Role Assignment
+### 3. Assignment
 
 ```d2
 direction: down
@@ -162,7 +162,7 @@ tenant_admin -> parent: assign
 | `root-admin`   | `tenant-admin`, `teacher`, `student`, `parent` |
 | `tenant-admin` | `teacher`, `student`, `parent`                 |
 
-### 4. Publishing Flow
+### 4. Publishing
 
 - `teacher`: Tạo `Lesson` (`DRAFT`)
 - `tenant-admin`: Review -> `Publish` (`PUBLISHED`)
