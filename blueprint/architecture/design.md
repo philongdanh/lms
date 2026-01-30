@@ -78,34 +78,34 @@ graph LR
 
 ### BE
 
-| Item      | Tech                      | ADR                                                                                                                                                        |
-| --------- | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Runtime   | Node.js 20+ LTS           | [0003: Node.js](decisions/0003-nodejs.md)                                                                                                                  |
-| Framework | NestJS 10+                | [0001: Modular Monolith](decisions/0001-modular-monolith.md)                                                                                               |
-| ORM       | Prisma 7                  | [0005: Prisma](decisions/0005-prisma.md), [0006: Cascade Delete](decisions/0006-cascade-delete.md)                                                         |
-| Database  | PostgreSQL 15+            | [0004: PostgreSQL](decisions/0004-postgresql.md)                                                                                                           |
-| Cache     | Redis 7+                  | [0007: Redis](decisions/0007-redis.md)                                                                                                                     |
-| Realtime  | Socket.IO + Redis adapter | [0010: Socket.IO](decisions/0010-socketio.md)                                                                                                              |
-| Auth      | Passport.js + JWT         | [0008: JWT Refresh Token](decisions/0008-jwt-refresh-token.md), [0002: Multi Tenant](decisions/0002-multi-tenant.md), [0009: RBAC](decisions/0009-rbac.md) |
+| Item      | Tech                      | ADR                                                                                                                |
+| --------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Runtime   | Node.js 20+ LTS           | [10: Node.js](decisions/10-nodejs.md)                                                                              |
+| Framework | NestJS 10+                | [01: Modular Monolith](decisions/01-monolith.md)                                                                   |
+| ORM       | Prisma 7                  | [12: Prisma](decisions/12-prisma.md), [04: Cascade Delete](decisions/04-cascade-delete.md)                         |
+| Database  | PostgreSQL 15+            | [11: PostgreSQL](decisions/11-postgresql.md)                                                                       |
+| Cache     | Redis 7+                  | [13: Redis](decisions/13-redis.md)                                                                                 |
+| Realtime  | Socket.IO + Redis adapter | [15: Socket.IO](decisions/15-socketio.md)                                                                          |
+| Auth      | Passport.js + JWT         | [14: JWT](decisions/14-jwt.md), [02: Multi Tenant](decisions/02-multi-tenant.md), [03: RBAC](decisions/03-rbac.md) |
 
 ### FE
 
-| Item       | Tech                       | ADR                                           |
-| ---------- | -------------------------- | --------------------------------------------- |
-| UI Library | React 18+ với TypeScript   | [0020: React](decisions/0020-react.md)        |
-| Framework  | Next.js 14+ với App Router | [0021: Next.js](decisions/0021-nextjs.md)     |
-| State      | Zustand + React Context    | [0022: Zustand](decisions/0022-zustand.md)    |
-| Styling    | TailwindCSS 3.x            | [0023: Tailwind](decisions/0023-tailwind.md)  |
-| Components | RetroUI                    | [0024: RetroUI](decisions/0024-retroui.md)    |
-| Realtime   | Socket.IO Client 4.x       | [0010: Socket.IO](decisions/0010-socketio.md) |
+| Item       | Tech                       | ADR                                       |
+| ---------- | -------------------------- | ----------------------------------------- |
+| UI Library | React 18+ với TypeScript   | [20: React](decisions/20-react.md)        |
+| Framework  | Next.js 14+ với App Router | [21: Next.js](decisions/21-nextjs.md)     |
+| State      | Zustand + React Context    | [22: Zustand](decisions/22-zustand.md)    |
+| Styling    | TailwindCSS 3.x            | [23: Tailwind](decisions/23-tailwind.md)  |
+| Components | RetroUI                    | [24: RetroUI](decisions/24-retroui.md)    |
+| Realtime   | Socket.IO Client 4.x       | [15: Socket.IO](decisions/15-socketio.md) |
 
 ### Infra
 
-| Item          | Tech                     | ADR                                                      |
-| ------------- | ------------------------ | -------------------------------------------------------- |
-| Container     | Docker 24+               | [0030: Docker](decisions/0030-docker.md)                 |
-| Orchestration | Docker Compose           | [0030: Docker](decisions/0030-docker.md)                 |
-| Load Balancer | Nginx                    | [0032: Nginx](decisions/0032-nginx.md)                   |
-| CI/CD         | GitHub Actions           | [0031: Github Actions](decisions/0031-github-actions.md) |
-| File Storage  | SeaweedFS                | [0033: SeaweedFS](decisions/0033-seaweedfs.md)           |
-| Monitoring    | Winston + custom metrics | [0011: Winston](decisions/0011-winston.md)               |
+| Item          | Tech                     | ADR                                        |
+| ------------- | ------------------------ | ------------------------------------------ |
+| Container     | Docker 24+               | [30: Docker](decisions/30-docker.md)       |
+| Orchestration | Docker Compose           | [30: Docker](decisions/30-docker.md)       |
+| Load Balancer | Nginx                    | [32: Nginx](decisions/32-nginx.md)         |
+| CI/CD         | GitHub Actions           | [31: Actions](decisions/31-actions.md)     |
+| File Storage  | SeaweedFS                | [33: SeaweedFS](decisions/33-seaweedfs.md) |
+| Monitoring    | Winston + custom metrics | [16: Winston](decisions/16-winston.md)     |
