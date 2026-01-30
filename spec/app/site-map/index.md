@@ -7,19 +7,23 @@ sidebar_position: 1
 
 # Site Map
 
-| Đường dẫn               | Component            | Layout            | Quyền truy cập | Screen Spec                                       |
-| :---------------------- | :------------------- | :---------------- | :------------- | :------------------------------------------------ |
-| `/`                     | `LandingPage`        | `PublicLayout`    | All            | [Landing](../screens/landing.md)                  |
-| `/auth/login`           | `LoginPage`          | `AuthLayout`      | Guest          | [Login](../screens/login.md)                      |
-| `/auth/register`        | `RegisterPage`       | `AuthLayout`      | Guest          | [Register](../screens/register.md)                |
-| `/auth/forgot-password` | `ForgotPasswordPage` | `AuthLayout`      | Guest          | [Forgot Password](../screens/forgot-password.md)  |
-| `/dashboard`            | `DashboardOverview`  | `DashboardLayout` | User           | [Dashboard](../screens/dashboard.md)              |
-| `/learning`             | `MyLearningPage`     | `DashboardLayout` | User           | [My Learning](../screens/my-learning.md)          |
-| `/learning/:id`         | `LessonViewer`       | `FocusLayout`     | User           | [Learning](../screens/learning.md)                |
-| `/tournament`           | `TournamentList`     | `DashboardLayout` | User           | [Tournament](../screens/tournament.md)            |
-| `/tournament/live/:id`  | `LiveMatch`          | `FocusLayout`     | User           | [Live Match](../screens/live-match.md)            |
-| `/profile`              | `ProfilePage`        | `DashboardLayout` | User           | [Profile](../screens/profile.md)                  |
-| `/admin`                | `AdminDashboard`     | `AdminLayout`     | Admin          | [Admin](../screens/admin.md)                      |
-| `/admin/users`          | `UserManagement`     | `AdminLayout`     | Admin          | [User Management](../screens/admin-users.md)      |
-| `/admin/content`        | `ContentManagement`  | `AdminLayout`     | Admin          | [Content Management](../screens/admin-content.md) |
-| `/admin/settings`       | `AdminSettings`      | `AdminLayout`     | Admin          | [Admin Settings](../screens/admin-settings.md)    |
+Mô tả các trang trong hệ thống.
+
+---
+
+| Đường dẫn               | Screen Spec                                       | Layout    | Quyền truy cập |
+| :---------------------- | :------------------------------------------------ | :-------- | :------------- |
+| `/`                     | [Landing](../screens/landing.md)                  | Public    | All            |
+| `/auth/login`           | [Login](../screens/login.md)                      | Auth      | Guest          |
+| `/auth/register`        | [Register](../screens/register.md)                | Auth      | Guest          |
+| `/auth/forgot-password` | [Forgot Password](../screens/forgot-password.md)  | Auth      | Guest          |
+| `/dashboard`            | [Dashboard](../screens/dashboard.md)              | Dashboard | User           |
+| `/learning`             | [My Learning](../screens/my-learning.md)          | Dashboard | User           |
+| `/learning/:id`         | [Learning](../screens/learning.md)                | Focus     | User           |
+| `/tournament`           | [Tournament](../screens/tournament.md)            | Dashboard | User           |
+| `/tournament/live/:id`  | [Live Match](../screens/live-match.md)            | Focus     | User           |
+| `/profile`              | [Profile](../screens/profile.md)                  | Dashboard | User           |
+| `/admin`                | [Admin](../screens/admin.md)                      | Admin     | Admin          |
+| `/admin/users`          | [User Management](../screens/admin-users.md)      | Admin     | Admin          |
+| `/admin/content`        | [Content Management](../screens/admin-content.md) | Admin     | Admin          |
+| `/admin/settings`       | [Admin Settings](../screens/admin-settings.md)    | Admin     | Admin          |
