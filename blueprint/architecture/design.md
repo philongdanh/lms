@@ -13,8 +13,6 @@ Thiết kế kiến trúc hệ thống và các thành phần chính
 
 ## Architecture
 
-Xem chi tiết: [Constraints](../product/constraints.md)
-
 ```mermaid
 graph LR
     Web[Web Application]
@@ -57,7 +55,7 @@ graph LR
 
 ---
 
-## Architectural Concepts
+## Concepts
 
 ### Communication
 
