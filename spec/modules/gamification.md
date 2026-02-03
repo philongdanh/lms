@@ -10,7 +10,8 @@ sidebar_position: 5
 Module **Gamification** quản lý phần thưởng, điểm số và bảng xếp hạng.
 
 > **SSoT**: [Backlog](../../blueprint/product/plan.md) |
-> [Database](../../blueprint/architecture/database.md)
+> [Database](../../blueprint/architecture/database.md) |
+> [13: Redis](../../blueprint/architecture/decisions/13-redis.md)
 
 ---
 
@@ -37,6 +38,24 @@ Engine -> "Gamification Service": exp_amount
 Engine -> "Gamification Service": new_level
 "Gamification Service" -> Database: update_level
 "Gamification Service" -> "Event Bus": publish(level.up)
+```
+
+### Cập nhật Streak
+
+Cập nhật chuỗi hoạt động hằng ngày.
+
+```d2
+shape: sequence_diagram
+"Learning Service"
+"Gamification Service"
+Database
+
+"Learning Service" -> "Gamification Service": event(lesson_complete)
+"Gamification Service" -> Database: get_streak(user_id)
+Database -> "Gamification Service": current_streak
+"Gamification Service" -> "Gamification Service": is_today_first_activity?
+"Gamification Service" -> Database: update_streak(current + 1, longest)
+"Gamification Service" -> "Event Bus": publish(streak.updated)
 ```
 
 ### Trao huy hiệu

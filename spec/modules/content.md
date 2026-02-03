@@ -10,11 +10,32 @@ sidebar_position: 3
 Module quản lý nội dung học tập và ngân hàng câu hỏi.
 
 > **SSoT**: [Backlog](../../blueprint/product/plan.md) |
-> [Database](../../blueprint/architecture/database.md)
+> [Database](../../blueprint/architecture/database.md) |
+> [33: SeaweedFS](../../blueprint/architecture/decisions/33-seaweedfs.md)
 
 ---
 
 ## Business Logic
+
+### Quản lý Subject/Semester
+
+Tạo cấu trúc môn học và học kỳ.
+
+```d2
+shape: sequence_diagram
+Admin
+"Content Service"
+Database
+
+Admin -> "Content Service": create_subject(tenant_id, name, grade)
+"Content Service" -> Database: check_order_sequence
+"Content Service" -> Database: insert_subject
+"Content Service" -> Admin: subject_id
+
+Admin -> "Content Service": create_semester(tenant_id, name)
+"Content Service" -> Database: insert_semester
+"Content Service" -> Admin: semester_id
+```
 
 ### Tạo cấu trúc Content
 
@@ -73,7 +94,7 @@ Admin -> "Content Service": publish_lesson(lesson_id)
 Upload video/hình ảnh sử dụng Presigned URL.
 
 > **SSoT**:
-> [0033: SeaweedFS - Upload Flow](../../blueprint/architecture/decisions/0033-seaweedfs.md#upload-flow)
+> [33: SeaweedFS - Upload Flow](../../blueprint/architecture/decisions/33-seaweedfs.md#upload-flow)
 
 ### Quy tắc & Ràng buộc
 
@@ -124,7 +145,7 @@ Admin -> "Content Service": archive()
 ### File Upload (Presigned URL)
 
 > **SSoT**:
-> [0033: SeaweedFS - Upload Flow](../../blueprint/architecture/decisions/0033-seaweedfs.md#upload-flow)
+> [33: SeaweedFS - Upload Flow](../../blueprint/architecture/decisions/33-seaweedfs.md#upload-flow)
 
 ### Sự kiện & Webhooks
 

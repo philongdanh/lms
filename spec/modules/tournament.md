@@ -11,7 +11,11 @@ Module **Tournament** tổ chức giải đấu và thi đấu real-time.
 
 > **SSoT**: [Backlog](../../blueprint/product/plan.md) |
 > [Database](../../blueprint/architecture/database.md) |
-> [Gamification](gamification.md)
+> [Gamification](gamification.md) | [Realtime](realtime.md) |
+> [13: Redis](../../blueprint/architecture/decisions/13-redis.md) |
+> [15: Socket.IO](../../blueprint/architecture/decisions/15-socketio.md)
+>
+> **Constraints**: `TC-001` (10,000 CCU), `TC-002` (latency under 100ms)
 
 ---
 

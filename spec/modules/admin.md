@@ -11,7 +11,10 @@ Module quản trị hệ thống multi-tenant và quản lý người dùng.
 
 > **SSoT**: [Backlog](../../blueprint/product/plan.md) |
 > [Database](../../blueprint/architecture/database.md) |
-> [Permissions](../../blueprint/architecture/decisions/03-rbac.md)
+> [03: RBAC](../../blueprint/architecture/decisions/03-rbac.md) |
+> [04: Cascade Delete](../../blueprint/architecture/decisions/04-cascade-delete.md)
+>
+> **Constraints**: `TC-006` (RBAC 5 roles)
 
 ---
 
@@ -43,7 +46,7 @@ Database -> "Admin Service": unique
 Nhập người dùng hàng loạt từ file CSV.
 
 > **SSoT**:
-> [0033: SeaweedFS - Upload Flow](../../blueprint/architecture/decisions/0033-seaweedfs.md#upload-flow)
+> [33: SeaweedFS - Upload Flow](../../blueprint/architecture/decisions/33-seaweedfs.md#upload-flow)
 
 ```d2
 shape: sequence_diagram

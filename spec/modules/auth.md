@@ -11,7 +11,11 @@ Module xác thực và phân quyền người dùng trong hệ thống multi-ten
 
 > **SSoT**: [Backlog](../../blueprint/product/plan.md) |
 > [Database](../../blueprint/architecture/database.md) |
-> [Permissions](../../blueprint/architecture/decisions/03-rbac.md)
+> [03: RBAC](../../blueprint/architecture/decisions/03-rbac.md) |
+> [14: JWT](../../blueprint/architecture/decisions/14-jwt.md)
+>
+> **Constraints**: `TC-006` (RBAC 5 roles), `TC-008` (JWT), `TC-010` (Max 3
+> sessions)
 
 ---
 

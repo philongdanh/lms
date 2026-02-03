@@ -11,7 +11,10 @@ Module **Học tập** là trái tim của hệ thống LMS, tập trung vào vi
 hóa trải nghiệm học tập** thông qua AI và tạo động lực bền vững cho học sinh.
 
 > **SSoT**: [Backlog](../../blueprint/product/plan.md) |
-> [Database](../../blueprint/architecture/database.md) | [Content](content.md)
+> [Database](../../blueprint/architecture/database.md) | [Content](content.md) |
+> [Gamification](gamification.md)
+>
+> **Constraints**: `TC-003` (API under 200ms), `TC-004` (FCP under 3s)
 
 ---
 
@@ -32,8 +35,9 @@ Database
 Student -> "Learning Service": submit_answers(session_id, answers)
 "Learning Service" -> Database: get_correct_answers
 "Learning Service" -> "Grading Engine": calculate_score
-"Grading Engine" -> "Learning Service": score, result
-"Learning Service" -> Database: save_submission
+"Grading Engine" -> "Learning Service": score, per_question_results
+"Learning Service" -> Database: save_exercise_session(score)
+"Learning Service" -> Database: batch_insert_submission_history
 "Learning Service" -> "Learning Service": check_pass_condition
 "Learning Service" -> "Event Bus": publish(exercise.submitted)
 "Learning Service" -> Student: result_feedback

@@ -11,7 +11,11 @@ Module giao tiếp real-time qua WebSocket.
 
 > **SSoT**: [Backlog](../../blueprint/product/plan.md) |
 > [Database](../../blueprint/architecture/database.md) |
-> [Tech](../../blueprint/architecture/design.md#technology-stack)
+> [Design: Tech Stack](../../blueprint/architecture/design.md#tech-stack) |
+> [13: Redis](../../blueprint/architecture/decisions/13-redis.md) |
+> [15: Socket.IO](../../blueprint/architecture/decisions/15-socketio.md)
+>
+> **Constraints**: `TC-001` (10,000 CCU), `TC-005` (WS Connect under 500ms)
 
 ---
 
