@@ -21,17 +21,18 @@ Xử lý sự kiện nhận EXP và tăng cấp.
 shape: sequence_diagram
 "Learning Service"
 "Gamification Service"
+"Gamification Service"
 Database
-Engine
+"Scoring Engine"
 "Event Bus"
 
 "Learning Service" -> "Gamification Service": event(lesson_complete)
 "Gamification Service" -> Database: get_user_profile
-"Gamification Service" -> Engine: calculate_exp_gain
-Engine -> "Gamification Service": exp_amount
+"Gamification Service" -> "Scoring Engine": calculate_exp_gain
+"Scoring Engine" -> "Gamification Service": exp_amount
 "Gamification Service" -> Database: update_exp_coins
-"Gamification Service" -> Engine: check_level_up
-Engine -> "Gamification Service": new_level
+"Gamification Service" -> "Scoring Engine": check_level_up
+"Scoring Engine" -> "Gamification Service": new_level
 "Gamification Service" -> Database: update_level
 "Gamification Service" -> "Event Bus": publish(level.up)
 ```

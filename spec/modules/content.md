@@ -87,7 +87,10 @@ Admin -> "Content Service": publish_lesson(lesson_id)
 
 ### Upload Media
 
-Upload video/hình ảnh sử dụng Presigned URL.
+Sử dụng Presigned URL để upload file trực tiếp lên SeaweedFS.
+
+> **SSoT**:
+> [33: SeaweedFS - Upload Flow](../../blueprint/architecture/decisions/33-seaweedfs.md#upload-flow)
 
 ### Quy tắc & Ràng buộc
 
