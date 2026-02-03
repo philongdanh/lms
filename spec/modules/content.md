@@ -9,10 +9,6 @@ sidebar_position: 3
 
 Module quản lý nội dung học tập và ngân hàng câu hỏi.
 
-> **SSoT**: [Backlog](../../blueprint/product/plan.md) |
-> [Database](../../blueprint/architecture/database.md) |
-> [33: SeaweedFS](../../blueprint/architecture/decisions/33-seaweedfs.md)
-
 ---
 
 ## Business Logic
@@ -93,9 +89,6 @@ Admin -> "Content Service": publish_lesson(lesson_id)
 
 Upload video/hình ảnh sử dụng Presigned URL.
 
-> **SSoT**:
-> [33: SeaweedFS - Upload Flow](../../blueprint/architecture/decisions/33-seaweedfs.md#upload-flow)
-
 ### Quy tắc & Ràng buộc
 
 - `Lesson` phải thuộc một `Topic` (phân cấp)
@@ -103,49 +96,44 @@ Upload video/hình ảnh sử dụng Presigned URL.
 - Định dạng hỗ trợ: `xlsx`, `docx`, `pdf`
 - Dung lượng tối đa: 500MB cho video
 
-### Lifecycle Sequence
+### Content Lifecycle
 
 Vòng đời nội dung từ draft đến xuất bản.
 
 ```d2
-shape: sequence_diagram
-Teacher
-"Content Service"
-Database
-Notification
-Admin
-"Event Bus"
+direction: right
 
-Teacher -> "Content Service": create_lesson()
-"Content Service" -> Database: insert(status=DRAFT)
+DRAFT: {
+  style.fill: "#e5e7eb"
+}
+PENDING_REVIEW: {
+  style.fill: "#fef3c7"
+}
+PUBLISHED: {
+  style.fill: "#d1fae5"
+}
+ARCHIVED: {
+  style.fill: "#f3e8ff"
+}
 
-Teacher -> "Content Service": submit_for_review()
-"Content Service" -> Database: update(status=PENDING_REVIEW)
-"Content Service" -> Notification: notify_admin()
-
-Admin -> "Content Service": approve()
-"Content Service" -> Database: update(status=PUBLISHED)
-"Content Service" -> "Event Bus": publish(content.published)
-
-Admin -> "Content Service": reject()
-"Content Service" -> Database: update(status=DRAFT)
-"Content Service" -> Notification: notify_teacher(feedback)
-
-Admin -> "Content Service": archive()
-"Content Service" -> Database: update(status=ARCHIVED)
+DRAFT -> PENDING_REVIEW: submit_for_review()
+PENDING_REVIEW -> PUBLISHED: approve()
+PENDING_REVIEW -> DRAFT: reject()
+PUBLISHED -> ARCHIVED: archive()
 ```
+
+**Triggers:**
+
+- `DRAFT` → `PENDING_REVIEW`: Teacher gửi duyệt
+- `PENDING_REVIEW` → `PUBLISHED`: Admin duyệt
+- `PENDING_REVIEW` → `DRAFT`: Admin từ chối (kèm feedback)
+- `PUBLISHED` → `ARCHIVED`: Admin ẩn nội dung
 
 ---
 
 ## API & Integration
 
-> **SSoT**: [schema.graphql](../api/graphql/content/schema.graphql) |
-> [operations.graphql](../api/graphql/content/operations.graphql)
-
 ### File Upload (Presigned URL)
-
-> **SSoT**:
-> [33: SeaweedFS - Upload Flow](../../blueprint/architecture/decisions/33-seaweedfs.md#upload-flow)
 
 ### Sự kiện & Webhooks
 

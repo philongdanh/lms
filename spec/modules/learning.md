@@ -10,12 +10,6 @@ sidebar_position: 4
 Module **Học tập** là trái tim của hệ thống LMS, tập trung vào việc **cá nhân
 hóa trải nghiệm học tập** thông qua AI và tạo động lực bền vững cho học sinh.
 
-> **SSoT**: [Backlog](../../blueprint/product/plan.md) |
-> [Database](../../blueprint/architecture/database.md) | [Content](content.md) |
-> [Gamification](gamification.md)
->
-> **Constraints**: `TC-003` (API under 200ms), `TC-004` (FCP under 3s)
-
 ---
 
 ## Business Logic
@@ -106,49 +100,47 @@ Database -> "Learning Service": stats
 - Timeout session: 30 phút không hoạt động
 - Rate limiting theo user
 
-### Lifecycle Sequence
+### Lesson Progress Lifecycle
 
-Vòng đời trạng thái bài học từ mở khóa đến hoàn thành.
+Vòng đời tiến độ học tập từ mở khóa đến hoàn thành.
 
 ```d2
-shape: sequence_diagram
-System
-"Learning Service"
-Database
-Student
-Analytics
-Gamification
+direction: right
 
-System -> "Learning Service": new_lesson_available()
-"Learning Service" -> Database: create_progress(status=LOCKED)
+LOCKED: {
+  style.fill: "#e5e7eb"
+}
+AVAILABLE: {
+  style.fill: "#dbeafe"
+}
+IN_PROGRESS: {
+  style.fill: "#fef3c7"
+}
+COMPLETED: {
+  style.fill: "#d1fae5"
+}
+REVIEW: {
+  style.fill: "#f3e8ff"
+}
 
-System -> "Learning Service": check_prerequisites()
-"Learning Service" -> Database: update(status=AVAILABLE)
-"Learning Service" -> Student: notify_new_lesson()
-
-Student -> "Learning Service": Start session()
-"Learning Service" -> Database: update(status=IN_PROGRESS)
-"Learning Service" -> Analytics: track_start()
-
-Student -> "Learning Service": submit_exercise(score)
-"Learning Service" -> "Learning Service": check_threshold()
-
-"Learning Service" -> Database: update(status=COMPLETED)
-"Learning Service" -> Gamification: trigger_rewards()
-
-"Learning Service" -> Database: keep(status=IN_PROGRESS)
-"Learning Service" -> Student: retry_feedback()
-
-Student -> "Learning Service": re_learn()
-"Learning Service" -> Database: update(status=REVIEW)
+LOCKED -> AVAILABLE: unlock_prerequisites()
+AVAILABLE -> IN_PROGRESS: start_session()
+IN_PROGRESS -> COMPLETED: pass_threshold()
+IN_PROGRESS -> IN_PROGRESS: retry()
+COMPLETED -> REVIEW: re_learn()
+REVIEW -> COMPLETED: pass_again()
 ```
+
+**Triggers:**
+
+- `LOCKED` → `AVAILABLE`: Hoàn thành bài học tiên quyết
+- `AVAILABLE` → `IN_PROGRESS`: Bắt đầu làm bài
+- `IN_PROGRESS` → `COMPLETED`: Đạt điểm đủ qua (mặc định 70%)
+- `COMPLETED` → `REVIEW`: Học lại để ôn tập
 
 ---
 
 ## API & Integration
-
-> **SSoT**: [schema.graphql](../api/graphql/learning/schema.graphql) |
-> [operations.graphql](../api/graphql/learning/operations.graphql)
 
 ### Sự kiện & Webhooks
 

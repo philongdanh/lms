@@ -9,14 +9,6 @@ sidebar_position: 8
 
 Module giao tiếp real-time qua WebSocket.
 
-> **SSoT**: [Backlog](../../blueprint/product/plan.md) |
-> [Database](../../blueprint/architecture/database.md) |
-> [Design: Tech Stack](../../blueprint/architecture/design.md#tech-stack) |
-> [13: Redis](../../blueprint/architecture/decisions/13-redis.md) |
-> [15: Socket.IO](../../blueprint/architecture/decisions/15-socketio.md)
->
-> **Constraints**: `TC-001` (10,000 CCU), `TC-005` (WS Connect under 500ms)
-
 ---
 
 ## Business Logic
@@ -102,41 +94,48 @@ Client -> "Realtime Service": join_room(room_id)
 - Thời gian handshake < 100ms
 - Message delivery < 50ms P50
 
-### Lifecycle Sequence
+### Connection Lifecycle
 
 Vòng đời kết nối WebSocket.
 
 ```d2
-shape: sequence_diagram
-Client
-"Realtime Service"
-"Auth Service"
-Redis
+direction: right
 
-Client -> "Realtime Service": connect()
-"Realtime Service" -> "Realtime Service": transition(CONNECTING)
+CONNECTING: {
+  style.fill: "#fef3c7"
+}
+AUTHENTICATED: {
+  style.fill: "#dbeafe"
+}
+REJECTED: {
+  style.fill: "#fee2e2"
+  style.stroke-dash: 3
+}
+CONNECTED: {
+  style.fill: "#d1fae5"
+}
+DISCONNECTED: {
+  style.fill: "#e5e7eb"
+}
 
-"Realtime Service" -> "Auth Service": validate_jwt(token)
-"Auth Service" -> "Realtime Service": valid
-"Realtime Service" -> "Realtime Service": transition(AUTHENTICATED)
-
-"Auth Service" -> "Realtime Service": invalid_token
-"Realtime Service" -> Client: reject(REJECTED)
-
-"Realtime Service" -> Redis: register_socket()
-"Realtime Service" -> Client: handshake_complete(CONNECTED)
-
-Client -> "Realtime Service": disconnect()
-"Realtime Service" -> Redis: cleanup_socket()
-"Realtime Service" -> "Realtime Service": transition(DISCONNECTED)
+CONNECTING -> AUTHENTICATED: validate_jwt(valid)
+CONNECTING -> REJECTED: validate_jwt(invalid)
+AUTHENTICATED -> CONNECTED: register_socket()
+CONNECTED -> DISCONNECTED: disconnect()
+DISCONNECTED -> CONNECTING: reconnect()
 ```
+
+**Triggers:**
+
+- `CONNECTING` → `AUTHENTICATED`: JWT hợp lệ
+- `CONNECTING` → `REJECTED`: JWT không hợp lệ/hết hạn
+- `AUTHENTICATED` → `CONNECTED`: Đăng ký socket vào Redis
+- `CONNECTED` → `DISCONNECTED`: Client ngắt kết nối
+- `DISCONNECTED` → `CONNECTING`: Auto-reconnect với backoff
 
 ---
 
 ## API & Integration
-
-> **SSoT**: [schema.graphql](../api/graphql/realtime/schema.graphql) |
-> [operations.graphql](../api/graphql/realtime/operations.graphql)
 
 ### Các sự kiện WebSocket
 

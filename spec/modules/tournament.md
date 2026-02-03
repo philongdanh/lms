@@ -9,14 +9,6 @@ sidebar_position: 6
 
 Module **Tournament** tổ chức giải đấu và thi đấu real-time.
 
-> **SSoT**: [Backlog](../../blueprint/product/plan.md) |
-> [Database](../../blueprint/architecture/database.md) |
-> [Gamification](gamification.md) | [Realtime](realtime.md) |
-> [13: Redis](../../blueprint/architecture/decisions/13-redis.md) |
-> [15: Socket.IO](../../blueprint/architecture/decisions/15-socketio.md)
->
-> **Constraints**: `TC-001` (10,000 CCU), `TC-002` (latency under 100ms)
-
 ---
 
 ## Business Logic
@@ -112,51 +104,47 @@ Scheduler -> "Tournament Service": end_round_trigger
 - Độ trễ broadcast < 500ms cho 10k users
 - Tối đa 100k concurrent users mỗi sự kiện
 
-### Lifecycle Sequence
+### Tournament Lifecycle
 
 Vòng đời giải đấu từ tạo đến hoàn thành.
 
 ```d2
-shape: sequence_diagram
-Admin
-"Tournament Service"
-Database
-"Event Bus"
-Scheduler
-Student
-Realtime
-Gamification
+direction: right
 
-Admin -> "Tournament Service": create_tournament()
-"Tournament Service" -> Database: insert(status=SCHEDULED)
-"Tournament Service" -> Admin: tournament_id
+DRAFT: {
+  style.fill: "#e5e7eb"
+}
+REGISTRATION: {
+  style.fill: "#dbeafe"
+}
+IN_PROGRESS: {
+  style.fill: "#fef3c7"
+}
+COMPLETED: {
+  style.fill: "#d1fae5"
+}
+CANCELLED: {
+  style.fill: "#fee2e2"
+  style.stroke-dash: 3
+}
 
-Scheduler -> "Tournament Service": trigger_open_registration()
-"Tournament Service" -> Database: update(status=REGISTRATION)
-"Tournament Service" -> "Event Bus": publish(registration.opened)
-
-Student -> "Tournament Service": join_tournament()
-"Tournament Service" -> Database: create_participant()
-
-Scheduler -> "Tournament Service": check_start_time()
-"Tournament Service" -> Database: update(status=IN_PROGRESS)
-"Tournament Service" -> Realtime: broadcast(tournament.started)
-
-Student -> "Tournament Service": submit_answer()
-"Tournament Service" -> Realtime: update_leaderboard()
-
-Scheduler -> "Tournament Service": check_end_time()
-"Tournament Service" -> Database: update(status=COMPLETED)
-"Tournament Service" -> Database: finalize_results()
-"Tournament Service" -> Gamification: award_winners()
+DRAFT -> REGISTRATION: open_registration()
+REGISTRATION -> IN_PROGRESS: start_tournament()
+REGISTRATION -> CANCELLED: cancel()
+IN_PROGRESS -> COMPLETED: end_tournament()
+IN_PROGRESS -> CANCELLED: force_cancel()
 ```
+
+**Triggers:**
+
+- `DRAFT` → `REGISTRATION`: Scheduler mở đăng ký theo cấu hình
+- `REGISTRATION` → `IN_PROGRESS`: Bắt đầu theo lịch
+- `IN_PROGRESS` → `COMPLETED`: Hết thời gian + finalize kết quả
+- Any → `CANCELLED`: Admin hủy giải
 
 ---
 
 ## API & Integration
-
-> **SSoT**: [schema.graphql](../api/graphql/tournament/schema.graphql) |
-> [operations.graphql](../api/graphql/tournament/operations.graphql)
 
 ### Sự kiện & Webhooks
 

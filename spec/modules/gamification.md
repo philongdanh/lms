@@ -9,10 +9,6 @@ sidebar_position: 5
 
 Module **Gamification** quản lý phần thưởng, điểm số và bảng xếp hạng.
 
-> **SSoT**: [Backlog](../../blueprint/product/plan.md) |
-> [Database](../../blueprint/architecture/database.md) |
-> [13: Redis](../../blueprint/architecture/decisions/13-redis.md)
-
 ---
 
 ## Business Logic
@@ -131,9 +127,6 @@ Scheduler -> "Gamification Service": refresh_leaderboards
 ---
 
 ## API & Integration
-
-> **SSoT**: [schema.graphql](../api/graphql/gamification/schema.graphql) |
-> [operations.graphql](../api/graphql/gamification/operations.graphql)
 
 ### Sự kiện & Webhooks
 

@@ -9,10 +9,6 @@ sidebar_position: 7
 
 Module phân tích dữ liệu học tập và báo cáo thống kê.
 
-> **SSoT**: [Backlog](../../blueprint/product/plan.md) |
-> [Database](../../blueprint/architecture/database.md) |
-> [13: Redis](../../blueprint/architecture/decisions/13-redis.md)
-
 ---
 
 ## Business Logic
@@ -89,9 +85,6 @@ Aggregator -> Database: insert_daily_stats
 ---
 
 ## API & Integration
-
-> **SSoT**: [schema.graphql](../api/graphql/analytics/schema.graphql) |
-> [operations.graphql](../api/graphql/analytics/operations.graphql)
 
 ### Sự kiện & Webhooks
 

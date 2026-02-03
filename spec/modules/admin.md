@@ -9,13 +9,6 @@ sidebar_position: 2
 
 Module quản trị hệ thống multi-tenant và quản lý người dùng.
 
-> **SSoT**: [Backlog](../../blueprint/product/plan.md) |
-> [Database](../../blueprint/architecture/database.md) |
-> [03: RBAC](../../blueprint/architecture/decisions/03-rbac.md) |
-> [04: Cascade Delete](../../blueprint/architecture/decisions/04-cascade-delete.md)
->
-> **Constraints**: `TC-006` (RBAC 5 roles)
-
 ---
 
 ## Business Logic
@@ -122,48 +115,45 @@ Queue
 - Soft delete → Hard delete sau 30 ngày
 - Ghi audit log cho tất cả impersonation
 
-### Lifecycle Sequence
+### Tenant Lifecycle
 
 Vòng đời tenant từ tạo đến xóa.
 
 ```d2
-shape: sequence_diagram
-"Root Admin"
-"Admin Service"
-Database
-"Email Service"
-"Tenant Admin"
-"Event Bus"
-Queue
-Scheduler
+direction: right
 
-"Root Admin" -> "Admin Service": create_tenant()
-"Admin Service" -> Database: insert(status=PENDING)
-"Admin Service" -> "Email Service": send_activation_link()
+PENDING: {
+  style.fill: "#fef3c7"
+}
+ACTIVE: {
+  style.fill: "#d1fae5"
+}
+SUSPENDED: {
+  style.fill: "#fee2e2"
+}
+DELETED: {
+  style.fill: "#e5e7eb"
+  style.stroke-dash: 3
+}
 
-"Tenant Admin" -> "Admin Service": activate(token)
-"Admin Service" -> Database: update(status=ACTIVE)
-
-"Root Admin" -> "Admin Service": suspend_tenant()
-"Admin Service" -> Database: update(status=SUSPENDED)
-"Admin Service" -> "Event Bus": publish(tenant.suspended)
-
-"Root Admin" -> "Admin Service": reactivate()
-"Admin Service" -> Database: update(status=ACTIVE)
-
-"Root Admin" -> "Admin Service": soft_delete()
-"Admin Service" -> Database: update(status=DELETED)
-"Admin Service" -> Queue: schedule_hard_delete(30_days)
-
-Scheduler -> "Admin Service": execute_hard_delete()
-"Admin Service" -> Database: purge_tenant_data()
+PENDING -> ACTIVE: activate(token)
+ACTIVE -> SUSPENDED: suspend_tenant()
+SUSPENDED -> ACTIVE: reactivate()
+ACTIVE -> DELETED: soft_delete()
+SUSPENDED -> DELETED: soft_delete()
+DELETED -> DELETED: hard_delete(30 days)
 ```
+
+**Triggers:**
+
+- `PENDING` → `ACTIVE`: Tenant Admin click activation link
+- `ACTIVE` → `SUSPENDED`: Root Admin suspend
+- `SUSPENDED` → `ACTIVE`: Root Admin reactivate
+- Any → `DELETED`: Soft delete + scheduler hard delete sau 30 ngày
 
 ---
 
 ## API & Integration
-
-> **SSoT**: [schema.graphql](../api/graphql/admin/schema.graphql)
 
 ### Sự kiện & Webhooks
 
