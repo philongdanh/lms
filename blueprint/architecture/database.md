@@ -18,6 +18,10 @@ ERD cho hệ thống multi-tenant
 ```d2
 direction: right
 
+# ═══════════════════════════════════════════════════════════════════════════
+# CORE / MULTI-TENANT
+# ═══════════════════════════════════════════════════════════════════════════
+
 Tenant: {
   shape: sql_table
   id: string {constraint: primary_key}
@@ -30,6 +34,10 @@ Tenant: {
   created_at: timestamp
   updated_at: timestamp
 }
+
+# ═══════════════════════════════════════════════════════════════════════════
+# IDENTITY & AUTH
+# ═══════════════════════════════════════════════════════════════════════════
 
 User: {
   shape: sql_table
@@ -58,8 +66,8 @@ UserSession: {
   refresh_token: string {constraint: unique}
   is_active: boolean
   last_active_at: timestamp
-  created_at: timestamp
   expires_at: timestamp
+  created_at: timestamp
 }
 
 OtpVerification: {
@@ -67,13 +75,17 @@ OtpVerification: {
   id: string {constraint: primary_key}
   user_id: string {constraint: [foreign_key; nullable]}
   identifier: string
-  type: REGISTER|RESET_PASSWORD|PHONE_VERIFY
   code: string
+  type: REGISTER|RESET_PASSWORD|PHONE_VERIFY
   attempts: int
-  expires_at: timestamp
   verified_at: timestamp {constraint: nullable}
+  expires_at: timestamp
   created_at: timestamp
 }
+
+# ═══════════════════════════════════════════════════════════════════════════
+# RBAC
+# ═══════════════════════════════════════════════════════════════════════════
 
 Role: {
   shape: sql_table
@@ -81,8 +93,8 @@ Role: {
   tenant_id: string {constraint: [foreign_key; nullable]}
   code: string
   name: string
-  color: string {constraint: nullable}
   description: string {constraint: nullable}
+  color: string {constraint: nullable}
   created_at: timestamp
   updated_at: timestamp
 }
@@ -110,6 +122,10 @@ UserRole: {
   tenant_id: string {constraint: foreign_key}
   assigned_at: timestamp
 }
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CONTENT
+# ═══════════════════════════════════════════════════════════════════════════
 
 Subject: {
   shape: sql_table
@@ -144,6 +160,8 @@ Lesson: {
   id: string {constraint: primary_key}
   topic_id: string {constraint: foreign_key}
   semester_id: string {constraint: foreign_key}
+  created_by: string {constraint: foreign_key}
+  published_by: string {constraint: [foreign_key; nullable]}
   title: string
   content: text
   thumbnail_url: string {constraint: nullable}
@@ -152,8 +170,6 @@ Lesson: {
   passing_score: int
   estimated_minutes: int
   status: DRAFT|PENDING_REVIEW|PUBLISHED|ARCHIVED
-  created_by: string {constraint: foreign_key}
-  published_by: string {constraint: [foreign_key; nullable]}
   published_at: timestamp {constraint: nullable}
   created_at: timestamp
   updated_at: timestamp
@@ -163,14 +179,18 @@ Question: {
   shape: sql_table
   id: string {constraint: primary_key}
   lesson_id: string {constraint: foreign_key}
-  type: SINGLE_CHOICE|MULTIPLE_CHOICE|TRUE_FALSE|FILL_BLANK|ESSAY
   content: text
+  type: SINGLE_CHOICE|MULTIPLE_CHOICE|TRUE_FALSE|FILL_BLANK|ESSAY
   options: json
   correct_answer: json
   explanation: text {constraint: nullable}
   order: int
   created_at: timestamp
 }
+
+# ═══════════════════════════════════════════════════════════════════════════
+# LEARNING PROGRESS
+# ═══════════════════════════════════════════════════════════════════════════
 
 LearningPath: {
   shape: sql_table
@@ -224,10 +244,15 @@ KnowledgeMap: {
   updated_at: timestamp
 }
 
+# ═══════════════════════════════════════════════════════════════════════════
+# TOURNAMENT
+# ═══════════════════════════════════════════════════════════════════════════
+
 Tournament: {
   shape: sql_table
   id: string {constraint: primary_key}
   tenant_id: string {constraint: foreign_key}
+  created_by: string {constraint: foreign_key}
   name: string
   description: text {constraint: nullable}
   rules: text {constraint: nullable}
@@ -238,7 +263,6 @@ Tournament: {
   status: DRAFT|REGISTRATION|IN_PROGRESS|COMPLETED|CANCELLED
   starts_at: timestamp
   ends_at: timestamp
-  created_by: string {constraint: foreign_key}
   created_at: timestamp
 }
 
@@ -247,9 +271,9 @@ CompetitionRound: {
   id: string {constraint: primary_key}
   tournament_id: string {constraint: foreign_key}
   round_number: int
+  questions: json
   starts_at: timestamp
   ends_at: timestamp
-  questions: json
 }
 
 Participant: {
@@ -262,6 +286,10 @@ Participant: {
   joined_at: timestamp
   finished_at: timestamp {constraint: nullable}
 }
+
+# ═══════════════════════════════════════════════════════════════════════════
+# GAMIFICATION
+# ═══════════════════════════════════════════════════════════════════════════
 
 UserProfile: {
   shape: sql_table
@@ -302,6 +330,10 @@ UserBadge: {
   awarded_at: timestamp
 }
 
+# ═══════════════════════════════════════════════════════════════════════════
+# SHOP / REWARDS
+# ═══════════════════════════════════════════════════════════════════════════
+
 Reward: {
   shape: sql_table
   id: string {constraint: primary_key}
@@ -321,6 +353,19 @@ RewardRedemption: {
   redeemed_at: timestamp
 }
 
+UserInventory: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  user_id: string {constraint: foreign_key}
+  reward_id: string {constraint: foreign_key}
+  equipped: boolean
+  acquired_at: timestamp
+}
+
+# ═══════════════════════════════════════════════════════════════════════════
+# SOCIAL
+# ═══════════════════════════════════════════════════════════════════════════
+
 ParentChildLink: {
   shape: sql_table
   id: string {constraint: primary_key}
@@ -332,6 +377,10 @@ ParentChildLink: {
   created_at: timestamp
 }
 
+# ═══════════════════════════════════════════════════════════════════════════
+# PREFERENCES
+# ═══════════════════════════════════════════════════════════════════════════
+
 NotificationPreference: {
   shape: sql_table
   user_id: string {constraint: [primary_key; foreign_key]}
@@ -341,17 +390,12 @@ NotificationPreference: {
   updated_at: timestamp
 }
 
-UserInventory: {
-  shape: sql_table
-  id: string {constraint: primary_key}
-  user_id: string {constraint: foreign_key}
-  reward_id: string {constraint: foreign_key}
-  equipped: boolean
-  acquired_at: timestamp
-}
-
+# ═══════════════════════════════════════════════════════════════════════════
+# RELATIONS
+# ═══════════════════════════════════════════════════════════════════════════
 
 Tenant -> User: 1:N
+
 User -> UserSession: 1:N
 User -> OtpVerification: 1:N
 
@@ -361,8 +405,8 @@ Role -> RolePermission: 1:N
 Permission -> RolePermission: 1:N
 
 Subject -> Topic: 1:N
-Topic -> Lesson: 1:N
 Semester -> Lesson: 1:N
+Topic -> Lesson: 1:N
 Lesson -> Question: 1:N
 
 User -> LearningPath: 1:N
@@ -378,13 +422,14 @@ User -> UserProfile: 1:1
 User -> Streak: 1:1
 User -> UserBadge: 1:N
 Badge -> UserBadge: 1:N
+
 User -> RewardRedemption: 1:N
+User -> UserInventory: 1:N
 Reward -> RewardRedemption: 1:N
+Reward -> UserInventory: 1:N
 
 User -> ParentChildLink: 1:N
 User -> NotificationPreference: 1:1
-User -> UserInventory: 1:N
-Reward -> UserInventory: 1:N
 ```
 
 ### Ràng buộc Unique
@@ -406,9 +451,9 @@ Reward -> UserInventory: 1:N
 | `Participant`            | (`round_id`, `user_id`)             | 1 lần tham gia/user/round     |
 | `Badge`                  | `code`                              | Unique toàn hệ thống          |
 | `UserBadge`              | (`user_id`, `badge_id`)             | 1 badge/user/loại             |
+| `UserInventory`          | (`user_id`, `reward_id`)            | Tránh mua trùng               |
 | `ParentChildLink`        | `invite_code`                       | Unique toàn hệ thống          |
 | `NotificationPreference` | `user_id`                           | 1 preference set/user         |
-| `UserInventory`          | (`user_id`, `reward_id`)            | Tránh mua trùng               |
 
 ### Đánh Index
 
