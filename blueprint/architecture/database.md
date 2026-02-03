@@ -36,9 +36,12 @@ User: {
   id: string {constraint: primary_key}
   tenant_id: string {constraint: foreign_key}
   email: string
-  password: string
+  phone: string {constraint: nullable}
+  password: string {constraint: nullable}
   name: string
   avatar_url: string {constraint: nullable}
+  provider: INTERNAL|GOOGLE {constraint: nullable}
+  provider_id: string {constraint: nullable}
   status: PENDING|ACTIVE|SUSPENDED|PENDING_DEACTIVATION
   email_verified_at: timestamp {constraint: nullable}
   created_at: timestamp
@@ -63,8 +66,8 @@ OtpVerification: {
   shape: sql_table
   id: string {constraint: primary_key}
   user_id: string {constraint: [foreign_key; nullable]}
-  email: string
-  type: REGISTER|RESET_PASSWORD
+  identifier: string
+  type: REGISTER|RESET_PASSWORD|PHONE_VERIFY
   code: string
   attempts: int
   expires_at: timestamp
@@ -268,6 +271,8 @@ UserProfile: {
   coins: int
   current_level_exp: int
   next_level_exp: int
+  theme: LIGHT|DARK
+  locale: string {constraint: nullable}
   updated_at: timestamp
 }
 
@@ -327,6 +332,24 @@ ParentChildLink: {
   created_at: timestamp
 }
 
+NotificationPreference: {
+  shape: sql_table
+  user_id: string {constraint: [primary_key; foreign_key]}
+  tournament_enabled: boolean
+  reminder_enabled: boolean
+  push_token: string {constraint: nullable}
+  updated_at: timestamp
+}
+
+UserInventory: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  user_id: string {constraint: foreign_key}
+  reward_id: string {constraint: foreign_key}
+  equipped: boolean
+  acquired_at: timestamp
+}
+
 
 Tenant -> User: 1:N
 User -> UserSession: 1:N
@@ -359,34 +382,43 @@ User -> RewardRedemption: 1:N
 Reward -> RewardRedemption: 1:N
 
 User -> ParentChildLink: 1:N
+User -> NotificationPreference: 1:1
+User -> UserInventory: 1:N
+Reward -> UserInventory: 1:N
 ```
 
 ### Ràng buộc Unique
 
-| Bảng              | Constraint                          | Mô tả                      |
-| ----------------- | ----------------------------------- | -------------------------- |
-| `Tenant`          | `code`                              | Unique toàn hệ thống       |
-| `User`            | (`tenant_id`, `email`)              | Unique trong mỗi tenant    |
-| `UserSession`     | `refresh_token`                     | Unique toàn hệ thống       |
-| `OtpVerification` | (`email`, `type`)                   | Mỗi email chỉ 1 OTP/type   |
-| `Role`            | (`tenant_id`, `code`)               | Unique trong mỗi tenant    |
-| `Permission`      | `code`                              | Unique toàn hệ thống       |
-| `RolePermission`  | (`role_id`, `permission_id`)        | Tránh assign trùng         |
-| `UserRole`        | (`user_id`, `role_id`, `tenant_id`) | Tránh assign role trùng    |
-| `LessonProgress`  | (`user_id`, `lesson_id`)            | 1 progress/user/lesson     |
-| `KnowledgeMap`    | (`user_id`, `topic_id`)             | 1 mastery score/user/topic |
-| `Participant`     | (`round_id`, `user_id`)             | 1 lần tham gia/user/round  |
-| `Badge`           | `code`                              | Unique toàn hệ thống       |
-| `UserBadge`       | (`user_id`, `badge_id`)             | 1 badge/user/loại          |
-| `ParentChildLink` | `invite_code`                       | Unique toàn hệ thống       |
+| Bảng                     | Constraint                          | Mô tả                         |
+| ------------------------ | ----------------------------------- | ----------------------------- |
+| `Tenant`                 | `code`                              | Unique toàn hệ thống          |
+| `User`                   | (`tenant_id`, `email`)              | Unique trong mỗi tenant       |
+| `User`                   | (`tenant_id`, `phone`)              | Unique phone trong tenant     |
+| `User`                   | (`provider`, `provider_id`)         | Unique social account         |
+| `UserSession`            | `refresh_token`                     | Unique toàn hệ thống          |
+| `OtpVerification`        | (`identifier`, `type`)              | Mỗi identifier chỉ 1 OTP/type |
+| `Role`                   | (`tenant_id`, `code`)               | Unique trong mỗi tenant       |
+| `Permission`             | `code`                              | Unique toàn hệ thống          |
+| `RolePermission`         | (`role_id`, `permission_id`)        | Tránh assign trùng            |
+| `UserRole`               | (`user_id`, `role_id`, `tenant_id`) | Tránh assign role trùng       |
+| `LessonProgress`         | (`user_id`, `lesson_id`)            | 1 progress/user/lesson        |
+| `KnowledgeMap`           | (`user_id`, `topic_id`)             | 1 mastery score/user/topic    |
+| `Participant`            | (`round_id`, `user_id`)             | 1 lần tham gia/user/round     |
+| `Badge`                  | `code`                              | Unique toàn hệ thống          |
+| `UserBadge`              | (`user_id`, `badge_id`)             | 1 badge/user/loại             |
+| `ParentChildLink`        | `invite_code`                       | Unique toàn hệ thống          |
+| `NotificationPreference` | `user_id`                           | 1 preference set/user         |
+| `UserInventory`          | (`user_id`, `reward_id`)            | Tránh mua trùng               |
 
 ### Đánh Index
 
 | Bảng                | Index                                  | Mục đích               |
 | ------------------- | -------------------------------------- | ---------------------- |
 | `User`              | (`tenant_id`, `email`, `deleted_at`)   | Login, truy vấn tenant |
+| `User`              | (`tenant_id`, `phone`, `deleted_at`)   | Login bằng SĐT         |
+| `User`              | (`provider`, `provider_id`)            | OAuth lookup           |
 | `UserSession`       | (`user_id`, `device_id`, `is_active`)  | Multi-device session   |
-| `OtpVerification`   | (`email`, `type`, `expires_at`)        | Tìm OTP hợp lệ         |
+| `OtpVerification`   | (`identifier`, `type`, `expires_at`)   | Tìm OTP hợp lệ         |
 | `Lesson`            | (`topic_id`, `semester_id`, `status`)  | Filter bài học         |
 | `LessonProgress`    | (`user_id`, `lesson_id`)               | Tiến độ học sinh       |
 | `ExerciseSession`   | (`user_id`, `lesson_id`, `started_at`) | Lịch sử làm bài        |
@@ -394,6 +426,7 @@ User -> ParentChildLink: 1:N
 | `KnowledgeMap`      | (`user_id`, `topic_id`)                | AI recommendations     |
 | `Tournament`        | (`tenant_id`, `status`, `starts_at`)   | Filter giải đấu        |
 | `Participant`       | (`round_id`, `score` DESC)             | Leaderboard            |
+| `UserInventory`     | (`user_id`, `equipped`)                | Filter items equipped  |
 
 ---
 
