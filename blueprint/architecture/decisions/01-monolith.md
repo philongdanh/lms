@@ -1,11 +1,11 @@
 ---
 id: 01-monolith
-title: '01: Modular Monolith'
-sidebar_label: '01: Monolith'
+title: '01: Monolith'
+sidebar_label: '01: monolith'
 sidebar_position: 1
 ---
 
-# 01: Modular Monolith
+# 01: Monolith
 
 Một kiến trúc phù hợp với team nhỏ nhưng có khả năng mở rộng
 
@@ -13,7 +13,7 @@ Một kiến trúc phù hợp với team nhỏ nhưng có khả năng mở rộn
 
 ## Decision
 
-Xây dựng **Modular Monolith** (các module Auth, Tournament, Learning)
+Xây dựng **Modular Monolith** (module Auth, Tournament, Learning)
 
 ---
 

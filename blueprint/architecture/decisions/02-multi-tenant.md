@@ -1,19 +1,19 @@
 ---
 id: 02-multi-tenant
-title: '02: Multi Tenant'
-sidebar_label: '02: Multi Tenant'
+title: '02: multi-tenant'
+sidebar_label: '02: multi-tenant'
 sidebar_position: 2
 ---
 
-# 02: Multi Tenant
+# 02: multi-tenant
 
-Multi-tenant strategy cho nhiều trường
+multi-tenant cho nhiều trường
 
 ---
 
 ## Decision
 
-Shared Database với `tenant_id` column
+Shared Database với `tenant_id`
 
 ---
 

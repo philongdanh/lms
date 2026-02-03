@@ -115,8 +115,6 @@ Seed cứng trong Entity `Permission`
 
 ### 1. Isolation
 
-> SSoT: [`TC-ARCH-006`](../design.md#architecture)
-
 - Data cách ly theo `tenant_id`
 - User chỉ thấy data thuộc tenant gán
 - `root-admin` thấy cross-tenant
