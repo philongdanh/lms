@@ -42,7 +42,7 @@ Kế hoạch triển khai chi tiết theo Sprint
 
 | ID       | User Story                             | Points | Acceptance Criteria                                                                                                                                  |
 | :------- | :------------------------------------- | :----- | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `US-008` | **Danh sách môn**: Xem môn học         | 5      | - Hiển thị danh sách 3 môn: Toán, Tiếng Việt, Tiếng Anh<br/>- Bộ lọc theo Khối lớp và Cấp độ<br/>- Skeleton loading khi đang fetch dữ liệu           |
+| `US-008` | **Danh sách môn**: Xem môn học         | 5      | - Hiển thị danh sách 3 môn: Toán, Tiếng Việt, Tiếng Anh<br/>- Bộ lọc theo Khối lớp, Chủ đề, Học kì <br/>- Skeleton loading khi đang fetch dữ liệu    |
 | `US-009` | **Lộ trình**: Xem cây bài học          | 8      | - Hiển thị bài học dạng cây (Tree) hoặc Timeline<br/>- Trạng thái rõ ràng: Locked, Unlocked, Completed<br/>- Chặn click vào các bài đang bị khóa     |
 | `US-010` | **Bài học**: Xem nội dung (Text/Video) | 8      | - Hỗ trợ nội dung Rich Text, Hình ảnh, Embed Video<br/>- Điều hướng bài trước/sau thuận tiện<br/>- Tối ưu load time &lt;3s (FCP)                     |
 | `US-011` | **Quiz**: Trắc nghiệm                  | 8      | - Hiển thị câu hỏi + 4 lựa chọn trả lời<br/>- Client-side validation (chế độ luyện tập) cho phản hồi nhanh<br/>- Submit kết quả lên API để tính điểm |

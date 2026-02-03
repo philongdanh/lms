@@ -28,14 +28,14 @@ Realtime: Real-time Service
 MsgQueue: Message Queue
 
 DataLayer: Data Layer {
-  DB: Database { shape: cylinder }
-  Redis: Redis Cache & Pub/Sub { shape: cylinder }
-  SeaweedFS: SeaweedFS Storage { shape: cylinder }
+  DB: Database {shape: cylinder}
+  Redis: Redis Cache & Pub/Sub {shape: cylinder}
+  SeaweedFS: SeaweedFS Storage {shape: cylinder}
 }
 
 Web -> App
-Web -> WSGateway { style.stroke-dash: 3 }
-Web -> DataLayer.SeaweedFS: Presigned URL Upload { style.stroke-dash: 3 }
+Web -> WSGateway: {style.stroke-dash: 3}
+Web -> DataLayer.SeaweedFS: Presigned URL Upload {style.stroke-dash: 3}
 
 App -> Auth
 App -> Tournament

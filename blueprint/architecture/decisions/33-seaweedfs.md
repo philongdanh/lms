@@ -47,10 +47,10 @@ SeaweedFS
 
 Client -> Backend: GraphQL: getUploadUrl(filename)
 Backend -> SeaweedFS: Generate Presigned URL
-SeaweedFS -> Backend: Signed URL { style.stroke-dash: 3 }
-Backend -> Client: Return Presigned URL { style.stroke-dash: 3 }
+SeaweedFS -> Backend: Signed URL {style.stroke-dash: 3}
+Backend -> Client: Return Presigned URL {style.stroke-dash: 3}
 Client -> SeaweedFS: HTTP PUT (upload file)
-SeaweedFS -> Client: 200 OK { style.stroke-dash: 3 }
+SeaweedFS -> Client: 200 OK {style.stroke-dash: 3}
 Client -> Backend: GraphQL: confirmUpload(fileId)
 Backend -> Backend: Create Media record
 ```

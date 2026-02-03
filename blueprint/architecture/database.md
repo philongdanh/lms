@@ -7,21 +7,16 @@ sidebar_position: 3
 
 # Database
 
-ERD and data regulations for the multi-tenant system.
+ERD cho hệ thống multi-tenant
 
 ---
 
-## Schema Design
+## Schema
 
-### ERD & models
-
-> SSoT: [`TC-ARCH-002`](design.md#architecture) |
-> [0004: PostgreSQL](decisions/0004-postgresql.md) |
-> [0005: Prisma](decisions/0005-prisma.md)
+### ERD
 
 ```d2
 direction: right
-# SSoT: TC-ARCH-002 (Schema) | TC-ARCH-006 (Multi-tenancy)
 
 # ═══════════════════════════════════════════════════════════════
 # CORE: Tenant & User
@@ -66,6 +61,19 @@ UserSession: {
   last_active_at: timestamp
   created_at: timestamp
   expires_at: timestamp
+}
+
+OtpVerification: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  user_id: string {constraint: [foreign_key; nullable]}
+  email: string
+  type: REGISTER|RESET_PASSWORD
+  code: string
+  attempts: int
+  expires_at: timestamp
+  verified_at: timestamp {constraint: nullable}
+  created_at: timestamp
 }
 
 # ═══════════════════════════════════════════════════════════════
@@ -119,8 +127,15 @@ Subject: {
   name: string
   icon_url: string {constraint: nullable}
   grade: int
-  curriculum: string
   order: int
+  created_at: timestamp
+}
+
+Semester: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  tenant_id: string {constraint: foreign_key}
+  name: string
   created_at: timestamp
 }
 
@@ -137,14 +152,17 @@ Lesson: {
   shape: sql_table
   id: string {constraint: primary_key}
   topic_id: string {constraint: foreign_key}
-  created_by: string
+  semester_id: string {constraint: foreign_key}
   title: string
-  thumbnail_url: string {constraint: nullable}
   content: text
+  thumbnail_url: string {constraint: nullable}
+  video_url: string {constraint: nullable}
+  video_duration: int {constraint: nullable}
   passing_score: int
   estimated_minutes: int
   status: DRAFT|PENDING_REVIEW|PUBLISHED|ARCHIVED
-  published_by: string {constraint: nullable}
+  created_by: string {constraint: foreign_key}
+  published_by: string {constraint: [foreign_key; nullable]}
   published_at: timestamp {constraint: nullable}
   created_at: timestamp
   updated_at: timestamp
@@ -205,8 +223,8 @@ SubmissionHistory: {
   shape: sql_table
   id: string {constraint: primary_key}
   session_id: string {constraint: foreign_key}
-  question_id: string
-  answer: string
+  question_id: string {constraint: foreign_key}
+  answer: json
   is_correct: boolean
 }
 
@@ -214,7 +232,7 @@ KnowledgeMap: {
   shape: sql_table
   id: string {constraint: primary_key}
   user_id: string {constraint: foreign_key}
-  topic_id: string
+  topic_id: string {constraint: foreign_key}
   mastery_score: float
   updated_at: timestamp
 }
@@ -227,13 +245,17 @@ Tournament: {
   shape: sql_table
   id: string {constraint: primary_key}
   tenant_id: string {constraint: foreign_key}
-  created_by: string
   name: string
+  description: text {constraint: nullable}
+  rules: text {constraint: nullable}
   banner_url: string {constraint: nullable}
   max_participants: int
+  entry_fee: int
+  min_level: int
   status: DRAFT|REGISTRATION|IN_PROGRESS|COMPLETED|CANCELLED
   starts_at: timestamp
   ends_at: timestamp
+  created_by: string {constraint: foreign_key}
   created_at: timestamp
 }
 
@@ -319,12 +341,28 @@ RewardRedemption: {
 }
 
 # ═══════════════════════════════════════════════════════════════
+# FAMILY: Parent-Child Linking
+# ═══════════════════════════════════════════════════════════════
+
+ParentChildLink: {
+  shape: sql_table
+  id: string {constraint: primary_key}
+  parent_id: string {constraint: foreign_key}
+  child_id: string {constraint: foreign_key}
+  invite_code: string {constraint: unique}
+  status: PENDING|ACTIVE|REVOKED
+  linked_at: timestamp {constraint: nullable}
+  created_at: timestamp
+}
+
+# ═══════════════════════════════════════════════════════════════
 # RELATIONSHIPS
 # ═══════════════════════════════════════════════════════════════
 
 # Core
 Tenant -> User: 1:N
 User -> UserSession: 1:N
+User -> OtpVerification: 1:N
 
 # RBAC
 User -> UserRole: 1:N
@@ -335,6 +373,7 @@ Permission -> RolePermission: 1:N
 # Content
 Subject -> Topic: 1:N
 Topic -> Lesson: 1:N
+Semester -> Lesson: 1:N
 Lesson -> Question: 1:N
 
 # Learning
@@ -355,6 +394,9 @@ User -> UserBadge: 1:N
 Badge -> UserBadge: 1:N
 User -> RewardRedemption: 1:N
 Reward -> RewardRedemption: 1:N
+
+# Family
+User -> ParentChildLink: 1:N
 ```
 
 ### Unique Constraints
@@ -372,14 +414,14 @@ Reward -> RewardRedemption: 1:N
 
 ### Chiến lược đánh Index
 
-| Bảng                     | Index                                   | Mục đích                 |
-| ------------------------ | --------------------------------------- | ------------------------ |
-| `User`                   | (`tenant_id`, `email`, `deleted_at`)    | Login và truy vấn tenant |
-| `Topic`                  | (`tenant_id`, `subject_id`, `grade_id`) | Filter nội dung          |
-| `StudentAnswer`          | (`student_id`, `answered_at`)           | Phân tích học tập        |
-| `CompetitionParticipant` | (`round_id`, `score` DESC)              | Leaderboard realtime     |
-| `KnowledgeMap`           | (`student_id`, `mastery_level`)         | AI recommendations       |
-| `UserSession`            | (`user_id`, `device_id`, `is_active`)   | Multi-device session     |
+| Bảng                | Index                                 | Mục đích                 |
+| ------------------- | ------------------------------------- | ------------------------ |
+| `User`              | (`tenant_id`, `email`, `deleted_at`)  | Login và truy vấn tenant |
+| `Topic`             | (`subject_id`, `order`)               | Filter nội dung          |
+| `SubmissionHistory` | (`session_id`, `question_id`)         | Phân tích học tập        |
+| `Participant`       | (`round_id`, `score` DESC)            | Leaderboard realtime     |
+| `KnowledgeMap`      | (`user_id`, `mastery_score`)          | AI recommendations       |
+| `UserSession`       | (`user_id`, `device_id`, `is_active`) | Multi-device session     |
 
 ---
 
@@ -409,13 +451,13 @@ Reward -> RewardRedemption: 1:N
 
 ### Data Retention
 
-| Loại Dữ liệu        | Thời gian lưu | Hành động         |
-| ------------------- | ------------- | ----------------- |
-| User Sessions       | 30 ngày       | Auto cleanup      |
-| Audit Logs          | 1 năm         | Archive           |
-| Student Answers     | Vĩnh viễn     | Phân tích dài hạn |
-| Competition Results | Vĩnh viễn     | Lịch sử           |
-| Notifications       | 90 ngày       | Auto cleanup      |
-| Soft Deleted        | 1 năm         | Hard delete       |
+| Loại Dữ liệu      | Thời gian lưu | Hành động         |
+| ----------------- | ------------- | ----------------- |
+| `UserSession`     | 30 ngày       | Auto cleanup      |
+| Audit Logs        | 1 năm         | Archive           |
+| `ExerciseSession` | Vĩnh viễn     | Phân tích dài hạn |
+| `Participant`     | Vĩnh viễn     | Lịch sử           |
+| Notifications     | 90 ngày       | Auto cleanup      |
+| Soft Deleted      | 1 năm         | Hard delete       |
 
 ---
