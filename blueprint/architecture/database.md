@@ -18,10 +18,6 @@ ERD cho hệ thống multi-tenant
 ```d2
 direction: right
 
-# ═══════════════════════════════════════════════════════════════
-# CORE: Tenant & User
-# ═══════════════════════════════════════════════════════════════
-
 Tenant: {
   shape: sql_table
   id: string {constraint: primary_key}
@@ -76,10 +72,6 @@ OtpVerification: {
   created_at: timestamp
 }
 
-# ═══════════════════════════════════════════════════════════════
-# RBAC: Role-Based Access Control
-# ═══════════════════════════════════════════════════════════════
-
 Role: {
   shape: sql_table
   id: string {constraint: primary_key}
@@ -115,10 +107,6 @@ UserRole: {
   tenant_id: string {constraint: foreign_key}
   assigned_at: timestamp
 }
-
-# ═══════════════════════════════════════════════════════════════
-# CONTENT: Curriculum & Questions
-# ═══════════════════════════════════════════════════════════════
 
 Subject: {
   shape: sql_table
@@ -181,10 +169,6 @@ Question: {
   created_at: timestamp
 }
 
-# ═══════════════════════════════════════════════════════════════
-# LEARNING: Progress & Sessions
-# ═══════════════════════════════════════════════════════════════
-
 LearningPath: {
   shape: sql_table
   id: string {constraint: primary_key}
@@ -237,10 +221,6 @@ KnowledgeMap: {
   updated_at: timestamp
 }
 
-# ═══════════════════════════════════════════════════════════════
-# TOURNAMENT: Competitions
-# ═══════════════════════════════════════════════════════════════
-
 Tournament: {
   shape: sql_table
   id: string {constraint: primary_key}
@@ -279,10 +259,6 @@ Participant: {
   joined_at: timestamp
   finished_at: timestamp {constraint: nullable}
 }
-
-# ═══════════════════════════════════════════════════════════════
-# GAMIFICATION: Rewards & Progress
-# ═══════════════════════════════════════════════════════════════
 
 UserProfile: {
   shape: sql_table
@@ -340,10 +316,6 @@ RewardRedemption: {
   redeemed_at: timestamp
 }
 
-# ═══════════════════════════════════════════════════════════════
-# FAMILY: Parent-Child Linking
-# ═══════════════════════════════════════════════════════════════
-
 ParentChildLink: {
   shape: sql_table
   id: string {constraint: primary_key}
@@ -355,39 +327,30 @@ ParentChildLink: {
   created_at: timestamp
 }
 
-# ═══════════════════════════════════════════════════════════════
-# RELATIONSHIPS
-# ═══════════════════════════════════════════════════════════════
 
-# Core
 Tenant -> User: 1:N
 User -> UserSession: 1:N
 User -> OtpVerification: 1:N
 
-# RBAC
 User -> UserRole: 1:N
 Role -> UserRole: 1:N
 Role -> RolePermission: 1:N
 Permission -> RolePermission: 1:N
 
-# Content
 Subject -> Topic: 1:N
 Topic -> Lesson: 1:N
 Semester -> Lesson: 1:N
 Lesson -> Question: 1:N
 
-# Learning
 User -> LearningPath: 1:N
 User -> LessonProgress: 1:N
 User -> ExerciseSession: 1:N
 User -> KnowledgeMap: 1:N
 ExerciseSession -> SubmissionHistory: 1:N
 
-# Tournament
 Tournament -> CompetitionRound: 1:N
 CompetitionRound -> Participant: 1:N
 
-# Gamification
 User -> UserProfile: 1:1
 User -> Streak: 1:1
 User -> UserBadge: 1:N
@@ -395,42 +358,48 @@ Badge -> UserBadge: 1:N
 User -> RewardRedemption: 1:N
 Reward -> RewardRedemption: 1:N
 
-# Family
 User -> ParentChildLink: 1:N
 ```
 
-### Unique Constraints
+### Ràng buộc Unique
 
-> SSoT: [`TC-ARCH-006`](design.md#architecture) (Multi-tenancy)
+| Bảng              | Constraint                          | Mô tả                      |
+| ----------------- | ----------------------------------- | -------------------------- |
+| `Tenant`          | `code`                              | Unique toàn hệ thống       |
+| `User`            | (`tenant_id`, `email`)              | Unique trong mỗi tenant    |
+| `UserSession`     | `refresh_token`                     | Unique toàn hệ thống       |
+| `OtpVerification` | (`email`, `type`)                   | Mỗi email chỉ 1 OTP/type   |
+| `Role`            | (`tenant_id`, `code`)               | Unique trong mỗi tenant    |
+| `Permission`      | `code`                              | Unique toàn hệ thống       |
+| `RolePermission`  | (`role_id`, `permission_id`)        | Tránh assign trùng         |
+| `UserRole`        | (`user_id`, `role_id`, `tenant_id`) | Tránh assign role trùng    |
+| `LessonProgress`  | (`user_id`, `lesson_id`)            | 1 progress/user/lesson     |
+| `KnowledgeMap`    | (`user_id`, `topic_id`)             | 1 mastery score/user/topic |
+| `Participant`     | (`round_id`, `user_id`)             | 1 lần tham gia/user/round  |
+| `Badge`           | `code`                              | Unique toàn hệ thống       |
+| `UserBadge`       | (`user_id`, `badge_id`)             | 1 badge/user/loại          |
+| `ParentChildLink` | `invite_code`                       | Unique toàn hệ thống       |
 
-| Bảng          | Constraint             | Mô tả                                |
-| ------------- | ---------------------- | ------------------------------------ |
-| `Tenant`      | `code`                 | Mã tenant unique toàn hệ thống       |
-| `User`        | (`tenant_id`, `email`) | Email unique trong mỗi tenant        |
-| `UserSession` | `refresh_token`        | Token unique toàn hệ thống           |
-| `Role`        | (`tenant_id`, `code`)  | Role code unique trong mỗi tenant    |
-| `Permission`  | `code`                 | Permission code unique toàn hệ thống |
-| `Badge`       | `code`                 | Badge code unique toàn hệ thống      |
+### Đánh Index
 
-### Chiến lược đánh Index
-
-| Bảng                | Index                                 | Mục đích                 |
-| ------------------- | ------------------------------------- | ------------------------ |
-| `User`              | (`tenant_id`, `email`, `deleted_at`)  | Login và truy vấn tenant |
-| `Topic`             | (`subject_id`, `order`)               | Filter nội dung          |
-| `SubmissionHistory` | (`session_id`, `question_id`)         | Phân tích học tập        |
-| `Participant`       | (`round_id`, `score` DESC)            | Leaderboard realtime     |
-| `KnowledgeMap`      | (`user_id`, `mastery_score`)          | AI recommendations       |
-| `UserSession`       | (`user_id`, `device_id`, `is_active`) | Multi-device session     |
+| Bảng                | Index                                  | Mục đích               |
+| ------------------- | -------------------------------------- | ---------------------- |
+| `User`              | (`tenant_id`, `email`, `deleted_at`)   | Login, truy vấn tenant |
+| `UserSession`       | (`user_id`, `device_id`, `is_active`)  | Multi-device session   |
+| `OtpVerification`   | (`email`, `type`, `expires_at`)        | Tìm OTP hợp lệ         |
+| `Lesson`            | (`topic_id`, `semester_id`, `status`)  | Filter bài học         |
+| `LessonProgress`    | (`user_id`, `lesson_id`)               | Tiến độ học sinh       |
+| `ExerciseSession`   | (`user_id`, `lesson_id`, `started_at`) | Lịch sử làm bài        |
+| `SubmissionHistory` | (`session_id`, `question_id`)          | Phân tích học tập      |
+| `KnowledgeMap`      | (`user_id`, `topic_id`)                | AI recommendations     |
+| `Tournament`        | (`tenant_id`, `status`, `starts_at`)   | Filter giải đấu        |
+| `Participant`       | (`round_id`, `score` DESC)             | Leaderboard            |
 
 ---
 
 ## Storage
 
 ### Lớp Cache
-
-> SSoT: [`TC-ARCH-003`](design.md#architecture) |
-> [0007: Redis](decisions/0007-redis.md)
 
 | Loại Cache    | Lưu trữ    | TTL      | Mục đích                    |
 | ------------- | ---------- | -------- | --------------------------- |
@@ -451,13 +420,11 @@ User -> ParentChildLink: 1:N
 
 ### Data Retention
 
-| Loại Dữ liệu      | Thời gian lưu | Hành động         |
-| ----------------- | ------------- | ----------------- |
-| `UserSession`     | 30 ngày       | Auto cleanup      |
-| Audit Logs        | 1 năm         | Archive           |
-| `ExerciseSession` | Vĩnh viễn     | Phân tích dài hạn |
-| `Participant`     | Vĩnh viễn     | Lịch sử           |
-| Notifications     | 90 ngày       | Auto cleanup      |
-| Soft Deleted      | 1 năm         | Hard delete       |
-
----
+| Loại Dữ liệu      | Thời gian lưu | Hành động    |
+| ----------------- | ------------- | ------------ |
+| `UserSession`     | 30 ngày       | Auto cleanup |
+| `ExerciseSession` | Vĩnh viễn     | Analytics    |
+| `Participant`     | Vĩnh viễn     | Lịch sử      |
+| Audit Logs        | 1 năm         | Archive      |
+| Notifications     | 90 ngày       | Auto cleanup |
+| Soft Deleted      | 1 năm         | Hard delete  |
